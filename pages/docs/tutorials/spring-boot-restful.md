@@ -7,9 +7,10 @@ authors: Hadi Hariri, Edoardo Vacchi
 showAuthorInfo: true
 source: spring-boot-restful
 ---
-Kotlin works quite smoothly with Spring Boot and many of the steps found on the [Spring Guides](https://spring.io/guides) for creating a RESTful service
-can be followed verbatim for Kotlin. There are some minor differences however when it comes to defining the Gradle configuration
-and the project layout structure, as well as the initialization code.
+
+使用Kotlin 与 Spring Boot 开发真的是如丝般润滑。尽管在实际操作过程中，稍微有点不同，但是我们仍然可以参考 [Spring Guides](https://spring.io/guides) ， 来使用Kotlin + Spring Boot创建一个RESTful接口。 
+
+
 
 In this tutorial we'll walk through the steps required. For a more thorough explanation of Spring Boot and RESTful services, please see
 [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/).
