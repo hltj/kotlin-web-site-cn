@@ -78,7 +78,7 @@ Kotlin 标准库为几种有用的委托提供了工厂方法。
 ### 延迟属性 Lazy
 
 [`lazy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/lazy.html) 是接受一个 lambda 并返回一个 `Lazy <T>` 实例的函数，返回的实例可以作为实现延迟属性的委托：
-第一次调用 `get()` 会执行已传递给 `lazy()` 的 lamda 表达式并记录结果，
+第一次调用 `get()` 会执行已传递给 `lazy()` 的 lambda 表达式并记录结果，
 后续调用 `get()` 只是返回记录的结果。
 
 
