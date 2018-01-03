@@ -75,7 +75,7 @@ fun main(args: Array<String>) {
     val coffee = DaggerCoffeeShop.builder().build()
     coffee.maker().brew()
 }
-``` 
+```
 
 Dagger 为 `CoffeeShop` 所生成的实现，允许你获得一个完全注入的 `CoffeeMaker`。
 `DaggerCoffeeShop` 的具体代码实现可在 IDE 中查看。
@@ -115,10 +115,10 @@ dependencies {
 
 另外，[Kotlin Android 扩展](https://kotlinlang.org/docs/tutorials/android-plugin.html)插件（Android Studio 内置)具有同样的效果：使用简洁明了的代码替换`findViewByid`。
 除非现在你正在使用 ButterKnife 而且没有迁移计划，那么前者非常值得尝试。
- 
+
 在 Kotlin 中使用 `ButterKnife` 与 Java 中完全一致。
 在 Gradle 构建脚本的修改如下，后面将重点介绍代码部分的差异。
- 
+
 在 Gradle 依赖中添加 `kotlin-kapt` 插件，并使用 `kapt` 替代 `annotationProcessor`。
 
 ``` groovy
@@ -126,8 +126,8 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     ...
-    compile "com.jakewharton:butterknife:$butterknife-version"
-    kapt "com.jakewharton:butterknife-compiler:$butterknife-version"
+    compile "com.jakewharton:butterknife:$butterknife_version"
+    kapt "com.jakewharton:butterknife-compiler:$butterknife_version"
 }
 ```
 
@@ -136,7 +136,7 @@ dependencies {
 
 让我门看看发生了什么变化。
 在 Java 中使用注解对将变量与之对应的 view 进行绑定：
- 
+
 ``` java 
 @BindView(R2.id.title) TextView title;
 ```
@@ -152,7 +152,7 @@ lateinit var title: TextView
 
 [lateinit 修饰符](/docs/reference/properties.html#延迟初始化属性与变量)允许声明非空类型，并在对象创建后(构造函数调用后)初始化。
 不使用 `lateinit` 则需要声明[可空类型](/docs/reference/null-safety.html)并且有额外的空安全检测操作。
- 
+
 使用 ButterKnife 注解可以将方法设置为监听器：
 
 ``` java
@@ -200,12 +200,12 @@ dependencies {
 使用 Kotlin 并不需要修改任何的 xml 文件。
 例如，在 `data` 中使用 `variable` 来描述可能在布局中使用的变量，
 可以使用Kotlin类型声明变量：
- 
+
 ```xml
 <data>
     <variable name="data" type="org.example.kotlin.databinding.WeatherData"/>
 </data>
-``` 
+```
 
 现在，可以使用 `@{}` 语法引用 Kotlin 的[属性](/docs/reference/properties.html)：
 
@@ -220,7 +220,7 @@ dependencies {
 值得一提的是，数据绑定表达式语言使用和 Kotlin 相同的语法对属性进行引用：`data.imageUrl`。
 在 Kotlin 中可以使用 `v.prop` 来替代 `v.getProp()`，尽管 `getProp()` 是Java中的方法。
 类似的，也可以直接向属性赋值，而不再需要调用setter。
-  
+
 ```kotlin
 class MainActivity : AppCompatActivity() {
     // ……
@@ -265,7 +265,7 @@ class MainActivity : AppCompatActivity() {
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
     android:onClick="@{() -> presenter.onSaveClick(task)}" />
-```          
+```
 
 ``` kotlin
 // 用 Kotlin 代码写的相同逻辑
@@ -300,7 +300,7 @@ dependencies {
 并且逐步地将代码转换为 Kotlin（确保每次编译通过）。
 转换后的代码与 Java 并无明显差异。
 例如，对表的声明和在 Java 中仅有小小的区别，属性声明时必须显示的指定默认值：
- 
+
 ``` kotlin 
 @Table(name="users", database = AppDatabase::class)
 class User : BaseModel() {
@@ -312,7 +312,7 @@ class User : BaseModel() {
     @Column
     var name: String? = null
 }
-``` 
+```
 
 对于 DBFlow 而言，除了将已经有功能代码转换为 Kotlin，还能享受到 Kotlin 的特别支持。
 例如，将表声明为[数据类](/docs/reference/data-classes.html)：
@@ -341,7 +341,7 @@ dependencies {
 [Auto-Parcel](https://github.com/frankiesardo/auto-parcel) 使用 `@AutoValue` 的注解为类文件自动生成 `Parcelable` 对应方法和值。
 
 同样的，gradle 文件中也需要使用 `kapt` 作为注解处理器来处理 Kotlin 文件：
- 
+
 ``` groovy
 apply plugin: 'kotlin-kapt'
 
@@ -383,5 +383,5 @@ abstract class Address : Parcelable {
 如果仍然需要从 Java 中调用这些方法，需要添加[`@JvmStatic`](/docs/reference/java-to-kotlin-interop.html#静态方法)注解。
 
 如果调用 Java 的类或方法恰好在 Kotlin 中是保留字，可以使用反引号(\`)作为[转义字符](/docs/reference/java-interop.html#将-kotlin-中是关键字的-java-标识符进行转义)，比如调用上例中生成类的\``$AutoValue_Address`\`。
-  
+
 以上所有经过转换的代码与原生 Java 代码非常相似。
