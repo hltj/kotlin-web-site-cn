@@ -1,79 +1,82 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Getting Started with Eclipse Neon"
-description: "This tutorials walks us through creating a simple Hello World application using Eclipse Neon"
+title:  "入门Eclipse IDE "
+description: "
+本教程将引导我们使用Eclipse IDE创建一个简单的Hello World应用程序"
 authors: Nikolay Krasko
-date: 2016-11-10
-showAuthorInfo: true
+date: 2019-04-24
+showAuthorInfo: false
 ---
 
-### Setting up the environment
-We're assuming Eclipse is installed. If not, it can be
-download from the [download page](https://www.eclipse.org/downloads/). The "Eclipse IDE for Java Developers" bundle is recommended. For correct functioning, Eclipse Neon (4.6) or later is required.
+## 配置环境
+首先，您需要在系统上安装Eclipse IDE。
+您可以在[下载页面](https://www.eclipse.org/downloads/)下载到最新版本。建议使用“Eclipse IDE for Java Developers”软件包。
 
-We recommend installing Kotlin plugin from [Eclipse Marketplace](http://marketplace.eclipse.org/content/kotlin-plugin-eclipse). 
-One option is to drag-and-drop this button into a running Eclipse window:
+在您的Eclipse IDE中添加Kotlin支持, 安装 _Kotlin Plugin for Eclipse_。
+我们建议从[Eclipse Marketplace](http://marketplace.eclipse.org/content/kotlin-plugin-eclipse)安装Kotlin插件。一种选择是将此按钮拖动到正在运行的Eclipse窗口中：
 
-<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2257536" class="drag" title="Drag to your running Eclipse workspace."><img class="img-responsive" src="http://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace." /></a>
+<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2257536" class="drag" title="Drag to your running Eclipse workspace."><img class="img-responsive" src="https://user-gold-cdn.xitu.io/2019/5/30/16b09333df16a0dd?w=87&h=34&f=png&s=2020" alt="Drag to your running Eclipse workspace." /></a>
 
-Alternatively, use the *Help -> Eclipse Marketplace...* menu and search for Kotlin plugin: 
+另外, 打开这个 __Help \| Eclipse Marketplace...__ 菜单并搜索 __Kotlin Plugin for Eclipse__：
 
    ![Eclipse Marketplace]({{ url_for('tutorial_img', filename='getting-started-eclipse/marketplace.png') }})
 
-A more old-fashioned way is using an *update site* directly:
+更老套的方式是直接使用*update site*：
 
 ```
 https://dl.bintray.com/jetbrains/kotlin/eclipse-plugin/last/
 ```
 
-Once Eclipse has been restarted, we can check to make sure the Kotlin plugin is installed correctly, by opening the Kotlin perspective
-in main menu ``Window -> Open Perspective -> Other...``
+Once the plugin is installed and Eclipse is restarted, make sure the plugin is installed correctly: open the __Kotlin perspective__
+in the menu __Window \| Open Perspective \| Other...__
+
+安装插件并重新启动Eclipse后，请确保插件安装正确：打开__Kotlin perspective___
+在菜单 __Window \|Open Perspective \| Other...__
     
    ![Kotlin Perspective]({{ url_for('tutorial_img', filename='getting-started-eclipse/open-perspective.png') }})
 
-### Creating a new project
-Now we are ready to create a new Kotlin project.
+## Creating a new project
+Now you are ready to create a new Kotlin project.
 
-Select *File -> New -> Kotlin Project* to proceed.
+1. Select __File \| New \| Kotlin Project__.
 
-   ![New Kotlin Project]({{ url_for('tutorial_img', filename='getting-started-eclipse/new-project.png') }})
+   ![New Kotlin Project]({{ url_for('tutorial_img', filename='getting-started-eclipse/project-name.png') }})
 
-An empty project will be created which is ready for writing Kotlin code that targets the JVM (JavaScript is not supported yet).
-The project created, from the Eclipse point of view, is also a Java project but configured with Kotlin nature, meaning it has the Kotlin
-Builder and reference to the Kotlin Runtime Library. Great thing about this solution is that we can continue adding Java
-classes to the project, mixing and matching Kotlin and Java code if required.
+   An empty Kotlin/JVM project will be created.
+   For Eclipse IDE, the project is also a Java project but configured with Kotlin nature, meaning it has the Kotlin
+Builder and reference to the Kotlin Runtime Library. Great thing about this solution is that you can add both Kotlin and Java
+code to the same project.
    
-A fresh Kotlin project Package Explorer should look something similar to the following:
+   The project structure looks like this:
 
    ![Empty Kotlin Project]({{ url_for('tutorial_img', filename='getting-started-eclipse/empty-project.png') }})
 
-We can now create a new Kotlin file under the source folder.
+2. Create a new Kotlin file in the the source directory.
 
-   ![New File From Context Menu]({{ url_for('tutorial_img', filename='getting-started-eclipse/eclipse-new-file-menu.png') }})
+   ![New File From Context Menu]({{ url_for('tutorial_img', filename='getting-started-eclipse/new-file.png') }})
    
-IF omitting the *".kt"* extension in file name, Eclipse will add it automatically
+   You can enter the name without the __.kt__ extension. Eclipse will add it automatically.
    
-   ![New Kotlin File Wizard]({{ url_for('tutorial_img', filename='getting-started-eclipse/eclipse-new-file-wizard.png') }})
+   ![New Kotlin File Wizard]({{ url_for('tutorial_img', filename='getting-started-eclipse/file-name.png') }})
 
-
-Once we have the file created, we need to type the main routine, which is the entry point to a Kotlin application. We
-can simply type *main*, invoke completion and hit 'Enter'
+3. Once you have a source file, add the `main` function - the entry point to a Kotlin application. You
+can simply type `main` and invoke code completion by hitting `Ctrl + Space`.
 
    ![Main Template]({{ url_for('tutorial_img', filename='getting-started-eclipse/main.png') }})
 
-Finally we add a simple line of Kotlin code to print the message:
+4. Add a simple line of Kotlin code to print a message:
 
    ![Hello World Example]({{ url_for('tutorial_img', filename='getting-started-eclipse/hello-world.png') }})
 
-### Running the application
-The easiest way to run the application is to do a right-click somewhere in the main file and select *Run As -> Kotlin Application*
+## Running the application
+To run the application, right-click somewhere in the main file and select __Run As \| Kotlin Application__.
 
    ![Run Kotlin Application]({{ url_for('tutorial_img', filename='getting-started-eclipse/run-as.png') }})
    
-If everything has gone well, the console window output should automatically open, showing the results.
+If everything went well, you'll see the result in the **Console** window.
 
    ![Program Output View]({{ url_for('tutorial_img', filename='getting-started-eclipse/output.png') }})
 
-We now have our first Kotlin application running in Eclipse.
+Congratulations! You now have your Kotlin application running in Eclipse IDE.
 
