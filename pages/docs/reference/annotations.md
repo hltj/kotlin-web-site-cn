@@ -19,7 +19,7 @@ annotation class Fancy
 注解的附加属性可以通过用元注解标注注解类来指定：
 
   * [`@Target`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-target/index.html) 指定可以用<!--
-    -->该注解标注的元素的可能的类型（类、函数、属性、表达式等）；
+    -->该注解标注可能类型的元素（类、函数、属性、表达式等）；
   * [`@Retention`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-retention/index.html) 指定该注解是否<!--
     -->存储在编译后的 class 文件中，以及它在运行时能否通过反射可见
     （默认都是 true）；
