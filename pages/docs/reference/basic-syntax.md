@@ -530,6 +530,15 @@ fun main() {
 
 </div>
 
+while 与 do..while 使用
+
+while (x > 0) {
+    x--
+}
+
+do {
+  val y = retrieveData()
+} while (y != null) // y 在此处可见
 
 参见 [while 循环](control-flow.html#while-循环)。
 
