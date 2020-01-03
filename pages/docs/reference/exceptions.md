@@ -9,7 +9,7 @@ title: "异常：try、catch、finally、throw、Nothing"
 
 ## 异常类
 
-Kotlin 中所有异常类都是 `Throwable` 类的子孙类。
+Kotlin 中所有异常类都是 `Throwable` 类的子类/派生类。
 每个异常都有消息、堆栈回溯信息以及可选的原因。
 
 使用 *throw*{: .keyword }-表达式来抛出异常：
