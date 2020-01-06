@@ -7,18 +7,18 @@ title: "过滤集合"
 
 # 过滤
 
-Filtering is one of the most popular tasks in the collection processing.
-In Kotlin, filtering conditions are defined by _predicates_ – lambda functions that take a collection element and return a boolean value: `true` means that the given element matches the predicate, `false` means the opposite.
+过滤是集合处理中最流行的任务之一。
+在 Kotlin 中，过滤条件的定义是通过 _predicates_ 即以集合元素为参数返回值为 boolean 的 lambda 函数: `true` 表示给定元素断言成功, `false` 表示断言失败.
 
-The standard library contains a group of extension functions that let you filter collections in a single call.
-These functions leave the original collection unchanged, so they are available for both [mutable and read-only](collections-overview.html#集合类型) collections.
-To operate the filtering result, you should assign it to a variable or chain the functions after filtering.
+这个标准库包含一组让你一次调用即可过滤集合的拓展函数。
+这些功能不会改变原始集合，所以它们能作用于 [可变的和只读的](collections-overview.html#集合类型) 集合.
+过滤后的结果应将其分配给变量或用于链式函数。
 
 ## 按谓词过滤
 
-The basic filtering function is [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html).
-When called with a predicate, `filter()` returns the collection elements that match it.
-For both `List` and `Set`, the resulting collection is a `List`, for `Map` it's a `Map` as well.
+基本的函数是 [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html).
+当使用 _predicates_ 作为参数调用时， `filter()` 返回断言正确的集合元素。
+对于 `List` 和 `Set`, 结果返回都是 `List`，`Map` 结果则是 `Map`。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -37,12 +37,12 @@ fun main() {
 ```
 </div>
 
-The predicates in `filter()` can only check the values of the elements.
-If you want to use element positions in the filter, use [`filterIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html).
-It takes a predicate with two arguments: the index and the value of an element. 
+`filter()` 中只能对元素的值进行断言。
+如果您想使用元素的下标，使用 [`filterIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html).
+它将使用索引和元素的值两个参数作为断言依据。
 
-To filter collections by negative conditions, use [`filterNot()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html).
-It returns a list of elements for which the predicate yields `false`.
+想要通过否定条件来过滤，使用 [`filterNot()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html).
+它将返回断言为 `false` 的集合元素。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -61,9 +61,9 @@ fun main() {
 ```
 </div>
 
-There are also functions that narrow the element type by filtering elements of a given type:
+也有给定类型来过滤元素的函数可用于限制元素类型：
 
-* [`filterIsInstance()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-is-instance.html) returns collection elements of a given type. Being called on a `List<Any>`, `filterIsInstance<T>()` returns a `List<T>`, thus allowing you to call functions of the  `T` type on its items.
+* [`filterIsInstance()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-is-instance.html) 返回给定类型的元素集合。 通过调用 `List<Any>`，`filterIsInstance<T>()` 返回一个 `List<T>`，因此在集合元素中您可以调用 `T` 类型的函数。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -80,7 +80,7 @@ fun main() {
 ```
 </div>
     
-* [`filterNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html) returns all non-null elements. Being called on a `List<T?>`, `filterNotNull()` returns a `List<T: Any>`, thus allowing you to treat the elements as non-null objects.
+* [`filterNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html) 返回所有非空元素。 调用 `List<T?>`，`filterNotNull()` 返回一个 `List<T: Any>`，因此您可以将元素视为非空对象。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
