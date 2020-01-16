@@ -719,24 +719,22 @@ kotlin {
 
 ### 关联源集
 
-Kotlin source sets may be connected with the *'depends on'* relation, so that if a source set `foo`  depends on a
-source set `bar` then:
+Kotlin 的源集会被依赖关系连接到一起，如果 源集 `foo` 依赖于 `bar`：
 
-* whenever `foo` is compiled for a certain target, `bar` takes part in that compilation as well and is also compiled 
-into the same target binary form, such as JVM class files or JS code;
+* 每当 `foo` 被编译到某个平台,`bar` 也将参与编译，并被编译至相同的平台二进制格式，比如 JVM class 文件或 JS 代码；
 
-* sources of `foo` 'see' the declarations of `bar`, including the `internal` ones, and the [dependencies](#添加依赖) of `bar`, even those
- specified as `implementation` dependencies;
+* `foo` 源集中的代码“可见” `bar` 中的声明，包括那些 `internal` 的和 `bar` 的依赖项，他们是一个 `implementation` 的依赖；
 
-* `foo` may contain [platform-specific implementations](platform-specific-declarations.html) for the expected declarations of `bar`;
+* `foo` 可以会包含被 `bar` 中声明期望的[平台定义的实现](platform-specific-declarations.html)；
 
-* the resources of `bar` are always processed and copied along with the resources of `foo`;
+* `bar` 的资源总是和 `foo` 中的资源一同复制和处理；
 
-* the [语言设置](#语言设置) of `foo` and `bar` should be consistent;
+* `foo` 和 `bar` 的[语言设置](#语言设置)应当是一致的；
 
-Circular source set dependencies are prohibited.
 
-The source sets DSL can be used to define these connections between the source sets:
+源集的循环依赖是禁止的
+
+源集 DSL 可以被用于定义源集间的联系：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
