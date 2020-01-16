@@ -719,13 +719,13 @@ kotlin {
 
 ### 关联源集
 
-Kotlin 的源集会被依赖关系连接到一起，如果 源集 `foo` 依赖于 `bar`：
+如果源集 `foo` 依赖于 `bar`，Kotlin 的源集会被依赖关系连接到一起：
 
 * 每当 `foo` 被编译到某个平台,`bar` 也将参与编译，并被编译至相同的平台二进制格式，比如 JVM class 文件或 JS 代码；
 
 * `foo` 源集中的代码“可见” `bar` 中的声明，包括那些 `internal` 的和 `bar` 的依赖项，他们是一个 `implementation` 的依赖；
 
-* `foo` 可以会包含被 `bar` 中声明期望的[平台定义的实现](platform-specific-declarations.html)；
+* `foo` 可以包含被 `bar` 中声明所期望的[平台定义的实现](platform-specific-declarations.html)；
 
 * `bar` 的资源总是和 `foo` 中的资源一同复制和处理；
 
