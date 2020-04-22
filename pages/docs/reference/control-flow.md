@@ -65,7 +65,7 @@ when (x) {
     1 -> print("x == 1")
     2 -> print("x == 2")
     else -> { // 注意这个块
-        print("x is neither 1 nor 2")
+        print("x is neither 1 or 2")
     }
 }
 ```
