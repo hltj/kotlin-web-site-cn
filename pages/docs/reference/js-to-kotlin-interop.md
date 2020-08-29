@@ -7,9 +7,9 @@ title: "JavaScript 中调用 Kotlin"
 
 # JavaScript 中调用 Kotlin
 
-Depending on the selected [JavaScript Module](js-modules.html) system, the Kotlin/JS compiler generates different output. But in general, Kotlin 编译器生成正常的 JavaScript 类，可以在 JavaScript 代码中自由地使用的函数和属性。不过，你应该记住一些微妙的事情。
+Depending on the selected [JavaScript Module](js-modules.html) system, the Kotlin/JS compiler generates different output. 当然通常 Kotlin 编译器生成正常的 JavaScript 类，可以在 JavaScript 代码中自由地使用的函数和属性。不过，你应该记住一些微妙的事情。
 
-## 用独立的 JavaScript 隔离声明 in `plain` mode
+## 在 `plain` 模式中用独立的 JavaScript 隔离声明
 If you have explicitly set your module kind to be `plain`, 为了防止损坏全局对象，Kotlin 创建一个包含当前模块中所有 Kotlin 声明的对象。这意味着对于一个模块 `myModule`，所有的声明都可以通过 `myModule` 对象在 JavaScript 中使用。例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
