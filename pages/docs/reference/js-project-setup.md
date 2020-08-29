@@ -64,8 +64,8 @@ kotlin {
 * [管理依赖](#管理依赖): Maven 和 npm
 * [配置 run 任务](#配置-run-任务)
 * [配置 test 任务](#配置-test-任务)
-* 为浏览器项目配置 [webpack 绑定](#配置-webpack-绑定)  and [module name](#adjusting-the-module-name)
-* [分发目标目录](#分发目标目录) and [module name](#adjusting-the-module-name)
+* 为浏览器项目配置 [webpack 绑定](#配置-webpack-绑定)与[模块名](#调整模块名)
+* [分发目标目录](#分发目标目录)与[模块名](#调整模块名)
 
 ## 选择执行环境
 
@@ -165,7 +165,7 @@ If the library you are adding has dependencies on [packages from npm](#npm-depen
 
 ### Kotlin 标准库
 
-所有 Kotlin/JS 项目都必须依赖 Kotlin/JS [标准库](https://kotlinlang.org/api/latest/jvm/stdlib/), and as such is implicit – no artifacts need to be added。如果你的项目包含用 Kotlin 编写的测试，那么还应该添加
+所有 Kotlin/JS 项目都必须依赖 Kotlin/JS [标准库](https://kotlinlang.org/api/latest/jvm/stdlib/)，并且是隐含的——无需添加任何构件。如果你的项目包含用 Kotlin 编写的测试，那么还应该添加
 [kotlin.test](https://kotlinlang.org/api/latest/kotlin.test/) 依赖项：
 
 <div class="multi-language-sample" data-lang="groovy">
@@ -197,7 +197,7 @@ dependencies {
 在 JavaScript 中，管理依赖项最常用的方式是 [npm](https://www.npmjs.com/)。
 它提供了最大的 JavaScript 模块公开存储库。
 
-Kotlin/JS Gradle 插件使你可以在 Gradle 构建脚本中声明 npm 依赖项，, analogous to how you would declare any other dependencies.
+Kotlin/JS Gradle 插件使你可以在 Gradle 构建脚本中声明 npm 依赖项，类似于声明其他依赖项的方式。
 
 要声明 npm 依赖项，将其名称与版本传给依赖项声明内的 `npm()` 函数。  You can also specify one or multiple version range based on [npm's semver syntax](https://docs.npmjs.com/misc/semver#versions).
 
@@ -308,7 +308,7 @@ kotlin {
             }
         }
         binaries.executable()
-        // . . .
+        // ……
     }
 }
 ```
@@ -330,7 +330,7 @@ kotlin {
             }
         }
         binaries.executable()
-        // . . .
+        // ……
     }
 }
 ```
@@ -411,7 +411,7 @@ runTask {
 }
 testTask {
    useKarma {
-      // . . .
+      // ……
       webpackConfig.cssSupport.enabled = true
    }
 }
@@ -465,7 +465,7 @@ kotlin {
             }
         }
         binaries.executable()
-        // . . .
+        // ……
     }
 }
 ```
@@ -485,7 +485,7 @@ kotlin {
             }
         }
         binaries.executable()
-        // . . .
+        // ……
     }
 }
 ```
@@ -493,7 +493,7 @@ kotlin {
 </div>
 </div>
 
-## Adjusting the module name
+## 调整模块名
 To adjust the name for the JavaScript _module_ (which is generated in `build/js/packages/myModuleName`), including the corresponding `.js` and `.d.ts` files, use the `moduleName` option:
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
