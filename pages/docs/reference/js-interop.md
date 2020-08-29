@@ -9,7 +9,7 @@ title: "Kotlin 中调用 JavaScript"
 
 Kotlin 最初被设计为能够与 Java 平台轻松互操作。它将 Java 类视为 Kotlin 类，并且 Java 也将 Kotlin 类视为 Java 类。
 
-但是，JavaScript 是一种动态类型语言，这意味着它不会在编译期检测类型。可以通过[动态](dynamic-type.html)类型在 Kotlin 中自由地与 JavaScript 交流。如果想要使用 Kotlin 类型系统的全部威力，可以为 JavaScript 库创建 external declarations   which will be understood by the Kotlin compiler and the surrounding tooling.
+但是，JavaScript 是一种动态类型语言，这意味着它不会在编译期检测类型。可以通过[动态](dynamic-type.html)类型在 Kotlin 中自由地与 JavaScript 交流。如果想要使用 Kotlin 类型系统的全部威力，可以为 JavaScript 库创建 Kotlin 编译器与周边工具可理解的外部声明。
 
 An experimental tool to automatically create Kotlin external declarations for npm dependencies which provide type definitions (TypeScript / `d.ts`) called [Dukat](js-external-declarations-with-dukat) is also available.
 
@@ -26,7 +26,7 @@ fun jsTypeOf(o: Any): String {
 ```
 </div>
 
-Because the `js` 的参数  is parsed at compile time and translated to JavaScript code "as-is", it 必须是字符串常量。因此，以下代码是不正确的：
+因为 `js` 的参数是在编译期解析并且按原样翻译成 JavaScript 代码的，因此它必须是字符串常量。因此，以下代码是不正确的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -43,7 +43,7 @@ Note that invoking `js()` returns a result of type [`dynamic`](dynamic-type.html
 
 要告诉 Kotlin 某个声明是用纯 JavaScript 编写的，你应该用 `external` 修饰符来标记它。
 当编译器看到这样的声明时，它假定相应类、函数或<!--
--->属性的实现 is provided externally (by the developer or via an [npm dependency](js-project-setup.html#npm-dependencies))，因此不会尝试从声明中生成任何 JavaScript 代码。This is also why `external` declarations can't have a body。例如：
+-->属性的实现是由外部提供的（由开发人员或者通过 [npm 依赖项](js-project-setup.html#npm-dependencies)），因此不会尝试从声明中生成任何 JavaScript 代码。This is also why `external` declarations can't have a body。例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
