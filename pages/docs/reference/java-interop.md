@@ -710,7 +710,7 @@ Java 反射适用于 Kotlin 类，反之亦然。如上所述，你可以使用 
 
 ## SAM 转换
 
-Kotlin 支持 SAM 转换 for both Java and [Kotlin interfaces](fun-interfaces.html)。
+Kotlin 支持 Java 以及 [Kotlin 接口](fun-interfaces.html)的 SAM 转换。
 对于 Java 来说，这意味着 Kotlin 函数字面值可以被自动的转换<!--
 -->成只有一个非默认方法的 Java 接口的实现，只要这个方法的参数类型<!--
 -->能够与这个 Kotlin 函数的参数类型相匹配。
