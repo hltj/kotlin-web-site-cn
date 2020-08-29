@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Functional interfaces (SAM interfaces)"
+title: "函数式接口（SAM 接口）"
 ---
 
-# Functional (SAM) interfaces
+# 函数式（SAM）接口
 
 An interface with only one abstract method is called a _functional interface_, or a _Single Abstract
 Method (SAM) interface_. The functional interface can have several non-abstract members but only one abstract member.

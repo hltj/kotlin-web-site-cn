@@ -1,7 +1,7 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Get started with Kotlin/JS for React"
+title:  "以 Kotlin/JS for React 入门"
 description: "This tutorial demonstrates how to use IntelliJ IDEA for creating a frontend application with Kotlin/JS for React."
 authors: Sebastian Aigner, Kate Volodko
 date: 2020-07-07

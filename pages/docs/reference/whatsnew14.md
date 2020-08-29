@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "What's New in Kotlin 1.4"
+title: Kotlin 1.4 的新特性"
 ---
 
-# What's New in Kotlin 1.4.0
+# Kotlin 1.4.0 的新特性
 
 In Kotlin 1.4.0, we ship a number of improvements in all of its components, with the [focus on quality and performance](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/).
 Below you will find the list of the most important changes in Kotlin 1.4.0.  

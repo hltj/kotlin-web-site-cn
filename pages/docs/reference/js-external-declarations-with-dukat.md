@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "JavaScript"
-title: "Generating External Declarations with Dukat"
+title: "用 Dukat 生成外部声明"
 ---
 
-# Automatic generation of external declarations with Dukat
+# 用 Dukat 自动生成外部声明
 > Dukat is still [experimental](evolution/components-stability.html). If you encounter any problems, please report them in Dukat's [issue tracker](https://github.com/kotlin/dukat/issues).
 {:.note}
 
