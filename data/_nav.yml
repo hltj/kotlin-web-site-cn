@@ -86,6 +86,8 @@ reference:
     - title: 新特性
       description: Kotlin 各版本的新特性
       content:
+        - url: /docs/reference/whatsnew14.html
+          title: What's New in 1.4
         - url: /docs/reference/whatsnew13.html
           title: 1.3 的新特性
         - url: /docs/reference/whatsnew12.html
@@ -124,6 +126,8 @@ reference:
           title: 属性与字段
         - url: /docs/reference/interfaces.html
           title: 接口
+        - url: /docs/reference/fun-interfaces.html
+          title: Functional (SAM) Interfaces
         - url: /docs/reference/visibility-modifiers.html
           title: 可见性修饰符
         - url: /docs/reference/extensions.html
@@ -209,15 +213,36 @@ reference:
         branch: master
 
     - title: 多平台程序设计
-      description: 跨 JVM、 JS 与原生平台复用代码
+      description: Reusing code across different platforms
       content:
-        - url: /docs/reference/platform-specific-declarations.html
-          title: 平台相关声明
-        - url: /docs/reference/building-mpp-with-gradle.html
-          title: 以 Gradle 构建
+        - url: /docs/reference/mpp-intro.html
+          title: Kotlin Multiplatform
+        - url: /docs/reference/mpp-create-lib.html
+          title: Create a multiplatform library
+        - url: /docs/reference/mpp-discover-project.html
+          title: Discover your project
+        - url: /docs/reference/mpp-share-on-platforms.html
+          title: Share code on platforms
+        - url: /docs/reference/mpp-connect-to-apis.html
+          title: Connect to platform-specific APIs
+        - url: /docs/reference/mpp-set-up-targets.html
+          title: Set up targets manually
+        - url: /docs/reference/mpp-add-dependencies.html
+          title: Add dependencies
+        - url: /docs/reference/mpp-configure-compilations.html
+          title: Configure compilations
+        - url: /docs/reference/mpp-run-tests.html
+          title: Run tests
+        - url: /docs/reference/mpp-publish-lib.html
+          title: Publish a multiplatform library
+        - url: /docs/reference/mpp-build-native-binaries.html
+          title: Build final native binaries
+        - url: /docs/reference/mpp-supported-platforms.html
+          title: Supported platforms
         - url: /docs/reference/mpp-dsl-reference.html
           title: 多平台 Gradle DSL 参考
-
+        - url: /docs/reference/migrating-multiplatform-project-to-14.html
+          title: Migrating to Kotlin 1.4
 
     - title: 更多语言结构
       description: 各种知识点
@@ -240,6 +265,8 @@ reference:
           title: 注解
         - url: /docs/reference/reflection.html
           title: 反射
+        - url: /docs/reference/serialization.html
+          title: Serialization
         - url: /docs/reference/scope-functions.html
           title: 作用域函数
         - url: /docs/reference/type-safe-builders.html
@@ -290,6 +317,10 @@ reference:
          title: JavaScript 反射
        - url: /docs/reference/javascript-dce.html
          title: JavaScript DCE
+       - url: /docs/reference/js-ir-compiler.html
+         title: IR Compiler
+       - url: /docs/reference/js-external-declarations-with-dukat.html
+         title: Generating External Declarations with Dukat
 
     - title: 原生
       description: 使用 Kotlin/Native 进行 iOS 与原生开发
@@ -298,7 +329,7 @@ reference:
         nav: _nav_reference.yml
         base: /docs/reference/native
         repo: https://github.com/hltj/kotlin-native-cn
-        branch: v1.3.70-fixes
+        branch: v1.4.0-fixes
 
     - title: 工具
       description:
@@ -326,9 +357,11 @@ reference:
         - url: /docs/reference/evolution/kotlin-evolution.html
           title: Kotlin 语言演进
         - url: /docs/reference/evolution/components-stability.html
-          title: 不同组件的稳定性
+          title: Stability of Kotlin components
         - url: /docs/reference/compatibility-guide-13.html
           title: Kotlin 1.3 的兼容性指南
+        - url: /docs/reference/compatibility-guide-14.html
+          title: Compatibility Guide for Kotlin 1.4
 
     - title: 常见问题
       description: 你想到的问题可能会在这里得到解答。
@@ -371,7 +404,7 @@ tutorials:
     - title: JavaScript
       content:
         - url: /docs/tutorials/javascript/setting-up.html
-          title: 搭建一个项目
+          title: Get started with Kotlin/JS for React
         - url: /docs/tutorials/javascript/running-kotlin-js.html
           title: 运行 Kotlin/JS
         - url: /docs/tutorials/javascript/dev-server-continuous-compilation.html

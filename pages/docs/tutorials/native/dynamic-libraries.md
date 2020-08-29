@@ -67,7 +67,7 @@ val globalString = "A global String"
 [[include pages-includes/docs/tutorials/native/dynamic-library-link.md]]
 
 我们将工程目录下的源文件移动到 `src/nativeMain/kotlin`
-文件夹下。当使用 [kotlin 多平台](/docs/reference/building-mpp-with-gradle.html)<!--
+文件夹下。当使用 [kotlin 多平台](../../reference/mpp-discover-project.html)<!--
 -->插件的时候，对于源文件的位置，
 这就是默认路径。我们使用以下代码块来指导和配置工程<!--
 -->为我们生成动态或共享库：

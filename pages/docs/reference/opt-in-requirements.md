@@ -7,7 +7,7 @@ title: "Opt-in Requirements"
 
 # 选择加入的要求
 
-> 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn` 是 *实验性的*。 
+> 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn` 是[实验性的](evolution/components-stability.html)。 
 > 请参阅[以下](#experimental-status-of-the-opt-in-requirements)用法详细信息。
 {:.note} 
 
@@ -287,12 +287,12 @@ fun getTime(): Time {}
 </div>
 
 
-## 实验 API 的选择加入要求
+## pre-stable API 的选择加入要求
 
-如果要求选择加入实验状态的特性，请仔细处理 API 由实验状态到稳定状态的转换，
+如果要求选择加入 features that are not stable yet，请仔细处理 API 由实验状态到稳定状态的转换，
 以避免破坏客户端代码。
 
-API 结束实验并以稳定状态发布后，请从声明中删除其要求选择加入的注解。
+pre-stable API graduates 并以稳定状态发布后，请从声明中删除其要求选择加入的注解。
 客户端将可以不受限制地使用它们。但是，你应该将注解类留在模块中，以便<!-- 
 -->与现有的客户端代码保持兼容。
 
@@ -312,7 +312,7 @@ annotation class ExperimentalDateTime
 
 ## 选择加入要求的实验状态
 
-选择加入要求的机制在 Kotlin 1.3 中是实验性的。
+选择加入要求的机制在 Kotlin 1.3 中是[实验性的](evolution/components-stability.html)。
 这意味着在将来的版本中，可能会以不兼容的方式进行更改。
 
 为了让使用注解 `@OptIn` 和 `@RequiresOptIn` 的用户了解其实验状态，

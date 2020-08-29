@@ -1,63 +1,79 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "以 IntelliJ IDEA 入门"
-description: "本教程将引导你使用 IntelliJ IDEA 创建一个简单的 Hello World 应用程序。"
-authors: Hadi Hariri，Roman Belov，高金龙（翻译），Yue_plus（翻译），Andy1245-dot（翻译）
-date: 2020-01-23
+title:  "Getting Started with IntelliJ IDEA"
+description: "This tutorial demonstrates how to use IntelliJ IDEA for creating a console application. "
+authors: Kate Volodko
+date: 2020-07-07
 showAuthorInfo: false
 ---
-## 搭建环境
 
-在本教程中将使用 IntelliJ IDEA。首先，安装一个最新版本的 IntelliJ IDEA。
+To get started, first download and install the latest version of [IntelliJ IDEA](http://www.jetbrains.com/idea/download/index.html).
 
-从 15 版开始，IntelliJ IDEA 内集成 Kotlin。
+## Create an application 
 
-可以从 [JetBrains 官网][jetbrains]下载免费的[社区版][intellijdownload]（或完整的[旗舰版][intellijdownload]）。
+Once you've installed IntelliJ IDEA, it's time to create your first Kotlin application.
 
-作为使用 IntelliJ IDEA 的替代方法，也可使用命令行编译器来编译和执行 Kotlin 应用程序。相关详细信息，请参见[使用命令行编译器][getting_started_command_line]。
+1. In IntelliJ IDEA, select **File** \| **New** \| **Project**.
+2. In the panel on the left, select **Kotlin**.
+3. Enter a project name, select **Console Application** as the project template, and click **Next**.
+   
+   ![Create a console application]({{ url_for('tutorial_img', filename='getting-started/jvm-new-project-1.png') }})
+   
+   By default, your project will use the Gradle build system with Kotlin DSL.
 
-如果不熟悉 JVM 和 Java，请查看 [JVM 简明使用手册](http://hadihariri.com/2013/12/29/jvm-minimal-survival-guide-for-the-dotnet-developer/)。
-如果您不熟悉 IntelliJ IDEA，请参见 [IntelliJ IDEA 简明使用手册](http://hadihariri.com/2014/01/06/intellij-idea-minimal-survival-guide/)。
+3. Go through and accept the default configuration, then click **Finish**.
+  
+   ![Configure a console application]({{ url_for('tutorial_img', filename='getting-started/jvm-new-project-2.png') }}) 
 
-## 创建一个新的项目
-安装好 IntelliJ IDEA 之后，就可以创建第一个 Kotlin 应用程序了。
-1. 从 __File \| New__ 开始（如果这是你第一次使用 IntelliJ IDEA，从 __Create New Project__ 开始）创建一个新的项目。选择 __Kotlin \| JVM \| IDEA__ 作为项目的类型。
+   Your project will open. By default, you see the file `build.gradle.kts`, which is the build script created by the Project 
+   Wizard based on your configuration. It includes the `kotlin("jvm")` plugin and dependencies required for your console application.
 
-   ![新建 Kotlin 项目]({{ url_for('tutorial_img', filename='getting-started/new_project_step1.png') }})
+3. Open the `main.kt` file in `src/main/kotlin`.  
+   The `src` directory contains Kotlin source files and resources. The `main.kt` file contains sample code that will print 
+   `Hello World!`.
 
-2. 为项目命名并为其选择 SDK 版本。
+   ![main.kt with main fun]({{ url_for('tutorial_img', filename='getting-started/jvm-main-kt-initial.png') }})
 
-   ![Kotlin 项目名]({{ url_for('tutorial_img', filename='getting-started/project_name.png') }})
+4. Modify the code so that it requests your name and says `Hello` to you specifically, and not to the whole world.  
+   
+   * Introduce a local variable `name` with the keyword `val`. It will get its value from an input where you will enter your name – `readLine()`.
+   * Use a string template by adding a dollar sign `$` before this variable name directly in the text output like this – `$name`.
+   
+   <div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+   
+   ```kotlin
+   fun main() {
+       println("What's your name?")
+       val name= readLine()
+       println("Hello $name!")
+   }
+   ```
+   
+   </div>
 
-   现在，你已经创建了一个新的项目。以下是项目结构：
+   <img class="img-responsive" src="{{ url_for('tutorial_img', filename='getting-started/jvm-main-kt-updated.png') }}" alt="Updated main fun" width="400"/>
 
-   ![Kotlin 文件夹解构]({{ url_for('tutorial_img', filename='getting-started/folders.png') }})
+## Run the application
 
-3. 在 src 文件夹下创建一个新的 Kotlin 文件。 它可以任意命名。 我们称之为 *app*。
+Now the application is ready to run. The easiest way to do this is to click the green __Run__ icon in the gutter and select __Run 'MainKt'__.
 
-   ![新建 Kotlin 文件]({{ url_for('tutorial_img', filename='getting-started/new_file.png') }})
+<img class="img-responsive" src="{{ url_for('tutorial_img', filename='getting-started/jvm-run-app.png') }}" alt="Running a console app" width="400"/>
 
-4. 创建文件后，添加 `main` 函数，它是 Kotlin 应用程序的入口。 IntelliJ IDEA 提供了一个快速完成此操作的模板。 只需输入 *main* 并按 <kbd> Tab </kbd> 键即可。
+You can see the result in the **Run** tool window.
 
-   ![Kotlin Main 函数]({{ url_for('tutorial_img', filename='getting-started/main.png') }})
+![Kotlin run output]({{ url_for('tutorial_img', filename='getting-started/jvm-output-1.png') }})
+   
+Enter your name and accept the greetings from your application! 
 
-5. 添加一行代码输出 “Hello，World！”。
+![Kotlin run output]({{ url_for('tutorial_img', filename='getting-started/jvm-output-2.png') }})
 
-   ![Kotlin Hello World]({{ url_for('tutorial_img', filename='getting-started/hello_world.png') }})
+恭喜！ 你现在运行了第一个 Kotlin 应用程序。
 
-## 运行这个应用程序
+## What's next?
 
-现在应用程序已准备好运行。 最简单的方法是单击菜单栏中的绿色 __Run__ 图标，然后选择 __Run'AppKt'__ 。
+Once you’ve created this application, you can start to dive deeper into Kotlin syntax:
 
-   ![Kotlin 运行应用程序]({{ url_for('tutorial_img', filename='getting-started/run_default.png') }})
-
-如果一切顺利，您将在 **Run** 工具窗口中看到结果。
-
-   ![Kotlin 运行输出]({{ url_for('tutorial_img', filename='getting-started/run_window.png') }})
-
-恭喜！ 您现在正在运行第一个 Kotlin 应用程序。
-
-[intellijdownload]: http://www.jetbrains.com/idea/download/index.html
-[jetbrains]: http://www.jetbrains.com
-[getting_started_command_line]: command-line.html
+*   Add sample code from [Kotlin examples](https://play.kotlinlang.org/byExample/overview) 
+*   Install the [EduTools plugin](https://plugins.jetbrains.com/plugin/10081-edutools) for IDEA and complete exercises 
+from the [Kotlin Koans course](https://www.jetbrains.com/help/education/learner-start-guide.html?section=Kotlin%20Koans)

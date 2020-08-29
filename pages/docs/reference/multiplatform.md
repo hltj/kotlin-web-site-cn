@@ -7,92 +7,77 @@ title: "多平台程序设计"
 
 # 多平台程序设计
 
-> 多平台项目是 Kotlin 1.2 与 1.3 中的实验性特性。本文档中描述的所有的语言<!--
--->与工具特性在未来的版本中都可能会有所变化。
+> Multiplatform projects are in [Alpha](evolution/components-stability.html). Language features and tooling may change in future Kotlin versions.
 {:.note}
 
-在所有平台上都能用是 Kotlin 的一个明确目标，但我们将其视为一个更重要的目标<!--
--->——在多个平台之间共享代码的前提。有了对 JVM、Android、JavaScript、iOS、Linux、Windows、
-Mac 甚至像 STM32 这样的嵌入式系统的支持，Kotlin 可以处理现代应用程序的任何组件与所有组件。
-这为代码与专业知识的复用带来了宝贵的收益，节省了工作量去完成更具<!--
--->挑战任务，而不是将所有东西都实现两次或多次。
+Support for multiplatform programming is one of Kotlin’s key benefits. It reduces time spent writing and maintaining the
+ same code for [different platforms](mpp-supported-platforms.html) while retaining the flexibility and benefits of native programming. 
 
-## 它是如何工作的
+This is how Kotlin Multiplatform works.
 
-总得来说，多平台并不是为所有平台编译全部代码。这个模型有其明显的<!--
--->局限性，我们知道现代应用程序需要访问<!--
--->其所运行平台的独有特性。Kotlin 并不会限制你只使用其中所有 API 的公共子集。
-每个组件都可以根据需要与其他组件共享尽可能多的代码，
-而通过语言所提供的 [`expect`/`actual` 机制](platform-specific-declarations.html)可以随时访问平台 API。
+<img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/kotlin-multiplatform.png' )}}" alt
+="Kotlin Multiplatform" width="500" />
 
-以下是在极简版日志框架中公共逻辑与平台逻辑之间代码共享与交互的<!--
--->示例。其公共代码如下所示：
+*   **Common Kotlin** includes the language, core libraries, and basic tools. Code written in common Kotlin works 
+everywhere on all platforms.
+*   With Kotlin Multiplatform libraries, you can reuse the multiplatform logic in common and platform-specific code. 
+Common code can rely on a set of libraries that cover everyday tasks such as [HTTP](http://ktor.io/clients/http-client/multiplatform.html), [serialization](https://github.com/Kotlin/kotlinx.serialization), and [managing 
+coroutines](https://github.com/Kotlin/kotlinx.coroutines).
+*   To interop with platforms, use platform-specific versions of Kotlin. **Platform-specific versions of Kotlin** 
+(Kotlin/JVM, Kotlin/JS, Kotlin/Native) include extensions to the Kotlin language, and platform-specific libraries and tools. 
+*   Through these platforms you can access the **platform native code** (JVM, JS, and Native) and leverage all native
+ capabilities.
 
-<div style="display:flex">
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+With Kotlin Multiplatform, spend less time on writing and maintaining the same code for [different platforms](mpp-supported-platforms.html)
+ – just share it using the mechanisms Kotlin provides:
 
-```kotlin
-enum class LogLevel {
-    DEBUG, WARN, ERROR
-}
+*   [Share code among all platforms used in your project](mpp-share-on-platforms.html#share-code-on-all-platforms). Use it for sharing the common 
+business logic that applies to all platforms. 
+     
+    ![Code shared for all platforms]({{ url_for('asset', path='images/reference/mpp/flat-structure.png') }})
+    
+*   [Share code among some platforms](mpp-share-on-platforms.html#share-code-on-similar-platforms) included in your project but not all. Do this 
+when you can reuse much of the code in similar platforms.  
+    
+    ![Hierarchical structure]({{ url_for('asset', path='images/reference/mpp/hierarchical-structure.png') }})
 
-internal expect fun writeLogMessage(message: String, logLevel: LogLevel)
+If you need to access platform-specific APIs from the shared code, use the Kotlin mechanism of [expected and actual 
+declarations](mpp-connect-to-apis.html).
 
-fun logDebug(message: String) = writeLogMessage(message, LogLevel.DEBUG)
-fun logWarn(message: String) = writeLogMessage(message, LogLevel.WARN)
-fun logError(message: String) = writeLogMessage(message, LogLevel.ERROR)
-```
+With this mechanism, a common source set defines an *expected declaration*, and platform source sets must provide the 
+*actual declaration* that corresponds to the expected declaration. This works for most Kotlin declarations, such as 
+functions, classes, interfaces, enumerations, properties, and annotations.
 
-</div>
-<div style="margin-left: 5px;white-space: pre-line; line-height: 18px; font-family: Tahoma;">
-    <div style="display:flex">├<i style="margin-left:5px">为所有平台编译</i></div>
-    <div style="display:flex">├<i style="margin-left:5px">预期的平台相关 API</i></div>
-    <div style="display:flex">├<i style="margin-left:5px">可在公共代码中使用预期的 API</i></div>
-</div>
-</div>
-
-它期待目标平台为 `writeLogMessage` 提供平台相关实现，然后公共代码<!--
--->就可以使用此声明而无需考虑它是如何实现的。
-
-在 JVM 上，可以提供一个将日志写到标准输出的实现：
+![Expect and actual declarations]({{ url_for('asset', path='images/reference/mpp/expect-actual.png') }})
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
-    println("[$logLevel]: $message")
-}
+//Common
+expect fun randomUUID(): String
 ```
 
 </div>
-
-在 JavaScript 世界中可用的是一组完全不同的 API，
-因此可以实现为将日志记录到控制台：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
-    when (logLevel) {
-        LogLevel.DEBUG -> console.log(message)
-        LogLevel.WARN -> console.warn(message)
-        LogLevel.ERROR -> console.error(message)
-    }
-}
+//Android
+import java.util.*
+actual fun randomUUID() = UUID.randomUUID().toString()
 ```
 
 </div>
 
-在 1.3 中我们重新设计了整个多平台模型。我们用于描述多平台 Gradle 项目的[新版 DSL](building-mpp-with-gradle.html)
-更加灵活，我们会继续努力使项目配置更加简单。
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-## 多平台库
+```kotlin
+//iOS
+import platform.Foundation.NSUUID
+actual fun randomUUID(): String = NSUUID().UUIDString()
+```
 
-公共代码可以依赖于一组涵盖日常任务的库，例如 [HTTP](https://ktor.kotlincn.net/clients/http-client/multiplatform.html)、 [serialization](https://github.com/Kotlin/kotlinx.serialization) 以及[协程<!--
--->管理](https://github.com/Kotlin/kotlinx.coroutines)。此外，丰富的标准库在所有平台上都可用。
-
-你可以随时编写<!--
--->自己的库，提供一个公共的 API，而在每个平台上以不同的方式实现。
+</div>
 
 ## 使用场景
 
@@ -102,9 +87,7 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 -->可以通过在 Android 与 iOS 之间共享部分代码（如业务逻辑、连接等）
 来构建移动应用。
 
-参见： 
-- [移动端多平台特性、案例研究以及一些示例](https://www.jetbrains.com/lp/mobilecrossplatform/)
-- [搭建移动端多平台项目](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
+See [Mobile Multiplatform features, case studies and examples](https://www.jetbrains.com/lp/mobilecrossplatform/)
 
 ### 客户端——服务端
 
@@ -114,29 +97,30 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 
 [Ktor 框架](https://ktor.kotlincn.net/)适用于在互联系统中构建异步的服务器与客户端。
 
-## 如何开始
+## What's next?
 
-<div style="display: flex; align-items: center; margin-bottom: 20px">
-    <img src="{{ url_for('asset', path='images/landing/native/book.png') }}" height="38p" width="55" style="margin-right: 10px;">
-    <b>教程与文档</b>
-</div>
+New to Kotlin? Visit [Getting Started](/docs/reference/basic-syntax.html).
 
-Kotlin 新手？可以看看[入门][Getting Started](basic-syntax.html)页。
+### Documentation
 
-建议的文档页：
-- [搭建一个多平台项目](building-mpp-with-gradle.html#搭建一个多平台项目)
-- [平台相关声明](platform-specific-declarations.html)
+* [Create a multiplatform project](mpp-create-lib.html)
+* [Share code on multiple platforms](mpp-share-on-platforms.html)
+* [Connect to platform-specific APIs](mpp-connect-to-apis.html)
 
-推荐的教程：
-- [多平台 Kotlin 库](https://www.kotlincn.net/docs/tutorials/mpp/multiplatform-library.html)
-- [多平台项目：iOS 与 Android](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
+### Tutorials
 
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-    <img src="{{ url_for('asset', path='images/landing/native/try.png') }}" height="38p" width="55" style="margin-right: 10px;">
-    <b>示例项目</b>
-</div>
+* [Creating a multiplatform Kotlin library](/docs/tutorials/mpp/multiplatform-library.html) teaches how to create a multiplatform 
+library available for JVM, JS, and Native and which can be used from any other common code (for example, shared with 
+Android and iOS). It also shows how to write tests which will be executed on all platforms and use an efficient implementation
+ provided by a specific platform.
+ 
+* [Building a Full Stack Web App with Kotlin Multiplatform](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction) 
+  teaches the concepts behind building an application that targets Kotlin/JVM and Kotlin/JS by building a client-server 
+  application that makes use of shared code, serialization, and other multiplatform paradigms. It also provides a brief
+  introduction to working with Ktor both as a server- and client-side framework.
+  
+## Sample projects
 
 - [KotlinConf app](https://github.com/JetBrains/kotlinconf-app)
 - [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)
 
-在 [GitHub](https://github.com/JetBrains/kotlin-examples) 上还有更多示例

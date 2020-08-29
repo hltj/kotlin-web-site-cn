@@ -103,8 +103,3 @@ fun main() {
 ```
 
 </div>
-
-> **在 JVM 平台**：当使用带有 `default` 方法的接口（包括带有 `@JvmDefault` 注解的 Kotlin 接口）进行委托时，
->即使实际的委托类型提供了其自身的实现也会调用默认实现。
->详细信息请参见[在 Java 中调用 Kotlin](java-to-kotlin-interop.html#在委托中使用)。
-{:.note}

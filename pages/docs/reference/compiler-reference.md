@@ -250,14 +250,14 @@ Kotlin 到 JS 编译的命令行工具是 `kotlinc-js`。
 使用元数据生成 `.meta.js` 与 `.kjsm` 文件。 创建 JS 库时使用此选项。
 {:.details-group}
 
-### `-module-kind {plain|amd|commonjs|umd}`
+### `-module-kind {umd|commonjs|amd|plain}`
 
 编译器生成的 JS 模块类型：
 {:.details-group}
-- `plain` ——普通的 JS 模块；
-- `commonjs` ——[CommonJS](http://www.commonjs.org/) 模块；
-- `amd` ——[异步模块定义](https://en.wikipedia.org/wiki/Asynchronous_module_definition)模块；
-- `umd` ——[通用模块定义](https://github.com/umdjs/umd)模块。
+- `umd` ——[通用模块定义](https://github.com/umdjs/umd)模块
+- `commonjs` ——[CommonJS](http://www.commonjs.org/) 模块
+- `amd` ——[异步模块定义](https://en.wikipedia.org/wiki/Asynchronous_module_definition)模块
+- `plain` ——普通的 JS 模块
     
 要了解有关不同类型的 JS 模块及其之间区别的更多信息，
 请参见[这篇文章](https://www.davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/)。

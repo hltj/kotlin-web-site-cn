@@ -348,7 +348,7 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 | sourceMap | | 生成源代码映射（source map） | true、 false | false
 | sourceMapEmbedSources | | 将源代码嵌入到源代码映射中 | "never"、 "always"、 "inlining" | "inlining" |
 | sourceMapPrefix | | 源代码映射中路径的前缀 |  |  |
-| moduleKind | | 编译器生成的模块类型 | "plain"、 "amd"、 "commonjs"、 "umd" | "plain"
+| moduleKind | | 编译器生成的模块类型 | "umd"、 "commonjs"、 "amd"、 "plain" | "umd"
 
 ## 生成文档
 

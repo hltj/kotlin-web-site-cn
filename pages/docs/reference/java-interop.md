@@ -710,8 +710,9 @@ Java 反射适用于 Kotlin 类，反之亦然。如上所述，你可以使用 
 
 ## SAM 转换
 
-就像 Java 8 一样，Kotlin 支持 SAM 转换。这意味着 Kotlin 函数字面值可以被自动的转换成<!--
--->只有一个非默认方法的 Java 接口的实现，只要这个方法的参数类型<!--
+Kotlin 支持 SAM 转换 for both Java and [Kotlin interfaces](fun-interfaces.html)。
+对于 Java 来说，这意味着 Kotlin 函数字面值可以被自动的转换<!--
+-->成只有一个非默认方法的 Java 接口的实现，只要这个方法的参数类型<!--
 -->能够与这个 Kotlin 函数的参数类型相匹配。
 
 你可以这样创建 SAM 接口的实例：
@@ -748,11 +749,9 @@ executor.execute(Runnable { println("This runs in a thread pool") })
 
 </div>
 
-请注意，SAM 转换只适用于接口，而不适用于抽象类，即使这些抽象类也只有一个<!--
--->抽象方法。
-
-还要注意，此功能只适用于 Java 互操作；因为 Kotlin 具有合适的函数类型，所以不需要将函数自动转换<!--
--->为 Kotlin 接口的实现，因此不受支持。
+> SAM 转换只适用于接口，而不适用于抽象类，即使这些抽象类也只有一个<!--
+  -->抽象方法。
+{:.note}
 
 ## 在 Kotlin 中使用 JNI
 

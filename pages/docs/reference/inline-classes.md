@@ -7,7 +7,7 @@ title: "Inline classes"
 
 # 内联类
 
-> 内联类仅在 Kotlin 1.3 之后版本可用，目前还是*实验性的*。关于详情请参见[下文](#内联类的实验性状态)
+> 内联类仅在 Kotlin 1.3 之后版本可用，目前 in [Alpha](evolution/components-stability.html)。关于详情请参见[下文](#alpha-status-of-inline-classes)
 {:.note}
 
 有时候，业务逻辑需要围绕某种类型创建包装器。然而，由于额外的堆内存分配问题，它会引入运行时的性能开销。此外，如果被包装的类型是原生类型，性能的损失是很糟糕的，因为原生类型通常在运行时就进行了大量优化，然而他们的包装器却没有得到任何特殊的处理。
@@ -188,11 +188,11 @@ fun main() {
 </div>
 
 
-## 内联类的实验性状态
+## Alpha status of inline classes
 
-内联类的设计目前是实验性的，这就是说此特性是正在 *快速变化*的，并且不保证其兼容性。在 Kotlin 1.3+ 中使用内联类时，将会得到一个警告，来表明此特性还是实验性的。
+The design of inline classes is in [Alpha](evolution/components-stability.html), meaning that no compatibility guarantees are given for future versions. When using inline classes in Kotlin 1.3+, a warning will be reported, indicating that this feature has not been released as stable.
 
-如需移除警告，必须通过指定编译器参数 `-Xinline-classes` 来选择使用这项实验性的特性。
+如需移除警告，必须通过指定编译器参数 `-Xinline-classes` 来选择使用这项特性。
 
 ### 在 Gradle 中启用内联类
 <div class="multi-language-sample" data-lang="groovy">
@@ -219,7 +219,8 @@ tasks.withType<KotlinCompile> {
 </div>
 </div>
 
-关于详细信息，请参见[编译器选项](using-gradle.html#编译器选项)。关于[多平台项目](whatsnew13.html#多平台项目)的设置，请参见[使用 Gradle 构建多平台项目](building-mpp-with-gradle.html#语言设置)章节。
+关于详细信息，请参见[编译器选项](using-gradle.html#编译器选项)。关于[多平台项目](mpp-intro.html)的设置，请参见[使用 Gradle 构建多平台项目](building-mpp-with-gradle.html#语言设置)章节。
+see [language settings](mpp-dsl-reference.html#language-settings).
 
 ### 在 Maven 中启用内联类
 

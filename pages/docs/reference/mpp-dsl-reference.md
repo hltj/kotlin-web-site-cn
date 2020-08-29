@@ -1,19 +1,17 @@
 ---
 type: doc
 layout: reference
-title: "以 Gradle 构建多平台项目"
+title: "Kotlin 多平台 Gradle DSL 参考"
 ---
 
 # Kotlin 多平台 Gradle DSL 参考
 
-> 在 Kotlin 1.2 与 1.3 中，多平台项目是实验性特性。所有在<!--
--->这篇文档中描述的所有语言与工具特性都可能在未来的 Kotlin 版本中改变。
+> Multiplatform projects are in [Alpha](evolution/components-stability.html). Language features and tooling may change in future Kotlin versions.
 {:.note}
 
 Kotlin 多平台 Gradle 插件是用于创建 [Kotlin 多平台](multiplatform.html)
 项目的工具。这里我们提供了它的参考；在为 Kotlin 多平台项目编写 Gradle 构建脚本时，
-用它作提醒。关于 Kotlin 多平台项目的概念与使用插件编写构建脚本<!--
--->的说明，参见[使用 Gradle 构建多平台项目](building-mpp-with-gradle.html)。
+用它作提醒。 Learn the [concepts of Kotlin multiplatform projects, how to create and configure them](mpp-intro.html).
 
 ## 目录
  
@@ -75,13 +73,18 @@ plugins {
 | --- | --- |
 | _\<目标名称\>_ |声明项目的特定目标，所有可用的目标名称已陈列在[目标](#目标)部分中.|
 |`targets` |项目的所有目标。|
-|`presets` |所有预定义的目标。使用这个同时[配置多个预定义目标](building-mpp-with-gradle.html#setting-up-targets)。|
-|`sourceSets` |配置预定义和声明自定义项目的[源集](building-mpp-with-gradle.html#configuring-source-sets)。|
+|`presets` |所有预定义的目标。使用这个同时[配置多个预定义目标](mpp-supported-platforms.html)。|
+|`sourceSets` |配置预定义和声明自定义项目的[源集](#source-sets)。|
 
 ## 目标
 
 _目标_ 是构建的一部分，负责构建编译、测试、以及针对某个<!--
--->[已支持平台](building-mpp-with-gradle.html#supported-platforms)打包软件。多平台项目的目标<!--
+-->[已支持平台](mpp-supported-platforms.html)打包软件。
+
+Each target can have one or more [compilations](#compilations). In addition to default compilations for
+test and production purposes, you can [create custom compilations](mpp-configure-compilations.html#create-a-custom-compilation).
+
+多平台项目的目标<!--
 -->在 `kotlin` 块中的相应代码块中描述，例如：`jvm`、`android` 以及 `iosArm64`。
 以下是可用目标的完整列表：
  
@@ -130,13 +133,15 @@ kotlin {
 * 可用于所有目标的[公共目标配置](#公共目标配置)。
 * 目标特定的配置项。
 
+Each target can have one or more [compilations](#compilations).
+
 ### 公共目标配置
 
 In any target block, you can use the following declarations:
 
 |**Name**|**Description**| 
 | --- | --- |
-|`attributes`|Attributes used for [disambiguating targets](building-mpp-with-gradle.html#disambiguating-targets) for a single platform.|
+|`attributes`|Attributes used for [disambiguating targets](mpp-set-up-targets.html#distinguish-several-targets-for-one-platform) for a single platform.|
 |`preset`|The preset that the target has been created from, if any.|
 |`platformType`|Designates the Kotlin platform of this target. Avaiable values: `jvm`, `androidJvm`, `js`, `native`, `common`.|
 |`artifactsTaskName`|The name of the task that builds the resulting artifacts of this target.|
@@ -144,7 +149,7 @@ In any target block, you can use the following declarations:
 
 ### JVM 目标
 
-In addition to [common target configuration](#公共目标配置), jvm targets have a specific function:
+In addition to [common target configuration](#公共目标配置), `jvm` targets have a specific function:
 
 |**Name**|**Description**| 
 | --- | --- |
@@ -153,7 +158,7 @@ In addition to [common target configuration](#公共目标配置), jvm targets h
 Use this function for projects that contain both Java and Kotlin source files. Note that the default source directories for Java sources
 don't follow the Java plugin's defaults. Instead, they are derived from the Kotlin source sets. For example, if the JVM target
 has the default name `jvm`, the paths are `src/jvmMain/java` (for production Java sources) and `src/jvmTest/java` for test Java sources.
-For more information, see [Java support in JVM targets](building-mpp-with-gradle.html#java-support-in-jvm-targets).
+Learn how to [include Java sources in JVM compilations](mpp-configure-compilations.html#include-java-sources-in-jvm-compilations).
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
@@ -176,7 +181,7 @@ The `js` block describes the configuration of JavaScript targets. It can contain
 |`browser`|Configuration of the browser target.|
 |`nodejs`|Configuration of the Node.js target.|
 
-For details about configuring Kotlin/JS projects, see [Setting up a Kotlin/JS project](https://kotlinlang.org/docs/reference/js-project-setup.html).
+Learn more about [configuring Kotlin/JS projects](js-project-setup.html).
 
 #### Browser
 
@@ -359,7 +364,7 @@ binaries {
 </div>
 </div>
 
-For more information on configuring binaries, see [Building final native binaries](building-mpp-with-gradle.html#building-final-native-binaries).
+Learn more about [building native binaries](mpp-build-native-binaries.html).
 
 #### CInterops
 
@@ -373,7 +378,7 @@ To provide an interop with a library, add an entry to `cinterops` and define its
 |`compilerOpts`|Options to pass to the compiler by the cinterop tool.|
 |`includeDirs`|Directories to look for headers.|
 
-For more information on Kotlin interop with C libraries, see [CInterop support](building-mpp-with-gradle.html#cinterop-support).
+Learn more how to [configure interop with native languages](mpp-configure-compilations.html#configure-interop-with-native-languages).
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -453,7 +458,7 @@ Two functions help you configure [build variants](https://developer.android.com/
 
 |**Name**|**Description**| 
 | --- | --- |
-|`publishLibraryVariants()`|Specifies build variants to publish. For usage instructions, see [Publishing Android libraries](building-mpp-with-gradle.html#publishing-android-libraries).|
+|`publishLibraryVariants()`|Specifies build variants to publish. Learn more about [publishing Android libraries](mpp-publish-lib.html#publish-an-android-library).|
 |`publishAllLibraryVariants()`|Publishes all build variants.|
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
@@ -468,10 +473,10 @@ kotlin {
 
 </div>
 
-For more details about configuring Android targets of multiplatform projects, see [Android Support](building-mpp-with-gradle.html#android-support).
+Learn more about [compilation for Android](mpp-configure-compilations.html#compilation-for-android).
 
->Note that the `android` configuration inside `kotlin` doesn’t replace the build configuration of any Android project.
-For information on writing build scripts for Android projects, see the [Android developer documentation](https://developer.android.com/studio/build).
+>The `android` configuration inside `kotlin` doesn’t replace the build configuration of any Android project.
+Learn more about writing build scripts for Android projects in [Android developer documentation](https://developer.android.com/studio/build).
 {:.note}
 
 ## 源集
@@ -481,7 +486,6 @@ in compilations together, along with their resources, dependencies, and language
 
 A multiplatform project contains [predefined](#预定义源集) source sets for its targets;
 developers can also create [custom](#自定义源集) source sets for their needs.
-For instructions on creating and configuring source sets, see [Configuring source sets](building-mpp-with-gradle.html#configuring-source-sets).
 
 ### 预定义源集
 
@@ -490,7 +494,7 @@ Available predefined source sets are the following:
 
 |**Name**|**Description**| 
 | --- | --- |
-|`commonMain`| Code and resources shared between all platforms. Available in all multiplatform projects. Used in all main compilations of a project.|
+|`commonMain`| Code and resources shared between all platforms. Available in all multiplatform projects. Used in all main [compilations](#compilations) of a project.|
 |`commonTest`| Test code and resources shared between all platforms. Available in all multiplatform projects. Used in all test compilations of a project.|
 |_\<targetName\>\<compilationName\>_|Target-specific sources for a compilation. _\<targetName\>_ is the name of a predefined target and _\<compilationName\>_ is the name of a compilation for this target. Examples: `jsTest`, `jvmMain`.|
 
@@ -524,7 +528,7 @@ kotlin {
 </div>
 </div>
 
-For more information about the predefined source sets, see [Default Project Layout](building-mpp-with-gradle.html#default-project-layout).
+Learn more about [source sets](mpp-discover-project.html#source-sets).
 
 ### 自定义源集
 
@@ -561,7 +565,7 @@ kotlin {
 </div>
 
 Note that a newly created source set isn’t connected to other ones. To use it in the project’s compilations,
-connect it with other source sets as described in [Connecting source sets](building-mpp-with-gradle.html#connecting-source-sets).
+[connect it with other source sets](mpp-share-on-platforms.html#configure-the-hierarchical-structure-manually).
 
 ### 源集参数
 
@@ -571,9 +575,9 @@ Configurations of source sets are stored inside the corresponding blocks of `sou
 | --- | --- |
 |`kotlin.srcDir`|Location of Kotlin source files inside the source set directory.|
 |`resources.srcDir`|Location of resources inside the source set directory.|
-|`dependsOn`|Connection with another source set. The instructions on connecting source sets are provided in [Connecting source sets](building-mpp-with-gradle.html#connecting-source-sets).|
+|`dependsOn`|[Connection with another source set.](mpp-share-on-platforms.html#configure-the-hierarchical-structure-manually)|
 |`dependencies`|[依赖项](#依赖项) of the source set.|
-|`languageSettings`|[语言设置](building-mpp-with-gradle.html#语言设置) applied to the source set.|
+|`languageSettings`|[语言设置](mpp-dsl-reference.html#语言设置) applied to the source set.|
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -620,10 +624,12 @@ kotlin {
 ## 编译项
 
 A target can have one or more compilations, for example, for production or testing. There are [predefined compilations](#预定义编译项)
-that are added automatically upon target creation. Developers can additionally create [custom compilations](#自定义编译项).
+that are added automatically upon target creation. You can additionally create [custom compilations](#自定义编译项).
 
 To refer to all or some particular compilations of a target, use the `compilations` object collection.
 From `compilations`, you can refer to a compilation by its name.
+
+Learn more about [configuring compilations](mpp-configure-compilations.html).
 
 ### 预定义编译项
 
@@ -670,9 +676,11 @@ kotlin {
 
 ### 自定义编译项
 
-In addition to predefined compilations, developers can create their own custom compilations.
+In addition to predefined compilations, you can create your own custom compilations.
 To create a custom compilation, add a new item into the `compilations` collection.
 If using Kotlin Gradle DSL, mark custom compilations `by creating`.
+
+Learn more about creating a [custom compilation](mpp-configure-compilations.html#create-a-custom-compilation).
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -808,8 +816,11 @@ kotlin {
 
 ## 依赖项
 
-The dependencies block of the source set declaration contains the dependencies of this source set.
-There are four kinds of dependencies:
+The `dependencies` block of the source set declaration contains the dependencies of this source set.
+
+Learn more about [configuring dependencies](using-gradle.html#configuring-dependencies).
+
+There are four types of dependencies:
 
 |**Name**|**Description**| 
 | --- | --- |
@@ -864,7 +875,8 @@ kotlin {
 </div>
 </div>
 
-Additionally, source sets can depend on each other. In this case, the [dependsOn()](#源集参数) function is used.
+Additionally, source sets can depend on each other and for a hierarchy. In this case, the [dependsOn()](#源集参数) relation is used.
+
 Source set dependencies can also be declared in the top-level `dependencies` block of the build script.
 In this case, their declarations follow the pattern `<sourceSetName><DependencyKind>`, for example, `commonMainApi`.
 
@@ -896,7 +908,7 @@ dependencies {
 
 ## 语言设置
 
-The languageSettings block of a source set defines certain aspects of project analysis and build. The following language settings are available:
+The `languageSettings` block of a source set defines certain aspects of project analysis and build. The following language settings are available:
 
 |**Name**|**Description**| 
 | --- | --- |
@@ -911,15 +923,13 @@ The languageSettings block of a source set defines certain aspects of project an
 
 ```groovy
 kotlin {
-    sourceSets {
-        commonMain {
-            languageSettings {
-                languageVersion = '1.3' // possible values: '1.0', '1.1', '1.2', '1.3'
-                apiVersion = '1.3' // possible values: '1.0', '1.1', '1.2', '1.3'
-                enableLanguageFeature('InlineClasses') // language feature name
-                useExperimentalAnnotation('kotlin.ExperimentalUnsignedTypes') // annotation FQ-name
-                progressiveMode = true // false by default
-            }
+    sourceSets.all {
+        languageSettings {
+            languageVersion = '1.4' // possible values: '1.0', '1.1', '1.2', '1.3', '1.4'
+            apiVersion = '1.4' // possible values: '1.0', '1.1', '1.2', '1.3', '1.4'
+            enableLanguageFeature('InlineClasses') // language feature name
+            useExperimentalAnnotation('kotlin.ExperimentalUnsignedTypes') // annotation FQ-name
+            progressiveMode = true // false by default
         }
     }
 }
@@ -933,15 +943,13 @@ kotlin {
 
 ```kotlin
 kotlin {
-    sourceSets {
-        val commonMain by getting {
-            languageSettings.apply {
-                languageVersion = "1.3" // possible values: '1.0', '1.1', '1.2', '1.3'
-                apiVersion = "1.3" // possible values: '1.0', '1.1', '1.2', '1.3'
-                enableLanguageFeature("InlineClasses") // language feature name
-                useExperimentalAnnotation("kotlin.ExperimentalUnsignedTypes") // annotation FQ-name
-                progressiveMode = true // false by default
-            }
+    sourceSets.all {
+        languageSettings.apply {
+            languageVersion = '1.4' // possible values: '1.0', '1.1', '1.2', '1.3', '1.4'
+            apiVersion = '1.4' // possible values: '1.0', '1.1', '1.2', '1.3', '1.4'
+            enableLanguageFeature('InlineClasses') // language feature name
+            useExperimentalAnnotation('kotlin.ExperimentalUnsignedTypes') // annotation FQ-name
+            progressiveMode = true // false by default
         }
     }
 }

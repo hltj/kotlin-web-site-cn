@@ -86,7 +86,7 @@ when (x) {
 请注意，当编译器不能保证变量在检测和使用之间不可改变时，智能转换不能用。
 更具体地，智能转换能否适用根据以下规则：
 
-  * *val*{: .keyword } 局部变量——总是可以，[局部委托属性除外](delegated-properties.html#局部委托属性自-11-起)；
+  * *val*{: .keyword } 局部变量——总是可以，[局部委托属性除外](delegated-properties.html#局部委托属性)；
   * *val*{: .keyword } 属性——如果属性是 private 或 internal，或者该检测在声明属性的同一[模块](visibility-modifiers.html#模块)中执行。智能转换不适用于 open 的属性或者具有自定义 getter 的属性；
   * *var*{: .keyword } 局部变量——如果变量在检测和使用之间没有修改、没有在会修改它的 lambda 中捕获、并且不是局部委托属性；
   * *var*{: .keyword } 属性——决不可能（因为该变量可以随时被其他代码修改）。
@@ -115,6 +115,8 @@ val x: String = y as String
 val x: String? = y as String?
 ```
 </div>
+
+Please note that the "unsafe" cast operator **is not equivalent** to the [`unsafeCast<T>()`](/api/latest/jvm/stdlib/kotlin.js/unsafe-cast.html) method available in Kotlin/JS. `unsafeCast` will do no type-checking at all, whereas the _cast operator_ throws a `ClassCastException` when the cast fails. 
 
 {:#安全的可空转换操作符}
 
@@ -244,6 +246,8 @@ inline fun <reified T> List<*>.asListOfType(): List<T>? =
         null
 ```
 </div>
+
+IntelliJ IDEA can also automatically generate the `@Suppress` annotation. Open the intentions menu via the light bulb icon or Alt-Enter, and click the small arrow next to the "Change type arguments" quick-fix. Here, you can select the suppression scope, and your IDE will add the annotation to your file accordingly.
 
 在 JVM 平台中，[数组类型](basic-types.html#数组)（`Array<Foo>`）会保留关于<!--
 -->其元素被擦除类型的信息，并且类型转换为一个数组类型可以部分受检：
