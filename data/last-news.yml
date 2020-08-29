@@ -1,11 +1,11 @@
-- title: "Kotlin/Native Memory Management Roadmap"
+- title: "Kotlin/Native 内存管理路线图"
   link: https://blog.jetbrains.com/kotlin/2020/07/kotlin-native-memory-management-roadmap/
 
-- title: Debugging coroutines
+- title: 调试协程
   link: https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-rc-debugging-coroutines/
 
-- title: "Dokka Preview Based on Kotlin 1.4.0-RC"
+- title: "基于 Kotlin 1.4.0-RC 的 Dokka 预览"
   link: https://blog.jetbrains.com/kotlin/2020/08/dokka-preview-based-on-kotlin-1-4-0-rc/
 
-- title: The State of Kotlin Support in Spring
+- title: Spring 的 Kotlin 支持状态
   link: https://blog.jetbrains.com/kotlin/2020/08/the-state-of-kotlin-support-in-spring/
