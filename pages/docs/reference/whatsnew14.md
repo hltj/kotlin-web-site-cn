@@ -622,7 +622,7 @@ which is the way you’d naturally expect it to work.
 ```java
 // FILE: A.java
 public class A {
-    public void static foo(Runnable r1, Runnable r2) {}
+    public static void foo(Runnable r1, Runnable r2) {}
 }
 ```
 
@@ -663,7 +663,7 @@ In Kotlin 1.3, you would have had to declare the function `foo` above in Java co
 
 In Kotlin, we have three backends that generate executables: Kotlin/JVM, Kotlin/JS, and Kotlin/Native. Kotlin/JVM and Kotlin/JS 
 don't share much code since they were developed independently of each other. Kotlin/Native is based on a new 
-infrastructure built around an internal representation (IR) for Kotlin code. 
+infrastructure built around an intermediate representation (IR) for Kotlin code. 
 
 We are now migrating Kotlin/JVM and Kotlin/JS to the same IR. As a result, all three backends
 share a lot of logic and have a unified pipeline. This allows us to implement most features, optimizations, and bug fixes 
@@ -1673,7 +1673,7 @@ stable. Libraries for other serialization formats remain experimental, along wit
 We have significantly reworked the API for JSON serialization to make it more consistent and easier to use. From now on,
 we'll continue developing the JSON serialization API in a backward-compatible manner.
 However, if you have used previous versions of it, you'll need to rewrite some of your code when migrating to 1.0.0-RC.
-To help you with this, we also offer the [Kotlin Serialization Guide](https://github.com/Kotlin/kotlinx.serialization/docs/serialization-guide.md) –
+To help you with this, we also offer the [Kotlin Serialization Guide](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/serialization-guide.md) –
 the complete set of documentation for `kotlinx.serialization`. It will guide you through the process of using the most
 important features and it can help you address any issues that you might face.
 

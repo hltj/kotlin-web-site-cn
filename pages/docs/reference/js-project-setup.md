@@ -90,7 +90,7 @@ kotlin {
 
 </div>
 
-To instruct the Kotlin compiler to emit executable `.js` files, the instruction `binaries.executable()` must be present. If this option is omitted, only Kotlin-internal library files are generated, which can be used from other projects, but not run on their own.
+The instruction `binaries.executable()` explicitly instructs the Kotlin compiler to emit executable `.js` files. This is the default behavior when using the current Kotlin/JS compiler, but the instruction is explicitly required if you are working with the [Kotlin/JS IR compiler](js-ir-compiler.html), or have set `kotlin.js.generate.executable.default=false` in your `gradle.properties`. In those cases, omitting `binaries.executable()` will cause the compiler to only generate Kotlin-internal library files, which can be used from other projects, but not run on their own. (This is typically faster than creating executable files, and can be a possible optimization when dealing with non-leaf modules of your project.)
 
 Kotlin/JS 插件会自动配置其任务与所选环境配合工作。
 这项操作包括下载与安装运行和测试应用程序所需的环境与依赖项。这让开发者无需额外配置就可以构建、运行和测试简单项目。
