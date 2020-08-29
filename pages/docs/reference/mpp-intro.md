@@ -6,7 +6,7 @@ title: "Kotlin Multiplatform"
 
 # Kotlin Multiplatform
 
-> Multiplatform projects are in [Alpha](evolution/components-stability.html). Language features and tooling may change in future Kotlin versions.
+> 多平台项目处于 [Alpha](evolution/components-stability.html) 版。语言特性与工具都可能在未来的 Kotlin 版本中发生变化。
 {:.note}
 
 Support for multiplatform programming is one of Kotlin’s key benefits. It reduces time spent writing and maintaining the

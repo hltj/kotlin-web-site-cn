@@ -68,23 +68,23 @@ JavaScript、 CSS 以及原生平台。
 -->为公共 Kotlin 代码提供了必要的 API，并有助于在
 Kotlin 代码中一次性开发项目的共享部分，从而将其与所有目标平台共享。
 
-## What's next?
+## 接下来做什么？
 
 Kotlin 新手？可以看看[入门](basic-syntax.html)页。
 
-### Documentation
+### 文档
 
 - [C 语言互操作](native/c_interop.html)
 - [Swift/Objective-C 互操作](native/objc_interop.html)
 
-### Tutorials
+### 教程
 
 - [Hello Kotlin/Native](https://www.kotlincn.net/docs/tutorials/native/using-command-line-compiler.html)
 - [C 语言 Kotlin/Native 之间的类型映射](https://www.kotlincn.net/docs/tutorials/native/mapping-primitive-data-types-from-c.html)
 - [Kotlin/Native 开发动态库](https://www.kotlincn.net/docs/tutorials/native/dynamic-libraries.html)
 - [Kotlin/Native 开发 Apple 框架](https://www.kotlincn.net/docs/tutorials/native/apple-framework.html)
 
-## Sample projects
+## 样例项目
 
 - [Kotlin/Native 源代码与示例](https://github.com/JetBrains/kotlin-native/tree/master/samples)
 - [KotlinConf app](https://github.com/JetBrains/kotlinconf-app)

@@ -6,7 +6,7 @@ title: "Kotlin 多平台 Gradle DSL 参考"
 
 # Kotlin 多平台 Gradle DSL 参考
 
-> Multiplatform projects are in [Alpha](evolution/components-stability.html). Language features and tooling may change in future Kotlin versions.
+> 多平台项目处于 [Alpha](evolution/components-stability.html) 版。语言特性与工具都可能在未来的 Kotlin 版本中发生变化。
 {:.note}
 
 Kotlin 多平台 Gradle 插件是用于创建 [Kotlin 多平台](multiplatform.html)
