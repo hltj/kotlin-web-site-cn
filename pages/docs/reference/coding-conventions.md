@@ -407,7 +407,7 @@ tailrec
 vararg
 suspend
 inner
-enum / annotation / fun // as a modifier in `fun interface`
+enum / annotation / fun // 在 `fun interface` 中是修饰符
 companion
 inline
 infix
