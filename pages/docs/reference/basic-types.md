@@ -460,7 +460,7 @@ var arr = IntArray(5) { it * 1 }
 
 ## 无符号整型
 
-> 无符号类型自 Kotlin 1.3 起才可用，并且目前 in [Beta](evolution/components-stability.html). See details [below](#beta-status-of-unsigned-integers)
+> 无符号类型自 Kotlin 1.3 起才可用，并且目前处于 [Beta](evolution/components-stability.html) 版。详见[下文](#无符号整数的-beta-状态)
 {:.note}
 
 Kotlin 为无符号整数引入了以下类型：
@@ -475,7 +475,7 @@ Kotlin 为无符号整数引入了以下类型：
 > 请注意，将类型从无符号类型更改为对应的有符号类型（反之亦然）是*二进制不兼容*变更
 {:.note}
 
-无符号类型是使用另一个 not yet stable 特性（即[内联类](inline-classes.html)）实现的。
+无符号类型是使用另一个尚未稳定特性（即[内联类](inline-classes.html)）实现的。
 
 ### 特化的类
 
@@ -518,9 +518,9 @@ val a = 1UL // ULong，即使未提供预期类型并且常量适于 UInt
 
 </div>
 
-### Beta status of unsigned integers
+### 无符号整数的 beta 状态
 
-The design of unsigned types is in [Beta](evolution/components-stability.html), meaning that its compatibility is best-effort only and not guaranteed. When using unsigned arithmetics in Kotlin 1.3+, a warning will be reported, indicating that this feature has not been released as stable. To remove the warning, you have to opt in for usage of unsigned types. 
+无符号类型的设计还是 [Beta](evolution/components-stability.html) 版，这意味着其兼容性仅是尽力而为，不能保证。在 Kotlin 1.3+ 中使用无符号算术时，会报一个警告，提示该特性尚未稳定发布。如需消除警告，必须选择加入对无符号类型的使用。
 
 选择加入无符号整型有两种可行的方式：将 API 配置为需要选择加入，或者无需。
 
