@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Syntax"
-title: "Opt-in Requirements"
+title: "选择加入要求"
 ---
 
-# 选择加入的要求
+# 选择加入要求
 
 > 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn` 是[实验性的](evolution/components-stability.html)。 
 > 请参阅[以下](#experimental-status-of-the-opt-in-requirements)用法详细信息。
@@ -287,12 +287,12 @@ fun getTime(): Time {}
 </div>
 
 
-## pre-stable API 的选择加入要求
+## 稳定前 API 的选择加入要求
 
-如果要求选择加入 features that are not stable yet，请仔细处理 API 由实验状态到稳定状态的转换，
+如果要求选择加入尚未稳定的特性，请仔细处理 API 由实验状态到稳定状态的转换，
 以避免破坏客户端代码。
 
-pre-stable API graduates 并以稳定状态发布后，请从声明中删除其要求选择加入的注解。
+当稳定前 API 稳定之后并以稳定状态发布后，请从声明中删除其要求选择加入的注解。
 客户端将可以不受限制地使用它们。但是，你应该将注解类留在模块中，以便<!-- 
 -->与现有的客户端代码保持兼容。
 
