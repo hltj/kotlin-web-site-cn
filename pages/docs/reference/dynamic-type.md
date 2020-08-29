@@ -38,7 +38,7 @@ dyn.whatever(*arrayOf(1, 2, 3))
 。
 
 当在 `dynamic` 类型的值上调用 Kotlin 写的函数时，请记住由
-Kotlin 到 JavaScript 编译器执行的名字修饰。你可能需要使用 [@JsName 注解](js-to-kotlin-interop.html#jsname-注解) or the [@JsExport annotation](js-to-kotlin-interop.html#jsexport-annotation) 为要调用的函数分配明确定义的名称。
+Kotlin 到 JavaScript 编译器执行的名字修饰。你可能需要使用 [@JsName 注解](js-to-kotlin-interop.html#jsname-注解) 或者 [@JsExport 注解](js-to-kotlin-interop.html#jsexport-annotation)为要调用的函数分配明确定义的名称。
 
 动态调用总是返回 `dynamic` 作为结果，这意味着可以自由链式调用：
 
