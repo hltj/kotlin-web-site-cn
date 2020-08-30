@@ -47,7 +47,7 @@ check [our instructions on how to configure your build to support this version](
                 <li>New functionality to conveniently debug coroutines</li>
                 <li>Improved <code>*.gradle.kts</code> IDE support</li>
                 <li>All source sets now include the standard library dependency by default</li>
-                <li>Simplified management of CocoaPods dependencies</li>
+                <li>简化了 CocoaPods 依赖项的管理</li>
                 <li>Improved Kotlin/JS integrations</li>
             </ul>
             <p> For more details, please refer to <a href="http://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-rc-released/" target="_blank">the blog post</a>.</p>
@@ -104,8 +104,8 @@ check [our instructions on how to configure your build to support this version](
         <td>
             <ul>
                 <li>Hierarchical project structure</li>
-                <li>New flexible Project Wizard</li>
-                <li>Explicit API mode for library authors</li>
+                <li>新的灵活项目向导</li>
+                <li>面向库作者的显式 API 模式</li>
                 <li>And many other improvements</li>
             </ul>
             <p> For more details, please refer to <a href="http://blog.jetbrains.com/kotlin/2020/06/kotlin-1-4-m2-released/" target="_blank">the blog post</a>.</p>
