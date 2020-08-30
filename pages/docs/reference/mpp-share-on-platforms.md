@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Share code on platforms"
+title: "平台间共享代码"
 ---
 
-# Share code on platforms
+# 平台间共享代码
 
 With Kotlin Multiplatform, you can share the code using the mechanisms Kotlin provides: 
  
@@ -17,7 +17,7 @@ for common combinations of targets or [create the hierarchical structure manuall
 If you need to access platform-specific APIs from the shared code, use the Kotlin mechanism of [expected and actual 
 declarations](mpp-connect-to-apis.html).
 
-## Share code on all platforms
+## 对所有平台共享代码
 
 If you have business logic that is common for all platforms, you don’t need to write the same code for each platform – 
 just share it in the common source set.
@@ -30,7 +30,7 @@ relations manually for default source sets, such as `jvmMain`, `macosX64Main`, a
 If you need to access platform-specific APIs from the shared code, use the Kotlin mechanism of [expected and actual 
 declarations](mpp-connect-to-apis.html).
 
-## Share code on similar platforms
+## 对相似平台共享代码
 
 You often need to create several native targets that could potentially reuse a lot of the common logic and third-party APIs.
 
@@ -61,7 +61,7 @@ There are two ways you can create the hierarchical structure:
 
 Learn more about [sharing code in libraries](#share-code-in-libraries) and [using Native libraries in the hierarchical structure](#use-native-libraries-in-the-hierarchical-structure).
 
-### Use target shortcuts
+### 使用目标快捷方式
 
 In a typical multiplatform project with two iOS-related targets – `iosArm64` and `iosX64`, the hierarchical structure 
 includes an intermediate source set (`iosMain`), which is used by the platform-specific source sets. 
@@ -117,7 +117,7 @@ kotlin {
 </div>
 </div>
  
-### Configure the hierarchical structure manually
+### 手动配置层次结构
 
 To create the hierarchical structure manually, introduce an intermediate source set that holds the shared code for several 
 targets and create a structure of the source sets including the intermediate one.
@@ -199,7 +199,7 @@ If you need to access platform-specific APIs from a shared native source set, In
 declarations that you can use in the shared native code.
 For other cases, use the Kotlin mechanism of [expected and actual declarations](mpp-connect-to-apis.html). 
 
-### Share code in libraries
+### 在库中共享代码
 
 Thanks to the hierarchical project structure, libraries can also provide common APIs for a subset of targets. When a 
 [library is published](mpp-publish-lib.html), the API of its intermediate source sets is embedded into the library artifacts 
@@ -215,7 +215,7 @@ Once the `kotlinx.coroutines` library is updated and published with the hierarch
 it and call `runBlocking` from a source set that is shared between the JVM and native targets since it matches the 
 “targets signature” of the library’s `concurrent` source set.
 
-### Use native libraries in the hierarchical structure
+### 在层次结构中使用原生库
 
 You can use platform-dependent libraries like Foundation, UIKit, and POSIX in source sets shared among several native 
 targets. This helps you share more native code without being limited by platform-specific dependencies. 

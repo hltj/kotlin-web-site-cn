@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Add dependencies"
+title: "添加依赖项"
 ---
 
-# Add dependencies
+# 添加依赖项
 
 To add a dependency on a library, set the dependency of the required [type](using-gradle.html#dependency-types) (for example, `implementation`) in the 
 `dependencies` block of the source sets DSL.
@@ -47,7 +47,7 @@ kotlin {
 
 Alternatively, you can [set dependencies at the top level](using-gradle.html#set-dependencies-at-the-top-level).
 
-## Dependency on the standard library
+## 对标准库的依赖
 
 A dependency on a standard library (`stdlib`) in each source set is added automatically. The version 
 of the standard library is the same as the version of the `kotlin-multiplatform` plugin.
@@ -58,14 +58,14 @@ the `kotlinOptions.jvmTarget` [compiler option](using-gradle.html#compiler-optio
 
 Learn how to [change the default behavior](using-gradle.html#dependency-on-the-standard-library).
 
-## Set dependencies on test libraries
+## 设置对测试库的依赖
 
 The [`kotlin.test` API](../../api/latest/kotlin.test/index.html) is available for multiplatform tests. When you [create a multiplatform project](mpp-create-lib.html), 
 the Project Wizard automatically adds test dependencies to common and platform-specific source sets. 
 
 If you didn’t use the Project Wizard to create your project, you can [add the dependencies manually](using-gradle.html#set-dependencies-on-test-libraries).
 
-## Set a dependency on a kotlinx library
+## 设置对 kotlinx 库的依赖
 
 If you use a kotlinx library and need a platform-specific dependency, you can use platform-specific variants 
 of libraries with suffixes such as `-jvm` or `-js`, for example, `kotlinx-coroutines-core-jvm`. You can also use the library 

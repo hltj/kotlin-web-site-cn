@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Kotlin Multiplatform"
+title: "Kotlin 多平台"
 ---
 
-# Kotlin Multiplatform
+# Kotlin 多平台
 
 > 多平台项目处于 [Alpha](evolution/components-stability.html) 版。语言特性与工具都可能在未来的 Kotlin 版本中发生变化。
 {:.note}
@@ -31,7 +31,7 @@ for common combinations of targets or [create the hierarchical structure manuall
 If you need to access platform-specific APIs from the shared code, use the Kotlin mechanism of [expected and actual 
 declarations](mpp-connect-to-apis.html).
 
-## Tutorials
+## 教程
 
 * [Creating a multiplatform Kotlin library](/docs/tutorials/mpp/multiplatform-library.html) teaches how to create a multiplatform 
 library available for JVM, JS, and Native and which can be used from any other common code (for example, shared with 

@@ -97,17 +97,17 @@ See [Mobile Multiplatform features, case studies and examples](https://www.jetbr
 
 [Ktor 框架](https://ktor.kotlincn.net/)适用于在互联系统中构建异步的服务器与客户端。
 
-## What's next?
+## 接下来做什么？
 
 New to Kotlin? Visit [Getting Started](/docs/reference/basic-syntax.html).
 
-### Documentation
+### 文档
 
 * [Create a multiplatform project](mpp-create-lib.html)
 * [Share code on multiple platforms](mpp-share-on-platforms.html)
 * [Connect to platform-specific APIs](mpp-connect-to-apis.html)
 
-### Tutorials
+### 教程
 
 * [Creating a multiplatform Kotlin library](/docs/tutorials/mpp/multiplatform-library.html) teaches how to create a multiplatform 
 library available for JVM, JS, and Native and which can be used from any other common code (for example, shared with 
@@ -119,7 +119,7 @@ Android and iOS). It also shows how to write tests which will be executed on all
   application that makes use of shared code, serialization, and other multiplatform paradigms. It also provides a brief
   introduction to working with Ktor both as a server- and client-side framework.
   
-## Sample projects
+## 样例项目
 
 - [KotlinConf app](https://github.com/JetBrains/kotlinconf-app)
 - [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)

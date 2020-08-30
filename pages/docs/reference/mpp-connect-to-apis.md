@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Connect to platform-specific APIs"
+title: "接入平台相关 API"
 ---
 
-# Connect to platform-specific APIs
+# 接入平台相关 API
 
 > The `expect`/`actual` feature is currently in [Beta](evolution/components-stability.html). All of the language
 and tooling features described in this document are subject to change in future Kotlin versions.

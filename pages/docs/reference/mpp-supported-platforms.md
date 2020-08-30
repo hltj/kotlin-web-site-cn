@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Supported platforms"
+title: "所支持平台"
 ---
 
-# Supported platforms
+# 所支持平台
 
 Kotlin supports the following platforms and provides target presets for each platform. See how to [use a target preset](mpp-set-up-targets.html).
 

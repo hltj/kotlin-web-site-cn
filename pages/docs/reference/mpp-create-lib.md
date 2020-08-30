@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Create a multiplatform library"
+title: "创建多平台库"
 ---
 
-# Create a multiplatform library
+# 创建多平台库
 
 This section provides steps for creating a multiplatform library. You can also complete the [tutorial](../tutorials/mpp/multiplatform-library.html) 
 where you will create a multiplatform library, test it, and publish it to Maven.

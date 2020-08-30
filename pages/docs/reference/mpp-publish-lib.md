@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Publish a multiplatform library"
+title: "发布多平台库"
 ---
 
-# Publish a multiplatform library
+# 发布多平台库
 
 You can publish a multiplatform library to a Maven repository with the [`maven-publish` Gradle plugin](https://docs.gradle.org/current/userguide/publishing_maven.html). 
 Specify the group, version, and the [repositories](https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:repositories) 
@@ -108,7 +108,7 @@ kotlin {
  
 By default, each publication includes a sources JAR that contains the sources used by the main compilation of the target. 
 
-## Publish an Android library
+## 发布 Android 库
 
 To publish an Android library, you need to provide additional configuration.
 

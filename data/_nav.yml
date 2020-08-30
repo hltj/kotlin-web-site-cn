@@ -213,36 +213,36 @@ reference:
         branch: master
 
     - title: 多平台程序设计
-      description: Reusing code across different platforms
+      description: 跨平台复用代码
       content:
         - url: /docs/reference/mpp-intro.html
-          title: Kotlin Multiplatform
+          title: Kotlin 多平台
         - url: /docs/reference/mpp-create-lib.html
-          title: Create a multiplatform library
+          title: 创建多平台库
         - url: /docs/reference/mpp-discover-project.html
-          title: Discover your project
+          title: 了解项目
         - url: /docs/reference/mpp-share-on-platforms.html
-          title: Share code on platforms
+          title: 平台间共享代码
         - url: /docs/reference/mpp-connect-to-apis.html
-          title: Connect to platform-specific APIs
+          title: 接入平台相关 API
         - url: /docs/reference/mpp-set-up-targets.html
-          title: Set up targets manually
+          title: 手动设置目标
         - url: /docs/reference/mpp-add-dependencies.html
-          title: Add dependencies
+          title: 添加依赖项
         - url: /docs/reference/mpp-configure-compilations.html
-          title: Configure compilations
+          title: 配置编译项
         - url: /docs/reference/mpp-run-tests.html
-          title: Run tests
+          title: 运行测试
         - url: /docs/reference/mpp-publish-lib.html
-          title: Publish a multiplatform library
+          title: 发布多平台库
         - url: /docs/reference/mpp-build-native-binaries.html
-          title: Build final native binaries
+          title: 构建最终原生二进制文件
         - url: /docs/reference/mpp-supported-platforms.html
-          title: Supported platforms
+          title: 所支持平台
         - url: /docs/reference/mpp-dsl-reference.html
           title: 多平台 Gradle DSL 参考
         - url: /docs/reference/migrating-multiplatform-project-to-14.html
-          title: Migrating to Kotlin 1.4
+          title: 迁移到 Kotlin 1.4
 
     - title: 更多语言结构
       description: 各种知识点

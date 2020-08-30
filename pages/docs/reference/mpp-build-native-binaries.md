@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Build final native binaries"
+title: "构建最终原生二进制文件"
 ---
 
-# Build final native binaries
+# 构建最终原生二进制文件
 
 By default, a Kotlin/Native target is compiled down to a `*.klib` library artifact, which can be consumed by Kotlin/Native 
 itself as a dependency but cannot be executed or used as a native library.
@@ -17,7 +17,7 @@ and provides a set of methods for declaring and configuring them.
 > is a debug test executable that lets you run unit tests from the `test` compilation.
 {:.note}
 
-## Declare binaries
+## 声明二进制文件
 
 Use the following factory methods to declare elements of the `binaries` collection. 
 
@@ -139,7 +139,7 @@ binaries {
 The first argument sets a name prefix, which is the default name for the binary file. For example, for Windows the code 
 produces the files `foo.exe` and `bar.exe`. You can also use the name prefix to [access the binary in the build script](#access-binaries).
  
-## Access binaries
+## 访问二进制文件
 
 You can access binaries to [configure them](mpp-dsl-reference.html#native-targets) or get their properties (for example, the path to an output file). 
 
@@ -229,7 +229,7 @@ binaries.findExecutable("foo", DEBUG)
 </div>
 </div>
 
-## Export dependencies to binaries
+## 将依赖项导出到二进制文件
 
 When building an Objective-C framework or a native library (shared or static), you may need to pack not just the classes 
 of the current project, but also the classes of its dependencies. Specify which dependencies to export to a binary using 
@@ -344,7 +344,7 @@ For example, assume that you write several modules in Kotlin and then want to ac
 several Kotlin/Native frameworks in one Swift application is limited, you can create a single umbrella framework and 
 export all these modules to it.
 
-## Build universal frameworks
+## 构建 universal frameworks
 
 By default, an Objective-C framework produced by Kotlin/Native supports only one platform. However, you can merge such 
 frameworks into a single universal (fat) binary using the [`lipo` tool](https://llvm.org/docs/CommandGuide/llvm-lipo.html). 

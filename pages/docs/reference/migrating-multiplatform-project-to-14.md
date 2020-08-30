@@ -1,20 +1,20 @@
 ---
 type: doc
 layout: reference
-title: "Migrating Multiplatform Projects to Kotlin 1.4.0"
+title: "迁移多平台项目到 Kotlin 1.4.0"
 ---
 
-# Migrating Kotlin Multiplatform Projects to 1.4.0
+# 迁移 Kotlin 多平台项目到 1.4.0
 
 Kotlin 1.4.0 comes with lots of features and improvements in the tooling for multiplatform programming. Some of them just work out of the box on existing projects, and some require additional configuration steps. This guide will help you migrate your multiplatform projects to 1.4.0 and get the benefits of all its new features.
 
-## For multiplatform project authors
+## 对于多平台项目作者
 
-### Update Gradle 
+### 更新 Gradle 
 
 Starting with 1.4.0, Kotlin multiplatform projects require Gradle 6.0 or later. Make sure that your projects use the proper version of Gradle and upgrade it if needed. See the [Gradle documentation](https://docs.gradle.org/current/userguide/upgrading_version_5.html) for non-Kotlin-specific migration instructions.
 
-### Simplify your build configuration
+### 简化构建配置
 
 Gradle module metadata provides rich publishing and dependency resolution features that are used in Kotlin Multiplatform Projects. In Gradle 6.0 and above, module metadata is used in dependency resolution and included in publications by default. Thus, once you update to Gradle 6.0, you can remove `enableFeaturePreview("GRADLE_METADATA")` from the project’s `settings.gradle` file.
 
@@ -47,7 +47,7 @@ sourceSets {
 
 Don’t use kotlinx library artifact names with suffixes `-common`  or `-native`, as they are no longer supported. Instead, use the library root artifact name, which in the example above is `kotlinx-coroutines-core`. 
 
-### Try the hierarchical project structure
+### 尝试分层项目结构
 
 With [the new hierarchical project structure support](mpp-share-on-platforms.html#share-code-on-similar-platforms), you can share code among several targets in a multiplatform project. You can use platform-dependent libraries, such as `Foundation`, `UIKit`, and `posix` in source sets shared among several native targets. This can help you share more native code without being limited by platform-specific dependencies.  
 By enabling the hierarchical structure along with its ability to use platform-dependent libraries in shared source sets, you can eliminate the need to use certain workarounds to get IDE support for sharing source sets among several native targets, for example `iosArm64` and `iosX64`:
@@ -103,9 +103,9 @@ kotlin.native.enableDependencyPropagation=false
 
 In future versions, the hierarchical project structure will become default for Kotlin multiplatform project, so we strongly encourage you to start using it now. 
 
-## For library authors
+## 对于库作者
 
-### Check uploading to Bintray
+### 检查 Bintray 上传
 
 The Bintray plugin doesn’t support publishing Gradle module metadata, but there are a couple of ways to get around this issue:
 
@@ -114,12 +114,12 @@ The Bintray plugin doesn’t support publishing Gradle module metadata, but ther
 
 While uploading your library to Bintray, you will see multiple versions for each artifact (such as `my-library-jvm`, `my-library-metadata`, etc.). To fix this, add `systemProp.org.gradle.internal.publish.checksums.insecure=true`. See [this issue](https://github.com/gradle/gradle/issues/11412) for details. This is a common Gradle 6.0 issue that is neither MPP nor Kotlin specific.
 
-### Follow the default libraries’ layout 
+### 遵循默认库的布局 
 
 The layout of kotlinx libraries has changed and now corresponds to the default layout, which we recommend using:
 The '“root” or “umbrella” library module now has a name without a suffix (for example,`kotlinx-coroutines-core` instead of `kotlinx-coroutines-core-native`). Publishing libraries with [maven-publish Gradle plugin](https://docs.gradle.org/current/userguide/publishing_maven.html) follows this layout by default.
 
-### Migrate to the hierarchical project structure
+### 迁移到分层项目结构
 
 A hierarchical project structure allows reusing code in similar targets, as well as publishing and consuming libraries with granular APIs targeting similar platforms. We recommend that you switch to the hierarchical project structure in your libraries when migrating to Kotlin 1.4.0:
 
@@ -136,9 +136,9 @@ kotlin.mpp.enableGranularSourceSetsMetadata=true
 
 </div>
 
-## For build authors
+## 对于构建作者
 
-### Check task names
+### 检查任务名称
 
 The introduction of the hierarchical project structure in multiplatform projects resulted in a couple of changes to the names of some Gradle tasks:
 
@@ -147,16 +147,16 @@ The introduction of the hierarchical project structure in multiplatform projects
 
 These changes are relevant only for projects with the hierarchical project structure.
 
-## For using the Kotlin/JS target
+## 对于 Kotlin/JS 目标
 
-### Changes related to npm dependency management
+### 与 npm 依赖关系管理相关的变更
 
 When declaring dependencies on npm packages, you are now required to explicitly specify a version or version range based on [npm’s semver syntax](https://docs.npmjs.com/misc/semver#versions). Specifying multiple version ranges is also supported.
 
 While we don’t recommend it, you can use a wildcard `*` in place of a version number if you do not want to specify a version or version range explicitly.
 
 
-### Changes related to the Kotlin/JS IR compiler
+### 与 Kotlin/JS IR 编译器相关的变更
 
 Kotlin 1.4.0 introduces the Alpha IR compiler for Kotlin/JS. For more detailed information about the Kotlin/JS IR compiler’s backend and how to configure it, consult the [documentation](js-ir-compiler.html).
 
@@ -176,17 +176,17 @@ kotlin {
 
 </div>
 
-#### Changes in `both` mode
+#### `both` 模式的变更
 Choosing `both` as the compiler option (so that it will compile with both the legacy and the IR backend) means that some Gradle tasks are renamed to explicitly mark them as only affecting the legacy compilation. `compileKotlinJs` is renamed to `compileKotlinJsLegacy`, and `compileTestKotlinJs` is renamed to `compileTestKotlinJsLegacy`.
 
-#### Explicitly toggling the creation of executable files
+#### 显式切换可执行文件的创建
 
 When using the IR compiler, the `binaries.executable()` instruction must be present in the `js` target configuration block of your `build.gradle(.kts)`. If this option is omitted, only Kotlin-internal library files are generated. These files can be used from other projects, but not run on their own.
 
 For backwards compatibility, when using the legacy compiler for Kotlin/JS, including or omitting `binaries.executable()` will have no effect – executable files will be generated in either case. To make the legacy backend stop producing executable files without the presence of `binaries.executable()` (for example, to improve build times where runnable artifacts aren't required), set `kotlin.js.generate.executable.default=false` in your `gradle.properties`.
 
 
-### Changes related to Dukat
+### 与 Dukat 相关的变更
 
 The Dukat integration for Gradle has received minor naming and functionality changes with Kotlin 1.4.0.
 
@@ -196,6 +196,6 @@ The Dukat integration for Gradle has received minor naming and functionality cha
 A way to manually trigger the generation of Kotlin externals is also available. Please consult the [documentation](js-external-declarations-with-dukat.html) for more information.
 
 
-### Using artifacts built with Kotlin 1.4.x in a Kotlin 1.3.x project
+### 在 Kotlin 1.3.x 项目中使用 Kotlin 1.4.x 构建的构件
 
 The choice between the `IR` and `LEGACY` compilers was not yet available in Kotlin 1.3.xx. Because of this, you may encounter a Gradle error `Cannot choose between the following variants...` if one of your dependencies (or any transitive dependency) was built using Kotlin 1.4+ but your project uses Kotlin 1.3.xx. A workaround is provided [here](https://youtrack.jetbrains.com/issue/KT-40226).

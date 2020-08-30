@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Run tests"
+title: "运行测试"
 ---
 
-# Run tests
+# 运行测试
 
 By default, we support running tests for JVM, JS, Android, Linux, Windows, macOS as well as iOS, watchOS, and tvOS simulators. 
 To run tests for other Kotlin/Native targets, you need to configure them manually in an appropriate environment, emulator, 

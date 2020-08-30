@@ -1,19 +1,19 @@
 ---
 type: doc
 layout: reference
-title: "Discover your project"
+title: "了解项目"
 ---
 
-# Discover your project
+# 了解项目
 
 Discover main parts of your multiplatform project:
 
-* [Multiplatform plugin](#multiplatform-plugin)
-* [Targets](#targets)
-* [Source sets](#source-sets)
-* [Compilations](#compilations)
+* [多平台插件](#多平台插件)
+* [目标](#目标)
+* [源集](#源集)
+* [编译项](#编译项)
 
-## Multiplatform plugin
+## 多平台插件
 
 When you [create a multiplatform project](mpp-create-lib.html), the Project Wizard automatically applies the `kotlin-multiplatform` Gradle 
 plugin in the file `build.gradle`(`.kts`).
@@ -54,7 +54,7 @@ In the file `build.gradle`(`.kts`), it creates the `kotlin` extension at the top
 configuration for [targets](#targets), [source sets](#source-sets), and dependencies.
 
 
-## Targets
+## 目标
 
 A multiplatform project is aimed at multiple platforms that are represented by different targets. A target is part of the 
 build that is responsible for building, testing, and packaging the application for a specific platform, such as macOS, 
@@ -77,7 +77,7 @@ kotlin {
 
 Learn how to [set up targets manually](mpp-set-up-targets.html).
 
-## Source sets
+## 源集
 
 The project includes the directory `src` with Kotlin source sets, which are collections of Kotlin code files, along with 
 their resources, dependencies, and language settings. A source set can be used in Kotlin compilations for one or more 
@@ -142,7 +142,7 @@ Windows (`mingwX64`), and macOS (`macosX64`) platforms.
 
 Learn how to [build the hierarchy of source sets](mpp-share-on-platforms.html#share-code-on-similar-platforms). 
 
-## Compilations
+## 编译项
 
 Each target can have one or more compilations, for example, for production and test purposes.
 
