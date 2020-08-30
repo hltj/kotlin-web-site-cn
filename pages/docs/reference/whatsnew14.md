@@ -15,7 +15,7 @@ Below you will find the list of the most important changes in Kotlin 1.4.0.
 * [混用具名与位置参数](#混用具名与位置参数)
 * [拖尾的逗号](#拖尾的逗号)
 * [可调用引用改进](#可调用引用改进)
-* [`循环中的 `when` 内部可以 `break` 及 `continue`](#在循环中的-when-内部使用-break-与-continue)
+* [循环中的 `when` 内部可以 `break` 及 `continue`](#在循环中的-when-内部使用-break-与-continue)
 
 [**IDE 中的新工具**](#ide-中的新工具)
 * [新的灵活项目向导](#新的灵活项目向导)
@@ -84,7 +84,7 @@ Kotlin 1.4.0 comes with a variety of different language features and improvement
 * [混用具名与位置参数](#混用具名与位置参数)
 * [拖尾的逗号](#拖尾的逗号)
 * [可调用引用改进](#可调用引用改进)
-* [`循环中的 `when` 内部可以 `break` 及 `continue`](#在循环中的-when-内部使用-break-与-continue)
+* [循环中的 `when` 内部可以 `break` 及 `continue`](#在循环中的-when-内部使用-break-与-continue)
 * [面向库作者的显式 API 模式](#面向库作者的显式-api-模式)
 
 ### Kotlin 接口的 SAM 转换
