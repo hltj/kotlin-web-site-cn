@@ -12,15 +12,7 @@ title: "Kotlin 编译器选项"
 当单击 Kotlin 项目的 __Compile__ 或 __运行(Run)__ 按钮时，IDE 会使用这些编译器。
 
 还可以按照[使用命令行编译器](/docs/tutorials/command-line.html)
-教程中所述在命令行手动运行 Kotlin 编译器。例如：
-
-<div class="sample" markdown="1" mode="shell" theme="idea">
-
-```bash
-$ kotlinc hello.kt -include-runtime -d hello.jar
-```
-
-</div>
+教程中所述在命令行手动运行 Kotlin 编译器
  
 ## 编译器选项
 
@@ -35,6 +27,23 @@ Kotlin 编译器具有许多用于定制编译过程的选项。
 - 如果使用 Maven，请在 Maven 插件节点的 `<configuration>` 元素中指定编译器参数。
 详情请参见[使用 Maven](using-maven.html#指定编译器选项)。
 - 如果运行命令行编译器，则将编译器参数直接添加到工具函数调用中，或将其写入 [argfile](#argfile)。
+ For example: 
+
+<div class="sample" markdown="1" mode="shell" theme="idea">
+
+```bash
+$ kotlinc hello.kt -include-runtime -d hello.jar
+```
+
+</div>
+
+>**Note**: On Windows, when you pass compiler arguments that contain delimiter characters (whitespace, `=`, `;`, `,`),
+>surround these arguments with double quotes (`"`).
+>```
+>$ kotlinc.bat hello.kt -include-runtime -d "My Folder\hello.jar"
+>```
+{:.note}
+
 
 ##  公共选项
 
@@ -192,7 +201,7 @@ $ kotlinc @options/compiler.options hello.kt
 
 ### `-jvm-target <version>`
 
-指定生成的 JVM 字节码的目标版本。可能的值为 `1.6`、`1.8`、`9`、`10`、`11`、`12`、`13`。
+指定生成的 JVM 字节码的目标版本。可能的值为 `1.6`、`1.8`、`9`、`10`、`11`、`12`、`13`、`14`。
 默认值为 `1.6`。
 {:.details-group}
 

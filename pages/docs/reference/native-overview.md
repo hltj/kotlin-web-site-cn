@@ -5,7 +5,7 @@ category: "Introduction"
 title: "Kotlin/Native"
 ---
 
-# **Kotlin/Native 用于原生开发**
+# Kotlin/Native 用于原生开发
 
 ![Compiler Diagram]({{ url_for('asset', path='images/landing/native/native_overview.png')}})
 
@@ -59,21 +59,20 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 
 ## 在多个平台之间共享代码
 
-不同目标平台的 Kotlin 与 Kotlin/Native 之间支持[多平台项目](multiplatform.html)<!--
--->。
-这是在多个平台之间共享公共 Kotlin 代码的方式，这些平台包括 Android、 iOS、 服务器端、 JVM、 客户端、
-JavaScript、 CSS 以及原生平台。
+[Multiplatform projects](/docs/reference/multiplatform.html) allow sharing common Kotlin code between multiple platforms, including Android, iOS, JVM, 
+JavaScript, and native. Multiplatform libraries provide required APIs for the common Kotlin code and help develop
+shared parts of a project in Kotlin code in one place and share it with all or several target platforms. 
 
-[多平台库](multiplatform.html)<!--
--->为公共 Kotlin 代码提供了必要的 API，并有助于在
-Kotlin 代码中一次性开发项目的共享部分，从而将其与所有目标平台共享。
+You can use [Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/lp/mobile/) to create multiplatform mobile applications with code shared between Android and iOS.
 
 ## 接下来做什么？
 
-Kotlin 新手？可以看看[入门](basic-syntax.html)页。
+Kotlin 新手？可以看看[入门](https://https://www.kotlincn.net/docs/tutorials/getting-started.html)页。
 
 ### 文档
 
+- [Kotlin Multiplatform Mobile documentation](https://kotlinlang.org/docs/mobile/home.html)
+- [Multiplatform documentation](mpp-intro.html)
 - [C 语言互操作](native/c_interop.html)
 - [Swift/Objective-C 互操作](native/objc_interop.html)
 
@@ -86,6 +85,7 @@ Kotlin 新手？可以看看[入门](basic-syntax.html)页。
 
 ## 样例项目
 
+- [Kotlin Multiplatform Mobile samples](https://kotlinlang.org/docs/mobile/samples.html)
 - [Kotlin/Native 源代码与示例](https://github.com/JetBrains/kotlin-native/tree/master/samples)
 - [KotlinConf app](https://github.com/JetBrains/kotlinconf-app)
 - [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)
