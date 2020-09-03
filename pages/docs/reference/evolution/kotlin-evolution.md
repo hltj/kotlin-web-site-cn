@@ -32,7 +32,7 @@ Kotlin 旨在成为程序员的实用工具。在语言演进方面，它的实�
 
 **舒适的更新**。如果没有适度谨慎地进行不兼容的变更（例如从语言中删除内容）可能会导致从一个版本到下一个版本的痛苦迁移过程。我们会始终提前公布这类变更，将相应内容标记为已弃用并 _在变更发生之前_ 提供自动化的迁移工具。当语言发生变更之时，我们希望世界上绝大多数代码都已经更新，这样迁移到新版本就没有问题了。
 
-**反馈循环**。 通过弃用周期需要付出很大的努力，因此我们希望最大限度地减少将来不兼容变更的数量。除了使用我们的最佳判断之外，我们相信在现实生活中试用是验证设计的最佳方法。在最终定论之前，我们希望已经实战测试过。这就是为什么我们利用每个机会在语言的生产版本中提供我们早期版设计，只是带有_实验性_ 状态。实验性特性并不稳定，可以随时更改，选择使用它们的用户明确表示已准备好了应对未来的迁移问题。这些用户提供了宝贵的反馈，而我们收集这些反馈来迭代设计并使其坚如磐石。
+**反馈循环**。 通过弃用周期需要付出很大的努力，因此我们希望最大限度地减少将来不兼容变更的数量。除了使用我们的最佳判断之外，我们相信在现实生活中试用是验证设计的最佳方法。在最终定论之前，我们希望已经实战测试过。这就是为什么我们利用每个机会在语言的生产版本中提供我们早期版设计，只是处于*稳定前*状态的一种：[实验性、 Alpha、 Beta](components-stability.html)。这些特性并不稳定，可以随时更改，选择使用它们的用户明确表示已准备好了应对未来的迁移问题。这些用户提供了宝贵的反馈，而我们收集这些反馈来迭代设计并使其坚如磐石。
 
 
 ## 不兼容的变更
@@ -87,9 +87,9 @@ Kotlin 旨在成为程序员的实用工具。在语言演进方面，它的实�
 
 类似 1.2、1.3 等版本的稳定版本通常被认为是对语言进行重大更改的特性版本。通常，在特性发布之间会发布增量发布，编号为 1.2.20、1.2.30 等。
 
-增量版本带来了工具方面的更新（通常包括特性），性能改进和错误修复。我们试图使这些版本彼此兼容，因此对编译器的更改主要是优化和添加/删除警告。实验特性可以随时被添加、删除或更改。
+增量版本带来了工具方面的更新（通常包括特性），性能改进和错误修复。我们试图使这些版本彼此兼容，因此对编译器的更改主要是优化和添加/删除警告。稳定前特性可以随时被添加、删除或更改。
 
-特性发布通常会添加新特性，并且可能会删除或更改以前不推荐使用的特性。某项特性从试验版到稳定版的过渡也包含在特性版本的发布中。
+特性发布通常会添加新特性，并且可能会删除或更改以前不推荐使用的特性。某项特性从稳定前到稳定版的过渡也包含在特性版本的发布中。
 
 
 ### 早期预览版本
@@ -97,11 +97,11 @@ Kotlin 旨在成为程序员的实用工具。在语言演进方面，它的实�
 在发布稳定版本之前，我们通常会发布许多称为 EAP（“Early Access Preview”）的早期预览版本，这些版本使我们能够更快地进行迭代并从社区中收集反馈。特性版本的早期预览版本通常会生成二进制文件，这些二进制文件随后将被稳定的编译器拒绝，以确保二进制文件中可能存在的错误只在预览期出现。最终发布的二进制文件通常没有此限制。
 
 
-### 实验特性
+### 稳定前特性
 
-根据上述反馈环原则，我们在语言的开放和发行版本中对设计进行迭代，其中某些特性具有实验性并且可以更改。实验特性可以随时被添加、更改或删除，不会发出警告。我们确保实验特性不会被用户意外使用。此类特性通常需要在代码或项目配置中进行某种类型的显式选择。
+根据上述反馈环原则，我们在语言的开放和发行版本中对设计进行迭代，其中某些特性具有稳定前状态之一并且可以更改。这些特性可以随时被添加、更改或删除，不会发出警告。我们尽量确保稳定前特性不会被用户意外使用。此类特性通常需要在代码或项目配置中进行某种类型的显式选择。
 
-实验特性通常会在经过几次迭代后逐渐达到稳定状态。
+稳定前特性通常会在经过几次迭代后逐渐达到稳定状态。
 
 
 ### 不同组件的状态
@@ -124,9 +124,9 @@ On the other hand, a lot depends on the library authors being careful about whic
 *   Library code should always specify return types of public/protected functions and properties explicitly thus never relying on type inference for public API. Subtle changes in type inference may cause return types to change inadvertently, leading to binary compatibility issues.
 *   Overloaded functions and properties provided by the same library should do essentially the same thing. Changes in type inference may result in more precise static types to be known at call sites causing changes in overload resolution.
 
-Library authors can use the @Deprecated and @Experimental annotations to control the evolution of their API surface. Note that @Deprecated(level=HIDDEN) can be used to preserve binary compatibility even for declarations removed from the API.
+Library authors can use the @Deprecated and [@RequiresOptIn](../opt-in-requirements.html) annotations to control the evolution of their API surface. Note that @Deprecated(level=HIDDEN) can be used to preserve binary compatibility even for declarations removed from the API.
 
-Also, by convention, packages named "internal" are not considered public API. All API residing in packages named "experimental" is considered experimental and can change at any moment.
+Also, by convention, packages named "internal" are not considered public API. All API residing in packages named "experimental" is considered pre-stable and can change at any moment.
 
 We evolve the Kotlin Standard Library (kotlin-stdlib) for stable platforms according to the principles stated above. Changes to the contracts for its API undergo the same procedures as changes in the language itself.
 

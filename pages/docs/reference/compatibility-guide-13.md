@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Compatibility Guide for Kotlin 1.3"
+title: "Kotlin 1.3 的兼容性指南"
 ---
 
-# Compatibility Guide for Kotlin 1.3
+# Kotlin 1.3 的兼容性指南
 
 [*Keeping the Language Modern* and *Comfortable Updates*](evolution/kotlin-evolution.html) are among the fundamental principles in Kotlin Language Design. The former says that constructs which obstruct language evolution should be removed, and the latter says that this removal should be well-communicated beforehand to make code migration as smooth as possible.
 

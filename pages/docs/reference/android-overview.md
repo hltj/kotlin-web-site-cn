@@ -19,7 +19,7 @@ title: "Kotlin 用于 Android 开发"
 为现有的 Android 库添加了 Kotlin 语言特性，如协程、扩展函数、lambdas 与命名参数。
 * **与 Java 的互操作性**。可以在应用程序中将 Kotlin 与 Java 编程语言一起使用，
 而无需将所有代码迁移到 Kotlin。
-* **支持多平台开发**。不仅可以使用 Kotlin 开发 Android，还可以开发 [iOS](https://www.jetbrains.com/lp/mobilecrossplatform/)、后端与 Web 应用程序。
+* **支持多平台开发**。不仅可以使用 Kotlin 开发 Android，还可以开发 [iOS](https://kotlinlang.org/lp/mobile/)、后端与 Web 应用程序。
 享受在平台之间共享公共代码的好处。
 * **代码安全**。更少的代码与更好的可读性导致更少的错误。Kotlin 编译器检测这些剩余的错误，从而使代码安全。
 * **易学易用**。Kotlin 非常易于学习，尤其是对于 Java 开发人员而言。

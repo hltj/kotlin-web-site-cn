@@ -460,7 +460,7 @@ var arr = IntArray(5) { it * 1 }
 
 ## 无符号整型
 
-> 无符号类型自 Kotlin 1.3 起才可用，并且目前是*实验性的*。详见[下文](#无符号整型的实验性状态)
+> 无符号类型自 Kotlin 1.3 起才可用，并且目前处于 [Beta](evolution/components-stability.html) 版。详见[下文](#无符号整数的-beta-状态)
 {:.note}
 
 Kotlin 为无符号整数引入了以下类型：
@@ -475,7 +475,7 @@ Kotlin 为无符号整数引入了以下类型：
 > 请注意，将类型从无符号类型更改为对应的有符号类型（反之亦然）是*二进制不兼容*变更
 {:.note}
 
-无符号类型是使用另一个实验性特性（即[内联类](inline-classes.html)）实现的。
+无符号类型是使用另一个尚未稳定特性（即[内联类](inline-classes.html)）实现的。
 
 ### 特化的类
 
@@ -518,18 +518,18 @@ val a = 1UL // ULong，即使未提供预期类型并且常量适于 UInt
 
 </div>
 
-### 无符号整型的实验性状态
+### 无符号整数的 beta 状态
 
-无符号类型的设计是实验性的，这意味着这个特性改进很快并且没有给出兼容性保证。当在 Kotlin 1.3+ 中使用无符号算术时，会报出警告表明这个特性是实验性的。如需移除警告，必须选择加入（opt-in）无符号类型的实验性使用。
+无符号类型的设计还是 [Beta](evolution/components-stability.html) 版，这意味着其兼容性仅是尽力而为，不能保证。在 Kotlin 1.3+ 中使用无符号算术时，会报一个警告，提示该特性尚未稳定发布。如需消除警告，必须选择加入对无符号类型的使用。
 
-选择加入无符号整型有两种可行的方式：将 API 标记为实验性的，或者无需标记。
+选择加入无符号整型有两种可行的方式：将 API 配置为需要选择加入，或者无需。
 
-- 如需传播实验性，请以 `@ExperimentalUnsignedTypes` 标注使用了无符号整型的声明。
-- 如需选择加入而不传播实验性，要么使用 `@OptIn(ExperimentalUnsignedTypes::class)` 注解标注声明，要么将 `-Xopt-in=kotlin.ExperimentalUnsignedTypes` 传给编译器。
+- 如需传播选择加入要求，请以 `@ExperimentalUnsignedTypes` 标注使用了无符号整型的声明。
+- 如需选择加入而不传播，要么使用 `@OptIn(ExperimentalUnsignedTypes::class)` 注解标注声明，要么将 `-Xopt-in=kotlin.ExperimentalUnsignedTypes` 传给编译器。
 
-你的客户是否必须选择使用你的 API 取决于你，不过请记住，无符号整型是一个实验性特性，因此使用它们的 API 可能会因语言的变更而发生突然破坏。
+你的客户是否必须选择使用你的 API 取决于你，不过请记住，无符号整型是一个非稳定特性，因此使用它们的 API 可能会因语言的变更而发生突然破坏。
 
-技术细节也参见实验性 API [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/experimental.md)。
+技术细节也参见具有选择加入要求的 API 的 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/experimental.md)。
 
 ### 深入探讨
 

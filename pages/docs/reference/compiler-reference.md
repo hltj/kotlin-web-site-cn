@@ -12,15 +12,7 @@ title: "Kotlin 编译器选项"
 当单击 Kotlin 项目的 __Compile__ 或 __运行(Run)__ 按钮时，IDE 会使用这些编译器。
 
 还可以按照[使用命令行编译器](/docs/tutorials/command-line.html)
-教程中所述在命令行手动运行 Kotlin 编译器。例如：
-
-<div class="sample" markdown="1" mode="shell" theme="idea">
-
-```bash
-$ kotlinc hello.kt -include-runtime -d hello.jar
-```
-
-</div>
+教程中所述在命令行手动运行 Kotlin 编译器
  
 ## 编译器选项
 
@@ -35,6 +27,23 @@ Kotlin 编译器具有许多用于定制编译过程的选项。
 - 如果使用 Maven，请在 Maven 插件节点的 `<configuration>` 元素中指定编译器参数。
 详情请参见[使用 Maven](using-maven.html#指定编译器选项)。
 - 如果运行命令行编译器，则将编译器参数直接添加到工具函数调用中，或将其写入 [argfile](#argfile)。
+ For example: 
+
+<div class="sample" markdown="1" mode="shell" theme="idea">
+
+```bash
+$ kotlinc hello.kt -include-runtime -d hello.jar
+```
+
+</div>
+
+>**Note**: On Windows, when you pass compiler arguments that contain delimiter characters (whitespace, `=`, `;`, `,`),
+>surround these arguments with double quotes (`"`).
+>```
+>$ kotlinc.bat hello.kt -include-runtime -d "My Folder\hello.jar"
+>```
+{:.note}
+
 
 ##  公共选项
 
@@ -192,7 +201,7 @@ $ kotlinc @options/compiler.options hello.kt
 
 ### `-jvm-target <version>`
 
-指定生成的 JVM 字节码的目标版本。可能的值为 `1.6`、`1.8`、`9`、`10`、`11`、`12`、`13`。
+指定生成的 JVM 字节码的目标版本。可能的值为 `1.6`、`1.8`、`9`、`10`、`11`、`12`、`13`、`14`。
 默认值为 `1.6`。
 {:.details-group}
 
@@ -250,14 +259,14 @@ Kotlin 到 JS 编译的命令行工具是 `kotlinc-js`。
 使用元数据生成 `.meta.js` 与 `.kjsm` 文件。 创建 JS 库时使用此选项。
 {:.details-group}
 
-### `-module-kind {plain|amd|commonjs|umd}`
+### `-module-kind {umd|commonjs|amd|plain}`
 
 编译器生成的 JS 模块类型：
 {:.details-group}
-- `plain` ——普通的 JS 模块；
-- `commonjs` ——[CommonJS](http://www.commonjs.org/) 模块；
-- `amd` ——[异步模块定义](https://en.wikipedia.org/wiki/Asynchronous_module_definition)模块；
-- `umd` ——[通用模块定义](https://github.com/umdjs/umd)模块。
+- `umd` ——[通用模块定义](https://github.com/umdjs/umd)模块
+- `commonjs` ——[CommonJS](http://www.commonjs.org/) 模块
+- `amd` ——[异步模块定义](https://en.wikipedia.org/wiki/Asynchronous_module_definition)模块
+- `plain` ——普通的 JS 模块
     
 要了解有关不同类型的 JS 模块及其之间区别的更多信息，
 请参见[这篇文章](https://www.davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/)。

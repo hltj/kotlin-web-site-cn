@@ -5,53 +5,53 @@ category: "Introduction"
 title: "Kotlin 用于 JavaScript 开发"
 ---
 
-# Kotlin JavaScript 概述
+# Kotlin/JS 概述
 
-Kotlin 提供了 JavaScript 作为目标平台的能力。它通过将 Kotlin 转换为 JavaScript 来实现。目前的实现目标是 ECMAScript 5.1，但也有最终目标为 ECMAScript 2015 的计划。
+Kotlin/JS provides the ability to transpile your Kotlin code, the Kotlin standard library, and any compatible dependencies to JavaScript. The current implementation of Kotlin/JS targets [ES5](https://www.ecma-international.org/ecma-262/5.1/).
 
-当你选择 JavaScript 目标时，作为项目一部分的任何 Kotlin 代码以及 Kotlin 附带的标准库都会转换为 JavaScript。然而，这不包括使用的 JDK 和任何 JVM 或 Java 框架或库。任何不是 Kotlin 的文件会在编译期间忽略掉。
+The recommended way to use Kotlin/JS is via the `kotlin.js` and `kotlin.multiplatform` Gradle plugins. They provide a central and convenient way to set up and control Kotlin projects targeting JavaScript. 
+This includes essential functionality such as controlling the bundling of your application, adding JavaScript dependencies directly from npm, and more. To get an overview of the available options, check out the [Kotlin/JS project setup](js-project-setup.html) documentation.
 
-Kotlin 编译器努力遵循以下目标：
+## Some use cases for Kotlin/JS
 
-* 提供最佳大小的输出
-* 提供可读的 JavaScript 输出
-* 提供与现有模块系统的互操作性
-* 在标准库中提供相同的功能，无论是 JavaScript 还是 JVM 目标（尽最大可能程度）。
+There are numerous ways that Kotlin/JS can be used. To provide you some inspiration, here's a non-exhaustive list of scenarios in which you can use Kotlin/JS.
 
-## 如何使用
+* **Write frontend web applications using Kotlin/JS**
+    * Kotlin/JS allows you to **leverage powerful browser and web APIs** in a type-safe fashion. Create, modify and interact with elements in the Document Object Model (DOM), use Kotlin code to control the rendering of `canvas` or WebGL components, and enjoy access to many more of the features supported in modern browsers.
+    * Write **full, type-safe React applications with Kotlin/JS** using the [`kotlin-wrappers`](https://github.com/JetBrains/kotlin-wrappers) provided by JetBrains, which provide convenient abstractions and deep integrations for one of the most popular JavaScript frameworks. `kotlin-wrappers` also provides support for a select number of adjacent technologies like `react-redux`, `react-router`, or `styled-components`. Interoperability with the JavaScript ecosystem also means that you can also use third-party React components and component libraries.
+    * Or, use **community-maintained Kotlin/JS frameworks** that take full advantage of Kotlin concepts, its expressive power and conciseness – like [kvision](https://github.com/rjaros/kvision) or [fritz2](https://www.fritz2.dev/). 
 
-你可能希望在以下情景中将 Kotlin 编译为 JavaScript：
+* **Write server-side and serverless applications using Kotlin/JS**
+    * The Node.js target provided by Kotlin/JS enables you to create applications that **run on a server** or get **executed on serverless infrastructure**. You benefit from the same advantages as other applications executing in a JavaScript runtime, such as **faster startup speed** and a **reduced memory footprint**. With [`kotlinx-nodejs`](https://github.com/Kotlin/kotlinx-nodejs), you have typesafe access to the [Node.js API](https://nodejs.org/docs/latest/api/) directly from your Kotlin code.
 
-* 创建面向客户端 JavaScript 的 Kotlin 代码
+*  **Use Kotlin's [multiplatform](multiplatform.html) projects to share code with other Kotlin targets**
+    * All Kotlin/JS functionality can also be accessed when using the Kotlin `multiplatform` Gradle plugin.
+    * If you have a backend written in Kotlin, you can **share common code** such as data models or validation logic with a frontend written in Kotlin/JS, allowing you to **write and maintain full-stack web applications**.
+    * You could also **share business logic between your web interface and mobile apps** for Android and iOS, and avoid duplicating commonly used functionality like providing abstractions around REST API endpoints, user authentication, or your domain models.
+    
+* **Create libraries for use with JavaScript and TypeScript**
+    * You don't have to write your whole application in Kotlin/JS, either – you can also **generate libraries from your Kotlin code** that can be consumed as modules from any code base written in JavaScript or TypeScript, regardless of other frameworks or technologies used. This approach of **creating hybrid applications** allows you to leverage the competencies that you and your team might already have around web development, while helping you **reduce the amount of duplicated work**, and making it easier to keep your web target consistent with other targets of your application.
+    
+Of course, this is not a complete list of how you can use Kotlin/JS to your advantage, but merely a selection of cherry-picked cases. We invite you to experiment with combinations of these use cases, and find out what works best for your project. 
 
-    * **与 DOM 元素交互**。Kotlin 提供了一系列静态类型的接口来与文档对象模型（Document Object Model）交互，允许创建和更新 DOM 元素。
+Regardless of your specific use case, Kotlin/JS projects can use compatible **libraries from the Kotlin ecosystem**, as well as third-party **libraries from the JavaScript and TypeScript ecosystems**. To use the latter from Kotlin code, you can either provide your own typesafe wrappers, use community-maintained wrappers, or let [Dukat](js-external-declarations-with-dukat.html) automatically generate Kotlin declarations for you. Using the Kotlin/JS-exclusive [dynamic type](dynamic-type.html) allows you to loosen the constraints of Kotlin's type system, allowing you to skip creating detailed library wrappers - at the expense of type safety.
 
-    * **与图形如 WebGL 交互**。你可以使用 Kotlin 在网页上用 WebGL 创建图形元素。
-
-* 创建面向服务器端 JavaScript 的 Kotlin 代码
-
-    * **使用服务器端技术**。你可以使用 Kotlin 与服务器端 JavaScript（如 Node.js）进行交互
-
-Kotlin 可以与现有的第三方库和框架（如 jQuery 或 ReactJS）一起使用。要使用强类型
-API 访问第三方框架，可以使用 [dukat](https://github.com/kotlin/dukat) 工具将 TypeScript 定义从 [Definitely Typed](http://definitelytyped.org/)
-类型定义仓库转换为 Kotlin。或者，你可以使用<!--
--->[动态类型](dynamic-type.html)访问任何框架，而无需强类型。
-
-Kotlin 兼容 CommonJS、AMD 和 UMD，直截了当[与不同的模块系统交互](https://www.kotlincn.net/docs/tutorials/javascript/working-with-modules/working-with-modules.html)。
+Kotlin/JS is also compatible with the most common module systems: UMD, CommonJS, and AMD. Being able to [produce and consume modules](/docs/tutorials/javascript/working-with-modules/working-with-modules.html) means that you can interact with the JavaScript ecosystem in a structured manner.
 
 ## Kotlin/JS 今天与明天
 
-想进一步了解 Kotlin/JS 吗？ 
+**想进一步了解 Kotlin/JS 吗？**
 
-在这个短片中，Kotlin 开发者布道师 Sebastian Aigner 将为你解释 Kotlin/JS 的主要优点、分享一些技巧与使用场景，并介绍 Kotlin/JS 的计划与即将发布的特性。
+在这个视频中，Kotlin 开发者布道师 Sebastian Aigner 将为你解释 Kotlin/JS 的主要优点、分享一些技巧与使用场景，并介绍 Kotlin/JS 的计划与即将发布的特性。
 <iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=926746622&bvid=BV1FT4y1L77i&cid=223227283&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe><br />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fZUL8_kgHXg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br />
 在 <a target="_blank" href="https://www.bilibili.com/video/BV1FT4y1L77i/">bilibili</a> \| <a target="_blank" href="https://youtu.be/fZUL8_kgHXg">YouTube</a> 上看。
 
 ## Kotlin/JS 入门
 
-要了解如何开始使用 Kotlin 用于 JavaScript 开发，请参阅[搭建 Kotlin/JS 项目](/docs/reference/js-project-setup.html)。
+If you're new to Kotlin, a good first step would be to familiarise yourself with the [Basic Syntax](basic-syntax.html) of the language.
 
+To start using Kotlin for JavaScript, please refer to the [Setting up a Kotlin/JS project](/docs/reference/js-project-setup.html), or pick a hands-on lab from the next section to work through.
 
 ## Kotlin/JS 实践实验室
 
@@ -65,6 +65,11 @@ Kotlin 兼容 CommonJS、AMD 和 UMD，直截了当[与不同的模块系统交�
 
 * [使用 Kotlin Multiplatform 构建全栈 Web 应用](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)通过构建使用通用代码、序列化与其他多平台范式的客户端服务器应用程序，讲授了构建针对 Kotlin/JVM 与 Kotlin/JS 的应用程序的概念。它还简要介绍了如何将 Ktor 作为服务器与客户端框架使用。
 
+## New Kotlin/JS IR compiler
+
+The [new Kotlin/JS IR compiler](/docs/reference/js-ir-compiler.html) (currently with [Alpha](/docs/reference/evolution/components-stability.html) stability) comes with a number of improvements over the current default compiler. For example, it improves the size of generated executables via dead code elimination and makes it smoother to interoperate with the JavaScript ecosystem and its tooling. By generating TypeScript declaration files (d.ts) from Kotlin code, the new compiler makes it easier to create “hybrid” applications that mix TypeScript and Kotlin code, and leverage code-sharing functionality using Kotlin Multiplatform.
+
+To learn more about the available features in the new Kotlin/JS IR compiler and how to try it for your project, visit the [documentation](/docs/reference/js-ir-compiler.html).
 
 ## 加入 Kotlin/JS 社区
 还可以在官方 [Kotlin Slack](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) 中加入 [#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) 频道，并与社区和团队聊天。

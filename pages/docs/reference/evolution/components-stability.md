@@ -2,41 +2,73 @@
 type: doc
 layout: reference
 category: "Compatibility"
-title: "不同组件的稳定性"
+title: "Kotlin 组件的稳定性"
 ---
 
-# 不同组件的稳定性
+# Kotlin 组件的稳定性
 
-依据组件的发展速度，可以有不同的稳定性模式：
-<a name="moving-fast"></a>
-*   **快速流转（MF，Moving fast）**：即使在[增量版本](kotlin-evolution.html#feature-releases-and-incremental-releases)之间也不要期待任何兼容性，任何功能都可以在没有警告的情况下添加、删除或者更改。
+The Kotlin language and toolset are divided into many components such as the compilers for the JVM, JS and Native targets, the Standard Library, various accompanying tools and so on. Many of these components were officially released as **Stable** which means that they are evolved in the backward-compatible way following the [principles](kotlin-evolution.html) of *Comfortable Updates* and *Keeping the Language Modern*. Among such stable components are, for example, the Kotlin compiler for the JVM, the Standard Library, and Coroutines.
 
-*   **有功能添加的增量版本（AIR，Additions in Incremental Releases）**：可以在增量版本中添加内容，应避免删除与更改行为，而如果必须要删改的话，应在之前的增量版本中预告。
+Following the *Feedback Loop* principle we release many things early for the community to try out, so a number of components are not yet released as **Stable**. Some of them are very early stage, some are more mature. We mark them as **Experimental**, **Alpha** or **Beta** depending on how quickly each component is evolving and how much risk the users are taking when adopting it. 
 
-*   **稳定增量版本（SIR，Stable Incremental Releases）**：增量版本完全兼容，只会有优化与 bug 修复。可以在[特性版本](kotlin-evolution.html#feature-releases-and-incremental-releases)中进行任何更改。
+## Stability Levels Explained
 
-<a name="fully-stable"></a>
-*   **完全稳定（FS，Fully Stable）**：增量版本完全兼容，只会有优化与 bug 修复。特性版本兼容旧版。
+Here's a quick guide to these stability levels and their meaning:
 
-对于相同的组件，源代码兼容性与二进制兼容性可以有不同的模式，例如，在二进制格式稳定之前，源代码语言可以达到完全稳定，反之亦然。
+**Experimental** means "try it only in toy projects":
+  * We are just trying out an idea and want some users to play with it and give feedback. If it doesn't work out, we may drop it any minute.
 
-[Kotlin 演进制度](kotlin-evolution.html)的条款只适用于已经达到完全稳定（FS）的组件。从那一刻起，不兼容的变更必须得到语言委员会的批注。
+**Alpha** means "use at your own risk, expect migration issues": 
+  * We decided to productize this idea, but it hasn't reached the final shape yet.
 
-|**组件**|**进入该状态的版本**|**源代码兼容模式**|**二进制兼容模式**|
+**Beta** means "you can use it, we'll do our best to minimize migration issues for you": 
+  * It’s almost done, user feedback is especially important now.
+  * Still, it's not 100% finished, so changes are possible (including ones based on your own feedback).
+  * Watch for deprecation warnings in advance for the best update experience.
+
+We collectively refer to _Experimental_, _Alpha_ and _Beta_ as **pre-stable** levels.
+
+<a name="stable"></a>
+**Stable** means "use it even in most conservative scenarios":
+  * It’s done. We will be evolving it according to our strict [backward compatibility rules](/foundation/language-committee-guidelines.html).
+  
+Please note that stability levels do not say anything about how soon a component will be released as Stable. Similarly, they do not indicate how much a component will be changed before release. They only say how fast a component is changing and how much risk of update issues users are running.
+
+## Stability of Subcomponents
+
+A stable component may have an experimental subcomponent, for example:
+* a stable compiler may have an experimental feature;
+* a stable API may include experimental classes or functions;
+* a stable command-line tool may have experimental options.
+
+We make sure to document precisely which subcomponents are not stable. We also do our best to warn users where possible and ask to opt in explicitly to avoid accidental usages of features that have not been released as stable.
+
+## Current Stability of Kotlin Components
+
+|**Component**|**Status**|**Status since version**|**Comment**|
 | --- | --- | --- | --- |
-Kotlin/JVM|1.0|FS|FS|
-kotlin-stdlib（JVM）|1.0|FS|FS
-KDoc 语法|1.0|FS|N/A
-协程|1.3|FS|FS
-kotlin-reflect（JVM）|1.0|SIR|SIR
-Kotlin/JS|1.1|AIR|MF
-Kotlin/Native|1.3|AIR|MF
-Kotlin 脚本（*.kts）|1.2|AIR|MF
-dokka|0.1|MF|N/A
-Kotlin 脚本 API|1.2|MF|MF
-编译器插件 API|1.0|MF|MF
-序列化|1.3|MF|MF
-多平台项目|1.2|MF|MF
-内联类|1.3|MF|MF
-无符号算术|1.3|MF|MF
-**默认情况下，所有其他实验性特性**|N/A|**MF**|**MF**
+Kotlin/JVM|Stable|1.0|
+kotlin-stdlib (JVM)|Stable|1.0|
+Coroutines|Stable|1.3|
+kotlin-reflect (JVM)|Beta|1.0|
+Kotlin/JS (Classic back-end)|Stable|1.3|
+Kotlin/JVM (IR-based)|Alpha|1.4|
+Kotlin/JS (IR-based)|Alpha|1.4|
+Kotlin/Native Runtime|Beta|1.3|
+KLib binaries|Alpha|1.4|
+KDoc syntax|Stable|1.0|
+dokka|Alpha|0.1|
+Kotlin Scripts (*.kts)|Beta|1.2|
+Kotlin Scripting APIs and custom hosts|Alpha|1.2|
+Compiler Plugin API|Experimental|1.0|
+Serialization Compiler Plugin|Stable|1.4|
+Serialization Core Library|Stable|1.0.0|Versioned separately from the language
+Multiplatform Projects|Alpha|1.3|
+expect/actual language feature|Beta|1.2|
+Inline classes|Alpha|1.3|
+Unsigned arithmetics|Beta|1.3|
+Contracts in stdlib|Stable|1.3|
+User-defined contracts|Experimental|1.3|
+**All other experimental components, by default**|Experimental|N/A|
+ 
+*The pre-1.4 version of this page is available [here](components-stability-pre-1.4.html).* 

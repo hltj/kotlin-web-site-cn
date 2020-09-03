@@ -309,7 +309,7 @@ noArg {
 
 ### JPA 支持
 
-与 *kotlin-spring* 插件类似，*kotlin-jpa* 是在 *no-arg* 之上的一层包装。该插件自动指定了
+与 *kotlin-spring* 插件类似（在 *all-open* 之上的一层包装），*kotlin-jpa* 是在 *no-arg* 之上的一层包装。该插件自动指定了
 [`@Entity`](http://docs.oracle.com/javaee/7/api/javax/persistence/Entity.html)、 [`@Embeddable`](http://docs.oracle.com/javaee/7/api/javax/persistence/Embeddable.html) 与 [`@MappedSuperclass`](https://docs.oracle.com/javaee/7/api/javax/persistence/MappedSuperclass.html)
 这几个 *无参* 注解。
 

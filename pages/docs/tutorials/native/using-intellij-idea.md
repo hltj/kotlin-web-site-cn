@@ -46,5 +46,5 @@ date: 2020-01-15
 有关更多信息，请查看：
 
 * [Kotlin/Native Gradle 插件](/docs/reference/native/gradle_plugin.html)
-* [使用 Gradle 构建多平台项目](/docs/reference/building-mpp-with-gradle.html)
+* [Multiplatform Projects](/docs/reference/mpp-discover-project.html)
 

@@ -56,7 +56,7 @@ val max = if (a > b) {
 
 ## When 表达式
 
-*when*{: .keyword } 取代了类 C 语言的 switch 操作符。其最简单的形式如下：
+*when*{: .keyword } 表达式取代了类 C 语言的 switch 语句。其最简单的形式如下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
