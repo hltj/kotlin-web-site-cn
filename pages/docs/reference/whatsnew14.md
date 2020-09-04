@@ -6,8 +6,8 @@ title: Kotlin 1.4 的新特性"
 
 # Kotlin 1.4.0 的新特性
 
-In Kotlin 1.4.0, we ship a number of improvements in all of its components, with the [focus on quality and performance](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/).
-Below you will find the list of the most important changes in Kotlin 1.4.0.  
+在 Kotlin 1.4.0 中，我们对其所有组件进行了大量改进，其中[重点是质量与性能](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/)。
+以下是 Kotlin  1.4.0 中最重要的变更列表。  
 
 [**语言特性与改进**](#语言特性与改进)
 * [Kotlin 接口的 SAM 转换](#kotlin-接口的-sam-转换)
@@ -78,7 +78,7 @@ Below you will find the list of the most important changes in Kotlin 1.4.0.
 
 ## 语言特性与改进
 
-Kotlin 1.4.0 comes with a variety of different language features and improvements. They include:
+Kotlin 1.4.0 中有各种不同的语言特性与改进。包括：
 
 * [Kotlin 接口的 SAM 转换](#kotlin-接口的-sam-转换)
 * [混用具名与位置参数](#混用具名与位置参数)
