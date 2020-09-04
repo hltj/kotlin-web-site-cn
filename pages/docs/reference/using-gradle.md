@@ -647,8 +647,8 @@ tasks.withType<KotlinCompile>().configureEach {
 
 | Name | Description | Possible values |Default value |
 |------|-------------|-----------------|--------------|
-| `apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.2 (DEPRECATED)"、 "1.3"、 "1.4"、 "1.5 (EXPERIMENTAL)" |  |
-| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.2 (DEPRECATED)"、 "1.3"、 "1.4"、 "1.5 (EXPERIMENTAL)" |  |
+| `apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.2"（已弃用）、 "1.3"、 "1.4"、 "1.5"（实验性） |  |
+| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.2"（已弃用）、 "1.3"、 "1.4"、 "1.5"（实验性） |  |
 
 ### JVM 特有的属性
 
@@ -671,8 +671,8 @@ tasks.withType<KotlinCompile>().configureEach {
 | `metaInfo` | 使用元数据生成 .meta.js 与 .kjsm 文件。用于创建库 |  | true |
 | `moduleKind` | 编译器生成的 JS 模块类型 | "umd"、 "commonjs"、 "amd"、 "plain" | "umd" |
 | `noStdlib` | 不要自动将默认的 Kotlin/JS stdlib 包含到编译依赖项中 |  | true |
-| `outputFile` | 编译结果的目标 *.js 文件 |  |  |
-| `sourceMap` | 生成源代码映射（source map） |  | false |
+| `outputFile` | 编译结果的目标 *.js 文件 |  | "\<buildDir>/js/packages/\<project.name>/kotlin/\<project.name>.js" |
+| `sourceMap` | 生成源代码映射（source map） |  | true |
 | `sourceMapEmbedSources` | 将源代码嵌入到源代码映射中 | "never"、 "always"、 "inlining" | |
 | `sourceMapPrefix` | 将指定前缀添加到源代码映射中的路径 |  |  |
 | `target` | 生成指定 ECMA 版本的 JS 文件 | "v5" | "v5" |
