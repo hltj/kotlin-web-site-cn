@@ -122,7 +122,7 @@ interface Collection<E> …… {
 
 Joshua Bloch 称那些你只能从中**读取**的对象为**生产者**，并称那些你只能**写入**的对象为**消费者**。他建议：“*为了灵活性最大化，在表示生产者或消费者的输入参数上使用通配符类型*”，并提出了以下助记符：
 
-*PECS 代表生产者-Extens，消费者-Super（Producer-Extends, Consumer-Super）。*
+*PECS 代表生产者-Extends、消费者-Super（Producer-Extends, Consumer-Super）。*
 
 *注意*：如果你使用一个生产者对象，如 `List<? extends Foo>`，在该对象上不允许调用 `add()` 或 `set()`。但这并不意味着<!--
 -->该对象是**不可变的**：例如，没有什么阻止你调用 `clear()`从列表中删除所有项目，因为 `clear()`

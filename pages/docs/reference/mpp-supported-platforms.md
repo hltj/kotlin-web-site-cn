@@ -6,13 +6,13 @@ title: "所支持平台"
 
 # 所支持平台
 
-Kotlin supports the following platforms and provides target presets for each platform. See how to [use a target preset](mpp-set-up-targets.html).
+Kotlin 支持以下平台并且为每个平台提供了目标预设。请参见如何[使用目标预设](mpp-set-up-targets.html)。
 
 <table>
     <tr>
-        <th>Target platform</th>
-        <th>Target preset</th>
-        <th>Comments</th>
+        <th>目标平台</th>
+        <th>目标预设</th>
+        <th>说明</th>
     </tr>
     <tr>
         <td>Kotlin/JVM</td>
@@ -23,62 +23,62 @@ Kotlin supports the following platforms and provides target presets for each pla
         <td>Kotlin/JS</td>
         <td><code>js</code></td>
         <td>
-            <p>Select the execution environment:</p>
+            <p>选择执行环境：</p>
             <ul>
-                <li><code>browser {}</code> for applications running in the browser.</li>
-                <li><code>nodejs{}</code> for applications running on Node.js.</li>
+                <li><code>browser {}</code> 用于在浏览器中运行的应用程序。</li>
+                <li><code>nodejs{}</code> 用于在 Node.js 上运行的应用程序。</li>
             </ul>
-            <p>Learn more in <a href="js-project-setup.html#choosing-execution-environment">Setting up a Kotlin/JS project</a>.</p>
+            <p>在<a href="js-project-setup.html#choosing-execution-environment">搭建 Kotlin/JS 项目</a>中了解更多信息。</p>
         </td>
     </tr>
     <tr>
-        <td>Android applications and libraries</td>
+        <td>Android 应用程序与库</td>
         <td><code>android</code></td>
         <td>
-            <p>Manually apply an Android Gradle plugin  – <code>com.android.application</code> or <code>com.android.library</code>.</p>
-            <p>You can only create one Android target per Gradle subproject.</p>
+            <p>手动应用 Android Gradle 插件——<code>com.android.application</code> 或 <code>com.android.library</code>。</p>
+            <p>每个 Gradle 子项目只能创建一个 Android 目标。</p>
         </td>
     </tr>
     <tr>
         <td>Android NDK</td>
-        <td><code>androidNativeArm32</code>, <code>androidNativeArm64</code></td>
+        <td><code>androidNativeArm32</code>、 <code>androidNativeArm64</code></td>
         <td>
-            <p>The 64-bit target requires a Linux or macOS host.</p>
-            <p>You can build the 32-bit target on any supported host.</p>
+            <p>64 位目标需要 Linux 或 macOS 主机。</p>
+            <p>可以在任何所支持的主机上构建 32 位目标。</p>
         </td>
     </tr>
     <tr>
         <td>iOS</td>
-        <td><code>iosArm32</code>, <code>iosArm64</code>, <code>iosX64</code></td>
-        <td>Requires a macOS host.</td>
+        <td><code>iosArm32</code>、 <code>iosArm64</code>、 <code>iosX64</code></td>
+        <td>需要 macOS 主机。</td>
     </tr>
     <tr>
         <td>watchOS</td>
-        <td><code>watchosArm32</code>, <code>watchosArm64</code>, <code>watchosX86</code></td>
+        <td><code>watchosArm32</code>、 <code>watchosArm64</code>、 <code>watchosX86</code></td>
         <td></td>
     </tr>
     <tr>
         <td>tvOS</td>
-        <td><code>tvosArm64</code>, <code>tvosX64</code></td>
+        <td><code>tvosArm64</code>、 <code>tvosX64</code></td>
         <td></td>
     </tr>
     <tr>
         <td>macOS</td>
         <td><code>macosX64</code></td>
-        <td>Requires a macOS host.</td>
+        <td>需要 macOS 主机。</td>
     </tr>
     <tr>
         <td>Linux</td>
-        <td><code>linuxArm64</code>, <code>linuxArm32Hfp</code>, <code>linuxMips32</code>, <code>linuxMipsel32</code>, <code>linuxX64</code></td>
+        <td><code>linuxArm64</code>、 <code>linuxArm32Hfp</code>、 <code>linuxMips32</code>、 <code>linuxMipsel32</code>、 <code>linuxX64</code></td>
         <td>
-            <p>Linux MIPS targets (<code>linuxMips32</code> and <code>linuxMipsel32</code>) require a Linux host.</p>
-            <p>You can build other Linux targets on any supported host.</p>
+            <p>Linux MIPS 目标（<code>linuxMips32</code> 与 <code>linuxMipsel32</code>）需要 Linux 主机。</p>
+            <p>可以在任何所支持的主机上构建其他 Linux 目标。</p>
         </td>
     </tr>
     <tr>
         <td>Windows</td>
         <td><code>mingwX64</code>, <code>mingwX86</code></td>
-        <td>Requires a Windows host.</td>
+        <td>需要 Windows 主机。</td>
     </tr>
     <tr>
         <td>WebAssembly</td>
@@ -87,5 +87,5 @@ Kotlin supports the following platforms and provides target presets for each pla
     </tr>
 </table>
 
-> A target that is not supported by the current host is ignored during building and therefore not published.
+> 当前主机不支持的目标在构建期间会被忽略，因此不会发布。
 {:.note}
