@@ -67,7 +67,7 @@ You can use [Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/lp/mobile
 
 ## 接下来做什么？
 
-Kotlin 新手？可以看看[入门](https://https://www.kotlincn.net/docs/tutorials/getting-started.html)页。
+Kotlin 新手？可以看看[入门](https://www.kotlincn.net/docs/tutorials/getting-started.html)页。
 
 ### 文档
 
