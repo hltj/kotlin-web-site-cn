@@ -19,7 +19,7 @@ Kotlin/JS Gradle 插件包含一个[_无用代码消除_](https://zh.wikipedia.o
   All of this functionality would require about 1.3 MB as a JavaScript file.
   一个简单的 "Hello, world" 应用程序仅需要控制台例程，整个程序只有几 KB。
 
-Kotlin/JS Gradle 插件在构建生产包时会自动处理 DCE，例如：使用 `browserProductionWebpack` 任务。开发捆绑任务不包括 DCE。
+Kotlin/JS Gradle 插件在构建**生产包**时会自动处理 DCE，例如：使用 `browserProductionWebpack` 任务。**开发包**任务（例如 `browserDevelopmentWebpack`）不包含 DCE。
 
 ## 从 DCE 排除的声明
 
@@ -30,33 +30,47 @@ Kotlin/JS Gradle 插件在构建生产包时会自动处理 DCE，例如：使�
 参数必须是声明的完整限定名，并且模块名称为前缀：
 `moduleName.dot.separated.package.name.declarationName`
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+> 函数与模块名称在生成的 JavaScript 代码中会被[修饰](js-to-kotlin-interop.html#jsname-注解)，除非指定了其他名称。为了避免消除这些函数，请在 `keep` 参数中使用修饰的名称 as they appear in the generated JavaScript code。
+{:.note}
+
+
+<div class="sample" markdown="1" mode="groovy" theme="idea">
 
 ```groovy
-kotlin.target.browser {
-    dceTask {
-        keep 'myKotlinJSModule.org.example.getName', 'myKotlinJSModule.org.example.User'
+kotlin {
+    js {
+        browser {
+            dceTask {
+                keep("myKotlinJSModule.org.example.getName", "myKotlinJSModule.org.example.User" )
+            }
+            binaries.executable()
+        }
     }
 }
 ```
-
-</div>
 </div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+If you want to keep a whole package or module from elimination, you can use its fully qualified name as it appears in the generated JavaScript code.
 
-```kotlin
-kotlin.target.browser {
-    dceTask {
-        keep("myKotlinJSModule.org.example.getName", "myKotlinJSModule.org.example.User" )
+> Keeping whole packages or modules from elimination can prevent DCE from removing many unused declarations. Because of this, it is preferable to select individual declarations which should be excluded from DCE one by one.
+{:.note}
+
+## Disabling DCE
+
+To turn off DCE completely, use the `devMode` option in the `dceTask`:
+
+<div class="sample" markdown="1" mode="groovy" theme="idea">
+
+```groovy
+kotlin {
+    js {
+        browser {
+            dceTask {
+                dceOptions.devMode = true
+            }
+        }
+        binaries.executable()
     }
 }
 ```
-
 </div>
-</div>
-
-请注意，带有参数的函数名称在生成的 JavaScript 代码中会被[修饰](js-to-kotlin-interop.html#jsname-注解)，除非指定了其他名称。
-为了避免消除这些函数，请在 `keep` 参数中使用修饰的名称。

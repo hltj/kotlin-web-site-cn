@@ -53,6 +53,18 @@ fun powerOf(number: Int, exponent: Int) { /*……*/ }
 ```
 </div>
 
+You can use a [trailing comma](coding-conventions.html#trailing-commas) when you declare function parameters:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+fun powerOf(
+    number: Int,
+    exponent: Int, // trailing comma
+) { /*...*/ }
+```
+</div>
+
 ### 默认参数
 
 函数参数可以有默认值，当省略相应的参数时使用默认值。与其他语言相比，这可以减少<!--
@@ -61,7 +73,11 @@ fun powerOf(number: Int, exponent: Int) { /*……*/ }
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-fun read(b: Array<Byte>, off: Int = 0, len: Int = b.size) { /*……*/ }
+fun read(
+    b: Array<Byte>, 
+    off: Int = 0, 
+    len: Int = b.size,
+) { /*……*/ }
 ```
 </div>
 
@@ -88,7 +104,10 @@ class B : A() {
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-fun foo(bar: Int = 0, baz: Int) { /*……*/ }
+fun foo(
+    bar: Int = 0, 
+    baz: Int,
+) { /*……*/ }
 
 foo(baz = 1) // 使用默认值 bar = 0
 ```
@@ -100,7 +119,11 @@ foo(baz = 1) // 使用默认值 bar = 0
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-fun foo(bar: Int = 0, baz: Int = 1, qux: () -> Unit) { /*……*/ }
+fun foo(
+    bar: Int = 0,
+    baz: Int = 1,
+    qux: () -> Unit,
+) { /*……*/ }
 
 foo(1) { println("hello") }     // 使用默认值 baz = 1
 foo(qux = { println("hello") }) // 使用两个默认值 bar = 0 与 baz = 1
@@ -126,7 +149,8 @@ fun reformat(
     normalizeCase: Boolean = true,
     upperCaseFirstLetter: Boolean = true,
     divideByCamelHumps: Boolean = false,
-    wordSeparator: Char = ' ') {
+    wordSeparator: Char = ' ',
+) {
 /*……*/
 }
 ```

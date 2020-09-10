@@ -21,9 +21,9 @@ title: "编码规范"
 
 如需根据本风格指南配置 IntelliJ 格式化程序，请安装 Kotlin 插件
 1.2.20 或更高版本，转到 __Settings | Editor | Code Style | Kotlin__，点击右<!--
--->上角的 __Set from...__ 链接，并从菜单中选择 __Predefined style | Kotlin style guide__。
+-->上角的 __Set from...__ 链接，并从菜单中选择 __Kotlin style guide__。
 
-如需验证代码已按风格指南格式化，请转到探查设置（Inspections）并启用
+如需验证代码已按风格指南格式化，请转到 __Settings | Editor | Inspections__ 并启用
 __Kotlin | Style issues | File is not formatted according to project settings__ 探查项。
 验证风格指南中描述的其他问题（如命名约定）的附加探查项默认已启用。
 
@@ -239,8 +239,9 @@ if (elements != null) {
 
 </div>
 
-（注意：在 Kotlin 中，分号是可选的，因此换行很重要。语言设计采用
-Java 风格的花括号格式，如果尝试使用不同的格式化风格，那么可能会遇到意外的行为。）
+> 在 Kotlin 中，分号是可选的，因此换行很重要。语言设计采用 
+> Java 风格的花括号格式，如果尝试使用不同的格式化风格，那么可能会遇到意外的行为。
+{:.note}
 
 ### 横向空白
 
@@ -488,7 +489,7 @@ package foo.bar
 ```kotlin
 fun longMethodName(
     argument: ArgumentType = defaultValue,
-    argument2: AnotherArgumentType
+    argument2: AnotherArgumentType,
 ): ReturnType {
     // 函数体
 }
@@ -722,6 +723,272 @@ foo {
    ->
    context.configureEnv(environment)
 }
+```
+
+</div>
+
+### Trailing commas
+
+A trailing comma is a comma symbol after the last item of a series of elements:
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+class Person(
+    val firstName: String,
+    val lastName: String,
+    val age: Int, // trailing comma
+)
+```
+
+</div>
+
+Using trailing commas has several benefits:
+
+* It makes version-control diffs cleaner – as all the focus is on the changed value.
+* It makes adding and reordering elements – there is no need to add or delete the comma if you manipulate elements.
+* It simplifies code generation, for example, for object initializers. The last element can also have a comma.
+
+Trailing commas are entirely optional – your code will still work without them. The Kotlin style guide encourages the use of trailing commas at the declaration site and leaves it optional for the call site.
+
+To enable trailing commas in the IntelliJ IDEA formatter, go to __Settings | Editor | Code Style | Kotlin__, 
+open the __Other__ tab and select the __Use trailing comma__ option.
+
+Kotlin supports trailing commas in the following cases:
+* [Enumerations](#enumerations)
+* [Value arguments](#value-arguments) 
+* [Class properties and parameters](#class-properties-and-parameters)
+* [Function value parameters](#function-value-parameters)
+* [Parameters with optional type (including setters)](#parameters-with-optional-type-including-setters)
+* [Indexing suffix](#indexing-suffix)
+* [Lambda parameters](#lambda-parameters)
+* [`when` entry](#when-entry)
+* [Collection literals (in annotations)](#collection-literals-in-annotations)
+* [Type arguments](#type-arguments)
+* [Type parameters](#type-parameters)
+* [Destructuring declarations](#destructuring-declarations)
+
+#### Enumerations
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+enum class Direction {
+    NORTH,
+    SOUTH,
+    WEST,
+    EAST, // trailing comma
+}
+```
+
+</div>
+
+#### Value arguments
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+fun shift(x: Int, y: Int) { /*...*/ }
+
+shift(
+    25,
+    20, // trailing comma
+)
+
+val colors = listOf(
+    "red",
+    "green",
+    "blue", // trailing comma
+)
+```
+
+</div>
+
+#### Class properties and parameters
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+class Customer(
+    val name: String,
+    val lastName: String, // trailing comma
+)
+
+class Customer(
+    val name: String,
+    lastName: String, // trailing comma
+)
+```
+
+</div>
+
+#### Function value parameters
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+fun powerOf(
+    number: Int, 
+    exponent: Int, // trailing comma
+) { /*...*/ }
+
+constructor(
+    x: Comparable<Number>,
+    y: Iterable<Number>, // trailing comma
+) {}
+
+fun print(
+    vararg quantity: Int,
+    description: String, // trailing comma
+) {}
+```
+
+</div>
+
+#### Parameters with optional type (including setters)
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+val sum: (Int, Int, Int) -> Int = fun(
+    x,
+    y,
+    z, // trailing comma
+): Int {
+    return x + y + x
+}
+println(sum(8, 8, 8))
+```
+
+</div>
+
+#### Indexing suffix
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+class Surface {
+    operator fun get(x: Int, y: Int) = 2 * x + 4 * y - 10
+}
+fun getZValue(mySurface: Surface, xValue: Int, yValue: Int) =
+    mySurface[
+        xValue,
+        yValue, // trailing comma
+    ]
+```
+
+</div>
+
+#### Lambda parameters
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+fun main() {
+    val x = {
+            x: Comparable<Number>,
+            y: Iterable<Number>, // trailing comma
+        ->
+        println("1")
+    }
+
+    println(x)
+}
+```
+
+</div>
+
+#### `when` entry
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+fun isReferenceApplicable(myReference: KClass<*>) = when (myReference) {
+    Comparable::class,
+    Iterable::class,
+    String::class, // trailing comma
+        -> true
+    else -> false
+}
+```
+
+</div>
+
+#### Collection literals (in annotations)
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+annotation class ApplicableFor(val services: Array<String>)
+
+@ApplicableFor([
+    "serializer",
+    "balancer",
+    "database",
+    "inMemoryCache", // trailing comma
+])
+fun run() {}
+```
+
+</div>
+
+#### Type arguments
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+fun <T1, T2> foo() {}
+
+fun main() {
+    foo<
+            Comparable<Number>,
+            Iterable<Number>, // trailing comma
+            >()
+}
+```
+
+</div>
+
+#### Type parameters
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+class MyMap<
+        MyKey,
+        MyValue, // trailing comma
+        > {}
+```
+
+</div>
+
+#### Destructuring declarations
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+data class Car(val manufacturer: String, val model: String, val year: Int)
+val myCar = Car("Tesla", "Y", 2019)
+
+val (
+    manufacturer,
+    model,
+    year, // trailing comma
+) = myCar
+
+val cars = listOf<Car>()
+fun printMeanValue() {
+    var meanValue: Int = 0
+    for ((
+        _,
+        _,
+        year, // trailing comma
+    ) in cars) {
+        meanValue += year
+    }
+    println(meanValue/cars.size)
+}
+printMeanValue()
 ```
 
 </div>

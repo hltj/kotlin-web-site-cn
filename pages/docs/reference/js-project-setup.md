@@ -237,11 +237,14 @@ Besides regular dependencies, there are three more types of dependencies that ca
 
 ## 配置 run 任务
 
-Kotlin/JS 插件提供了一个 `run` 任务，使你无需额外配置即可运行项目。
-它使用 [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) 来运行 Kotlin/JS 项目。
+Kotlin/JS 插件提供了一个 `run` 任务，使你无需额外配置即可运行纯 Kotlin/JS 项目。
+
+对于运行 Kotlin/JS 项目 in the browser, this task is an alias for the `browserDevelopmentRun` task (which is also available in Kotlin multiplatform projects). 它使用 [webpack-dev-server](https://webpack.js.org/configuration/dev-server/)   to serve your JavaScript artifacts.
 如果要自定义 `webpack-dev-server` 的配置，例如更改服务器端口，请使用 [webpack 配置文件](#configuring-webpack-bundling)。
 
-要运行项目，请执行标准生命周期的 `run` 任务：
+For running Kotlin/JS projects targeting Node.js, the `run` task is an alias for the `nodeRun` task (which is also available in Kotlin multiplatform projects). 
+
+要运行项目，请执行标准生命周期的 `run` 任务，, or the alias to which it corresponds：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -383,7 +386,13 @@ config.module.rules.push({
 所有 webpack 配置功能在其
 [文档](https://webpack.js.org/concepts/configuration/) 中都有详细说明。
 
-为了通过 webpack 构建可执行的 JavaScript 构件，Kotlin/JS 插件包含 `browserDevelopmentWebpack` 与`browserProductionWebpack` Gradle 任务。执行它们分别获得用于开发或生产的构件。 The final generated artifacts will be available in `build/distributions` unless [specified otherwise](#distribution-target-directory).
+为了通过 webpack 构建可执行的 JavaScript 构件，Kotlin/JS 插件包含 `browserDevelopmentWebpack` 与`browserProductionWebpack` Gradle 任务。
+
+* `browserDevelopmentWebpack` creates development artifacts, which are larger in size, but take little time to create. As such, use the `browserDevelopmentWebpack` tasks during active development.
+
+* `browserProductionWebpack` applies [dead code elimination](javascript-dce.html) to the generated artifacts and minifies the resulting JavaScript file, which takes more time, but generates executables that are smaller in size. As such, use the `browserProductionWebpack` task when preparing your project for production use.
+ 
+ 执行任一任务分别获得用于开发或生产的构件。 The generated files will be available in `build/distributions` unless [specified otherwise](#distribution-target-directory).
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
