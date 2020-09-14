@@ -30,7 +30,7 @@ Kotlin/JS Gradle 插件在构建**生产包**时会自动处理 DCE，例如：�
 参数必须是声明的完整限定名，并且模块名称为前缀：
 `moduleName.dot.separated.package.name.declarationName`
 
-> 函数与模块名称在生成的 JavaScript 代码中会被[修饰](js-to-kotlin-interop.html#jsname-注解)，除非指定了其他名称。为了避免消除这些函数，请在 `keep` 参数中使用修饰的名称 as they appear in the generated JavaScript code。
+> 函数与模块名称在生成的 JavaScript 代码中会被[修饰](js-to-kotlin-interop.html#jsname-注解)，除非指定了其他名称。为了避免消除这些函数，请在 `keep` 参数中使用修饰的名称——就是出现在所生成 JavaScript 代码中的名称。
 {:.note}
 
 
