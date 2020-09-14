@@ -9,7 +9,7 @@ main:
       title: 论坛
 
     - url: /docs/reference/
-      title: Docs
+      title: 文档
 
     - url: /community/
       title: 社区
