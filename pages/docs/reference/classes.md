@@ -114,6 +114,20 @@ class Person(val firstName: String, val lastName: String, var age: Int) { /*…�
 
 </div>
 
+You can use a [trailing comma](coding-conventions.html#trailing-commas) when you declare class properties:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+class Person(
+    val firstName: String,
+    val lastName: String,
+    var age: Int, // trailing comma
+) { /*...*/ }
+```
+
+</div>
+
 与普通属性一样，主构造函数中声明的属性可以是<!--
 -->可变的（*var*{: .keyword }）或只读的（*val*{: .keyword }）。
 
@@ -129,7 +143,6 @@ class Customer public @Inject constructor(name: String) { /*……*/ }
 </div>
 
 更多详情，参见[可见性修饰符](visibility-modifiers.html#构造函数)
-
 
 #### 次构造函数
 
@@ -402,7 +415,7 @@ open class Base(val name: String) {
 
 class Derived(
     name: String,
-    val lastName: String
+    val lastName: String,
 ) : Base(name.capitalize().also { println("Argument for Base: $it") }) {
 
     init { println("Initializing Derived") }

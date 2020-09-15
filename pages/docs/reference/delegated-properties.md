@@ -153,16 +153,16 @@ fun main() {
 如果你想截获赋值并“否决”它们，那么使用 [`vetoable()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/vetoable.html) 取代 `observable()`。
 在属性被赋新值生效*之前*会调用传递给 `vetoable` 的处理程序。
 
-## Delegating to another property
+## 委托给另一个属性
 
-Since Kotlin 1.4, a property can delegate its getter and setter to another property. Such delegation is available for
-both top-level and class properties (member and extension). The delegate property can be:
-- a top-level property
-- a member or an extension property of the same class
-- a member or an extension property of another class
+从 Kotlin 1.4 开始，一个属性可以把它的 getter 与 setter 委托给另一个属性。这种委托<!--
+-->对于顶层和类的属性（成员和扩展）都可用。该委托属性可以为：
+- 顶层属性
+- 同一个类的成员或扩展属性
+- 另一个类的成员或扩展属性
 
-To delegate a property to another property, use the proper `::` qualifier in the delegate name, for example, `this::delegate` or
-`MyClass::delegate`.
+为将一个属性委托给另一个属性，应在委托名称中使用恰当的 `::` 限定符，例如，`this::delegate` 或
+`MyClass::delegate`。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -183,8 +183,8 @@ var MyClass.extDelegated: Int by ::topLevelInt
 
 </div>
 
-This may be useful, for example, when you want to rename a property in a backward-compatible way: you introduce a new property,
-annotate the old one with the `@Deprecated` annotation, and delegate its implementation.
+这是很有用的，例如，当想要以一种向后兼容的方式重命名一个属性的时候：引入一个新的属性、
+使用 `@Deprecated` 注解来注解旧的属性、并委托其实现。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -197,7 +197,7 @@ class MyClass {
 
 fun main() {
    val myClass = MyClass()
-   // Notification: 'oldName: Int' is deprecated.
+   // 通知：'oldName: Int' is deprecated.
    // Use 'newName' instead
    myClass.oldName = 42
    println(myClass.newName) // 42
