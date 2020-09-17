@@ -51,7 +51,7 @@ Kotlin/JS 还与最常见的模块系统兼容：UMD、CommonJS 与 AMD。能够
 
 如果不熟悉 Kotlin，那么第一步最好是熟悉该语言的[基本语法](basic-syntax.html)。
 
-要开始将 Kotlin 用于 JavaScript，请参阅[搭建 Kotlin/JS 项目](/docs/reference/js-project-setup.html)，或者从下一部分中选择动手实验进行操作。
+要开始将 Kotlin 用于 JavaScript，请参考[搭建 Kotlin/JS 项目](/docs/reference/js-project-setup.html)，或者从下一部分中选择动手实验进行操作。
 
 ## Kotlin/JS 实践实验室
 
@@ -69,7 +69,7 @@ Kotlin/JS 还与最常见的模块系统兼容：UMD、CommonJS 与 AMD。能够
 
 [新的 Kotlin/JS IR 编译器](/docs/reference/js-ir-compiler.html)（当前稳定性：[Alpha](/docs/reference/evolution/components-stability.html)）相对于当前的默认编译器进行了许多改进。例如，通过消除死代码来减小生成的可执行文件的体积，并使与 JavaScript 生态系统及其工具的互操作更加流畅。通过从 Kotlin 代码生成 TypeScript 声明文件（d.ts），新的编译器使创建混合 TypeScript 与 Kotlin 代码的“混合”应用程序变得更加容易，并利用 Kotlin 多平台代码共享功能。
 
-要了解有关新 Kotlin/JS IR 编译器中可用特性的更多信息，以及如何在项目中尝试使用它，请访问[文档](/docs/reference/js-ir-compiler.html)。
+要了解有关新 Kotlin/JS IR 编译器中可用特性的更多信息，以及如何在项目中尝试使用它，请访问其[文档](/docs/reference/js-ir-compiler.html)。
 
 ## 加入 Kotlin/JS 社区
 还可以在官方 [Kotlin Slack](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) 中加入 [#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) 频道，并与社区和团队聊天。
