@@ -1,10 +1,20 @@
 <section class="kto-overview-section kto-overview-section_mode_dark kotlin-intro-section">
     <div class="g-layout kotlin-intro-section">
-        <p class="kotlin-intro-section__intro">
-            让开发人员更快乐的<br>
-            一门现代编程语言。<br>
-            永远开源 <a target="_blank" href="{{ config.GITHUB_URL }}" class="kotlin-intro-section__icon">Github</a>
-        </p>
+        <div class="kotlin-intro-section__intro">
+            <p>
+                让开发人员<br>
+                更快乐的一门<br>
+                现代编程语言。<br>
+            </p>
+
+            <p class="kotlin-intro-section__contributors">
+                <a target="_blank" href="{{ config.JETBRAINS }}" class="kotlin-intro-section__logo-link">
+                    <img class="kotlin-intro-section__logo" src="{{ url_for('asset', path='jetbrains-logo.svg') }}" alt="jetbrains logo" width="32" height="32"/>
+                </a>
+                由 <a target="_blank" href="{{ config.JETBRAINS }}" class="kotlin-intro-section__contributors-link">JetBrains</a>
+                 以及开源<a target="_blank" href="https://github.com/JetBrains/kotlin/graphs/contributors" class="kotlin-intro-section__contributors-link">贡献者</a>开发
+            </p>
+        </div>
         <p class="kotlin-intro-section__buttons">
             <a class="kto-button kto-button_theme_dark kto-button_size_m kto-button_mode_outline kotlin-banner-section__try-ide" href="/docs/tutorials/getting-started.html">入门</a>
             <a class="kto-button kto-button_theme_dark kto-button_size_m kto-button_mode_primary smooth-anchor" href="#try-kotlin">在线试用</a>
