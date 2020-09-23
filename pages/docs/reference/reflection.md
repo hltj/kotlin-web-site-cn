@@ -11,11 +11,59 @@ title: "反射"
 Kotlin 让语言中的函数和属性做为一等公民、并对其自省（即在运行时获悉<!--
 -->一个名称或者一个属性或函数的类型）与简单地使用函数式或响应式风格紧密相关。
 
-> 在 Java 平台上，使用反射功能所需的运行时组件作为单独的
-JAR 文件（`kotlin-reflect.jar`）分发。这样做是为了减少不使用反射功能的应用程序所需的<!--
--->运行时库的大小。如果你需要使用反射，请确保该 .jar文件添加到项目的
-classpath 中。
+> On the JavaScript platform, only class references are currently supported. [Learn more about reflection in Kotlin/JS](js-reflection.html).
 {:.note}
+
+## JVM dependency
+
+On the JVM platform, the runtime component required for using the reflection features is distributed as a separate
+artifact `kotlin-reflect.jar` in the Kotlin compiler distribution. This is done to reduce the required size of the runtime
+library for applications that do not use reflection features.
+
+To use reflection in a Gradle or Maven project, add the dependency on `kotlin-reflect`:
+* In Gradle:
+  <div class="multi-language-sample" data-lang="groovy">
+  <div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+  
+  ```groovy
+  dependencies {
+      implementation "org.jetbrains.kotlin:kotlin-reflect:{{ site.data.releases.latest.version }}"
+  }
+  ```
+  
+  </div>
+  </div>
+   
+  <div class="multi-language-sample" data-lang="kotlin">
+  <div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+  
+  ```kotlin
+  dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-reflect:{{ site.data.releases.latest.version }}")
+  }
+  ```
+  
+  </div>
+  </div>
+  
+  * In Maven:
+
+  <div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+    
+  ```xml
+  <dependencies>
+      <dependency>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-reflect</artifactId>
+      </dependency>
+  </dependencies>
+  ```
+  </div>
+
+If you don't use Gradle or Maven, make sure you have `kotlin-reflect.jar` in the classpath of your project.
+In other supported cases (IntelliJ IDEA projects, using command-line compiler or Ant),
+it is added by default. In command-line compiler and Ant, you can use `-no-reflect` compiler option to exclude
+`kotlin-reflect.jar` from the classpath. 
 
 ## 类引用
 
@@ -61,6 +109,7 @@ assert(widget is GoodWidget) { "Bad widget: ${widget::class.qualifiedName}" }
 当我们有一个具名函数声明如下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun isOdd(x: Int) = x % 2 != 0
 ```
@@ -70,6 +119,7 @@ fun isOdd(x: Int) = x % 2 != 0
 -->另一个函数。为此，我们使用 `::` 操作符：
 
 <div class="sample" markdown="1" theme="idea">
+
 ```kotlin
 fun isOdd(x: Int) = x % 2 != 0
 
@@ -91,6 +141,7 @@ fun main() {
 例如：
 
 <div class="sample" markdown="1" theme="idea">
+
 ```kotlin
 fun main() {
 //sampleStart
@@ -119,6 +170,7 @@ val predicate: (String) -> Boolean = ::isOdd   // 引用到 isOdd(x: String)
 -->带有接收者的函数类型，请明确指定其类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val isEmptyStringList: List<String>.() -> Boolean = List<String>::isEmpty 
 ```
@@ -140,6 +192,7 @@ fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
 现在，你可以将其应用于可调用引用：
 
 <div class="sample" markdown="1" theme="idea">
+
 ```kotlin
 fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
     return { x -> f(g(x)) }
@@ -165,6 +218,7 @@ fun main() {
 要把属性作为 Kotlin中 的一等对象来访问，我们也可以使用 `::` 运算符：
 
 <div class="sample" markdown="1" theme="idea">
+
 ```kotlin
 val x = 1
 
@@ -183,6 +237,7 @@ fun main() {
 该类型有一个 `set()` 方法。
 
 <div class="sample" markdown="1" theme="idea">
+
 ```kotlin
 var y = 1
 
@@ -196,6 +251,7 @@ fun main() {
 属性引用可以用在预期具有单个泛型参数的函数的地方：
 
 <div class="sample" markdown="1" theme="idea">
+
 ```kotlin
 fun main() {
 //sampleStart
@@ -223,6 +279,7 @@ fun main() {
 对于扩展属性：
 
 <div class="sample" markdown="1" theme="idea" auto-indent="false">
+
 ```kotlin
 val String.lastChar: Char
     get() = this[length - 1]
@@ -235,11 +292,12 @@ fun main() {
 
 ### 与 Java 反射的互操作性
 
-在Java平台上，标准库包含反射类的扩展，它提供了与 Java
+在 JVM 平台上，标准库包含反射类的扩展，它提供了与 Java
 反射对象之间映射（参见 `kotlin.reflect.jvm` 包）。
 例如，要查找一个用作 Kotlin 属性 getter 的 幕后字段或 Java方法，可以这样写：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 import kotlin.reflect.jvm.*
 
@@ -268,6 +326,7 @@ fun getKClass(o: Any): KClass<Any> = o.javaClass.kotlin
 它期待一个无参并返回 `Foo` 类型的函数参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Foo
 
@@ -280,6 +339,7 @@ fun function(factory: () -> Foo) {
 使用 `::Foo`，类 Foo 的零参数构造函数，我们可以这样简单地调用它：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 function(::Foo)
 ```
@@ -295,6 +355,7 @@ function(::Foo)
 你可以引用特定对象的实例方法：
 
 <div class="sample" markdown="1" theme="idea">
+
 ```kotlin
 fun main() {
 //sampleStart
@@ -313,6 +374,7 @@ fun main() {
 它可以直接调用（如上例所示）或者用于任何期待一个函数类型表达式的时候：
 
 <div class="sample" markdown="1" theme="idea">
+
 ```kotlin
 fun main() {
 //sampleStart
@@ -328,6 +390,7 @@ fun main() {
 绑定的可调用引用有其接收者“附加”到其上，因此接收者的类型不再是参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val isNumber: (CharSequence) -> Boolean = numberRegex::matches
 

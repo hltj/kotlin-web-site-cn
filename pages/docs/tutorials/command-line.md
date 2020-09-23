@@ -62,7 +62,7 @@ $ sudo snap install --classic kotlin
 
 ### 创建并运行第一个应用程序
 
-1. 在 Kotlin 中创建一个显示 Hello，World! 的简单应用程序。使用喜欢的编辑器，创建一个名为 *hello.kt* 的新文件，内容如下：
+1. 在 Kotlin 中创建一个显示 `"Hello, World!"` 的简单应用程序。使用喜欢的编辑器，创建一个名为 *hello.kt* 的新文件，内容如下：
 
    <div class="sample" markdown="1" theme="idea">
 
@@ -74,7 +74,7 @@ $ sudo snap install --classic kotlin
 
    </div>
 
-2. 使用 Kotlin 编译器编译应用程序
+2. 使用 Kotlin 编译器编译应用程序：
 
     <div class="sample" markdown="1" mode="shell" theme="idea">
 
