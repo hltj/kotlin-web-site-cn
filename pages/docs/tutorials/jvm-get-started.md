@@ -15,6 +15,7 @@ showAuthorInfo: false
 当IntelliJ IDEA安装完成后，我们就可以开始你的第一个Kotlin应用了.
 
 1.进入IntelliJ IDEA，选择**File** \| **New** \| **Project**.
+
 2.在左侧面板选择**Kotlin**.
 
 3.输入项目名称，选择**Console Application**作为项目模板，点击**Next**.
