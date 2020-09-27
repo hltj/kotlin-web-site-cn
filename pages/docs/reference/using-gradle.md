@@ -561,7 +561,7 @@ Kotlin 插件支持 [Gradle 构建缓存](https://guides.gradle.org/using-build-
 
 Android 项目中的任务名称包含[构建变体](https://developer.android.com/studio/build/build-variants.html) 名称，并遵循 `compile<BuildVariant>Kotlin` 的模式，例如 `compileDebugKotlin`、 `compileReleaseUnitTestKotlin`。
 
-当面向 JavaScript 时，这些任务分别称为 `compileKotlin2Js` 与 `compileTestKotlin2Js`，以及对于自定义源文件集称为 `compile＜Name＞Kotlin2Js`。
+当面向 JavaScript 时，这些任务分别称为 `compileKotlinJs` 与 `compileTestKotlinJs`，以及对于自定义源文件集称为 `compile＜Name＞KotlinJs`。
 
 要配置单个任务，请使用其名称。示例：
 
