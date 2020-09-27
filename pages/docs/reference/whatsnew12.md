@@ -447,7 +447,7 @@ Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由�
 
 在 Kotlin 1.2 之前，面向 JVM 1.6 的接口成员覆盖 Java 默认方法会产生一个关于<!--
 -->超类型调用的警告：`Super calls to Java default methods are deprecated in JVM target 1.6. Recompile with '-jvm-target 1.8'`（“面向 JVM 1.6 的 Java 默认方法的超类型调用已弃用，请使用‘-jvm-target 1.8’重新编译”）。
-在 Kotlin 1.2 中，这是一个**错误 **，因此这样的代码都需要面向 JVM 1.8 编译。
+在 Kotlin 1.2 中，这是一个**错误**，因此这样的代码都需要面向 JVM 1.8 编译。
 
 ### 破坏性变更：平台类型 x.equals(null) 的一致行为
 
