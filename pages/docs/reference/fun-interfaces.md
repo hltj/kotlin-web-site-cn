@@ -6,10 +6,9 @@ title: "函数式接口（SAM 接口）"
 
 # 函数式（SAM）接口
 
-An interface with only one abstract method is called a _functional interface_, or a _Single Abstract
-Method (SAM) interface_. The functional interface can have several non-abstract members but only one abstract member.
+只有一个抽象方法的接口称为*函数式接口*或 *SAM（单一抽象方法）*接口。函数式接口可以有多个非抽象成员，但只能有一个抽象成员。
 
-To declare a functional interface in Kotlin, use the `fun` modifier.
+可以用 `fun` 修饰符在 Kotlin 中声明一个函数式接口。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -21,16 +20,14 @@ fun interface KRunnable {
 
 </div>
 
-## SAM conversions
+## SAM 转换
 
-For functional interfaces, you can use SAM conversions that help make your code more concise and readable by using
-[lambda expressions](lambdas.html#lambda-expressions-and-anonymous-functions).
+对于函数式接口，可以通过 [lambda 表达式](lambdas.html#lambda-expressions-and-anonymous-functions)实现 SAM 转换，从而使代码更简洁、更有可读性。
 
-Instead of creating a class that implements a functional interface manually, you can use a lambda expression.
-With a SAM conversion, Kotlin can convert any lambda expression whose signature matches
-the signature of the interface's single method into an instance of a class that implements the interface.
+使用 lambda 表达式可以替代手动创建实现函数式接口的类。
+通过 SAM 转换， Kotlin 可以将其签名与接口的单个抽象方法的签名匹配的任何 lambda 表达式转换为实现该接口的类的实例。
 
-For example, consider the following Kotlin functional interface:
+例如，有这样一个 Kotlin 函数式接口：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -42,12 +39,12 @@ fun interface IntPredicate {
 
 </div>
 
-If you don't use a SAM conversion, you will need to write code like this:
+如果不使用 SAM 转换，那么你需要像这样编写代码：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// Creating an instance of a class
+// 创建一个类的实例
 val isEven = object : IntPredicate {
    override fun accept(i: Int): Boolean {
        return i % 2 == 0
@@ -57,18 +54,18 @@ val isEven = object : IntPredicate {
 
 </div>
 
-By leveraging Kotlin's SAM conversion, you can write the following equivalent code instead:
+通过利用 Kotlin 的 SAM 转换，可以改为以下等效代码：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// Creating an instance using lambda
+// 通过 lambda 表达式创建一个实例
 val isEven = IntPredicate { it % 2 == 0 }
 ```
 
 </div>
 
-A short lambda expression replaces all the unnecessary code.
+可以通过更短的 lambda 表达式替换所有不必要的代码。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.4-M1">
 
@@ -86,14 +83,12 @@ fun main() {
 
 </div>
 
-You can also use [SAM conversions for Java interfaces](java-interop.html#sam-conversions).
+你也可以使用 [Java 接口上的 SAM 转换](java-interop.html#sam-conversions)。
 
-## Functional interfaces vs. type aliases
+## 函数式接口与类型别名比较
 
-Functional interfaces and [type aliases](type-aliases.html) serve different purposes. Type aliases are just names for
-existing types – they don't create a new type, while functional interfaces do.
+函数式接口和[类型别名](type-aliases.html)用途并不相同。类型别名只是现有类型的名称——它们不会创建新的类型，而函数式接口却会创建新类型。
 
-Type aliases can have only one member, while functional interfaces can have multiple non-abstract members and one abstract member.
-Functional interfaces can also implement and extend other interfaces.
+类型别名只能有一个成员，而函数式接口可以有多个非抽象成员以及一个抽象成员。函数式接口还可以实现以及继承其他接口。
 
-Considering the above, functional interfaces are more flexible and provide more capabilities than type aliases.
+考虑到上述情况，函数式接口比类型别名更灵活并且提供了更多的功能。
