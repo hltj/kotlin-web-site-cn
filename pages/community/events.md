@@ -17,7 +17,7 @@ title: 活动
 * **37** 国家
  {:.community-numbers-right}
  
-Kotlin 之夜是一个派对，包括 3~4 次有关 Kotlin 或相关技术的演讲。在 JetBrains 组织了一些活动：[Kotlin 旧金山之夜](https://blog.jetbrains.com/kotlin/2016/06/kotlin-night-recordings/)与 [Kotlin 伦敦之夜](https://blog.jetbrains.com/kotlin/2016/11/kotlin-night-in-london-recordings/)。
+Kotlin 之夜是一个包含 3~4 次关于 Kotlin 或相关技术的演讲集会。在 JetBrains 组织了一些活动：[Kotlin 旧金山之夜](https://blog.jetbrains.com/kotlin/2016/06/kotlin-night-recordings/)与 [Kotlin 伦敦之夜](https://blog.jetbrains.com/kotlin/2016/11/kotlin-night-in-london-recordings/)。
 
 * [准则与支持](/community/kotlin-nights/guidelines.html)
 * [品牌宣传资料](/community/kotlin-nights/branding.html)
