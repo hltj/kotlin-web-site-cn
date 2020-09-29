@@ -1,15 +1,15 @@
 ---
 type: doc
 layout: groups
-title: "Kotlin User Groups List"
+title: "Kotlin 用户组列表"
 ---
 
-# Find a KUG near you
-## 205 KUGs around the world
+# 查找附近的 Kotlin 用户群组
+## 205 个 Kotlin 用户群组遍布全球
 
-Kotlin User Group or KUG is a community of people and a place to share your programming experience with Kotlin and its ecosystem
+Kotlin 用户群组（KUG）是一个人的社区，是一个与 Kotlin 及其生态系统共享编程经验的地方。
 
-## Europe
+## 欧洲
 
  * [Amsterdam Kotlin User Group](https://www.meetup.com/kotlin-amsterdam/), Netherlands
  * [Amsterdam High-performance Kotlin User Group](https://www.meetup.com/High-performance-Kotlin/), Netherlands
@@ -80,7 +80,7 @@ Kotlin User Group or KUG is a community of people and a place to share your prog
  * [Warsaw Kotlin](https://www.meetup.com/Kotlin-Warsaw/), Poland
  {:.community-usergroup-list}
 
-## Asia
+## 亚洲
 
  * [Ahmedabad Kotlin User Group](https://www.meetup.com/KotlinAhmedabad/), India
  * [Allahabad Kotlin User Group](https://www.facebook.com/Kotlin-Allahabad-User-Group-967463300076405/), India
@@ -140,7 +140,7 @@ Kotlin User Group or KUG is a community of people and a place to share your prog
  * [Yerevan Kotlin User Group](https://www.meetup.com/Kotlin-Yerevan/), Armenia
  {:.community-usergroup-list}
 
-## North America
+## 北美洲
 
 * [Albuquerque Kotlin User Group](https://www.meetup.com/Kotlin-ABQ/), USA
 * [Austin Kotlin User Group](https://www.meetup.com/Austin-Kotlin-Meetup/), USA
@@ -173,7 +173,7 @@ Kotlin User Group or KUG is a community of people and a place to share your prog
 * [West Florida Kotlin User Group](https://www.facebook.com/groups/KotlnWestFlorida), USA
  {:.community-usergroup-list}
 
-## South America
+## 南美洲
 
 * [Asunción Kotlin User Group](https://kotlin-user-group-asuncion-py.github.io/), Paraguay
 * [Brasil Kotlin User Group](https://groups.google.com/forum/#!forum/kotlin-brasil), Brazil
@@ -193,7 +193,7 @@ Kotlin User Group or KUG is a community of people and a place to share your prog
 * [Rio de Janeiro](https://www.meetup.com/Kotlin-Rio/), Brazil
  {:.community-usergroup-list}
 
-## Australia/Oceania
+## 澳大利亚/大洋洲
 
 * [Brisbane Kotlin User Group](https://www.meetup.com/Brisbane-Kotlin-User-Group/), Australia
 * [Melbourne Kotlin User Group](https://www.meetup.com/Melbourne-Kotlin-Meetup/), Australia
@@ -201,7 +201,7 @@ Kotlin User Group or KUG is a community of people and a place to share your prog
 * [Wellington Kotlin User Group](https://www.meetup.com/Wellington-kt/), New Zealand
  {:.community-usergroup-list}
 
-## Africa
+## 非洲
 
 * [Abidjan Kotlin User Group](https://www.facebook.com/groups/778398068995641/), Cote d'Ivoire
 * [Abuja Kotlin User Group](https://www.meetup.com/Kotlin-Abuja-User-Group-Nigeria/), Nigeria
@@ -240,5 +240,5 @@ Kotlin User Group or KUG is a community of people and a place to share your prog
 * [Yola Kotlin User Group](https://www.facebook.com/Kotlin-Yola-User-Group-104198534358013/), Nigeria
  {:.community-usergroup-list}
 
-Have a question? [Contact us](mailto:kug@jetbrains.com)
+有一个问题？[联系我们](mailto:kug@jetbrains.com)
 {:.community-attention-info}
