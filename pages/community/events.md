@@ -1,53 +1,53 @@
 ---
 type: doc
 layout: community
-title: Events
+title: 活动
 ---
 
-# Everybody to the party 
+# 每个人都可参与的派对
 
-[Host event](https://surveys.jetbrains.com/s3/1eca96c71ee7){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
+[主办活动](https://surveys.jetbrains.com/s3/1eca96c71ee7){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
 
-## Kotlin Nights
+## Kotlin 之夜
 
-![Kotlin Nights]({{ url_for('asset', path='images/community/kotlin-nights-banner.svg') }})
+![Kotlin 之夜]({{ url_for('asset', path='images/community/kotlin-nights-banner.svg') }})
 
-* **4K** of attendees
-* **78** events
-* **37** countries
+* **4K** 参与者
+* **78** 活动
+* **37** 国家
  {:.community-numbers-right}
  
-Kotlin Night is a meetup that includes 3-4 talks on Kotlin or related technologies.  At JetBrains we've organised a few events: [Kotlin Night San Francisco](https://blog.jetbrains.com/kotlin/2016/06/kotlin-night-recordings/) and [Kotlin Night London](https://blog.jetbrains.com/kotlin/2016/11/kotlin-night-in-london-recordings/).
+Kotlin 之夜是一个派对，包括 3~4 次有关 Kotlin 或相关技术的演讲。在 JetBrains 组织了一些活动：[Kotlin 旧金山之夜](https://blog.jetbrains.com/kotlin/2016/06/kotlin-night-recordings/)与 [Kotlin 伦敦之夜](https://blog.jetbrains.com/kotlin/2016/11/kotlin-night-in-london-recordings/)。
 
-* [Support Guidelines](/community/kotlin-nights/guidelines.html)
-* [Branding materials](/community/kotlin-nights/branding.html)
+* [准则与支持](/community/kotlin-nights/guidelines.html)
+* [品牌宣传资料](/community/kotlin-nights/branding.html)
  {:.community-list-right}
 
-The community however is asking for more Kotlin Nights and are willing to organise these themselves. Here you would find guidelines and some hints on putting things together.
+然而，社区想要更多的 Kotlin 之夜，并愿意自己举办这些活动。在这里，可以找到一些关于如何举办 Kotlin 之夜的指导方针与提示。
  
-## KotlinConf Global
+## KotlinConf 全球
  
-* **2K** of attendees
-* **50** events
-* **20** countries 
+* **2K** 参与者
+* **50** 活动
+* **20** 国家 
  {:.community-numbers-right}
  
-KotlinConf Global is a series of meetups organized by the community to watch and discuss the keynote and sessions from KotlinConf 2019. Find an event near you on the map, and join in with the community.
+KotlinConf 全球是社区组织的一系列聚会，目的是观看与讨论 KotlinConf 2019 的主题演讲与会议。在地图上找到最近的活动，并与社区一起参加。
 
-Have a question? [Contact us](mailto:kug@jetbrains.com)
+有一个问题？[联系我们](mailto:kug@jetbrains.com)
 {:.community-attention-info}
 
 
-## Kotlin/Everywhere
+## Kotlin/无处不在
 
-[Event page](http://everywhere.kotlinlang.org){:.external-link}
+[活动页面](http://everywhere.kotlinlang.org){:.external-link}
 
 ![Kotlin Nights]({{ url_for('asset', path='images/community/kotlin-everywere-banner.svg') }})
 
 
-* **28K** of attendees
-* **350** events
-* **86** countries
+* **28K** 参与者
+* **350** 活动
+* **86** 国家
  {:.community-numbers-right}
 
-This is a series of community-led events, where you can learn the essentials and best practices of Kotlin in Android, Google Cloud Platform, and multi-platform development
+这是一系列由社区主导的活动，可以在其中学习 Android、Google 云平台与多平台开发中 Kotlin 的基本知识与最佳实践。
