@@ -1,12 +1,12 @@
 ---
-title: Kotlin Events
+title: Kotlin 活动
 layout: default-v2
 ---
 
-# Kotlin talks and speakers support
+# Kotlin 会谈与演讲者支持
 
-If you are a Kotlin speaker, please let us know about your upcoming talks via filling out [this form](https://surveys.jetbrains.com/s3/Submit-a-Kotlin-Talk)
-and we will announce your talks at kotlinlang.org. We'll also be glad to ship a t-shirt for you and some stickers and swag for the attendees of your event.
+如果是 Kotlin 演讲者，请填写[此表格](https://surveys.jetbrains.com/s3/Submit-a-Kotlin-Talk)告知 JetBrains 即将进行的演讲，JetBrains 将在 <kotlinlang.org> 上公布演讲。
+JetBrains 也会很乐意寄一些T恤以及贴纸与赠品给活动的参加者。
 
 <br/>
 
