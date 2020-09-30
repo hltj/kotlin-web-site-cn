@@ -1,49 +1,49 @@
 ---
 type: doc
 layout: events
-title: Guidelines
+title: 品牌宣传资料
 ---
 
-# Kotlin Night Branding 
+# Kotlin 之夜品牌宣传资料
 
-JetBrains provides branding and materials for Kotlin Night events. Our team will prepare digital assets for event promotion and ship your merchandise pack, which contains stickers and t-shirts. Check out what we have to make your Kotlin Night fun!
+JetBrains 为 Kotlin 之夜活动提供品牌宣传资料。JetBrains 团队将为促销活动准备数字资料，并运送包含贴纸与T恤的商品包。来看看有什么能让 Kotlin 之夜变得有趣！
 
-[Download all](https://drive.google.com/drive/u/0/folders/1mAD6S0WBER11_ADPAqHoP1M1rcN9Wx5L){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
+[下载全部](https://drive.google.com/drive/u/0/folders/1mAD6S0WBER11_ADPAqHoP1M1rcN9Wx5L){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
 
-## Social media
+## 社交媒体
 
-Stickers can be used to brand assets for Kotlin Night. Just stick them on anything you can get your hands on. It’s fun!
+贴纸可以用于 Kotlin 之夜的品牌资源。只要将其贴在任何触手可及的地方即可。很有趣！
 
 ![Cover/Logo]({{ url_for('asset', path='images/community/kotlin-night-branding/cover.svg') }})
 
 ![Cover Social]({{ url_for('asset', path='images/community/kotlin-night-branding/fb.svg') }})
  
-## Branding Stickers
+## 品牌贴纸
  
-Stickers can be used to brand any media necessary for Kotlin Night. Just stick them on anything you can get your hands on. It is funny!
+贴纸可用于标记 Kotlin 之夜所需的任何媒体。只要将其贴在任何触手可及的地方即可。这很有趣！
  
 ![Stickers]({{ url_for('asset', path='images/community/kotlin-night-branding/stickers.svg') }})
  
 ![Stickers usage]({{ url_for('asset', path='images/community/kotlin-night-branding/stickers-usage.svg') }})
 
-## Press-wall
+## 展示墙
 
-You can decorate a press wall with stickers for unforgettable event pictures.
+可以用贴纸装饰展示墙，以制作难忘的活动图片。
 
 ![Press Wall]({{ url_for('asset', path='images/community/kotlin-night-branding/press-wall.svg') }})
 
-## Sticky badges
+## 贴纸徽章
 
-Use stickers as badges for the attendees and boost networking at the event!
+使用贴纸作为与会人员的徽章，并在活动中促进交流！
 
-## Board for stickers
+## 贴纸留言板
 
-Or you can provide a board where your guests can paste stickers with their impressions, feedback, and wishes. 
+或者，可以提供一个留言板，让与会人员把他们的印象、反馈与愿望贴在上面。
 
 ![board pack]({{ url_for('asset', path='images/community/kotlin-night-branding/board.svg') }})
 
-## T-shirts
+## T恤
 
-Guests of the event are offered to paste stickers on the board with their impressions of the meeting. What does it mean for you?
+邀请的活动对象可以将其对会议的印象粘贴在板上。这意味着什么？
 
 ![Sticker pack]({{ url_for('asset', path='images/community/kotlin-night-branding/t-shirt.svg') }})
