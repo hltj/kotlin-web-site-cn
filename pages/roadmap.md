@@ -1,23 +1,23 @@
 ---
 layout: reference
-title: Kotlin Roadmap
+title: Kotlin 路线图
 date: 2020-10-01
 ---
 
-# Kotlin Roadmap
+# Kotlin 路线图
 
 <table>
     <tr>
-        <td><strong>Last modified on</strong></td>
-        <td>October 2020</td>
+        <td><strong>最后修改时间</strong></td>
+        <td>2020 年 10 月</td>
     </tr>
     <tr>
-        <td><strong>Time frame</strong></td>
-        <td>6 months until March 2021</td>
+        <td><strong>预计时效</strong></td>
+        <td>6 个月，到 2021 年 3 月</td>
     </tr>
     <tr>
-        <td><strong>Next update</strong></td>
-        <td>January 2021</td>
+        <td><strong>下次更新时间</strong></td>
+        <td>2021 年 1 月</td>
     </tr>
 </table>
 
@@ -33,7 +33,7 @@ Here are a few points to note about this roadmap:
 
 If you have any questions or feedback about the roadmap or the items on it, feel free to post them to [YouTrack tickets](https://youtrack.jetbrains.com/issues/KT?q=%23%7BRoadmap%20Item%7D%20) or in the [#kotlin-roadmap](https://kotlinlang.slack.com/archives/C01AAJSG3V4) channel of Kotlin Slack ([request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up?_ga=2.60878444.1901676095.1599823213-394965905.1588600024)).
  
-## Key priorities
+## 关键优先事项
 
 The goal of this roadmap is to give you a big picture. Here’s a list of our key priorities – the areas we are investing the most effort into:
 
@@ -43,15 +43,15 @@ The goal of this roadmap is to give you a big picture. Here’s a list of our ke
 - **Kotlin for JVM server-side development**: expanding support for server-side use cases across the Kotlin ecosystem.
 - **Kotlin Multiplatform Mobile**: improving the user experience and feature set for sharing code on mobile platforms.
 
-## Kotlin roadmap by subsystem
+## 以子系统划分的 Kotlin 路线图
 
 This table describes the biggest projects that we’re working on.
 
 <table>
     <tr>
-        <th>Subsystem</th>
-        <th>In focus now</th>
-        <th>Postponed for later</th>
+        <th>子系统</th>
+        <th>当前聚焦</th>
+        <th>推迟后续</th>
     </tr>
     <tr>
         <td><strong>Language</strong>

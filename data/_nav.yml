@@ -95,13 +95,13 @@ reference:
         - url: /docs/reference/whatsnew11.html
           title: 1.1 的新特性
 
-    - title: Releases and Roadmap
-      description: Kotlin releases and roadmap
+    - title: 版本发布与路线图
+      description: Kotlin 版本发布与路线图
       content:
         - url: /releases.html
-          title: Kotlin Releases
+          title: Kotlin 版本发布
         - url: /roadmap.html
-          title: Kotlin Roadmap
+          title: Kotlin 路线图
 
     - title: 开始
       description: 开始熟悉 Kotlin 基础包括操作、编码习惯与习惯用法。
