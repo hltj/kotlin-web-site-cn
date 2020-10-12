@@ -21,17 +21,17 @@ date: 2020-10-01
     </tr>
 </table>
 
-Welcome to the Kotlin roadmap! Get a sneak peek into the priorities of the Kotlin Team.
+欢迎来看 Kotlin 路线图！一窥 Kotlin 团队的工作重点。
 
-Here are a few points to note about this roadmap:
+关于路线图有以下几点注意事项：
 
-1. It describes the primary areas that the team is investing into.
-2. It’s not an exhaustive list of all things the team is working on, only the biggest projects.
-3. There’s no commitment to delivering specific features or fixes in specific versions.
-4. It lists some things that are postponed and will NOT get the team’s attention in the nearest future.
-5. Nothing is set in stone, we will adjust our priorities as we go and update the roadmap approximately every three months.
+1. 描述了团队正在投入的主要领域。
+2. 这不是团队正在做的所有事情的详尽清单，只列了最大的项目。
+3. 没有在指定版本中交付指定特性或修复的承诺。
+4. 列出了一些被推迟并且团队在不久的将来**不会**关注的事情。
+5. 没有什么是一成不变的，我们会随着进展调整事项的优先级，并且大约每三个月更新一次路线图。
 
-If you have any questions or feedback about the roadmap or the items on it, feel free to post them to [YouTrack tickets](https://youtrack.jetbrains.com/issues/KT?q=%23%7BRoadmap%20Item%7D%20) or in the [#kotlin-roadmap](https://kotlinlang.slack.com/archives/C01AAJSG3V4) channel of Kotlin Slack ([request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up?_ga=2.60878444.1901676095.1599823213-394965905.1588600024)).
+如果对路线图或者其中某些点有任何问题或反馈，请随时发布到 [YouTrack tickets](https://youtrack.jetbrains.com/issues/KT?q=%23%7BRoadmap%20Item%7D%20) 或者 Kotlin Slack（[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up?_ga=2.60878444.1901676095.1599823213-394965905.1588600024)）的 [#kotlin-roadmap](https://kotlinlang.slack.com/archives/C01AAJSG3V4) 频道中。
  
 ## 关键优先事项
 
