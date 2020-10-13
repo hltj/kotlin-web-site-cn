@@ -45,8 +45,8 @@ You can also use [preview versions of Kotlin](eap/index.html#build-details).
     </tr>
     <tr>
         <td><strong>1.4.10</strong>
-            <p>Released: <strong>September 7, 2020</strong></p>
-            <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.4.10" target="_blank">Release on GitHub</a></p>
+            <p>发布于：<strong>2020-09-07</strong></p>
+            <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.4.10" target="_blank">GitHub 上的版本发布</a></p>
         </td>
         <td>
             <p>A bug fix release for Kotlin 1.4.0.</p>
@@ -66,8 +66,8 @@ You can also use [preview versions of Kotlin](eap/index.html#build-details).
     </tr>    
     <tr>
         <td><strong>1.4.0</strong>
-            <p> Released: <strong>August 17, 2020</strong></p>
-            <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.4.0" target="_blank">Release on GitHub</a></p>
+            <p>发布于：<strong>2020-08-17</strong></p>
+            <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.4.0" target="_blank">GitHub 上的版本发布</a></p>
         </td>
         <td>
             <p>A feature release with many features and improvements that mostly focus on quality and performance.</p>
@@ -98,8 +98,8 @@ You can also use [preview versions of Kotlin](eap/index.html#build-details).
     </tr>       
     <tr>
         <td><strong>1.3.72</strong>
-            <p> Released: <strong>April 15, 2020</strong></p>
-            <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.3.72" target="_blank">Release on GitHub</a></p>
+            <p>发布于：<strong>2020-04-15</strong></p>
+            <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.3.72" target="_blank">GitHub 上的版本发布</a></p>
         </td>
         <td>
             <p>A bug fix release for Kotlin 1.3.70.</p>
