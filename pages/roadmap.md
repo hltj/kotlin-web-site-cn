@@ -35,17 +35,17 @@ date: 2020-10-01
  
 ## 关键优先事项
 
-The goal of this roadmap is to give you a big picture. Here’s a list of our key priorities – the areas we are investing the most effort into:
+这个路线图的目标是给出一个大的图景。这里列出了主要优先事项——我们投入精力最多的领域：
 
-- **Fast turnaround**: making the change-test-debug cycle really fast.
-- **New compiler**: a rewrite of the Kotlin compiler optimized for speed, parallelism, and unification. Later we will also work on pluggability.
-- **Fast and smooth IDE**: improving the stability and performance of the Kotlin IDE.
-- **Kotlin for JVM server-side development**: expanding support for server-side use cases across the Kotlin ecosystem.
-- **Kotlin Multiplatform Mobile**: improving the user experience and feature set for sharing code on mobile platforms.
+- **快速流转**：让“变更-测试-调试”周期非常快。
+- **新版编译器**：重写 Kotlin 编译器，针对速度、并行性与统一性进行优化。晚些还会研究插件化。
+- **快速流畅的 IDE**：改善 Kotlin IDE 的稳定性与性能。
+- **Kotlin 用于 JVM 服务器端开发**：在整个 Kotlin 生态系统中扩展对服务器端使用场景的支持。
+- **Kotlin 多平台移动端**：改善在移动平台上共享代码的用户体验与特性集。
 
 ## 以子系统划分的 Kotlin 路线图
 
-This table describes the biggest projects that we’re working on.
+下表介绍了我们正在从事的最大项目。
 
 <table>
     <tr>
@@ -54,7 +54,7 @@ This table describes the biggest projects that we’re working on.
         <th>推迟后续</th>
     </tr>
     <tr>
-        <td><strong>Language</strong>
+        <td><strong>语言</strong>
         </td>
         <td>
             <ul>
@@ -68,7 +68,7 @@ This table describes the biggest projects that we’re working on.
         </td>
     </tr>
     <tr>
-        <td><strong>Compiler core</strong>
+        <td><strong>编译器核心</strong>
         </td>
         <td>
             <ul>
@@ -177,7 +177,7 @@ This table describes the biggest projects that we’re working on.
         </td>
     </tr>
     <tr>
-        <td><strong>Kotlin Multiplatform</strong>
+        <td><strong>Kotlin 多平台</strong>
         </td>
         <td>
             <ul>
@@ -230,7 +230,7 @@ This table describes the biggest projects that we’re working on.
         </td>
     </tr>
     <tr>
-        <td><strong>Build tools</strong>
+        <td><strong>构建工具</strong>
         </td>
         <td>
             <ul>
@@ -252,7 +252,7 @@ This table describes the biggest projects that we’re working on.
         </td>
     </tr>
     <tr>
-        <td><strong>Libraries</strong>
+        <td><strong>库</strong>
         </td>
         <td>
             <ul>
@@ -289,7 +289,7 @@ This table describes the biggest projects that we’re working on.
         <td><strong>Ktor</strong>
         </td>
         <td>
-           <p><a href="https://blog.jetbrains.com/ktor/2020/08/10/ktor-roadmap-for-2020-2021/" target="_blank">Ktor roadmap</a></p>
+           <p><a href="https://blog.jetbrains.com/ktor/2020/08/10/ktor-roadmap-for-2020-2021/" target="_blank">Ktor 路线图</a></p>
          </td>
         <td>
         </td>
