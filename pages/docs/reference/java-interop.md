@@ -151,7 +151,7 @@ Kotlin 类型。编译器支持多种可空性注解，包括：
   * Eclipse（`org.eclipse.jdt.annotation`）
   * Lombok（`lombok.NonNull`）。
 
-你可以在 [Kotlin 编译器源代码](https://github.com/JetBrains/kotlin/blob/master/core/descriptor.loader.java/src/org/jetbrains/kotlin/load/java/JvmAnnotationNames.kt)中找到完整的列表。
+你可以在 [Kotlin 编译器源代码](https://github.com/JetBrains/kotlin/blob/master/core/compiler.common.jvm/src/org/jetbrains/kotlin/load/java/JvmAnnotationNames.kt)中找到完整的列表。
 
 ### 注解类型参数
 
@@ -489,8 +489,8 @@ Java 平台上，数组会使用原生数据类型以避免装箱/拆箱操作�
 
 假设有一个接受 int 数组索引的 Java 方法：
 
-
 <div class="sample" markdown="1" theme="idea" mode="java">
+
 ``` java
 public class JavaArrayExample {
 

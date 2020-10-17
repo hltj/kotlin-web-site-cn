@@ -5,7 +5,7 @@ title: "Kotlin 用户组列表"
 ---
 
 # 查找附近的 Kotlin 用户群组
-## 205 个 Kotlin 用户群组遍布全球
+## 197 个 Kotlin 用户群组遍布全球
 
 Kotlin 用户群组（KUG）是一个人的社区，是一个与 Kotlin 及其生态系统共享编程经验的地方。
 
@@ -46,11 +46,9 @@ Kotlin 用户群组（KUG）是一个人的社区，是一个与 Kotlin 及其�
  * [Krakow Kotlin User Group](https://www.meetup.com/krakow-kotlin/), Poland
  * [Leeds Kotlin User Group](https://leedskotlinusergroup.netlify.com/published/2020/1/6/our-first-meetup/), United 
  Kingdom
- * [Limerick Kotlin User Group](https://www.meetup.com/kotlinlimerick/), Ireland
  * [Lisboa Kotlin User Group](https://meetup.com/kotlin-lisboa/), Portugal
  * [London Kotlin](http://www.meetup.com/kotlin-london/), United Kingdom
  * [Lviv Kotlin User Group](https://www.facebook.com/groups/1395212093948927/), Ukraine
- * [Lyon Kotlin User Group](http://www.meetup.com/Lyon-Kotlin-User-Group/), France
  * [Madrid Kotlin User Group](https://www.meetup.com/KotlinMAD/), Spain
  * [Manchester Kotlin Developers](http://www.meetup.com/Kotlin-Manchester/), United Kingdom
  * [Marseille Kotlin User Group](https://www.meetup.com/Marseille-Kotlin-User-Group/), France
@@ -142,7 +140,6 @@ Kotlin 用户群组（KUG）是一个人的社区，是一个与 Kotlin 及其�
 
 ## 北美洲
 
-* [Albuquerque Kotlin User Group](https://www.meetup.com/Kotlin-ABQ/), USA
 * [Austin Kotlin User Group](https://www.meetup.com/Austin-Kotlin-Meetup/), USA
 * [Brooklyn (NY) Kotlin User Group](https://www.meetup.com/Brooklyn-Kotlin/), USA
 * [Cambridge Kotlin Office Hours](https://www.meetup.com/kotlin-office-hours/), USA
@@ -155,11 +152,9 @@ Kotlin 用户群组（KUG）是一个人的社区，是一个与 Kotlin 及其�
 * [Kansas City User Group](https://www.meetup.com/Kansas-City-Kotlin-User-Group/), USA
 * [Mexico, CDMX Kotlin User Group](https://www.meetup.com/es-ES/Kotlin-Nights-CDMX/), Mexico
 * [Mérida Kotlin User Group](https://www.meetup.com/Merida-Kotlin-User-Group/), Mexico
-* [New England User Group](https://www.meetup.com/New-England-Kotlin-Users-Group/), USA
 * [New York Kotlin Meetup](http://www.meetup.com/New-York-Kotlin-Meetup/), USA
 * [Norfolk Kotlin User Group](mailto:robert.chrzanowski@gmail.com), USA
 * [Irvine Kotlin User Group "OC Kotlin Krew"](https://www.meetup.com/OCKotlinKrew/), USA
-* [Portland Kotlin User Group](https://www.meetup.com/Kotlin-Portland-User-Group/), USA
 * [San Diego Kotlin User Group](https://www.meetup.com/sd-kotlin/), USA
 * [San Francisco Kotlin Meetup](https://www.meetup.com/San-Francisco-Kotlin-Meetup/), USA
 * [Santa Cruz Kotlin User Group](https://www.meetup.com/Santa-Cruz-Kotlin-User-Group/events/245895831/), USA
@@ -198,7 +193,6 @@ Kotlin 用户群组（KUG）是一个人的社区，是一个与 Kotlin 及其�
 * [Brisbane Kotlin User Group](https://www.meetup.com/Brisbane-Kotlin-User-Group/), Australia
 * [Melbourne Kotlin User Group](https://www.meetup.com/Melbourne-Kotlin-Meetup/), Australia
 * [Sydney Kotlin User Group](https://sydspace.org/kotlin/), Australia
-* [Wellington Kotlin User Group](https://www.meetup.com/Wellington-kt/), New Zealand
  {:.community-usergroup-list}
 
 ## 非洲
@@ -218,7 +212,6 @@ Kotlin 用户群组（KUG）是一个人的社区，是一个与 Kotlin 及其�
 * [Cotonou Kotlin User Group](https://www.facebook.com/kotlinCotonou/), Benin
 * [Egypt Kotlin](https://www.facebook.com/kotlinegypt/), Egypt
 * [Enugu Kotlin User Group](https://kotlin-enuguusergroup.slack.com/), Nigeria
-* [Johannesburg Kotlin User Group](https://www.meetup.com/Kotlin-Software-Development-Meetup/), South Africa
 * [Kano Kotlin User Group](https://www.meetup.com/Kotlin-Kano-User-Group-Nigeria/), Nigeria
 * [Katsina Kotlin User Group](https://www.downtomeet.com/Katsina-Kotlin-Group), Nigeria
 * [Lagos Kotlin User Group](https://www.meetup.com/Lagos-Kotlin-Meetup/), Nigeria
@@ -232,7 +225,6 @@ Kotlin 用户群组（KUG）是一个人的社区，是一个与 Kotlin 及其�
 * [Noun Kotlin User Group](https://www.meetup.com/Noun-Kotlin-User-Group/), Cameroon
 * [Ondo Kotlin User Group](https://www.meetup.com/Kotlin-Ondo-User-Group/), Nigeria
 * [Ouagadougou Kotlin User Group](https://www.facebook.com/groups/649651491892414/), Burkina Faso
-* [Rabat Kotlin User Group](https://www.meetup.com/Rabat-Kotlin-User-Group/), Morocco
 * [Rivers Kotlin User Group](https://www.facebook.com/groups/2178453949151460/), Nigeria
 * [Tunisia Kotlin User Group](https://www.facebook.com/groups/1501353116571104), Tunisia
 * [Uganda Kotlin User Group](https://www.facebook.com/Uganda-Kotlin-User-Group-613707548753658/), Uganda
