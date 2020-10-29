@@ -204,7 +204,7 @@ fun main() {
 还可以使用快速操作符将新条目添加到 Map 。 有两种方式：
 
 * [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) （`+=`） 操作符。
-*  `[]` 操作符为 `put()` 的别名。  
+*  `[]` 操作符为 `set()` 的别名。  
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -212,7 +212,7 @@ fun main() {
 fun main() {
 //sampleStart
     val numbersMap = mutableMapOf("one" to 1, "two" to 2)
-    numbersMap["three"] = 3     // 调用 numbersMap.put("three", 3)
+    numbersMap["three"] = 3     // 调用 numbersMap.set("three", 3)
     numbersMap += mapOf("four" to 4, "five" to 5)
     println(numbersMap)
 //sampleEnd

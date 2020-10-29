@@ -1,11 +1,11 @@
-- title: "Kotlin 多平台移动端进入内测（Alpha）阶段"
+- title: "New release cadence"
+  link: https://blog.jetbrains.com/kotlin/2020/10/new-release-cadence-for-kotlin-and-the-intellij-kotlin-plugin/
+
+- title: "kotlinx.serialization 1.0 released"
+  link: https://blog.jetbrains.com/kotlin/2020/10/kotlinx-serialization-1-0-released/
+
+- title: "Kotlin public roadmap"
+  link: https://blog.jetbrains.com/kotlin/2020/10/kotlin-public-roadmap-through-spring-2021/
+
+- title: "Kotlin Multiplatform Mobile goes Alpha"
   link: https://blog.jetbrains.com/kotlin/2020/08/kotlin-multiplatform-mobile-goes-alpha/
-
-- title: 调试协程
-  link: https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-rc-debugging-coroutines/
-
-- title: "基于 Kotlin 1.4.0-RC 的 Dokka 预览"
-  link: https://blog.jetbrains.com/kotlin/2020/08/dokka-preview-based-on-kotlin-1-4-0-rc/
-
-- title: Spring 的 Kotlin 支持状态
-  link: https://blog.jetbrains.com/kotlin/2020/08/the-state-of-kotlin-support-in-spring/
