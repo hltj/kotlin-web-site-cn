@@ -16,7 +16,7 @@ title: 为什么讲授 Kotlin
 
 Android 开发将越来越多的以 Kotlin 为首。[Google I/O 2019](https://android-developers.googleblog.com/2019/05/google-io-2019-empowering-developers-to-build-experiences-on-Android-Play.html)
 
-> 减少样板文件可以帮助我们快速识别学生们遗漏了哪些基本的 Android 概念。由某些基本语法/语言问题而引起问题的可能性较低，从而使学生可以专注于更基本的软件设计问题。
+> 减少样板代码可以帮助我们快速识别学生们遗漏了哪些基本的 Android 概念。由某些基本语法/语言问题而引起问题的可能性较低，从而使学生可以专注于更基本的软件设计问题。
 > {:.kto-quote__text} 
 > Jacob Mass, University of Tartu
 > {:.kto-quote__author}
@@ -44,7 +44,7 @@ Android 开发将越来越多的以 Kotlin 为首。[Google I/O 2019](https://an
 * 各种规模的知名企业与组织都在使用 Kotlin，其中包括：推特、Reddit、Pinterest、优步、Coursera、印象笔记、Slack 与 Trello 等等。
 * 自 2017 年以来，Kotlin 的职位发布增加了 1400％ 以上。来源：[Dice](https://insights.dice.com/2018/09/24/kotlin-jobs-meteoric-rise-android/).
 * Kotlin 是增长最快的编程语言之一，在 [Github Octoverse 2019](https://octoverse.github.com/) 中排名第四。
-* [PYPL](http://pypl.github.io/PYPL.html) 将 Kotlin 排名为第 12 种最受欢迎​​的编程语言，并在2020年呈上升趋势。
+* [PYPL](http://pypl.github.io/PYPL.html) 将 Kotlin 排名为第 12 种最受欢迎​​的编程语言，并在 2020 年呈上升趋势。
 
 > 学生们很高兴有机会在他们可能听说过的领域进行编程。
 > {:.kto-quote__text}
@@ -79,7 +79,7 @@ Kotlin 以学生曾经的编程经验为基础，对于具有 Java 或 Python �
 
 Kotlin 的学习曲线柔和，可以轻松迁移现有的课程资料。
 
-> Kotlin 与 Java 一样易于使用，但是它具有与较硬的语言（如C ++）几乎相同的理想语言特性。
+> Kotlin 与 Java 一样易于使用，但是它具有与较难的语言（如C ++）几乎相同的理想语言特性。
 > {:.kto-quote__text}
 > Nicola Capodieci, University of Modena and Reggio Emilia
 > {:.kto-quote__author}
@@ -116,9 +116,9 @@ Kotlin 的学习曲线柔和，可以轻松迁移现有的课程资料。
 {:.kto-quote}
 
 ### 互操作性 ###
-与 JVM 生态系统的无缝互操作性意味着 Kotlin 可以依赖众多现有的库。方便的 Java 到 Kotlin 转换器为将 Java 代码迁移到 Kotlin 提供了出色的支持，并在学生已经熟悉 Java 的情况下帮助他们快速学习语法。Java 程序也可以调用 Kotlin 代码而没有任何开销。Kotlin 也可以编译为 JavaScript，以便在浏览器或 Node.js 中运行，或编译为针对任何主要操作系统的独立本机二进制文件。
+与 JVM 生态系统的无缝互操作性意味着 Kotlin 可以依赖众多现有的库。方便的 Java 到 Kotlin 转换器为将 Java 代码迁移到 Kotlin 提供了出色的支持，并在学生已经熟悉 Java 的情况下帮助他们快速学习语法。Java 程序也可以调用 Kotlin 代码而没有任何开销。Kotlin 也可以编译为 JavaScript，以便在浏览器或 Node.js 中运行，或编译为针对任何主要操作系统的原生二进制文件。
 
-> Kotlin 更快地开发与理解正在发生的事情。向后兼容性接近 100％，可以轻松地在 Java 中显示与转换为 Kotlin，同时仍然利用 Java 中的每个可用库；学生们似乎很快就理解了它。
+> Kotlin 更快地开发与理解正在发生的事情；向后兼容性接近 100％，可以轻松地在 Java 中显示与转换为 Kotlin，同时仍然利用 Java 中的每个可用库；学生们似乎很快就理解了它。
 > {:.kto-quote__text}
 > David Vaughn, University of Missouri–St. Louis
 > {:.kto-quote__author}
@@ -134,9 +134,9 @@ Kotlin 的学习曲线柔和，可以轻松迁移现有的课程资料。
 > {:.kto-quote__author}
 {:.kto-quote}
 
-### 支持多种范例 ###
+### 支持多种范式 ###
 
-Kotlin 以一种优雅的方式结合了主要的编程范例，从而可以使用函数式、命令式、面向对象或过程式编程——所有这些都在同一语言中进行。在 Kotlin 对协程的支持下，并发与并行性的概念自然而然地出现了。
+Kotlin 以一种优雅的方式结合了主要的编程范式，从而可以使用函数式、命令式、面向对象或过程式编程——所有这些都在同一语言中进行。在 Kotlin 对协程的支持下，并发与并行性的概念自然而然地出现了。
 
 > 你可以为初学者讲授过程编程，而无需描述类。因此，你的课程可以更加一致。
 > {:.kto-quote__text}
@@ -183,7 +183,7 @@ Kotlin 通过静态类型检查与自动内存管理来促进编写正确的程�
 {:.kto-quote}
 
 ### 现代简洁的语言设计 ###
-Kotlin 的简单语法使它对初学者很友好，同时，它提供了一些复杂的特性，这些特性是有野心的学生永远不会放弃的。
+Kotlin 的简单语法使它对初学者很友好，同时，它提供了一些复杂的特性，这些特性是有雄心的学生永远不会放弃的。
 
 Kotlin 使学生专注于表达自己的想法，并减少样板代码的编写。编写的代码越少，测试和调试的代码也就越少。这样的语言设计使 Kotlin 成为一种高效的语言，而且它还简化了批改作业与理解学生的代码。
 
