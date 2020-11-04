@@ -249,12 +249,12 @@ val deferred = (1..1_000_000).map { n ->
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val sum = deferred.map { it.await().toLong() }.sum()
+val sum = deferred.sumOf { it.await().toLong() }
 ```
 
 </div>
 
-这里我们简单从每个协程等待并取得它的执行结果，接下来将使用标准库的 `sum()` 函数来将所有结果叠加到一起。但编译器理所当然地抱怨道：
+这里我们简单从每个协程等待并取得它的执行结果，接下来将使用标准库的 `sumOf()` 函数来将所有结果叠加到一起。但编译器理所当然地抱怨道：
 
 > 挂起函数只被允许在协程或另一个挂起函数中调用
 
@@ -264,7 +264,7 @@ val sum = deferred.map { it.await().toLong() }.sum()
 
 ```kotlin
 runBlocking {
-    val sum = deferred.map { it.await().toLong() }.sum()
+    val sum = deferred.sumOf { it.await().toLong() }
     println("Sum: $sum")
 }
 ```
