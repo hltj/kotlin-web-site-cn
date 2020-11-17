@@ -59,9 +59,9 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 
 ## 在多个平台之间共享代码
 
-[多平台项目](/docs/reference/multiplatform.html)允许在多个平台之间共享通用的 Kotlin 代码，
+[多平台项目](/docs/reference/multiplatform.html)允许在多个平台之间共享公共的 Kotlin 代码，
 包括：Android、iOS、JVM、JavaScript 与原生。
-多平台库为通用的 Kotlin 代码提供了所需的 API，并在一处帮助以 Kotlin 代码开发项目的公共部分，并将其与所有或多个目标平台共享。
+多平台库为公共的 Kotlin 代码提供了所需的 API，并在一处帮助以 Kotlin 代码开发项目的公共部分，并将其与所有或多个目标平台共享。
 
 可以使用 [Kotlin 移动端多平台（KMM）](https://kotlinlang.org/lp/mobile/)通过 Android 与 iOS 之间共享代码创建多平台移动应用程序。
 
