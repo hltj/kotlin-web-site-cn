@@ -1,59 +1,40 @@
-<section class="kto-overview-section kto-overview-section_mode_dark kotlin-intro-section">
-    <div class="g-layout kotlin-intro-section">
-        <div class="kotlin-intro-section__intro">
-            <p>
-                让开发人员<br>
-                更快乐的一门<br>
-                现代编程语言。<br>
+<section class="kotlin-intro-section kto-overview-section kto-overview-section_mode_dark">
+    <div class="g-layout">
+        <h1 class="kto-heading kto-heading__hero">让开发人员更快乐的 一门现代编程语言。</h1>
+        <div class="kotlin-intro-actions">
+            <p class="kotlin-intro-actions__buttons">
+                <a class="kto-button kto-button_theme_dark kto-button_size_l kto-button_mode_primary" href="/docs/tutorials/getting-started.html">入门</a>
+                <a class="kto-button kto-button_theme_dark kto-button_size_l kto-button_mode_outline kotlin-intro-actions__why-button smooth-anchor" href="#why-kotlin"> 为什么选用 Kotlin</a>
             </p>
-
-            <p class="kotlin-intro-section__contributors">
-                <a target="_blank" href="{{ config.JETBRAINS }}" class="kotlin-intro-section__logo-link">
-                    <img class="kotlin-intro-section__logo" src="{{ url_for('asset', path='jetbrains-logo.svg') }}" alt="jetbrains logo" width="32" height="32"/>
-                </a>
-                由 <a target="_blank" href="{{ config.JETBRAINS }}" class="kotlin-intro-section__contributors-link">JetBrains</a>
-                 以及开源<a target="_blank" href="https://github.com/JetBrains/kotlin/graphs/contributors" class="kotlin-intro-section__contributors-link">贡献者</a>开发
+            <p class="kotlin-intro-actions__contributors kto-text kto-text__size_s">
+                <a target="_blank" href="{{ config.JETBRAINS }}" class="kotlin-intro-actions__jb-logo"><img class="kotlin-intro-actions__logo" src="{{ url_for('asset', path='jetbrains-logo.svg') }}" alt="jetbrains logo" width="32" height="32"/></a>
+                <span class="kto-text kto-text__size_s">
+                    由 <a target="_blank" href="{{ config.JETBRAINS }}" class="kto-link kto-link_theme_dark">JetBrains</a>
+                    以及开源<a target="_blank" href="https://github.com/JetBrains/kotlin/graphs/contributors" class="kto-link kto-link_theme_dark">贡献者</a>开发
+                </span>
             </p>
         </div>
-        <p class="kotlin-intro-section__buttons">
-            <a class="kto-button kto-button_theme_dark kto-button_size_m kto-button_mode_outline kotlin-banner-section__try-ide" href="/docs/tutorials/getting-started.html">入门</a>
-            <a class="kto-button kto-button_theme_dark kto-button_size_m kto-button_mode_primary smooth-anchor" href="#try-kotlin">在线试用</a>
+        <div class="kotlin-intro-featured">
+            <a class="kotlin-intro-featured__item kotlin-intro-featured__item_type_mobile"
+               href="https://kotlinlang.org/lp/mobile/" target="_blank">
+                <h3 class="kto-heading kto-heading__h3">多平台移动端</h3>
+                <p class="kto-text kto-text__size_m">在移动平台间共享代码的自然方式</p>
+            </a>
+            <a class="kotlin-intro-featured__item kotlin-intro-featured__item_type_server-side"
+               href="https://kotlinlang.org/lp/server-side/" target="_blank">
+                <h3 class="kto-heading kto-heading__h3">服务端</h3>
+                <p class="kto-text kto-text__size_m">谙熟 JVM 技术的现代开发体验</p>
+            </a>
+            <a class="kotlin-intro-featured__item kotlin-intro-featured__item_type_web"
+               href="/docs/reference/js-overview.html" target="_blank">
+                <h3 class="kto-heading kto-heading__h3">Web 前端</h3>
+                <p class="kto-text kto-text__size_m">将项目扩展到 Web</p>
+            </a>
+        </div>
+        <p class="kotlin-intro-section__supports kto-text kto-text__size_s">
+            还支持：<a
+                class="kotlin-intro-section__link kto-link kto-link_theme_dark" target="_blank" href="/docs/reference/data-science-overview.html">数据科学</a><a
+                class="kotlin-intro-section__link kto-link kto-link_theme_dark" target="_blank" href="/docs/reference/android-overview.html">Android</a>
         </p>
     </div>
-</section>
-
-<section class="kto-overview-section kto-overview-section_mode_dark kotlin-portals-section">
-    <h2 class="kto-overview-section__title_size_s g-layout">适用于</h2>
-    <ul class="kotlin-portals-section__list g-layout">
-        <li class="kotlin-portals-section__item kotlin-portals-section__item_type_mobile">
-            <a href="https://kotlinlang.org/lp/mobile/" target="_blank" class="kto-overview-section__link kto-overview-section__link_go kotlin-portals-section__link">
-                移动端跨平台
-            </a>
-        </li>
-        <li class="kotlin-portals-section__item kotlin-portals-section__item_type_native">
-            <a href="/docs/reference/native-overview.html" class="kto-overview-section__link kto-overview-section__link_go kotlin-portals-section__link">
-                原生
-            </a>
-        </li>
-        <li class="kotlin-portals-section__item kotlin-portals-section__item_type_data-science">
-            <a href="/docs/reference/data-science-overview.html" class="kto-overview-section__link kto-overview-section__link_go kotlin-portals-section__link">
-                数据科学
-            </a>
-        </li>
-        <li class="kotlin-portals-section__item kotlin-portals-section__item_type_server-side">
-            <a href="/docs/reference/server-overview.html" class="kto-overview-section__link kto-overview-section__link_go kotlin-portals-section__link">
-                服务端
-            </a>
-        </li>
-        <li class="kotlin-portals-section__item kotlin-portals-section__item_type_web">
-            <a href="/docs/reference/js-overview.html" class="kto-overview-section__link kto-overview-section__link_go kotlin-portals-section__link">
-                Web 开发
-            </a>
-        </li>
-        <li class="kotlin-portals-section__item kotlin-portals-section__item_type_android">
-            <a href="/docs/reference/android-overview.html" class="kto-overview-section__link kto-overview-section__link_go kotlin-portals-section__link">
-                Android
-            </a>
-        </li>
-    </ul>
 </section>

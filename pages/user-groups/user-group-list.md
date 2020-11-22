@@ -5,7 +5,7 @@ title: "Kotlin 用户组列表"
 ---
 
 # 查找附近的 Kotlin 用户群组
-## 201 个 Kotlin 用户群组遍布全球
+## 202 个 Kotlin 用户群组遍布全球
 
 Kotlin 用户群组（KUG）是一个人的社区，是一个与 Kotlin 及其生态系统共享编程经验的地方。
 
@@ -107,6 +107,7 @@ Kotlin 用户群组（KUG）是一个人的社区，是一个与 Kotlin 及其�
  * [Jaffna Kotlin User Group](https://www.facebook.com/Kotlin-User-Group-Jaffna-102091321371464/), Sri Lanka
  * [Jalandhar Kotlin User Group](https://www.meetup.com/Kotlin-EveryWhere-Jalandhar-Group/), India
  * [Japan Kotlin User Group](https://kotlin.connpass.com/), Japan
+ * [JiangXi Kotlin User Group](https://weibo.com/u/6689084931), China
  * [Jodhpur Kotlin User Group](https://www.linkedin.com/company/kotlin-mumbai-ug), India
  * [Karachi Kotlin User Group](https://www.facebook.com/kotlinkarachi/), Pakistan
  * [Kathmandu Kotlin User Group](https://www.facebook.com/groups/100333660782830/), Nepal
