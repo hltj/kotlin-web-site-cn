@@ -58,8 +58,8 @@ date: 2020-10-01
         </td>
         <td>
             <ul>
-                <li><p>支持JVM的记录<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42430" target="_blank">KT-42430</a>)</p></li>
-                <li><p>支持JVM的密封类<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42433" target="_blank">KT-42433</a>)</p></li>
+                <li><p>支持 JVM 的记录<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42430" target="_blank">KT-42430</a>)</p></li>
+                <li><p>支持 JVM 的密封类<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42433" target="_blank">KT-42433</a>)</p></li>
                 <li><p>Release inline classes as stable, secure Valhalla compatibility<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42434" target="_blank">KT-42434</a>)</p></li>
                 <li><p>Prototype multiple receivers<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42435" target="_blank">KT-42435</a>)</p></li>
             </ul>
