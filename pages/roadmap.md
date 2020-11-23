@@ -26,8 +26,8 @@ date: 2020-10-01
 关于路线图有以下几点注意事项：
 
 1. 描述了团队正在投入的主要领域。
-2. 这不是团队正在做的所有事情的详尽清单，只列了最大的项目。
-3. 没有在指定版本中交付指定特性或修复的承诺。
+2. 这不是团队正在做的所有事情的详尽清单，只列了重要的项目。
+3. 这里没有在指定版本中交付指定特性或修复的承诺。
 4. 列出了一些被推迟并且团队在不久的将来**不会**关注的事情。
 5. 没有什么是一成不变的，我们会随着进展调整事项的优先级，并且大约每三个月更新一次路线图。
 
@@ -45,7 +45,7 @@ date: 2020-10-01
 
 ## 以子系统划分的 Kotlin 路线图
 
-下表介绍了我们正在从事的最大项目。
+下表介绍了我们正在从事的重大项目。
 
 <table>
     <tr>
@@ -58,8 +58,8 @@ date: 2020-10-01
         </td>
         <td>
             <ul>
-                <li><p>Support JVM records<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42430" target="_blank">KT-42430</a>)</p></li>
-                <li><p>Support JVM sealed classes<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42433" target="_blank">KT-42433</a>)</p></li>
+                <li><p>支持JVM的记录<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42430" target="_blank">KT-42430</a>)</p></li>
+                <li><p>支持JVM的密封类<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42433" target="_blank">KT-42433</a>)</p></li>
                 <li><p>Release inline classes as stable, secure Valhalla compatibility<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42434" target="_blank">KT-42434</a>)</p></li>
                 <li><p>Prototype multiple receivers<br/>(<a href="https://youtrack.jetbrains.com/issue/KT-42435" target="_blank">KT-42435</a>)</p></li>
             </ul>
