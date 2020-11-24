@@ -766,4 +766,18 @@ external fun foo(x: Int): Double
 
 </div>
 
+You can also mark property getters and setters as `external`:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+var myProperty: String
+	external get
+	external set
+```
+
+</div>
+
+Behind the scenes, this will create two functions `getMyProperty` and `setMyProperty`, both marked as `external`.
+
 其余的过程与 Java 中的工作方式完全相同。

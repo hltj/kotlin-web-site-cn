@@ -13,10 +13,10 @@ Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理�
 用于管理 [npm](https://www.npmjs.com/) 依赖，并且可以使用
 [webpack](https://webpack.js.org/) 由 Kotlin 项目构建 JavaScript 包。 Dependency management and configuration adjustments can be done to a large part directly from the Gradle build file, with the option to override automatically generated configurations for full control.
 
-要在 IntelliJ IDEA 中创建 Kotlin/JS 项目，请转至 **文件(File) \| 新建(New) \| 项目(Project)**，
-并勾选 **Gradle \| Kotlin/JS for browser** 或 **Kotlin/JS for Node.js**。请不要勾选 **Java** 复选框。 If you want to use the Kotlin DSL for Gradle, make sure to check the **Kotlin DSL build script** option.
+要在 IntelliJ IDEA 中创建 Kotlin/JS 项目，请转至 **文件(File) \| 新建(New) \| 项目(Project)**。 Then select **Kotlin** and choose a 
+Kotlin/JS target that suits you best. Don't forget to choose the language for the build script: Groovy or Kotlin.
 
-![New project wizard]({{ url_for('asset', path='images/reference/js-project-setup/wizard.png') }})
+![New project wizard]({{ url_for('asset', path='images/reference/js-project-setup/js-project-wizard.png') }})
 
 
 另外，你可以在 Gradle build file (`build.gradle` or `build.gradle.kts`) 中手动将 `org.jetbrains.kotlin.js` 插件应用于 Gradle 项目。
@@ -66,6 +66,7 @@ kotlin {
 * [配置 test 任务](#配置-test-任务)
 * 为浏览器项目配置 [webpack 绑定](#配置-webpack-绑定)与[模块名](#调整模块名)
 * [分发目标目录](#分发目标目录)与[模块名](#调整模块名)
+* [Project's `package.json` file](#packagejson-customization)
 
 ## 选择执行环境
 
@@ -366,6 +367,9 @@ Kotlin/JS Gradle 插件会在构建时自动生成一个标准的 webpack 配置
 最常见的 webpack 调整可以直接通过 Gradle 构建文件中的
 `kotlin.js.browser.webpackTask` 配置块进行。
 
+You can also configure common webpack settings to use in bundling, running, and testing tasks in the `commonWebpackConfig`
+block. 
+
 如果要进一步调整 webpack 配置，请将其他配置文件放在项目根目录中名为 `webpack.config.d` 的目录中。
 在构建项目时，所有 `.js` 配置文件都会自动被合并到
 `build/js/packages/projectName/webpack.config.js` 文件中。
@@ -407,7 +411,21 @@ Note that these tasks will only be available if your target is configured to gen
 ## Configuring CSS
 The Kotlin/JS Gradle plugin also provides support for webpack's [CSS](https://webpack.js.org/loaders/css-loader/) and [style](https://webpack.js.org/loaders/style-loader/) loaders. While all options can be changed by directly modifying the [webpack configuration files](#configuring-webpack-bundling) that are used to build your project, the most commonly used settings are available directly from the `build.gradle(.kts)` file.
 
-To turn on CSS support in your project, set the `cssSupport.enabled` flag in the Gradle build file for `webpackTask`, `runTask`, and `testTask` respectively. This configuration is also enabled by default when creating a new project using the wizard.
+To turn on CSS support in your project, set the `cssSupport.enabled` flag in the Gradle build file in the `commonWbpackConfig` block. This configuration is also enabled by default when creating a new project using the wizard.
+
+<div class="sample" markdown="1" mode="groovy" theme="idea">
+
+```groovy
+browser {
+    commonWebpackConfig {
+        cssSupport.enabled = true
+    }
+    binaries.executable()
+}
+```
+</div>
+
+Alternatively, you can add CSS support for selected tasks, such as `webpackTask`, `runTask`, and `testTask`.
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
 
@@ -426,6 +444,7 @@ testTask {
 }
 ```
 </div>
+
 Activating CSS support in your project helps prevent common errors that occur when trying to use style sheets from an unconfigured project, such as `Module parse failed: Unexpected character '@' (14:0)`.
 
 You can use `cssSupport.mode` to specify how encountered CSS should be handled. The following values are available:
@@ -514,6 +533,45 @@ js {
 </div>
 
 Note that this does not affect the webpacked output in `build/distributions`.
+
+## package.json customization
+
+The `package.json` file holds the metadata of a JavaScript package. Popular package registries such as npm require all 
+published packages to have such a file. They use it to track and manage package publications.  
+
+The Kotlin/JS Gradle plugin automatically generates `package.json` for Kotlin/JS projects during build time. By default, 
+the file contains essential data: name, version, license, and dependencies, and some other package attributes.
+
+Aside from basic package attributes, `package.json` can define how a JavaScript project should behave, for example,
+identifying scripts that are available to run.
+
+You can add custom entries to the project's `package.json` via the Gradle DSL. To add custom fields to your `package.json`,
+use the `customField` function in the compilations `packageJson` block:
+
+<div class="sample" markdown="1" mode="groovy" theme="idea">
+
+```kotlin
+kotlin {
+    js {
+        compilations["main"].packageJson {
+            customField("hello", mapOf("one" to 1, "two" to 2))
+        }
+    }
+}
+```
+
+</div>
+
+When you build the project, this code will add the following block to the `package.json` file:
+
+```
+"hello": {
+  "one": 1,
+  "two": 2
+}
+```
+
+Learn more about writing `package.json` files for npm registry in the [npm docs](https://docs.npmjs.com/cli/v6/configuring-npm/package-json).
 
 ## Troubleshooting
 When building a Kotlin/JS project using Kotlin 1.3.xx, you may encounter a Gradle error if one of your dependencies (or any transitive dependency) was built using Kotlin 1.4 or higher: `Could not determine the dependencies of task ':client:jsTestPackageJson'.` / `Cannot choose between the following variants`. This is a known problem, a workaround is provided [here](https://youtrack.jetbrains.com/issue/KT-40226).

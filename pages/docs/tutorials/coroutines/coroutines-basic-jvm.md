@@ -22,16 +22,32 @@ showAuthorInfo: true
 
 由于我们将使用 [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines)，来让我们将它最近的版本添加到依赖中：
 
-<div class="sample" markdown="1" theme="idea" mode="groovy">
+<div class="multi-language-sample" data-lang="groovy">
+<div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
 dependencies {
     ...
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:{{ site.data.releases.latest.coroutines.version }}"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:{{ site.data.releases.latest.coroutines.version }}'
 }
 ```
 
 </div>
+</div>
+
+<div class="multi-language-sample" data-lang="kotlin">
+<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+```kotlin
+dependencies {
+    ...
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:{{ site.data.releases.latest.coroutines.version }}")
+}
+```
+
+</div>
+</div>
+
 
 这个库已经发布到了 Bintray JCenter 仓库，所以让我们添加它：
 

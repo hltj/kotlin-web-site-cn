@@ -45,7 +45,8 @@ __Kotlin | Style issues | File is not formatted according to project settings__ 
 如果 Kotlin 文件包含单个类（以及可能相关的顶层声明），那么文件名应该与<!--
 -->该类的名称相同，并追加 .kt 扩展名。如果文件包含多个类或只包含顶层声明，
 那么选择一个描述该文件所包含内容的名称，并以此命名该文件。
-使用首字母大写的[驼峰风格](https://zh.wikipedia.org/wiki/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB)（例如 `ProcessDeclarations.kt`）。
+使用首字母大写的[驼峰风格](https://zh.wikipedia.org/wiki/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB)（也称为 Pascal 风格），
+例如 `ProcessDeclarations.kt`。
 
 文件的名称应该描述文件中代码的作用。因此，应避免在文件名中使用<!--
 -->诸如“Util”之类的无意义词语。
@@ -153,7 +154,7 @@ class MyTestCase {
 ### 属性名
 
 常量名称（标有 `const` 的属性，或者保存不可变数据的没有自定义 `get` 函数<!--
--->的顶层/对象 `val` 属性）应该使用大写、下划线分隔的名称：
+-->的顶层/对象 `val` 属性）应该使用大写、下划线分隔的名称 ([screaming snake case](https://en.wikipedia.org/wiki/Snake_case)) names:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -184,7 +185,7 @@ val PersonComparator: Comparator<Person> = /*...*/
 
 </div>
 
-对于枚举常量，可以使用大写、下划线分隔的名称
+对于枚举常量，可以使用大写、下划线分隔的名称 ([screaming snake case](https://en.wikipedia.org/wiki/Snake_case))
 （`enum class Color { RED, GREEN }`）也可使用首字母大写的常规驼峰名称，具体取决于用途。
    
 #### 幕后属性的名称
@@ -517,14 +518,14 @@ fun foo() = 1        // 良好
 
 ### 表达式函数体格式化
 
-如果函数的表达式函数体与函数声明不适合放在同一行，那么将 `=` 留在第一行。
-将表达式函数体缩进 4 个空格。
+如果函数的表达式函数体与函数声明不适合放在同一行，那么将 `=` 留在第一，
+并将表达式函数体缩进 4 个空格。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 
 ```kotlin
-fun f(x: String) =
-    x.length
+fun f(x: String, y: String, z: String) =
+    veryLongFunctionCallWithManyWords(andLongParametersToo(), x, y, z)
 ```
 
 </div>
@@ -1141,6 +1142,9 @@ typealias PersonIndex = Map<String, Person>
 ```
 
 </div>
+
+If you use a private or internal type alias for avoiding name collision, prefer the `import … as …` mentioned in 
+[Packages and Imports](packages.html).
 
 ### Lambda 表达式参数
 

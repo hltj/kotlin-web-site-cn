@@ -526,17 +526,16 @@ Kotlin 通过 Kotlin 注解处理工具 [`kapt`](kapt.html) 支持注解处理�
 Kotlin Gradle 插件支持支持增量编译。增量编译会跟踪多次构建之间<!--
 -->源文件的变更，因此只会编译这些变更所影响的文件。
 
-Kotlin/JVM 与 Kotlin/JS 项目均支持增量编译。
+Kotlin/JVM 与 Kotlin/JS 项目均支持增量编译 and is enabled by default since Kotlin 1.1.1。
 
-有几种方法可以覆盖默认设置：
+有几种方法可以禁用该设置：
 
 * Add the following line to the `gradle.properties` or `local.properties` file: 
-    * `kotlin.incremental=＜值＞` 用于 Kotlin/JVM 
-    * `kotlin.incremental.js=＜值＞` 用于 Kotlin/JS 项目。  
-    `＜值＞` 是一个反应增量编译用法的布尔值。 
+    * `kotlin.incremental=false` 用于 Kotlin/JVM 
+    * `kotlin.incremental.js=false` 用于 Kotlin/JS 项目。  
     
-* As the command line parameter, use 带有反映增量编译用法的布尔值的 `-Pkotlin.incremental` 或者 `-Pkotlin.incremental.js`
-参数。  
+* As the command line parameter, use `-Pkotlin.incremental=false` 或者 `-Pkotlin.incremental.js=false`。
+  
     请注意，这样用法中，该参数必须添加到后续每个子构建，并且任何具有禁用增量编译的构建都会<!--
     -->使增量缓存失效。
 
@@ -656,7 +655,7 @@ tasks.withType<KotlinCompile>().configureEach {
 |------|-------------|-----------------|--------------|
 | `javaParameters` | 为方法参数生成 Java 1.8 反射的元数据 |  | false |
 | `jdkHome` | 将来自指定位置的自定义 JDK 而不是默认的 JAVA_HOME 包含到类路径中 |  |  |
-| `jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"、 "1.8"、 "9"、 "10"、 "11"、 "12"、 "13"、 "14" | "1.6" |
+| `jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"、 "1.8"、 "9"、 "10"、 "11"、 "12"、 "13"、 "14", "15" | "1.6" |
 | `noJdk` | 不要自动在类路径中包含 Java 运行时 |  | false |
 | `noReflect` | 不要自动在类路径中包含 Kotlin 反射实现 |  | true |
 | `noStdlib` | 不要自动在类路径中包含 Kotlin 运行时与 Kotlin 反射 |  | true |
