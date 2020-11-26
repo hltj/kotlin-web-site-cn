@@ -49,7 +49,7 @@ Stream().read() // 创建类 Stream 实例并调用 read()
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-fun powerOf(number: Int, exponent: Int) { /*……*/ }
+fun powerOf(number: Int, exponent: Int): Int { /*……*/ }
 ```
 </div>
 

@@ -195,12 +195,15 @@ fun main() {
 如需移除警告，必须通过指定编译器参数 `-Xinline-classes` 来选择使用这项特性。
 
 ### 在 Gradle 中启用内联类
+
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode="groovy" data-lang="groovy">
 
 ```groovy
-compileKotlin {
-    kotlinOptions.freeCompilerArgs += ["-Xinline-classes"]
+kotlin {
+    sourceSets.all {
+        languageSettings.enableLanguageFeature('InlineClasses')
+    }
 }
 ```
 
@@ -211,8 +214,10 @@ compileKotlin {
 <div class="sample" markdown="1" theme="idea" mode="kotlin" data-lang="kotlin" data-highlight-only>
 
 ```kotlin
-tasks.withType<KotlinCompile> {
-    kotlinOptions.freeCompilerArgs += "-Xinline-classes"
+kotlin {
+    sourceSets.all {
+        languageSettings.enableLanguageFeature("InlineClasses")
+    }
 }
 ```
 

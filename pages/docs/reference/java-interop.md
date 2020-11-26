@@ -705,7 +705,13 @@ if (Character.isLetter(a)) { …… }
 
 Java 反射适用于 Kotlin 类，反之亦然。如上所述，你可以使用 `instance::class.java`,
 `ClassName::class.java` 或者 `instance.javaClass` 通过 `java.lang.Class` 来进入 Java 反射。
-You may also use `ClassName::class.javaObjectType` for getting primitive types wrappers.
+Do not use `ClassName.javaClass` for this purpose because it refers to `ClassName`'s companion object class,
+which is the same as `ClassName.Companion::class.java` and not `ClassName::class.java`.
+
+For each primitive type, there are two different Java classes, and Kotlin provides ways to get both. For
+example, `Int::class.java` will return the class instance representing the primitive type itself,
+corresponding to `Integer.TYPE` in Java. To get the class of the corresponding wrapper type, use
+`Int::class.javaObjectType`, which is equivalent of Java's `Integer.class`.
 
 其他支持的情况包括为一个 Kotlin 属性获取一个 Java 的 getter/setter 方法或者幕后字段、为一个 Java 字段获取一个 `KProperty`、为一个 `KFunction` 获取一个 Java 方法或者构造函数，反之亦然。
 
