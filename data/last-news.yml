@@ -1,11 +1,11 @@
-- title: "New release cadence"
+- title: "新的发版节奏"
   link: https://blog.jetbrains.com/kotlin/2020/10/new-release-cadence-for-kotlin-and-the-intellij-kotlin-plugin/
 
-- title: "kotlinx.serialization 1.0 released"
+- title: "kotlinx.serialization 1.0 发布了"
   link: https://blog.jetbrains.com/kotlin/2020/10/kotlinx-serialization-1-0-released/
 
-- title: "Kotlin public roadmap"
+- title: "Kotlin 公开路线图"
   link: https://blog.jetbrains.com/kotlin/2020/10/kotlin-public-roadmap-through-spring-2021/
 
-- title: "Kotlin Multiplatform Mobile goes Alpha"
+- title: "Kotlin 多平台移动端发布 Alpha 版"
   link: https://blog.jetbrains.com/kotlin/2020/08/kotlin-multiplatform-mobile-goes-alpha/

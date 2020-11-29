@@ -336,7 +336,7 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 | 名称 | 属性名 | 描述 | 可能的值 | 默认值 |
 |------|---------------|-------------|-----------------|--------------|
-| `jvmTarget` | `kotlin.compiler.jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"、 "1.8"、 "9"、 "10"、 "11"、 "12" 、 "13" 、 "14" | "1.6" |
+| `jvmTarget` | `kotlin.compiler.jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"、 "1.8"、 "9"、 "10"、 "11"、 "12" 、 "13" 、 "14"、 "15" | "1.6" |
 | `jdkHome` | `kotlin.compiler.jdkHome` | Include a custom JDK from the specified location into the classpath instead of the default JAVA_HOME | | &nbsp; |
 
 ### JS 特有的属性

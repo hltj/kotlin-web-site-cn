@@ -86,6 +86,8 @@ reference:
     - title: 新特性
       description: Kotlin 各版本的新特性
       content:
+        - url: /docs/reference/whatsnew1420.html
+          title: What's New in 1.4.20
         - url: /docs/reference/whatsnew14.html
           title: 1.4 的新特性
         - url: /docs/reference/whatsnew13.html
@@ -337,7 +339,7 @@ reference:
         nav: _nav_reference.yml
         base: /docs/reference/native
         repo: https://github.com/hltj/kotlin-native-cn
-        branch: v1.4.0-fixes
+        branch: v1.4.20-fixes
 
     - title: 工具
       description:
@@ -501,16 +503,6 @@ tutorials:
           title: 通过 EduTools 插件学习 Kotlin
         - url: /docs/tutorials/edu-tools-educator.html
           title: 通过 EduTools 插件讲授 Kotlin
-    - title: 迁移自 Python
-      external:
-        path: kotlin-for-python-developers
-        nav: kotlinlang.org.yaml
-        base: /docs/tutorials/kotlin-for-py
-        branch: master
-        repo: https://github.com/hltj/kotlin-for-python-developers-cn
-        type: tutorial
-        wrap_code_snippets: True
-        github_edit_page: README.md
 
 foundation:
   content:

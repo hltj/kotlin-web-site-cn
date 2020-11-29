@@ -19,7 +19,7 @@ Kotlin/JS 提供了转换 Kotlin 代码、Kotlin 标准库的能力，并且兼�
 * **使用 Kotlin/JS 编写 Web 前端应用程序**
     * Kotlin/JS 允许以类型安全的方式 **利用功能强大的浏览器与 Web API**。创建、修改文档对象模型（DOM）中的元素并与之交互，使用 Kotlin 代码控制 `canvas` 或 WebGL 组件的呈现，并享受对现代浏览器支持的更多功能的访问。
     * 使用 JetBrains 提供的 [`kotlin-wrappers`](https://github.com/JetBrains/kotlin-wrappers) **用 Kotlin/JS 编写完整的，类型安全的 React 应用程序**，它为最流行的 JavaScript 框架之一提供方便的抽象与深度集成。`kotlin-wrappers` 还为许多类似技术（例如 `react-redux`、`react-router` 或 `styled-components`）提供支持。与 JavaScript 生态系统的互操作性还意味着可以使用第三方 React 组件与组件库。
-    * 或者，使用 **社区维护的 Kotlin/JS 框架**，充分利用 Kotlin 相关概念、其表现力与简洁性（例如 [kvision](https://github.com/rjaros/kvision) 或 [fritz2](https://www.fritz2.dev/)）。
+    * 或者，使用 **社区维护的 Kotlin/JS 框架**，充分利用 Kotlin 相关概念、其表现力与简洁性（例如 [kvision](https://kvision.io) 或 [fritz2](https://www.fritz2.dev/)）。
 
 * **使用 Kotlin/JS 编写服务器端与无服务器应用程序**
     * Kotlin/JS 提供的 Node.js 目标能够创建**在服务器上运行**或在**无服务器基础架构上执行**的应用程序。可以享受与其他在 JavaScript 运行时中执行的应用程序相同的优势，例如**更快的启动速度**与**更少的内存占用**。使用 [`kotlinx-nodejs`](https://github.com/Kotlin/kotlinx-nodejs)，可以直接从 Kotlin 代码中对 [Node.js API](https://nodejs.org/docs/latest/api/) 进行类型安全的访问。

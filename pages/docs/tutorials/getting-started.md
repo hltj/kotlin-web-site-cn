@@ -17,7 +17,7 @@ title:  "Kotlin 入门"
 如果已经 **有一个 Java 项目**，那么可以：
 
 *   **[开始将 Kotlin 代码添加到项目中](mixing-java-kotlin-intellij.html)。**  
-从一个小类或函数开始，并带有[与 Java 代码正确互操作性](../reference/java-interop.html)所需的注释。
+从一个小类或函数开始，并带有[与 Java 代码正确互操作性](../reference/java-interop.html)所需的注解。
 *   用 **Kotlin** 为代码 **编写一些测试**。
 测试是将 Kotlin 添加到代码库中的安全场所，因为在打包过程中它们并未与应用程序捆绑在一起。
 *   **[将 Java 代码转换为 Kotlin](mixing-java-kotlin-intellij.html#converting-an-existing-java-file-to-kotlin-with-j2k)**。
