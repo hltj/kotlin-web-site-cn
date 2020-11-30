@@ -118,7 +118,7 @@ fun preparePostAsync(): Promise<Token> {
 
 ## 响应式扩展
 
-[Erik Meijer](https://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)) 介绍了 C# 中的响应式扩展（Rx）。虽然它在 .NET 平台上是毫无疑义的，
+[Erik Meijer](https://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)) 将响应式扩展（Rx）引入了 C#. 虽然它在 .NET 平台上是毫无疑义的，
 但是在 Netflix 将它移植到 Java 并取名为 RxJava 之前绝对不是主流。从那时起，响应式被移植到各种平台，包括 JavaScript（RxJS）。
 
 Rx 背后的想法是走向所谓的“可观察流”，我们现在将数据视为流（无限量的数据），并且可以观察到这些流。 实际上，Rx 很简单，
