@@ -109,7 +109,7 @@ Kotlin 是受 Java、C#、JavaScript、Scala 以及 Groovy 等现有语言的启
 ### 谁开发 Kotlin？
 
 Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模为 100+）。其首席语言设计师是
-[Andrey Breslav](https://twitter.com/abreslav)。除了核心团队，GitHub 上还有 250 多个外部贡献者。
+[Roman Elizarov](https://twitter.com/relizarov)。除了核心团队，GitHub 上还有 250 多个外部贡献者。
 
 ### 在哪里可以了解关于 Kotlin 更多？
 

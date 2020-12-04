@@ -9,7 +9,3 @@
 - title: 互操作性
   description: 充分利用 JVM、Android 和浏览器的现有库
   content_file: interoperable.md
-
-- title: 工具友好
-  description: 可用任何 Java IDE 或者使用命令行构建
-  content_file: tooling.md

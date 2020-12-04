@@ -199,21 +199,6 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 
 请参见 [Kotlin 注解处理工具](kapt.html)（`kapt`）的描述。
 
-## 协程支持
-
-在 Kotlin 1.2 中[协程](coroutines.html)支持是一项实验性的特性，因此当你在项目中使用协程时 Kotlin 编译器会报警告。
-可以将以下代码块添加到 `pom.xml` 文件中来关闭这一警告：
-
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
-
-```xml
-<configuration>
-    <experimentalCoroutines>enable</experimentalCoroutines>
-</configuration>
-```
-
-</div>
-
 ## Jar 文件
 
 要创建一个仅包含模块代码的小型 Jar 文件，请在 Maven pom.xml 文件中的 `build->plugins` 下面包含以下内容，
