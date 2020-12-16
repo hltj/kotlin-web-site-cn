@@ -126,7 +126,7 @@ var setterWithAnnotation: Any? = null
 
 ### 幕后字段
 
-In Kotlin, a field is only used when needed as part of a property to hold its value in memory. Fields can not be declared directly. 然而，当一个属性需要一个幕后字段时，Kotlin 会自动提供。这个幕后字段可以使用`field`标识符在访问器中引用：
+在 Kotlin 中，字段仅在需要作为属性的一部分在内存中保存其值时使用。字段不能直接声明。然而，当一个属性需要一个幕后字段时，Kotlin 会自动提供。这个幕后字段可以使用 `field` 标识符在访问器中引用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 
