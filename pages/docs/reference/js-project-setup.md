@@ -14,7 +14,7 @@ Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理�
 可以直接从 Gradle 构建文件中对依赖项管理与配置进行很大程度的调整，并且可以选择覆盖自动生成的配置以实现完全控制。
 
 要在 IntelliJ IDEA 中创建 Kotlin/JS 项目，请转至 **文件(File) \| 新建(New) \| 项目(Project)**。
-然后选择 **Kotlin** 并选择最适合的 Kotlin/JS 目标。不要忘记为构建脚本选择语言：Groovy 或 Kotlin。
+然后选择 **Kotlin** 并选择最适合的 Kotlin/JS 目标。不要选择构建脚本的语言：Groovy 或 Kotlin。
 
 ![New project wizard]({{ url_for('asset', path='images/reference/js-project-setup/js-project-wizard.png') }})
 
@@ -66,7 +66,7 @@ kotlin {
 * [配置 test 任务](#配置-test-任务)
 * 为浏览器项目配置 [webpack 绑定](#配置-webpack-绑定)与[模块名](#调整模块名)
 * [分发目标目录](#分发目标目录)与[模块名](#调整模块名)
-* [项目的 `package.json` 文件](#packagejson-客制化)
+* [项目的 `package.json` 文件](#packagejson-定制)
 
 ## 选择执行环境
 
@@ -548,7 +548,7 @@ js {
 
 请注意，这不会影响 `build/distributions` 中的 Webpack 输出。
 
-## package.json 客制化
+## package.json 定制
 
 `package.json` 文件保存 JavaScript 包的元数据。流行的软件仓库（例如 npm）要求所有已发布的软件包都具有此类文件。
 软件仓库使用该文件来跟踪与管理软件包发布。
