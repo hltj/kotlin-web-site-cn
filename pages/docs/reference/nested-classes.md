@@ -24,7 +24,7 @@ val demo = Outer.Nested().foo() // == 2
 
 </div>
 
-You can also use interfaces with nesting. All combinations of classes and interfaces are possible: You can nest interfaces in classes, classes in interfaces, and interfaces in interfaces.
+还可以使用带有嵌套的接口。所有类与接口的组合都是可能的：可以将接口嵌套在类中、将类嵌套在接口中、将接口嵌套在接口中。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
