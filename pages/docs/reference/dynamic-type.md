@@ -20,12 +20,12 @@ val dyn: dynamic = ……
 
 `dynamic` 类型基本上关闭了 Kotlin 的类型检测系统：
 
-  - `dynamic` 值可以分配给任何类型的变量，也可以作为参数传递到任何地方。
+  - `dynamic` 值可以赋值给任何类型的变量，也可以作为参数传递到任何地方。
   - `dynamic` 变量可以具有任何类型的值。
   - 带有 `dynamic` 参数的函数可以带有任何类型的参数。
   - 对于 `dynamic` 类型的值，将禁用 `null` 检查。
 
-在 `dynamic` 变量上，可以使用 **任何** 参数调用任何属性或函数：
+在 `dynamic` 变量上，可以使用任何参数调用 **任何** 属性或函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
