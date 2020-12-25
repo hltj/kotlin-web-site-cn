@@ -11,7 +11,7 @@ Kotlin 最初被设计为能够与 Java 平台轻松互操作。它将 Java 类�
 
 但是，JavaScript 是一种动态类型语言，这意味着它不会在编译期检测类型。可以通过[动态](dynamic-type.html)类型在 Kotlin 中自由地与 JavaScript 交流。如果想要使用 Kotlin 类型系统的全部威力，可以为 JavaScript 库创建 Kotlin 编译器与周边工具可理解的外部声明。
 
-An experimental tool to automatically create Kotlin external declarations for npm dependencies which provide type definitions (TypeScript / `d.ts`) called [Dukat](js-external-declarations-with-dukat) is also available.
+还提供了一种实验工具，可为 npm 依赖自动创建 Kotlin 外部声明，该声明提供称为 [Dukat](js-external-declarations-with-dukat) 的类型定义（TypeScript / `d.ts`）。
 
 ## 内联 JavaScript
 
@@ -37,13 +37,13 @@ fun getTypeof() = "typeof"
 ```
 </div>
 
-Note that invoking `js()` returns a result of type [`dynamic`](dynamic-type.html), which provides no type safety at compile time.
+请注意，调用 `js()` 会返回动态类型的结果，该结果在编译时不提供任何类型安全性。
 
 ## `external` 修饰符
 
 要告诉 Kotlin 某个声明是用纯 JavaScript 编写的，你应该用 `external` 修饰符来标记它。
-当编译器看到这样的声明时，它假定相应类、函数或<!--
--->属性的实现是由外部提供的（由开发人员或者通过 [npm 依赖项](js-project-setup.html#npm-dependencies)），因此不会尝试从声明中生成任何 JavaScript 代码。This is also why `external` declarations can't have a body。例如：
+当编译器看到这样的声明时，它假定相应类、函数或属性的实现是由外部提供的（由开发人员或者通过 [npm 依赖项](js-project-setup.html#npm-dependencies)），因此不会尝试从声明中生成任何 JavaScript 代码。
+这也是为什么 `external` 声明不能具有主体的原因。例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -98,7 +98,7 @@ external class MyClass {
 
 ### 声明可选参数
 
-If you are writing an external declaration for a JavaScript function which has an optional parameter, use `definedExternally`. This delegates the generation of the default values to the JavaScript function itself:
+如果正在为具有可选参数的 JavaScript 函数编写外部声明，请使用 `definedExternally`。这将默认值的生成委托给 JavaScript 函数本身：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -110,7 +110,7 @@ external fun myFunWithOptionalArgs(
 ```
 </div>
 
-With this external declaration, you can call `myFunWithOptionalArgs` with one required argument and two optional arguments, where the default values are calculated by the JavaScript implementation of `myFunWithOptionalArgs`.
+使用此外部声明，可以调用带有一个必需参数和两个可选参数的 `myFunWithOptionalArgs`，其中默认值由 `myFunWithOptionalArgs` 的 JavaScript 实现计算得出。
 
 
 ### 扩展 JavaScript 类
@@ -200,12 +200,12 @@ fun sendQuery() {
 - 它们不能作为具体化类型参数传递。
 - 它们不能用在类的字面值表达式（例如 `I::class`）中。
 - `as` 转换为外部接口总是成功。
-    Casting to external interfaces produces the "Unchecked cast to external interface" compile time warning. The warning can be suppressed with the `@Suppress("UNCHECKED_CAST_TO_EXTERNAL_INTERFACE")` annotation.
+    强制转换为外部接口会产生“未检查强制转换到外部接口（Unchecked cast to external interface）”编译时警告。可以使用 `@Suppress("UNCHECKED_CAST_TO_EXTERNAL_INTERFACE")` 注解取消警告。
 
-    IntelliJ IDEA can also automatically generate the `@Suppress` annotation. Open the intentions menu via the light bulb icon or Alt-Enter, and click the small arrow next to the "Unchecked cast to external interface" inspection. Here, you can select the suppression scope, and your IDE will add the annotation to your file accordingly.
+    IntelliJ IDEA 还可以自动生成 `@Suppress` 注解。通过灯泡图标或 <kbd>Alt</kbd> + <kbd>Enter</kbd> 打开意图菜单，然后单击“未检查强制转换到外部接口”检查旁边的小箭头。在这里，可以选择抑制作用域，IDE 将相应地将注解添加到文件中。
 
-### Casting
-In addition to the ["unsafe" cast operator](/docs/reference/typecasts.html#unsafe-cast-operator) `as`, which throws a `ClassCastException` in case a cast is not possible, Kotlin/JS also provides [`unsafeCast<T>()`](/api/latest/jvm/stdlib/kotlin.js/unsafe-cast.html). When using `unsafeCast`, _no type checking is done at all_ during runtime. For example, consider the following two methods:
+### 强制转换
+除了[“unsafe”强制转换运算符](/docs/reference/typecasts.html#unsafe-cast-operator) `as`（在无法进行强制转换时抛出 `ClassCastException`）之外，Kotlin/JS 还提供 [`unsafeCast<T>()`](/api/latest/jvm/stdlib/kotlin.js/unsafe-cast.html)。使用 `unsafeCast` 时，在运行时 _完全不进行类型检查_。例如，考虑以下两种方法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 
@@ -215,7 +215,7 @@ fun usingAsOperator(s: Any) = s as String
 ```
 </div>
 
-They will be compiled accordingly:
+它们将进行相应的编译：
 <div class="sample" markdown="1" theme="idea" mode="java">
 
 ``` javascript
