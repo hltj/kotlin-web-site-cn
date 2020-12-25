@@ -10,7 +10,7 @@ title: "动态类型"
 > 在面向 JVM 平台的代码中不支持动态类型。
 {:.note}
 
-Kotlin is a statically typed language, which makes it different from the dynamically typed JavaScript. In order to facilitate interoperation with JavaScript code, Kotlin/JS offers the `dynamic` type:
+Kotlin 是一种静态类型的语言，这使得它不同于动态类型的 JavaScript。为了方便与 JavaScript 代码的互操作，Kotlin/JS 提供了 `dynamic` 类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -20,12 +20,12 @@ val dyn: dynamic = ……
 
 `dynamic` 类型基本上关闭了 Kotlin 的类型检测系统：
 
-  - A `dynamic` value can be assigned to variables of any type, or passed anywhere as a parameter.
-  - A `dynamic` variable can have a value of any type.
-  - A function that takes a `dynamic` parameter can take arguments of any type. 
-  - `null`-checks are disabled for values of type `dynamic`.
+  - `dynamic` 值可以赋值给任何类型的变量，也可以作为参数传递到任何地方。
+  - `dynamic` 变量可以具有任何类型的值。
+  - 带有 `dynamic` 参数的函数可以带有任何类型的参数。
+  - 对于 `dynamic` 类型的值，将禁用 `null` 检查。
 
-On a `dynamic` variable, you can call **any** property or function, with any parameters: 
+在 `dynamic` 变量上，可以使用任何参数调用 **任何** 属性或函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
