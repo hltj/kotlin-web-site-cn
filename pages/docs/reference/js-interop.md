@@ -112,6 +112,7 @@ external fun myFunWithOptionalArgs(
 
 使用此外部声明，可以调用带有一个必需参数和两个可选参数的 `myFunWithOptionalArgs`，其中默认值由 `myFunWithOptionalArgs` 的 JavaScript 实现计算得出。
 
+
 ### 扩展 JavaScript 类
 
 你可以轻松扩展 JavaScript 类，因为它们是 Kotlin 类。只需定义一个 `external open` 类并用<!--
@@ -203,7 +204,7 @@ fun sendQuery() {
 
     IntelliJ IDEA 还可以自动生成 `@Suppress` 注解。通过灯泡图标或 <kbd>Alt</kbd> + <kbd>Enter</kbd> 打开意图菜单，然后单击“未检查强制转换到外部接口”检查旁边的小箭头。在这里，可以选择抑制作用域，IDE 将相应地将注解添加到文件中。
 
-### Casting
+### 强制转换
 除了[“unsafe”强制转换运算符](/docs/reference/typecasts.html#unsafe-cast-operator) `as`（在无法进行强制转换时抛出 `ClassCastException`）之外，Kotlin/JS 还提供 [`unsafeCast<T>()`](/api/latest/jvm/stdlib/kotlin.js/unsafe-cast.html)。使用 `unsafeCast` 时，在运行时 _完全不进行类型检查_。例如，考虑以下两种方法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
