@@ -7,10 +7,10 @@ title: "JavaScript 中调用 Kotlin"
 
 # JavaScript 中调用 Kotlin
 
-Depending on the selected [JavaScript Module](js-modules.html) system, the Kotlin/JS compiler generates different output. 当然通常 Kotlin 编译器生成正常的 JavaScript 类，可以在 JavaScript 代码中自由地使用的函数和属性。不过，你应该记住一些微妙的事情。
+根据所选的 [JavaScript 模块](js-modules.html)系统，Kotlin/JS 编译器会生成不同的输出。当然通常 Kotlin 编译器生成正常的 JavaScript 类，可以在 JavaScript 代码中自由地使用的函数和属性。不过，应该记住一些微妙的事情。
 
 ## 在 `plain` 模式中用独立的 JavaScript 隔离声明
-If you have explicitly set your module kind to be `plain`, 为了防止损坏全局对象，Kotlin 创建一个包含当前模块中所有 Kotlin 声明的对象。这意味着对于一个模块 `myModule`，所有的声明都可以通过 `myModule` 对象在 JavaScript 中使用。例如：
+如果将模块种类明确设置为 `plain`, 为了防止损坏全局对象，Kotlin 创建一个包含当前模块中所有 Kotlin 声明的对象。这意味着对于一个模块 `myModule`，所有的声明都可以通过 `myModule` 对象在 JavaScript 中使用。例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -26,7 +26,7 @@ alert(myModule.foo());
 ```
 </div>
 
-This is not applicable when you compile your Kotlin module to JavaScript modules like UMD (which is the default setting for both `browser` and `nodejs` targets), CommonJS or AMD. In this case, your declarations will be exposed in the format specified by your chosen JavaScript module system. When using UMD or CommonJS, for example, your call site could look like this:
+将 Kotlin 模块编译为 JavaScript 模块（例如 UMD（这是 `browser` 与 `nodejs` 目标的默认设置）、CommonJS 或 AMD）时，此方法不适用。在这种情况下，声明将以选择的 JavaScript 模块系统指定的格式暴露。例如，当使用 UMD 或 CommonJS 时，调用处可能如下所示：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` javascript
@@ -34,7 +34,7 @@ alert(require('myModule').foo());
 ```
 </div>
 
-Check the article on [JavaScript Modules](js-modules.html) for more information on the topic of JavaScript module systems.
+查看有关 [JavaScript 模块](js-modules.html)的文章，以获取有关 JavaScript 模块系统专题的更多信息。
 
 ## 包结构
 
@@ -49,7 +49,7 @@ fun foo() = "Hello"
 ```
 </div>
 
-When using UMD or CommonJS, for example, your callsite could look like this:
+例如，当使用 UMD 或 CommonJS 时，调用处可能如下所示：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` javascript
@@ -57,7 +57,7 @@ alert(require('myModule').my.qualified.packagename.foo())
 ```
 </div>
 
-Or, in the case of using `plain` as a module system setting:
+或者，在使用 `plain` 格式作为模块系统设置的情况下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` javascript
@@ -91,7 +91,7 @@ class Person(val name: String) {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` javascript
-// If necessary, import 'kjs' according to chosen module system
+// 如有必要，根据所选模块系统导入“kjs”
 var person = new kjs.Person("Dmitry");   // 引用到模块“kjs”
 person.hello();                          // 输出“Hello Dmitry!”
 person.helloWithGreeting("Servus");      // 输出“Servus Dmitry!”
@@ -101,9 +101,9 @@ person.helloWithGreeting("Servus");      // 输出“Servus Dmitry!”
 如果我们没有指定 `@JsName` 注解，相应函数的名称会包含<!--
 -->从函数签名计算而来的后缀，例如 `hello_61zpoe$`。
 
-Note that there are some cases in which the Kotlin compiler does not apply mangling:
-- `external` declarations are not mangled.
-- Any overridden functions in non-`external` classes inheriting from `external` classes are not mangled.
+请注意，在某些情况下，Kotlin 编译器不应用修饰：
+- `external` 声明不会被修饰
+- 从 `external` 类继承的非 `external` 类中的任何重写函数都不会被修饰。
 
 
 `@JsName` 的参数需要是一个常量字符串字面值，该字面值是一个有效的标识符。
@@ -117,17 +117,17 @@ external fun newC()
 ```
 </div>
 
-### `@JsExport` annotation
-> The `@JsExport` annotation is currently marked as experimental. Its design may change in future versions.
+### `@JsExport` 注解
+> `@JsExport` 注解当前标记为实验性的。其设计可能会在将来的版本中更改。
 {:.note} 
 
-By applying the `@JsExport` annotation to a top-level declaration (like a class or function), you make the Kotlin declaration available from JavaScript. The annotation exports all nested declarations with the name given in Kotlin. It can also be applied on file-level using `@file:JsExport`.
+通过将 `@JsExport` 注解应用于顶级声明（如类或函数），可以从 JavaScript 使用 Kotlin 声明。注解会导出所有嵌套声明，并使用 Kotlin 中给出的名称。也可以使用 `@file:JsExport` 将其应用于文件级。
 
-To resolve ambiguities in exports (like overloads for functions with the same name), you can use the `@JsExport` annotation together with `@JsName` to specify the names for the generated and exported functions.
+要解决导出中的歧义（例如，具有相同名称的函数的重载），可以将 `@JsExport` 批注与 `@JsName` 一起使用，以指定生成与导出函数的名称。
 
-The `@JsExport` annotation is available in the current default compiler backend and the new [IR compiler backend](js-ir-compiler.html). If you are targeting the IR compiler backend, you **must** use the `@JsExport` annotation to make your functions visible from Kotlin in the first place.
+`@JsExport` 注解在当前的默认编译器后端与新的 [IR 编译器](js-ir-compiler.html)后端中可用。如果以 IR 编译器后端为目标，则 **必须** 使用 `@JsExport` 批注使函数首先在 Kotlin 中可见。
 
-For multiplatform projects, `@JsExport` is available in common code as well. It only has an effect when compiling for the JavaScript target, and allows you to also export Kotlin declarations that are not platform specific.
+对于多平台项目，`@JsExport` 也可以在公共代码中使用。它仅在针对 JavaScript 目标进行编译时才有效，并且还允许导出不是特定于平台的 Kotlin 声明。
 
 ## 在 JavaScript 中表示 Kotlin 类型
 
