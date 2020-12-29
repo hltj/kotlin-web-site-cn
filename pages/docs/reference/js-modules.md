@@ -74,7 +74,7 @@ tasks.named<KotlinJsCompile>("compileKotlinJs").configure {
 
 可用值为：`umd`（默认）、`commonjs`、`amd`、`plain`。
 
-> 这与调整 `webpackTask.output.libraryTarget` 不同。库目标更改了 _webpack生成的_ 输出（在代码已编译之后）。`kotlinOptions.moduleKind` 更改 _由 Kotlin 编译器_ 生成的输出。
+> 这与调整 `webpackTask.output.libraryTarget` 不同。库目标更改了 _webpack 生成的_ 输出（在代码已编译之后）。`kotlinOptions.moduleKind` 更改 _由 Kotlin 编译器_ 生成的输出。
 {:.note}  
 
 在 Kotlin Gradle DSL 中，还有一个用于设置 CommonJS 模块种类的快捷方式：
