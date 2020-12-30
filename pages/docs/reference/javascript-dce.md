@@ -16,7 +16,7 @@ Kotlin/JS Gradle 插件包含一个[_无用代码消除_](https://zh.wikipedia.o
 * 函数是内联的，永远不会直接调用（除了少数情况总是发生）。
 * 模块使用共享库。没有 DCE 的情况下，未使用的组件仍会进入结果包。
   例如，Kotlin 标准库中包含用于操作列表、数组、字符序列、DOM 适配器的函数。
-  All of this functionality would require about 1.3 MB as a JavaScript file.
+  所有这些功能将需要约 1.3MB 的 JavaScript 文件。
   一个简单的 "Hello, world" 应用程序仅需要控制台例程，整个程序只有几 KB。
 
 Kotlin/JS Gradle 插件在构建**生产包**时会自动处理 DCE，例如：使用 `browserProductionWebpack` 任务。**开发包**任务（例如 `browserDevelopmentWebpack`）不包含 DCE。
@@ -50,14 +50,14 @@ kotlin {
 ```
 </div>
 
-If you want to keep a whole package or module from elimination, you can use its fully qualified name as it appears in the generated JavaScript code.
+如果要避免删除整个程序包或模块，可以使用其在生成的 JavaScript 代码中出现的完全限定名。
 
-> Keeping whole packages or modules from elimination can prevent DCE from removing many unused declarations. Because of this, it is preferable to select individual declarations which should be excluded from DCE one by one.
+> 避免删除整个软件包或模块会阻止 DCE 删除许多未使用的声明。因此，最好逐个选择应从 DCE 中排除的单个声明。
 {:.note}
 
-## Disabling DCE
+## 禁用 DCE
 
-To turn off DCE completely, use the `devMode` option in the `dceTask`:
+要完全关闭 DCE，可以使用 `dceTask` 中的 `devMode` 选项：
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
 
