@@ -114,7 +114,7 @@ class Person(val firstName: String, val lastName: String, var age: Int) { /*…�
 
 </div>
 
-You can use a [trailing comma](coding-conventions.html#trailing-commas) when you declare class properties:
+声明类属性时，可以使用[尾部逗号](coding-conventions.html#trailing-commas)：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -122,7 +122,7 @@ You can use a [trailing comma](coding-conventions.html#trailing-commas) when you
 class Person(
     val firstName: String,
     val lastName: String,
-    var age: Int, // trailing comma
+    var age: Int, // 尾部逗号
 ) { /*...*/ }
 ```
 
