@@ -6,33 +6,33 @@ title: "创建多平台库"
 
 # 创建多平台库
 
-This section provides steps for creating a multiplatform library. You can also complete the [tutorial](../tutorials/mpp/multiplatform-library.html) 
-where you will create a multiplatform library, test it, and publish it to Maven.
+本节提供了创建多平台库的步骤。
+还可以完成本[教程](../tutorials/mpp/multiplatform-library.html)，在教程中将创建一个多平台库，对其进行测试，然后将其发布到 Maven。
 
-1. In IntelliJ IDEA, select **File** \| **New** \| **Project**.
-2. In the panel on the left, select **Kotlin**.
-3. Enter a project name and select **Library** under **Multiplatform** as the project template.  
+1. 在 IntelliJ IDEA 中, 选择 **文件(File)** \| **新建(New)** \| **项目(Project)**。
+2. 在左侧面板中，选择 **Kotlin**。
+3. 输入项目名称，然后选择 **Multiplatform** 下的 **Library** 作为项目模板。
 
-    ![Select a project template]({{ url_for('asset', path='images/reference/mpp/mpp-project-1.png') }})
+    ![选择项目模板]({{ url_for('asset', path='images/reference/mpp/mpp-project-1.png') }})
 
-4. Select the Gradle DSL – Kotlin or Groovy.
-5. Click **Next**.
+4. 选择 Gradle DSL——Kotlin 或 Groovy。
+5. 点击 **下一步(Next)**。
 
-You can finish creating the project by clicking **Finish** on the next screen or configure it if necessary:
+可以通过在下一个屏幕上单击 **Finish** 来完成创建项目，或在必要时进行配置：
 
 {:start="6"}
-6. Add the target platforms and modules by clicking the + icon.
-7. Configure target settings, such as the target template, JVM target version, and test framework.    
+6. 通过单击 + 图标添加目标平台与模块。
+7. 配置目标设置，例如目标模板，JVM 目标版本与测试框架。
 
-    ![Configure the project]({{ url_for('asset', path='images/reference/mpp/mpp-project-2.png') }})
+    ![配置项目]({{ url_for('asset', path='images/reference/mpp/mpp-project-2.png') }})
 
-8. If necessary, specify dependencies between modules:
-    *   Multiplatform and Android modules
-    *   Multiplatform and iOS modules
-    *   JVM modules  
+8. 如有必要，可以指定模块之间的依赖关系：
+    *   多平台与 Android 模块
+    *   多平台与 iOS 模块
+    *   JVM 模块  
     
-    ![Add module dependencies]({{ url_for('asset', path='images/reference/mpp/mpp-project-3.png') }})
+    ![添加模块依赖]({{ url_for('asset', path='images/reference/mpp/mpp-project-3.png') }})
 
-9. Click **Finish**.
+9. 点击 **Finish**。
 
-The new project opens. [Discover what it includes](mpp-discover-project.html).
+新项目将打开。[探索项目中包含的内容](mpp-discover-project.html)。
