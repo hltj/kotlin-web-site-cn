@@ -81,10 +81,10 @@ kotlin {
 
 该项目包括带有 Kotlin 源集的 `src` 目录，
 这些源集是 Kotlin 代码文件的集合，以及源集的资源、依赖与语言设置。
-可以在 Kotlin 编译中使用一个或多个源集目标平台。
+可以在 Kotlin 编译项中使用一个或多个源集目标平台。
 
 每个源集目录都包含 Kotlin 代码文件（`kotlin` 目录）与 `resources`。
-项目向导会为公共代码以及所有添加的目标的 `main` 与 `test` 编译创建默认源集。
+项目向导会为公共代码以及所有已添加目标的 `main` 与 `test` 编译项创建默认源集。
 
 <img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/source-sets.png' )}}" alt="源集" width="300"/>
 
@@ -144,15 +144,15 @@ kotlin {
 
 ## 编译项
 
-每个目标可以具有一个或多个编译，例如，用于生产与测试目的。
+每个目标可以具有一个或多个编译项，例如，用于生产与测试目的。
 
-对于每个目标，默认编译包括：
+对于每个目标，默认编译项包括：
 
-*   针对 JVM、JS 与原生目标的 `main` 与 `test`编译。
+*   针对 JVM、JS 与原生目标的 `main` 与 `test`编译项。
 *   针对 Android 目标的每个 [Android 构建变体](https://developer.android.com/studio/build/build-variants) 的编译。
 
 ![编译项]({{ url_for('asset', path='images/reference/mpp/compilations.png') }})
 
 每个编译都有默认的源集，其中包含特定于该编译的源代码与依赖。
 
-了解如何[配置编译](mpp-configure-compilations.html)。
+了解如何[配置编译项](mpp-configure-compilations.html)。
