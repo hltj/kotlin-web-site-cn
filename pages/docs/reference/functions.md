@@ -463,8 +463,8 @@ Kotlin 支持一种称为[尾递归](https://zh.wikipedia.org/wiki/%E5%B0%BE%E8%
 ```kotlin
 val eps = 1E-10 // "good enough", could be 10^-15
 
-tailrec fun findFixPoint(x: Double = 1.0): Double
-        = if (Math.abs(x - Math.cos(x)) < eps) x else findFixPoint(Math.cos(x))
+tailrec fun findFixPoint(x: Double = 1.0): Double =
+    if (Math.abs(x - Math.cos(x)) < eps) x else findFixPoint(Math.cos(x))
 ```
 </div>
 

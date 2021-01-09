@@ -10,10 +10,10 @@ title: "聚合操作"
 Kotlin 集合包含用于常用的 _聚合操作_ （基于集合内容返回单个值的操作）的函数 。
 其中大多数是众所周知的，并且其工作方式与在其他语言中相同。
 
-* [`min()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min.html) 与 [`max()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max.html) 分别返回最小和最大的元素；
-* [`average()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/average.html) 返回数字集合中元素的平均值；
-* [`sum()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum.html) 返回数字集合中元素的总和；
-* [`count()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/count.html) 返回集合中元素的数量；
+* [`minOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-or-null.html) 与 [`maxOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-or-null.html) 分别返回最小和最大的元素。 On empty collections, they return `null`.
+* [`average()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/average.html) 返回数字集合中元素的平均值。
+* [`sum()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum.html) 返回数字集合中元素的总和。
+* [`count()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/count.html) 返回集合中元素的数量。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -23,8 +23,8 @@ fun main() {
     val numbers = listOf(6, 42, 10, 4)
 
     println("Count: ${numbers.count()}")
-    println("Max: ${numbers.max()}")
-    println("Min: ${numbers.min()}")
+    println("Max: ${numbers.maxOrNull()}")
+    println("Min: ${numbers.minOrNull()}")
     println("Average: ${numbers.average()}")
     println("Sum: ${numbers.sum()}")
 //sampleEnd
@@ -34,8 +34,10 @@ fun main() {
 
 还有一些通过某些选择器函数或自定义 [`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator/index.html) 来检索最小和最大元素的函数。
 
-* [`maxBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-by.html)/[`minBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-by.html) 接受一个选择器函数并返回使选择器返回最大或最小值的元素。
-* [`maxWith()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-with.html)/[`minWith()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-with.html) 接受一个 `Comparator` 对象并且根据此 `Comparator` 对象返回最大或最小元素。
+* [`maxByOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-by.html)/[`minByOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-by-or-null.html) 接受一个选择器函数并返回使选择器返回最大或最小值的元素。
+* [`maxWithOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-with.html)/[`minWithOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-with-or-null.html) 接受一个 `Comparator` 对象并且根据此 `Comparator` 对象返回最大或最小元素。
+
+All these functions return `null` on empty collections.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -43,11 +45,11 @@ fun main() {
 fun main() {
 //sampleStart
     val numbers = listOf(5, 42, 10, 4)
-    val min3Remainder = numbers.minBy { it % 3 }
+    val min3Remainder = numbers.minByOrNull { it % 3 }
     println(min3Remainder)
 
     val strings = listOf("one", "two", "three", "four")
-    val longestString = strings.maxWith(compareBy { it.length })
+    val longestString = strings.maxWithOrNull(compareBy { it.length })
     println(longestString)
 //sampleEnd
 }

@@ -47,6 +47,14 @@ Kotlin 社区创建的用于数据相关任务的类库生态系统正在迅速�
 以下是一些可能会有用的库：
 
 ### Kotlin 库
+* [KotlinDL](http://github.com/jetbrains/kotlindl) is a high-level Deep Learning API written in Kotlin and inspired 
+  by Keras. It offers simple APIs for training deep learning models from scratch, importing existing Keras models 
+  for inference, and leveraging transfer learning for tweaking existing pre-trained models to your tasks.
+  
+* [Kotlin for Apache Spark](https://github.com/JetBrains/kotlin-spark-api) adds a missing layer of compatibility between 
+  Kotlin and Apache Spark. It allows Kotlin developers to use familiar language features such as data classes, and 
+  lambda expressions as simple expressions in curly braces or method references.
+  
 * [kotlin-statistics](https://github.com/thomasnield/kotlin-statistics) 是一个为<!--
 -->探索性统计与生产统计中提供扩展函数的库。它支持基本的数字列表/序列/数组函数（从 `sum` 到 `skewness`）、
 切片操作符（诸如 `countBy`、 `simpleRegressionBy`）、分箱（binning）操作符、离散 PDF 采样、
