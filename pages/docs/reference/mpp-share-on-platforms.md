@@ -6,45 +6,45 @@ title: "平台间共享代码"
 
 # 平台间共享代码
 
-With Kotlin Multiplatform, you can share the code using the mechanisms Kotlin provides: 
+在 Kotlin 多平台中，可以使用 Kotlin 提供的机制共享代码：
  
-*   [Share code among all platforms used in your project](#share-code-on-all-platforms). Use it for sharing the common 
-business logic that applies to all platforms.     
-*   [Share code among some platforms](#share-code-on-similar-platforms) included in your project but not all. You can 
-reuse much of the code in similar platforms using a hierarchical structure. You can use [target shortcuts](#use-target-shortcuts) 
-for common combinations of targets or [create the hierarchical structure manually](#configure-the-hierarchical-structure-manually).
- 
-If you need to access platform-specific APIs from the shared code, use the Kotlin mechanism of [expected and actual 
-declarations](mpp-connect-to-apis.html).
+*   [在项目中使用的所有平台之间共享代码](#对所有平台共享代码)。
+    使用它共享适用于所有平台的通用业务逻辑。
+*   在项目中包含的[某些平台之间共享代码](#对相似平台共享代码)，但不是全部。
+    可以使用层次结构在相似平台中重用许多代码。
+    可以将[目标快捷方式](#使用目标快捷方式)用于目标的常见组合，也可以[手动配置层次结构](#手动配置层次结构)。
+
+如果需要从共享代码访问特定于平台的 API，
+可以使用[预期声明与实际声明](mpp-connect-to-apis.html) Kotlin 机制。
 
 ## 对所有平台共享代码
 
-If you have business logic that is common for all platforms, you don’t need to write the same code for each platform – 
-just share it in the common source set.
+如果具有所有平台都通用的业务逻辑，那么无需为每个平台编写相同的代码
+——只需在公共源集中共享即可。
 
-![Code shared for all platforms]({{ url_for('asset', path='images/reference/mpp/flat-structure.png') }})
+![所有平台共享的代码]({{ url_for('asset', path='images/reference/mpp/flat-structure.png') }})
 
-All platform-specific source sets depend on the common source set by default. You don’t need to specify any `dependsOn` 
-relations manually for default source sets, such as `jvmMain`, `macosX64Main`, and others. 
+默认情况下，所有特定于平台的源集都取决于公共源集。
+无需为默认的源集（例如 `jvmMain`、`macosX64Main` 等）手动指定任何 `dependsOn` 关系。
 
-If you need to access platform-specific APIs from the shared code, use the Kotlin mechanism of [expected and actual 
-declarations](mpp-connect-to-apis.html).
+如果需要从共享代码访问特定于平台的 API，
+可以使用[预期声明与实际声明](mpp-connect-to-apis.html) Kotlin 机制。
 
 ## 对相似平台共享代码
 
-You often need to create several native targets that could potentially reuse a lot of the common logic and third-party APIs.
+通常需要创建多个原生目标，这些目标可能会重用许多常见的逻辑与第三方 API。
 
-For example, in a typical multiplatform project targeting iOS, there are two iOS-related targets: one is for iOS ARM64 
-devices, the other is for the x64 simulator. They have separate platform-specific source sets, but in practice there is 
-rarely a need for different code for the device and simulator, and their dependencies are much the same. So iOS-specific 
-code could be shared between them.
+例如，在针对 iOS 的典型的多平台项目中，有两个与 iOS 相关的目标：
+一个针对 iOS ARM64 设备，另一个针对 x64 模拟器。
+它们具有单独的特定于平台的源集，但是在实践中，几乎不需要为 ARM64 设备与 x64 模拟器使用不同的代码，并且它们的依赖关系几乎相同。
+因此可以在 ARM64 设备与 x64 模拟器之间共享 iOS 特定的代码。
 
-Evidently, in this setup it would be desirable to have a shared source set for two iOS targets, with Kotlin/Native code 
-that could still directly call any of the APIs that are common to both the iOS device and the simulator.
+显然，在此设置中，希望有用于两个 iOS 目标的共享源集，
+并且 Kotlin 原生代码仍可以直接调用 iOS 设备与模拟器共同的任何 API。
 
-In this case, you can share code across native targets in your project using the hierarchical structure.
+在这种情况下，可以使用层次结构在项目中的原生目标之间共享代码。
 
-To enable the hierarchy structure support, add the following flag to your `gradle.properties`.
+要启用层次结构支持，请将以下标志添加到 `gradle.properties` 中。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -54,29 +54,29 @@ kotlin.mpp.enableGranularSourceSetsMetadata=true
 
 </div>
 
-There are two ways you can create the hierarchical structure:
+可以通过两种方式创建层次结构：
 
-* [Use target shortcuts](#use-target-shortcuts) to easily create the hierarchy structure for common combinations of native targets.
-* [Configure the hierarchical structure manually](#configure-the-hierarchical-structure-manually).
+* [使用目标快捷方式](#使用目标快捷方式)可以轻松地为原生目标的常见组合创建层次结构。
+* [手动配置层次结构](#手动配置层次结构).
 
-Learn more about [sharing code in libraries](#share-code-in-libraries) and [using Native libraries in the hierarchical structure](#use-native-libraries-in-the-hierarchical-structure).
+了解有关[在库中共享代码](#在库中共享代码)以及[在层次结构中使用原生库](#在层次结构中使用原生库)的更多信息。
 
 ### 使用目标快捷方式
 
-In a typical multiplatform project with two iOS-related targets – `iosArm64` and `iosX64`, the hierarchical structure 
-includes an intermediate source set (`iosMain`), which is used by the platform-specific source sets. 
+在具有两个与 iOS 相关的目标 `iosArm64` 与 `iosX64` 的典型多平台项目中，
+层次结构包含一个中间源集（`iosMain`），它被特定于平台的源集使用。
 
 <img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/iosmain-hierarchy.png') }}" alt="Code shared for iOS targets" width="400"/>
 
-The `kotlin-multiplatform` plugin provides target shortcuts for creating structures for common combinations of targets.
+`kotlin-multiplatform` 插件提供了用于创建常见目标组合结构的目标快捷方式。
 
-| Target shortcut | Targets |
+| 目标快捷方式 | 目标 |
 |-----------------| -------- |
-| `ios` | `iosArm64`, `iosX64` |
-| `watchos` | `watchosArm32`, `watchosArm64`, `watchosX86` |
-| `tvos` | `tvosArm64`, `tvosX64` |
+| `ios` | `iosArm64`、`iosX64` |
+| `watchos` | `watchosArm32`、`watchosArm64`、`watchosX86` |
+| `tvos` | `tvosArm64`、`tvosX64` |
 
-All shortcuts create similar hierarchical structures in the code. For example, the `ios` shortcut creates the following hierarchical structure:
+所有快捷方式均在代码中创建相似的层次结构。例如，`ios` 快捷方式创建以下层次结构：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
@@ -119,16 +119,16 @@ kotlin {
  
 ### 手动配置层次结构
 
-To create the hierarchical structure manually, introduce an intermediate source set that holds the shared code for several 
-targets and create a structure of the source sets including the intermediate one.
+要手动创建层次结构，需要引入一个中间源集，
+该源集包含多个目标的共享代码，并创建包含中间源集的源集结构。
 
-![Hierarchical structure]({{ url_for('asset', path='images/reference/mpp/hierarchical-structure.png') }})
+![层次结构]({{ url_for('asset', path='images/reference/mpp/hierarchical-structure.png') }})
 
-For example, if you want to share code among native Linux, Windows, and macOS targets – `linuxX64M`, `mingwX64`, and 
-`macosX64`:
+例如，如果要在原生 Linux、Windows 与 macOS 为目标
+（`linuxX64M`、`mingwX64`、`macosX64`）之间共享代码：
 
-1. Add the intermediate source set `desktopMain` that holds the shared logic for these targets.
-2. Specify the hierarchy of source sets using the `dependsOn` relation.
+1. 添加包含这些目标共享逻辑的中间源集 `desktopMain`。
+2. 使用 `dependsOn` 关系指定源集的层次结构。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
@@ -181,57 +181,57 @@ kotlin{
 </div>
 </div>
 
-You can have a shared source set for the following combinations of targets:
+可以为以下目标组合设置共享源：
 
-* JVM + JS + Native
-* JVM + Native
-* JS + Native
+* JVM + JS + 原生
+* JVM + 原生
+* JS + 原生
 * JVM + JS
-* Native
+* 原生
 
-We don’t currently support sharing a source set for these combinations:
+目前不支持共享这些组合的来源集：
 
-* Several JVM targets
-* JVM + Android targets
-* Several JS targets
+* 一些 JVM 目标
+* JVM + Android 目标
+* 一些 JS 目标
 
-If you need to access platform-specific APIs from a shared native source set, IntelliJ IDEA will help you detect common 
-declarations that you can use in the shared native code.
-For other cases, use the Kotlin mechanism of [expected and actual declarations](mpp-connect-to-apis.html). 
+如果需要从共享的原生源集中访问特定于平台的 API，
+那么 IntelliJ IDEA 将帮助检测可在共享的原生代码中使用的公共声明。
+对于其他情况，请使用[预期声明与实际声明](mpp-connect-to-apis.html) Kotlin 机制。
 
 ### 在库中共享代码
 
-Thanks to the hierarchical project structure, libraries can also provide common APIs for a subset of targets. When a 
-[library is published](mpp-publish-lib.html), the API of its intermediate source sets is embedded into the library artifacts 
-along with information about the project structure. When you use this library, the intermediate source sets of your project access only those APIs of 
-the library which are available to the targets of each source set.
+归功于层次项目结构，库还可以为目标子集提供通用API。
+[发布库](mpp-publish-lib.html)时，其中间源集的 API 以及有关项目结构的信息将嵌入到库构件中。
+当使用此库时，
+项目的中间源集仅访问库中那些可用于每个源集目标的 API。
 
-For example, check out the following source set hierarchy from the `kotlinx.coroutines` repository:
+例如，从 `kotlinx.coroutines` 存储库中检查以下源集层次结构：
 
-![Library hierarchical structure]({{ url_for('asset', path='images/reference/mpp/lib-hierarchical-structure.png') }})
+![库层次结构]({{ url_for('asset', path='images/reference/mpp/lib-hierarchical-structure.png') }})
 
-The `concurrent` source set declares the function runBlocking and is compiled for the JVM and the native targets. 
-Once the `kotlinx.coroutines` library is updated and published with the hierarchical project structure, you can depend on 
-it and call `runBlocking` from a source set that is shared between the JVM and native targets since it matches the 
-“targets signature” of the library’s `concurrent` source set.
+`concurrent` 源集声明函数 runBlocking 并针对 JVM 与原生目标进行编译。
+使用层次项目结构更新与发布 `kotlinx.coroutines` 库后，
+就可以依赖它并从 JVM 与原生目标之间共享的源集中调用 `runBlocking`，
+因为它与库的 `concurrent` 源集的“目标签名”相匹配。
 
 ### 在层次结构中使用原生库
 
-You can use platform-dependent libraries like Foundation, UIKit, and POSIX in source sets shared among several native 
-targets. This helps you share more native code without being limited by platform-specific dependencies. 
+可以在几个原生目标之间共享的源集中使用平台相关的库，例如 Foundation、UIKit 与 POSIX。
+这可以帮助共享更多的原生代码，而不受平台特定的依赖性的限制。
 
-No additional steps are required – everything is done automatically. IntelliJ IDEA will help you detect common declarations 
-that you can use in the shared code.
+无需其他步骤——一切都会自动完成。
+IntelliJ IDEA 将帮助检测可在共享代码中使用的通用声明。
 
-However, note that there are some limitations:
+但是，请注意，存在一些限制：
 
-* This approach works only for a native source set that is shared among platform-specific source sets. It doesn’t work 
-for native source sets shared at higher levels of the source set hierarchy.  
-    For example, if you have `nativeDarwinMain` that is a parent of `watchosMain` and `iosMain`, where `iosMain` has two 
-    children – `iosArm64Main` and `iosX64Main`, you can use platform-dependent libraries only for `iosMain` but not for `nativeDarwinMain`.
-* It works only for interop libraries shipped with Kotlin/Native.
+* 此方法仅适用于特定于平台的源集之间共享的原生源集。
+  它不适用于在更高级别的源集层次结构中共享的原生源集。
+  例如，如果有 `nativeDarwinMain` 是 `watchosMain` 与 `iosMain` 的父级，其中 `iosMain` 有两个子级 `iosArm64Main` 与 `iosX64Main`，
+  那么只能将平台相关的库用于 `iosMain`，而不能用于 `nativeDarwinMain`。
+* 仅适用于 Kotlin 原生附带的互操作库。
 
-To enable usage of platform-dependent libraries in shared source sets, add the following to your `gradle.properties`:
+要在共享源集中使用平台相关的库，需要将以下内容添加到 `gradle.properties` 文件中：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -242,4 +242,4 @@ kotlin.native.enableDependencyPropagation=false
 
 </div>
 
-Learn more about the [technical details](https://github.com/JetBrains/kotlin/blob/1.4.0/native/commonizer/README.md).
+了解更多的[技术细节](https://github.com/JetBrains/kotlin/blob/1.4.0/native/commonizer/README.md)。
