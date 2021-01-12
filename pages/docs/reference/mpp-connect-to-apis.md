@@ -6,18 +6,18 @@ title: "接入平台相关 API"
 
 # 接入平台相关 API
 
-> The `expect`/`actual` feature is currently in [Beta](evolution/components-stability.html). All of the language
-and tooling features described in this document are subject to change in future Kotlin versions.
+> `expect`/`actual` 特性目前处于 [Beta](evolution/components-stability.html) 中。
+  本文档中描述的所有语言与工具特性都可能在将来的 Kotlin 版本中进行改变。
 {:.note}
 
-If you’re developing a multiplatform application that needs to access platform-specific APIs that implement the required 
-functionality, use the Kotlin mechanism of *expected and actual declarations*.
+如果开发的多平台应用程序需要访问实现所需功能的特定于平台的 API，
+可以使用 Kotlin *预期声明与实际声明* 机制。
 
-With this mechanism, a common source set defines an *expected declaration*, and platform source sets must provide the 
-*actual declaration* that corresponds to the expected declaration. This works for most Kotlin declarations, such as 
-functions, classes, interfaces, enumerations, properties, and annotations.
+通过这种机制，公共源集定义了 *预期声明*，
+并且平台源集必须提供与预期声明相对应的 *实际声明*。
+这适用于大多数 Kotlin 声明，例如，函数、类、接口、枚举、属性与注释。
 
-![Expect and actual declarations]({{ url_for('asset', path='images/reference/mpp/expect-actual.png') }})
+![预期声明与实际声明]({{ url_for('asset', path='images/reference/mpp/expect-actual.png') }})
  
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -48,8 +48,8 @@ actual fun randomUUID(): String = NSUUID().UUIDString()
 
 </div>
 
-Here's another example of code sharing and interaction between the common and platform logic in a minimalistic 
-logging framework. 
+这是在最小化日志记录框架中通用与平台逻辑之间的代码共享与交互的另一个示例。
+<!-- 占行 -->
 
 <div style="display:flex">
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
