@@ -49,7 +49,7 @@ actual fun randomUUID(): String = NSUUID().UUIDString()
 </div>
 
 这是在最小化日志记录框架中通用与平台逻辑之间的代码共享与交互的另一个示例。
-<!-- 占行 -->
+
 
 <div style="display:flex">
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -69,14 +69,14 @@ fun logError(message: String) = writeLogMessage(message, LogLevel.ERROR)
 
 </div>
 <div style="margin-left: 5px;white-space: pre-line; line-height: 18px; font-family: Tahoma;">
-    <div style="display:flex">├<i style="margin-left:5px">compiled for all platforms</i></div>
-    <div style="display:flex">├<i style="margin-left:5px">expected platform-specific API</i></div>
-    <div style="display:flex">├<i style="margin-left:5px">expected API can be used in the common code</i></div>
+    <div style="display:flex">├<i style="margin-left:5px">针对所有平台编译</i></div>
+    <div style="display:flex">├<i style="margin-left:5px">预期平台特定的 API</i></div>
+    <div style="display:flex">├<i style="margin-left:5px">可以在公共代码中使用预期的 API</i></div>
 </div>
 </div>
 
-It expects the targets to provide platform-specific implementations for `writeLogMessage`, and the common code can 
-now use this declaration without any consideration of how it is implemented.
+它预期目标为 `writeLogMessage` 提供特定于平台的实现，
+并且公共代码现在可以使用此声明，而无需考虑如何实现。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -89,7 +89,7 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 
 </div>
 
-For JavaScript, a completely different set of APIs is available, and the `actual` declaration will look like this.
+对于 JavaScript，可以使用一组完全不同的 API，`actual` 声明将如下所示。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -106,17 +106,17 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 
 </div>
 
-The main rules regarding expected and actual declarations are:
-* An expected declaration is marked with the `expect` keyword; the actual declaration is marked with the `actual` keyword.
-* `expect` and `actual` declarations have the same name and are located in the same package (have the same fully qualified name).
-* `expect` declarations never contain any implementation code.
+关于预期声明与实际声明的主要规则为：
+* 预期声明用关键字 `expect` 标记；实际声明用 `actual` 关键字标记。
+* `expect` 与 `actual` 声明具有相同的名称，并且位于同一包中（具有相同的完全限定名称）。
+* `expect` 声明绝不包含任何实现代码。
 
-During each platform compilation, the compiler ensures that every declaration marked with the `expect` keyword in the common 
-or intermediate source set has the corresponding declarations marked with the `actual` keyword in all platform source sets. 
-The IDE provides tools that help you create the missing actual declarations.
+在每个平台编译期间，
+编译器确保在公共或中间源集中的每个标有 `expect` 关键字的声明在所有平台源集中都有对应的标有 `actual` 关键字的声明。
+IDE 提供的工具可以帮助创建缺失的实际声明。
 
-If you have a platform-specific library that you want to use in shared code while providing your own implementation for 
-another platform, you can provide a `typealias` to an existing class as the actual declaration:
+如果要在共享代码中使用特定于平台的库，同时为另一个平台提供自己的实现，
+那么可以为现有类提供 `typealias` 作为实际声明：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -139,10 +139,10 @@ actual typealias AtomicRef<V> = java.util.concurrent.atomic.AtomicReference<V>
 
 </div>
 
-> We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific 
-> dependencies. It is better to implement as much functionality as possible in the shared module even if doing so takes 
-> more time.
+> 建议仅对具有特定于平台依赖项的 Kotlin 声明使用预期声明与实际声明。
+> 最好在共享模块中实现尽可能多的功能，
+> 即使这样做会花费更多时间。
 > 
-> Don’t overuse expected and actual declarations – in some cases, an [interface](interfaces.html) may be a better choice 
-> because it is more flexible and easier to test.
+> 不要过度使用预期声明与实际声明
+> ——在某些情况下，[接口](interfaces.html)可能会是更好的选择，因为它更加灵活且易于测试。
 {:.note}
