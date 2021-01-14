@@ -6,39 +6,39 @@ title: "手动设置目标"
 
 # 手动设置目标
 
-You can add targets when [creating a project with the Project Wizard](mpp-create-lib.html). If you need to add a target 
-later, you can do this manually using target presets for [supported platforms](mpp-supported-platforms.html).
+可以在[使用项目向导创建项目](mpp-create-lib.html)时添加目标。
+如果之后需要添加目标，那么可以使用[所支持平台](mpp-supported-platforms.html)的目标预设手动进行。
 
-Learn more about [additional settings for targets](mpp-dsl-reference.html#common-target-configuration).
+了解有关[目标的其他设置](mpp-dsl-reference.html#公共目标配置)的更多信息。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 kotlin {
-    jvm() // Create a JVM target with the default name 'jvm'
+    jvm() // 使用默认名称“jvm”创建一个 JVM 目标
         
     linuxX64() {
-        /* Specify additional settings for the 'linux' target here */
+        /* 在这里为 Linux 目标指定其他设置 */
     }
 }
 ```
 
 </div>
 
-Each target can have one or more [compilations](mpp-configure-compilations.html). In addition to default compilations for
-test and production purposes, you can [create custom compilations](mpp-configure-compilations.html#create-a-custom-compilation).
+每个目标可以具有一个或多个[编译](mpp-configure-compilations.html)。
+除了用于测试和生产目的的默认编译之外，还可以[创建自定义编译](mpp-configure-compilations.html#创建自定义编译项)。
 
 ## 区分一个平台的多个目标
 
-You can have several targets for one platform in a multiplatform library. For example, these targets can provide the same 
-API but use different libraries during runtime, such as testing frameworks and logging solutions. Dependencies on such 
-a multiplatform library may fail to resolve because it isn’t clear which target to choose.
+在多平台库中，一个平台可以有多个目标。
+例如，这些目标可以提供相同的 API，但在运行时使用不同的库，例如测试框架与日志解决方案。
+对此类多平台库的依赖关系可能无法解决，因为不清楚选择哪个目标。
 
-To solve this, mark the targets on both the library author and consumer sides with a custom attribute, which Gradle uses 
-during dependency resolution.
- 
-For example, consider a testing library that supports both JUnit and TestNG in the two targets. The library author needs 
-to add an attribute to both targets as follows:
+为了解决这个问题，需要在库的开发者与使用者都使用一个自定义属性来标记目标，
+Gradle 会在依赖关系解析过程中使用这个属性。
+
+例如，一个测试库想要在两个目标中同时支持 JUnit 与 TestNG。
+库开发者需要向两个目标添加属性，如下所示：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
@@ -78,4 +78,4 @@ kotlin {
 </div>
 </div>
 
-The consumer has to add the attribute to a single target where the ambiguity arises.
+使用者必须将属性添加到产生歧义的单个目标中。
