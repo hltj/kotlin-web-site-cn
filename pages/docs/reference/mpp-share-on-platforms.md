@@ -24,7 +24,7 @@ title: "平台间共享代码"
 
 ![所有平台共享的代码]({{ url_for('asset', path='images/reference/mpp/flat-structure.png') }})
 
-默认情况下，所有特定于平台的源集都取决于公共源集。
+默认情况下，所有特定于平台的源集都依赖公共源集。
 无需为默认的源集（例如 `jvmMain`、`macosX64Main` 等）手动指定任何 `dependsOn` 关系。
 
 如果需要从共享代码访问特定于平台的 API，
