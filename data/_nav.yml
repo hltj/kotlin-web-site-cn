@@ -495,6 +495,8 @@ tutorials:
           title: 用 Http Servlets 创建 web 应用
         - url: /docs/tutorials/spring-boot-restful.html
           title: 用  Spring Boot 创建 RESTful Web 服务
+        - url: /docs/tutorials/spring-boot-restful-db.html
+          title: Add a database to a Spring Boot RESTful web service
 
     - title: 工具
       content:

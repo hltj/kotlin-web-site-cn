@@ -1,116 +1,157 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "用 Spring Boot 创建 RESTful Web 服务"
-description: "本教程将引导完成使用 Spring Boot 创建简单的 REST 控制器的过程"
-authors: Hadi Hariri, Edoardo Vacchi, Sébastien Deleuze，Yue_plus（翻译）
-showAuthorInfo: true
-source: spring-boot-restful
+title: "用 Spring Boot 创建 RESTful Web 服务"
+description: "本教程将引导完成使用 Spring Boot 创建简单的应用程序的过程。"
 ---
-Kotlin 使用 Spring Boot 可以非常顺畅地工作，
-并且 Kotlin 可以完全遵循 [Spring 指南](https://spring.io/guides)中创建 RESTful 服务的许多步骤。
-但是，在定义 Gradle 配置和项目布局结构以及初始化代码方面存在一些细微的差异。
 
-在本教程中，将逐步完成所需的步骤。
-有关 Spring Boot 与 Kotlin 的更详尽说明，请参见[使用 Spring Boot 与 Kotlin 构建 Web 应用程序](https://spring.io/guides/tutorials/spring-boot-kotlin/).
+You will create an application with the HTTP endpoint that returns a data objects list in the JSON format.
 
-注意，本教程中的所有类都在 `org.jetbrains.kotlin.demo` 包中。
+This tutorial consists of two parts:
+* Create a RESTful Web Service with Spring Boot
+* [Add a database to a Spring Boot RESTful web service](spring-boot-restful-db.html)
 
-### 定义项目与依赖项
-{{ site.text_using_gradle }}
+To get started, first download and install the latest version of [IntelliJ IDEA](http://www.jetbrains.com/idea/download/index.html).
 
-Gradle 文件几乎是标准的 Spring Boot。唯一的区别是 Kotlin 的源文件夹的结构布局、所需的 Kotlin 依赖项与 Gradle 插件：[*kotlin-spring*](https://www.kotlincn.net/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugi)（以使用 CGLIB 代理为例，`@Configuration` 与 `@Bean` 处理需要 `open` 类）。
+## Bootstrap the project
 
-<div class="sample" markdown="1" theme="idea" mode="groovy">
-``` groovy
-buildscript {
-    ext.kotlin_version = '{{ site.data.releases.latest.version }}' // Kotlin 集成所需
-    ext.spring_boot_version = '2.1.0.RELEASE'
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Kotlin 集成所需
-        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version" // 参见 https://www.kotlincn.net/docs/reference/compiler-plugins.html#spring-support
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
-	classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
-    }
-}
+To generate a new project, use the Spring Initializr:
 
-apply plugin: 'kotlin' // Kotlin 集成所需
-apply plugin: "kotlin-spring" // https://www.kotlincn.net/docs/reference/compiler-plugins.html#spring-support
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+> You can also create a new project using [IntelliJ IDEA with the Spring Boot plugin](https://www.jetbrains.com/help/idea/spring-boot.html).
+{:.note}
 
-jar {
-    baseName = 'gs-rest-service'
-    version = '0.1.0'
-}
+1. Open the [Spring Initializr](https://start.spring.io/#!type=gradle-project&language=kotlin&platformVersion=2.4.2.RELEASE&packaging=jar&jvmVersion=11&groupId=com.example&artifactId=demo&name=demo&description=Demo%20project%20for%20Spring%20Boot&packageName=demo&dependencies=web,data-jdbc,h2). The link from the tutorial opens the window with the predefined settings of the new project. 
+  This project uses **Gradle** as a build tool, **Kotlin** as a language of choice, and the following dependencies: **Spring Web**, **Spring Data JDBC**, and **H2 Database**:
 
-repositories {
-    jcenter()
-}
+   ![Create a new project with Spring Initializr]({{ url_for('tutorial_img', filename='spring-boot-restful/spring-boot-create-project-with-initializr.png') }})
 
-dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Kotlin 集成所需
-    compile "org.springframework.boot:spring-boot-starter-web"
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-}
-```
-</div>
+2. Click **GENERATE** at the bottom of the screen. Spring Initializr will generate the project with the specified settings. The download starts automatically.
 
-### 创建 Greeting 数据类与控制器
-下一步是创建具有两个属性（*id* 与 *content*）的 Greeting 数据类
+3. Unpack the **.zip** file and open in the IntelliJ IDEA.
+  
+   The project has the following structure: 
+   ![The Spring Boot project structure]({{ url_for('tutorial_img', filename='spring-boot-restful/spring-boot-project-structure.png') }})
+   
+   There are packages and classes under the `main/kotlin` folder that belong to the application. The entry point to the application is the `main()` method of the `DemoApplication.kt` file.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
-data class Greeting(val id: Long, val content: String)
-```
-</div>
+## Explore the project build file
 
-现在，定义 *GreetingController* ，以 */greeting?name={value}* 的形式接受请求，
-并返回表示 *Greeting* 实例的 JSON 对象。
+Open the `build.gradle.kts` file.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
-@RestController
-class GreetingController {
+This is the Gradle Kotlin build script, which contains a list of the dependencies required for the application. 
 
-    val counter = AtomicLong()
+The Gradle file is standard for Spring Boot, but also contains necessary Kotlin dependencies, including [kotlin-spring](../reference/compiler-plugins.html#spring-support) Gradle plugin.
 
-    @GetMapping("/greeting")
-    fun greeting(@RequestParam(value = "name", defaultValue = "World") name: String) =
-            Greeting(counter.incrementAndGet(), "Hello, $name")
+## Explore the Spring Boot application
 
-}
-```
-</div>
+Open the `DemoApplication.kt` file:
 
-可以看出，这几乎是 Java 到 Kotlin 的一对一转换，对 Kotlin 没有任何特殊要求。
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
 
-### 创建 Application 类
-最后，需要定义一个 Application 类。使用 Kotlin 来定义一个 Spring Boot 所需的公共静态 main 方法。
-可以使用 *@JvmStatic* 注解与一个伴生对象来完成，但在这里更推荐使用 Application 类外部定义的[顶级函数]({{ url_for('page', page_path="docs/reference/functions") }})，因为这可以使代码更简洁明了。
+```kotlin
+package demo
 
-无需将 Application 类标记为 *open*，因为 Gradle 插件 *kotlin-spring* 会自动完成。
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
 @SpringBootApplication
-class Application
+class DemoApplication
 
 fun main(args: Array<String>) {
-    SpringApplication.run(Application::class.java, *args)
+   runApplication<DemoApplication>(*args)
 }
 ```
+
 </div>
 
-### 运行应用程序
-现在可以使用一个 Gradle 标准任务来运行 Spring Boot 应用：
+Comparing to Java, the application file has the following differences:
+* As Spring Boot looks for a public static `main()` method, the Kotlin uses a [top-level function](../reference/functions.html) defined outside the `DemoApplication` class.
+* The `DemoApplication` class is not declared as `open`, since the [kotlin-spring](../reference/compiler-plugins.html#spring-support) Gradle plugin does that automatically.
 
-    ./gradlew bootRun
+## Create a data class and a controller
 
-当应用完成编译，资源捆绑并启动，就可以通过浏览器访问了（默认端口为 8080）
+To create an endpoint, add a [data class](../reference/data-classes.html) and a controller:
 
-![Running App]({{ url_for('tutorial_img', filename='spring-boot-restful/running-app.png')}})
+1. In the `DemoApplication.kt` file, create a `Message` data class with two properties: `id` and `text`:
 
+   <div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+   ```kotlin
+   data class Message(val id: String?, val text: String)
+   ```
+   
+   </div>
+
+2. In the same file, create a `MessageResource` class which will serve the requests and return a JSON document representing a collection of `Message` objects:
+
+   <div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+   
+   ```kotlin
+   @RestController
+   class MessageResource {
+       @GetMapping
+       fun index(): List<Message> = listOf(
+           Message("1", "Hello!"),
+           Message("2", "Bonjour!"),
+           Message("3", "Privet!"),
+      )
+   }
+   ```
+
+   </div>
+
+Full code of the `DemoApplication.kt`:
+
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+```kotlin
+package demo
+
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+import org.springframework.data.annotation.Id
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RestController
+
+@SpringBootApplication
+class DemoApplication
+
+fun main(args: Array<String>) {
+  runApplication<DemoApplication>(*args)
+}
+
+@RestController
+class MessageResource {
+  @GetMapping
+  fun index(): List<Message> = listOf(
+      Message("1", "Hello!"),
+      Message("2", "Bonjour!"),
+      Message("3", "Privet!"),
+  )
+}
+
+data class Message(val id: String?, val text: String)
+```
+
+</div>
+
+## Run the application
+
+Application is ready to run:
+
+1. Click the green **Run** icon in the gutter to the `main()` method or hit the **Alt+Enter** shortcut to invoke the launch menu in IntelliJ IDEA:
+
+    ![Run the application]({{ url_for('tutorial_img', filename='spring-boot-restful/spring-boot-run-the-application.png') }})
+    
+    > You can also run the `./gradlew bootRun` command in the terminal.
+    {:.note}
+
+2. Once the application starts, open the following URL: [http://localhost:8080](http://localhost:8080). 
+
+    You will see a page with a collection of messages in JSON format:
+
+    ![Application output]({{ url_for('tutorial_img', filename='spring-boot-restful/spring-boot-output.png') }})
+
+## Proceed to the next tutorial
+
+Once you’ve created this application, add a database for storing objects and two endpoints to write and retrieve them using the next part of the tutorial – [Add a database to a Spring Boot RESTful web service](spring-boot-restful-db.html).
