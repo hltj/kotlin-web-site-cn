@@ -543,7 +543,8 @@ Kotlin/JVM 与 Kotlin/JS 项目均支持增量编译 and is enabled by default s
 
 ## Gradle 构建缓存支持
 
-Kotlin 插件支持 [Gradle 构建缓存](https://guides.gradle.org/using-build-cache/)。
+The Kotlin plugin supports [Gradle build cache](https://docs.gradle.org/current/userguide/build_cache.html) that stores 
+the build outputs for reuse in future builds.
 
 如需禁用所有 Kotlin 任务的缓存，请将系统属性标志 `kotlin.caching.enabled` 设置为 `false`
 （运行构建带上参数 `-Dkotlin.caching.enabled=false`）。
@@ -551,6 +552,20 @@ Kotlin 插件支持 [Gradle 构建缓存](https://guides.gradle.org/using-build-
 如果使用 [kapt](kapt.html)，请注意默认情况下不会缓存注解处理任务。不过，可以<!--
 -->[手动为它们启用缓存](kapt.html#gradle-构建缓存支持自-1220-起)。
 
+## Gradle configuration cache support
+
+> The configuration cache is available in Gradle 6.5 and later as an experimental feature.
+> You can check the [Gradle releases page](https://gradle.org/releases/) to see whether it has been promoted to stable.
+{:.note}
+
+The Kotlin plugin supports [Gradle configuration cache](https://docs.gradle.org/current/userguide/configuration_cache.html),
+which speeds up the build process by reusing the results of the configuration phase.
+
+See the [Gradle documentation](https://docs.gradle.org/current/userguide/configuration_cache.html#config_cache:usage)
+to learn how to enable the configuration cache. Once you enable the configuration cache feature, the Kotlin Gradle plugin will
+start using it.
+
+ 
 ## 编译器选项
 
 要指定附加的编译选项，请使用 Kotlin 编译任务的 `kotlinOptions` 属性。

@@ -25,7 +25,7 @@ Kotlin/Native 的主要设计目标是让 Kotlin 可以为不希望或者不可�
 Kotlin/Native 支持以下平台：
    * iOS（arm32、 arm64、 模拟器 x86_64）
    * macOS（x86_64）
-   * watchOS (arm32、 arm64、 x86)
+   * watchOS (arm32、 arm64、 x86、 x86_64)
    * tvOS (arm64、 x86_64)
    * Android（arm32、arm64、 x86、 x86_64）
    * Windows（mingw x86_64、 x86）

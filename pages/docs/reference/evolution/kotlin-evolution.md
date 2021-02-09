@@ -78,7 +78,7 @@ Kotlin 旨在成为程序员的实用工具。在语言演进方面，它的实�
 
 [JetBrains](https://jetbrains.com)是 Kotlin 的原始创建者，它在社区的帮助下并根据 Kotlin 基金会来推动 kotlin 的发展。
 
-[首席语言设计师](/foundation/kotlin-foundation.html#lead-designer)（现为 Andrey Breslav）负责监督 Kotlin 编程语言的所有更改。首席设计师在与语言发展有关的所有事务中拥有最终决定权。 此外，对完全稳定的组件进行不兼容的更改必须完全由[Kotlin 基金会](/foundation/kotlin-foundation.html)指定的[语言委员会](/foundation/kotlin-foundation.html#language-committee)（目前由 Jeffrey van Gogh，William R. Cook和Andrey Breslav组成）批准。
+[首席语言设计师](/foundation/kotlin-foundation.html#lead-designer)（现为 Roman Elizarov）负责监督 Kotlin 编程语言的所有更改。首席设计师在与语言发展有关的所有事务中拥有最终决定权。 此外，对完全稳定的组件进行不兼容的更改必须完全由[Kotlin 基金会](/foundation/kotlin-foundation.html)指定的[语言委员会](/foundation/kotlin-foundation.html#language-committee)（目前由 Jeffrey van Gogh，William R. Cook 与 Roman Elizarov 组成）批准。
 
 语言委员会对将进行哪些不兼容的更改以及应采取什么确切的措施使用户感到满意做出最终决定。为此，它依赖[此处](/foundation/language-committee-guidelines.html)提供的一组准则。
 

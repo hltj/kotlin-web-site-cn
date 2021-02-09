@@ -20,8 +20,7 @@ if (obj is String) {
 
 if (obj !is String) { // 与 !(obj is String) 相同
     print("Not a String")
-}
-else {
+} else {
     print(obj.length)
 }
 ```

@@ -31,11 +31,9 @@ fun main() {
 ```kotlin
 try {
     // 一些代码
-}
-catch (e: SomeException) {
+} catch (e: SomeException) {
     // 处理程序
-}
-finally {
+} finally {
     // 可选的 finally 块
 }
 ```
@@ -78,8 +76,7 @@ Appendable append(CharSequence csq) throws IOException;
 ```kotlin
 try {
     log.append(message)
-}
-catch (IOException e) {
+} catch (IOException e) {
     // 必须要安全
 }
 ```

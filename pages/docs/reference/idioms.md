@@ -161,6 +161,30 @@ object Resource {
 ```
 </div>
 
+### Instantiate an abstract class
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+abstract class MyAbstractClass {
+    abstract fun doSomething()
+    abstract fun sleep()
+}
+
+fun main() {
+    val myObject = object : MyAbstractClass() {
+        override fun doSomething() {
+            // ...
+        }
+
+        override fun sleep() { // ...
+        }
+    }
+    myObject.doSomething()
+}
+```
+</div>
+
 ### If not null 缩写
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>

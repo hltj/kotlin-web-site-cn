@@ -11,7 +11,7 @@ Kotlin 最初被设计为能够与 Java 平台轻松互操作。它将 Java 类�
 
 但是，JavaScript 是一种动态类型语言，这意味着它不会在编译期检测类型。可以通过[动态](dynamic-type.html)类型在 Kotlin 中自由地与 JavaScript 交流。如果想要使用 Kotlin 类型系统的全部威力，可以为 JavaScript 库创建 Kotlin 编译器与周边工具可理解的外部声明。
 
-还提供了一种实验工具，可为 npm 依赖自动创建 Kotlin 外部声明，该声明提供称为 [Dukat](js-external-declarations-with-dukat) 的类型定义（TypeScript / `d.ts`）。
+还提供了一种实验工具，可为 npm 依赖自动创建 Kotlin 外部声明，该声明提供称为 [Dukat](js-external-declarations-with-dukat.html) 的类型定义（TypeScript / `d.ts`）。
 
 ## 内联 JavaScript
 

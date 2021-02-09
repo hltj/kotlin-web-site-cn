@@ -82,7 +82,7 @@ fun main() {
 
 `gradle nativeBinaries`
 
-这将创建一个文件夹 `build/native/bin`，其中包含两个子文件夹 `debugExecutable` 与 `releaseExecutable` 以及相应的二进制文件。
+这将创建一个文件夹 `build/bin/native`，其中包含两个子文件夹 `debugExecutable` 与 `releaseExecutable` 以及相应的二进制文件。
 默认情况下，二进制文件的名称与项目文件夹的名称相同。
 
 

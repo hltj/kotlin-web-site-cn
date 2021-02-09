@@ -1,5 +1,5 @@
 # Kotlin 语言中文站
-官方英文站：[![Official project][project-badge]][project-url] [![Slack][slack-badge]][slack-url] 中文站：[![到  https://gitter.im/kotlin-web-site-cn/community 讨论](https://badges.gitter.im/kotlin-web-site-cn/community.svg)](https://gitter.im/kotlin-web-site-cn/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+官方英文站：[![Official project][project-badge]][project-url]
 
 这是<https://www.kotlincn.net/>的源代码
 
@@ -8,6 +8,7 @@
 - [项目结构 & 概览](#project-structure)
 - [写作内容](#写作内容)
 - [反馈错误](#反馈错误)
+- [官方英文站的公开 Slack 频道][slack-url]
 
 ## 安装
 
@@ -127,4 +128,3 @@ Kotlin 语法参考（grammar.xml）由 [Kotlin 语法生成器](https://github.
 [project-url]: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
 [project-badge]: http://jb.gg/badges/official.svg
 [slack-url]: http://slack.kotlinlang.org
-[slack-badge]: http://slack.kotlinlang.org/badge.svg

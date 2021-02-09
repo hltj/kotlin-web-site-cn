@@ -38,20 +38,20 @@ Kotlin 基金会是一家在美国特拉华州注册的非营利性非股份公�
 
 ## 现任人员
 
-总裁：Andrey Breslav（JetBrains）
+总裁：Maxim Shafirov（JetBrains）
 
 秘书：Max Sills（Google）
 
 董事会：
-*   Andrey Breslav（JetBrains）
-*   William R. Cook（德克萨斯大学奥斯汀分校）
-*   Stephanie Saad Cuthbertson（Google）
-*   Anwar Ghuloum（Google）
 *   Maxim Shafirov（JetBrains）
+*   Roman Elizarov（JetBrains）
+*   William R. Cook（德克萨斯大学奥斯汀分校）
+*   Grace Kloba（Google）
+*   Anwar Ghuloum（Google）
 
-首席语言设计师：Andrey Breslav（JetBrains）
+首席语言设计师：Roman Elizarov（JetBrains）
 
 语言委员会：
-* Andrey Breslav（JetBrains）
+* Roman Elizarov（JetBrains）
 * William R. Cook（德克萨斯大学奥斯汀分校）
 * Jeffrey van Gogh（Google）

@@ -54,7 +54,7 @@ Kotlin 支持以下平台并且为每个平台提供了目标预设。请参见�
     </tr>
     <tr>
         <td>watchOS</td>
-        <td><code>watchosArm32</code>、 <code>watchosArm64</code>、 <code>watchosX86</code></td>
+        <td><code>watchosArm32</code>、 <code>watchosArm64</code>、 <code>watchosX86</code>、 <code>watchosX64</code></td>
         <td></td>
     </tr>
     <tr>

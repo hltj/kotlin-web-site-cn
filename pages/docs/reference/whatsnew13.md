@@ -278,7 +278,7 @@ Kotlin 非常注重代码的稳定性与向后兼容性：Kotlin 兼容性策略
 
 ## 内联类
 
-> 内联类在 Kotlin 1.3 起才可用，并且目前是 in [Alpha](evolution/components-stability.html)。详见其[参考文档](inline-classes.html#alpha-status-of-inline-classes)。
+> 内联类在 Kotlin 1.3 起才可用，并且目前是 in [Alpha](evolution/components-stability.html)。详见其[参考文档](inline-classes.html)。
 {:.note}
 
 

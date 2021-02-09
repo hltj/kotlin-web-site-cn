@@ -86,6 +86,8 @@ reference:
     - title: 新特性
       description: Kotlin 各版本的新特性
       content:
+        - url: /docs/reference/whatsnew1430.html
+          title: Kotlin 1.4.30
         - url: /docs/reference/whatsnew-plugin-20203.html
           title: Kotlin plugin 2020.3
         - url: /docs/reference/whatsnew1420.html
@@ -135,7 +137,7 @@ reference:
         - url: /docs/reference/classes.html
           title: 类与继承
         - url: /docs/reference/properties.html
-          title: 属性与字段
+          title: 属性
         - url: /docs/reference/interfaces.html
           title: 接口
         - url: /docs/reference/fun-interfaces.html
@@ -341,7 +343,7 @@ reference:
         nav: _nav_reference.yml
         base: /docs/reference/native
         repo: https://github.com/hltj/kotlin-native-cn
-        branch: v1.4.20-fixes
+        branch: v1.4.30-fixes
 
     - title: 工具
       description:

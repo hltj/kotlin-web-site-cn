@@ -102,7 +102,8 @@ test and production purposes, you can [create custom compilations](mpp-configure
 |`iosX64`|Apple iOS 64-bit 模拟器|
 |`watchosArm32`|Apple watchOS 基于 ARM（ARM32）平台（Apple Watch Series 3 或更早）|
 |`watchosArm64`|Apple watchOS 基于 ARM64_32 平台（Apple Watch Series 4 或更新）|
-|`watchosX86`|Apple watchOS 模拟器|
+|`watchosX86`|Apple watchOS 32-bit simulator (watchOS 6.3 and earlier)|
+|`watchosX64`|Apple watchOS 64-bit simulator (watchOS 7.0 and newer)|
 |`tvosArm64`|Apple tvOS 基于 ARM64 平台（Apple TV 4th generation 或更新）|
 |`tvosX64`|Apple tvOS 模拟器|
 |`linuxArm64`|Linux 基于 ARM64 平台，例如：树莓派|

@@ -566,8 +566,7 @@ fun writeToFile() {
 // Java
 try {
   demo.Example.writeToFile();
-}
-catch (IOException e) { // 错误：writeToFile() 未在 throws 列表中声明 IOException
+} catch (IOException e) { // 错误：writeToFile() 未在 throws 列表中声明 IOException
   // ……
 }
 ```
