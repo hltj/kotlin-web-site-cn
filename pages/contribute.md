@@ -152,3 +152,4 @@ Kotlin 编程语言中文站翻译贡献者如下（排名不分先后）：
 * [small-ora](https://github.com/small-ora)
 * [ijunjie](https://github.com/ijunjie)
 * [oncealong](https://github.com/oncealong)
+* [gtn1024](https://github.com/gtn1024)
