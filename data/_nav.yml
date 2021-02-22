@@ -8,7 +8,7 @@ main:
     - url: https://discuss.kotliner.cn/
       title: 论坛
 
-    - url: /docs/reference/
+    - url: /docs/home.html
       title: 文档
 
     - url: /community/
@@ -28,14 +28,17 @@ subnav:
   content:
     - url: /docs/
       content:
-        - url: /docs/reference/
-          title: 语言指南
+        - url: /api/latest/jvm/stdlib/index.html
+          title: Standard Library
+        - url: /api/latest/kotlin.test/index.html
+          title: Test Library
+    - url: /docs/reference/grammar.html
+      content:
+        - url: /docs/reference/grammar.html
+          title: Grammar
 
-        - url: /docs/tutorials/
-          title: 教程
-
-        - url: /docs/books.html
-          title: 图书
+        - url: /spec/introduction.html
+          title: Language specification
     - url: /community/
       content:
         - url: /community/
@@ -104,9 +107,9 @@ reference:
     - title: 版本发布与路线图
       description: Kotlin 版本发布与路线图
       content:
-        - url: /releases.html
+        - url: /docs/releases.html
           title: Kotlin 版本发布
-        - url: /roadmap.html
+        - url: /docs/roadmap.html
           title: Kotlin 路线图
 
     - title: 开始
@@ -217,15 +220,6 @@ reference:
         - url: /docs/reference/map-operations.html
           title: Map 相关操作
 
-    - title: 协程
-      description: Kotlin 协程库
-      external:
-        path: kotlinx.coroutines/docs
-        nav: _nav.yml
-        base: /docs/reference/coroutines
-        repo: https://github.com/hltj/kotlinx.coroutines-cn
-        branch: master
-
     - title: 多平台程序设计
       description: 跨平台复用代码
       content:
@@ -335,15 +329,6 @@ reference:
          title: IR 编译器
        - url: /docs/reference/js-external-declarations-with-dukat.html
          title: 用 Dukat 生成外部声明
-
-    - title: 原生
-      description: 使用 Kotlin/Native 进行 iOS 与原生开发
-      external:
-        path: kotlin-native
-        nav: _nav_reference.yml
-        base: /docs/reference/native
-        repo: https://github.com/hltj/kotlin-native-cn
-        branch: v1.4.30-fixes
 
     - title: 工具
       description:

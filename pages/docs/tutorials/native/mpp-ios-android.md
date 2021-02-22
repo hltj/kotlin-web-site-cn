@@ -8,8 +8,8 @@ date: 2019-08-11
 showAuthorInfo: true
 issue: EVAN-6029
 ---
-> 官方英文站的本教程已迁移至新动手实践：
-[Targeting iOS and Android with Kotlin Multiplatform](https://play.kotlinlang.org/hands-on/Targeting%20iOS%20and%20Android%20with%20Kotlin%20Multiplatform/01_Introduction)。
+> 官方英文站的本教程已迁移至：
+[Targeting iOS and Android with Kotlin Multiplatform](https://kotlinlang.org/docs/mobile/create-first-app.html)。
 
 在本教程中，我们会创建一个 iOS 与 Android 两用的应用，来展示 Kotlin 代码的共享能力。
 对于 Android，我们会使用 Kotlin/JVM，而对于 iOS 会使用 Kotlin/Native。

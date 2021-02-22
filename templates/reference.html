@@ -12,32 +12,6 @@
 
 {% block content %}
     <div class="g-grid">
-
-        <aside class="g-3">
-            <div class="js-side-tree-nav">
-                {{ side_tree_nav(nav.reference.content) }}
-
-                <ul>
-                  <li><a href="{{ config.PDF_URL }}" class="reference-pdf-link">
-                    <span class="icon"></span>
-                    <span class="text">完整 Kotlin 参考（PDF）</span>
-                  </a></li>
-                  <li><a href="https://www.gitbook.com/download/pdf/book/hltj/kotlin-reference-chinese" class="reference-pdf-link">
-                    <span class="icon"></span>
-                    <span class="text">完整 Kotlin 参考（字大PDF）</span>
-                  </a></li>
-                  <li><a href="https://www.gitbook.com/download/epub/book/hltj/kotlin-reference-chinese" class="reference-pdf-link">
-                    <span class="icon"></span>
-                    <span class="text">完整 Kotlin 参考（ePUB）</span>
-                  </a></li>
-                  <li><a href="https://www.gitbook.com/download/mobi/book/hltj/kotlin-reference-chinese" class="reference-pdf-link">
-                    <span class="icon"></span>
-                    <span class="text">完整 Kotlin 参考（Mobi）</span>
-                  </a></li>
-                </ul>
-            </div>
-        </aside>
-
         <article role="main" class="page-content g-9"{%- if site.contenteditable -%} contenteditable="true"{%- endif -%}>
             {% include 'inc/edit-on-github-link.html' %}
 

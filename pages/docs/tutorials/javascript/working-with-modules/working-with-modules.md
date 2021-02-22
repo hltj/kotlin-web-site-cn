@@ -6,7 +6,7 @@ description: "看看如何使用 Kotlin 与 JavaScript 模块进行交互。"
 authors: Hadi Hariri 
 date: 2016-09-30
 showAuthorInfo: false
-redirect_path: /docs/reference/js-modules
+redirect_path: https://kotlinlang.org/docs/reference/js-modules.html
 ---
 
 
