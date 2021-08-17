@@ -27,7 +27,7 @@ To use reflection in a Gradle or Maven project, add the dependency on `kotlin-re
   
   ```groovy
   dependencies {
-      implementation "org.jetbrains.kotlin:kotlin-reflect:{{ site.data.releases.latest.version }}"
+      implementation "org.jetbrains.kotlin:kotlin-reflect:1.4.30"
   }
   ```
 
@@ -39,7 +39,7 @@ To use reflection in a Gradle or Maven project, add the dependency on `kotlin-re
   
   ```kotlin
   dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-reflect:{{ site.data.releases.latest.version }}")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.4.30")
   }
   ```
   

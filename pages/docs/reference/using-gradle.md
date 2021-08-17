@@ -13,7 +13,7 @@ In order to build a Kotlin project with Gradle, you should [apply the Kotlin Gra
 
 使用 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 应用 Kotlin Gradle 插件。
 
-Kotlin Gradle 插件 1.3.72 适用于 Gradle 5.4 及更高版本。The `kotlin-multiplatform` plugin
+Kotlin Gradle 插件 1.4.30 适用于 Gradle 5.4 及更高版本。The `kotlin-multiplatform` plugin
 requires Gradle 6.0 or later.
 
 > Groovy DSL
@@ -21,7 +21,7 @@ requires Gradle 6.0 or later.
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.＜……＞' version '1.3.72'
+    id 'org.jetbrains.kotlin.＜……＞' version '1.4.30'
 }
 ```
 
@@ -33,7 +33,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("＜……＞") version "1.3.72"
+    kotlin("＜……＞") version "1.4.30"
 }
 ```
 
@@ -55,7 +55,7 @@ require the `kotlin-multiplatform` plugin. [Learn more about the plugin](mpp-dis
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '{{ site.data.releases.latest.version }}'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.4.30'
 }
 ```
 
@@ -67,7 +67,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "{{ site.data.releases.latest.version }}"
+    kotlin("multiplatform") version "1.4.30"
 }
 ```
 
@@ -84,7 +84,7 @@ plugins {
 
 ```groovy
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.3.72"
+    id "org.jetbrains.kotlin.jvm" version "1.4.30"
 }
 ```
 
@@ -96,7 +96,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("jvm") version "1.3.72"
+    kotlin("jvm") version "1.4.30"
 }
 ```
 
@@ -169,7 +169,7 @@ When targeting only JavaScript, use the `kotlin-js` plugin. [Learn more](js-proj
 
 ``` groovy
 plugins {
-    id 'org.jetbrains.kotlin.js' version '1.3.72'
+    id 'org.jetbrains.kotlin.js' version '1.4.30'
 }
 ```
 
@@ -181,7 +181,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("js") version "1.3.72"
+    kotlin("js") version "1.4.30"
 }
 ```
 

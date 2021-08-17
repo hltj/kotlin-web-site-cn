@@ -67,8 +67,8 @@ in the Kotlin Gradle DSL).
     
     ```groovy
     plugins {
-        id 'org.jetbrains.kotlin.jvm' version '{{ site.data.releases.latest.version }}'
-        id 'org.jetbrains.kotlin.plugin.serialization' version '{{ site.data.releases.latest.version }}'  
+        id 'org.jetbrains.kotlin.jvm' version '1.4.30'
+        id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.30'  
     }
     ```
     
@@ -80,8 +80,8 @@ in the Kotlin Gradle DSL).
     
     ```kotlin
     plugins {
-        kotlin("jvm") version "{{ site.data.releases.latest.version }}"
-        kotlin("plugin.serialization") version "{{ site.data.releases.latest.version }}"
+        kotlin("jvm") version "1.4.30"
+        kotlin("plugin.serialization") version "1.4.30"
     }
     ```
     

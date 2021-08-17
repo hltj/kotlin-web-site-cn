@@ -28,7 +28,7 @@ title: "了解项目"
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '{{ site.data.releases.latest.version }}'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.4.30'
 }
 ```
 
@@ -40,7 +40,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "{{ site.data.releases.latest.version }}"
+    kotlin("multiplatform") version "1.4.30"
 }
 ```
 

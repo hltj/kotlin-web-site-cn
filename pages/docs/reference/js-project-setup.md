@@ -27,7 +27,7 @@ Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理�
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.js' version '{{ site.data.releases.latest.version }}'
+    id 'org.jetbrains.kotlin.js' version '1.4.30'
 }
 ```
 
@@ -39,7 +39,7 @@ plugins {
 
 ```kotlin
 plugins {
-     kotlin("js") version "{{ site.data.releases.latest.version }}"
+     kotlin("js") version "1.4.30"
 }
 ```
 
