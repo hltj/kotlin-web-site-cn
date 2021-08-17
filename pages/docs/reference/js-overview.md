@@ -43,8 +43,8 @@ Kotlin/JS 还与最常见的模块系统兼容：UMD、CommonJS 与 AMD。能够
 **想进一步了解 Kotlin/JS 吗？**
 
 在这个视频中，Kotlin 开发者布道师 Sebastian Aigner 将为你解释 Kotlin/JS 的主要优点、分享一些技巧与使用场景，并介绍 Kotlin/JS 的计划与即将发布的特性。
-<iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=926746622&bvid=BV1FT4y1L77i&cid=223227283&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe><br />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fZUL8_kgHXg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br />
+
+
 在 <a target="_blank" href="https://www.bilibili.com/video/BV1FT4y1L77i/">bilibili</a> \| <a target="_blank" href="https://youtu.be/fZUL8_kgHXg">YouTube</a> 上看。
 
 ## Kotlin/JS 入门

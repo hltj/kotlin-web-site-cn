@@ -15,7 +15,7 @@ Support for multiplatform programming is one of Kotlin’s key benefits. It redu
 
 This is how Kotlin Multiplatform works.
 
-<img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/kotlin-multiplatform.png' )}}" alt
+<img class="img-responsive" src="/assets/images/reference/mpp/kotlin-multiplatform.png" alt
 ="Kotlin Multiplatform" width="500" />
 
 *   **Common Kotlin** includes the language, core libraries, and basic tools. Code written in common Kotlin works 
@@ -34,12 +34,12 @@ With Kotlin Multiplatform, spend less time on writing and maintaining the same c
 *   [Share code among all platforms used in your project](mpp-share-on-platforms.html#share-code-on-all-platforms). Use it for sharing the common 
 business logic that applies to all platforms. 
      
-    ![Code shared for all platforms]({{ url_for('asset', path='images/reference/mpp/flat-structure.png') }})
+    ![Code shared for all platforms](/assets/images/reference/mpp/flat-structure.png)
     
 *   [Share code among some platforms](mpp-share-on-platforms.html#share-code-on-similar-platforms) included in your project but not all. Do this 
 when you can reuse much of the code in similar platforms.  
     
-    ![Hierarchical structure]({{ url_for('asset', path='images/reference/mpp/hierarchical-structure.png') }})
+    ![Hierarchical structure](/assets/images/reference/mpp/hierarchical-structure.png)
 
 If you need to access platform-specific APIs from the shared code, use the Kotlin mechanism of [expected and actual 
 declarations](mpp-connect-to-apis.html).
@@ -48,7 +48,7 @@ With this mechanism, a common source set defines an *expected declaration*, and 
 *actual declaration* that corresponds to the expected declaration. This works for most Kotlin declarations, such as 
 functions, classes, interfaces, enumerations, properties, and annotations.
 
-![Expect and actual declarations]({{ url_for('asset', path='images/reference/mpp/expect-actual.png') }})
+![Expect and actual declarations](/assets/images/reference/mpp/expect-actual.png)
 
 
 

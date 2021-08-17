@@ -27,7 +27,7 @@ Jupyter Notebook 是一个开源 Web 应用程序，
 [Kotlin-jupyter](https://github.com/Kotlin/kotlin-jupyter) 是一个开源项目，
 它为 Jupyter Notebook 带来了 Kotlin 支持。
 
-![Kotlin in Jupyter notebook]({{ url_for('asset', path='images/landing/data-science/kotlin-jupyter-kernel.png')}})
+![Kotlin in Jupyter notebook](/assets/images/landing/data-science/kotlin-jupyter-kernel.png)
 
 查看 Kotlin 内核的 [GitHub 仓库](https://github.com/Kotlin/kotlin-jupyter) 
 以获取安装说明、文档与示例。
@@ -39,7 +39,7 @@ Apache Zeppelin 是一种流行的基于 Web 的交互式数据分析解决方�
 这对数据工程特别有用。
 从[版本 0.9.0](https://zeppelin.apache.org/docs/0.9.0-preview1/) 开始，Apache Zeppelin 内置了 Kotlin 解释器。
 
-![Kotlin in Zeppelin notebook]({{ url_for('asset', path='images/landing/data-science/kotlin-zeppelin-interpreter.png')}})
+![Kotlin in Zeppelin notebook](/assets/images/landing/data-science/kotlin-zeppelin-interpreter.png)
 
 ## 类库
 

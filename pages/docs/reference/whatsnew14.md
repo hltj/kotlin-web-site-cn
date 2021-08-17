@@ -409,7 +409,7 @@ With Kotlin 1.4, you can use the new tools in IntelliJ IDEA to simplify Kotlin d
 With the flexible new Kotlin Project Wizard, you have a place to easily create and configure different types of Kotlin 
 projects, including multiplatform projects, which can be difficult to configure without a UI.
 
-![Kotlin Project Wizard – Multiplatform project]({{ url_for('asset', path='images/reference/whats-new/mpp-project-1-wn.png') }})
+![Kotlin Project Wizard – Multiplatform project](/assets/images/reference/whats-new/mpp-project-1-wn.png)
 
 The new Kotlin Project Wizard is both simple and flexible:
 
@@ -424,7 +424,7 @@ Then you can finish creating your project or, optionally, *configure the project
 4. *Add/remove modules and targets* supported for this project template.
 5. *Configure module and target settings*, for example, the target JVM version, target template, and test framework.
 
-![Kotlin Project Wizard - Configure targets]({{ url_for('asset', path='images/reference/whats-new/mpp-project-2-wn.png') }})
+![Kotlin Project Wizard - Configure targets](/assets/images/reference/whats-new/mpp-project-2-wn.png)
 
 In the future, we are going to make the Kotlin Project Wizard even more flexible by adding more configuration options and templates.
 
@@ -449,7 +449,7 @@ In Kotlin 1.4, debugging coroutines is now much more convenient with the new fun
 The **Debug Tool Window** now contains a new **Coroutines** tab. In this tab, you can find information about both currently 
 running and suspended coroutines. The coroutines are grouped by the dispatcher they are running on. 
 
-![Debugging coroutines]({{ url_for('asset', path='images/reference/whats-new/coroutine-debugger-wn.png') }})
+![Debugging coroutines](/assets/images/reference/whats-new/coroutine-debugger-wn.png)
 
 Now you can:
 * Easily check the state of each coroutine.
@@ -461,7 +461,7 @@ If you need a full report containing the state of each coroutine and its stack, 
 click **Get Coroutines Dump**. Currently, the coroutines dump is rather simple, but we’re going to make it more readable 
 and helpful in future versions of Kotlin.
 
-<img class="img-responsive" src="{{ url_for('asset', path='images/reference/whats-new/coroutines-dump-wn.png' )}}" alt="Coroutines Dump" width="400"/>
+<img class="img-responsive" src="/assets/images/reference/whats-new/coroutines-dump-wn.png" alt="Coroutines Dump" width="400"/>
 
 Learn more about debugging coroutines in [this blog post](https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-rc-debugging-coroutines/)
 and [IntelliJ IDEA documentation](https://www.jetbrains.com/help/idea/debug-kotlin-coroutines.html).
@@ -1012,7 +1012,7 @@ be shared between them.
 Apparently, in this setup, it would be desirable to have a *shared source set for two iOS targets*, with Kotlin/Native 
 code that could still directly call any of the APIs that are common to both the iOS device and the simulator.
 
-<img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/iosmain-hierarchy.png') }}" alt="Code shared for iOS targets" width="400"/>
+<img class="img-responsive" src="/assets/images/reference/mpp/iosmain-hierarchy.png" alt="Code shared for iOS targets" width="400"/>
 
 Now you can do this with the [hierarchical project structure support](mpp-share-on-platforms.html#share-code-on-similar-platforms), which infers and adapts the API and language features 
 available in each source set based on which targets consume them.
@@ -1035,7 +1035,7 @@ kotlin {
 For other combinations of targets, [create a hierarchy manually](mpp-share-on-platforms.html#configure-the-hierarchical-structure-manually) 
 by connecting the source sets with the `dependsOn` relation.
 
-![Hierarchical structure]({{ url_for('asset', path='images/reference/mpp/hierarchical-structure.png') }})
+![Hierarchical structure](/assets/images/reference/mpp/hierarchical-structure.png)
 
 > Groovy DSL
 
@@ -1197,7 +1197,7 @@ configuration in 1.4.0. Now the IDE loads the changes only when you explicitly a
 
   In Gradle versions earlier than 6.0, you need to manually load the script configuration by clicking **Load Configuration** in the editor.
 
-  ![*.gradle.kts – Load Configuration]({{ url_for('asset', path='images/reference/whats-new/gradle-kts-load-config.png') }})
+  ![*.gradle.kts – Load Configuration](/assets/images/reference/whats-new/gradle-kts-load-config.png)
 
   In Gradle 6.0 and above, you can explicitly apply changes by clicking **Load Gradle Changes** or by reimporting the
 Gradle project.
@@ -1205,7 +1205,7 @@ Gradle project.
   We’ve added one more action in IntelliJ IDEA 2020.1 with Gradle 6.0 and above – **Load Script Configurations**, which loads changes
 to the script configurations without updating the whole project. This takes much less time than reimporting the whole project.
 
-  ![*.gradle.kts – Load Script Changes and Load Gradle Changes]({{ url_for('asset', path='images/reference/whats-new/gradle-kts.png') }})
+  ![*.gradle.kts – Load Script Changes and Load Gradle Changes](/assets/images/reference/whats-new/gradle-kts.png)
 
   You should also **Load Script Configurations** for newly created scripts or when you open a project with new Kotlin plugin for the first time.
   
@@ -1218,7 +1218,7 @@ to the script configurations without updating the whole project. This takes much
   use the old mechanism – adding them to standalone scripts. Configuration for that scripts will be loaded separately when you need it.
   You can also enable auto-reload for such scripts.
     
-  ![*.gradle.kts – Add to standalone scripts]({{ url_for('asset', path='images/reference/whats-new/gradle-kts-standalone.png') }})
+  ![*.gradle.kts – Add to standalone scripts](/assets/images/reference/whats-new/gradle-kts-standalone.png)
   
 - _Better error reporting_. Previously you could only see errors from the Gradle Daemon in separate log files. Now the
 Gradle Daemon returns all the information about errors directly and shows it in the Build tool window. This saves you both
@@ -1736,12 +1736,12 @@ Just change the Kotlin version to `1.4.0` and re-import your Gradle or Maven pro
 If you agree, it will run migration code inspections that will check your code and suggest corrections for anything that doesn't work 
 or that is not recommended in 1.4.0. 
 
-<img class="img-responsive" src="{{ url_for('asset', path='images/reference/whats-new/run-migration-wn.png' )}}" alt="Run migration" width="300"/>
+<img class="img-responsive" src="/assets/images/reference/whats-new/run-migration-wn.png" alt="Run migration" width="300"/>
 
 Code inspections have different [severity levels](https://www.jetbrains.com/help/idea/configuring-inspection-severities.html), 
 to help you decide which suggestions to accept and which to ignore.
 
-![Migration inspections]({{ url_for('asset', path='images/reference/whats-new/migration-inspection-wn.png') }})
+![Migration inspections](/assets/images/reference/whats-new/migration-inspection-wn.png)
 
 ### 迁移多平台项目
 

@@ -47,7 +47,7 @@ The new experimental Jetpack Compose for Desktop templates are now available in 
 * **Desktop** –  a Compose project targeting the desktop JVM platform: Windows, Linux, or macOS.
 * **Multiplatform** – a Multiplatform Compose project targeting the desktop JVM platform  (Windows, Linux, macOS) and Android with shared code in common modules. 
 
-![Kotlin Project Wizard – Jetpack Compose project]({{ url_for('asset', path='images/reference/whats-new/jetpack-compose.png') }})
+![Kotlin Project Wizard – Jetpack Compose project](/assets/images/reference/whats-new/jetpack-compose.png)
 
 To create a project, select one of the templates while creating a new project and specify the Gradle build system. The Kotlin plugin creates all the configuration files automatically. You can try out this experimental feature by working through [Getting Started with Compose for Desktop tutorial](https://github.com/JetBrains/compose-jb/tree/master/tutorials/Getting_Started).
 
