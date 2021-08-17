@@ -278,6 +278,31 @@ fun main() {
 ```
 
 
+For removing the first and the last element, there are handy shortcuts [`removeFirst()`](/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/remove-first.html)
+and [`removeLast()`](/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/remove-last.html). Note that on empty lists,
+they throw an exception. To receive `null` instead, use [`removeFirstOrNull()`](/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/remove-first-or-null.html)
+and [`removeLastOrNull()`](/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/remove-last-or-null.html)
+
+
+
+```kotlin
+fun main() {
+//sampleStart
+    val numbers = mutableListOf(1, 2, 3, 4, 3)    
+    numbers.removeFirst()
+    numbers.removeLast()
+    println(numbers)
+    
+    val empty = mutableListOf<Int>()
+    // empty.removeFirst() // NoSuchElementException: List is empty.
+    empty.removeFirstOrNull() //null
+//sampleEnd
+}
+
+```
+
+
+
 ### 排序
 
 在[集合排序](collection-ordering.html)中，描述了按特定顺序检索集合元素的操作。
@@ -323,7 +348,6 @@ fun main() {
 }
 
 ```
-
 
 
 

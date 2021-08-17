@@ -182,7 +182,7 @@ fun main() {
 
 
 
-参见[属性与字段](properties.html)。
+参见[属性](properties.html)。
 
 
 ## 注释

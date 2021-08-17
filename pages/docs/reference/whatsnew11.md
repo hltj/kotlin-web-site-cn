@@ -397,7 +397,7 @@ class MyUI {
 `provideDelegate` 方法在创建 `MyUI` 实例期间将会为每个属性调用，并且可以立即执行<!--
 -->必要的验证。
 
-更详细信息请参阅其[文档](delegated-properties.html#提供委托自-11-起)。
+更详细信息请参阅其[文档](delegated-properties.html#提供委托)。
 
 
 ### 泛型枚举值访问

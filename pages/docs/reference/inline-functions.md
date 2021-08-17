@@ -28,8 +28,7 @@ lock(l) { foo() }
 l.lock()
 try {
     foo()
-}
-finally {
+} finally {
     l.unlock()
 }
 ```

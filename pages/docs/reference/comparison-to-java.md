@@ -12,7 +12,7 @@ title: "与 Java 比较"
 Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题：
 
 * 空引用由[类型系统控制](null-safety.html)。
-* [无原始类型](java-interop.html)
+* [无原始类型](java-interop.html#kotlin-中的-java-泛型)
 * Kotlin 中数组是[不型变的](basic-types.html#数组)
 * 相对于 Java 的 SAM-转换，Kotlin 有更合适的[函数类型](lambdas.html#函数类型)
 * 没有通配符的[使用处型变](generics.html#使用处型变类型投影)
@@ -21,11 +21,10 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 ## Java 有而 Kotlin 没有的东西
 
 * [受检异常](exceptions.html)
-* 不是类的[原生类型](basic-types.html)
-* [静态成员](classes.html)
-* [非私有化字段](properties.html)
-* [通配符类型](generics.html)
-* [三目操作符 `a ? b : c`](control-flow.html#if-表达式)
+* 不是类的[原生类型](basic-types.html) —— 字节码会尽可能试用原生类型，但不是显式可用的。
+* [静态成员](classes.html) —— 以 [伴生对象](object-declarations.html#伴生对象)、 [顶层函数](functions.html)、 [扩展函数](extensions.html#extension-functions) 或者 [@JvmStatic](java-to-kotlin-interop.html#static-methods) 取代。
+* [通配符类型](generics.html) —— 以 [声明处型变](generics.html#declaration-site-variance) 与 [类型投影](generics.html#类型投影) 取代。
+* [三目操作符 `a ? b : c`](control-flow.html#if-表达式) —— 以 [if 表达式](control-flow.html#if-表达式)取代。 
 
 ## Kotlin 有而 Java 没有的东西
 

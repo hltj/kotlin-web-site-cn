@@ -9,7 +9,7 @@ title: "函数：infix、vararg、tailrec"
 
 ## 函数声明
 
-Kotlin 中的函数使用 *fun*{: .keyword } 关键字声明：
+Kotlin 中的函数使用 `fun` 关键字声明：
 
 
 
@@ -43,12 +43,25 @@ Stream().read() // 创建类 Stream 实例并调用 read()
 
 ### 参数
 
-函数参数使用 Pascal 表示法定义，即 *name*: *type*。参数用逗号隔开。每个参数必须有显式类型：
+函数参数使用 Pascal 表示法定义，即 *name*: *type*。参数用逗号隔开。
+每个参数必须有显式类型：
 
 
 
 ```kotlin
-fun powerOf(number: Int, exponent: Int) { /*……*/ }
+fun powerOf(number: Int, exponent: Int): Int { /*……*/ }
+```
+
+
+You can use a [trailing comma](coding-conventions.html#trailing-commas) when you declare function parameters:
+
+
+
+```kotlin
+fun powerOf(
+    number: Int,
+    exponent: Int, // trailing comma
+) { /*...*/ }
 ```
 
 
@@ -60,11 +73,15 @@ fun powerOf(number: Int, exponent: Int) { /*……*/ }
 
 
 ```kotlin
-fun read(b: Array<Byte>, off: Int = 0, len: Int = b.size) { /*……*/ }
+fun read(
+    b: Array<Byte>, 
+    off: Int = 0, 
+    len: Int = b.size,
+) { /*……*/ }
 ```
 
 
-默认值通过类型后面的 **=** 及给出的值来定义。
+A default value is defined using the `=` after the type.
 
 覆盖方法总是使用与基类型方法相同的默认参数值。
 当覆盖一个带有默认参数值的方法时，必须从签名中省略默认参数值：
@@ -87,18 +104,26 @@ class B : A() {
 
 
 ```kotlin
-fun foo(bar: Int = 0, baz: Int) { /*……*/ }
+fun foo(
+    bar: Int = 0, 
+    baz: Int,
+) { /*……*/ }
 
 foo(baz = 1) // 使用默认值 bar = 0
 ```
 
 
-如果在默认参数之后的最后一个参数是 [lambda 表达式](lambdas.html#lambda-表达式语法)，那么它既可以作为具名参数在括号内传入，也可以在[括号外](lambdas.html#passing-a-lambda-to-the-last-parameter)传入：
+如果在默认参数之后的最后一个参数是 [lambda 表达式](lambdas.html#lambda-表达式语法)，那么它<!--
+-->既可以作为具名参数在括号内传入，也可以在[括号外](lambdas.html#passing-a-lambda-to-the-last-parameter)传入：
 
 
 
 ```kotlin
-fun foo(bar: Int = 0, baz: Int = 1, qux: () -> Unit) { /*……*/ }
+fun foo(
+    bar: Int = 0,
+    baz: Int = 1,
+    qux: () -> Unit,
+) { /*……*/ }
 
 foo(1) { println("hello") }     // 使用默认值 baz = 1
 foo(qux = { println("hello") }) // 使用两个默认值 bar = 0 与 baz = 1
@@ -108,67 +133,68 @@ foo { println("hello") }        // 使用两个默认值 bar = 0 与 baz = 1
 
 ### 具名参数
 
-可以在调用函数时使用具名的函数参数。当一个函数有大量的参数或默认参数时这会非常方便。
+When calling a function, you can name one or more of its arguments. This may be helpful when a function has a large number of arguments, 
+and it's difficult to associate a value with an argument, especially if it's a boolean or `null` value.
 
-给定以下函数：
+When you use named arguments in a function call, you can freely change the order they are listed in, and if you want to 
+use their default values you can just leave them out altogether.
+
+Consider the following function `reformat()` that has 4 arguments with default values.
 
 
 
 ```kotlin
-fun reformat(str: String,
-             normalizeCase: Boolean = true,
-             upperCaseFirstLetter: Boolean = true,
-             divideByCamelHumps: Boolean = false,
-             wordSeparator: Char = ' ') {
+fun reformat(
+    str: String,
+    normalizeCase: Boolean = true,
+    upperCaseFirstLetter: Boolean = true,
+    divideByCamelHumps: Boolean = false,
+    wordSeparator: Char = ' ',
+) {
 /*……*/
 }
 ```
 
 
-我们可以使用默认参数来调用它：
+
+When calling this function, you don’t have to name all its arguments:
 
 
 
 ```kotlin
-reformat(str)
-```
-
-
-然而，当使用非默认参数调用它时，该调用看起来就像：
-
-
-
-```kotlin
-reformat(str, true, true, false, '_')
-```
-
-
-使用具名参数我们可以使代码更具有可读性：
-
-
-
-```kotlin
-reformat(str,
-    normalizeCase = true,
-    upperCaseFirstLetter = true,
-    divideByCamelHumps = false,
-    wordSeparator = '_'
+reformat(
+    "String!",
+    false,
+    upperCaseFirstLetter = false,
+    divideByCamelHumps = true,
+    '_'
 )
 ```
 
 
-并且如果我们不需要所有的参数：
+
+You can skip all arguments with default values:
 
 
 
 ```kotlin
-reformat(str, wordSeparator = '_')
+reformat("This is a long String!")
 ```
 
 
-当一个函数调用混用位置参数与具名参数时，所有位置参数都要放在第一个具名参数之前。例如，允许调用 `f(1, y = 2)` 但不允许 `f(x = 1, 2)`。
 
-可以通过使用**星号**操作符将[可变数量参数（*vararg*{: .keyword }）](#可变数量的参数varargs) 以具名形式传入：
+You can skip some arguments with default values. However, after the first skipped argument, you must name all subsequent arguments:
+
+
+
+```kotlin
+reformat("This is a short String!", upperCaseFirstLetter = false, wordSeparator = '_')
+```
+
+
+
+You can pass a [variable number of arguments (`vararg`)](#variable-number-of-arguments-varargs) with names using the 
+`spread` operator:
 
 
 
@@ -179,8 +205,10 @@ foo(strings = *arrayOf("a", "b", "c"))
 ```
 
 
+
 > **对于 JVM 平台**：在调用 Java 函数时不能使用具名参数语法，因为 Java 字节码并不<!--
 -->总是保留函数参数的名称。
+{:.note}
 
 ### 返回 Unit 的函数
 
@@ -192,7 +220,7 @@ foo(strings = *arrayOf("a", "b", "c"))
 ```kotlin
 fun printHello(name: String?): Unit {
     if (name != null)
-        println("Hello ${name}")
+        println("Hello $name")
     else
         println("Hi there!")
     // `return Unit` 或者 `return` 是可选的
@@ -382,7 +410,7 @@ fun dfs(graph: Graph) {
 
 
 ```kotlin
-class Sample() {
+class Sample {
     fun foo() { print("Foo") }
 }
 ```
@@ -435,8 +463,8 @@ Kotlin 支持一种称为[尾递归](https://zh.wikipedia.org/wiki/%E5%B0%BE%E8%
 ```kotlin
 val eps = 1E-10 // "good enough", could be 10^-15
 
-tailrec fun findFixPoint(x: Double = 1.0): Double
-        = if (Math.abs(x - Math.cos(x)) < eps) x else findFixPoint(Math.cos(x))
+tailrec fun findFixPoint(x: Double = 1.0): Double =
+    if (Math.abs(x - Math.cos(x)) < eps) x else findFixPoint(Math.cos(x))
 ```
 
 

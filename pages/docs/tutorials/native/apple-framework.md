@@ -74,7 +74,7 @@ fun supplyFun() : (String) -> String? = { "$it is cool!" }
 [[include pages-includes/docs/tutorials/native/apple-framework-link.md]]
 
 我们将源文件移动到工程下的
-`src/nativeMain/kotlin` 文件夹。当使用 [kotlin-多平台](/docs/reference/building-mpp-with-gradle.html)<!--
+`src/nativeMain/kotlin` 文件夹。当使用 [kotlin-多平台](../../reference/mpp-discover-project.html)<!--
 -->插件的时候这是定位文件的默认路径。
 使用插件。我们使用以下代码块来指示配置项目<!--
 -->为我们生成动态或共享库：

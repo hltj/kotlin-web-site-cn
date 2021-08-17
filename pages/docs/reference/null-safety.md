@@ -32,7 +32,7 @@ Kotlin 的类型系统旨在从我们的代码中消除 `NullPointerException`�
 ```kotlin
 fun main() {
 //sampleStart
-    var a: String = "abc" // Regular initialization means non-null by default
+    var a: String = "abc" // 默认情况下，常规初始化意味着非空
     a = null // 编译错误
 //sampleEnd
 }
@@ -45,7 +45,7 @@ fun main() {
 ```kotlin
 fun main() {
 //sampleStart
-    var b: String? = "abc" // can be set null
+    var b: String? = "abc" // 可以设置为空
     b = null // ok
     print(b)
 //sampleEnd

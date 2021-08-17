@@ -1,0 +1,229 @@
+{% set restyled="v1" %}
+{% extends 'base.html' %}
+
+{% block title %}讲授 Kotlin{% endblock %}
+
+{% block content %}
+    <article role="main" class="page-content">
+        <div class="edu-intro">
+            <h1 class="kto-header kto-header_size_l">讲授 Kotlin</h1>
+            <p>
+                Kotlin 是一种功能强大的存在于现实世界的编程语言，适用于教授各种计算机科学课程。<br>
+                Kotlin 深受教育者与学生的喜爱。
+            </p>
+        </div>
+
+        <iframe style="width:960px; height:533px;" width="960" height="533" src="https://www.youtube.com/embed/MQPeEOf3G7A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="edu-promo"></iframe>
+
+        <section class="edu-why-teach">
+            <h2 class="kto-header kto-header_size_m">为什么讲授 Kotlin</h2>
+
+            <ul class="edu-feature-list">
+                <li class="edu-feature-list__item edu-feature-list__item_type_android">
+                    <b class="edu-feature-list__title">Android 的编程语言</b>
+                    <p class="edu-feature-list__para">使用用于 <a href="/docs/reference/android-overview.html">Android 开发</a>的首选语言来改进课程。</p>
+                </li>
+                <li class="edu-feature-list__item edu-feature-list__item_type_recognize">
+                    <b class="edu-feature-list__title">学术认可</b>
+                    <p class="edu-feature-list__para">在 2020 年《泰晤士报高等教育排名》排名前 100 的大学中，有 22 所大学将 Kotlin 纳入课程。</p>
+                </li>
+                <li class="edu-feature-list__item edu-feature-list__item_type_popular">
+                    <b class="edu-feature-list__title">在行业中受欢迎</b>
+                    <p class="edu-feature-list__para">推特、Reddit、Pinterest、优步、Coursera、印象笔记、Slack 与 Trello 都使用 Kotlin，仅举几例。</p>
+                </li>
+            </ul>
+            <p class="edu-why-teach__learn">
+                <a
+                        class="kto-button kto-button_size_m kto-button_mode_outline"
+                        href="why-teach-kotlin.html"
+                >了解更多 →</a>
+            </p>
+        </section>
+
+        <section class="edu-universities">
+            <div class="edu-universities__top">
+                <div>
+                    <h2 class="kto-header kto-header_size_m">Kotlin 课程遍布全球</h2>
+                    <p>浏览互动地图，链接到包含 Kotlin 在内的大学课程。</p>
+                </div>
+
+                <ul class="kto-numbers">
+                    <li class="kto-numbers__item">
+                        <strong class="kto-numbers__number">28</strong> 国家
+                    </li>
+                    <li class="kto-numbers__item">
+                        <strong class="kto-numbers__number">101</strong> 大学
+                    </li>
+                </ul>
+            </div>
+
+            <ul class="edu-universities-top">
+                <li class="edu-universities-top__item edu-universities-top__item_type_stanford">斯坦福大学</li>
+                <li class="edu-universities-top__item edu-universities-top__item_type_imperial">伦敦帝国学院</li>
+                <li class="edu-universities-top__item edu-universities-top__item_type_hopkins">霍普金斯大学</li>
+                <li class="edu-universities-top__item edu-universities-top__item_type_penn">宾夕法尼亚大学</li>
+                <li class="edu-universities-top__item edu-universities-top__item_type_ucla">加州大学洛杉矶分校</li>
+                <li class="edu-universities-top__item edu-universities-top__item_type_duke">杜克大学</li>
+            </ul>
+
+            <p class="edu-universities__note">
+                如果正在讲授 Kotlin，并且想介绍学术机构与课程，<br />
+                请通过 <a href="mailto:education@kotlinlang.org">education@kotlinlang.org</a> 取得联系。<br />
+                将会寄一些 Kotlin T恤与赠品给学生。
+            </p>
+
+            <p class="edu-universities__full-list">
+                <a
+                        target="_blank"
+                        class="kto-button kto-button_size_m kto-button_mode_outline"
+                        href="https://docs.google.com/spreadsheets/d/1qeZf5XfXSlDLuGOVQtID6mB90Z_ytDlk8GhunuBwurY/edit?usp=sharing"
+                >查看所有大学 →</a>
+            </p>
+        </section>
+
+        <section class="edu-slack">
+            <h2 class="edu-slack__title kto-header kto-header_size_m">加入教育者社区</h2>
+            <p class="edu-slack__text">创建了一个专门的 Slack 频道，供 Kotlin 教育工作者分享经验，交流思想并互相支持。来（讲授）Kotlin！</p>
+            <a
+                target="_blank"
+                class="kto-button kto-button_size_m kto-button_mode_primary"
+                href="https://surveys.jetbrains.com/s3/kotlinlang-slack-signup-educators"
+            >申请加入</a>
+        </section>
+
+        <section>
+            {#  <h2 class="kto-header kto-header_size_m">故事亮点</h2> #}
+            <ul class="kto-quote-slider">
+                <li class="kto-quote">
+                    <p class="kto-quote__text">Kotlin 可以更快地开发与理解正在发生的事情。向后兼容性接近 100％，可以轻松地在 Java 中显示与转换为 Kotlin，同时仍然利用 Java 中的每个可用库；学生们似乎能很快地理解 Kotlin。</p>
+                    <p class="kto-quote__author">David Vaughn，密苏里大学圣路易斯分校</p>
+                </li>
+            </ul>
+{#  <!-- @TODO: WAIT LINKS -->
+            <ul class="edu-persons">
+                <li class="edu-persons__item edu-persons-item">
+                    <img class="edu-persons-item__image" src="{{ url_for('asset', path='images/edu/persons/san.png') }}">
+                    <p class="edu-persons-item__title">Teaching Introduction to Computer Science in Kotlin</p>
+                    <p class="edu-persons-item__name">San Skulrattanakulchai, Gustavus Adolphus College</p>
+                </li>
+                <li class="edu-persons__item edu-persons-item">
+                    <img class="edu-persons-item__image" src="{{ url_for('asset', path='images/edu/persons/pedro.png') }}">
+                    <p class="edu-persons-item__title">Teaching Mobile Computing in Kotlin </p>
+                    <p class="edu-persons-item__name">Pedro Alves, Lusófona University</p>
+                </li>
+                <li class="edu-persons__item edu-persons-item">
+                    <img class="edu-persons-item__image" src="{{ url_for('asset', path='images/edu/persons/nick.png') }}">
+                    <p class="edu-persons-item__title">Kotlin for Competitive Programming</p>
+                    <p class="edu-persons-item__name">Nick Johnson, Milwaukee School of Engineering</p>
+                </li>
+                <li class="edu-persons__item edu-persons-item">
+                    <img class="edu-persons-item__image" src="{{ url_for('asset', path='images/edu/persons/pereira.png') }}">
+                    <p class="edu-persons-item__title">Teaching Mobile Devices Programming in Kotlin</p>
+                    <p class="edu-persons-item__name">Paulo Pereira, Lisbon Superior Engineering Institute </p>
+                </li>
+            </ul>
+#}
+        </section>
+    </article>
+{% endblock %}
+
+{% block page_after_content %}
+    <section class="edu-start-teaching">
+        <div class="g-layout">
+            <h2 class="kto-header kto-header_size_m">通过这些资源开始学习 Kotlin</h2>
+            <div class="edu-grid-resources">
+                <ul class="edu-grid-resources__column">
+                    <li class="edu-resources-item">
+                        <p class="edu-resources-item__title">文档</p>
+                        <p class="edu-resources-item__description">这是最好的入门方法</p>
+                        <ul class="edu-resources-item__links">
+                            <li class="edu-resources-item__link"><a href="/docs/tutorials/getting-started.html">入门</a></li>
+                            <li class="edu-resources-item__link"><a href="/docs/reference/basic-syntax.html">基本语法</a></li>
+                        </ul>
+                    </li>
+                    <li class="edu-resources-item">
+                        <p class="edu-resources-item__title">IDE</p>
+                        <p class="edu-resources-item__description">像 IntelliJ IDEA 这样的现代 IDE 可以帮助学习 Kotlin</p>
+                        <ul class="edu-resources-item__links">
+                            <li class="edu-resources-item__link"><a href="https://www.jetbrains.com/community/education/#students" target="_blank">免费的 IntelliJ IDEA 旗舰版许可证</a></li>
+                            <li class="edu-resources-item__link"><a href="https://plugins.jetbrains.com/plugin/10081-edutools" target="_blank">EduTools 插件</a></li>
+                            <li class="edu-resources-item__link"><a href="/docs/tutorials/getting-started.html">以 IntelliJ IDEA 入门</a></li>
+                        </ul>
+                    </li>
+                    <li class="edu-resources-item">
+                        <p class="edu-resources-item__title">图书</p>
+                        <p class="edu-resources-item__description">查看<a href="/docs/books.html">推荐阅读</a></p>
+                    </li>
+                </ul>
+                <ul class="edu-grid-resources__column">
+                    <li class="edu-resources-item">
+                        <p class="edu-resources-item__title">演练</p>
+                        <p class="edu-resources-item__description">通过浏览器中的真实示例掌握 Kotlin 技能</p>
+                        <ul class="edu-resources-item__links">
+                            <li class="edu-resources-item__link"><a href="https://play.kotlinlang.org/">演练</a></li>
+                            <li class="edu-resources-item__link"><a href="https://play.kotlinlang.org/hands-on/overview">实验室</a></li>
+                            <li class="edu-resources-item__link"><a href="https://play.kotlinlang.org/byExample/overview">Kotlin 示例</a></li>
+                            <li class="edu-resources-item__link"><a href="https://play.kotlinlang.org/koans/overview">心印</a></li>
+                        </ul>
+                    </li>
+                    <li class="edu-resources-item">
+                        <p class="edu-resources-item__title">在线课程</p>
+                        <p class="edu-resources-item__description">查看推荐的在线 Kotlin 课程</p>
+                        <ul class="edu-resources-item__links">
+                            <li class="edu-resources-item__link"><a target="_blank" href="https://www.oreilly.com/library/view/introduction-to-kotlin/9781491964125/">Kotlin 编程简介</a></li>
+                            <li class="edu-resources-item__link"><a target="_blank" href="https://www.oreilly.com/library/view/advanced-kotlin-programming/9781491964149/">Kotlin 进阶</a></li>
+                            <li class="edu-resources-item__link"><a target="_blank" href="https://www.coursera.org/learn/kotlin-for-java-developers">Java 开发者编写 Kotlin 程序</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="edu-grid-resources__column">
+                    <li class="edu-resources-item">
+                        <p class="edu-resources-item__title">Android 开发</p>
+                        <p class="edu-resources-item__description">开始使用 Kotlin 开发 Android 应用</p>
+                        <ul class="edu-resources-item__links">
+                            <li class="edu-resources-item__link"><a href="/docs/reference/android-overview.html">使用 Kotlin 进行 Android 开发</a></li>
+                        </ul>
+                        <p class="edu-resources-item__description">由 Google 的 Android 开发人员关系团队推荐</p>
+                        <ul>
+                            <li class="edu-resources-item__link"><a target="_blank" href="https://drive.google.com/file/d/1zFlIaXXEfGAB0ExVCcwjPXox7rucvV_M/view">各种资源列表</a></li>
+                            <li class="edu-resources-item__link"><a target="_blank" href="https://codelabs.developers.google.com/codelabs/java-to-kotlin/#0">从 Java 转换为 Kotlin——Codelabs</a></li>
+                            <li class="edu-resources-item__link"><a target="_blank" href="https://codelabs.developers.google.com/codelabs/kotlin-coroutines/#0">在 Android APP 中使用 Kotlin 协程——Codelabs</a></li>
+                            <li class="edu-resources-item__link"><a target="_blank" href="https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#0">Android 观景房——Codelabs</a></li>
+                            <li class="edu-resources-item__link"><a target="_blank" href="https://developer.android.com/courses/kotlin-android-fundamentals/overview">Android Kotlin 基础课程</a></li>
+                        </ul>
+                    </li>
+                    <li class="edu-resources-item">
+                        <p class="edu-resources-item__title">社区</p>
+                        <p class="edu-resources-item__description">随时加入热情的 Kotlin 社区</p>
+                        <ul class="edu-resources-item__links">
+                            <li class="edu-resources-item__link"><a href="{{ config.FORUM_URL }}">论坛</a></li>
+                            <li class="edu-resources-item__link"><a target="_blank" href="https://surveys.jetbrains.com/s3/kotlinlang-slack-signup-educators">Slack</a></li>
+                            <li class="edu-resources-item__link"><a target="_blank" href="{{ config.STACK_OVERFLOW_URL }}">Overflow</a></li>
+                            <li class="edu-resources-item__link"><a target="_blank" href="{{ config.BLOG_URL }}">博客</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="edu-contact-us-section">
+        <div class="g-layout">
+            <a href="mailto:education@kotlinlang.org" class="edu-contact-us">
+                <p class="edu-contact-us__caption">取得联系</p>
+                <div class="edu-contact-us__info">
+                    <p class="edu-contact-us__email">education@kotlinlang.org</p>
+                    <p class="edu-contact-us__text">如果想将 Kotlin 引入教室或对讲授或学习 Kotlin 有任何疑问，请取得联系。</p>
+                </div>
+            </a>
+        </div>
+    </section>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='education.css')|autoversion }}">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='education.js')|autoversion }}"></script>
+{% endblock %}

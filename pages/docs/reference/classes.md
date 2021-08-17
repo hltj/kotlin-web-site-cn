@@ -114,6 +114,20 @@ class Person(val firstName: String, val lastName: String, var age: Int) { /*…�
 
 
 
+声明类属性时，可以使用[尾部逗号](coding-conventions.html#trailing-commas)：
+
+
+
+```kotlin
+class Person(
+    val firstName: String,
+    val lastName: String,
+    var age: Int, // 尾部逗号
+) { /*...*/ }
+```
+
+
+
 与普通属性一样，主构造函数中声明的属性可以是<!--
 -->可变的（*var*{: .keyword }）或只读的（*val*{: .keyword }）。
 
@@ -130,7 +144,6 @@ class Customer public @Inject constructor(name: String) { /*……*/ }
 
 更多详情，参见[可见性修饰符](visibility-modifiers.html#构造函数)
 
-
 #### 次构造函数
 
 类也可以声明前缀有 *constructor*{: .keyword }的**次构造函数**：
@@ -139,7 +152,7 @@ class Customer public @Inject constructor(name: String) { /*……*/ }
 
 ```kotlin
 class Person {
-    var children: MutableList<Person> = mutableListOf<Person>();
+    var children: MutableList<Person> = mutableListOf()
     constructor(parent: Person) {
         parent.children.add(this)
     }
@@ -156,7 +169,7 @@ class Person {
 
 ```kotlin
 class Person(val name: String) {
-    var children: MutableList<Person> = mutableListOf<Person>();
+    var children: MutableList<Person> = mutableListOf()
     constructor(name: String, parent: Person) : this(name) {
         parent.children.add(this)
     }
@@ -180,7 +193,7 @@ class Constructors {
     }
 
     constructor(i: Int) {
-        println("Constructor")
+        println("Constructor $i")
     }
 }
 //sampleEnd
@@ -261,13 +274,13 @@ class Example // 从 Any 隐式继承
 
 `Any` 有三个方法：`equals()`、 `hashCode()` 与 `toString()`。因此，为所有 Kotlin 类都定义了这些方法。 
 
-By default, Kotlin classes are final: they can’t be inherited.
-To make a class inheritable, mark it with the `open` keyword.
+默认情况下，Kotlin 类是最终（final）的：它们不能被继承。
+要使一个类可继承，请用 `open` 关键字标记它。
 
 
 
 ```kotlin
-open class Base //Class is open for inheritance
+open class Base // 该类开放继承
 
 ```
 
@@ -402,7 +415,7 @@ open class Base(val name: String) {
 
 class Derived(
     name: String,
-    val lastName: String
+    val lastName: String,
 ) : Base(name.capitalize().also { println("Argument for Base: $it") }) {
 
     init { println("Initializing Derived") }
@@ -414,7 +427,7 @@ class Derived(
 
 fun main() {
     println("Constructing Derived(\"hello\", \"world\")")
-    val d = Derived("hello", "world")
+    Derived("hello", "world")
 }
 ```
 
@@ -451,18 +464,32 @@ class FilledRectangle : Rectangle() {
 
 
 ```kotlin
-class FilledRectangle: Rectangle() {
-    fun draw() { /* …… */ }
+open class Rectangle {
+    open fun draw() { println("Drawing a rectangle") }
     val borderColor: String get() = "black"
+}
+
+//sampleStart
+class FilledRectangle: Rectangle() {
+    override fun draw() { 
+    	val filler = Filler()
+        filler.drawAndFill()
+    }
     
     inner class Filler {
-        fun fill() { /* …… */ }
+        fun fill() { println("Filling") }
         fun drawAndFill() {
             super@FilledRectangle.draw() // 调用 Rectangle 的 draw() 实现
             fill()
             println("Drawn a filled rectangle with color ${super@FilledRectangle.borderColor}") // 使用 Rectangle 所实现的 borderColor 的 get()
         }
     }
+}
+//sampleEnd
+
+fun main() {
+    val fr = FilledRectangle()
+        fr.draw()
 }
 ```
 

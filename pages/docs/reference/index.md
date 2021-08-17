@@ -20,7 +20,7 @@ title: "Reference"
          <h3 style="font-weight: bold">IDE</h3>
          <p>像 IntelliJ IDEA 这样的现代 IDE 有助于学习 Kotlin：</p>
          <ul>
-             <li class="start"> <a style="text-decoration: none;" href="https://www.kotlincn.net/docs/tutorials/getting-started.html">以 IntelliJ IDEA 入门</a> </li>
+             <li class="start"> <a style="text-decoration: none;" href="https://www.kotlincn.net/docs/tutorials/getting-started.html">Kotlin 入门</a> </li>
              <li class="start"> <a style="text-decoration: none;" href="https://www.jetbrains.com/help/education/for-learners.html?section=Kotlin">EduTools 插件</a> </li>
              <li class="start"> <a style="text-decoration: none;" href="https://www.kotlincn.net/docs/tutorials/quick-run.html">运行代码片段</a> </li>
              <li class="migrate"> <a style="text-decoration: none;" href="https://www.jetbrains.com/help/idea/converting-a-java-file-to-kotlin-file.html">Java2Kotlin 转换器</a>  </li>

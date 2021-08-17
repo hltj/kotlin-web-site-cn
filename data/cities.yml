@@ -1,3 +1,99 @@
+- name: Baku, Azerbaijan
+  geo:
+    lat: 40.372967
+    lng: 49.853139
+- name: Medina, Saudi Arabia
+  geo:
+    lat: 24.10879
+    lng: 40.793171
+- name: Los Gatos, CA, USA
+  geo:
+    lat: 37.235433
+    lng: -121.96264
+- name: Kempten, Germany
+  geo:
+    lat: 47.724229
+    lng: 10.313261
+- name: Perth, Australia
+  geo:
+    lat: -32.08841
+    lng: 115.895122
+- name: Fort Collins, CO, USA
+  geo:
+    lat: 40.5813
+    lng: -105.06259
+- name: Saudi Arabia
+  geo:
+    lat: 22.848295
+    lng: 45.725533
+- name: Kano, Nigeria
+  geo:
+    lat: 11.991296
+    lng: 8.533807
+- name: Hamar, Norway
+  geo:
+    lat: 60.80184
+    lng: 11.076443
+- name: Omsk, Russia
+  geo:
+    lat: 54.989342
+    lng: 73.368212
+- name: Dubai, United Arab Emirates
+  geo:
+    lat: 25.195137
+    lng: 55.278478
+- name: Dubai, U.A.E.
+  geo:
+    lat: 24.977545
+    lng: 55.091062
+- name: Port Harcourt, Nigeria
+  geo:
+    lat: 4.788882
+    lng: 7.05288
+- name: Shanghai, China
+  geo:
+    lat: 31.230863
+    lng: 121.470462
+- name: Lubango, Angola
+  geo:
+    lat: -14.915369
+    lng: 13.496774
+- name: Ankara, Turkey
+  geo:
+    lat: 39.920756
+    lng: 32.854049
+- name: Kinshasa, Congo
+  geo:
+    lat: -4.301458
+    lng: 15.316689
+- name: Broomfield, CO, USA
+  geo:
+    lat: 39.915679
+    lng: -105.097822
+- name: Marbella, Spain
+  geo:
+    lat: 36.512975
+    lng: -4.876487
+- name: Glen Allen, VA, USA
+  geo:
+    lat: 37.666099
+    lng: -77.50729
+- name: Sherman Oaks, CA, USA
+  geo:
+    lat: 34.150893
+    lng: -118.448089
+- name: Phoenix, AZ, USA
+  geo:
+    lat: 33.569785
+    lng: -112.06449
+- name: Venezia, Italy
+  geo:
+    lat: 45.438095
+    lng: 12.319029
+- name: Libreville, Gabon
+  geo:
+    lat: 0.411439
+    lng: 9.51677
 - name: Dortmund, Germany
   geo:
     lat: 51.523549

@@ -13,7 +13,7 @@ title: "类型安全的构建器"
 
 * 使用 Kotlin 代码生成标记语言，例如 [HTML](https://github.com/Kotlin/kotlinx.html) 或 XML；
 * 以编程方式布局 UI 组件：[Anko](https://github.com/Kotlin/anko/wiki/Anko-Layouts)；
-* 为 Web 服务器配置路由：[Ktor](https://ktor.kotlincn.net/features/routing.html#routing-tree)。
+* 为 Web 服务器配置路由：[Ktor](https://ktor.kotlincn.net/servers/features/routing.html#routing-tree)。
 
 ## 一个类型安全的构建器示例
 

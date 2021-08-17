@@ -24,7 +24,7 @@ description: "本教程介绍了 Kotlin 在竞技性程序设计中的基本用�
 -->程序员所需编写与阅读的样板代码量，这样几乎可以像动态<!--
 -->脚本语言一样编写代码，同时又有静态类型语言的工具与性能支持。
 
-关于如何搭建 Kotlin 开发环境，请参见[以 IntelliJ IDEA 入门](/docs/tutorials/getting-started.html)<!--
+关于如何搭建 Kotlin 开发环境，请参见[以 IntelliJ IDEA 入门](/docs/tutorials/jvm-get-started.html)<!--
 -->。在竞技程序设计中，通常会创建单个项目，而每个问题的答案<!--
 -->写在单个源文件中。
 

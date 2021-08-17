@@ -333,19 +333,19 @@ interface ChatBot {
 > 默认方法仅适用于面向 JVM 1.8 及更高版本。
 {:.note}
 
-> `@JvmDefault` 注解在 Kotlin 1.3 中是实验性的。其名称与行为都可能发生变化，导致将来不兼容。
-{:.note}
-
 自 JDK 1.8 起，Java 中的接口可以包含[默认方法](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html)。
-可以将 Kotlin 接口的非抽象成员为实现它的 Java 类声明为默认。
-如需将一个成员声明为默认，请使用 [`@JvmDefault`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html) 注解标记之。
+To make all non-abstract members of Kotlin interfaces default for the Java classes implementing them, compile the Kotlin 
+code with the `-Xjvm-default=all` compiler option.
+
 这是一个带有默认方法的 Kotlin 接口的一个示例：
 
 
 
 ```kotlin
+// compile with -Xjvm-default=all
+
 interface Robot {
-    @JvmDefault fun move() { println("~walking~") }
+    fun move() { println("~walking~") }  // will be default in the Java interface
     fun speak(): Unit
 }
 ```
@@ -397,47 +397,28 @@ public class BB8 implements Robot {
 ```
 
 
-为了让 `@JvmDefault` 生效，编译该接口必须带有 `-Xjvm-default` 参数。
-根据添加注解的情况，指定下列值之一：
+>**Note**: Prior to Kotlin 1.4, to generate default methods, you could use the `@JvmDefault` annotation on these methods.
+> Compiling with `-Xjvm-default=all` in 1.4 generally works as if you annotated all non-abstract methods of interfaces
+> with `@JvmDefault`and compiled with `-Xjvm-default=enable`. However, there are cases when their behavior differs.
+> Detailed information about the changes in default methods generation in Kotlin 1.4 is provided in [this post](https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-m3-generating-default-methods-in-interfaces/)
+> on the Kotlin blog.
 
-* `-Xjvm-default=enabled` 只添加带有 `@JvmDefault` 注解的新方法时使用。
-   这包括为 API 添加整个接口。
-* `-Xjvm-default=compatibility` 将 `@JvmDefault` 添加到以往 API 中就有的方法时使用。
-   这种模式有助于避免兼容性破坏：为先前版本编写的所有接口实现都会与新版本完全兼容。
-   然而，兼容模式可能会增大生成字节码的规模并且影响性能。
+### Compatibility mode for default methods
 
-关于兼容性的更多详情请参见 `@JvmDefault` [参考页](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
+If there are clients that use your Kotlin interfaces compiled without the new `-Xjvm-default=all` option, then they can
+be incompatible with the same code compiled with this option. 
 
-请注意，如果将带有 `@JvmDefault` 的方法的接口用作[委托](/docs/reference/delegation.html)，
-那么即是实际的委托类型提供了自己的实现，也会调用默认方法的实现。
+To avoid breaking the compatibility with such clients, compile your Kotlin code in the _compatibility mode_ by specifying
+the `-Xjvm-default=all-compatibility` compiler option. In this case, all the code that uses the previous version will 
+ work fine with the new one. However, the compatibility mode adds some overhead to the resulting bytecode size.
 
+There is no need to consider compatibility for new interfaces, as no clients have used them before.
+You can minimize the compatibility overhead by excluding these interfaces from the compatibility mode.
+To do this, annotate them with the `@JvmDefaultWithoutCompatibility` annotation. Such interfaces compile the same way as 
+with `-Xjvm-default=all`.
 
-
-```kotlin
-interface Producer {
-    @JvmDefault fun produce() {
-        println("interface method")
-    }
-}
-
-class ProducerImpl: Producer {
-    override fun produce() {
-        println("class method")
-    }
-}
-
-class DelegatedProducer(val p: Producer): Producer by p {
-}
-
-fun main() {
-    val prod = ProducerImpl()
-    DelegatedProducer(prod).produce() // 输出“interface method”
-}
-```
-
-
-关于 Kotlin 中接口委托的更多详情，请参见[委托](/docs/reference/delegation.html)。
-
+Additionally, in the `all-compatibility` mode you can use `@JvmDefaultWithoutCompatibility` to annotate all interfaces
+which are not exposed in the public API and therefore aren’t used by the existing clients.
 
 ## 可见性
 
@@ -585,15 +566,14 @@ fun writeToFile() {
 // Java
 try {
   demo.Example.writeToFile();
-}
-catch (IOException e) { // 错误：writeToFile() 未在 throws 列表中声明 IOException
+} catch (IOException e) { // 错误：writeToFile() 未在 throws 列表中声明 IOException
   // ……
 }
 ```
 
 
 因为 `writeToFile()` 没有声明 `IOException`，我们从 Java 编译器得到了一个报错消息。
-为了解决这个问题，要在 Kotlin 中使用 [`@Throws`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-throws/index.html) 注解。
+为了解决这个问题，要在 Kotlin 中使用 [`@Throws`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throws/index.html) 注解。
 
 
 

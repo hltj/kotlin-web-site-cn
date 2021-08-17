@@ -1,11 +1,11 @@
-- title: "Kotlin 1.3.70 发布"
-  link: https://blog.jetbrains.com/kotlin/2020/03/kotlin-1-3-70-released/
+- title: "Kotlin Plugin Released With IDEA 2020.3"
+  link: https://blog.jetbrains.com/kotlin/2020/12/kotlin-plugin-released-with-idea-2020-3/
 
-- title: Ktor 1.3 发布
-  link: https://blog.jetbrains.com/kotlin/2020/01/ktor-1-3-release/
+- title: "Deep Learning With Kotlin"
+  link: https://blog.jetbrains.com/kotlin/2020/12/deep-learning-with-kotlin-introducing-kotlindl-alpha/
 
-- title: "在 Kotlin\xA01.4 中可以期待什么"
-  link: https://blog.jetbrains.com/kotlin/2019/12/what-to-expect-in-kotlin-1-4-and-beyond/
+- title: "Jetpack Compose for Desktop"
+  link: https://blog.jetbrains.com/cross-post/jetpack-compose-for-desktop-milestone-2-released/
 
-- title: 改进了 *.gradle.kts 的 IDE 支持
-  link: https://blog.jetbrains.com/kotlin/2020/02/improved-gradle-kts-ide-support/
+- title: "Server-Side Development with Kotlin: Frameworks and Libraries"
+  link: https://blog.jetbrains.com/kotlin/2020/11/server-side-development-with-kotlin-frameworks-and-libraries/

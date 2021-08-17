@@ -153,14 +153,24 @@ plugins {
 
 
 
-在 Maven 中，则启用 `spring` 插件：
+在 Maven 中，`kotlin-maven-allopen` 插件的依赖项提供了 `spring` 插件，因此可以这样启用：
 
 
 
 ```xml
-<compilerPlugins>
-    <plugin>spring</plugin>
-</compilerPlugins>
+<configuration>
+    <compilerPlugins>
+        <plugin>spring</plugin>
+    </compilerPlugins>
+</configuration>
+
+<dependencies>
+    <dependency>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-maven-allopen</artifactId>
+        <version>${kotlin.version}</version>
+    </dependency>
+</dependencies>
 ```
 
 
@@ -299,7 +309,7 @@ noArg {
 
 ### JPA 支持
 
-与 *kotlin-spring* 插件类似，*kotlin-jpa* 是在 *no-arg* 之上的一层包装。该插件自动指定了
+与 *kotlin-spring* 插件类似（在 *all-open* 之上的一层包装），*kotlin-jpa* 是在 *no-arg* 之上的一层包装。该插件自动指定了
 [`@Entity`](http://docs.oracle.com/javaee/7/api/javax/persistence/Entity.html)、 [`@Embeddable`](http://docs.oracle.com/javaee/7/api/javax/persistence/Embeddable.html) 与 [`@MappedSuperclass`](https://docs.oracle.com/javaee/7/api/javax/persistence/MappedSuperclass.html)
 这几个 *无参* 注解。
 
@@ -472,96 +482,5 @@ samWithReceiver {
 
 ## `Parcelable` 实现生成器
 
-Android Extensions plugin provides [`Parcelable`](https://developer.android.com/reference/android/os/Parcelable) implementation generator.
-
-Annotate the class with `@Parcelize`, and a `Parcelable` implementation will be generated automatically.
-
-
-
-```kotlin
-import kotlinx.android.parcel.Parcelize
-
-@Parcelize
-class User(val firstName: String, val lastName: String, val age: Int): Parcelable
-```
-
-
-`@Parcelize` requires all serialized properties to be declared in the primary constructor. Android Extensions will issue a warning on each property 
-with a backing field declared in the class body. Also, `@Parcelize` can't be applied if some of the primary constructor parameters are not properties.
-
-If your class requires more advanced serialization logic, write it inside a companion class:
-
-
-
-```kotlin
-@Parcelize
-data class User(val firstName: String, val lastName: String, val age: Int) : Parcelable {
-    private companion object : Parceler<User> {
-        override fun User.write(parcel: Parcel, flags: Int) {
-            // Custom write implementation
-        }
-
-        override fun create(parcel: Parcel): User {
-            // Custom read implementation
-        }
-    }
-}
-```
-
-
-
-### 已支持类型
-
-`@Parcelize` supports a wide range of types:
-
-- primitive types (and their boxed versions);
-- objects and enums;
-- `String`, `CharSequence`;
-- `Exception`;
-- `Size`, `SizeF`, `Bundle`, `IBinder`, `IInterface`, `FileDescriptor`;
-- `SparseArray`, `SparseIntArray`, `SparseLongArray`, `SparseBooleanArray`;
-- all `Serializable` (yes, `Date` is supported too) and `Parcelable` implementations;
-- collections of all supported types: `List` (mapped to `ArrayList`), `Set` (mapped to `LinkedHashSet`), `Map` (mapped to `LinkedHashMap`);
-    + Also a number of concrete implementations: `ArrayList`, `LinkedList`, `SortedSet`, `NavigableSet`, `HashSet`, `LinkedHashSet`, `TreeSet`, `SortedMap`, `NavigableMap`, `HashMap`, `LinkedHashMap`, `TreeMap`, `ConcurrentHashMap`;
-- arrays of all supported types;
-- nullable versions of all supported types.
-
-
-### 自定义 `Parceler`
-
-Even if your type is not supported directly, you can write a `Parceler` mapping object for it.
-
-
-
-```kotlin
-class ExternalClass(val value: Int)
-
-object ExternalClassParceler : Parceler<ExternalClass> {
-    override fun create(parcel: Parcel) = ExternalClass(parcel.readInt())
-
-    override fun ExternalClass.write(parcel: Parcel, flags: Int) {
-        parcel.writeInt(value)
-    }
-}
-```
-
-
-External parcelers can be applied using `@TypeParceler` or `@WriteWith` annotations:
-
-
-
-```kotlin
-// Class-local parceler
-@Parcelize
-@TypeParceler<ExternalClass, ExternalClassParceler>()
-class MyClass(val external: ExternalClass)
-
-// Property-local parceler
-@Parcelize
-class MyClass(@TypeParceler<ExternalClass, ExternalClassParceler>() val external: ExternalClass)
-
-// Type-local parceler
-@Parcelize
-class MyClass(val external: @WriteWith<ExternalClassParceler>() ExternalClass)
-```
-
+`kotlin-parcelize` compiler plugin provides a [`Parcelable`](https://developer.android.com/reference/android/os/Parcelable) implementation generator.
+To learn how to use it, refer to the [Android documentation](https://developer.android.com/kotlin/parcelize).

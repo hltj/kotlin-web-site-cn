@@ -35,9 +35,11 @@ Kotlin 非常适合开发服务器端应用程序，可以让你编写简明且�
  * [kotlinx.html](https://github.com/kotlin/kotlinx.html) 是可在 Web 应用程序中用于构建 HTML 的 DSL。
 它可以作为传统模板系统（如JSP和FreeMarker）的替代品。
 
- * [Micronaut](https://micronaut.io/) is a modern, JVM-based, full-stack framework for building modular, easily testable microservice and serverless applications. It comes with a lot of built-in, handy features.
- 
- * [Javalin](https://javalin.io) is a very lightweight web framework for Kotlin and Java which supports WebSockets, HTTP2 and async requests.
+ * [Micronaut](https://micronaut.io/) 是基于 JVM 的现代全栈框架，用于构建模块化、易于测试的微服务与无服务器应用程序。它带有许多内置的便捷功能。
+
+ * [http4k](https://http4k.org/) is the functional toolkit with a tiny footprint for Kotlin HTTP applications, written in pure Kotlin. The library is based on the "Your Server as a Function" paper from Twitter and represents modeling both HTTP Servers and Clients as simple Kotlin functions that can be composed together.
+
+ * [Javalin](https://javalin.io) 是用于 Kotlin 与 Java 的非常轻量级的 Web 框架，支持 WebSockets、HTTP2 与异步请求。
 
  * 通过相应 Java 驱动程序进行持久化的可用选项包括直接 JDBC 访问、JPA 以及使用 NoSQL 数据库。
 对于 JPA，[kotlin-jpa 编译器插件](compiler-plugins.html#jpa-支持)使
@@ -73,3 +75,4 @@ AWS Labs 提供了一个[示例项目](https://github.com/awslabs/serverless-pho
 * 关于更深入的介绍，请查看本站的[参考文档](index.html)及
 [Kotlin 心印](https://www.kotlincn.net/docs/tutorials/koans.html)。
 * Micronaut 还提供了很多详细的[指南](https://guides.micronaut.io/tags/kotlin.html)，展示了如何使用 Kotlin 构建微服务。
+* http4k provides the [CLI](https://toolbox.http4k.org) to generate fully formed projects, and a [starter](https://start.http4k.org) repo to generate an entire CD pipeline using GitHub, Travis, and Heroku with a single bash command.

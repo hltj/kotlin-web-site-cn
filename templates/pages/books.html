@@ -5,13 +5,49 @@
 {% block content %}
     <article role="main" class="page-content page-books">
         <section class="page-books__section page-books__featured g-9">
-            <h2>Featured</h2>
+            <h2>精选</h2>
+            <h3 style="clear: left">Kotlin编程实践（Kotlin Cookbook 中文版）</h3>
+            <div class="book-lang">中文</div>
+            <a href="https://item.jd.com/12695637.html"><img
+                    src="{{ url_for('asset', path='images/kotlin_cookbook_cn.png') }}" class="book-cover-image"></a>
+
+            <p><a href="https://item.jd.com/12695637.html">《Kotlin编程实践》（Kotlin Cookbook 中文版）</a>
+                由[美]肯·寇森（Ken Kousen）著、乔禹昂译（<a href="https://github.com/qiaoyuang" target="_blank">乔禹昂</a>也是本站译者）。
+            </p>
+            <p>
+                本书的重点不仅在于讲解 Kotlin 的语法与语义，还将展示何时以及为何应该使用某个指定的语言特性。
+                本书的目标不一定会涵盖每一个 Kotlin 语法与库的细节。
+                但在最后，本书添加了很多基本原理的内容，让即使只有 Kotlin 初级知识的读者也可以理解本书的内容。
+                当你认真学习 Kotlin 的细节后，你就可以使用这门受欢迎的语言构建 Android 应用、Web 应用以及其他程序。
+                Kotlin 不仅可以用于任何应用 Java 的地方，还可以用于 iOS 开发、编写原生应用程序、JavaScript 开发以及更多场景。
+            </p>
+
+            <h3 style="clear: left">深入理解Kotlin协程</h3>
+            <div class="book-lang">中文</div>
+            <a href="https://item.jd.com/70329779757.html"><img
+                    src="{{ url_for('asset', path='images/understand-kotlin-coroutine.png') }}" class="book-cover-image"></a>
+
+            <p><a href="https://item.jd.com/70329779757.html">《深入理解Kotlin协程》</a>
+                是一部从工作机制、实现原理、应用场景、使用方法、实践技巧、标准库、框架、应用案例等多个维度全面讲解
+                Kotlin 协程的专著，它同时提供了多语言视角，亦可通过本书了解其他语言的协程。</p>
+            <p>本书作者是腾讯的的高级工程师，是国内Kotlin领域的先驱者和布道者，不仅在工程实践领域积累了丰富的经验，
+                而且在Kotlin开发者社群里有广泛的影响力和号召力。</p>
+            <p>全书共9章：</p>
+            <ul>
+                <li>第1章从协程的核心应用场景——异步程序设计的思路和关键问题切入，引出Kotlin协程的概念；</li>
+                <li>第2章首先介绍了协程的概念、分类，然后讲解了Python、Lua、Go等不同语言的协程实现和对比；</li>
+                <li>第3~4章以 Kotlin 标准库的协程 API 为核心，讲解了简单协程的使用方法和运行机制，以及通过简单协程设计和实现复合协程的思路和方法；</li>
+                <li>第5~6章以Kotlin的官方协程框架为模板，通过逐步实现其中的核心功能，分析了其中的实现细节和复合协程的运行机制，并对框架的使用做了深入探讨；</li>
+                <li>第7~8章讲解了协程在Android应用开发和Web服务开发中的应用场景、面临的挑战，以及解决各种常见问题的方法和思路；</li>
+                <li>第9章探讨了JavaScript和Native等非JVM平台对协程的支持情况，以及协程在这些平台上的应用。</li>
+            </ul>
+
             <h3 style="clear: left">Kotlin核心编程</h3>
             <div class="book-lang">中文</div>
-            <a href="https://item.jd.com/12519581.html"><img
+            <a href="https://item.jd.com/12898592.html"><img
                     src="{{ url_for('asset', path='images/core-kotlin-cn.png') }}" class="book-cover-image"></a>
 
-            <p><a href="https://item.jd.com/12519581.html">《Kotlin核心编程》</a>不是一本简单介绍 Kotlin 语法应用的图书，
+            <p><a href="https://item.jd.com/12898592.html">《Kotlin核心编程》</a>不是一本简单介绍 Kotlin 语法应用的图书，
                 而是一部专注于帮助读者深入理解 Kotlin 的设计理念，指导读者实现 Kotlin 高层次开发的实战型著作。
                 书中深入介绍了 Kotlin 的核心语言特性、设计模式、函数式编程、异步开发等内容，并以 Android 和 Web
                 两个平台为背景，演示了Kotlin的实战应用。</p>
@@ -36,7 +72,7 @@
             <p>这本书原版由 Kotlin 团队的开发者 Dmitry Jemerov 和 Svetlana Isakova 合著。
                 中文版由覃宇、罗丽、李思阳、蒋扬海译。</p>
 
-            <h3>Head First Kotlin</h3>
+            <h3 style="clear: left">Head First Kotlin</h3>
             <div class="book-lang">en</div>
             <a href="https://www.oreilly.com/library/view/head-first-kotlin/9781491996683/"><img
                     src="{{ url_for('asset', path='images/Head_first.jpeg') }}" class="book-cover-image"></a>
@@ -93,7 +129,7 @@
         </section>
 
         <section class="page-books__section page-books__general g-9">
-            <h2>General</h2>
+            <h2>通用</h2>
             <h3>Modern Web Development with Kotlin</h3>
             <div class="book-lang">en</div>
             <a href="https://leanpub.com/modern-web-development-with-kotlin"><img
@@ -218,7 +254,7 @@
         </section>
 
         <section class="page-books__section page-books__android g-9">
-            <h2>Android Programming</h2>
+            <h2>Android 程序设计</h2>
 
             <h3>Kotlin for Android Developers</h3>
             <div class="book-lang">en</div>
@@ -253,7 +289,7 @@
         </section>
 
         <section class="page-books__section page-books__more g-9">
-            <h2>More</h2>
+            <h2>更多</h2>
             <h3>Programming Kotlin</h3>
             <div class="book-lang">en</div>
             <a href="https://www.packtpub.com/application-development/programming-kotlin"><img
@@ -525,6 +561,13 @@
                 by Chandra Sekhar Nayak, Rivu Chakraborty, starts with the basics of algorithms and data structures,
                 helping you get to grips with the fundamentals and measure complexity. You'll then move on to exploring
                 the basics of functional programming while getting used to thinking recursively. Packed with plenty of examples along the way, this book will help you grasp each concept easily. In addition to this, you'll get a clear understanding of how the data structures in Kotlin's collection framework work internally. By the end of this book, you will be able to apply the theory of data structures and algorithms to work out real-world problems.</p>
+
+            <h3 style="clear: left">Kotlin ile Asenkron Programlama</h3>
+            <div class="book-lang">tr</div>
+            <a href="https://play.google.com/store/books/details?id=1IbvDwAAQBAJ"><img
+                    src="{{ url_for('asset', path='images/Kotlin_ile_Asenkron_Programlama.jpg') }}" class="book-cover-image"></a>
+            <p><a href="https://play.google.com/store/books/details?id=1IbvDwAAQBAJ">Kotlin ile Asenkron Programlama</a>
+            Kotlin ile Asnekron Programlama by Mehmet Ali SICAK was written to introduce Coroutines  to programmers. This book is the first and currently only book about Coroutines in Turkish. If you want to prevent our applications from blocking, this book is for you. This book focuses on coroutines, the asynchronous programming method. It consists of two parts: theoretical and practical.</p>
         </section>
     </article>
 

@@ -7,11 +7,10 @@ title: "动态类型"
 
 # 动态类型
 
-> 在面向 JVM 平台的代码中不支持动态类型
+> 在面向 JVM 平台的代码中不支持动态类型。
 {:.note}
 
-作为一种静态类型的语言，Kotlin仍然需要与无类型或松散类型的环境（例如
-JavaScript生态系统）进行互操作。为了方便这些使用场景，语言中有 `dynamic` 类型可用：
+Kotlin 是一种静态类型的语言，这使得它不同于动态类型的 JavaScript。为了方便与 JavaScript 代码的互操作，Kotlin/JS 提供了 `dynamic` 类型：
 
 
 ```kotlin
@@ -21,12 +20,12 @@ val dyn: dynamic = ……
 
 `dynamic` 类型基本上关闭了 Kotlin 的类型检测系统：
 
-  - 该类型的值可以赋值给任何变量或作为参数传递到任何位置；
-  - 任何值都可以赋值给 `dynamic` 类型的变量，或者传递给一个接受 `dynamic` 作为参数的函数；
-  - `null`-检测对这些值是禁用的。
+  - `dynamic` 值可以赋值给任何类型的变量，也可以作为参数传递到任何地方。
+  - `dynamic` 变量可以具有任何类型的值。
+  - 带有 `dynamic` 参数的函数可以带有任何类型的参数。
+  - 对于 `dynamic` 类型的值，将禁用 `null` 检查。
 
-`dynamic` 最特别的特性是，我们可以对 `dynamic` 变量调用**任何**属性或以任意参数调用**任何**函数
-：
+在 `dynamic` 变量上，可以使用任何参数调用 **任何** 属性或函数：
 
 
 ```kotlin
@@ -35,14 +34,13 @@ dyn.whatever(*arrayOf(1, 2, 3))
 ```
 
 
-在 JavaScript 平台上，该代码将按照原样编译：在生成的 JavaScript 代码中，Kotlin中的 `dyn.whatever(1)` 变为 `dyn.whatever(1)`
+这段代码会按照原样编译：在生成的 JavaScript 代码中，Kotlin中的 `dyn.whatever(1)` 变为 `dyn.whatever(1)`
 。
 
 当在 `dynamic` 类型的值上调用 Kotlin 写的函数时，请记住由
-Kotlin 到 JavaScript 编译器执行的名字修饰。你可能需要使用 [@JsName 注解](js-to-kotlin-interop.html#jsname-注解)<!--
--->为要调用的函数分配明确的名称。
+Kotlin 到 JavaScript 编译器执行的名字修饰。你可能需要使用 [@JsName 注解](js-to-kotlin-interop.html#jsname-注解) 或者 [@JsExport 注解](js-to-kotlin-interop.html#jsexport-annotation)为要调用的函数分配明确定义的名称。
 
-动态调用总是返回 `dynamic` 作为结果，所以我们可以自由地这样链接调用：
+动态调用总是返回 `dynamic` 作为结果，这意味着可以自由链式调用：
 
 
 ```kotlin

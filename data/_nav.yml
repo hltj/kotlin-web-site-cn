@@ -9,10 +9,13 @@ main:
       title: 论坛
 
     - url: /docs/reference/
-      title: 学习
+      title: 文档
 
     - url: /community/
       title: 社区
+
+    - url: /education/
+      title: 教学
 
     - url: https://play.kotlinlang.org
       title: 演练
@@ -21,6 +24,7 @@ main:
 # Docs section navigation
 # =======================
 subnav:
+  type: tab
   content:
     - url: /docs/
       content:
@@ -35,18 +39,27 @@ subnav:
     - url: /community/
       content:
         - url: /community/
-          urlPattern: ^/community/$
-          title: 社区概述
+          urlPattern: ^\/community\/$
+          title: 概述
 
         - url: /user-groups/user-group-list.html
-          urlPattern: /user-groups*
+          urlPattern: /user-groups.*
           title: 用户群组
 
-        - url: /community/kotlin-nights.html
-          title: Kotlin 之夜
+        - url: /community/events.html
+          urlPattern: ^\/community\/(events\.html|kotlin-nights.*)
+          title: 活动
 
         - url: /community/talks.html
-          title: 会谈
+          title: 会谈与演讲者
+    - url: /education/
+      content:
+        - url: /education/
+          urlPattern: ^\/education\/$
+          title: 概述
+
+        - url: /education/why-teach-kotlin.html
+          title: 为什么讲授 Kotlin
 
 # Reference navigation
 # ====================
@@ -73,12 +86,28 @@ reference:
     - title: 新特性
       description: Kotlin 各版本的新特性
       content:
+        - url: /docs/reference/whatsnew1430.html
+          title: Kotlin 1.4.30
+        - url: /docs/reference/whatsnew-plugin-20203.html
+          title: Kotlin plugin 2020.3
+        - url: /docs/reference/whatsnew1420.html
+          title: Kotlin 1.4.20
+        - url: /docs/reference/whatsnew14.html
+          title: Kotlin 1.4
         - url: /docs/reference/whatsnew13.html
-          title: 1.3 的新特性
+          title: Kotlin 1.3
         - url: /docs/reference/whatsnew12.html
-          title: 1.2 的新特性
+          title: Kotlin 1.2
         - url: /docs/reference/whatsnew11.html
-          title: 1.1 的新特性
+          title: Kotlin 1.1
+
+    - title: 版本发布与路线图
+      description: Kotlin 版本发布与路线图
+      content:
+        - url: /releases.html
+          title: Kotlin 版本发布
+        - url: /roadmap.html
+          title: Kotlin 路线图
 
     - title: 开始
       description: 开始熟悉 Kotlin 基础包括操作、编码习惯与习惯用法。
@@ -108,9 +137,11 @@ reference:
         - url: /docs/reference/classes.html
           title: 类与继承
         - url: /docs/reference/properties.html
-          title: 属性与字段
+          title: 属性
         - url: /docs/reference/interfaces.html
           title: 接口
+        - url: /docs/reference/fun-interfaces.html
+          title: 函数式（SAM）接口
         - url: /docs/reference/visibility-modifiers.html
           title: 可见性修饰符
         - url: /docs/reference/extensions.html
@@ -196,15 +227,36 @@ reference:
         branch: master
 
     - title: 多平台程序设计
-      description: 跨 JVM、 JS 与原生平台复用代码
+      description: 跨平台复用代码
       content:
-        - url: /docs/reference/platform-specific-declarations.html
-          title: 平台相关声明
-        - url: /docs/reference/building-mpp-with-gradle.html
-          title: 以 Gradle 构建
+        - url: /docs/reference/mpp-intro.html
+          title: Kotlin 多平台
+        - url: /docs/reference/mpp-create-lib.html
+          title: 创建多平台库
+        - url: /docs/reference/mpp-discover-project.html
+          title: 了解项目
+        - url: /docs/reference/mpp-share-on-platforms.html
+          title: 平台间共享代码
+        - url: /docs/reference/mpp-connect-to-apis.html
+          title: 接入平台相关 API
+        - url: /docs/reference/mpp-set-up-targets.html
+          title: 手动设置目标
+        - url: /docs/reference/mpp-add-dependencies.html
+          title: 添加依赖项
+        - url: /docs/reference/mpp-configure-compilations.html
+          title: 配置编译项
+        - url: /docs/reference/mpp-run-tests.html
+          title: 运行测试
+        - url: /docs/reference/mpp-publish-lib.html
+          title: 发布多平台库
+        - url: /docs/reference/mpp-build-native-binaries.html
+          title: 构建最终原生二进制文件
+        - url: /docs/reference/mpp-supported-platforms.html
+          title: 所支持平台
         - url: /docs/reference/mpp-dsl-reference.html
           title: 多平台 Gradle DSL 参考
-
+        - url: /docs/reference/migrating-multiplatform-project-to-14.html
+          title: 迁移到 Kotlin 1.4
 
     - title: 更多语言结构
       description: 各种知识点
@@ -227,12 +279,14 @@ reference:
           title: 注解
         - url: /docs/reference/reflection.html
           title: 反射
+        - url: /docs/reference/serialization.html
+          title: 序列化
         - url: /docs/reference/scope-functions.html
           title: 作用域函数
         - url: /docs/reference/type-safe-builders.html
           title: 类型安全的构建器
         - url: /docs/reference/opt-in-requirements.html
-          title: Opt-in Requirements
+          title: 选择加入要求
 
     - title: 核心库
       content:
@@ -277,6 +331,10 @@ reference:
          title: JavaScript 反射
        - url: /docs/reference/javascript-dce.html
          title: JavaScript DCE
+       - url: /docs/reference/js-ir-compiler.html
+         title: IR 编译器
+       - url: /docs/reference/js-external-declarations-with-dukat.html
+         title: 用 Dukat 生成外部声明
 
     - title: 原生
       description: 使用 Kotlin/Native 进行 iOS 与原生开发
@@ -285,7 +343,7 @@ reference:
         nav: _nav_reference.yml
         base: /docs/reference/native
         repo: https://github.com/hltj/kotlin-native-cn
-        branch: v1.3.70-fixes
+        branch: v1.4.30-fixes
 
     - title: 工具
       description:
@@ -313,9 +371,11 @@ reference:
         - url: /docs/reference/evolution/kotlin-evolution.html
           title: Kotlin 语言演进
         - url: /docs/reference/evolution/components-stability.html
-          title: 不同组件的稳定性
+          title: Kotlin 组件的稳定性
         - url: /docs/reference/compatibility-guide-13.html
           title: Kotlin 1.3 的兼容性指南
+        - url: /docs/reference/compatibility-guide-14.html
+          title: Kotlin 1.4 的兼容性指南
 
     - title: 常见问题
       description: 你想到的问题可能会在这里得到解答。
@@ -336,6 +396,8 @@ tutorials:
     - title: 开始
       content:
         - url: /docs/tutorials/getting-started.html
+          title: Kotlin 入门
+        - url: /docs/tutorials/jvm-get-started.html
           title: 以 IntelliJ IDEA 入门
         - url: /docs/tutorials/getting-started-eclipse.html
           title: 以 Eclipse 入门
@@ -356,7 +418,7 @@ tutorials:
     - title: JavaScript
       content:
         - url: /docs/tutorials/javascript/setting-up.html
-          title: 搭建一个项目
+          title: 以 Kotlin/JS for React 入门
         - url: /docs/tutorials/javascript/running-kotlin-js.html
           title: 运行 Kotlin/JS
         - url: /docs/tutorials/javascript/dev-server-continuous-compilation.html
@@ -392,7 +454,7 @@ tutorials:
         - url: /docs/tutorials/native/using-gradle.html
           title: 使用 Gradle 的 Hello Kotlin/Native
         - url: /docs/tutorials/native/using-intellij-idea.html
-          title: 使用 IntelliJ IDEA 的 Hello Kotlin/Native
+          title: 使用 IntelliJ IDEA 的 Kotlin/Native 入门
         - url: /docs/tutorials/native/intro-to-kotlin-native.html
           title: 在 Kotlin/Native 中创建 HTTP 客户端
         - url: /docs/tutorials/native/mapping-primitive-data-types-from-c.html
@@ -422,6 +484,10 @@ tutorials:
           title: JVM 平台的 Kotlin 协程简介
         - url: /docs/tutorials/coroutines/intro-to-coroutines-and-channels.html
           title: 协程与通道简介
+        - url: /docs/tutorials/coroutines/debug-coroutines-with-idea.html
+          title: Debug coroutines using IntelliJ IDEA
+        - url: /docs/tutorials/coroutines/debug-flow-with-idea.html
+          title: Debug Kotlin Flow using IntelliJ IDEA
 
     - title: Web 开发
       content:
@@ -429,6 +495,8 @@ tutorials:
           title: 用 Http Servlets 创建 web 应用
         - url: /docs/tutorials/spring-boot-restful.html
           title: 用  Spring Boot 创建 RESTful Web 服务
+        - url: /docs/tutorials/spring-boot-restful-db.html
+          title: Add a database to a Spring Boot RESTful web service
 
     - title: 工具
       content:
@@ -441,16 +509,6 @@ tutorials:
           title: 通过 EduTools 插件学习 Kotlin
         - url: /docs/tutorials/edu-tools-educator.html
           title: 通过 EduTools 插件讲授 Kotlin
-    - title: 迁移自 Python
-      external:
-        path: kotlin-for-python-developers
-        nav: kotlinlang.org.yaml
-        base: /docs/tutorials/kotlin-for-py
-        branch: master
-        repo: https://github.com/hltj/kotlin-for-python-developers-cn
-        type: tutorial
-        wrap_code_snippets: True
-        github_edit_page: README.md
 
 foundation:
   content:
@@ -470,6 +528,18 @@ groups:
     - url: /user-groups/user-group-list.html
       title: Kotlin 用户组列表
     - url: /user-groups/support.html
-      title: 支助和准则
+      title: 准则与支持
     - url: /user-groups/branding.html
-      title: 品牌
+      title: 品牌宣传资料
+    - url: https://confluence.jetbrains.com/display/ALL/JetBrains+Open+Source+and+Community+Code+of+Conduct
+      title: 行为守则
+
+
+events:
+  content:
+    - url: /community/events.html
+      title: Kotlin 活动
+    - url: /community/kotlin-nights/guidelines.html
+      title: 准则与支持
+    - url: /community/kotlin-nights/branding.html
+      title: 品牌宣传资料

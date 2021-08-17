@@ -10,8 +10,8 @@ related:
     - getting-started.md
 ---
 
-我们将使用 IntelliJ IDEA（终极版或社区版）。 如需了解如何在 IntelliJ IDEA 中开始一个新的Kotlin项目，
-参见[以 IntellJ IDEA 入门](getting-started.html)。 如果你使用的是构建工具，请参阅相应的
+我们将使用 IntelliJ IDEA（旗舰版或社区版）。 如需了解如何在 IntelliJ IDEA 中开始一个新的Kotlin项目，
+参见[以 IntellJ IDEA 入门](jvm-get-started.html)。 如果你使用的是构建工具，请参阅相应的
 [构建工具](build-tools.html)下的条目。
 
 ## 将 Java 源代码添加到现有 Kotlin 项目中

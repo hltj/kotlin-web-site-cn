@@ -7,18 +7,43 @@ title: "Inline classes"
 
 # 内联类
 
-> 内联类仅在 Kotlin 1.3 之后版本可用，目前还是*实验性的*。关于详情请参见[下文](#内联类的实验性状态)
+> Inline classes are in [Beta](evolution/components-stability.html). They are almost stable, but migration steps may be required in the future. 
+> We'll do our best to minimize any changes you will have to make.
+> We would appreciate your feedback on the inline classes feature in [YouTrack](https://youtrack.jetbrains.com/issue/KT-42434).
 {:.note}
 
 有时候，业务逻辑需要围绕某种类型创建包装器。然而，由于额外的堆内存分配问题，它会引入运行时的性能开销。此外，如果被包装的类型是原生类型，性能的损失是很糟糕的，因为原生类型通常在运行时就进行了大量优化，然而他们的包装器却没有得到任何特殊的处理。
 
-为了解决这类问题，Kotlin 引入了一种被称为 `内联类` 的特殊类，它通过在类的前面定义一个 `inline` 修饰符来声明：
+为了解决这类问题，Kotlin 引入了一种被称为*内联类*的特殊类。 
+Inline classes are a subset of value-based classes. They don't have an identity and can only hold values.
+
+To declare an inline class, use an `inline` or `value` modifier before the name of the class:
 
 
 
 ```kotlin
 inline class Password(val value: String)
 ```  
+
+
+
+
+
+```kotlin
+value class Password(private val s: String)
+```
+
+
+
+To declare an inline class for the JVM backend, use the `value` modifier along with the `@JvmInline` annotation before the class declaration: 
+
+
+
+```kotlin
+// For JVM backends
+@JvmInline
+value class Password(private val s: String)
+```
 
 
 
@@ -38,12 +63,17 @@ val securePassword = Password("Don't try this in production")
 
 ## 成员
 
-内联类支持普通类中的一些功能。特别是，内联类可以声明属性与函数：
+内联类支持普通类中的一些功能。特别是，内联类可以声明属性与函数, and have the `init` block：
 
 
 
 ```kotlin
-inline class Name(val s: String) {
+@JvmInline
+value class Name(val s: String) {
+    init {
+        require(s.length > 0) { }
+    }
+
     val length: Int
         get() = s.length
 
@@ -61,10 +91,9 @@ fun main() {
 
 
 
-然而，内联类的成员也有一些限制：
-* 内联类不能含有 *init*{: .keyword } 代码块
-* 内联类不能含有[幕后字段](properties.html#幕后字段)
-    * 因此，内联类只能含有简单的计算属性（不能含有延迟初始化/委托属性）
+There are some restrictions for inline class members:
+* inline class properties cannot have [backing fields](properties.html#backing-fields). They can only have simple computable properties (no `lateinit`/delegated properties).
+* Inline classes cannot have `var` properties or extension `var` properties.
 
 
 ## 继承
@@ -78,7 +107,8 @@ interface Printable {
     fun prettyPrint(): String
 }
 
-inline class Name(val s: String) : Printable {
+@JvmInline
+value class Name(val s: String) : Printable {
     override fun prettyPrint(): String = "Let's $s!"
 }    
 
@@ -103,7 +133,8 @@ fun main() {
 ```kotlin
 interface I
 
-inline class Foo(val i: Int) : I
+@JvmInline
+value class Foo(val i: Int) : I
 
 fun asInline(f: Foo) {}
 fun <T> asGeneric(x: T) {}
@@ -137,7 +168,8 @@ fun main() {
 
 
 ```kotlin
-inline class UInt(val x: Int)
+@JvmInline
+value class UInt(val x: Int)
 
 // 在 JVM 平台上被表示为'public final void compute(int x)'
 fun compute(x: Int) { }
@@ -150,8 +182,28 @@ fun compute(x: UInt) { }
 
 为了缓解这种问题，一般会通过在函数名后面拼接一些稳定的哈希码来重命名函数。 因此，`fun compute(x: UInt)` 将会被表示为 `public final void compute-<hashcode>(int x)`，以此来解决冲突的问题。
 
-> 请注意在 Java 中 `-` 是一个 *无效的* 符号，也就是说在 Java 中不能调用使用内联类作为形参的函数。
+> The mangling scheme has been changed in Kotlin 1.4.30. 
+> Use the `-Xuse-14-inline-classes-mangling-scheme` compiler flag to force the compiler to use the old 1.4.0 mangling scheme and preserve binary compatibility.
 {:.note}
+
+### Calling from Java code
+
+You can call functions that accept inline classes from Java code. To do so, you should manually disable mangling:
+add the `@JvmName` annotation before the function declaration:
+
+
+
+```kotlin
+@JvmInline
+value class UInt(val x: Int)
+
+fun compute(x: Int) { }
+
+@JvmName("computeUInt")
+fun compute(x: UInt) { }
+```
+
+
 
 ## 内联类与类型别名
 
@@ -165,7 +217,9 @@ fun compute(x: UInt) { }
 
 ```kotlin
 typealias NameTypeAlias = String
-inline class NameInlineClass(val s: String)
+
+@JvmInline
+value class NameInlineClass(val s: String)
 
 fun acceptString(s: String) {}
 fun acceptNameTypeAlias(n: NameTypeAlias) {}
@@ -188,19 +242,21 @@ fun main() {
 
 
 
-## 内联类的实验性状态
+## 启用内联类
 
-内联类的设计目前是实验性的，这就是说此特性是正在 *快速变化*的，并且不保证其兼容性。在 Kotlin 1.3+ 中使用内联类时，将会得到一个警告，来表明此特性还是实验性的。
+When using inline classes in Kotlin 1.3+, a warning will be reported, indicating that this feature has not been released as stable.
+To remove the warning you have to opt in to the usage of this feature by passing the compiler argument `-Xinline-classes`.
 
-如需移除警告，必须通过指定编译器参数 `-Xinline-classes` 来选择使用这项实验性的特性。
+### Gradle
 
-### 在 Gradle 中启用内联类
 
 
 
 ```groovy
-compileKotlin {
-    kotlinOptions.freeCompilerArgs += ["-Xinline-classes"]
+kotlin {
+    sourceSets.all {
+        languageSettings.enableLanguageFeature('InlineClasses')
+    }
 }
 ```
 
@@ -211,17 +267,20 @@ compileKotlin {
 
 
 ```kotlin
-tasks.withType<KotlinCompile> {
-    kotlinOptions.freeCompilerArgs += "-Xinline-classes"
+kotlin {
+    sourceSets.all {
+        languageSettings.enableLanguageFeature("InlineClasses")
+    }
 }
 ```
 
 
 
 
-关于详细信息，请参见[编译器选项](using-gradle.html#编译器选项)。关于[多平台项目](whatsnew13.html#多平台项目)的设置，请参见[使用 Gradle 构建多平台项目](building-mpp-with-gradle.html#语言设置)章节。
+关于详细信息，请参见[编译器选项](using-gradle.html#编译器选项)。关于[多平台项目](mpp-intro.html)的设置，请参见[使用 Gradle 构建多平台项目](building-mpp-with-gradle.html#语言设置)章节。
+参见[语言设置](mpp-dsl-reference.html#language-settings)。
 
-### 在 Maven 中启用内联类
+### Maven
 
 
 

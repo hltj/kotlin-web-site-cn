@@ -23,6 +23,7 @@ title: "This 表达式"
 -->代指 *this*{: .keyword } 来源的标签：
 
 
+
 ```kotlin
 class A { // 隐式标签 @A
     inner class B { // 隐式标签 @B
@@ -45,6 +46,35 @@ class A { // 隐式标签 @A
             }
         }
     }
+}
+```
+
+
+
+## Implicit `this`
+
+当对 `this` 调用成员函数时，可以省略 `this.` 部分。
+但是如果有一个同名的非成员函数时，请谨慎使用，因为在某些情况下会调用同名的非成员：
+
+
+
+```kotlin
+fun main() {
+//sampleStart
+    fun printLine() { println("Top-level function") }
+    
+    class A {
+        fun printLine() { println("Member function") }
+
+        fun invokePrintLine(omitThis: Boolean = false)  { 
+            if (omitThis) printLine()
+            else this.printLine()
+        }
+    }
+    
+    A().invokePrintLine() // Member function
+    A().invokePrintLine(omitThis = true) // Top-level function
+//sampleEnd()
 }
 ```
 

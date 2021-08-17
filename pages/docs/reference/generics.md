@@ -47,7 +47,7 @@ Java 类型系统中最棘手的部分之一是通配符类型（参见 [Java Ge
 ``` java
 // Java
 List<String> strs = new ArrayList<String>();
-List<Object> objs = strs; // ！！！即将来临的问题的原因就在这里。Java 禁止这样！
+List<Object> objs = strs; // ！！！此处的编译器错误让我们避免了之后的运行时异常
 objs.add(1); // 这里我们把一个整数放入一个字符串列表
 String s = strs.get(0); // ！！！ ClassCastException：无法将整数转换为字符串
 ```
@@ -98,8 +98,8 @@ interface Collection<E> …… {
 反过来，该限制可以让`Collection<String>`表示为`Collection<? extends Object>`的子类型。
 简而言之，带 **extends** 限定（**上界**）的通配符类型使得类型是**协变的（covariant）**。
 
-理解为什么这个技巧能够工作的关键相当简单：如果只能从集合中获取项目，那么使用 `String` 的集合，
-并且从其中读取 `Object` 也没问题 。反过来，如果只能向集合中 _放入_ 项目，就可以用
+理解为什么这个技巧能够工作的关键相当简单：如果只能从集合中获取元素，那么使用 `String` 的集合，
+并且从其中读取 `Object` 也没问题 。反过来，如果只能向集合中 _放入_ 元素，就可以用
 `Object` 集合并向其中放入 `String`：在 Java 中有 `List<? super String>` 是 `List<Object>` 的一个**超类**。
 
 后者称为**逆变性（contravariance）**，并且对于 `List <? super String>` 你只能调用接受 String 作为参数的方法
@@ -108,10 +108,10 @@ interface Collection<E> …… {
 
 Joshua Bloch 称那些你只能从中**读取**的对象为**生产者**，并称那些你只能**写入**的对象为**消费者**。他建议：“*为了灵活性最大化，在表示生产者或消费者的输入参数上使用通配符类型*”，并提出了以下助记符：
 
-*PECS 代表生产者-Extens，消费者-Super（Producer-Extends, Consumer-Super）。*
+*PECS 代表生产者-Extends、消费者-Super（Producer-Extends, Consumer-Super）。*
 
 *注意*：如果你使用一个生产者对象，如 `List<? extends Foo>`，在该对象上不允许调用 `add()` 或 `set()`。但这并不意味着<!--
--->该对象是**不可变的**：例如，没有什么阻止你调用 `clear()`从列表中删除所有项目，因为 `clear()`
+-->该对象是**不可变的**：例如，没有什么阻止你调用 `clear()`从列表中删除所有元素，因为 `clear()`
 根本无需任何参数。通配符（或其他类型的型变）保证的唯一的事情是**类型安全**。不可变性完全是另一回事。
 
 ### 声明处型变

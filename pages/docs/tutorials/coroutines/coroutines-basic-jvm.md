@@ -22,16 +22,32 @@ showAuthorInfo: true
 
 由于我们将使用 [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines)，来让我们将它最近的版本添加到依赖中：
 
-<div class="sample" markdown="1" theme="idea" mode="groovy">
+<div class="multi-language-sample" data-lang="groovy">
+<div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
 dependencies {
     ...
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:{{ site.data.releases.latest.coroutines.version }}"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:{{ site.data.releases.latest.coroutines.version }}'
 }
 ```
 
 </div>
+</div>
+
+<div class="multi-language-sample" data-lang="kotlin">
+<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+```kotlin
+dependencies {
+    ...
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:{{ site.data.releases.latest.coroutines.version }}")
+}
+```
+
+</div>
+</div>
+
 
 这个库已经发布到了 Bintray JCenter 仓库，所以让我们添加它：
 
@@ -99,7 +115,7 @@ repositories {
     ...
     <repository>
         <id>central</id>
-        <url>http://jcenter.bintray.com</url>
+        <url>https://jcenter.bintray.com</url>
     </repository>
 </repositories>
 ```
@@ -249,12 +265,12 @@ val deferred = (1..1_000_000).map { n ->
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val sum = deferred.map { it.await().toLong() }.sum()
+val sum = deferred.sumOf { it.await().toLong() }
 ```
 
 </div>
 
-这里我们简单从每个协程等待并取得它的执行结果，接下来将使用标准库的 `sum()` 函数来将所有结果叠加到一起。但编译器理所当然地抱怨道：
+这里我们简单从每个协程等待并取得它的执行结果，接下来将使用标准库的 `sumOf()` 函数来将所有结果叠加到一起。但编译器理所当然地抱怨道：
 
 > 挂起函数只被允许在协程或另一个挂起函数中调用
 
@@ -264,7 +280,7 @@ val sum = deferred.map { it.await().toLong() }.sum()
 
 ```kotlin
 runBlocking {
-    val sum = deferred.map { it.await().toLong() }.sum()
+    val sum = deferred.sumOf { it.await().toLong() }
     println("Sum: $sum")
 }
 ```

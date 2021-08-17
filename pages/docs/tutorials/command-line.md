@@ -49,17 +49,6 @@ $ brew install kotlin
 
 </div>
 
-#### MacPorts
-如果你是 [MacPorts](https://www.macports.org/) 用户，那么可以使用以下命令安装编译器：
-
-<div class="sample" markdown="1" mode="shell" theme="idea">
-
-```bash
-$ sudo port install kotlin
-```
-
-</div>
-
 #### [Snap](https://snapcraft.io/) 包
 如果使用的是 Ubuntu 16.04 或更高版本，那么可以在命令行安装编译器：
 
@@ -71,27 +60,21 @@ $ sudo snap install --classic kotlin
 
 </div>
 
-#### Chocolatey 包
-对于 Windows 下的 [Chocolatey](https://chocolatey.org/) 用户，
-有一个社区维护的软件包 [kotlinc](https://chocolatey.org/packages/kotlinc) 可供使用，
-你可以在命令行通过 [`choco install`](https://chocolatey.org/docs/commandsinstall) 进行安装。
-
-
 ### 创建并运行第一个应用程序
 
-1. 在 Kotlin 中创建一个显示 Hello，World! 的简单应用程序。使用喜欢的编辑器，创建一个名为 *hello.kt* 的新文件，内容如下：
+1. 在 Kotlin 中创建一个显示 `"Hello, World!"` 的简单应用程序。使用喜欢的编辑器，创建一个名为 *hello.kt* 的新文件，内容如下：
 
    <div class="sample" markdown="1" theme="idea">
 
    ```kotlin
-   fun main(args: Array<String>) {
+   fun main() {
        println("Hello, World!")
    }
    ```
 
    </div>
 
-2. 使用 Kotlin 编译器编译应用程序
+2. 使用 Kotlin 编译器编译应用程序：
 
     <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -164,7 +147,7 @@ Kotlin 也可以用作脚本语言。脚本是具有顶层可执行代码的 Kot
 ```kotlin
 import java.io.File
 
-// Get the passed in path, i.e. "-d some/path" or use the current path.
+// 获取传入的路径，即“-d 一些/路径”或使用当前路径。
 val path = if (args.contains("-d")) args[1 + args.indexOf("-d")]
            else "."
 

@@ -119,6 +119,33 @@ val olderJack = jack.copy(age = 2)
 
 
 
+Note that the `copy()` call performs a shallow copy, meaning that the copy's reference properties point to the _same objects_ as the original object's references. However, the copy has its own primitive properties not linked to the original.
+
+
+
+```kotlin
+data class User(var name : String)
+
+data class Address(var user: User, var city: String)
+
+fun main() {
+//sampleStart
+
+    var userJack = User(name="Jack")
+    var address = Address(user = userJack, city = "London")
+    var addressCopy = address.copy()
+
+    addressCopy.city = "New York"
+    addressCopy.user.name = "John"  // Propagates to `address.user` because they both point to userJack.
+
+//sampleEnd
+    println("address.city is ${address.city}")  // Prints "London"
+    println("address.user.name is ${address.user.name}")  // Prints "John"
+}
+```
+
+
+
 ## 数据类与解构声明
 
 为数据类生成的 _Component 函数_ 使它们可在[解构声明](multi-declarations.html)中使用：

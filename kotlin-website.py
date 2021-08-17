@@ -161,6 +161,14 @@ def get_domain(url):
 
 app.jinja_env.globals['get_domain'] = get_domain
 
+
+@app.template_filter('split_chunk')
+def split_chunk(list, size):
+    return [list[i:i+size] for i in range(len(list))[::size]]
+
+app.jinja_env.globals['split_chunk'] = split_chunk
+
+
 @app.template_filter('autoversion')
 def autoversion_filter(filename):
     asset_version = get_asset_version(filename)
@@ -181,6 +189,16 @@ def get_cities():
     return Response(json.dumps(site_data['cities'], cls=DateAwareEncoder), mimetype='application/json')
 
 
+@app.route('/data/kotlinconf.json')
+def get_kotlinconf():
+    return Response(json.dumps(site_data['kotlinconf'], cls=DateAwareEncoder), mimetype='application/json')
+
+
+@app.route('/data/universities.json')
+def get_universities():
+    return Response(json.dumps(site_data['universities'], cls=DateAwareEncoder), mimetype='application/json')
+
+
 @app.route('/docs/reference/grammar.html')
 def grammar():
     grammar = get_grammar(build_mode)
@@ -198,10 +216,19 @@ def videos_page():
 def books_page():
     return render_template('pages/books.html')
 
-@app.route('/docs/kotlin-docs.pdf')
-def pdf():
+
+@app.route('/docs/kotlin-reference.pdf')
+def kotlin_reference_pdf():
     if build_mode:
-        return send_file(generate_pdf(build_mode, pages, get_nav()['reference']))
+        return send_file(generate_pdf('kotlin-reference.pdf', build_mode, pages, get_nav()['reference']))
+    else:
+        return "Not supported in the dev mode, ask in #kotlin-web-site, if you need it"
+
+
+@app.route('/docs/kotlin-docs.pdf')
+def kotlin_docs_pdf():
+    if build_mode:
+        return send_file(generate_pdf('kotlin-docs.pdf', build_mode, pages, get_nav()['reference']))
     else:
         return "Not supported in the dev mode, ask in #kotlin-web-site, if you need it"
 
@@ -210,6 +237,9 @@ def pdf():
 def community_page():
     return render_template('pages/community.html')
 
+@app.route('/education/')
+def education_page():
+    return render_template('pages/education/index.html')
 
 @app.route('/docs/diagnostics/experimental-coroutines')
 @app.route('/docs/diagnostics/experimental-coroutines/')

@@ -64,9 +64,9 @@ fun main() {
 ```
 
 
-## 双路合并
+## 合拢
 
-_双路合并_ 转换是根据两个集合中具有相同位置的元素构建配对。
+_合拢_ 转换是根据两个集合中具有相同位置的元素构建配对。
 在 Kotlin 标准库中，这是通过 [`zip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip.html) 扩展函数完成的。
 在一个集合（或数组）上以另一个集合（或数组）作为参数调用时，`zip()` 返回 `Pair` 对象的列表（`List`）。
 接收者集合的元素是这些配对中的第一个元素。

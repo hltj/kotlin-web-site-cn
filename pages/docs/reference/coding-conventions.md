@@ -21,9 +21,9 @@ title: "编码规范"
 
 如需根据本风格指南配置 IntelliJ 格式化程序，请安装 Kotlin 插件
 1.2.20 或更高版本，转到 __Settings | Editor | Code Style | Kotlin__，点击右<!--
--->上角的 __Set from...__ 链接，并从菜单中选择 __Predefined style | Kotlin style guide__。
+-->上角的 __Set from...__ 链接，并从菜单中选择 __Kotlin style guide__。
 
-如需验证代码已按风格指南格式化，请转到探查设置（Inspections）并启用
+如需验证代码已按风格指南格式化，请转到 __Settings | Editor | Inspections__ 并启用
 __Kotlin | Style issues | File is not formatted according to project settings__ 探查项。
 验证风格指南中描述的其他问题（如命名约定）的附加探查项默认已启用。
 
@@ -45,7 +45,8 @@ __Kotlin | Style issues | File is not formatted according to project settings__ 
 如果 Kotlin 文件包含单个类（以及可能相关的顶层声明），那么文件名应该与<!--
 -->该类的名称相同，并追加 .kt 扩展名。如果文件包含多个类或只包含顶层声明，
 那么选择一个描述该文件所包含内容的名称，并以此命名该文件。
-使用首字母大写的[驼峰风格](https://zh.wikipedia.org/wiki/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB)（例如 `ProcessDeclarations.kt`）。
+使用首字母大写的[驼峰风格](https://zh.wikipedia.org/wiki/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB)（也称为 Pascal 风格），
+例如 `ProcessDeclarations.kt`。
 
 文件的名称应该描述文件中代码的作用。因此，应避免在文件名中使用<!--
 -->诸如“Util”之类的无意义词语。
@@ -153,7 +154,7 @@ class MyTestCase {
 ### 属性名
 
 常量名称（标有 `const` 的属性，或者保存不可变数据的没有自定义 `get` 函数<!--
--->的顶层/对象 `val` 属性）应该使用大写、下划线分隔的名称：
+-->的顶层/对象 `val` 属性）应该使用大写、下划线分隔的名称 ([screaming snake case](https://en.wikipedia.org/wiki/Snake_case)) names:
 
 
 
@@ -184,7 +185,7 @@ val PersonComparator: Comparator<Person> = /*...*/
 
 
 
-对于枚举常量，可以使用大写、下划线分隔的名称
+对于枚举常量，可以使用大写、下划线分隔的名称 ([screaming snake case](https://en.wikipedia.org/wiki/Snake_case))
 （`enum class Color { RED, GREEN }`）也可使用首字母大写的常规驼峰名称，具体取决于用途。
    
 #### 幕后属性的名称
@@ -239,8 +240,9 @@ if (elements != null) {
 
 
 
-（注意：在 Kotlin 中，分号是可选的，因此换行很重要。语言设计采用
-Java 风格的花括号格式，如果尝试使用不同的格式化风格，那么可能会遇到意外的行为。）
+> 在 Kotlin 中，分号是可选的，因此换行很重要。语言设计采用 
+> Java 风格的花括号格式，如果尝试使用不同的格式化风格，那么可能会遇到意外的行为。
+{:.note}
 
 ### 横向空白
 
@@ -407,7 +409,7 @@ tailrec
 vararg
 suspend
 inner
-enum / annotation
+enum / annotation / fun // 在 `fun interface` 中是修饰符
 companion
 inline
 infix
@@ -488,7 +490,7 @@ package foo.bar
 ```kotlin
 fun longMethodName(
     argument: ArgumentType = defaultValue,
-    argument2: AnotherArgumentType
+    argument2: AnotherArgumentType,
 ): ReturnType {
     // 函数体
 }
@@ -516,14 +518,14 @@ fun foo() = 1        // 良好
 
 ### 表达式函数体格式化
 
-如果函数的表达式函数体与函数声明不适合放在同一行，那么将 `=` 留在第一行。
-将表达式函数体缩进 4 个空格。
+如果函数的表达式函数体与函数声明不适合放在同一行，那么将 `=` 留在第一，
+并将表达式函数体缩进 4 个空格。
 
 
 
 ```kotlin
-fun f(x: String) =
-    x.length
+fun f(x: String, y: String, z: String) =
+    veryLongFunctionCallWithManyWords(andLongParametersToo(), x, y, z)
 ```
 
 
@@ -726,6 +728,272 @@ foo {
 
 
 
+### Trailing commas
+
+A trailing comma is a comma symbol after the last item of a series of elements:
+
+
+
+```kotlin
+class Person(
+    val firstName: String,
+    val lastName: String,
+    val age: Int, // trailing comma
+)
+```
+
+
+
+Using trailing commas has several benefits:
+
+* It makes version-control diffs cleaner – as all the focus is on the changed value.
+* It makes it easy to add and reorder elements – there is no need to add or delete the comma if you manipulate elements.
+* It simplifies code generation, for example, for object initializers. The last element can also have a comma.
+
+Trailing commas are entirely optional – your code will still work without them. The Kotlin style guide encourages the use of trailing commas at the declaration site and leaves it at your discretion for the call site.
+
+To enable trailing commas in the IntelliJ IDEA formatter, go to __Settings | Editor | Code Style | Kotlin__, 
+open the __Other__ tab and select the __Use trailing comma__ option.
+
+Kotlin supports trailing commas in the following cases:
+* [Enumerations](#enumerations)
+* [Value arguments](#value-arguments) 
+* [Class properties and parameters](#class-properties-and-parameters)
+* [Function value parameters](#function-value-parameters)
+* [Parameters with optional type (including setters)](#parameters-with-optional-type-including-setters)
+* [Indexing suffix](#indexing-suffix)
+* [Lambda parameters](#lambda-parameters)
+* [`when` entry](#when-entry)
+* [Collection literals (in annotations)](#collection-literals-in-annotations)
+* [Type arguments](#type-arguments)
+* [Type parameters](#type-parameters)
+* [Destructuring declarations](#destructuring-declarations)
+
+#### Enumerations
+
+
+
+```kotlin
+enum class Direction {
+    NORTH,
+    SOUTH,
+    WEST,
+    EAST, // trailing comma
+}
+```
+
+
+
+#### Value arguments
+
+
+
+```kotlin
+fun shift(x: Int, y: Int) { /*...*/ }
+
+shift(
+    25,
+    20, // trailing comma
+)
+
+val colors = listOf(
+    "red",
+    "green",
+    "blue", // trailing comma
+)
+```
+
+
+
+#### Class properties and parameters
+
+
+
+```kotlin
+class Customer(
+    val name: String,
+    val lastName: String, // trailing comma
+)
+
+class Customer(
+    val name: String,
+    lastName: String, // trailing comma
+)
+```
+
+
+
+#### Function value parameters
+
+
+
+```kotlin
+fun powerOf(
+    number: Int, 
+    exponent: Int, // trailing comma
+) { /*...*/ }
+
+constructor(
+    x: Comparable<Number>,
+    y: Iterable<Number>, // trailing comma
+) {}
+
+fun print(
+    vararg quantity: Int,
+    description: String, // trailing comma
+) {}
+```
+
+
+
+#### Parameters with optional type (including setters)
+
+
+
+```kotlin
+val sum: (Int, Int, Int) -> Int = fun(
+    x,
+    y,
+    z, // trailing comma
+): Int {
+    return x + y + x
+}
+println(sum(8, 8, 8))
+```
+
+
+
+#### Indexing suffix
+
+
+
+```kotlin
+class Surface {
+    operator fun get(x: Int, y: Int) = 2 * x + 4 * y - 10
+}
+fun getZValue(mySurface: Surface, xValue: Int, yValue: Int) =
+    mySurface[
+        xValue,
+        yValue, // trailing comma
+    ]
+```
+
+
+
+#### Lambda parameters
+
+
+
+```kotlin
+fun main() {
+    val x = {
+            x: Comparable<Number>,
+            y: Iterable<Number>, // trailing comma
+        ->
+        println("1")
+    }
+
+    println(x)
+}
+```
+
+
+
+#### `when` entry
+
+
+
+```kotlin
+fun isReferenceApplicable(myReference: KClass<*>) = when (myReference) {
+    Comparable::class,
+    Iterable::class,
+    String::class, // trailing comma
+        -> true
+    else -> false
+}
+```
+
+
+
+#### Collection literals (in annotations)
+
+
+
+```kotlin
+annotation class ApplicableFor(val services: Array<String>)
+
+@ApplicableFor([
+    "serializer",
+    "balancer",
+    "database",
+    "inMemoryCache", // trailing comma
+])
+fun run() {}
+```
+
+
+
+#### Type arguments
+
+
+
+```kotlin
+fun <T1, T2> foo() {}
+
+fun main() {
+    foo<
+            Comparable<Number>,
+            Iterable<Number>, // trailing comma
+            >()
+}
+```
+
+
+
+#### Type parameters
+
+
+
+```kotlin
+class MyMap<
+        MyKey,
+        MyValue, // trailing comma
+        > {}
+```
+
+
+
+#### Destructuring declarations
+
+
+
+```kotlin
+data class Car(val manufacturer: String, val model: String, val year: Int)
+val myCar = Car("Tesla", "Y", 2019)
+
+val (
+    manufacturer,
+    model,
+    year, // trailing comma
+) = myCar
+
+val cars = listOf<Car>()
+fun printMeanValue() {
+    var meanValue: Int = 0
+    for ((
+        _,
+        _,
+        year, // trailing comma
+    ) in cars) {
+        meanValue += year
+    }
+    println(meanValue/cars.size)
+}
+printMeanValue()
+```
+
+
+
 ## 文档注释
 
 对于较长的文档注释，将开头 `/**` 放在一个独立行中，并且后续每行都<!--
@@ -874,6 +1142,9 @@ typealias PersonIndex = Map<String, Person>
 ```
 
 
+
+If you use a private or internal type alias for avoiding name collision, prefer the `import … as …` mentioned in 
+[Packages and Imports](packages.html).
 
 ### Lambda 表达式参数
 

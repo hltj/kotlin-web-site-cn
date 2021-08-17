@@ -8,7 +8,7 @@ main_nav_id: eap
 
 You can participate in the Kotlin Early Access Preview (EAP) to try out the latest Kotlin features before they are released.
 
-We ship a few EAP builds before every Kotlin incremental release (_1.x.y_) and a few Milestone (M) builds before every feature release (_1.x_). 
+We ship a few Milestone (M) builds before every feature (_1.x_) and incremental (_1.x.y_) release. 
 
 We’ll be very thankful if you find and report bugs to our issue tracker [YouTrack](https://kotl.in/issue). 
 It is very likely that we’ll be able to fix them before the final release, which means you won’t need to wait until the next Kotlin release for your issues to be addressed. 
@@ -29,43 +29,6 @@ In this channel, you can also get notifications about new EAP builds.
 If you have already installed the EAP version and want to work on projects that were created previously, 
 check [our instructions on how to configure your build to support this version](configure-build-for-eap.html). 
 
-# Build details
+## Build details
 
-<table>
-    <tr>
-        <th>Build info</th>
-        <th>Build highlights</th>
-        <th>kotlinx library versions</th>
-    </tr>
-    <tr>
-        <td><strong>1.4-M1</strong>
-            <p> Released: <strong>March 23, 2020</strong></p>
-            <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.4-M1">Release on GitHub</a></p>
-        </td>
-        <td>
-            <ul>
-                <li>More powerful type inference algorithm</li>
-                <li>SAM conversions for Kotlin classes</li>
-                <li>New backend for Kotlin/JS that brings major improvements to the resulting artifacts</li>
-                <li>And many other improvements</li>
-            </ul>
-            <p> For more details, please refer to <a href="https://blog.jetbrains.com/kotlin/2020/03/kotlin-1-4-m1-released/" target="_blank">the blog post</a>.</p>
-         </td>
-        <td>
-            <ul>
-                <li><a href="https://github.com/Kotlin/kotlinx.serialization"><strong>kotlinx.serialization</strong></a> version: <a href="https://bintray.com/kotlin/kotlinx/kotlinx.serialization.runtime/0.20.0-1.4-M1">0.20.0-1.4-M1</a></li>
-                <li><a href="https://github.com/Kotlin/kotlinx.coroutines"><strong>kotlinx.coroutines</strong></a> version: <a href="https://bintray.com/kotlin/kotlinx/kotlinx.coroutines/1.3.5-1.4-M1">1.3.5-1.4-M1</a></li>
-                <li><a href="https://github.com/Kotlin/kotlinx.atomicfu"><strong>kotlinx.atomicfu</strong></a> version: <a href="https://bintray.com/kotlin/kotlinx/kotlinx.atomicfu/0.14.2-1.4-M1">0.14.2-1.4-M1</a></li>          
-                <li><a href="https://ktor.io/"><strong>ktor</strong></a> version: <a href="https://bintray.com/kotlin/ktor/ktor/1.3.2-1.4-M1">1.3.2-1.4-M1</a></li>
-            </ul>
-        </td>
-    </tr>
-</table>
-       
-
-                
-                
-
-                
-
-                
+_No preview versions are currently available_.

@@ -24,10 +24,11 @@ Kotlin 1.3 继续改进与完善原生平台。详情请参见 [Kotlin/Native �
 
   * 在旧版模型中，需要将公共代码与平台相关代码分别放在独立的模块中，以 `expectedBy` 依赖项链接。
     现在，公共代码与平台相关代码放在相同模块的不同源根（source root）中，使项目更易于配置。
-  * 对于不同的已支持平台，现在有大量的[预设的平台配置](building-mpp-with-gradle.html#已支持平台)。
-  * 更改了[依赖配置](building-mpp-with-gradle.html#添加依赖)；现在为每个源根分别指定依赖项。
-  * 源集（source set）现在可以在任意平台子集之间共享（例如，在一个目标平台为 JS、Android 与 iOS 的模块中，可以有一个只在 Android 与 iOS 之间共享的源集）。
-  * 现在支持[发布多平台库](building-mpp-with-gradle.html#发布多平台库)了。
+  * 对于不同的已支持平台，现在有大量的[预设的平台配置](mpp-supported-platforms.html)。
+  * 更改了依赖配置；现在为每个源根分别指定依赖项。
+  * 源集（source set）现在可以在任意平台子集之间共享（例如，在一个目标平台为 JS、Android 与 iOS 的模块中，
+  可以有一个只在 Android 与 iOS 之间共享的源集）。
+  * 现在支持[发布多平台库](mpp-publish-lib.html)了。
 
 更多相关信息，请参考[多平台程序设计文档](multiplatform.html)。
 
@@ -277,7 +278,7 @@ Kotlin 非常注重代码的稳定性与向后兼容性：Kotlin 兼容性策略
 
 ## 内联类
 
-> 内联类在 Kotlin 1.3 起才可用，并且目前是**实验性**的。详见其[参考文档](inline-classes.html#内联类的实验性状态)。
+> 内联类在 Kotlin 1.3 起才可用，并且目前是 in [Alpha](evolution/components-stability.html)。详见其[参考文档](inline-classes.html)。
 {:.note}
 
 
@@ -313,7 +314,7 @@ fun main() {
 
 ## 无符号整型
 
-> 无符号整数仅在 Kotlin 1.3 起才可用，并且目前是**实验性**的。详见其[参考文档](basic-types.html#无符号整型的实验性状态)。
+> 无符号整数仅在 Kotlin 1.3 起才可用，并且目前 in [Beta](evolution/components-stability.html)。详见其[参考文档](basic-types.html#beta-status-of-unsigned-integers)。
 {:.note}
 
 Kotlin 1.3 引入了无符号整型类型：
@@ -508,7 +509,7 @@ Kotlin 1.3 在 IDE 中引入了对[推荐代码风格](coding-conventions.html)�
 
 详见[这里](https://github.com/Kotlin/kotlinx.serialization#current-project-status)。
 
-> 请注意，尽管 kotlinx.serialization 现在随 Kotlin 编译器发行版一起发行，但它仍是一个**实验性的**特性。
+> 请注意，尽管 kotlinx.serialization 现在随 Kotlin 编译器发行版一起发行，但  in Kotlin 1.3 它仍是一个**实验性的**特性。
 {:.note}
 
 ## 脚本更新

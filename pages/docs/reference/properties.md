@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Syntax"
-title: "属性与字段：Getters、Setters、const、lateinit"
+title: "属性：Getters、Setters、const、lateinit"
 ---
 
-# 属性与字段
+# 属性
 
 ## 声明属性
 
@@ -126,7 +126,7 @@ var setterWithAnnotation: Any? = null
 
 ### 幕后字段
 
-在 Kotlin 类中不能直接声明字段。然而，当一个属性需要一个幕后字段时，Kotlin 会自动提供。这个幕后字段可以使用`field`标识符在访问器中引用：
+在 Kotlin 中，字段仅在需要作为属性的一部分在内存中保存其值时使用。字段不能直接声明。然而，当一个属性需要一个幕后字段时，Kotlin 会自动提供。这个幕后字段可以使用 `field` 标识符在访问器中引用：
 
 
 

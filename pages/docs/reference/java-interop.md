@@ -151,7 +151,7 @@ Kotlin 类型。编译器支持多种可空性注解，包括：
   * Eclipse（`org.eclipse.jdt.annotation`）
   * Lombok（`lombok.NonNull`）。
 
-你可以在 [Kotlin 编译器源代码](https://github.com/JetBrains/kotlin/blob/master/core/descriptor.loader.java/src/org/jetbrains/kotlin/load/java/JvmAnnotationNames.kt)中找到完整的列表。
+你可以在 [Kotlin 编译器源代码](https://github.com/JetBrains/kotlin/blob/master/core/compiler.common.jvm/src/org/jetbrains/kotlin/load/java/JvmAnnotationNames.kt)中找到完整的列表。
 
 ### 注解类型参数
 
@@ -705,13 +705,21 @@ if (Character.isLetter(a)) { …… }
 
 Java 反射适用于 Kotlin 类，反之亦然。如上所述，你可以使用 `instance::class.java`,
 `ClassName::class.java` 或者 `instance.javaClass` 通过 `java.lang.Class` 来进入 Java 反射。
+Do not use `ClassName.javaClass` for this purpose because it refers to `ClassName`'s companion object class,
+which is the same as `ClassName.Companion::class.java` and not `ClassName::class.java`.
+
+For each primitive type, there are two different Java classes, and Kotlin provides ways to get both. For
+example, `Int::class.java` will return the class instance representing the primitive type itself,
+corresponding to `Integer.TYPE` in Java. To get the class of the corresponding wrapper type, use
+`Int::class.javaObjectType`, which is equivalent of Java's `Integer.class`.
 
 其他支持的情况包括为一个 Kotlin 属性获取一个 Java 的 getter/setter 方法或者幕后字段、为一个 Java 字段获取一个 `KProperty`、为一个 `KFunction` 获取一个 Java 方法或者构造函数，反之亦然。
 
 ## SAM 转换
 
-就像 Java 8 一样，Kotlin 支持 SAM 转换。这意味着 Kotlin 函数字面值可以被自动的转换成<!--
--->只有一个非默认方法的 Java 接口的实现，只要这个方法的参数类型<!--
+Kotlin 支持 Java 以及 [Kotlin 接口](fun-interfaces.html)的 SAM 转换。
+对于 Java 来说，这意味着 Kotlin 函数字面值可以被自动的转换<!--
+-->成只有一个非默认方法的 Java 接口的实现，只要这个方法的参数类型<!--
 -->能够与这个 Kotlin 函数的参数类型相匹配。
 
 你可以这样创建 SAM 接口的实例：
@@ -748,11 +756,9 @@ executor.execute(Runnable { println("This runs in a thread pool") })
 
 
 
-请注意，SAM 转换只适用于接口，而不适用于抽象类，即使这些抽象类也只有一个<!--
--->抽象方法。
-
-还要注意，此功能只适用于 Java 互操作；因为 Kotlin 具有合适的函数类型，所以不需要将函数自动转换<!--
--->为 Kotlin 接口的实现，因此不受支持。
+> SAM 转换只适用于接口，而不适用于抽象类，即使这些抽象类也只有一个<!--
+  -->抽象方法。
+{:.note}
 
 ## 在 Kotlin 中使用 JNI
 
@@ -765,5 +771,19 @@ external fun foo(x: Int): Double
 ```
 
 
+
+You can also mark property getters and setters as `external`:
+
+
+
+```kotlin
+var myProperty: String
+	external get
+	external set
+```
+
+
+
+Behind the scenes, this will create two functions `getMyProperty` and `setMyProperty`, both marked as `external`.
 
 其余的过程与 Java 中的工作方式完全相同。

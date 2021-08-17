@@ -135,8 +135,8 @@ data class Person(var name: String, var age: Int)
 fun main() {
 //sampleStart
     val bob = Person("Bob", 31)
-    val people = listOf<Person>(Person("Adam", 20), bob, bob)
-    val people2 = listOf<Person>(Person("Adam", 20), Person("Bob", 31), bob)
+    val people = listOf(Person("Adam", 20), bob, bob)
+    val people2 = listOf(Person("Adam", 20), Person("Bob", 31), bob)
     println(people == people2)
     bob.age = 32
     println(people == people2)
@@ -145,7 +145,7 @@ fun main() {
 ```
 
 
-[`MutableList`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html) 是可以进行写操作的 `List`，例如用于在特定位置添加或删除元素。
+[`MutableList<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html) 是可以进行写操作的 `List`，例如用于在特定位置添加或删除元素。
 
 
 

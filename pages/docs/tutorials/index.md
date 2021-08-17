@@ -8,5 +8,5 @@ title: "教程"
 
 * 如果你喜欢边练边学，请尝试[在线 Kotlin 心印](https://play.kotlinlang.org/koans) 来熟悉 Kotlin；
 * 如果使用命令行编译器，请从[使用命令行编译器](command-line.html)开始，然后用你自己的方式学习 [Kotlin 心印](koans.html)；
-* 如果使用 IntelliJ IDEA，请从[以 IntelliJ IDEA 入门](getting-started.html)开始，然后用你自己的方式学习 [Kotlin 心印](koans.html)。
+* 如果使用 IntelliJ IDEA，请从[以 IntelliJ IDEA 入门](getting-started.html)开始。
 

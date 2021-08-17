@@ -5,7 +5,7 @@ category: "Introduction"
 title: "Kotlin/Native"
 ---
 
-# **Kotlin/Native 用于原生开发**
+# Kotlin/Native 用于原生开发
 
 ![Compiler Diagram](/assets/images/landing/native/native_overview.png)
 
@@ -25,7 +25,7 @@ Kotlin/Native 的主要设计目标是让 Kotlin 可以为不希望或者不可�
 Kotlin/Native 支持以下平台：
    * iOS（arm32、 arm64、 模拟器 x86_64）
    * macOS（x86_64）
-   * watchOS (arm32、 arm64、 x86)
+   * watchOS (arm32、 arm64、 x86、 x86_64)
    * tvOS (arm64、 x86_64)
    * Android（arm32、arm64、 x86、 x86_64）
    * Windows（mingw x86_64、 x86）
@@ -59,45 +59,37 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 
 ## 在多个平台之间共享代码
 
-不同目标平台的 Kotlin 与 Kotlin/Native 之间支持[多平台项目](multiplatform.html)<!--
--->。
-这是在多个平台之间共享公共 Kotlin 代码的方式，这些平台包括 Android、 iOS、 服务器端、 JVM、 客户端、
-JavaScript、 CSS 以及原生平台。
+[多平台项目](/docs/reference/multiplatform.html)允许在多个平台之间共享公共的 Kotlin 代码，
+包括：Android、iOS、JVM、JavaScript 与原生。
+多平台库为公共的 Kotlin 代码提供了所需的 API，并在一处帮助以 Kotlin 代码开发项目的公共部分，并将其与所有或多个目标平台共享。
 
-[多平台库](multiplatform.html#多平台库)<!--
--->为公共 Kotlin 代码提供了必要的 API，并有助于在
-Kotlin 代码中一次性开发项目的共享部分，从而将其与所有目标平台共享。
+可以使用 [Kotlin 移动端多平台（KMM）](https://kotlinlang.org/lp/mobile/)通过 Android 与 iOS 之间共享代码创建多平台移动应用程序。
 
-## 如何开始
+## 接下来做什么？
 
-<div style="display: flex; align-items: center; margin-bottom: 20px">
-    <img src="/assets/images/landing/native/book.png" height="38p" width="55" style="margin-right: 10px;">
-    <b>教程与文档</b>
-</div>
+Kotlin 新手？可以看看[入门](https://www.kotlincn.net/docs/tutorials/getting-started.html)页。
 
-Kotlin 新手？可以看看[入门](basic-syntax.html)页。
+### 文档
 
-建议的文档页：
+- [Kotlin 移动端多平台文档](https://kotlinlang.org/docs/mobile/home.html)
+- [多平台文档](mpp-intro.html)
 - [C 语言互操作](native/c_interop.html)
 - [Swift/Objective-C 互操作](native/objc_interop.html)
 
-推荐的教程：
+### 教程
+
 - [Hello Kotlin/Native](https://www.kotlincn.net/docs/tutorials/native/using-command-line-compiler.html)
-- [多平台项目：iOS 与 Android](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
 - [C 语言 Kotlin/Native 之间的类型映射](https://www.kotlincn.net/docs/tutorials/native/mapping-primitive-data-types-from-c.html)
 - [Kotlin/Native 开发动态库](https://www.kotlincn.net/docs/tutorials/native/dynamic-libraries.html)
 - [Kotlin/Native 开发 Apple 框架](https://www.kotlincn.net/docs/tutorials/native/apple-framework.html)
 
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-    <img src="/assets/images/landing/native/try.png" height="38p" width="55" style="margin-right: 10px;">
-    <b>示例项目</b>
-</div>
+## 样例项目
 
+- [Kotlin 移动端多平台示例](https://kotlinlang.org/docs/mobile/samples.html)
 - [Kotlin/Native 源代码与示例](https://github.com/JetBrains/kotlin-native/tree/master/samples)
 - [KotlinConf app](https://github.com/JetBrains/kotlinconf-app)
 - [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)
 - [Kotlin/Native 源代码与示例（.tgz）](https://download.jetbrains.com/kotlin/native/kotlin-native-samples-1.0.1.tar.gz)
 - [Kotlin/Native 源代码与示例（.zip）](https://download.jetbrains.com/kotlin/native/kotlin-native-samples-1.0.1.zip)
 
-在 [GitHub](https://github.com/JetBrains/kotlin-examples) 上还有更多示例。
 

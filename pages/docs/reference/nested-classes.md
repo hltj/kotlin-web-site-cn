@@ -24,6 +24,24 @@ val demo = Outer.Nested().foo() // == 2
 
 
 
+还可以使用带有嵌套的接口。所有类与接口的组合都是可能的：可以将接口嵌套在类中、将类嵌套在接口中、将接口嵌套在接口中。
+
+
+
+```kotlin
+interface OuterInterface {
+    class InnerClass
+    interface InnerInterface
+}
+
+class OuterClass {
+    class InnerClass
+    interface InnerInterface
+}
+```
+
+
+
 ## 内部类
 
 标记为 *inner*{: .keyword } 的嵌套类能够访问其外部类的成员。内部类会带有一个对外部类的对象的引用：

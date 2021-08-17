@@ -87,7 +87,7 @@ NEW has been assigned to ‘p’ in Example@33a17727.
 委托对象的要求规范可以在[下文](delegated-properties.html#属性委托要求)找到。
 
 请注意，自 Kotlin 1.1 起你可以在函数或代码块中声明一个委托属性，因此它不一定是类的成员。
-你可以在下文找到[其示例](delegated-properties.html#局部委托属性自-11-起)。
+你可以在下文找到[其示例](delegated-properties.html#局部委托属性)。
 
 ## 标准委托
 
@@ -153,7 +153,60 @@ fun main() {
 如果你想截获赋值并“否决”它们，那么使用 [`vetoable()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/vetoable.html) 取代 `observable()`。
 在属性被赋新值生效*之前*会调用传递给 `vetoable` 的处理程序。
 
-## 把属性储存在映射中
+## 委托给另一个属性
+
+从 Kotlin 1.4 开始，一个属性可以把它的 getter 与 setter 委托给另一个属性。这种委托<!--
+-->对于顶层和类的属性（成员和扩展）都可用。该委托属性可以为：
+- 顶层属性
+- 同一个类的成员或扩展属性
+- 另一个类的成员或扩展属性
+
+为将一个属性委托给另一个属性，应在委托名称中使用恰当的 `::` 限定符，例如，`this::delegate` 或
+`MyClass::delegate`。
+
+
+
+```kotlin
+var topLevelInt: Int = 0
+
+class ClassWithDelegate(val anotherClassInt: Int)
+//sampleStart
+class MyClass(var memberInt: Int, val anotherClassInstance: ClassWithDelegate) {
+    var delegatedToMember: Int by this::memberInt
+    var delegatedToTopLevel: Int by ::topLevelInt
+    
+    val delegatedToAnotherClass: Int by anotherClassInstance::anotherClassInt
+}
+var MyClass.extDelegated: Int by ::topLevelInt
+//sampleEnd
+```
+
+
+
+这是很有用的，例如，当想要以一种向后兼容的方式重命名一个属性的时候：引入一个新的属性、
+使用 `@Deprecated` 注解来注解旧的属性、并委托其实现。
+
+
+
+```kotlin
+class MyClass {
+   var newName: Int = 0
+   @Deprecated("Use 'newName' instead", ReplaceWith("newName"))
+   var oldName: Int by this::newName
+}
+
+fun main() {
+   val myClass = MyClass()
+   // 通知：'oldName: Int' is deprecated.
+   // Use 'newName' instead
+   myClass.oldName = 42
+   println(myClass.newName) // 42
+}
+```
+
+
+
+## 将属性储存在映射中
 
 一个常见的用例是在一个映射（map）里存储属性的值。
 这经常出现在像解析 JSON 或者做其他“动态”事情的应用中。
@@ -220,9 +273,7 @@ class MutableUser(val map: MutableMap<String, Any?>) {
 
 
 
-{:#局部委托属性自-11-起}
-
-## 局部委托属性（自 1.1 起）
+## 局部委托属性
 
 你可以将局部变量声明为委托属性。
 例如，你可以使一个局部变量惰性初始化：
@@ -307,20 +358,25 @@ class ResourceDelegate(private var resource: Resource = Resource()) {
 当你需要委托属性到原本未提供的这些函数的对象时后者会更便利。
 两函数都需要用 `operator` 关键字来进行标记。
 
-委托类可以实现包含所需 `operator` 方法的 `ReadOnlyProperty` 或 `ReadWriteProperty` 接口之一。
-这俩接口是在 Kotlin 标准库中声明的：
+You can create delegates as anonymous objects without creating new classes using the interfaces `ReadOnlyProperty`
+and `ReadWriteProperty` from the Kotlin standard library.
+They provide the required methods: `getValue()` is declared in `ReadOnlyProperty`; `ReadWriteProperty`
+extends it and adds `setValue()`. Thus, you can pass a `ReadWriteProperty` whenever a `ReadOnlyProperty` is expected.
 
 
 
 ```kotlin
-interface ReadOnlyProperty<in R, out T> {
-    operator fun getValue(thisRef: R, property: KProperty<*>): T
-}
+fun resourceDelegate(): ReadWriteProperty<Any?, Int> =
+    object : ReadWriteProperty<Any?, Int> {
+        var curValue = 0 
+        override fun getValue(thisRef: Any?, property: KProperty<*>): Int = curValue
+        override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int) {
+            curValue = value
+        }
+    }
 
-interface ReadWriteProperty<in R, T> {
-    operator fun getValue(thisRef: R, property: KProperty<*>): T
-    operator fun setValue(thisRef: R, property: KProperty<*>, value: T)
-}
+val readOnly: Int by resourceDelegate()  // ReadWriteProperty as val
+var readWrite: Int by resourceDelegate()
 ```
 
 
@@ -328,7 +384,8 @@ interface ReadWriteProperty<in R, T> {
 ### 翻译规则
 
 在每个委托属性的实现的背后，Kotlin 编译器都会生成辅助属性并委托给它。
-例如，对于属性 `prop`，生成隐藏属性 `prop$delegate`，而访问器的代码只是简单地委托给这个附加属性：
+例如，对于属性 `prop`，生成隐藏属性 `prop$delegate`，而访问器的代码只是<!--
+-->简单地委托给这个附加属性：
 
 
 
@@ -348,19 +405,19 @@ class C {
 
 
 
-Kotlin 编译器在参数中提供了关于 `prop` 的所有必要信息：第一个参数 `this` 引用到外部类 `C` 的实例而 `this::prop` 是 `KProperty` 类型的反射对象，该对象描述 `prop` 自身。
+Kotlin 编译器在参数中提供了关于 `prop` 的所有必要信息：第一个参数 `this` 引用<!--
+-->到外部类 `C` 的实例而 `this::prop` 是 `KProperty` 类型的反射对象，该对象描述 `prop` 自身。
 
-请注意，直接在代码中引用[绑定的可调用引用](reflection.html#绑定的函数与属性引用自-11-起)的语法 `this::prop` 自 Kotlin 1.1 起才可用。
+请注意，直接在代码中引用[绑定的可调用引用](reflection.html#绑定的函数与属性引用自-11-起)的语法 `this::prop`
+自 Kotlin 1.1 起才可用。
 
-{:#提供委托自-11-起}
-
-### 提供委托（自 1.1 起）
+### 提供委托
 
 通过定义 `provideDelegate` 操作符，可以扩展创建属性实现所委托对象的逻辑。
-如果 `by` 右侧所使用的对象将 `provideDelegate` 定义为成员或扩展函数，那么会调用该函数来<!--
--->创建属性委托实例。
+如果 `by` 右侧所使用的对象将 `provideDelegate` 定义为成员或扩展函数，
+那么会调用该函数来创建属性委托实例。
 
-`provideDelegate` 的一个可能的使用场景是在创建属性时（而不仅在其 getter 或 setter 中）检测属性一致性。
+One of the possible use cases of `provideDelegate` is to check the consistency of the property upon its initialization.
 
 例如，如果要在绑定之前检测属性名称，可以这样写：
 
@@ -399,7 +456,8 @@ class MyUI {
 * `thisRef` —— 必须与 _属性所有者_ 类型（对于扩展属性——指被扩展的类型）相同或者是它的超类型；
 * `property` —— 必须是类型 `KProperty<*>` 或其超类型。
 
-在创建 `MyUI` 实例期间，为每个属性调用 `provideDelegate` 方法，并立即执行必要的验证。
+在创建 `MyUI` 实例期间，为每个属性调用 `provideDelegate` 方法，并立即执行<!--
+-->必要的验证。
 
 如果没有这种拦截属性与其委托之间的绑定的能力，为了实现相同的功能，
 你必须显式传递属性名，这不是很方便：
@@ -448,4 +506,19 @@ class C {
 
 
 
-请注意，`provideDelegate` 方法只影响辅助属性的创建，并不会影响为 getter 或 setter 生成的代码。
+请注意，`provideDelegate` 方法只影响辅助属性的创建，并不会影响<!--
+-->为 getter 或 setter 生成的代码。
+
+With the `PropertyDelegateProvider` interface from the standard library, you can create delegate providers without creating new classes.
+
+
+
+```kotlin
+val provider = PropertyDelegateProvider { thisRef: Any?, property ->
+    ReadOnlyProperty<Any?, Int> {_, property -> 42 }
+}
+
+val delegate: Int by provider
+```
+
+
