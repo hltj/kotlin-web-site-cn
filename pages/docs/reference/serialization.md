@@ -62,57 +62,57 @@ Before starting, you’ll need to configure your build script so that you can us
 1. Apply the Kotlin serialization Gradle plugin `org.jetbrains.kotlin.plugin.serialization` (or `kotlin(“plugin.serialization”)`
 in the Kotlin Gradle DSL).
 
-    > Groovy DSL
-    
-    
-    ```groovy
-    plugins {
-        id 'org.jetbrains.kotlin.jvm' version '1.4.30'
-        id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.30'  
-    }
-    ```
-    
-    
-    
-    
-    > Kotlin DSL
-    
-    
-    ```kotlin
-    plugins {
-        kotlin("jvm") version "1.4.30"
-        kotlin("plugin.serialization") version "1.4.30"
-    }
-    ```
-    
-    
-    
+  > Groovy DSL
+  
+  
+  ```groovy
+  plugins {
+      id 'org.jetbrains.kotlin.jvm' version '1.4.30'
+      id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.30'  
+  }
+  ```
+  
+  
+  
+  
+  > Kotlin DSL
+  
+  
+  ```kotlin
+  plugins {
+      kotlin("jvm") version "1.4.30"
+      kotlin("plugin.serialization") version "1.4.30"
+  }
+  ```
+
+
+
 
 2. Add the JSON serialization library dependency:`org.jetbrains.kotlinx:kotlinx-serialization-json:{{ site.data.releases.latest.serialization.version }}`
 
-    > Groovy DSL
-    
-    
-    ```groovy
-    dependencies {
-        implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:{{ site.data.releases.latest.serialization.version }}'
-    } 
-    ```
-    
-    
-    
-    
-    > Kotlin DSL
-    
-    
-    ```kotlin
-    dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:{{ site.data.releases.latest.serialization.version }}")
-    } 
-    ```
-    
-    
-    
+  > Groovy DSL
+  
+  
+  ```groovy
+  dependencies {
+      implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:{{ site.data.releases.latest.serialization.version }}'
+  } 
+  ```
+  
+  
+  
+  
+  > Kotlin DSL
+  
+  
+  ```kotlin
+  dependencies {
+      implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:{{ site.data.releases.latest.serialization.version }}")
+  } 
+  ```
+
+
+
 
 Now you're ready to use the serialization API in your code.
 

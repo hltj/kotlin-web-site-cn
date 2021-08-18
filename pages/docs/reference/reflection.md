@@ -25,17 +25,18 @@ To use reflection in a Gradle or Maven project, add the dependency on `kotlin-re
   
   > Groovy DSL
   
+  
   ```groovy
   dependencies {
-      implementation "org.jetbrains.kotlin:kotlin-reflect:1.4.30"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.4.30"
   }
   ```
-
-
-
-
-
-> Kotlin DSL
+  
+  
+  
+  
+  
+  > Kotlin DSL
   
   ```kotlin
   dependencies {

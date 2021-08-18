@@ -1263,109 +1263,109 @@ In 1.4.0, the standard library includes a number of useful functions for working
 
     
     
-    ```kotlin
-    fun main() {
-    //sampleStart
-        val set = setOfNotNull(null, 1, 2, 0, null)
-        println(set)
-    //sampleEnd
-    }
-    ```
-    
+  ```kotlin
+  fun main() {
+  //sampleStart
+      val set = setOfNotNull(null, 1, 2, 0, null)
+      println(set)
+  //sampleEnd
+  }
+  ```
+
 
 * `shuffled()` for sequences.
 
     
     
-    ```kotlin
-    fun main() {
-    //sampleStart
-        val numbers = (0 until 50).asSequence()
-        val result = numbers.map { it * 2 }.shuffled().take(5)
-        println(result.toList()) //five random even numbers below 100
-    //sampleEnd
-    }
-    ```
-    
+  ```kotlin
+  fun main() {
+  //sampleStart
+      val numbers = (0 until 50).asSequence()
+      val result = numbers.map { it * 2 }.shuffled().take(5)
+      println(result.toList()) //five random even numbers below 100
+  //sampleEnd
+  }
+  ```
+
 
 * `*Indexed()` counterparts for `onEach()` and `flatMap()`.
 The operation that they apply to the collection elements has the element index as a parameter.
 
     
     
-    ```kotlin
-    fun main() {
-    //sampleStart
-        listOf("a", "b", "c", "d").onEachIndexed {
-            index, item -> println(index.toString() + ":" + item)
-        }
-  
-       val list = listOf("hello", "kot", "lin", "world")
-              val kotlin = list.flatMapIndexed { index, item ->
-                  if (index in 1..2) item.toList() else emptyList() 
-              }
-    //sampleEnd
-              println(kotlin)
-    }
-    ```
-    
+  ```kotlin
+  fun main() {
+  //sampleStart
+      listOf("a", "b", "c", "d").onEachIndexed {
+          index, item -> println(index.toString() + ":" + item)
+      }
+
+     val list = listOf("hello", "kot", "lin", "world")
+            val kotlin = list.flatMapIndexed { index, item ->
+                if (index in 1..2) item.toList() else emptyList() 
+            }
+  //sampleEnd
+            println(kotlin)
+  }
+  ```
+
 
 * `*OrNull()` counterparts `randomOrNull()`, `reduceOrNull()`, and `reduceIndexedOrNull()`. 
 They return `null` on empty collections.
 
     
     
-    ```kotlin
-    fun main() {
-    //sampleStart
-         val empty = emptyList<Int>()
-         empty.reduceOrNull { a, b -> a + b }
-         //empty.reduce { a, b -> a + b } // Exception: Empty collection can't be reduced.
-    //sampleEnd
-    }
-    ```
-    
+  ```kotlin
+  fun main() {
+  //sampleStart
+       val empty = emptyList<Int>()
+       empty.reduceOrNull { a, b -> a + b }
+       //empty.reduce { a, b -> a + b } // Exception: Empty collection can't be reduced.
+  //sampleEnd
+  }
+  ```
+
 
 * `runningFold()`, its synonym `scan()`, and `runningReduce()` apply the given operation to the collection elements sequentially,
  similarly to`fold()` and `reduce()`; the difference is that these new functions return the whole sequence of intermediate results.
 
     
     
-    ```kotlin
-    fun main() {
-    //sampleStart
-        val numbers = mutableListOf(0, 1, 2, 3, 4, 5)
-        val runningReduceSum = numbers.runningReduce { sum, item -> sum + item }
-        val runningFoldSum = numbers.runningFold(10) { sum, item -> sum + item }
-    //sampleEnd
-        println(runningReduceSum.toString())
-        println(runningFoldSum.toString())
-    }
-    ```
-    
+  ```kotlin
+  fun main() {
+  //sampleStart
+      val numbers = mutableListOf(0, 1, 2, 3, 4, 5)
+      val runningReduceSum = numbers.runningReduce { sum, item -> sum + item }
+      val runningFoldSum = numbers.runningFold(10) { sum, item -> sum + item }
+  //sampleEnd
+      println(runningReduceSum.toString())
+      println(runningFoldSum.toString())
+  }
+  ```
+
 
 * `sumOf()` takes a selector function and returns a sum of its values for all elements of a collection.
 `sumOf()` can produce sums of the types `Int`, `Long`, `Double`, `UInt`, and `ULong`. On the JVM, `BigInteger` and `BigDecimal` are also available.
 
     
     
-    ```kotlin
-    data class OrderItem(val name: String, val price: Double, val count: Int)
-    
-    fun main() {
-    //sampleStart
-        val order = listOf<OrderItem>(
-            OrderItem("Cake", price = 10.0, count = 1),
-            OrderItem("Coffee", price = 2.5, count = 3),
-            OrderItem("Tea", price = 1.5, count = 2))
-    
-        val total = order.sumOf { it.price * it.count } // Double
-        val count = order.sumOf { it.count } // Int
-    //sampleEnd
-        println("You've ordered $count items that cost $total in total")
-    }
-    ```
-    
+  ```kotlin
+  data class OrderItem(val name: String, val price: Double, val count: Int)
+  
+  fun main() {
+  //sampleStart
+      val order = listOf<OrderItem>(
+          OrderItem("Cake", price = 10.0, count = 1),
+          OrderItem("Coffee", price = 2.5, count = 3),
+          OrderItem("Tea", price = 1.5, count = 2))
+  
+      val total = order.sumOf { it.price * it.count } // Double
+      val count = order.sumOf { it.count } // Int
+  //sampleEnd
+      println("You've ordered $count items that cost $total in total")
+  }
+  ```
+
 
 * The `min()` and `max()` functions have been renamed to `minOrNull()` and `maxOrNull()` to comply with the naming
   convention used across the Kotlin collections API. An `*OrNull` suffix in the function name means that it returns `null`
@@ -1376,21 +1376,21 @@ They return `null` on empty collections.
 
     
     
-    ```kotlin
-    data class OrderItem(val name: String, val price: Double, val count: Int)
-    
-    fun main() {
-    //sampleStart
-        val order = listOf<OrderItem>(
-            OrderItem("Cake", price = 10.0, count = 1),
-            OrderItem("Coffee", price = 2.5, count = 3),
-            OrderItem("Tea", price = 1.5, count = 2))
-        val highestPrice = order.maxOf { it.price }
-    //sampleEnd
-        println("The most expensive item in the order costs $highestPrice")
-    }
-    ```
-    
+  ```kotlin
+  data class OrderItem(val name: String, val price: Double, val count: Int)
+  
+  fun main() {
+  //sampleStart
+      val order = listOf<OrderItem>(
+          OrderItem("Cake", price = 10.0, count = 1),
+          OrderItem("Coffee", price = 2.5, count = 3),
+          OrderItem("Tea", price = 1.5, count = 2))
+      val highestPrice = order.maxOf { it.price }
+  //sampleEnd
+      println("The most expensive item in the order costs $highestPrice")
+  }
+  ```
+
 
     There are also `minOfWith()` and `maxOfWith()`, which take a `Comparator` as an argument, and `*OrNull()` versions
 of all four functions that return `null` on empty collections.
@@ -1401,18 +1401,18 @@ of all four functions that return `null` on empty collections.
 
     
     
-    ```kotlin
-    fun main() {
-    //sampleStart
-        val list = listOf("kot", "lin")
-        val lettersList = list.flatMap { it.asSequence() }
-        val lettersSeq = list.asSequence().flatMap { it.toList() }    
-    //sampleEnd
-        println(lettersList)
-        println(lettersSeq.toList())
-    }
-    ```
-    
+  ```kotlin
+  fun main() {
+  //sampleStart
+      val list = listOf("kot", "lin")
+      val lettersList = list.flatMap { it.asSequence() }
+      val lettersSeq = list.asSequence().flatMap { it.toList() }    
+  //sampleEnd
+      println(lettersList)
+      println(lettersSeq.toList())
+  }
+  ```
+
 
 * `removeFirst()` and `removeLast()` shortcuts for removing elements from mutable lists, and `*orNull()` counterparts
 of these functions.
@@ -1504,19 +1504,19 @@ The standard library in 1.4.0 includes a number of improvements in the API for s
 and others.
     
     
-    ```kotlin
-    fun main() {
-    //sampleStart
-        val sb = StringBuilder("Bye Kotlin 1.3.72")
-        sb.deleteRange(0, 3)
-        sb.insertRange(0, "Hello", 0 ,5)
-        sb.set(15, '4')
-        sb.setRange(17, 19, "0")
-        print(sb.toString())
-    //sampleEnd
-    }
-    ```
-    
+  ```kotlin
+  fun main() {
+  //sampleStart
+      val sb = StringBuilder("Bye Kotlin 1.3.72")
+      sb.deleteRange(0, 3)
+      sb.insertRange(0, "Hello", 0 ,5)
+      sb.set(15, '4')
+      sb.setRange(17, 19, "0")
+      print(sb.toString())
+  //sampleEnd
+  }
+  ```
+
     
 * Some existing functions of `StringBuilder` are available in the common library. Among them are `append()`, `insert()`,
 `substring()`, `setLength()`, and more. 
@@ -1525,17 +1525,17 @@ replace the JVM-only `appendln()` functions of these classes.
 
     
     
-    ```kotlin
-    fun main() {
-    //sampleStart
-        println(buildString {
-            appendLine("Hello,")
-            appendLine("world")
-        })
-    //sampleEnd
-    }
-    ```
-    
+  ```kotlin
+  fun main() {
+  //sampleStart
+      println(buildString {
+          appendLine("Hello,")
+          appendLine("world")
+      })
+  //sampleEnd
+  }
+  ```
+
 
 ### 一些位操作
 

@@ -162,13 +162,13 @@ $ kotlinc @compiler.options @classes
 {:.details-group}
 
 
-    
-    ```bash
-    $ kotlinc @options/compiler.options hello.kt
-    ```
-    
-    
-    
+
+  ```bash
+  $ kotlinc @options/compiler.options hello.kt
+  ```
+
+
+
 ## Kotlin/JVM 编译器选项
 
 用于 JVM 的 Kotlin 编译器将 Kotlin 源文件编译为 Java 类文件。

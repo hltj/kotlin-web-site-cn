@@ -538,7 +538,7 @@ kotlin {
 ## 调整模块名
 要调整 JavaScript _模块_ 的名称（在 `build/js/packages/myModuleName` 中生成），包括相应的 `.js` 与 `.d.ts` 文件，使用 `moduleName` 选项：
 
-> Groovy DSL
+
 ```groovy
 js {
    moduleName = "myModuleName"
