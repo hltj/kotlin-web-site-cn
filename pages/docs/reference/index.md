@@ -143,11 +143,11 @@ window.addEventListener('load', function () {
 ### 离线文档
 下载离线文档：
 - [PDF 文件](https://www.kotlincn.net/docs/kotlin-docs.pdf)
-- [PDF 文件 GitBook 版（字大一些）](https://www.gitbook.com/download/pdf/book/hltj/kotlin-reference-chinese)
-- [ePUB 文件](https://www.gitbook.com/download/epub/book/hltj/kotlin-reference-chinese)
-- [Mobi 文件](https://www.gitbook.com/download/mobi/book/hltj/kotlin-reference-chinese)
+- [PDF 文件 GitBook 版（字大一些）](https://ref-book.kotlincn.net/kotlin-reference-chinese.pdf)
+- [ePUB 文件](https://ref-book.kotlincn.net/kotlin-reference-chinese.epub)
+- [Mobi 文件](https://ref-book.kotlincn.net/kotlin-reference-chinese.mobi)
 
-其中 ePUB、 Mobi 以及字大版 PDF 文件都是 GitBook 上自动构建的，也可同时关注 GitBook 上的电子书：[gitbook.com/book/hltj/kotlin-reference-chinese](https://legacy.gitbook.com/book/hltj/kotlin-reference-chinese/details)。
+其中 ePUB、 Mobi 以及字大版 PDF 文件都通过 GitBook 构建的，也可同时关注 GitBook 电子书：[ref-book.kotlincn.net](https://ref-book.kotlincn.net/)。
 
 关于网站与 PDF 有任何问题请在[这里](https://github.com/hltj/kotlin-web-site-cn/issues)反馈；
 关于 ePUB、Mobi 以及字大版 PDF 有任何问题请在[这里](https://github.com/hltj/kotlin-reference-chinese/issues)反馈。
