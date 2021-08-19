@@ -1,6 +1,12 @@
-[//]: # (title: What's new in Kotlin 1.1)
+---
+type: doc
+layout: reference
+title: "What's New in Kotlin 1.1"
+---
 
-## Table of contents
+# What's New in Kotlin 1.1
+
+## Table of Contents
 
 * [Coroutines](#coroutines-experimental)
 * [Other language features](#other-language-features)
@@ -16,16 +22,15 @@ a more detailed list of changes.
 
 ## Coroutines (experimental)
 
-The key new feature in Kotlin 1.1 is *coroutines*, bringing the support of `async`/`await`, `yield`, and similar programming
+The key new feature in Kotlin 1.1 is *coroutines*, bringing the support of `async`/`await`, `yield` and similar programming
 patterns. The key feature of Kotlin's design is that the implementation of coroutine execution is part of the libraries,
 not the language, so you aren't bound to any specific programming paradigm or concurrency library.
 
-A coroutine is effectively a light-weight thread that can be suspended and resumed later.
-Coroutines are supported through [*suspending functions*](coroutines-basics.md#extract-function-refactoring):
-a call to such a function can potentially suspend a coroutine, and to start a new coroutine we usually use an anonymous suspending functions (i.e. suspending lambdas).  
+A coroutine is effectively a light-weight thread that can be suspended and resumed later. Coroutines are supported through [*suspending functions*](coroutines.html#suspending-functions): a call to such a function can potentially suspend a coroutine, and to start a new coroutine we usually use an anonymous suspending functions (i.e. suspending lambdas).
 
-Let's look at `async`/`await` which is implemented in an external library, [kotlinx.coroutines](https://github.com/kotlin/kotlinx.coroutines): 
+Let's look at `async`/`await` which is implemented in an external library, [kotlinx.coroutines](https://github.com/kotlin/kotlinx.coroutines):
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 // runs the code in the background thread pool
 fun asyncOverlay() = async(CommonPool) {
@@ -38,18 +43,21 @@ fun asyncOverlay() = async(CommonPool) {
 
 // launches new coroutine in UI context
 launch(UI) {
-    // wait for async overlay to complete
-    val image = asyncOverlay().await()
-    // and then show it in UI
-    showImage(image)
+// wait for async overlay to complete
+val image = asyncOverlay().await()
+// and then show it in UI
+showImage(image)
 }
 ```
+</div>
 
 Here, `async { ... }` starts a coroutine and, when we use `await()`, the execution of the coroutine is suspended while the operation being awaited is executed, and is resumed (possibly on a different thread) when the operation being awaited completes.
 
 The standard library uses coroutines to support *lazily generated sequences* with `yield` and `yieldAll` functions.
 In such a sequence, the block of code that returns sequence elements is suspended after each element has been retrieved,
 and resumed when the next element is requested. Here's an example:
+
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
 ```kotlin
 import kotlin.coroutines.experimental.*
@@ -70,22 +78,27 @@ fun main(args: Array<String>) {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
+
 
 Run the code above to see the result. Feel free to edit it and run again!
 
-For more information, please refer to the [coroutines documentation](coroutines-overview.md) and [tutorial](coroutines-basic-jvm.md).
+For more information, please refer to the [coroutine documentation](/docs/reference/coroutines.html) and [tutorial](/docs/tutorials/coroutines/coroutines-basic-jvm.html).
 
 Note that coroutines are currently considered an **experimental feature**, meaning that the Kotlin team is not committing
 to supporting the backwards compatibility of this feature after the final 1.1 release.
 
-## Other language features
+
+## Other Language Features
 
 ### Type aliases
 
 A type alias allows you to define an alternative name for an existing type.
 This is most useful for generic types such as collections, as well as for function types.
 Here is an example:
+
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
 ```kotlin
 //sampleStart
@@ -116,15 +129,18 @@ fun main(args: Array<String>) {
     println("LaLaLandIsTheBestMovie = $laLaLandIsTheBestMovie")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+</div>
 
-See the [documentation](type-aliases.md) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/type-aliases.md) for more details.
+See the [documentation](type-aliases.html) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/type-aliases.md) for more details.
+
 
 ### Bound callable references
 
-You can now use the `::` operator to get a [member reference](reflection.md#function-references) pointing to a method or
-property of a specific object instance. Previously this could only be expressed with a lambda.
+You can now use the `::` operator to get a [member reference](reflection.html#function-references) pointing to a method or property of a specific object instance.
+Previously this could only be expressed with a lambda.
 Here's an example:
+
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
 ```kotlin
 //sampleStart
@@ -136,9 +152,11 @@ fun main(args: Array<String>) {
     println("Result is $numbers")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+</div>
 
-Read the [documentation](reflection.md) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/bound-callable-references.md) for more details.
+
+Read the [documentation](reflection.html#bound-function-and-property-references-since-11) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/bound-callable-references.md) for more details.
+
 
 ### Sealed and data classes
 
@@ -146,6 +164,8 @@ Kotlin 1.1 removes some of the restrictions on sealed and data classes that were
 Now you can define subclasses of a top-level sealed class on the top level in the same file, and not just as nested classes of the sealed class.
 Data classes can now extend other classes.
 This can be used to define a hierarchy of expression classes nicely and cleanly:
+
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
 ```kotlin
 //sampleStart
@@ -167,16 +187,19 @@ fun main(args: Array<String>) {
     println("e is $e") // 3.0
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+</div>
 
-Read the [documentation](sealed-classes.md) or KEEPs for
+Read the [documentation](sealed-classes.html) or
 [sealed class](https://github.com/Kotlin/KEEP/blob/master/proposals/sealed-class-inheritance.md) and
-[data class](https://github.com/Kotlin/KEEP/blob/master/proposals/data-class-inheritance.md) for more detail.
+[data class](https://github.com/Kotlin/KEEP/blob/master/proposals/data-class-inheritance.md) KEEPs for more detail.
+
 
 ### Destructuring in lambdas
 
-You can now use the [destructuring declaration](destructuring-declarations.md) syntax to unpack the arguments passed to a lambda.
+You can now use the [destructuring declaration](multi-declarations.html) syntax to unpack the arguments passed to a lambda.
 Here's an example:
+
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1" auto-indent="false" indent="2">
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -192,13 +215,16 @@ fun main(args: Array<String>) {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+</div>
 
-Read the [documentation](destructuring-declarations.md) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/destructuring-in-parameters.md) for more details.
+Read the [documentation](multi-declarations.html#destructuring-in-lambdas-since-11) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/destructuring-in-parameters.md) for more details.
+
 
 ### Underscores for unused parameters
 
 For a lambda with multiple parameters, you can use the `_` character to replace the names of the parameters you don't use:
+
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -209,9 +235,11 @@ fun main(args: Array<String>) {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+</div>
 
-This also works in [destructuring declarations](destructuring-declarations.md):
+This also works in [destructuring declarations](multi-declarations.html):
+
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
 ```kotlin
 data class Result(val value: Any, val status: String)
@@ -225,13 +253,16 @@ fun main(args: Array<String>) {
     println("status is '$status'")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+</div>
 
 Read the [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/underscore-for-unused-parameters.md) for more details.
+
 
 ### Underscores in numeric literals
 
 Just as in Java 8, Kotlin now allows to use underscores in numeric literals to separate groups of digits:
+
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
 ```kotlin
 //sampleStart
@@ -246,13 +277,17 @@ fun main(args: Array<String>) {
     println(bytes.toString(2))
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 Read the [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/underscores-in-numeric-literals.md) for more details.
+
 
 ### Shorter syntax for properties
 
 For properties with the getter defined as an expression body, the property type can now be omitted:
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 //sampleStart
@@ -265,12 +300,15 @@ fun main(args: Array<String>) {
     println("$akari.isAdult = ${akari.isAdult}")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 ### Inline property accessors
 
 You can now mark property accessors with the `inline` modifier if the properties don't have a backing field.
-Such accessors are compiled in the same way as [inline functions](inline-functions.md).
+Such accessors are compiled in the same way as [inline functions](inline-functions.html).
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 //sampleStart
@@ -284,16 +322,20 @@ fun main(args: Array<String>) {
     println("Last index of $list is ${list.lastIndex}")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 You can also mark the entire property as `inline` - then the modifier is applied to both accessors.
 
-Read the [documentation](inline-functions.md#inline-properties) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-properties.md) for more details.
+Read the [documentation](inline-functions.html#inline-properties) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-properties.md) for more details.
+
 
 ### Local delegated properties
 
-You can now use the [delegated property](delegated-properties.md) syntax with local variables.
+You can now use the [delegated property](delegated-properties.html) syntax with local variables.
 One possible use is defining a lazily evaluated local variable:
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 import java.util.Random
@@ -315,15 +357,20 @@ fun main(args: Array<String>) {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 Read the [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/local-delegated-properties.md) for more details.
 
+
 ### Interception of delegated property binding
 
-For [delegated properties](delegated-properties.md), it is now possible to intercept delegate to property binding using the
+For [delegated properties](delegated-properties.html), it is now possible to intercept delegate to property binding using the
 `provideDelegate` operator.
 For example, if we want to check the property name before binding, we can write something like this:
+
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class ResourceLoader<T>(id: ResourceID<T>) {
@@ -343,14 +390,19 @@ class MyUI {
 }
 ```
 
+</div>
+
 The `provideDelegate` method will be called for each property during the creation of a `MyUI` instance, and it can perform
 the necessary validation right away.
 
-Read the [documentation](delegated-properties.md) for more details.
+Read the [documentation](delegated-properties.html#providing-a-delegate) for more details.
+
 
 ### Generic enum value access
 
 It is now possible to enumerate the values of an enum class in a generic way.
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 //sampleStart
@@ -365,13 +417,15 @@ fun main(args: Array<String>) {
     printAllValues<RGB>() // prints RED, GREEN, BLUE
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 ### Scope control for implicit receivers in DSLs
 
-The [`@DslMarker`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-dsl-marker/index.html) annotation allows to restrict
-the use of receivers from outer scopes in a DSL context.
-Consider the canonical [HTML builder example](type-safe-builders.md):
+The [`@DslMarker`](/api/latest/jvm/stdlib/kotlin/-dsl-marker/index.html) annotation allows to restrict the use of receivers from outer scopes in a DSL context.
+Consider the canonical [HTML builder example](type-safe-builders.html):
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 table {
@@ -381,6 +435,8 @@ table {
 }
 ```
 
+</div>
+
 In Kotlin 1.0, code in the lambda passed to `td` has access to three implicit receivers: the one passed to `table`, to `tr`
 and to `td`. This allows you to call methods that make no sense in the context - for example to call `tr` inside `td` and thus
 to put a `<tr>` tag in a `<td>`.
@@ -389,9 +445,10 @@ In Kotlin 1.1, you can restrict that, so that only methods defined on the implic
 will be available inside the lambda passed to `td`. You do that by defining your annotation marked with the `@DslMarker` meta-annotation
 and applying it to the base class of the tag classes.
 
-Read the [documentation](type-safe-builders.md) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/scope-control-for-implicit-receivers.md) for more details.
+Read the [documentation](type-safe-builders.html#scope-control-dslmarker-since-11) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/scope-control-for-implicit-receivers.md) for more details.
 
-### rem operator
+
+### `rem` operator
 
 The `mod` operator is now deprecated, and `rem` is used instead. See [this issue](https://youtrack.jetbrains.com/issue/KT-14650) for motivation.
 
@@ -402,9 +459,13 @@ The `mod` operator is now deprecated, and `rem` is used instead. See [this issue
 There is a bunch of new extensions on the String class to convert it to a number without throwing an exception on invalid number:
 `String.toIntOrNull(): Int?`, `String.toDoubleOrNull(): Double?` etc.
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val port = System.getenv("PORT")?.toIntOrNull() ?: 80
 ```
+
+</div>
 
 Also integer conversion functions, like `Int.toString()`, `String.toInt()`, `String.toIntOrNull()`,
 each got an overload with `radix` parameter, which allows to specify the base of conversion (2 to 36).
@@ -416,6 +477,8 @@ possibly with side-effects, on each element of the collection/sequence in a chai
 On iterables it behaves like `forEach` but also returns the iterable instance further. And on sequences it returns a
 wrapping sequence, which applies the given action lazily as the elements are being iterated.
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ```kotlin
 inputDir.walk()
         .filter { it.isFile && it.name.endsWith(".txt") }
@@ -423,14 +486,18 @@ inputDir.walk()
         .forEach { moveFile(it, File(outputDir, it.toRelativeString(inputDir))) }
 ```
 
-### also(), takeIf(), and takeUnless()
+</div>
+
+### also(), takeIf() and takeUnless()
 
 These are three general-purpose extension functions applicable to any receiver.
- 
-`also` is like `apply`: it takes the receiver, does some action on it, and returns that receiver. 
-The difference is that in the block inside `apply` the receiver is available as `this`, 
+
+`also` is like `apply`: it takes the receiver, does some action on it, and returns that receiver.
+The difference is that in the block inside `apply` the receiver is available as `this`,
 while in the block inside `also` it's available as `it` (and you can give it another name if you want).
 This comes handy when you do not want to shadow `this` from the outer scope:
+
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
 ```kotlin
 class Block {
@@ -455,16 +522,23 @@ fun main(args: Array<String>) {
     println(block.content == copy.content)
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 `takeIf` is like `filter` for a single value. It checks whether the receiver meets the predicate, and
-returns the receiver, if it does or `null` if it doesn't. 
-Combined with an elvis operator (?:) and early returns it allows writing constructs like:
+returns the receiver, if it does or `null` if it doesn't.
+Combined with an elvis-operator and early returns it allows to write constructs like:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 val outDirFile = File(outputDir.path).takeIf { it.exists() } ?: return false
 // do something with existing outDirFile
 ```
+
+</div>
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -481,16 +555,22 @@ fun main(args: Array<String>) {
     println(" ".repeat(index) + "^")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-`takeUnless` is the same as `takeIf`, but it takes the inverted predicate. It returns the receiver when it _doesn't_ meet
-the predicate and `null` otherwise. So one of the examples above could be rewritten with `takeUnless` as following:
+</div>
+
+`takeUnless` is the same as `takeIf`, but it takes the inverted predicate. It returns the receiver when it _doesn't_ meet the predicate and `null` otherwise. So one of the examples above could be rewritten with `takeUnless` as following:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 val index = input.indexOf(keyword).takeUnless { it < 0 } ?: error("keyword not found")
 ```
 
+</div>
+
 It is also convenient to use when you have a callable reference instead of the lambda:
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 private fun testTakeUnless(string: String) {
@@ -506,12 +586,15 @@ fun main(args: Array<String>) {
     testTakeUnless("abc")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 ### groupingBy()
 
 This API can be used to group a collection by key and fold each group simultaneously. For example, it can be used
 to count the number of words starting with each letter:
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -527,11 +610,14 @@ fun main(args: Array<String>) {
     println("Comparing the result with using 'groupBy': ${groupBy == frequencies}.")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 ### Map.toMap() and Map.toMutableMap()
 
 These functions can be used for easy copying of maps:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class ImmutablePropertyBag(map: Map<String, Any>) {
@@ -539,13 +625,14 @@ class ImmutablePropertyBag(map: Map<String, Any>) {
 }
 ```
 
+</div>
+
 ### Map.minus(key)
 
-The operator `plus` provides a way to add key-value pair(s) to a read-only map producing a new map, however there was not
-a simple way to do the opposite: to remove a key from the map you have to resort to less straightforward ways to like
-`Map.filter()` or `Map.filterKeys()`.
-Now the operator `minus` fills this gap. There are 4 overloads available: for removing a single key, a collection of keys,
-a sequence of keys and an array of keys.
+The operator `plus` provides a way to add key-value pair(s) to a read-only map producing a new map, however there was not a simple way to do the opposite: to remove a key from the map you have to resort to less straightforward ways to like `Map.filter()` or `Map.filterKeys()`.
+Now the operator `minus` fills this gap. There are 4 overloads available: for removing a single key, a collection of keys, a sequence of keys and an array of keys.
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -558,13 +645,14 @@ fun main(args: Array<String>) {
     println("emptyMap: $emptyMap")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 ### minOf() and maxOf()
 
-These functions can be used to find the lowest and greatest of two or three given values, where values are primitive numbers
-or `Comparable` objects. There is also an overload of each function that take an additional `Comparator` instance
-if you want to compare objects that are not comparable themselves.
+These functions can be used to find the lowest and greatest of two or three given values, where values are primitive numbers or `Comparable` objects. There is also an overload of each function that take an additional `Comparator` instance, if you want to compare objects that are not comparable themselves.
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -579,12 +667,15 @@ fun main(args: Array<String>) {
     println("longestList = $longestList")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 ### Array-like List instantiation functions
 
 Similar to the `Array` constructor, there are now functions that create `List` and `MutableList` instances and initialize
 each element by calling a lambda:
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -597,12 +688,15 @@ fun main(args: Array<String>) {
     println("mutable: $mutable")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 ### Map.getValue()
 
 This extension on `Map` returns an existing value corresponding to the given key or throws an exception, mentioning which key was not found.
 If the map was produced with `withDefault`, this function will return the default value instead of throwing an exception.
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -622,14 +716,15 @@ fun main(args: Array<String>) {
     println("value2 is $value2")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 ### Abstract collections
 
 These abstract classes can be used as base classes when implementing Kotlin collection classes.
-For implementing read-only collections there are `AbstractCollection`, `AbstractList`, `AbstractSet` and `AbstractMap`, 
+For implementing read-only collections there are `AbstractCollection`, `AbstractList`, `AbstractSet` and `AbstractMap`,
 and for mutable collections there are `AbstractMutableCollection`, `AbstractMutableList`, `AbstractMutableSet` and `AbstractMutableMap`.
-On JVM, these abstract mutable collections inherit most of their functionality from JDK's abstract collections.
+On JVM these abstract mutable collections inherit most of their functionality from JDK's abstract collections.
 
 ### Array manipulation functions
 
@@ -638,6 +733,8 @@ The standard library now provides a set of functions for element-by-element oper
 and conversion to a string (`contentToString` and `contentDeepToString`). They're supported both for the JVM
 (where they act as aliases for the corresponding functions in `java.util.Arrays`) and for JS (where the implementation
 is provided in the Kotlin standard library).
+
+<div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -648,7 +745,8 @@ fun main(args: Array<String>) {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+</div>
 
 ## JVM Backend
 
@@ -658,19 +756,23 @@ Kotlin has now the option of generating Java 8 bytecode (`-jvm-target 1.8` comma
 in Ant/Maven/Gradle). For now this doesn't change the semantics of the bytecode (in particular, default methods in interfaces
 and lambdas are generated exactly as in Kotlin 1.0), but we plan to make further use of this later.
 
+
 ### Java 8 standard library support
 
 There are now separate versions of the standard library supporting the new JDK APIs added in Java 7 and 8.
 If you need access to the new APIs, use `kotlin-stdlib-jre7` and `kotlin-stdlib-jre8` maven artifacts instead of the standard `kotlin-stdlib`.
 These artifacts are tiny extensions on top of `kotlin-stdlib` and they bring it to your project as a transitive dependency.
 
+
 ### Parameter names in the bytecode
 
 Kotlin now supports storing parameter names in the bytecode. This can be enabled using the `-java-parameters` command line option.
 
+
 ### Constant inlining
 
 The compiler now inlines values of `const val` properties into the locations where they are used.
+
 
 ### Mutable closure variables
 
@@ -678,10 +780,13 @@ The box classes used for capturing mutable closure variables in lambdas no longe
 performance, but can lead to new race conditions in some rare usage scenarios. If you're affected by this, you need to provide
 your own synchronization for accessing the variables.
 
+
 ### javax.script support
 
 Kotlin now integrates with the [javax.script API](https://docs.oracle.com/javase/8/docs/api/javax/script/package-summary.html) (JSR-223).
 The API allows to evaluate snippets of code at runtime:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 val engine = ScriptEngineManager().getEngineByExtension("kts")!!
@@ -689,8 +794,11 @@ engine.eval("val x = 3")
 println(engine.eval("x + 2"))  // Prints out 5
 ```
 
+</div>
+
 See [here](https://github.com/JetBrains/kotlin/tree/master/libraries/examples/kotlin-jsr223-local-example)
 for a larger example project using the API.
+
 
 ### kotlin.reflect.full
 
@@ -699,7 +807,8 @@ to the package `kotlin.reflect.full`. The names in the old package (`kotlin.refl
 Kotlin 1.2. Note that the core reflection interfaces (such as `KClass`) are part of the Kotlin standard library,
 not `kotlin-reflect`, and are not affected by the move.
 
-## JavaScript backend
+
+## JavaScript Backend
 
 ### Unified standard library
 
@@ -720,6 +829,8 @@ declaration using the `external` modifier. (In Kotlin 1.0, the `@native` annotat
 Unlike the JVM target, the JS one permits to use external modifier with classes and properties.
 For example, here's how you can declare the DOM `Node` class:
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 external class Node {
     val firstChild: Node
@@ -732,6 +843,8 @@ external class Node {
 }
 ```
 
+</div>
+
 ### Improved import handling
 
 You can now describe declarations which should be imported from JavaScript modules more precisely.
@@ -742,6 +855,8 @@ Additionally, if you want to import a declaration either as a module or as a glo
 you can use the `@JsNonModule` annotation.
 
 For example, here's how you can import JQuery into a Kotlin module:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 external interface JQuery {
@@ -755,10 +870,14 @@ external interface JQuery {
 external fun jquery(selector: String): JQuery
 ```
 
+</div>
+
 In this case, JQuery will be imported as a module named `jquery`. Alternatively, it can be used as a $-object,
 depending on what module system Kotlin compiler is configured to use.
 
 You can use these declarations in your application like this:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -767,3 +886,5 @@ fun main(args: Array<String>) {
     }
 }
 ```
+
+</div>
