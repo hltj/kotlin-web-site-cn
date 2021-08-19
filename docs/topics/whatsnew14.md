@@ -1,93 +1,93 @@
 ---
 type: doc
 layout: reference
-title: "What's New in Kotlin 1.4"
+title: Kotlin 1.4 的新特性"
 ---
 
-# What's New in Kotlin 1.4.0
+# Kotlin 1.4.0 的新特性
 
-In Kotlin 1.4.0, we ship a number of improvements in all of its components, with the [focus on quality and performance](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/).
-Below you will find the list of the most important changes in Kotlin 1.4.0.
+在 Kotlin 1.4.0 中，我们对其所有组件进行了大量改进，其中[重点是质量与性能](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/)。
+以下是 Kotlin  1.4.0 中最重要的变更列表。
 
-[**Language features and improvements**](#language-features-and-improvements)
-* [SAM conversions for Kotlin interfaces](#sam-conversions-for-kotlin-interfaces)
-* [Explicit API mode for library authors](#explicit-api-mode-for-library-authors)
-* [Mixing named and positional arguments](#mixing-named-and-positional-arguments)
-* [Trailing comma](#trailing-comma)
-* [Callable reference improvements](#callable-reference-improvements)
-* [`break` and `continue` inside `when` included in loops](#using-break-and-continue-inside-when-expressions-included-in-loops)
+[**语言特性与改进**](#语言特性与改进)
+* [Kotlin 接口的 SAM 转换](#kotlin-接口的-sam-转换)
+* [面向库作者的显式 API 模式](#面向库作者的显式-api-模式)
+* [混用具名与位置参数](#混用具名与位置参数)
+* [拖尾的逗号](#拖尾的逗号)
+* [可调用引用改进](#可调用引用改进)
+* [循环中的 `when` 内部可以 `break` 及 `continue`](#在循环中的-when-内部使用-break-与-continue)
 
-[**New tools in the IDE**](#new-tools-in-the-ide)
-* [New flexible Project Wizard](#new-flexible-project-wizard)
-* [Coroutine Debugger](#coroutine-debugger)
+[**IDE 中的新工具**](#ide-中的新工具)
+* [新的灵活项目向导](#新的灵活项目向导)
+* [协程调试器](#协程调试器)
 
-[**New compiler**](#new-compiler)
-* [New, more powerful type inference algorithm](#new-more-powerful-type-inference-algorithm)
-* [New JVM and JS IR backends](#unified-backends-and-extensibility)
+[**新编译器**](#新编译器)
+* [新的、更强大的类型推断算法](#新的、更强大的类型推断算法)
+* [新的 JVM 与 JS IR 后端](#统一的后端与可扩展性)
 
 [**Kotlin/JVM**](#kotlinjvm)
-* [New JVM IR backend](#new-jvm-ir-backend)
-* [New modes for generating default methods in interfaces](#new-modes-for-generating-default-methods)
-* [Unified exception type for null checks](#unified-exception-type-for-null-checks)
-* [Type annotations in the JVM bytecode](#type-annotations-in-the-jvm-bytecode)
+* [新的 JVM IR 后端](#新的-jvm-ir-后端)
+* [在接口中生成默认方法的新模式](#生成默认方法的新模式)
+* [统一用于空检测的异常类型](#统一用于空检测的异常类型)
+* [在 JVM 字节码中的类型注解](#在-jvm-字节码中的类型注解)
 
 [**Kotlin/JS**](#kotlinjs)
-- [New Gradle DSL](#new-gradle-dsl)
-- [New JS IR backend](#new-js-ir-backend)
+- [新的 Gradle DSL](#新的-gradle-dsl)
+- [新的 JS IR 后端](#新的-js-ir-后端)
 
 [**Kotlin/Native**](#kotlinnative)
-* [Support for suspending functions in Swift and Objective-C](#support-for-kotlins-suspending-functions-in-swift-and-objective-c)
-* [Objective-C generics support by default](#objective-c-generics-support-by-default)
-* [Exception handling in Objective-C/Swift interop](#exception-handling-in-objective-cswift-interop)
-* [Generate release `.dSYM`s on Apple targets by default](#generate-release-dsyms-on-apple-targets-by-default)
-* [Performance improvements](#performance-improvements)
-* [Simplified management of CocoaPods dependencies](#simplified-management-of-cocoapods-dependencies)
+* [在 Swift 与 Objective-C 中支持挂起函数](#在-swift-与-objective-c-中支持-kotlin-的挂起函数)
+* [默认支持 Objective-C 泛型](#默认支持-objective-c-泛型)
+* [Objective-C/Swift 互操作中的异常处理](#objective-cswift-互操作中的异常处理)
+* [默认在苹果目标平台生成 release 版 `.dSYM`](#默认在苹果目标平台生成-release-版-dsym)
+* [性能改进](#性能改进)
+* [简化了 CocoaPods 依赖项的管理](#简化了-cocoapods-依赖项的管理)
 
-[**Kotlin Multiplatform**](#kotlin-multiplatform)
-* [Sharing code in several targets with the hierarchical project structure](#sharing-code-in-several-targets-with-the-hierarchical-project-structure)
-* [Leveraging native libs in the hierarchical structure](#leveraging-native-libs-in-the-hierarchical-structure)
-* [Specifying kotlinx dependencies only once](#specifying-dependencies-only-once)
+[**Kotlin 多平台**](#kotlin-多平台)
+* [使用分层项目结构在多个目标中共享代码](#使用分层项目结构在多个目标中共享代码)
+* [在分层结构中利用原生库](#在分层结构中利用原生库)
+* [只需指定一次 kotlinx 依赖项](#只需指定一次依赖项)
 
-[**Gradle project improvements**](#gradle-project-improvements)
-* [Dependency on the standard library is now added by default](#dependency-on-the-standard-library-added-by-default)
-* [Kotlin projects require a recent version of Gradle](#minimum-gradle-version-for-kotlin-projects)
-* [Improved support for Kotlin Gradle DSL in the IDE](#improved-gradlekts-support-in-the-ide)
+[**Gradle 项目改进**](#gradle-项目改进)
+* [现在默认添加了对标准库的依赖](#默认添加了对标准库的依赖)
+* [Kotlin 项目需要最近版本的 Gradle](#kotlin-项目的最低-gradle-版本)
+* [改进了 IDE 对 Kotlin Gradle DSL 的支持](#改进了-ide-对-gradlekts-的支持)
 
-[**Standard library**](#standard-library)
-- [Common exception processing API](#common-exception-processing-api)
-- [New functions for arrays and collections](#new-functions-for-arrays-and-collections)
-- [Functions for string manipulations](#functions-for-string-manipulations)
-- [Bit operations](#bit-operations)
-- [Delegated properties improvements](#delegated-properties-improvements)
-- [Converting from KType to Java Type](#converting-from-ktype-to-java-type)
-- [Proguard configurations for Kotlin reflection](#proguard-configurations-for-kotlin-reflection)
-- [Improving the existing API](#improving-the-existing-api)
-- [module-info descriptors for stdlib artifacts](#module-info-descriptors-for-stdlib-artifacts)
-- [Deprecations](#deprecations)
-- [Exclusion of the deprecated experimental coroutines](#exclusion-of-the-deprecated-experimental-coroutines)
+[**标准库**](#标准库)
+- [公共异常处理 API](#公共异常处理-api)
+- [数组与集合的新函数](#数组与集合的新函数)
+- [一些字符串操作函数](#一些字符串操作函数)
+- [一些位操作](#一些位操作)
+- [属性委托改进](#属性委托改进)
+- [由 KType 转换为 Java Type](#由-ktype-转换为-java-type)
+- [Kotlin 反射的 Proguard 配置](#kotlin-反射的-proguard-配置)
+- [现有 API 改进](#现有-api-改进)
+- [stdlib 构件的 module-info 描述符](#stdlib-构件的-module-info-描述符)
+- [弃用项](#弃用项)
+- [排除弃用的实验性协程](#排除弃用的实验性协程)
 
-[**Stable JSON serialization**](#stable-json-serialization)
+[**稳定版 JSON 序列化**](#稳定版-json-序列化)
 
-[**Scripting and REPL**](#scripting-and-repl)
-- [New dependencies resolution API](#new-dependencies-resolution-api)
-- [New REPL API](#new-repl-api)
-- [Compiled scripts cache](#compiled-scripts-cache)
-- [Artifacts renaming](#artifacts-renaming)
+[**脚本与 REPL**](#脚本与-repl)
+- [新的依赖项解析 API](#新的依赖项解析-api)
+- [新的 REPL API](#新的-repl-api)
+- [已编译脚本缓存](#已编译脚本缓存)
+- [构件重命名](#构件重命名)
 
-[**Migrating to Kotlin 1.4.0**](#migrating-to-kotlin-140)
+[**迁移到 Kotlin 1.4.0**](#迁移到-kotlin-140)
 
-## Language features and improvements
+## 语言特性与改进
 
-Kotlin 1.4.0 comes with a variety of different language features and improvements. They include:
+Kotlin 1.4.0 中有各种不同的语言特性与改进。包括：
 
-* [SAM conversions for Kotlin interfaces](#sam-conversions-for-kotlin-interfaces)
-* [Explicit API mode for library authors](#explicit-api-mode-for-library-authors)
-* [Mixing named and positional arguments](#mixing-named-and-positional-arguments)
-* [Trailing comma](#trailing-comma)
-* [Callable reference improvements](#callable-reference-improvements)
-* [`break` and `continue` inside `when` included in loops](#using-break-and-continue-inside-when-expressions-included-in-loops)
+* [Kotlin 接口的 SAM 转换](#kotlin-接口的-sam-转换)
+* [面向库作者的显式 API 模式](#面向库作者的显式-api-模式)
+* [混用具名与位置参数](#混用具名与位置参数)
+* [拖尾的逗号](#拖尾的逗号)
+* [可调用引用改进](#可调用引用改进)
+* [循环中的 `when` 内部可以 `break` 及 `continue`](#在循环中的-when-内部使用-break-与-continue)
 
-### SAM conversions for Kotlin interfaces
+### Kotlin 接口的 SAM 转换
 
 Before Kotlin 1.4.0, you could apply SAM (Single Abstract Method) conversions only [when working with Java methods and Java
 interfaces from Kotlin](java-interop.html#sam-conversions). From now on, you can use SAM conversions for Kotlin interfaces as well.
@@ -114,7 +114,7 @@ fun main() {
 
 Learn more about [Kotlin functional interfaces and SAM conversions](fun-interfaces.html).
 
-### Explicit API mode for library authors
+### 面向库作者的显式 API 模式
 
 Kotlin compiler offers _explicit API mode_ for library authors. In this mode, the compiler performs additional checks that
 help make the library’s API clearer and more consistent. It adds the following requirements for declarations exposed
@@ -190,7 +190,7 @@ with the value `strict` or `warning`.
 
 For more details about the explicit API mode, see the [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/explicit-api-mode.md).
 
-### Mixing named and positional arguments
+### 混用具名与位置参数
 
 In Kotlin 1.3, when you called a function with [named arguments](functions.html#named-arguments), you had to place all the
 arguments without names (positional arguments) before the first named argument. For example, you could call `f(1, y = 2)`,
@@ -219,7 +219,7 @@ reformat("This is a String!", uppercaseFirstLetter = false , '-')
 
 </div>
 
-### Trailing comma
+### 拖尾的逗号
 
 With Kotlin 1.4 you can now add a trailing comma in enumerations such as argument
 and parameter lists, `when` entries, and components of destructuring declarations.
@@ -254,16 +254,16 @@ val colors = listOf(
 
 </div>
 
-### Callable reference improvements
+### 可调用引用改进
 
 Kotlin 1.4 supports more cases for using callable references:
 
-* References to functions with default argument values
-* Function references in `Unit`-returning functions
-* References that adapt based on the number of arguments in a function
-* Suspend conversion on callable references
+* 对具有默认参数值的函数的引用
+* 可作为返回 `Unit`的函数的函数引用
+* 根据函数的参数数量进行调整的引用
+* 可调用引用的挂起转换
 
-#### References to functions with default argument values
+#### 对具有默认参数值的函数的引用
 
 Now you can use callable references to functions with default argument values. If the callable reference
 to the function `foo` takes no arguments, the default value `0` is used.
@@ -293,7 +293,7 @@ fun applyInt(func: (Int) -> String): String = func(0)
 
 </div>
 
-#### Function references in `Unit`-returning functions
+#### 可作为返回 `Unit`的函数的函数引用
 
 In Kotlin 1.4, you can use callable references to functions returning any type in `Unit`-returning functions.
 Before Kotlin 1.4, you could only use lambda arguments in this case. Now you can use both lambda arguments and callable references.
@@ -312,7 +312,7 @@ fun main() {
 
 </div>
 
-#### References that adapt based on the number of arguments in a function
+#### 根据函数的参数数量进行调整的引用
 
 Now you can adapt callable references to functions when passing a variable number of arguments (`vararg`) .
 You can pass any number of parameters of the same type at the end of the list of passed arguments.
@@ -335,7 +335,7 @@ fun test() {
 
 </div>
 
-#### Suspend conversion on callable references
+#### 可调用引用的挂起转换
 
 In addition to suspend conversion on lambdas, Kotlin now supports suspend conversion on callable references starting from version 1.4.0.
 
@@ -353,7 +353,7 @@ fun test() {
 
 </div>
 
-### Using `break` and `continue` inside `when` expressions included in loops
+### 在循环中的 `when` 内部使用 `break` 与 `continue`
 
 In Kotlin 1.3, you could not use unqualified `break` and `continue` inside `when` expressions included in loops. The reason was that these keywords were reserved for possible [fall-through behavior](https://en.wikipedia.org/wiki/Switch_statement#Fallthrough) in `when` expressions.
 
@@ -395,16 +395,16 @@ fun test(xs: List<Int>) {
 
 The fall-through behavior inside `when` is subject to further design.
 
-[**Back to top**](#)
+[**回到顶部**](#)
 
-## New tools in the IDE
+## IDE 中的新工具
 
 With Kotlin 1.4, you can use the new tools in IntelliJ IDEA to simplify Kotlin development:
 
-* [New flexible Project Wizard](#new-flexible-project-wizard)
-* [Coroutine Debugger](#coroutine-debugger)
+* [新的灵活项目向导](#新的灵活项目向导)
+* [协程调试器](#协程调试器)
 
-### New flexible Project Wizard
+### 新的灵活项目向导
 
 With the flexible new Kotlin Project Wizard, you have a place to easily create and configure different types of Kotlin
 projects, including multiplatform projects, which can be difficult to configure without a UI.
@@ -434,7 +434,7 @@ You can try out the new Kotlin Project Wizard by working through these tutorials
 * [Create a Kotlin/JS application for React](../tutorials/javascript/setting-up.html)
 * [Create a Kotlin/Native application](../tutorials/native/using-intellij-idea.html)
 
-### Coroutine Debugger
+### 协程调试器
 
 Many people already use [coroutines](coroutines/coroutines-guide.html) for asynchronous programming. But when it came to debugging, working with coroutines before Kotlin 1.4,
 could be a real pain. Since coroutines jumped between threads,
@@ -466,31 +466,31 @@ and helpful in future versions of Kotlin.
 Learn more about debugging coroutines in [this blog post](https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-rc-debugging-coroutines/)
 and [IntelliJ IDEA documentation](https://www.jetbrains.com/help/idea/debug-kotlin-coroutines.html).
 
-[**Back to top**](#)
+[**回到顶部**](#)
 
-## New compiler
+## 新编译器
 
 The new Kotlin compiler is going to be really fast; it will unify all the supported platforms and provide
 an API for compiler extensions. It's a long-term project, and we've already completed several steps in Kotlin 1.4.0:
 
-* [New, more powerful type inference algorithm](#new-more-powerful-type-inference-algorithm) is enabled by default.
-* [New JVM and JS IR backends](#unified-backends-and-extensibility) are now in [Alpha](evolution/components-stability.html). They will become the default once we stabilize them.
+* [新的、更强大的类型推断算法](#新的更强大的类型推断算法) is enabled by default.
+* [新的 JVM 与 JS IR 后端](#统一的后端与可扩展性) are now in [Alpha](evolution/components-stability.html). They will become the default once we stabilize them.
 
-### New more powerful type inference algorithm
+### 新的更强大的类型推断算法
 
 Kotlin 1.4 uses a new, more powerful type inference algorithm. This new algorithm was already available to try in
 Kotlin 1.3 by specifying a compiler option, and now it’s used by default. You can find the full list of issues fixed in
 the new algorithm in [YouTrack](https://youtrack.jetbrains.com/issues/KT?q=Tag:%20fixed-in-new-inference%20). Here
 you can find some of the most noticeable improvements:
 
-* [More cases where type is inferred automatically](#more-cases-where-type-is-inferred-automatically)
-* [Smart casts for a lambda’s last expression](#smart-casts-for-a-lambdas-last-expression)
-* [Smart casts for callable references](#smart-casts-for-callable-references)
-* [Better inference for delegated properties](#better-inference-for-delegated-properties)
-* [SAM conversion for Java interfaces with different arguments](#sam-conversion-for-java-interfaces-with-different-arguments)
-* [Java SAM interfaces in Kotlin](#java-sam-interfaces-in-kotlin)
+* [会自动推断类型的更多情况](#会自动推断类型的更多情况)
+* [lambda 表达式最后一个表达式的智能转换](#lambda-表达式最后一个表达式的智能转换)
+* [可调用引用的智能转换](#可调用引用的智能转换)
+* [属性委托的更佳推断](#属性委托的更佳推断)
+* [具有不同参数的 Java 接口的 SAM 转换](#具有不同参数的-java-接口的-sam-转换)
+* [Kotlin 中的 Java SAM 接口](#kotlin-中的-java-sam-接口)
 
-#### More cases where type is inferred automatically
+#### 会自动推断类型的更多情况
 
 The new inference algorithm infers types for many cases where the old algorithm required you to specify them explicitly.
 For instance, in the following example the type of the lambda parameter `it` is correctly inferred to `String?`:
@@ -518,7 +518,7 @@ fun main() {
 In Kotlin 1.3, you needed to introduce an explicit lambda parameter or replace `to` with a `Pair` constructor with
 explicit generic arguments to make it work.
 
-#### Smart casts for a lambda’s last expression
+#### lambda 表达式最后一个表达式的智能转换
 
 In Kotlin 1.3, the last expression inside a lambda wasn’t  smart cast unless you specified the expected type. Thus, in the
 following example, Kotlin 1.3 infers `String?` as the type of the `result` variable:
@@ -544,7 +544,7 @@ more precise type is used to infer the resulting lambda type. Thus, the type of 
 In Kotlin 1.3, you often needed to add explicit casts (either `!!` or type casts like `as String`) to make such cases work,
 and now these casts have become unnecessary.
 
-#### Smart casts for callable references
+#### 可调用引用的智能转换
 
 In Kotlin 1.3, you couldn’t access a member reference of a smart cast type. Now in Kotlin 1.4 you can:
 
@@ -586,7 +586,7 @@ fun main() {
 You can use different member references `animal::meow` and `animal::woof` after the animal variable has been smart cast
 to specific types `Cat` and `Dog`. After type checks, you can access member references corresponding to subtypes.
 
-#### Better inference for delegated properties
+#### 属性委托的更佳推断
 
 The type of a delegated property wasn’t taken into account while analyzing the delegate expression which follows the `by`
 keyword. For instance, the following code didn’t compile before, but now the compiler correctly infers the types of the
@@ -608,7 +608,7 @@ fun main() {
 
 </div>
 
-#### SAM conversion for Java interfaces with different arguments
+#### 具有不同参数的 Java 接口的 SAM 转换
 
 Kotlin has supported SAM conversions for Java interfaces from the beginning, but there was one case that wasn’t supported,
 which was sometimes annoying when working with existing Java libraries. If you called a Java method that took two SAM interfaces
@@ -640,9 +640,9 @@ fun test(r1: Runnable) {
 
 </div>
 
-#### Java SAM interfaces in Kotlin
+#### Kotlin 中的 Java SAM 接口
 
-In Kotlin 1.4, you can use Java SAM interfaces in Kotlin and apply SAM conversions to them.
+In Kotlin 1.4, you can use Kotlin 中的 Java SAM 接口 and apply SAM conversions to them.
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -660,7 +660,7 @@ fun test() {
 
 In Kotlin 1.3, you would have had to declare the function `foo` above in Java code to perform a SAM conversion.
 
-### Unified backends and extensibility
+### 统一的后端与可扩展性
 
 In Kotlin, we have three backends that generate executables: Kotlin/JVM, Kotlin/JS, and Kotlin/Native. Kotlin/JVM and Kotlin/JS
 don't share much code since they were developed independently of each other. Kotlin/Native is based on a new
@@ -673,23 +673,23 @@ only once for all platforms. Both new IR-based back-ends are in [Alpha](evolutio
 A common backend infrastructure also opens the door for multiplatform compiler extensions. You will be able to plug into the
 pipeline and add custom processing and transformations that will automatically work for all platforms.
 
-We encourage you to use our new [JVM IR](#new-jvm-ir-backend) and [JS IR](#new-js-ir-backend) backends, which are currently in Alpha, and
+We encourage you to use our new [JVM IR](#新的-jvm-ir-后端) and [JS IR](#新的-js-ir-后端) backends, which are currently in Alpha, and
 share your feedback with us.
 
-[**Back to top**](#)
+[**回到顶部**](#)
 
 ## Kotlin/JVM
 
 Kotlin 1.4.0 includes a number of JVM-specific improvements, such as:
 
-* [New JVM IR backend](#new-jvm-ir-backend)
-* [New modes for generating default methods in interfaces](#new-modes-for-generating-default-methods)
-* [Unified exception type for null checks](#unified-exception-type-for-null-checks)
-* [Type annotations in the JVM bytecode](#type-annotations-in-the-jvm-bytecode)
+* [新的 JVM IR 后端](#新的-jvm-ir-后端)
+* [在接口中生成默认方法的新模式](#生成默认方法的新模式)
+* [统一用于空检测的异常类型](#统一用于空检测的异常类型)
+* [在 JVM 字节码中的类型注解](#在-jvm-字节码中的类型注解)
 
-### New JVM IR backend
+### 新的 JVM IR 后端
 
-Along with Kotlin/JS, we are migrating Kotlin/JVM to the [unified IR backend](#unified-backends-and-extensibility),
+Along with Kotlin/JS, we are migrating Kotlin/JVM to the [unified IR backend](#统一的后端与可扩展性),
 which allows us to implement most features and bug fixes once for all platforms. You will also be able to benefit from this
 by creating multiplatform extensions that will work for all platforms.
 
@@ -720,7 +720,7 @@ When using the command-line compiler, add the compiler option `-Xuse-ir`.
 > Considering this, we don't recommend that library authors switch to the new backend in production.
 {:.note}
 
-### New modes for generating default methods
+### 生成默认方法的新模式
 
 When compiling Kotlin code to targets JVM 1.8 and above, you could compile non-abstract methods of Kotlin interfaces into
 Java's `default` methods. For this purpose, there was a mechanism that includes the `@JvmDefault` annotation for marking
@@ -733,7 +733,7 @@ we also added `all-compatibility` mode.
 For more information about default methods in the Java interop, see the [documentation](java-to-kotlin-interop.html#default-methods-in-interfaces) and
 [this blog post](https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-m3-generating-default-methods-in-interfaces/).
 
-### Unified exception type for null checks
+### 统一用于空检测的异常类型
 
 Starting from Kotlin 1.4.0, all runtime null checks will throw a `java.lang.NullPointerException` instead of `KotlinNullPointerException`,
 `IllegalStateException`, `IllegalArgumentException`, and `TypeCastException`. This applies to: the `!!` operator, parameter
@@ -746,7 +746,7 @@ or by various kinds of bytecode processing tools, such as the Android [R8 optimi
 Note that from a developer’s perspective, things won’t change that much: the Kotlin code will throw exceptions with the
 same error messages as before. The type of exception changes, but the information passed stays the same.
 
-### Type annotations in the JVM bytecode
+### 在 JVM 字节码中的类型注解
 
 Kotlin can now generate type annotations in the JVM bytecode (target version 1.8+), so that they become available in Java reflection at runtime.
 To emit the type annotation in the bytecode, follow these steps:
@@ -781,16 +781,16 @@ class A {
 ```
 </div>
 
-[**Back to top**](#)
+[**回到顶部**](#)
 
 ## Kotlin/JS
 
 On the JS platform, Kotlin 1.4.0 provides the following improvements:
 
-- [New Gradle DSL](#new-gradle-dsl)
-- [New JS IR backend](#new-js-ir-backend)
+- [新的 Gradle DSL](#新的-gradle-dsl)
+- [新的 JS IR 后端](#新的-js-ir-后端)
 
-### New Gradle DSL
+### 新的 Gradle DSL
 
 The `kotlin.js` Gradle plugin comes with an adjusted Gradle DSL, which provides a number of new configuration options and is more closely aligned to the DSL used by the `kotlin-multiplatform` plugin. Some of the most impactful changes include:
 
@@ -799,7 +799,7 @@ The `kotlin.js` Gradle plugin comes with an adjusted Gradle DSL, which provides 
 - Improved management for npm dependencies, with mandatory version numbers or [semver](https://docs.npmjs.com/misc/semver#versions) version ranges, as well as support for _development_, _peer_, and _optional_ npm dependencies using `devNpm`, `optionalNpm` and `peerNpm`. Read more about dependency management for npm packages directly from Gradle [here](js-project-setup.html#npm-dependencies).
 - Stronger integrations for [Dukat](https://github.com/Kotlin/dukat), the generator for Kotlin external declarations. External declarations can now be generated at build time, or can be manually generated via a Gradle task. Read more about how to use the integration [here](js-external-declarations-with-dukat.html).
 
-### New JS IR backend
+### 新的 JS IR 后端
 
 The [IR backend for Kotlin/JS](js-ir-compiler.html), which currently has [Alpha](evolution/components-stability.html) stability, provides some new functionality specific to the Kotlin/JS target which is focused around the generated code size through dead code elimination, and improved interoperation with JavaScript and TypeScript, among others.
 
@@ -826,20 +826,20 @@ With the new [`@JsExport`](js-to-kotlin-interop.html#jsexport-annotation) annota
 
 Learn more about the available features in the Kotlin/JS IR compiler backend in the [documentation](js-ir-compiler.html).
 
-[**Back to top**](#)
+[**回到顶部**](#)
 
 ## Kotlin/Native
 
 In 1.4.0, Kotlin/Native got a significant number of new features and improvements, including:
 
-* [Support for suspending functions in Swift and Objective-C](#support-for-kotlins-suspending-functions-in-swift-and-objective-c)
-* [Objective-C generics support by default](#objective-c-generics-support-by-default)
-* [Exception handling in Objective-C/Swift interop](#exception-handling-in-objective-cswift-interop)
-* [Generate release `.dSYM`s on Apple targets by default](#generate-release-dsyms-on-apple-targets-by-default)
-* [Performance improvements](#performance-improvements)
-* [Simplified management of CocoaPods dependencies](#simplified-management-of-cocoapods-dependencies)
+* [在 Swift 与 Objective-C 中支持挂起函数](#在-swift-与-objective-c-中支持-kotlin-的挂起函数)
+* [默认支持 Objective-C 泛型](#默认支持-objective-c-泛型)
+* [Objective-C/Swift 互操作中的异常处理](#objective-cswift-互操作中的异常处理)
+* [默认在苹果目标平台生成 release 版 `.dSYM`](#默认在苹果目标平台生成-release-版-dsym)
+* [性能改进](#性能改进)
+* [简化了 CocoaPods 依赖项的管理](#简化了-cocoapods-依赖项的管理)
 
-### Support for Kotlin’s suspending functions in Swift and Objective-C
+### 在 Swift 与 Objective-C 中支持 kotlin 的挂起函数
 
 In 1.4.0, we add the basic support for suspending functions in Swift and Objective-C. Now, when you compile a Kotlin module
 into an Apple framework, suspending functions are available in it as functions with callbacks (`completionHandler` in
@@ -872,7 +872,7 @@ queryData(id: 17) { result, error in
 
 For more information about using suspending functions in Swift and Objective-C, see the [documentation](native/objc_interop.html).
 
-### Objective-C generics support by default
+### 默认支持 Objective-C 泛型
 
 Previous versions of Kotlin provided experimental support for generics in Objective-C interop. Since 1.4.0, Kotlin/Native
 generates Apple frameworks with generics from Kotlin code by default. In some cases, this may break existing Objective-C
@@ -893,7 +893,7 @@ kotlin {
 
 Please note that all specifics and limitations listed in the [documentation](native/objc_interop.html#generics) are still valid.
 
-### Exception handling in Objective-C/Swift interop
+### Objective-C/Swift 互操作中的异常处理
 
 In 1.4.0, we slightly change the Swift API generated from Kotlin with respect to the way exceptions are translated. There is
 a fundamental difference in error handling between Kotlin and Swift. All Kotlin exceptions are unchecked, while Swift has
@@ -907,7 +907,7 @@ Previously, any exceptions other than `RuntimeException` and `Error` were propag
 now `NSError` is thrown only for exceptions that are instances of classes specified as parameters of `@Throws` annotation
 (or their subclasses). Other Kotlin exceptions that reach Swift/Objective-C are considered unhandled and cause program termination.
 
-### Generate release `.dSYM`s on Apple targets by default
+### 默认在苹果目标平台生成 release 版 `.dSYM`
 
 Starting with 1.4.0, the Kotlin/Native compiler produces [debug symbol files](https://developer.apple.com/documentation/xcode/building_your_app_to_include_debugging_information)
 (`.dSYM`s) for release binaries on Darwin platforms by default. This can be disabled with the `-Xadd-light-debug=disable`
@@ -928,7 +928,7 @@ kotlin {
 
 For more information about crash report symbolication, see the [documentation](native/ios_symbolication.html).
 
-### Performance improvements
+### 性能改进
 
 Kotlin/Native has received a number of performance improvements that speed up both the development process and execution.
 Here are some examples:
@@ -947,7 +947,7 @@ Here are some examples:
   [caching project dependencies and running the compiler from the Gradle daemon](https://blog.jetbrains.com/kotlin/2020/03/kotlin-1-3-70-released/#kotlin-native).
   Since that time, we’ve managed to fix numerous issues and improve the overall stability of these features.
 
-### Simplified management of CocoaPods dependencies
+### 简化了 CocoaPods 依赖项的管理
 
 Previously, once you integrated your project with the dependency manager CocoaPods, you could build an iOS, macOS, watchOS,
 or tvOS part of your project only in Xcode, separate from other parts of your multiplatform project. These other parts could
@@ -972,25 +972,25 @@ The new dependency will be added automatically. No additional steps are required
 
 Learn [how to add dependencies](native/cocoapods.html).
 
-[**Back to top**](#)
+[**回到顶部**](#)
 
-## Kotlin Multiplatform
+## Kotlin 多平台
 
-> Multiplatform projects are in [Alpha](evolution/components-stability.html). Language features and tooling may change in future Kotlin versions.
+> 多平台项目处于 [Alpha](evolution/components-stability.html) 版。语言特性与工具都可能在未来的 Kotlin 版本中发生变化。
 {:.note}
 
-[Kotlin Multiplatform](multiplatform.html) reduces time spent writing and maintaining the same code for [different platforms](mpp-supported-platforms.html)
+[Kotlin 多平台](multiplatform.html) reduces time spent writing and maintaining the same code for [different platforms](mpp-supported-platforms.html)
 while retaining the flexibility and benefits of native programming. We continue investing our effort in multiplatform features
 and improvements:
 
-* [Sharing code in several targets with the hierarchical project structure](#sharing-code-in-several-targets-with-the-hierarchical-project-structure)
-* [Leveraging native libs in the hierarchical structure](#leveraging-native-libs-in-the-hierarchical-structure)
-* [Specifying kotlinx dependencies only once](#specifying-dependencies-only-once)
+* [使用分层项目结构在多个目标中共享代码](#使用分层项目结构在多个目标中共享代码)
+* [在分层结构中利用原生库](#在分层结构中利用原生库)
+* [只需指定一次 kotlinx 依赖项](#只需指定一次依赖项)
 
 > Multiplatform projects require Gradle 6.0 or later.
 {:.note}
 
-### Sharing code in several targets with the hierarchical project structure
+### 使用分层项目结构在多个目标中共享代码
 
 With the new hierarchical project structure support, you can share code among [several platforms](mpp-supported-platforms.html)
 in a [multiplatform project](mpp-discover-project.html).
@@ -1091,7 +1091,7 @@ kotlin{
 Thanks to the hierarchical project structure, libraries can also provide common APIs for a subset of targets. Learn more
 about [sharing code in libraries](mpp-share-on-platforms.html#share-code-in-libraries).
 
-### Leveraging native libs in the hierarchical structure
+### 在分层结构中利用原生库
 
 You can use platform-dependent libraries, such as `Foundation`, `UIKit`, and `posix`, in source sets shared among several
 native targets. This can help you share more native code without being limited by platform-specific dependencies.
@@ -1101,7 +1101,7 @@ that you can use in the shared code.
 
 Learn more about [usage of platform-dependent libraries](mpp-share-on-platforms.html#use-native-libraries-in-the-hierarchical-structure).
 
-### Specifying dependencies only once
+### 只需指定一次依赖项
 
 From now on, instead of specifying dependencies on different variants of the same library in shared and platform-specific
 source sets where it is used, you should specify a dependency only once in the shared source set.
@@ -1147,7 +1147,7 @@ Don’t use kotlinx library artifact names with suffixes specifying the platform
 as they are NOT supported anymore. Instead, use the library base artifact name, which in the example above is `kotlinx-coroutines-core`.
 
 However, the change doesn’t currently affect:
-* The `stdlib` library – starting from Kotlin 1.4.0, [the `stdlib` dependency is added automatically](#dependency-on-the-standard-library-added-by-default).
+* The `stdlib` library – starting from Kotlin 1.4.0, [the `stdlib` dependency is added automatically](#默认添加了对标准库的依赖).
 * The `kotlin.test` library – you should still use `test-common` and `test-annotations-common`. These dependencies will be
   addressed later.
 
@@ -1156,18 +1156,18 @@ libraries with such suffixes as `-jvm` or` -js`, for example `kotlinx-coroutines
 
 Learn more about [configuring dependencies](using-gradle.html#configuring-dependencies).
 
-[**Back to top**](#)
+[**回到顶部**](#)
 
-## Gradle project improvements
+## Gradle 项目改进
 
-Besides Gradle project features and improvements that are specific to [Kotlin Multiplatform](#kotlin-multiplatform), [Kotlin/JVM](#kotlinjvm),
+Besides Gradle project features and improvements that are specific to [Kotlin 多平台](#kotlin-多平台), [Kotlin/JVM](#kotlinjvm),
 [Kotlin/Native](#kotlinnative), and [Kotlin/JS](#kotlinjs), there are several changes applicable to all Kotlin Gradle projects:
 
-* [Dependency on the standard library is now added by default](#dependency-on-the-standard-library-added-by-default)
-* [Kotlin projects require a recent version of Gradle](#minimum-gradle-version-for-kotlin-projects)
-* [Improved support for Kotlin Gradle DSL in the IDE](#improved-gradlekts-support-in-the-ide)
+* [现在默认添加了对标准库的依赖](#默认添加了对标准库的依赖)
+* [Kotlin 项目需要最近版本的 Gradle](#kotlin-项目的最低-gradle-版本)
+* [改进了 IDE 对 Kotlin Gradle DSL 的支持](#改进了-ide-对-gradlekts-的支持)
 
-### Dependency on the standard library added by default
+### 默认添加了对标准库的依赖
 
 You no longer need to declare a dependency on the `stdlib` library in any Kotlin Gradle project, including a multiplatform one.
 The dependency is added by default.
@@ -1181,12 +1181,12 @@ the `kotlinOptions.jvmTarget` [compiler option](using-gradle.html#compiler-optio
 
 Learn how to [change the default behavior](using-gradle.html#dependency-on-the-standard-library).
 
-### Minimum Gradle version for Kotlin projects
+### Kotlin 项目的最低 Gradle 版本
 
 To enjoy the new features in your Kotlin projects, update Gradle to the [latest version](https://gradle.org/releases/).
 Multiplatform projects require Gradle 6.0 or later, while other Kotlin projects work with Gradle 5.4 or later.
 
-### Improved *.gradle.kts support in the IDE
+### 改进了 IDE 对 *.gradle.kts 的支持
 
 In 1.4.0, we continued improving the IDE support for Gradle Kotlin DSL scripts (`*.gradle.kts` files). Here is what the new
 version brings:
@@ -1224,25 +1224,25 @@ version brings:
   Gradle Daemon returns all the information about errors directly and shows it in the Build tool window. This saves you both
   time and effort.
 
-[**Back to top**](#)
+[**回到顶部**](#)
 
-## Standard library
+## 标准库
 
 Here is the list of the most significant changes to the Kotlin standard library in 1.4.0:
 
-- [Common exception processing API](#common-exception-processing-api)
-- [New functions for arrays and collections](#new-functions-for-arrays-and-collections)
-- [Functions for string manipulations](#functions-for-string-manipulations)
-- [Bit operations](#bit-operations)
-- [Delegated properties improvements](#delegated-properties-improvements)
-- [Converting from KType to Java Type](#converting-from-ktype-to-java-type)
-- [Proguard configurations for Kotlin reflection](#proguard-configurations-for-kotlin-reflection)
-- [Improving the existing API](#improving-the-existing-api)
-- [module-info descriptors for stdlib artifacts](#module-info-descriptors-for-stdlib-artifacts)
-- [Deprecations](#deprecations)
-- [Exclusion of the deprecated experimental coroutines](#exclusion-of-the-deprecated-experimental-coroutines)
+- [公共异常处理 API](#公共异常处理-api)
+- [数组与集合的新函数](#数组与集合的新函数)
+- [一些字符串操作函数](#一些字符串操作函数)
+- [一些位操作](#一些位操作)
+- [属性委托改进](#属性委托改进)
+- [由 KType 转换为 Java Type](#由-ktype-转换为-java-type)
+- [Kotlin 反射的 Proguard 配置](#kotlin-反射的-proguard-配置)
+- [现有 API 改进](#现有-api-改进)
+- [stdlib 构件的 module-info 描述符](#stdlib-构件的-module-info-描述符)
+- [弃用项](#弃用项)
+- [排除弃用的实验性协程](#排除弃用的实验性协程)
 
-### Common exception processing API
+### 公共异常处理 API
 
 The following API elements have been moved to the common library:
 
@@ -1253,9 +1253,9 @@ The following API elements have been moved to the common library:
 * `@Throws` annotation, which lists exception types that will be checked when the function is compiled to a platform method
   (on JVM or native platforms).
 
-### New functions for arrays and collections
+### 数组与集合的新函数
 
-#### Collections
+#### 集合
 
 In 1.4.0, the standard library includes a number of useful functions for working with **collections**:
 
@@ -1396,8 +1396,8 @@ In 1.4.0, the standard library includes a number of useful functions for working
   of all four functions that return `null` on empty collections.
 
 * New overloads for `flatMap` and `flatMapTo` let you use transformations with return types that don’t match the receiver type, namely:
-  * Transformations to `Sequence` on `Iterable`, `Array`, and `Map`
-  * Transformations to `Iterable` on `Sequence`
+    * Transformations to `Sequence` on `Iterable`, `Array`, and `Map`
+    * Transformations to `Iterable` on `Sequence`
 
     <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.4">
 
@@ -1417,7 +1417,7 @@ In 1.4.0, the standard library includes a number of useful functions for working
 * `removeFirst()` and `removeLast()` shortcuts for removing elements from mutable lists, and `*orNull()` counterparts
   of these functions.
 
-#### Arrays
+#### 数组
 
 To provide a consistent experience when working with different container types, we’ve also added new functions for **arrays**:
 
@@ -1496,7 +1496,7 @@ fun main() {
 The `ArrayDeque` implementation uses a resizable array underneath: it stores the contents in a circular buffer, an `Array`,
 and resizes this `Array` only when it becomes full.
 
-### Functions for string manipulations
+### 一些字符串操作函数
 
 The standard library in 1.4.0 includes a number of improvements in the API for string manipulation:
 
@@ -1537,7 +1537,7 @@ The standard library in 1.4.0 includes a number of improvements in the API for s
     ```
     </div>
 
-### Bit operations
+### 一些位操作
 
 New functions for bit manipulations:
 * `countOneBits()`
@@ -1561,7 +1561,7 @@ fun main() {
 ```
 </div>
 
-### Delegated properties improvements
+### 属性委托改进
 
 In 1.4.0, we have added new features to improve your experience with delegated properties in Kotlin:
 - Now a property can be delegated to another property.
@@ -1573,7 +1573,7 @@ described in [this blog post](https://blog.jetbrains.com/kotlin/2019/12/what-to-
 
 For more information about delegated properties, see the [documentation](delegated-properties.html).
 
-### Converting from KType to Java Type
+### 由 KType 转换为 Java Type
 
 A new extension property `KType.javaType` (currently experimental) in the stdlib helps you obtain a `java.lang.reflect.Type`
 from a Kotlin type without using the whole `kotlin-reflect` dependency.
@@ -1604,18 +1604,18 @@ fun main() {
 ```
 </div>
 
-### Proguard configurations for Kotlin reflection
+### Kotlin 反射的 Proguard 配置
 
 Starting from 1.4.0, we have embedded Proguard/R8 configurations for Kotlin Reflection in `kotlin-reflect.jar`. With this
 in place, most Android projects using R8 or Proguard should work with kotlin-reflect without needing any additional configuration.
 You no longer need to copy-paste the Proguard rules for kotlin-reflect internals. But note that you still need to explicitly
 list all the APIs you’re going to reflect on.
 
-### Improving the existing API
+### 现有 API 改进
 
 * Several functions now work on null receivers, for example:
-  * `toBoolean()` on strings
-  * `contentEquals()`, `contentHashcode()`, `contentToString()` on arrays
+    * `toBoolean()` on strings
+    * `contentEquals()`, `contentHashcode()`, `contentToString()` on arrays
 
 * `NaN`, `NEGATIVE_INFINITY`, and `POSITIVE_INFINITY` in `Double` and `Float` are now defined as `const`, so you can use
   them as annotation arguments.
@@ -1625,7 +1625,7 @@ list all the APIs you’re going to reflect on.
 
 * The `maxOf()` and `minOf()` top-level functions can accept a variable number of arguments (`vararg`).
 
-### module-info descriptors for stdlib artifacts
+### stdlib 构件的 module-info 描述符
 
 Kotlin 1.4.0 adds `module-info.java` module information to default standard library artifacts. This lets you use them with
 [**jlink** tool](https://docs.oracle.com/en/java/javase/11/tools/jlink.html), which generates custom Java runtime images
@@ -1634,9 +1634,9 @@ You could already use jlink with Kotlin standard library artifacts, but you had 
 ones with the “modular” classifier – and the whole setup wasn’t straightforward.  
 In Android, make sure you use the Android Gradle plugin version 3.2 or higher, which can correctly process jar files with module-info.
 
-### Deprecations
+### 弃用项
 
-#### toShort() and toByte() of Double and Float
+#### Double 与 Float 的 toShort() 与 toByte()
 
 We've deprecated the functions `toShort()` and `toByte()` on `Double` and `Float` because they could lead to unexpected results
 because of the narrow value range and smaller variable size.
@@ -1644,28 +1644,28 @@ because of the narrow value range and smaller variable size.
 To convert floating-point numbers to `Byte` or `Short`, use the two-step conversion: first, convert them to `Int`, and then
 convert them again to the target type.
 
-#### contains(), indexOf(), and lastIndexOf() on floating-point arrays
+#### 浮点数组的 contains()、 indexOf() 与 lastIndexOf()
 
 We've deprecated the `contains()`, `indexOf()`, and `lastIndexOf()` extension functions of `FloatArray` and `DoubleArray`
 because they use the [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) standard equality, which contradicts the total
 order equality in some corner cases. See [this issue](https://youtrack.jetbrains.com/issue/KT-28753) for details.
 
-#### min() and max() collection functions
+#### min() 与 max() 集合函数
 
 We've deprecated the `min()` and `max()` collection functions in favor of `minOrNull()` and `maxOrNull()`, which more
 properly reflect their behavior – returning `null` on empty collections.
 See [this issue](https://youtrack.jetbrains.com/issue/KT-38854) for details.
 
-### Exclusion of the deprecated experimental coroutines
+### 排除弃用的实验性协程
 
 The `kotlin.coroutines.experimental` API was deprecated in favor of kotlin.coroutines in 1.3.0. In 1.4.0, we’re completing
 the deprecation cycle for `kotlin.coroutines.experimental` by removing it from the standard library. For those who still
 use it on the JVM, we've provided a compatibility artifact `kotlin-coroutines-experimental-compat.jar` with all the experimental
 coroutines APIs. We've published it to Maven, and we include it in the Kotlin distribution alongside the standard library.
 
-[**Back to top**](#)
+[**回到顶部**](#)
 
-## Stable JSON serialization
+## 稳定版 JSON 序列化
 
 With Kotlin 1.4.0, we are shipping the first stable version of [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) -
 1.0.0-RC. Now we are pleased to declare the JSON serialization API in `kotlinx-serialization-core` (previously known as `kotlinx-serialization-runtime`)
@@ -1681,41 +1681,41 @@ important features and it can help you address any issues that you might face.
 >**Note**: `kotlinx-serialization` 1.0.0-RC only works with Kotlin compiler 1.4. Earlier compiler versions are not compatible.
 {:.note}
 
-[**Back to top**](#)
+[**回到顶部**](#)
 
-## Scripting and REPL
+## 脚本与 REPL
 
 In 1.4.0, scripting in Kotlin benefits from a number of functional and performance improvements along with other updates.
 Here are some of the key changes:
 
-- [New dependencies resolution API](#new-dependencies-resolution-api)
-- [New REPL API](#new-repl-api)
-- [Compiled scripts cache](#compiled-scripts-cache)
-- [Artifacts renaming](#artifacts-renaming)
+- [新的依赖项解析 API](#新的依赖项解析-api)
+- [新的 REPL API](#新的-repl-api)
+- [已编译脚本缓存](#已编译脚本缓存)
+- [构件重命名](#构件重命名)
 
 To help you become more familiar with scripting in Kotlin, we’ve prepared a [project with examples](https://github.com/Kotlin/kotlin-script-examples).
 It contains examples of the standard scripts (`*.main.kts`) and examples of uses of the Kotlin Scripting API and custom
 script definitions. Please give it a try and share your feedback using our [issue tracker](https://youtrack.jetbrains.com/issues/KT).
 
-### New dependencies resolution API
+### 新的依赖项解析 API
 
 In 1.4.0, we’ve introduced a new API for resolving external dependencies (such as Maven artifacts), along with implementations
 for it. This API is published in the new artifacts `kotlin-scripting-dependencies` and `kotlin-scripting-dependencies-maven`.
 The previous dependency resolution functionality in `kotlin-script-util` library is now deprecated.
 
-### New REPL API
+### 新的 REPL API
 
 The new experimental REPL API is now a part of the Kotlin Scripting API. There are also several implementations of it in
 the published artifacts, and some have advanced functionality, such as code completion. We use this API in the
 [Kotlin Jupyter kernel](https://blog.jetbrains.com/kotlin/2020/05/kotlin-kernel-for-jupyter-notebook-v0-8/)
 and now you can try it in your own custom shells and REPLs.
 
-### Compiled scripts cache
+### 已编译脚本缓存
 
 The Kotlin Scripting API now provides the ability to implement a compiled scripts cache, significantly speeding up subsequent
 executions of unchanged scripts. Our default advanced script implementation `kotlin-main-kts` already has its own cache.
 
-### Artifacts renaming
+### 构件重命名
 
 In order to avoid confusion about artifact names, we’ve renamed `kotlin-scripting-jsr223-embeddable` and `kotlin-scripting-jvm-host-embeddable`
 to just `kotlin-scripting-jsr223` and `kotlin-scripting-jvm-host`. These artifacts depend on the `kotlin-compiler-embeddable`
@@ -1725,9 +1725,9 @@ If, for some reason, you need artifacts that depend on the unshaded `kotlin-comp
 `-unshaded` suffix, such as `kotlin-scripting-jsr223-unshaded`. Note that this renaming affects only the scripting artifacts
 that are supposed to be used directly; names of other artifacts remain unchanged.
 
-[**Back to top**](#)
+[**回到顶部**](#)
 
-## Migrating to Kotlin 1.4.0
+## 迁移到 Kotlin 1.4.0
 
 The Kotlin plugin’s migration tools help you migrate your projects from earlier versions of Kotlin to 1.4.0.
 
@@ -1743,9 +1743,9 @@ to help you decide which suggestions to accept and which to ignore.
 
 ![Migration inspections]({{ url_for('asset', path='images/reference/whats-new/migration-inspection-wn.png') }})
 
-### Migrating multiplatform projects
+### 迁移多平台项目
 
-To help you start using the new features of [Kotlin multiplatform](#kotlin-multiplatform) in existing projects, we
+To help you start using the new features of [Kotlin multiplatform](#kotlin-多平台) in existing projects, we
 publish the [migration guide for multiplatform projects](migrating-multiplatform-project-to-14.html).
 
-[**Back to top**](#)
+[**回到顶部**](#)

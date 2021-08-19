@@ -1,61 +1,63 @@
 ---
 type: doc
 layout: reference
-title: "What's New in Kotlin 1.1"
+title: "Kotlin 1.1 的新特性"
 ---
 
-# What's New in Kotlin 1.1
+# Kotlin 1.1 的新特性
 
-## Table of Contents
+## 目录
 
-* [Coroutines](#coroutines-experimental)
-* [Other language features](#other-language-features)
-* [Standard library](#standard-library)
-* [JVM backend](#jvm-backend)
-* [JavaScript backend](#javascript-backend)
+* [协程](#协程实验性的)
+* [其他语言特性](#其他语言特性)
+* [标准库](#标准库)
+* [JVM 后端](#jvm-后端)
+* [JavaScript 后端](#javascript-后端)
 
 ## JavaScript
 
-Starting with Kotlin 1.1, the JavaScript target is no longer considered experimental. All language features are supported,
-and there are many new tools for integration with the frontend development environment. See [below](#javascript-backend) for
-a more detailed list of changes.
+从 Kotlin 1.1 开始，JavaScript 目标平台不再当是实验性的。所有语言功能都支持，
+并且有许多新的工具用于与前端开发环境集成。更详细改动列表，请参见[下文](#javascript-后端)
+。
 
-## Coroutines (experimental)
+{:#协程实验性的}
 
-The key new feature in Kotlin 1.1 is *coroutines*, bringing the support of `async`/`await`, `yield` and similar programming
-patterns. The key feature of Kotlin's design is that the implementation of coroutine execution is part of the libraries,
-not the language, so you aren't bound to any specific programming paradigm or concurrency library.
+## 协程（实验性的）
 
-A coroutine is effectively a light-weight thread that can be suspended and resumed later. Coroutines are supported through [*suspending functions*](coroutines.html#suspending-functions): a call to such a function can potentially suspend a coroutine, and to start a new coroutine we usually use an anonymous suspending functions (i.e. suspending lambdas).
+Kotlin 1.1 的关键新特性是*协程*，它带来了 `future`/`await`、 `yield` 以及类似的编程模式的<!--
+-->支持。Kotlin 的设计中的关键特性是协程执行的实现是语言库的一部分，
+而不是语言的一部分，所以你不必绑定任何特定的编程范式或并发库。
 
-Let's look at `async`/`await` which is implemented in an external library, [kotlinx.coroutines](https://github.com/kotlin/kotlinx.coroutines):
+协程实际上是一个轻量级的线程，可以挂起并稍后恢复。协程通过[*挂起函数*](coroutines.html#挂起函数)支持：对这样的函数的调用可能会挂起协程，并启动一个新的协程，我们通常使用匿名挂起函数（即挂起 lambda 表达式）。
+
+我们来看看在外部库 [kotlinx.coroutines](https://github.com/kotlin/kotlinx.coroutines) 中实现的 `async`/`await`：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
-// runs the code in the background thread pool
+// 在后台线程池中运行该代码
 fun asyncOverlay() = async(CommonPool) {
-    // start two async operations
+    // 启动两个异步操作
     val original = asyncLoadImage("original")
     val overlay = asyncLoadImage("overlay")
-    // and then apply overlay to both results
+    // 然后应用叠加到两个结果
     applyOverlay(original.await(), overlay.await())
 }
 
-// launches new coroutine in UI context
+// 在 UI 上下文中启动新的协程
 launch(UI) {
-// wait for async overlay to complete
+// 等待异步叠加完成
 val image = asyncOverlay().await()
-// and then show it in UI
+// 然后在 UI 中显示
 showImage(image)
 }
 ```
 </div>
 
-Here, `async { ... }` starts a coroutine and, when we use `await()`, the execution of the coroutine is suspended while the operation being awaited is executed, and is resumed (possibly on a different thread) when the operation being awaited completes.
+这里，`async { …… }` 启动一个协程，当我们使用 `await()` 时，挂起协程的执行，而执行正在等待的操作，并且在等待的操作完成时恢复（可能在不同的线程上） 。
 
-The standard library uses coroutines to support *lazily generated sequences* with `yield` and `yieldAll` functions.
-In such a sequence, the block of code that returns sequence elements is suspended after each element has been retrieved,
-and resumed when the next element is requested. Here's an example:
+标准库通过 `yield` 与 `yieldAll` 函数使用协程来支持*惰性生成序列*。
+在这样的序列中，在取回每个元素之后挂起返回序列元素的代码块，
+并在请求下一个元素时恢复。这里有一个例子：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
@@ -66,14 +68,14 @@ fun main(args: Array<String>) {
 //sampleStart
     val seq = buildSequence {
       for (i in 1..5) {
-          // yield a square of i
+          // 产生一个 i 的平方
           yield(i * i)
       }
-      // yield a range
+      // 产生一个区间
       yieldAll(26..28)
     }
 
-    // print the sequence
+    // 输出该序列
   println(seq.toList())
 //sampleEnd
 }
@@ -82,21 +84,21 @@ fun main(args: Array<String>) {
 </div>
 
 
-Run the code above to see the result. Feel free to edit it and run again!
+运行上面的代码以查看结果。随意编辑它并再次运行！
 
-For more information, please refer to the [coroutine documentation](/docs/reference/coroutines.html) and [tutorial](/docs/tutorials/coroutines/coroutines-basic-jvm.html).
+更多信息请参见[协程文档](coroutines.html)及[教程](https://www.kotlincn.net/docs/tutorials/coroutines/coroutines-basic-jvm.html)。
 
-Note that coroutines are currently considered an **experimental feature**, meaning that the Kotlin team is not committing
-to supporting the backwards compatibility of this feature after the final 1.1 release.
+请注意，协程目前还是一个**实验性的特性**，这意味着 Kotlin 团队不承诺<!--
+-->在最终的 1.1 版本时保持该功能的向后兼容性。
 
 
-## Other Language Features
+## 其他语言特性
 
-### Type aliases
+### 类型别名
 
-A type alias allows you to define an alternative name for an existing type.
-This is most useful for generic types such as collections, as well as for function types.
-Here is an example:
+类型别名允许你为现有类型定义备用名称。
+这对于泛型类型（如集合）以及函数类型最有用。
+这里有几个例子：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
@@ -107,7 +109,7 @@ typealias OscarWinners = Map<String, String>
 fun countLaLaLand(oscarWinners: OscarWinners) =
         oscarWinners.count { it.value.contains("La La Land") }
 
-// Note that the type names (initial and the type alias) are interchangeable:
+// 请注意，类型名称（初始名与类型别名）是可互换的：
 fun checkLaLaLandIsTheBestMovie(oscarWinners: Map<String, String>) =
         oscarWinners["Best picture"] == "La La Land"
 //sampleEnd
@@ -116,7 +118,7 @@ fun oscarWinners(): OscarWinners {
     return mapOf(
             "Best song" to "City of Stars (La La Land)",
             "Best actress" to "Emma Stone (La La Land)",
-            "Best picture" to "Moonlight" /* ... */)
+            "Best picture" to "Moonlight" /* …… */)
 }
 
 fun main(args: Array<String>) {
@@ -131,14 +133,14 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-See the [documentation](type-aliases.html) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/type-aliases.md) for more details.
+更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/type-aliases.md)。
 
 
-### Bound callable references
+### 已绑定的可调用引用
 
-You can now use the `::` operator to get a [member reference](reflection.html#function-references) pointing to a method or property of a specific object instance.
-Previously this could only be expressed with a lambda.
-Here's an example:
+现在可以使用 `::` 操作符来获取指向特定对象实例的方法或属性的[成员引用](reflection.html#函数引用)。
+以前这只能用 lambda 表达式表示。
+这里有一个例子：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
@@ -155,15 +157,15 @@ fun main(args: Array<String>) {
 </div>
 
 
-Read the [documentation](reflection.html#bound-function-and-property-references-since-11) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/bound-callable-references.md) for more details.
+更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/bound-callable-references.md)。
 
 
-### Sealed and data classes
+### 密封类与数据类
 
-Kotlin 1.1 removes some of the restrictions on sealed and data classes that were present in Kotlin 1.0.
-Now you can define subclasses of a top-level sealed class on the top level in the same file, and not just as nested classes of the sealed class.
-Data classes can now extend other classes.
-This can be used to define a hierarchy of expression classes nicely and cleanly:
+Kotlin 1.1 删除了一些对 Kotlin 1.0 中已存在的密封类与数据类的限制。
+现在你可以在同一个文件中的任何地方定义一个密封类的子类，而不只是以作为密封类嵌套类的方式。
+数据类现在可以扩展其他类。
+这可以用来友好且清晰地定义一个表达式类的层次结构：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
@@ -189,15 +191,15 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-Read the [documentation](sealed-classes.html) or
-[sealed class](https://github.com/Kotlin/KEEP/blob/master/proposals/sealed-class-inheritance.md) and
-[data class](https://github.com/Kotlin/KEEP/blob/master/proposals/data-class-inheritance.md) KEEPs for more detail.
+更详细信息请参阅其[文档](sealed-classes.html)或者<!--
+-->[密封类](https://github.com/Kotlin/KEEP/blob/master/proposals/sealed-class-inheritance.md)及<!--
+-->[数据类](https://github.com/Kotlin/KEEP/blob/master/proposals/data-class-inheritance.md)的 KEEP。
 
 
-### Destructuring in lambdas
+### lambda 表达式中的解构
 
-You can now use the [destructuring declaration](multi-declarations.html) syntax to unpack the arguments passed to a lambda.
-Here's an example:
+现在可以使用[解构声明](multi-declarations.html)语法来解开传递给 lambda 表达式的参数。
+这里有一个例子：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1" auto-indent="false" indent="2">
 
@@ -205,24 +207,24 @@ Here's an example:
 fun main(args: Array<String>) {
 //sampleStart
     val map = mapOf(1 to "one", 2 to "two")
-    // before
+    // 之前
     println(map.mapValues { entry ->
       val (key, value) = entry
       "$key -> $value!"
     })
-    // now
+    // 现在
     println(map.mapValues { (key, value) -> "$key -> $value!" })
 //sampleEnd
 }
 ```
 </div>
 
-Read the [documentation](multi-declarations.html#destructuring-in-lambdas-since-11) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/destructuring-in-parameters.md) for more details.
+更详细信息请参阅其[文档](multi-declarations.html#在-lambda-表达式中解构自-11-起)及其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/destructuring-in-parameters.md)。
 
 
-### Underscores for unused parameters
+### 下划线用于未使用的参数
 
-For a lambda with multiple parameters, you can use the `_` character to replace the names of the parameters you don't use:
+对于具有多个参数的 lambda 表达式，可以使用 `_` 字符替换不使用的参数的名称：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
@@ -237,7 +239,7 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-This also works in [destructuring declarations](multi-declarations.html):
+这也适用于[解构声明](multi-declarations.html)：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
@@ -255,12 +257,12 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-Read the [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/underscore-for-unused-parameters.md) for more details.
+更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/underscore-for-unused-parameters.md)。
 
 
-### Underscores in numeric literals
+### 数字字面值中的下划线
 
-Just as in Java 8, Kotlin now allows to use underscores in numeric literals to separate groups of digits:
+正如在 Java 8 中一样，Kotlin 现在允许在数字字面值中使用下划线来分隔数字分组：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
@@ -280,19 +282,19 @@ fun main(args: Array<String>) {
 
 </div>
 
-Read the [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/underscores-in-numeric-literals.md) for more details.
+更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/underscores-in-numeric-literals.md)。
 
 
-### Shorter syntax for properties
+### 对于属性的更短语法
 
-For properties with the getter defined as an expression body, the property type can now be omitted:
+对于没有自定义访问器、或者将 getter 定义为表达式主体的属性，现在可以省略属性的类型：
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
 ```kotlin
 //sampleStart
     data class Person(val name: String, val age: Int) {
-    val isAdult get() = age >= 20 // Property type inferred to be 'Boolean'
+    val isAdult get() = age >= 20 // 属性类型推断为 “Boolean”
 }
 //sampleEnd
 fun main(args: Array<String>) {
@@ -303,10 +305,10 @@ fun main(args: Array<String>) {
 
 </div>
 
-### Inline property accessors
+### 内联属性访问器
 
-You can now mark property accessors with the `inline` modifier if the properties don't have a backing field.
-Such accessors are compiled in the same way as [inline functions](inline-functions.html).
+如果属性没有幕后字段，现在可以使用 `inline` 修饰符来标记该属性访问器。
+这些访问器的编译方式与[内联函数](inline-functions.html)相同。
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -318,22 +320,22 @@ public val <T> List<T>.lastIndex: Int
 
 fun main(args: Array<String>) {
     val list = listOf('a', 'b')
-    // the getter will be inlined
+    // 其 getter 会内联
     println("Last index of $list is ${list.lastIndex}")
 }
 ```
 
 </div>
 
-You can also mark the entire property as `inline` - then the modifier is applied to both accessors.
+你也可以将整个属性标记为 `inline`——这样修饰符应用于两个访问器。
 
-Read the [documentation](inline-functions.html#inline-properties) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-properties.md) for more details.
+更详细信息请参阅其[文档](inline-functions.html#inline-properties)及其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-properties.md)。
 
 
-### Local delegated properties
+### 局部委托属性
 
-You can now use the [delegated property](delegated-properties.html) syntax with local variables.
-One possible use is defining a lazily evaluated local variable:
+现在可以对局部变量使用[委托属性](delegated-properties.html)语法。
+一个可能的用途是定义一个延迟求值的局部变量：
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -348,8 +350,8 @@ fun main(args: Array<String>) {
         println("Calculating the answer...")
         42
     }
-    if (needAnswer()) {                     // returns the random value
-        println("The answer is $answer.")   // answer is calculated at this point
+    if (needAnswer()) {                     // 返回随机值
+        println("The answer is $answer.")   // 此时计算出答案
     }
     else {
         println("Sometimes no answer is the answer...")
@@ -360,29 +362,29 @@ fun main(args: Array<String>) {
 
 </div>
 
-Read the [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/local-delegated-properties.md) for more details.
+更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/local-delegated-properties.md)。
 
 
-### Interception of delegated property binding
+### 委托属性绑定的拦截
 
-For [delegated properties](delegated-properties.html), it is now possible to intercept delegate to property binding using the
-`provideDelegate` operator.
-For example, if we want to check the property name before binding, we can write something like this:
+对于[委托属性](delegated-properties.html)，现在可以使用 `provideDelegate` 操作符拦截委托到属性之间的绑定
+。
+例如，如果我们想要在绑定之前检测属性名称，我们可以这样写：
 
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class ResourceLoader<T>(id: ResourceID<T>) {
-    operator fun provideDelegate(thisRef: MyUI, prop: KProperty<*>): ReadOnlyProperty<MyUI, T> {
-        checkProperty(thisRef, prop.name)
-        ... // property creation
+    operator fun provideDelegate(thisRef: MyUI, property: KProperty<*>): ReadOnlyProperty<MyUI, T> {
+        checkProperty(thisRef, property.name)
+        …… // 属性创建
     }
 
-    private fun checkProperty(thisRef: MyUI, name: String) { ... }
+    private fun checkProperty(thisRef: MyUI, name: String) { …… }
 }
 
-fun <T> bindResource(id: ResourceID<T>): ResourceLoader<T> { ... }
+fun <T> bindResource(id: ResourceID<T>): ResourceLoader<T> { …… }
 
 class MyUI {
     val image by bindResource(ResourceID.image_id)
@@ -392,15 +394,15 @@ class MyUI {
 
 </div>
 
-The `provideDelegate` method will be called for each property during the creation of a `MyUI` instance, and it can perform
-the necessary validation right away.
+`provideDelegate` 方法在创建 `MyUI` 实例期间将会为每个属性调用，并且可以立即执行<!--
+-->必要的验证。
 
-Read the [documentation](delegated-properties.html#providing-a-delegate) for more details.
+更详细信息请参阅其[文档](delegated-properties.html#提供委托)。
 
 
-### Generic enum value access
+### 泛型枚举值访问
 
-It is now possible to enumerate the values of an enum class in a generic way.
+现在可以用泛型的方式来对枚举类的值进行枚举：
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -414,16 +416,16 @@ inline fun <reified T : Enum<T>> printAllValues() {
 //sampleEnd
 
 fun main(args: Array<String>) {
-    printAllValues<RGB>() // prints RED, GREEN, BLUE
+    printAllValues<RGB>() // 输出 RED, GREEN, BLUE
 }
 ```
 
 </div>
 
-### Scope control for implicit receivers in DSLs
+### 对于 DSL 中隐式接收者的作用域控制
 
-The [`@DslMarker`](/api/latest/jvm/stdlib/kotlin/-dsl-marker/index.html) annotation allows to restrict the use of receivers from outer scopes in a DSL context.
-Consider the canonical [HTML builder example](type-safe-builders.html):
+`@DslMarker` 注解允许限制来自 DSL 上下文中的外部作用域的接收者的使用。
+考虑那个典型的 [HTML 构建器示例](type-safe-builders.html)：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -437,27 +439,27 @@ table {
 
 </div>
 
-In Kotlin 1.0, code in the lambda passed to `td` has access to three implicit receivers: the one passed to `table`, to `tr`
-and to `td`. This allows you to call methods that make no sense in the context - for example to call `tr` inside `td` and thus
-to put a `<tr>` tag in a `<td>`.
+在 Kotlin 1.0 中，传递给 `td` 的 lambda 表达式中的代码可以访问三个隐式接收者：传递给 `table`、`tr`
+与 `td` 的。 这允许你调用在上下文中没有意义的方法——例如在 `td` 里面调用 `tr`，从而<!--
+-->在 `<td>` 中放置一个 `<tr>` 标签。
 
-In Kotlin 1.1, you can restrict that, so that only methods defined on the implicit receiver of `td`
-will be available inside the lambda passed to `td`. You do that by defining your annotation marked with the `@DslMarker` meta-annotation
-and applying it to the base class of the tag classes.
+在 Kotlin 1.1 中，你可以限制这种情况，以使只有在 `td` 的隐式接收者上定义的方法<!--
+-->会在传给 `td` 的 lambda 表达式中可用。你可以通过定义标记有 `@DslMarker` 元注解的注解<!--
+-->并将其应用于标记类的基类。
 
-Read the [documentation](type-safe-builders.html#scope-control-dslmarker-since-11) and [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/scope-control-for-implicit-receivers.md) for more details.
+更详细信息请参阅其[文档](type-safe-builders.html#作用域控制dslmarker自-11-起)及其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/scope-control-for-implicit-receivers.md)。
 
 
-### `rem` operator
+### `rem` 操作符
 
-The `mod` operator is now deprecated, and `rem` is used instead. See [this issue](https://youtrack.jetbrains.com/issue/KT-14650) for motivation.
+`mod` 操作符现已弃用，而使用 `rem` 取代。动机参见[这个问题](https://youtrack.jetbrains.com/issue/KT-14650)。
 
-## Standard library
+## 标准库
 
-### String to number conversions
+### 字符串到数字的转换
 
-There is a bunch of new extensions on the String class to convert it to a number without throwing an exception on invalid number:
-`String.toIntOrNull(): Int?`, `String.toDoubleOrNull(): Double?` etc.
+在 String 类中有一些新的扩展，用来将它转换为数字，而不会在无效数字上抛出异常：
+`String.toIntOrNull(): Int?`、 `String.toDoubleOrNull(): Double?` 等。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -467,15 +469,15 @@ val port = System.getenv("PORT")?.toIntOrNull() ?: 80
 
 </div>
 
-Also integer conversion functions, like `Int.toString()`, `String.toInt()`, `String.toIntOrNull()`,
-each got an overload with `radix` parameter, which allows to specify the base of conversion (2 to 36).
+还有整数转换函数，如 `Int.toString()`、 `String.toInt()`、 `String.toIntOrNull()`，
+每个都有一个带有 `radix` 参数的重载，它允许指定转换的基数（2 到 36）。
 
 ### onEach()
 
-`onEach` is a small, but useful extension function for collections and sequences, which allows to perform some action,
-possibly with side-effects, on each element of the collection/sequence in a chain of operations.
-On iterables it behaves like `forEach` but also returns the iterable instance further. And on sequences it returns a
-wrapping sequence, which applies the given action lazily as the elements are being iterated.
+`onEach` 是一个小、但对于集合与序列很有用的扩展函数，它允许对操作链中<!--
+-->的集合/序列的每个元素执行一些操作，可能带有副作用。
+对于迭代其行为像 `forEach` 但是也进一步返回可迭代实例。 对于序列它返回一个<!--
+-->包装序列，它在元素迭代时延迟应用给定的动作。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 
@@ -488,14 +490,14 @@ inputDir.walk()
 
 </div>
 
-### also(), takeIf() and takeUnless()
+### also()、takeIf() 与 takeUnless()
 
-These are three general-purpose extension functions applicable to any receiver.
+这些是适用于任何接收者的三个通用扩展函数。
 
-`also` is like `apply`: it takes the receiver, does some action on it, and returns that receiver.
-The difference is that in the block inside `apply` the receiver is available as `this`,
-while in the block inside `also` it's available as `it` (and you can give it another name if you want).
-This comes handy when you do not want to shadow `this` from the outer scope:
+`also` 就像 `apply`：它接受接收者、做一些动作、并返回该接收者。
+二者区别是在 `apply` 内部的代码块中接收者是 `this`，
+而在 `also` 内部的代码块中是 `it`（并且如果你想的话，你可以给它另一个名字）。
+当你不想掩盖来自外部作用域的 `this` 时这很方便：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
@@ -510,7 +512,7 @@ fun Block.copy() = Block().also {
 }
 //sampleEnd
 
-// using 'apply' instead
+// 使用“apply”代替
 fun Block.copy1() = Block().apply {
     this.content = this@copy1.content
 }
@@ -525,15 +527,15 @@ fun main(args: Array<String>) {
 
 </div>
 
-`takeIf` is like `filter` for a single value. It checks whether the receiver meets the predicate, and
-returns the receiver, if it does or `null` if it doesn't.
-Combined with an elvis-operator and early returns it allows to write constructs like:
+`takeIf` 就像单个值的 `filter`。它检测接收者是否满足该谓词，并<!--
+-->在满足时返回该接收者否则不满足时返回 `null`。
+结合 elvis-操作符与及早返回，可以编写如下结构：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 val outDirFile = File(outputDir.path).takeIf { it.exists() } ?: return false
-// do something with existing outDirFile
+// 对现有的 outDirFile 做些事情
 ```
 
 </div>
@@ -547,7 +549,7 @@ fun main(args: Array<String>) {
 
 //sampleStart
     val index = input.indexOf(keyword).takeIf { it >= 0 } ?: error("keyword not found")
-    // do something with index of keyword in input string, given that it's found
+    // 对输入字符串中的关键字索引做些事情，鉴于它已找到
 //sampleEnd
     
     println("'$keyword' was found in '$input'")
@@ -558,7 +560,7 @@ fun main(args: Array<String>) {
 
 </div>
 
-`takeUnless` is the same as `takeIf`, but it takes the inverted predicate. It returns the receiver when it _doesn't_ meet the predicate and `null` otherwise. So one of the examples above could be rewritten with `takeUnless` as following:
+`takeUnless` 与 `takeIf` 相同，只是它采用了反向谓词。当它 _不_ 满足谓词时返回接收者，否则返回 `null`。因此，上面的示例之一可以用 `takeUnless` 重写如下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -568,7 +570,7 @@ val index = input.indexOf(keyword).takeUnless { it < 0 } ?: error("keyword not f
 
 </div>
 
-It is also convenient to use when you have a callable reference instead of the lambda:
+当你有一个可调用的引用而不是 lambda 时，使用也很方便：
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -591,8 +593,8 @@ fun main(args: Array<String>) {
 
 ### groupingBy()
 
-This API can be used to group a collection by key and fold each group simultaneously. For example, it can be used
-to count the number of words starting with each letter:
+此 API 可以用于按照键对集合进行分组，并同时折叠每个组。 例如，它可以用于<!--
+-->计算文本中字符的频率：
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -604,8 +606,8 @@ fun main(args: Array<String>) {
 //sampleEnd
     println("Counting first letters: $frequencies.")
 
-    // The alternative way that uses 'groupBy' and 'mapValues' creates an intermediate map, 
-    // while 'groupingBy' way counts on the fly.
+    // 另一种方式是使用“groupBy”与“mapValues”创建一个中间的映射，
+    // 而“groupingBy”的方式会即时计数。
     val groupBy = words.groupBy { it.first() }.mapValues { (_, list) -> list.size }
     println("Comparing the result with using 'groupBy': ${groupBy == frequencies}.")
 }
@@ -613,9 +615,9 @@ fun main(args: Array<String>) {
 
 </div>
 
-### Map.toMap() and Map.toMutableMap()
+### Map.toMap() 与 Map.toMutableMap()
 
-These functions can be used for easy copying of maps:
+这俩函数可以用来简易复制映射：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -629,8 +631,8 @@ class ImmutablePropertyBag(map: Map<String, Any>) {
 
 ### Map.minus(key)
 
-The operator `plus` provides a way to add key-value pair(s) to a read-only map producing a new map, however there was not a simple way to do the opposite: to remove a key from the map you have to resort to less straightforward ways to like `Map.filter()` or `Map.filterKeys()`.
-Now the operator `minus` fills this gap. There are 4 overloads available: for removing a single key, a collection of keys, a sequence of keys and an array of keys.
+运算符 `plus` 提供了一种将键值对添加到只读映射中以生成新映射的方法，但是没有一种简单的方法来做相反的操作：从映射中删除一个键采用不那么直接的方式如 `Map.filter()` 或 `Map.filterKeys()`。
+现在运算符 `minus` 填补了这个空白。有 4 个可用的重载：用于删除单个键、键的集合、键的序列与键的数组。
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -648,9 +650,9 @@ fun main(args: Array<String>) {
 
 </div>
 
-### minOf() and maxOf()
+### minOf() 与 maxOf()
 
-These functions can be used to find the lowest and greatest of two or three given values, where values are primitive numbers or `Comparable` objects. There is also an overload of each function that take an additional `Comparator` instance, if you want to compare objects that are not comparable themselves.
+这些函数可用于查找两个或三个给定值中的最小与最大值，其中值是原生数字或 `Comparable` 对象。每个函数还有一个重载，它接受一个额外的 `Comparator` 实例，如果你想比较自身不可比的对象的话。
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -670,10 +672,10 @@ fun main(args: Array<String>) {
 
 </div>
 
-### Array-like List instantiation functions
+### 类似数组的列表实例化函数
 
-Similar to the `Array` constructor, there are now functions that create `List` and `MutableList` instances and initialize
-each element by calling a lambda:
+类似于 `Array` 构造函数，现在有创建 `List` 与 `MutableList` 实例的函数，并通过<!--
+-->调用 lambda 表达式来初始化每个元素：
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -693,8 +695,8 @@ fun main(args: Array<String>) {
 
 ### Map.getValue()
 
-This extension on `Map` returns an existing value corresponding to the given key or throws an exception, mentioning which key was not found.
-If the map was produced with `withDefault`, this function will return the default value instead of throwing an exception.
+`Map` 上的这个扩展函数返回一个与给定键相对应的现有值，或者抛出一个异常，提示找不到该键。
+如果该映射是用 `withDefault` 生成的，这个函数将返回默认值，而不是抛异常。
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -702,14 +704,14 @@ If the map was produced with `withDefault`, this function will return the defaul
 fun main(args: Array<String>) {
 //sampleStart    
     val map = mapOf("key" to 42)
-    // returns non-nullable Int value 42
+    // 返回不可空 Int 值 42
     val value: Int = map.getValue("key")
 
     val mapWithDefault = map.withDefault { k -> k.length }
-    // returns 4
+    // 返回 4
     val value2 = mapWithDefault.getValue("key2")
 
-    // map.getValue("anotherKey") // <- this will throw NoSuchElementException
+    // map.getValue("anotherKey") // <- 这将抛出 NoSuchElementException
 //sampleEnd
     
     println("value is $value")
@@ -719,20 +721,20 @@ fun main(args: Array<String>) {
 
 </div>
 
-### Abstract collections
+### 抽象集合
 
-These abstract classes can be used as base classes when implementing Kotlin collection classes.
-For implementing read-only collections there are `AbstractCollection`, `AbstractList`, `AbstractSet` and `AbstractMap`,
-and for mutable collections there are `AbstractMutableCollection`, `AbstractMutableList`, `AbstractMutableSet` and `AbstractMutableMap`.
-On JVM these abstract mutable collections inherit most of their functionality from JDK's abstract collections.
+这些抽象类可以在实现 Kotlin 集合类时用作基类。
+对于实现只读集合，有 `AbstractCollection`、 `AbstractList`、 `AbstractSet` 与 `AbstractMap`，
+而对于可变集合，有 `AbstractMutableCollection`、 `AbstractMutableList`、 `AbstractMutableSet` 与 `AbstractMutableMap`。
+在 JVM 上，这些抽象可变集合从 JDK 的抽象集合继承了大部分的功能。
 
-### Array manipulation functions
+### 数组处理函数
 
-The standard library now provides a set of functions for element-by-element operations on arrays: comparison
-(`contentEquals` and `contentDeepEquals`), hash code calculation (`contentHashCode` and `contentDeepHashCode`),
-and conversion to a string (`contentToString` and `contentDeepToString`). They're supported both for the JVM
-(where they act as aliases for the corresponding functions in `java.util.Arrays`) and for JS (where the implementation
-is provided in the Kotlin standard library).
+标准库现在提供了一组用于逐个元素操作数组的函数：比较
+（`contentEquals` 与 `contentDeepEquals`），哈希码计算（`contentHashCode` 与 `contentDeepHashCode`），
+以及转换成一个字符串（`contentToString` 与 `contentDeepToString`）。它们都支持 JVM
+（它们作为 `java.util.Arrays` 中的相应函数的别名）与 JS（在
+Kotlin 标准库中提供实现）。
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -740,94 +742,94 @@ is provided in the Kotlin standard library).
 fun main(args: Array<String>) {
 //sampleStart
     val array = arrayOf("a", "b", "c")
-    println(array.toString())  // JVM implementation: type-and-hash gibberish
-    println(array.contentToString())  // nicely formatted as list
+    println(array.toString())  // JVM 实现：类型及哈希乱码
+    println(array.contentToString())  // 良好格式化为列表
 //sampleEnd
 }
 ```
 
 </div>
 
-## JVM Backend
+## JVM 后端
 
-### Java 8 bytecode support
+### Java 8 字节码支持
 
-Kotlin has now the option of generating Java 8 bytecode (`-jvm-target 1.8` command line option or the corresponding options
-in Ant/Maven/Gradle). For now this doesn't change the semantics of the bytecode (in particular, default methods in interfaces
-and lambdas are generated exactly as in Kotlin 1.0), but we plan to make further use of this later.
-
-
-### Java 8 standard library support
-
-There are now separate versions of the standard library supporting the new JDK APIs added in Java 7 and 8.
-If you need access to the new APIs, use `kotlin-stdlib-jre7` and `kotlin-stdlib-jre8` maven artifacts instead of the standard `kotlin-stdlib`.
-These artifacts are tiny extensions on top of `kotlin-stdlib` and they bring it to your project as a transitive dependency.
+Kotlin 现在可以选择生成 Java 8 字节码（命令行选项 `-jvm-target 1.8` 或者 Ant/Maven/Gradle 中<!--
+-->的相应选项）。目前这并不改变字节码的语义（特别是，接口与 lambda 表达式中的默认方法<!--
+-->的生成与 Kotlin 1.0 中完全一样），但我们计划在以后进一步使用它。
 
 
-### Parameter names in the bytecode
+### Java 8 标准库支持
 
-Kotlin now supports storing parameter names in the bytecode. This can be enabled using the `-java-parameters` command line option.
-
-
-### Constant inlining
-
-The compiler now inlines values of `const val` properties into the locations where they are used.
+现在有支持在 Java 7 与 8 中新添加的 JDK API 的标准库的独立版本。
+如果你需要访问新的 API，请使用 `kotlin-stdlib-jre7` 与 `kotlin-stdlib-jre8` maven 构件，而不是标准的 `kotlin-stdlib`。
+这些构件是在 `kotlin-stdlib` 之上的微小扩展，它们将它作为传递依赖项带到项目中。
 
 
-### Mutable closure variables
+### 字节码中的参数名
 
-The box classes used for capturing mutable closure variables in lambdas no longer have volatile fields. This change improves
-performance, but can lead to new race conditions in some rare usage scenarios. If you're affected by this, you need to provide
-your own synchronization for accessing the variables.
+Kotlin 现在支持在字节码中存储参数名。这可以使用命令行选项 `-java-parameters` 启用。
 
 
-### javax.script support
+### 常量内联
 
-Kotlin now integrates with the [javax.script API](https://docs.oracle.com/javase/8/docs/api/javax/script/package-summary.html) (JSR-223).
-The API allows to evaluate snippets of code at runtime:
+编译器现在将 `const val` 属性的值内联到使用它们的位置。
+
+
+### 可变闭包变量
+
+用于在 lambda 表达式中捕获可变闭包变量的装箱类不再具有 volatile 字段。
+此更改提高了性能，但在一些罕见的使用情况下可能导致新的竞争条件。如果受此影响，你需要提供<!--
+-->自己的同步机制来访问变量。
+
+
+### javax.scripting 支持
+
+Kotlin 现在与[javax.script API](https://docs.oracle.com/javase/8/docs/api/javax/script/package-summary.html)（JSR-223）集成。
+其 API 允许在运行时求值代码段：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 val engine = ScriptEngineManager().getEngineByExtension("kts")!!
 engine.eval("val x = 3")
-println(engine.eval("x + 2"))  // Prints out 5
+println(engine.eval("x + 2"))  // 输出 5
 ```
 
 </div>
 
-See [here](https://github.com/JetBrains/kotlin/tree/master/libraries/examples/kotlin-jsr223-local-example)
-for a larger example project using the API.
+关于使用 API 的示例项目参见[这里](https://github.com/JetBrains/kotlin/tree/master/libraries/examples/kotlin-jsr223-local-example)
+。
 
 
 ### kotlin.reflect.full
 
-To [prepare for Java 9 support](https://blog.jetbrains.com/kotlin/2017/01/kotlin-1-1-whats-coming-in-the-standard-library/), the extension functions and properties in the `kotlin-reflect.jar` library have been moved
-to the package `kotlin.reflect.full`. The names in the old package (`kotlin.reflect`) are deprecated and will be removed in
-Kotlin 1.2. Note that the core reflection interfaces (such as `KClass`) are part of the Kotlin standard library,
-not `kotlin-reflect`, and are not affected by the move.
+[为 Java 9 支持准备](https://blog.jetbrains.com/kotlin/2017/01/kotlin-1-1-whats-coming-in-the-standard-library/)，在 `kotlin-reflect.jar` 库中的扩展函数与属性已移动<!--
+-->到 `kotlin.reflect.full` 包中。旧包（`kotlin.reflect`）中的名称已弃用，将在
+Kotlin 1.2 中删除。请注意，核心反射接口（如 `KClass`）是 Kotlin 标准库
+（而不是 `kotlin-reflect`）的一部分，不受移动影响。
 
 
-## JavaScript Backend
+## JavaScript 后端
 
-### Unified standard library
+### 统一的标准库
 
-A much larger part of the Kotlin standard library can now be used from code compiled to JavaScript.
-In particular, key classes such as collections (`ArrayList`, `HashMap` etc.), exceptions (`IllegalArgumentException` etc.) and a few
-others (`StringBuilder`, `Comparator`) are now defined under the `kotlin` package. On the JVM, the names are type
-aliases for the corresponding JDK classes, and on the JS, the classes are implemented in the Kotlin standard library.
+Kotlin 标准库的大部分目前可以从代码编译成 JavaScript 来使用。
+特别是，关键类如集合（`ArrayList`、 `HashMap` 等）、异常（`IllegalArgumentException` 等）以及其他<!--
+-->几个关键类（`StringBuilder`、 `Comparator`）现在都定义在 `kotlin` 包下。在 JVM 平台上，一些名称是相应 JDK 类的<!--
+-->类型别名，而在 JS 平台上，这些类在 Kotlin 标准库中实现。
 
-### Better code generation
+### 更好的代码生成
 
-JavaScript backend now generates more statically checkable code, which is friendlier to JS code processing tools,
-like minifiers, optimisers, linters, etc.
+JavaScript 后端现在生成更加可静态检测的代码，这对 JS 代码处理工具（如
+minifiers、 optimisers、 linters 等）更加友好。
 
-### The `external` modifier
+### `external` 修饰符
 
-If you need to access a class implemented in JavaScript from Kotlin in a typesafe way, you can write a Kotlin
-declaration using the `external` modifier. (In Kotlin 1.0, the `@native` annotation was used instead.)
-Unlike the JVM target, the JS one permits to use external modifier with classes and properties.
-For example, here's how you can declare the DOM `Node` class:
+如果你需要以类型安全的方式在 Kotlin 中访问 JavaScript 实现的类，
+你可以使用 `external` 修饰符写一个 Kotlin 声明。（在 Kotlin 1.0 中，使用了 `@native` 注解。）
+与 JVM 目标平台不同，JS 平台允许对类与属性使用 external 修饰符。
+例如，可以按以下方式声明 DOM `Node` 类：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -839,22 +841,22 @@ external class Node {
 
     fun removeChild(child: Node): Node
 
-    // etc
+    // 等等
 }
 ```
 
 </div>
 
-### Improved import handling
+### 改进的导入处理
 
-You can now describe declarations which should be imported from JavaScript modules more precisely.
-If you add the `@JsModule("<module-name>")` annotation on an external declaration it will be properly imported
-to a module system (either CommonJS or AMD) during the compilation. For example, with CommonJS the declaration will be
-imported via `require(...)` function.
-Additionally, if you want to import a declaration either as a module or as a global JavaScript object,
-you can use the `@JsNonModule` annotation.
+现在可以更精确地描述应该从 JavaScript 模块导入的声明。
+如果在外部声明上添加 `@JsModule("＜模块名＞")` 注解，它会在编译期间正确导入<!--
+-->到模块系统（CommonJS或AMD）。例如，使用 CommonJS，该声明会<!--
+-->通过 `require(……)` 函数导入。
+此外，如果要将声明作为模块或全局 JavaScript 对象导入，
+可以使用 `@JsNonModule` 注解。
 
-For example, here's how you can import JQuery into a Kotlin module:
+例如，以下是将 JQuery 导入 Kotlin 模块的方法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -872,10 +874,10 @@ external fun jquery(selector: String): JQuery
 
 </div>
 
-In this case, JQuery will be imported as a module named `jquery`. Alternatively, it can be used as a $-object,
-depending on what module system Kotlin compiler is configured to use.
+在这种情况下，JQuery 将作为名为 `jquery` 的模块导入。或者，它可以用作 $-对象，
+这取决于Kotlin编译器配置使用哪个模块系统。
 
-You can use these declarations in your application like this:
+你可以在应用程序中使用如下所示的这些声明：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 

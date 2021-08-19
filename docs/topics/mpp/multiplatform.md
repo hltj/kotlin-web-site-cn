@@ -2,12 +2,12 @@
 type: doc
 layout: reference
 category: "Other"
-title: "Multiplatform programming"
+title: "多平台程序设计"
 ---
 
-# Multiplatform programming
+# 多平台程序设计
 
-> Multiplatform projects are in [Alpha](evolution/components-stability.html). Language features and tooling may change in future Kotlin versions.
+> 多平台项目处于 [Alpha](evolution/components-stability.html) 版。语言特性与工具都可能在未来的 Kotlin 版本中发生变化。
 {:.note}
 
 Support for multiplatform programming is one of Kotlin’s key benefits. It reduces time spent writing and maintaining the
@@ -79,36 +79,36 @@ actual fun randomUUID(): String = NSUUID().UUIDString()
 
 </div>
 
-## Use cases
+## 使用场景
 
-### Android — iOS
+### Android——iOS
 
-Sharing code between mobile platforms is one of the major Kotlin Multiplatform use cases. With Kotlin Multiplatform Mobile (KMM),
+移动平台之间共享代码是 Kotlin 多平台的主要使用场景之一。 With Kotlin Multiplatform Mobile (KMM),
 you can build multiplatform mobile applications sharing code, such as business logic, connectivity,
 and more, between Android and iOS.
 
 See [KMM features, case studies and examples](https://kotlinlang.org/lp/mobile/)
 
-### Client — Server
+### 客户端——服务端
 
-Another scenario when code sharing may bring benefits is a connected application where the logic can be
-reused on both the server and the client side running in the browser. This is covered by Kotlin
-Multiplatform as well.
+代码共享可以带来收益的另一个场景是互联应用，其中的逻辑可以<!--
+-->在服务器与运行在浏览器中的客户端中复用。Kotlin 多平台也覆盖了<!--
+-->这个场景。
 
-The [Ktor framework](https://ktor.io/) is suitable for building asynchronous servers and clients in connected systems.
+[Ktor 框架](https://ktor.kotlincn.net/)适用于在互联系统中构建异步的服务器与客户端。
 
-## What's next?
+## 接下来做什么？
 
 New to Kotlin? Visit [Getting started with Kotlin](/docs/tutorials/getting-started.html).
 
-### Documentation
+### 文档
 
 * [Get started with Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/docs/mobile/getting-started.html)
 * [Create a multiplatform project](mpp-create-lib.html)
 * [Share code on multiple platforms](mpp-share-on-platforms.html)
 * [Connect to platform-specific APIs](mpp-connect-to-apis.html)
 
-### Tutorials
+### 教程
 
 * [Creating a KMM application](https://kotlinlang.org/docs/mobile/create-first-app.html) shows how to create a mobile application that works on Android and iOS with the help of the [KMM plugin for Android Studio](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile).
   Create, run, and test your first multiplatform mobile application.
@@ -123,7 +123,7 @@ New to Kotlin? Visit [Getting started with Kotlin](/docs/tutorials/getting-start
   application that makes use of shared code, serialization, and other multiplatform paradigms. It also provides a brief
   introduction to working with Ktor both as a server- and client-side framework.
 
-## Sample projects
+## 样例项目
 
 - [Kotlin Multiplatform Mobile samples](https://kotlinlang.org/docs/mobile/samples.html)
 - [KotlinConf app](https://github.com/JetBrains/kotlinconf-app)
