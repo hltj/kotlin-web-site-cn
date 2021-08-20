@@ -2,14 +2,14 @@
 type: doc
 layout: reference
 category: "Basics"
-title: "Idioms"
+title: "习惯用法"
 ---
 
-# Idioms
+# 习惯用法
 
-A collection of random and frequently used idioms in Kotlin. If you have a favorite idiom, contribute it by sending a pull request.
+一些在 Kotlin 中广泛使用的语法习惯，如果你有更喜欢的语法习惯或者风格，建一个 pull request 贡献给我们吧！
 
-### Creating DTOs (POJOs/POCOs)
+### 创建 DTOs（POJOs/POCOs）
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -17,25 +17,25 @@ data class Customer(val name: String, val email: String)
 ```
 </div>
 
-provides a `Customer` class with the following functionality:
+会为 `Customer` 类提供以下功能：
 
-* getters (and setters in case of *var*{: .keyword }s) for all properties
+* 所有属性的 getters （对于 *var*{: .keyword } 定义的还有 setters）
 * `equals()`
 * `hashCode()`
 * `toString()`
 * `copy()`
-* `component1()`, `component2()`, ..., for all properties (see [Data classes](data-classes.html))
+* 所有属性的 `component1()`、 `component2()`……等等（参见[数据类](data-classes.html)）
 
 
-### Default values for function parameters
+### 函数的默认参数
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
-fun foo(a: Int = 0, b: String = "") { ... }
+fun foo(a: Int = 0, b: String = "") { …… }
 ```
 </div>
 
-### Filtering a list
+### 过滤 list
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -43,7 +43,7 @@ val positives = list.filter { x -> x > 0 }
 ```
 </div>
 
-Or alternatively, even shorter:
+或者可以更短:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -51,18 +51,18 @@ val positives = list.filter { it > 0 }
 ```
 </div>
 
-### Checking element presence in a collection.
+### 检测元素是否存在于集合中
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-if ("john@example.com" in emailsList) { ... }
+if ("john@example.com" in emailsList) { …… }
 
-if ("jane@example.com" !in emailsList) { ... }
+if ("jane@example.com" !in emailsList) { …… }
 ```
 </div>
 
-### String Interpolation
+### 字符串内插
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -70,19 +70,19 @@ println("Name $name")
 ```
 </div>
 
-### Instance Checks
+### 类型判断
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 when (x) {
-    is Foo -> ...
-    is Bar -> ...
-    else   -> ...
+    is Foo //-> ……
+    is Bar //-> ……
+    else   //-> ……
 }
 ```
 </div>
 
-### Traversing a map/list of pairs
+### 遍历 map/pair型list
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -92,21 +92,21 @@ for ((k, v) in map) {
 ```
 </div>
 
-`k`, `v` can be called anything.
+`k`、`v` 可以改成任意名字。
 
-### Using ranges
+### 使用区间
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
-for (i in 1..100) { ... }  // closed range: includes 100
-for (i in 1 until 100) { ... } // half-open range: does not include 100
-for (x in 2..10 step 2) { ... }
-for (x in 10 downTo 1) { ... }
-if (x in 1..10) { ... }
+for (i in 1..100) { …… }  // 闭区间：包含 100
+for (i in 1 until 100) { …… } // 半开区间：不包含 100
+for (x in 2..10 step 2) { …… }
+for (x in 10 downTo 1) { …… }
+if (x in 1..10) { …… }
 ```
 </div>
 
-### Read-only list
+### 只读 list
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -114,7 +114,7 @@ val list = listOf("a", "b", "c")
 ```
 </div>
 
-### Read-only map
+### 只读 map
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -122,7 +122,7 @@ val map = mapOf("a" to 1, "b" to 2, "c" to 3)
 ```
 </div>
 
-### Accessing a map
+### 访问 map
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -131,27 +131,27 @@ map["key"] = value
 ```
 </div>
 
-### Lazy property
+### 延迟属性
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val p: String by lazy {
-    // compute the string
+    // 计算该字符串
 }
 ```
 </div>
 
-### Extension Functions
+### 扩展函数
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
-fun String.spaceToCamelCase() { ... }
+fun String.spaceToCamelCase() { …… }
 
 "Convert this to camelcase".spaceToCamelCase()
 ```
 </div>
 
-### Creating a singleton
+### 创建单例
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -185,7 +185,7 @@ fun main() {
 ```
 </div>
 
-### If not null shorthand
+### If not null 缩写
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -195,7 +195,7 @@ println(files?.size)
 ```
 </div>
 
-### If not null and else shorthand
+### If not null and else 缩写
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -205,48 +205,48 @@ println(files?.size ?: "empty")
 ```
 </div>
 
-### Executing a statement if null
+### if null 执行一个语句
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
-val values = ...
+val values = ……
 val email = values["email"] ?: throw IllegalStateException("Email is missing!")
 ```
 </div>
 
-### Get first item of a possibly empty collection
+### 在可能会空的集合中取第一元素
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
-val emails = ... // might be empty
+val emails = …… // 可能会是空集合
 val mainEmail = emails.firstOrNull() ?: ""
 ```
 </div>
 
-### Execute if not null
+### if not null 执行代码
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
-val value = ...
+val value = ……
 
 value?.let {
-... // execute this block if not null
+…… // 代码会执行到此处, 假如data不为null
 }
 ```
 </div>
 
-### Map nullable value if not null
+### 映射可空值（如果非空的话）
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
-val value = ...
+val value = ……
 
 val mapped = value?.let { transformValue(it) } ?: defaultValue 
-// defaultValue is returned if the value or the transform result is null.
+// 如果该值或其转换结果为空，那么返回 defaultValue。
 ```
 </div>
 
-### Return on when statement
+### 返回 when 表达式
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -261,7 +261,7 @@ fun transform(color: String): Int {
 ```
 </div>
 
-### 'try/catch' expression
+### “try/catch”表达式
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -272,12 +272,12 @@ fun test() {
         throw IllegalStateException(e)
     }
 
-    // Working with result
+    // 使用 result
 }
 ```
 </div>
 
-### 'if' expression
+### “if”表达式
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -293,7 +293,7 @@ fun foo(param: Int) {
 ```
 </div>
 
-### Builder-style usage of methods that return `Unit`
+### 返回类型为 `Unit` 的方法的 Builder 风格用法
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -304,7 +304,7 @@ fun arrayOfMinusOnes(size: Int): IntArray {
 </div>
 
 
-### Single-expression functions
+### 单表达式函数
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -312,7 +312,7 @@ fun theAnswer() = 42
 ```
 </div>
 
-This is equivalent to
+等价于
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -322,7 +322,7 @@ fun theAnswer(): Int {
 ```
 </div>
 
-This can be effectively combined with other idioms, leading to shorter code. E.g. with the *when*{: .keyword }-expression:
+单表达式函数与其它惯用法一起使用能简化代码，例如和 *when*{: .keyword } 表达式一起使用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -335,7 +335,7 @@ fun transform(color: String): Int = when (color) {
 ```
 </div>
 
-### Calling multiple methods on an object instance (`with`)
+### 对一个对象实例调用多个方法 （`with`）
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -347,7 +347,7 @@ class Turtle {
 }
 
 val myTurtle = Turtle()
-with(myTurtle) { //draw a 100 pix square
+with(myTurtle) { // 画一个 100 像素的正方形
 penDown()
 for (i in 1..4) {
 forward(100.0)
@@ -358,7 +358,7 @@ penUp()
 ```
 </div>
 
-### Configuring properties of an object (`apply`)
+### 配置对象的属性（`apply`）
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val myRectangle = Rectangle().apply {
@@ -369,9 +369,9 @@ val myRectangle = Rectangle().apply {
 ```
 </div>
 
-This is useful for configuring properties that aren't present in the object constructor.
+这对于配置未出现在对象构造函数中的属性非常有用。
 
-### Java 7's try with resources
+### Java 7 的 try with resources
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 ```kotlin
@@ -382,33 +382,33 @@ stream.buffered().reader().use { reader ->
 ```
 </div>
 
-### Convenient form for a generic function that requires the generic type information
+### 对于需要泛型信息的泛型函数的适宜形式
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 //  public final class Gson {
-//     ...
+//     ……
 //     public <T> T fromJson(JsonElement json, Class<T> classOfT) throws JsonSyntaxException {
-//     ...
+//     ……
 
 inline fun <reified T: Any> Gson.fromJson(json: JsonElement): T = this.fromJson(json, T::class.java)
 ```
 </div>
 
-### Consuming a nullable Boolean
+### 使用可空布尔
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
-val b: Boolean? = ...
+val b: Boolean? = ……
 if (b == true) {
-    ...
+    ……
 } else {
-    // `b` is false or null
+    // `b` 是 false 或者 null
 }
 ```
 </div>
 
-### Swapping two variables
+### 交换两个变量
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -418,14 +418,14 @@ a = b.also { b = a }
 ```
 </div>
 
-### TODO(): Marking code as incomplete
+### TODO()：将代码标记为不完整
 
-Kotlin's standard library has a `TODO()` function that will always throw a `NotImplementedError`.
-Its return type is `Nothing` so it can be used regardless of expected type.
-There's also an overload that accepts a reason parameter:
+Kotlin 的标准库有一个 `TODO()` 函数，该函数总是抛出一个 `NotImplementedError`。
+其返回类型为 `Nothing`，因此无论预期类型是什么都可以使用它。
+还有一个接受原因参数的重载：
 ```kotlin
 fun calcTaxes(): BigDecimal = TODO("Waiting for feedback from accounting")
 ```
 
-IntelliJ IDEA's kotlin plugin understands the semantics of `TODO()` and automatically adds a code pointer in the TODO tool window. 
+IntelliJ IDEA 的 kotlin 插件理解 `TODO()` 的语言，并且会自动在 TODO 工具窗口中添加代码指示。 
 

@@ -2,16 +2,16 @@
 type: doc
 layout: reference
 category: "Basics"
-title: "Basic Syntax"
+title: "基本语法"
 ---
 
-# Basic Syntax
+# 基本语法
 
 {:#defining-packages}
 
-## Package definition and imports
+## 包的定义与导入
 
-Package specification should be at the top of the source file:
+包的声明应处于源文件顶部：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -20,18 +20,18 @@ package my.demo
 
 import kotlin.text.*
 
-// ...
+// ……
 ```
 
 </div>
 
-It is not required to match directories and packages: source files can be placed arbitrarily in the file system.
+目录与包的结构无需匹配：源代码可以在文件系统的任意位置。
 
-See [Packages](packages.html).
+参见[包](packages.html)。
 
-## Program entry point
+## 程序入口点
 
-An entry point of a Kotlin application is the `main` function.
+Kotlin 应用程序的入口点是 `main` 函数。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -45,9 +45,9 @@ fun main() {
 
 {:#defining-functions}
 
-## Functions
+## 函数
 
-Function having two `Int` parameters with `Int` return type:
+带有两个 `Int` 参数、返回 `Int` 的函数：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -66,7 +66,7 @@ fun main() {
 
 </div>
 
-Function with an expression body and inferred return type:
+将表达式作为函数体、返回值类型自动推断的函数：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -82,7 +82,7 @@ fun main() {
 
 </div>
 
-Function returning no meaningful value:
+函数返回无意义的值：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -100,7 +100,7 @@ fun main() {
 
 </div>
 
-`Unit` return type can be omitted:
+`Unit` 返回类型可以省略：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -118,23 +118,23 @@ fun main() {
 
 </div>
 
-See [Functions](functions.html).
+参见[函数](functions.html)。
 
 {:#defining-variables}
 
-## Variables
+## 变量
 
-Read-only local variables are defined using the keyword `val`. They can be assigned a value only once.
+定义只读局部变量使用关键字 `val` 定义。只能为其赋值一次。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 fun main() {
 //sampleStart
-    val a: Int = 1  // immediate assignment
-    val b = 2   // `Int` type is inferred
-    val c: Int  // Type required when no initializer is provided
-    c = 3       // deferred assignment
+    val a: Int = 1  // 立即赋值
+    val b = 2   // 自动推断出 `Int` 类型
+    val c: Int  // 如果没有初始值类型不能省略
+    c = 3       // 明确赋值
 //sampleEnd
     println("a = $a, b = $b, c = $c")
 }
@@ -142,14 +142,14 @@ fun main() {
 
 </div>
 
-Variables that can be reassigned use the `var` keyword:
+可重新赋值的变量使用 `var` 关键字：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 fun main() {
 //sampleStart
-    var x = 5 // `Int` type is inferred
+    var x = 5 // 自动推断出 `Int` 类型
     x += 1
 //sampleEnd
     println("x = $x")
@@ -158,7 +158,7 @@ fun main() {
 
 </div>
 
-Top-level variables:
+顶层变量：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -182,41 +182,41 @@ fun main() {
 
 </div>
 
-See also [Properties](properties.html).
+参见[属性](properties.html)。
 
 
-## Comments
+## 注释
 
-Just like most modern languages, Kotlin supports single-line (or _end-of-line_) and multi-line (_block_) comments.
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
-```kotlin
-// This is an end-of-line comment
-
-/* This is a block comment
-   on multiple lines. */
-```
-
-</div>
-
-Block comments in Kotlin can be nested.
+与大多数现代语言一样，Kotlin 支持单行（或*行末*）与多行（*块*）注释。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-/* The comment starts here
-/* contains a nested comment */     
-and ends here. */
+// 这是一个行注释
+
+/* 这是一个多行的
+   块注释。 */
 ```
 
 </div>
 
-See [Documenting Kotlin Code](kotlin-doc.html) for information on the documentation comment syntax.
+Kotlin 中的块注释可以嵌套。
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+/* 注释从这里开始
+/* 包含嵌套的注释 */     
+并且在这里结束。 */
+```
+
+</div>
+
+参见[编写 Kotlin 代码文档](kotlin-doc.html) 查看关于文档注释语法的信息。
 
 {:#using-string-templates}
 
-## String templates
+## 字符串模板
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -224,11 +224,11 @@ See [Documenting Kotlin Code](kotlin-doc.html) for information on the documentat
 fun main() {
 //sampleStart
     var a = 1
-    // simple name in template:
+    // 模板中的简单名称：
     val s1 = "a is $a" 
     
     a = 2
-    // arbitrary expression in template:
+    // 模板中的任意表达式：
     val s2 = "${s1.replace("is", "was")}, but now is $a"
 //sampleEnd
     println(s2)
@@ -237,11 +237,11 @@ fun main() {
 
 </div>
 
-See [String templates](basic-types.html#string-templates) for details.
+参见[字符串模板](basic-types.html#字符串模板)。
 
 {:#using-conditional-expressions}
 
-## Conditional expressions
+## 条件表达式
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -264,7 +264,7 @@ fun main() {
 </div>
 
 
-In Kotlin, *if*{: .keyword } can also be used as an expression:
+在 Kotlin 中，*if*{: .keyword } 也可以用作表达式：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -280,27 +280,27 @@ fun main() {
 
 </div>
 
-See [*if*{: .keyword }-expressions](control-flow.html#if-expression).
+参见[*if*{: .keyword } 表达式](control-flow.html#if-表达式)。
 
 {:#using-nullable-values-and-checking-for-null}
 
-## Nullable values and *null*{: .keyword } checks
+## 空值与 *null*{: .keyword } 检测
 
-A reference must be explicitly marked as nullable when *null*{: .keyword } value is possible.
+当某个变量的值可以为 *null*{: .keyword } 的时候，必须在声明处的类型后添加 `?` 来标识该引用可为空。
 
-Return *null*{: .keyword } if `str` does not hold an integer:
+如果 `str` 的内容不是数字返回 *null*{: .keyword }：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 fun parseInt(str: String): Int? {
-    // ...
+    // ……
 }
 ```
 
 </div>
 
-Use a function returning nullable value:
+使用返回可空值的函数:
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -314,9 +314,9 @@ fun printProduct(arg1: String, arg2: String) {
     val x = parseInt(arg1)
     val y = parseInt(arg2)
 
-    // Using `x * y` yields error because they may hold nulls.
+    // 直接使用 `x * y` 会导致编译错误，因为它们可能为 null
     if (x != null && y != null) {
-        // x and y are automatically cast to non-nullable after null check
+        // 在空检测后，x 与 y 会自动转换为非空值（non-nullable）
         println(x * y)
     }
     else {
@@ -335,7 +335,7 @@ fun main() {
 
 </div>
 
-or
+或者
 
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -350,7 +350,7 @@ fun printProduct(arg1: String, arg2: String) {
     val y = parseInt(arg2)
     
 //sampleStart
-    // ...
+    // ……
     if (x == null) {
         println("Wrong number format in arg1: '$arg1'")
         return
@@ -360,7 +360,7 @@ fun printProduct(arg1: String, arg2: String) {
         return
     }
 
-    // x and y are automatically cast to non-nullable after null check
+    // 在空检测后，x 与 y 会自动转换为非空值
     println(x * y)
 //sampleEnd
 }
@@ -374,14 +374,14 @@ fun main() {
 
 </div>
 
-See [Null-safety](null-safety.html).
+参见[空安全](null-safety.html)。
 
 {:#using-type-checks-and-automatic-casts}
 
-## Type checks and automatic casts
+## 类型检测与自动类型转换
 
-The *is*{: .keyword } operator checks if an expression is an instance of a type.
-If an immutable local variable or property is checked for a specific type, there's no need to cast it explicitly:
+*is*{: .keyword } 运算符检测一个表达式是否某类型的一个实例。
+如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换：
 
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -390,11 +390,11 @@ If an immutable local variable or property is checked for a specific type, there
 //sampleStart
 fun getStringLength(obj: Any): Int? {
     if (obj is String) {
-        // `obj` is automatically cast to `String` in this branch
+        // `obj` 在该条件分支内自动转换成 `String`
         return obj.length
     }
 
-    // `obj` is still of type `Any` outside of the type-checked branch
+    // 在离开类型检测分支后，`obj` 仍然是 `Any` 类型
     return null
 }
 //sampleEnd
@@ -412,7 +412,7 @@ fun main() {
 
 </div>
 
-or
+或者
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -421,7 +421,7 @@ or
 fun getStringLength(obj: Any): Int? {
     if (obj !is String) return null
 
-    // `obj` is automatically cast to `String` in this branch
+    // `obj` 在这一分支自动转换为 `String`
     return obj.length
 }
 //sampleEnd
@@ -439,16 +439,16 @@ fun main() {
 
 </div>
 
-or even
+甚至
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 //sampleStart
 fun getStringLength(obj: Any): Int? {
-    // `obj` is automatically cast to `String` on the right-hand side of `&&`
+    // `obj` 在 `&&` 右边自动转换成 `String` 类型
     if (obj is String && obj.length > 0) {
-        return obj.length
+      return obj.length
     }
 
     return null
@@ -468,11 +468,11 @@ fun main() {
 
 </div>
 
-See [Classes](classes.html) and [Type casts](typecasts.html).
+参见[类](classes.html)以及[类型转换](typecasts.html)。
 
 {:#using-a-for-loop}
 
-## `for` loop
+## `for` 循环
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -489,7 +489,7 @@ fun main() {
 
 </div>
 
-or
+或者
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -507,11 +507,11 @@ fun main() {
 </div>
 
 
-See [for loop](control-flow.html#for-loops).
+参见 [for 循环](control-flow.html#for-循环)。
 
 {:#using-a-while-loop}
 
-## `while` loop
+## `while` 循环
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -531,11 +531,11 @@ fun main() {
 </div>
 
 
-See [while loop](control-flow.html#while-loops).
+参见 [while 循环](control-flow.html#while-循环)。
 
 {:#using-when-expression}
 
-## `when` expression
+## `when` 表达式
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -563,13 +563,13 @@ fun main() {
 </div>
 
 
-See [when expression](control-flow.html#when-expression).
+参见 [when 表达式](control-flow.html#when-表达式)。
 
 {:#using-ranges}
 
-## Ranges
+## 使用区间（range）
 
-Check if a number is within a range using *in*{: .keyword } operator:
+使用 *in*{: .keyword } 运算符来检测某个数字是否在指定区间内：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -588,7 +588,7 @@ fun main() {
 </div>
 
 
-Check if a number is out of range:
+检测某个数字是否在指定区间外:
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -609,7 +609,7 @@ fun main() {
 
 </div>
 
-Iterating over a range:
+区间迭代:
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -625,7 +625,7 @@ fun main() {
 
 </div>
 
-or over a progression:
+或数列迭代：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -645,13 +645,13 @@ fun main() {
 
 </div>
 
-See [Ranges](ranges.html).
+参见[区间](ranges.html)。
 
 {:#using-collections}
 
-## Collections
+## 集合
 
-Iterating over a collection:
+对集合进行迭代:
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -668,7 +668,7 @@ fun main() {
 
 </div>
 
-Checking if a collection contains an object using *in*{: .keyword } operator:
+使用 *in*{: .keyword } 运算符来判断集合内是否包含某实例：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -686,7 +686,7 @@ fun main() {
 
 </div>
 
-Using lambda expressions to filter and map collections:
+使用 lambda 表达式来过滤（filter）与映射（map）集合：
 
 <div class="sample" markdown="1" theme="idea" auto-indent="false" indent="2">
 
@@ -705,9 +705,9 @@ fun main() {
 
 </div>
 
-See [Collections overview](collections-overview.html).
+参见[集合概述](collections-overview.html)。
 
-## Creating basic classes and their instances
+## 创建基本类及其实例
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -752,4 +752,4 @@ class Triangle(
 
 </div>
 
-See [classes](classes.html) and [objects and instances](object-declarations.html).
+参见[类](classes.html)以及[对象与实例](object-declarations.html)。
