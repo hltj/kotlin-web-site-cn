@@ -1,19 +1,8 @@
----
-type: doc
-layout: reference
-category: "Basics"
-title: "Basic Syntax"
----
-
-# Basic Syntax
-
-{:#defining-packages}
+[//]: # (title: Basic syntax)
 
 ## Package definition and imports
 
-Package specification should be at the top of the source file:
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+Package specification should be at the top of the source file.
 
 ```kotlin
 package my.demo
@@ -23,33 +12,59 @@ import kotlin.text.*
 // ...
 ```
 
-</div>
-
 It is not required to match directories and packages: source files can be placed arbitrarily in the file system.
 
-See [Packages](packages.html).
+See [Packages](packages.md).
 
 ## Program entry point
 
 An entry point of a Kotlin application is the `main` function.
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 fun main() {
     println("Hello world!")
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
+Another form of `main` accepts a variable number of `String` arguments. 
 
-{:#defining-functions}
+```kotlin
+fun main(args: Array<String>) {
+    println(args.contentToString())
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+## Print to the standard output
+
+`print` prints its argument to the standard output.
+
+```kotlin
+fun main() {
+//sampleStart
+    print("Hello ")
+    print("world!")
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+`println` prints its arguments and adds a line break, so that the next thing you print appears and the next line.
+
+```kotlin
+fun main() {
+//sampleStart
+    println("Hello world!")
+    println(42)
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ## Functions
 
-Function having two `Int` parameters with `Int` return type:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
+A function with two `Int` parameters and `Int` return type.
 
 ```kotlin
 //sampleStart
@@ -63,12 +78,9 @@ fun main() {
     println(sum(3, 5))
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
-
-Function with an expression body and inferred return type:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
+A function body can be an expression. Its return type is inferred.
 
 ```kotlin
 //sampleStart
@@ -79,12 +91,9 @@ fun main() {
     println("sum of 19 and 23 is ${sum(19, 23)}")
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
-
-Function returning no meaningful value:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
+A function that returns no meaningful value.
 
 ```kotlin
 //sampleStart
@@ -97,12 +106,9 @@ fun main() {
     printSum(-1, 8)
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
-
-`Unit` return type can be omitted:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
+`Unit` return type can be omitted.
 
 ```kotlin
 //sampleStart
@@ -115,18 +121,13 @@ fun main() {
     printSum(-1, 8)
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
-
-See [Functions](functions.html).
-
-{:#defining-variables}
+See [Functions](functions.md).
 
 ## Variables
 
 Read-only local variables are defined using the keyword `val`. They can be assigned a value only once.
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 fun main() {
@@ -139,12 +140,9 @@ fun main() {
     println("a = $a, b = $b, c = $c")
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
-
-Variables that can be reassigned use the `var` keyword:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
+Variables that can be reassigned use the `var` keyword.
 
 ```kotlin
 fun main() {
@@ -155,12 +153,9 @@ fun main() {
     println("x = $x")
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
-
-Top-level variables:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
+You can declare variables at the top level.
 
 ```kotlin
 //sampleStart
@@ -179,17 +174,56 @@ fun main() {
     println("x = $x; PI = $PI")
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
+See also [Properties](properties.md).
 
-See also [Properties](properties.html).
+## Creating classes and instances
 
+To define a class, use the `class` keyword.
+```kotlin
+class Shape
+```
+
+Properties of a class can be listed in its declaration or body. 
+
+```kotlin
+class Rectangle(var height: Double, var length: Double) {
+    var perimeter = (height + length) * 2 
+}
+```
+
+The default constructor with parameters listed in the class declaration is available automatically. 
+
+```kotlin
+class Rectangle(var height: Double, var length: Double) {
+    var perimeter = (height + length) * 2 
+}
+fun main() {
+//sampleStart
+    val rectangle = Rectangle(5.0, 2.0)
+    println("The perimeter is ${rectangle.perimeter}")
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+Inheritance between classes is declared by a colon (`:`). Classes are final by default; to make a class inheritable, 
+mark it as `open`.
+
+```kotlin
+open class Shape
+
+class Rectangle(var height: Double, var length: Double): Shape {
+    var perimeter = (height + length) * 2 
+}
+```
+
+See [classes](classes.md) and [objects and instances](object-declarations.md).
 
 ## Comments
 
 Just like most modern languages, Kotlin supports single-line (or _end-of-line_) and multi-line (_block_) comments.
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 // This is an end-of-line comment
@@ -198,11 +232,7 @@ Just like most modern languages, Kotlin supports single-line (or _end-of-line_) 
    on multiple lines. */
 ```
 
-</div>
-
 Block comments in Kotlin can be nested.
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 /* The comment starts here
@@ -210,15 +240,9 @@ Block comments in Kotlin can be nested.
 and ends here. */
 ```
 
-</div>
-
-See [Documenting Kotlin Code](kotlin-doc.html) for information on the documentation comment syntax.
-
-{:#using-string-templates}
+See [Documenting Kotlin Code](kotlin-doc.md) for information on the documentation comment syntax.
 
 ## String templates
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 fun main() {
@@ -234,16 +258,11 @@ fun main() {
     println(s2)
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
-
-See [String templates](basic-types.html#string-templates) for details.
-
-{:#using-conditional-expressions}
+See [String templates](basic-types.md#string-templates) for details.
 
 ## Conditional expressions
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 //sampleStart
@@ -260,13 +279,9 @@ fun main() {
     println("max of 0 and 42 is ${maxOf(0, 42)}")
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
-
-
-In Kotlin, *if*{: .keyword } can also be used as an expression:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
+In Kotlin, `if` can also be used as an expression.
 
 ```kotlin
 //sampleStart
@@ -277,20 +292,205 @@ fun main() {
     println("max of 0 and 42 is ${maxOf(0, 42)}")
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
+See [`if`-expressions](control-flow.md#if-expression).
 
-See [*if*{: .keyword }-expressions](control-flow.html#if-expression).
+## for loop
 
-{:#using-nullable-values-and-checking-for-null}
+```kotlin
+fun main() {
+//sampleStart
+    val items = listOf("apple", "banana", "kiwifruit")
+    for (item in items) {
+        println(item)
+    }
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-## Nullable values and *null*{: .keyword } checks
+or
 
-A reference must be explicitly marked as nullable when *null*{: .keyword } value is possible.
+```kotlin
+fun main() {
+//sampleStart
+    val items = listOf("apple", "banana", "kiwifruit")
+    for (index in items.indices) {
+        println("item at $index is ${items[index]}")
+    }
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-Return *null*{: .keyword } if `str` does not hold an integer:
+See [for loop](control-flow.md#for-loops).
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+## while loop
+
+```kotlin
+fun main() {
+//sampleStart
+    val items = listOf("apple", "banana", "kiwifruit")
+    var index = 0
+    while (index < items.size) {
+        println("item at $index is ${items[index]}")
+        index++
+    }
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+See [while loop](control-flow.md#while-loops).
+
+## when expression
+
+```kotlin
+//sampleStart
+fun describe(obj: Any): String =
+    when (obj) {
+        1          -> "One"
+        "Hello"    -> "Greeting"
+        is Long    -> "Long"
+        !is String -> "Not a string"
+        else       -> "Unknown"
+    }
+//sampleEnd
+
+fun main() {
+    println(describe(1))
+    println(describe("Hello"))
+    println(describe(1000L))
+    println(describe(2))
+    println(describe("other"))
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+See [when expression](control-flow.md#when-expression).
+
+## Ranges
+
+Check if a number is within a range using `in` operator.
+
+```kotlin
+fun main() {
+//sampleStart
+    val x = 10
+    val y = 9
+    if (x in 1..y+1) {
+        println("fits in range")
+    }
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+Check if a number is out of range.
+
+```kotlin
+fun main() {
+//sampleStart
+    val list = listOf("a", "b", "c")
+    
+    if (-1 !in 0..list.lastIndex) {
+        println("-1 is out of range")
+    }
+    if (list.size !in list.indices) {
+        println("list size is out of valid list indices range, too")
+    }
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+Iterate over a range.
+
+```kotlin
+fun main() {
+//sampleStart
+    for (x in 1..5) {
+        print(x)
+    }
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+Or over a progression.
+
+```kotlin
+fun main() {
+//sampleStart
+    for (x in 1..10 step 2) {
+        print(x)
+    }
+    println()
+    for (x in 9 downTo 0 step 3) {
+        print(x)
+    }
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+See [Ranges and progressions](ranges.md).
+
+## Collections
+
+Iterate over a collection.
+
+```kotlin
+fun main() {
+    val items = listOf("apple", "banana", "kiwifruit")
+//sampleStart
+    for (item in items) {
+        println(item)
+    }
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+Check if a collection contains an object using `in` operator.
+
+```kotlin
+fun main() {
+    val items = setOf("apple", "banana", "kiwifruit")
+//sampleStart
+    when {
+        "orange" in items -> println("juicy")
+        "apple" in items -> println("apple is fine too")
+    }
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+Using lambda expressions to filter and map collections:
+
+```kotlin
+fun main() {
+//sampleStart
+    val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+    fruits
+      .filter { it.startsWith("a") }
+      .sortedBy { it }
+      .map { it.toUpperCase() }
+      .forEach { println(it) }
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+See [Collections overview](collections-overview.md).
+
+## Nullable values and null checks
+
+A reference must be explicitly marked as nullable when `null` value is possible. Nullable type names have `?` at the end.
+
+Return `null` if `str` does not hold an integer:
 
 ```kotlin
 fun parseInt(str: String): Int? {
@@ -298,11 +498,7 @@ fun parseInt(str: String): Int? {
 }
 ```
 
-</div>
-
 Use a function returning nullable value:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 fun parseInt(str: String): Int? {
@@ -325,20 +521,15 @@ fun printProduct(arg1: String, arg2: String) {
 }
 //sampleEnd
 
-
 fun main() {
     printProduct("6", "7")
     printProduct("a", "7")
     printProduct("a", "b")
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 or
-
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 fun parseInt(str: String): Int? {
@@ -371,20 +562,14 @@ fun main() {
     printProduct("99", "b")
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
-
-See [Null-safety](null-safety.html).
-
-{:#using-type-checks-and-automatic-casts}
+See [Null-safety](null-safety.md).
 
 ## Type checks and automatic casts
 
-The *is*{: .keyword } operator checks if an expression is an instance of a type.
+The `is` operator checks if an expression is an instance of a type.
 If an immutable local variable or property is checked for a specific type, there's no need to cast it explicitly:
-
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 //sampleStart
@@ -399,22 +584,18 @@ fun getStringLength(obj: Any): Int? {
 }
 //sampleEnd
 
-
 fun main() {
     fun printLength(obj: Any) {
-        println("'$obj' string length is ${getStringLength(obj) ?: "... err, not a string"} ")
+        println("Getting the length of '$obj'. Result: ${getStringLength(obj) ?: "Error: The object is not a string"} ")
     }
     printLength("Incomprehensibilities")
     printLength(1000)
     printLength(listOf(Any()))
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 or
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 //sampleStart
@@ -426,22 +607,18 @@ fun getStringLength(obj: Any): Int? {
 }
 //sampleEnd
 
-
 fun main() {
     fun printLength(obj: Any) {
-        println("'$obj' string length is ${getStringLength(obj) ?: "... err, not a string"} ")
+        println("Getting the length of '$obj'. Result: ${getStringLength(obj) ?: "Error: The object is not a string"} ")
     }
     printLength("Incomprehensibilities")
     printLength(1000)
     printLength(listOf(Any()))
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 or even
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 //sampleStart
@@ -455,301 +632,16 @@ fun getStringLength(obj: Any): Int? {
 }
 //sampleEnd
 
-
 fun main() {
     fun printLength(obj: Any) {
-        println("'$obj' string length is ${getStringLength(obj) ?: "... err, is empty or not a string at all"} ")
+        println("Getting the length of '$obj'. Result: ${getStringLength(obj) ?: "Error: The object is not a string"} ")
     }
     printLength("Incomprehensibilities")
     printLength("")
     printLength(1000)
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-</div>
+See [Classes](classes.md) and [Type casts](typecasts.md).
 
-See [Classes](classes.html) and [Type casts](typecasts.html).
-
-{:#using-a-for-loop}
-
-## `for` loop
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
-
-```kotlin
-fun main() {
-//sampleStart
-    val items = listOf("apple", "banana", "kiwifruit")
-    for (item in items) {
-        println(item)
-    }
-//sampleEnd
-}
-```
-
-</div>
-
-or
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
-
-```kotlin
-fun main() {
-//sampleStart
-    val items = listOf("apple", "banana", "kiwifruit")
-    for (index in items.indices) {
-        println("item at $index is ${items[index]}")
-    }
-//sampleEnd
-}
-```
-
-</div>
-
-
-See [for loop](control-flow.html#for-loops).
-
-{:#using-a-while-loop}
-
-## `while` loop
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
-
-```kotlin
-fun main() {
-//sampleStart
-    val items = listOf("apple", "banana", "kiwifruit")
-    var index = 0
-    while (index < items.size) {
-        println("item at $index is ${items[index]}")
-        index++
-    }
-//sampleEnd
-}
-```
-
-</div>
-
-
-See [while loop](control-flow.html#while-loops).
-
-{:#using-when-expression}
-
-## `when` expression
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
-
-```kotlin
-//sampleStart
-fun describe(obj: Any): String =
-    when (obj) {
-        1          -> "One"
-        "Hello"    -> "Greeting"
-        is Long    -> "Long"
-        !is String -> "Not a string"
-        else       -> "Unknown"
-    }
-//sampleEnd
-
-fun main() {
-    println(describe(1))
-    println(describe("Hello"))
-    println(describe(1000L))
-    println(describe(2))
-    println(describe("other"))
-}
-```
-
-</div>
-
-
-See [when expression](control-flow.html#when-expression).
-
-{:#using-ranges}
-
-## Ranges
-
-Check if a number is within a range using *in*{: .keyword } operator:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
-
-```kotlin
-fun main() {
-//sampleStart
-    val x = 10
-    val y = 9
-    if (x in 1..y+1) {
-        println("fits in range")
-    }
-//sampleEnd
-}
-```
-
-</div>
-
-
-Check if a number is out of range:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
-
-```kotlin
-fun main() {
-//sampleStart
-    val list = listOf("a", "b", "c")
-    
-    if (-1 !in 0..list.lastIndex) {
-        println("-1 is out of range")
-    }
-    if (list.size !in list.indices) {
-        println("list size is out of valid list indices range, too")
-    }
-//sampleEnd
-}
-```
-
-</div>
-
-Iterating over a range:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
-
-```kotlin
-fun main() {
-//sampleStart
-    for (x in 1..5) {
-        print(x)
-    }
-//sampleEnd
-}
-```
-
-</div>
-
-or over a progression:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
-
-```kotlin
-fun main() {
-//sampleStart
-    for (x in 1..10 step 2) {
-        print(x)
-    }
-    println()
-    for (x in 9 downTo 0 step 3) {
-        print(x)
-    }
-//sampleEnd
-}
-```
-
-</div>
-
-See [Ranges](ranges.html).
-
-{:#using-collections}
-
-## Collections
-
-Iterating over a collection:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
-
-```kotlin
-fun main() {
-    val items = listOf("apple", "banana", "kiwifruit")
-//sampleStart
-    for (item in items) {
-        println(item)
-    }
-//sampleEnd
-}
-```
-
-</div>
-
-Checking if a collection contains an object using *in*{: .keyword } operator:
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
-
-```kotlin
-fun main() {
-    val items = setOf("apple", "banana", "kiwifruit")
-//sampleStart
-    when {
-        "orange" in items -> println("juicy")
-        "apple" in items -> println("apple is fine too")
-    }
-//sampleEnd
-}
-```
-
-</div>
-
-Using lambda expressions to filter and map collections:
-
-<div class="sample" markdown="1" theme="idea" auto-indent="false" indent="2">
-
-```kotlin
-fun main() {
-//sampleStart
-    val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
-    fruits
-      .filter { it.startsWith("a") }
-      .sortedBy { it }
-      .map { it.toUpperCase() }
-      .forEach { println(it) }
-//sampleEnd
-}
-```
-
-</div>
-
-See [Collections overview](collections-overview.html).
-
-## Creating basic classes and their instances
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
-
-```kotlin
-fun main() {
-//sampleStart
-    val rectangle = Rectangle(5.0, 2.0)
-    val triangle = Triangle(3.0, 4.0, 5.0)
-//sampleEnd
-    println("Area of rectangle is ${rectangle.calculateArea()}, its perimeter is ${rectangle.perimeter}")
-    println("Area of triangle is ${triangle.calculateArea()}, its perimeter is ${triangle.perimeter}")
-}
-
-abstract class Shape(val sides: List<Double>) {
-    val perimeter: Double get() = sides.sum()
-    abstract fun calculateArea(): Double
-}
-
-interface RectangleProperties {
-    val isSquare: Boolean
-}
-
-class Rectangle(
-    var height: Double,
-    var length: Double
-) : Shape(listOf(height, length, height, length)), RectangleProperties {
-    override val isSquare: Boolean get() = length == height
-    override fun calculateArea(): Double = height * length
-}
-
-class Triangle(
-    var sideA: Double,
-    var sideB: Double,
-    var sideC: Double
-) : Shape(listOf(sideA, sideB, sideC)) {
-    override fun calculateArea(): Double {
-        val s = perimeter / 2
-        return Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC))
-    }
-}
-```
-
-</div>
-
-See [classes](classes.html) and [objects and instances](object-declarations.html).

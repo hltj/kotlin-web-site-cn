@@ -1,78 +1,56 @@
----
-type: doc
-layout: reference
-category: "Basics"
-title: "Idioms"
----
-
-# Idioms
+[//]: # (title: Idioms)
 
 A collection of random and frequently used idioms in Kotlin. If you have a favorite idiom, contribute it by sending a pull request.
 
-### Creating DTOs (POJOs/POCOs)
+## Create DTOs (POJOs/POCOs)
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 data class Customer(val name: String, val email: String)
 ```
-</div>
 
 provides a `Customer` class with the following functionality:
 
-* getters (and setters in case of *var*{: .keyword }s) for all properties
+* getters (and setters in case of `var`s) for all properties
 * `equals()`
 * `hashCode()`
 * `toString()`
 * `copy()`
-* `component1()`, `component2()`, ..., for all properties (see [Data classes](data-classes.html))
+* `component1()`, `component2()`, ..., for all properties (see [Data classes](data-classes.md))
 
+## Default values for function parameters
 
-### Default values for function parameters
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 fun foo(a: Int = 0, b: String = "") { ... }
 ```
-</div>
 
-### Filtering a list
+## Filter a list
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val positives = list.filter { x -> x > 0 }
 ```
-</div>
 
 Or alternatively, even shorter:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val positives = list.filter { it > 0 }
 ```
-</div>
 
-### Checking element presence in a collection.
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+## Check the presence of an element in a collection
 
 ```kotlin
 if ("john@example.com" in emailsList) { ... }
 
 if ("jane@example.com" !in emailsList) { ... }
 ```
-</div>
 
-### String Interpolation
+## String interpolation
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 println("Name $name")
 ```
-</div>
 
-### Instance Checks
+## Instance checks
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 when (x) {
     is Foo -> ...
@@ -80,23 +58,37 @@ when (x) {
     else   -> ...
 }
 ```
-</div>
 
-### Traversing a map/list of pairs
+## Read-only list
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
+val list = listOf("a", "b", "c")
+```
+## Read-only map
+
+```kotlin
+val map = mapOf("a" to 1, "b" to 2, "c" to 3)
+```
+
+## Access a map entry
+
+```kotlin
+println(map["key"])
+map["key"] = value
+```
+
+## Traverse a map or a list of pairs
+
 ```kotlin
 for ((k, v) in map) {
     println("$k -> $v")
 }
 ```
-</div>
 
-`k`, `v` can be called anything.
+`k` and `v` can be any convenient names, such as `name` and `age`.
 
-### Using ranges
+## Iterate over a range
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 for (i in 1..100) { ... }  // closed range: includes 100
 for (i in 1 until 100) { ... } // half-open range: does not include 100
@@ -104,66 +96,32 @@ for (x in 2..10 step 2) { ... }
 for (x in 10 downTo 1) { ... }
 if (x in 1..10) { ... }
 ```
-</div>
 
-### Read-only list
+## Lazy property
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-```kotlin
-val list = listOf("a", "b", "c")
-```
-</div>
-
-### Read-only map
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-```kotlin
-val map = mapOf("a" to 1, "b" to 2, "c" to 3)
-```
-</div>
-
-### Accessing a map
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-```kotlin
-println(map["key"])
-map["key"] = value
-```
-</div>
-
-### Lazy property
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val p: String by lazy {
     // compute the string
 }
 ```
-</div>
 
-### Extension Functions
+## Extension functions
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 fun String.spaceToCamelCase() { ... }
 
 "Convert this to camelcase".spaceToCamelCase()
 ```
-</div>
 
-### Creating a singleton
+## Create a singleton
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 object Resource {
     val name = "Name"
 }
 ```
-</div>
 
-### Instantiate an abstract class
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+## Instantiate an abstract class
 
 ```kotlin
 abstract class MyAbstractClass {
@@ -183,72 +141,58 @@ fun main() {
     myObject.doSomething()
 }
 ```
-</div>
 
-### If not null shorthand
+## If-not-null shorthand
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val files = File("Test").listFiles()
 
-println(files?.size)
+println(files?.size) // size is printed if files is not null
 ```
-</div>
 
-### If not null and else shorthand
+## If-not-null-else shorthand
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val files = File("Test").listFiles()
 
-println(files?.size ?: "empty")
+println(files?.size ?: "empty") // if files is null, this prints "empty"
 ```
-</div>
 
-### Executing a statement if null
+## Execute a statement if null
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val values = ...
 val email = values["email"] ?: throw IllegalStateException("Email is missing!")
 ```
-</div>
 
-### Get first item of a possibly empty collection
+## Get first item of a possibly empty collection
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val emails = ... // might be empty
 val mainEmail = emails.firstOrNull() ?: ""
 ```
-</div>
 
-### Execute if not null
+## Execute if not null
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val value = ...
 
 value?.let {
-... // execute this block if not null
+    ... // execute this block if not null
 }
 ```
-</div>
 
-### Map nullable value if not null
+## Map nullable value if not null
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val value = ...
 
 val mapped = value?.let { transformValue(it) } ?: defaultValue 
 // defaultValue is returned if the value or the transform result is null.
 ```
-</div>
 
-### Return on when statement
+## Return on when statement
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 fun transform(color: String): Int {
     return when (color) {
@@ -259,11 +203,9 @@ fun transform(color: String): Int {
     }
 }
 ```
-</div>
 
-### 'try/catch' expression
+## try-catch expression
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 fun test() {
     val result = try {
@@ -275,11 +217,9 @@ fun test() {
     // Working with result
 }
 ```
-</div>
 
-### 'if' expression
+## if expression
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 fun foo(param: Int) {
     val result = if (param == 1) {
@@ -291,40 +231,31 @@ fun foo(param: Int) {
     }
 }
 ```
-</div>
 
-### Builder-style usage of methods that return `Unit`
+## Builder-style usage of methods that return Unit
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 fun arrayOfMinusOnes(size: Int): IntArray {
     return IntArray(size).apply { fill(-1) }
 }
 ```
-</div>
 
+## Single-expression functions
 
-### Single-expression functions
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 fun theAnswer() = 42
 ```
-</div>
 
 This is equivalent to
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 fun theAnswer(): Int {
     return 42
 }
 ```
-</div>
 
-This can be effectively combined with other idioms, leading to shorter code. E.g. with the *when*{: .keyword }-expression:
+This can be effectively combined with other idioms, leading to shorter code. For example, with the `when` expression:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 fun transform(color: String): Int = when (color) {
     "Red" -> 0
@@ -333,11 +264,9 @@ fun transform(color: String): Int = when (color) {
     else -> throw IllegalArgumentException("Invalid color param value")
 }
 ```
-</div>
 
-### Calling multiple methods on an object instance (`with`)
+## Call multiple methods on an object instance (with)
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 class Turtle {
     fun penDown()
@@ -348,18 +277,17 @@ class Turtle {
 
 val myTurtle = Turtle()
 with(myTurtle) { //draw a 100 pix square
-penDown()
-for (i in 1..4) {
-forward(100.0)
-turn(90.0)
-}
-penUp()
+    penDown()
+    for (i in 1..4) {
+        forward(100.0)
+        turn(90.0)
+    }
+    penUp()
 }
 ```
-</div>
 
-### Configuring properties of an object (`apply`)
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+## Configure properties of an object (apply)
+
 ```kotlin
 val myRectangle = Rectangle().apply {
     length = 4
@@ -367,24 +295,20 @@ val myRectangle = Rectangle().apply {
     color = 0xFAFAFA
 }
 ```
-</div>
 
 This is useful for configuring properties that aren't present in the object constructor.
 
-### Java 7's try with resources
+## Java 7's try-with-resources
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 ```kotlin
 val stream = Files.newInputStream(Paths.get("/some/file.txt"))
 stream.buffered().reader().use { reader ->
     println(reader.readText())
 }
 ```
-</div>
 
-### Convenient form for a generic function that requires the generic type information
+## Generic function that requires the generic type information
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 //  public final class Gson {
 //     ...
@@ -393,11 +317,9 @@ stream.buffered().reader().use { reader ->
 
 inline fun <reified T: Any> Gson.fromJson(json: JsonElement): T = this.fromJson(json, T::class.java)
 ```
-</div>
 
-### Consuming a nullable Boolean
+## Nullable Boolean
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val b: Boolean? = ...
 if (b == true) {
@@ -406,23 +328,21 @@ if (b == true) {
     // `b` is false or null
 }
 ```
-</div>
 
-### Swapping two variables
+## Swap two variables
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 var a = 1
 var b = 2
 a = b.also { b = a }
 ```
-</div>
 
-### TODO(): Marking code as incomplete
-
+## Mark code as incomplete (TODO)
+ 
 Kotlin's standard library has a `TODO()` function that will always throw a `NotImplementedError`.
 Its return type is `Nothing` so it can be used regardless of expected type.
 There's also an overload that accepts a reason parameter:
+
 ```kotlin
 fun calcTaxes(): BigDecimal = TODO("Waiting for feedback from accounting")
 ```
