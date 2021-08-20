@@ -2,14 +2,14 @@
 type: doc
 layout: reference
 category: "Syntax"
-title: "Type Checks and Casts: 'is' and 'as'"
+title: "类型检测与类型转换：“is”与“as”"
 ---
 
-# Type Checks and Casts: 'is' and 'as'
+# 类型检测与类型转换：“is”与“as”
 
-## `is` and `!is` Operators
+## `is` 与 `!is` 操作符
 
-We can check whether an object conforms to a given type at runtime by using the `is` operator or its negated form `!is`:
+我们可以在运行时通过使用 `is` 操作符或其否定形式 `!is` 来检测对象是否符合给定类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -18,7 +18,7 @@ if (obj is String) {
     print(obj.length)
 }
 
-if (obj !is String) { // same as !(obj is String)
+if (obj !is String) { // 与 !(obj is String) 相同
     print("Not a String")
 } else {
     print(obj.length)
@@ -26,50 +26,50 @@ if (obj !is String) { // same as !(obj is String)
 ```
 </div>
 
-## Smart Casts
+## 智能转换
 
-In many cases, one does not need to use explicit cast operators in Kotlin, because the compiler tracks the
-`is`-checks and [explicit casts](#unsafe-cast-operator) for immutable values and inserts (safe) casts automatically when needed:
+在许多情况下，不需要在 Kotlin 中使用显式转换操作符，因为编译器跟踪<!--
+-->不可变值的 `is`-检测以及[显式转换](#不安全的转换操作符)，并在需要时自动插入（安全的）转换：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 fun demo(x: Any) {
     if (x is String) {
-        print(x.length) // x is automatically cast to String
+        print(x.length) // x 自动转换为字符串
     }
 }
 ```
 </div>
 
-The compiler is smart enough to know a cast to be safe if a negative check leads to a return:
+编译器足够聪明，能够知道如果反向检测导致返回那么该转换是安全的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 if (x !is String) return
 
-print(x.length) // x is automatically cast to String
+print(x.length) // x 自动转换为字符串
 ```
 </div>
 
-or in the right-hand side of `&&` and `||`:
+或者在 `&&` 和 `||` 的右侧：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// x is automatically cast to string on the right-hand side of `||`
+// `||` 右侧的 x 自动转换为字符串
 if (x !is String || x.length == 0) return
 
-// x is automatically cast to string on the right-hand side of `&&`
+// `&&` 右侧的 x 自动转换为字符串
 if (x is String && x.length > 0) {
-    print(x.length) // x is automatically cast to String
+    print(x.length) // x 自动转换为字符串
 }
 ```
 </div>
 
-Such _smart casts_ work for [*when*{: .keyword }-expressions](control-flow.html#when-expression)
-and [*while*{: .keyword }-loops](control-flow.html#while-loops) as well:
+这些 _智能转换_ 用于 [*when*{: .keyword }-表达式](control-flow.html#when-表达式)
+和 [*while*{: .keyword }-循环 ](control-flow.html#while-循环) 也一样：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -82,19 +82,19 @@ when (x) {
 ```
 </div>
 
-Note that smart casts do not work when the compiler cannot guarantee that the variable cannot change between the check and the usage.
-More specifically, smart casts are applicable according to the following rules:
+请注意，当编译器不能保证变量在检测和使用之间不可改变时，智能转换不能用。
+更具体地，智能转换能否适用根据以下规则：
 
-* *val*{: .keyword } local variables - always except for [local delegated properties](delegated-properties.html#local-delegated-properties);
-* *val*{: .keyword } properties - if the property is private or internal or the check is performed in the same [module](visibility-modifiers.html#modules) where the property is declared. Smart casts aren't applicable to open properties or properties that have custom getters;
-* *var*{: .keyword } local variables - if the variable is not modified between the check and the usage, is not captured in a lambda that modifies it, and is not a local delegated property;
-* *var*{: .keyword } properties - never (because the variable can be modified at any time by other code).
+* *val*{: .keyword } 局部变量——总是可以，[局部委托属性除外](delegated-properties.html#局部委托属性)；
+* *val*{: .keyword } 属性——如果属性是 private 或 internal，或者该检测在声明属性的同一[模块](visibility-modifiers.html#模块)中执行。智能转换不适用于 open 的属性或者具有自定义 getter 的属性；
+* *var*{: .keyword } 局部变量——如果变量在检测和使用之间没有修改、没有在会修改它的 lambda 中捕获、并且不是局部委托属性；
+* *var*{: .keyword } 属性——决不可能（因为该变量可以随时被其他代码修改）。
 
 
-## "Unsafe" cast operator
+## “不安全的”转换操作符
 
-Usually, the cast operator throws an exception if the cast is not possible. Thus, we call it *unsafe*.
-The unsafe cast in Kotlin is done by the infix operator *as*{: .keyword } (see [operator precedence](grammar.html#expressions)):
+通常，如果转换是不可能的，转换操作符会抛出一个异常。因此，我们称之为*不安全的*。
+Kotlin 中的不安全转换由中缀操作符 *as*{: .keyword }（参见[operator precedence](grammar.html#expressions)）完成：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -103,9 +103,9 @@ val x: String = y as String
 ```
 </div>
 
-Note that *null*{: .keyword } cannot be cast to `String` as this type is not [nullable](null-safety.html),
-i.e. if `y` is null, the code above throws an exception.
-To make such code correct for null values, use the nullable type on the right hand side of the cast:
+请注意，*null*{: .keyword } 不能转换为 `String` 因该类型不是[可空的](null-safety.html)，
+即如果 `y` 为空，上面的代码会抛出一个异常。
+为了让这样的代码用于可空值，请在类型转换的右侧使用可空类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -116,9 +116,9 @@ val x: String? = y as String?
 
 Please note that the "unsafe" cast operator **is not equivalent** to the [`unsafeCast<T>()`](/api/latest/jvm/stdlib/kotlin.js/unsafe-cast.html) method available in Kotlin/JS. `unsafeCast` will do no type-checking at all, whereas the _cast operator_ throws a `ClassCastException` when the cast fails.
 
-## "Safe" (nullable) cast operator
+## “安全的”（可空）转换操作符
 
-To avoid an exception being thrown, one can use a *safe* cast operator *as?*{: .keyword } that returns *null*{: .keyword } on failure:
+为了避免抛出异常，可以使用*安全*转换操作符 *as?*{: .keyword }，它可以在失败时返回 *null*{: .keyword }：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -127,47 +127,47 @@ val x: String? = y as? String
 ```
 </div>
 
-Note that despite the fact that the right-hand side of *as?*{: .keyword } is a non-null type `String` the result of the cast is nullable.
+请注意，尽管事实上 *as?*{: .keyword } 的右边是一个非空类型的 `String`，但是其转换的结果是可空的。
 
-## Type erasure and generic type checks
+## 类型擦除与泛型检测
 
-Kotlin ensures type safety of operations involving [generics](generics.html) at compile time,
-while, at runtime, instances of generic types hold no information about their actual type arguments. For example,
-`List<Foo>` is erased to just `List<*>`. In general, there is no way to check whether an instance belongs to a generic
-type with certain type arguments at runtime.
+Kotlin 在编译时确保涉及[泛型](generics.html)操作的类型安全性，
+而在运行时，泛型类型的实例并未带有关于它们实际类型参数的信息。例如，
+`List<Foo>` 会被擦除为 `List<*>`。通常，在运行时无法检测一个实例是否属于带有某个类型参数的泛型类型<!--
+-->。
 
-Given that, the compiler prohibits *is*{: .keyword }-checks that cannot be performed at runtime due to type erasure, such as
-`ints is List<Int>` or `list is T` (type parameter). You can, however, check an instance against a [star-projected type](generics.html#star-projections):
+为此，编译器会禁止由于类型擦除而无法执行的 *is*{: .keyword } 检测，例如
+`ints is List<Int>` 或者 `list is T`（类型参数）。当然，你可以对一个实例检测[星投影的类型](generics.html#星投影)：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 if (something is List<*>) {
-    something.forEach { println(it) } // The items are typed as `Any?`
+    something.forEach { println(it) } // 这些项的类型都是 `Any?`
 }
 ```
 </div>
 
-Similarly, when you already have the type arguments of an instance checked statically (at compile time),
-you can make an *is*{: .keyword }-check or a cast that involves the non-generic part of the type. Note that
-angle brackets are omitted in this case:
+类似地，当已经让一个实例的类型参数（在编译期）静态检测，
+就可以对涉及非泛型部分做 *is*{: .keyword } 检测或者类型转换。请注意，
+在这种情况下，会省略尖括号：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 fun handleStrings(list: List<String>) {
     if (list is ArrayList) {
-        // `list` is smart-cast to `ArrayList<String>`
+        // `list` 会智能转换为 `ArrayList<String>`
     }
 }
 ```
 </div>
 
-The same syntax with omitted type arguments can be used for casts that do not take type arguments into account: `list as ArrayList`.
+省略类型参数的这种语法可用于不考虑类型参数的类型转换：`list as ArrayList`。
 
-Inline functions with [reified type parameters](inline-functions.html#reified-type-parameters) have their actual type arguments
-inlined at each call site, which enables `arg is T` checks for the type parameters, but if `arg` is an instance of a
-generic type itself, *its* type arguments are still erased. Example:
+带有[具体化的类型参数](inline-functions.html#具体化的类型参数)的内联函数使其类型实参<!--
+-->在每个调用处内联，这就能够对类型参数进行 `arg is T` 检测，但是如果 `arg`
+自身是一个泛型实例，**其**类型参数还是会被擦除。例如：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -183,7 +183,7 @@ val somePair: Pair<Any?, Any?> = "items" to listOf(1, 2, 3)
 val stringToSomething = somePair.asPairOf<String, Any>()
 val stringToInt = somePair.asPairOf<String, Int>()
 val stringToList = somePair.asPairOf<String, List<*>>()
-val stringToStringList = somePair.asPairOf<String, List<String>>() // Breaks type safety!
+val stringToStringList = somePair.asPairOf<String, List<String>>() // 破坏类型安全！
 //sampleEnd
 
 fun main() {
@@ -195,13 +195,13 @@ fun main() {
 ```
 </div>
 
-## Unchecked casts
+## 非受检类型转换
 
-As said above, type erasure makes checking actual type arguments of a generic type instance impossible at runtime, and
-generic types in the code might be connected to each other not closely enough for the compiler to ensure
-type safety.
+如上所述，类型擦除使运行时不可能对泛型类型实例的类型实参进行检测，并且<!--
+-->代码中的泛型可能相互连接不够紧密，以致于编译器无法确保<!--
+-->类型安全。
 
-Even so, sometimes we have high-level program logic that implies type safety instead. For example:
+即便如此，有时候我们有高级的程序逻辑来暗示类型安全。例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -210,7 +210,7 @@ fun readDictionary(file: File): Map<String, *> = file.inputStream().use {
     TODO("Read a mapping of strings to arbitrary elements.")
 }
 
-// We saved a map with `Int`s into that file
+// 我们已将存有一些 `Int` 的映射保存到该文件
 val intsFile = File("ints.dictionary")
 
 // Warning: Unchecked cast: `Map<String, *>` to `Map<String, Int>`
@@ -218,19 +218,19 @@ val intsDictionary: Map<String, Int> = readDictionary(intsFile) as Map<String, I
 ```
 </div>
 
-The compiler produces a warning for the cast in the last line. The cast cannot be fully checked at runtime and provides
-no guarantee that the values in the map are `Int`.
+编译器会对最后一行的类型转换产生一个警告。该类型转换不能在运行时完全检测，并且<!--
+-->不能保证映射中的值是“Int”。
 
-To avoid unchecked casts, you can redesign the program structure: in the example above, there could be interfaces
-`DictionaryReader<T>` and `DictionaryWriter<T>` with type-safe implementations for different types.
-You can introduce reasonable abstractions to move unchecked casts from calling code to the implementation details.
-Proper use of [generic variance](generics.html#variance) can also help.
+为避免未受检类型转换，可以重新设计程序结构：在上例中，可以使用具有类型安全实现的不同接口
+`DictionaryReader<T>` 与 `DictionaryWriter<T>`。
+可以引入合理的抽象，将未受检的类型转换从调用代码移动到实现细节中。
+正确使用[泛型型变](generics.html#型变)也有帮助。
 
-For generic functions, using [reified type parameters](inline-functions.html#reified-type-parameters) makes the casts
-such as `arg as T` checked, unless `arg`'s type has *its own* type arguments that are erased.
+对于泛型函数，使用[具体化的类型参数](inline-functions.html#具体化的类型参数)可以使<!--
+-->诸如 `arg as T` 这样的类型转换受检，除非 `arg` 对应类型的*自身*类型参数已被擦除。
 
-An unchecked cast warning can be suppressed by [annotating](annotations.html#annotations) the statement or the
-declaration where it occurs with `@Suppress("UNCHECKED_CAST")`:
+可以通过在产生警告的语句或声明上用注解 `@Suppress("UNCHECKED_CAST")`
+[标注](annotations.html#注解)来禁止未受检类型转换警告：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 
@@ -245,7 +245,7 @@ inline fun <reified T> List<*>.asListOfType(): List<T>? =
 
 IntelliJ IDEA can also automatically generate the `@Suppress` annotation. Open the intentions menu via the light bulb icon or Alt-Enter, and click the small arrow next to the "Change type arguments" quick-fix. Here, you can select the suppression scope, and your IDE will add the annotation to your file accordingly.
 
-On the JVM, the [array types](basic-types.html#arrays) (`Array<Foo>`) retain the information about the erased type of
-their elements, and the type casts to an array type are partially checked: the
-nullability and actual type arguments of the elements type are still erased. For example,
-the cast `foo as Array<List<String>?>` will succeed if `foo` is an array holding any `List<*>`, nullable or not.
+在 JVM 平台中，[数组类型](basic-types.html#数组)（`Array<Foo>`）会保留关于<!--
+-->其元素被擦除类型的信息，并且类型转换为一个数组类型可以部分受检：
+元素类型的可空性与类型实参仍然会被擦除。例如，
+如果 `foo` 是一个保存了任何 `List<*>`（无论可不可空）的数组的话，类型转换 `foo as Array<List<String>?>` 都会成功。

@@ -2,18 +2,18 @@
 type: doc
 layout: reference
 category: "Syntax"
-title: "Returns and Jumps: break and continue"
+title: "返回与跳转：break 与 continue"
 ---
 
-# Returns and Jumps
+# 返回和跳转
 
-Kotlin has three structural jump expressions:
+Kotlin 有三种结构化跳转表达式：
 
-* *return*{: .keyword }. By default returns from the nearest enclosing function or [anonymous function](lambdas.html#anonymous-functions).
-* *break*{: .keyword }. Terminates the nearest enclosing loop.
-* *continue*{: .keyword }. Proceeds to the next step of the nearest enclosing loop.
+* *return*{: .keyword }。默认从最直接包围它的函数或者[匿名函数](lambdas.html#匿名函数)返回。
+* *break*{: .keyword }。终止最直接包围它的循环。
+* *continue*{: .keyword }。继续下一次最直接包围它的循环。
 
-All of these expressions can be used as part of larger expressions:
+所有这些表达式都可以用作更大表达式的一部分：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -21,43 +21,43 @@ val s = person.name ?: return
 ```
 </div>
 
-The type of these expressions is the [Nothing type](exceptions.html#the-nothing-type).
+这些表达式的类型是 [Nothing 类型](exceptions.html#nothing-类型)。
 
-## Break and Continue Labels
+## Break 与 Continue 标签
 
-Any expression in Kotlin may be marked with a *label*{: .keyword }.
-Labels have the form of an identifier followed by the `@` sign, for example: `abc@`, `fooBar@` are valid labels (see the [grammar](grammar.html#label)).
-To label an expression, we just put a label in front of it
+在 Kotlin 中任何表达式都可以用标签（*label*{: .keyword }）来标记。
+标签的格式为标识符后跟 `@` 符号，例如：`abc@`、`fooBar@`都是有效的标签（参见[语法](grammar.html#label)）。
+要为一个表达式加标签，我们只要在其前加标签即可。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 loop@ for (i in 1..100) {
-    // ...
+    // ……
 }
 ```
 </div>
 
-Now, we can qualify a *break*{: .keyword } or a *continue*{: .keyword } with a label:
+现在，我们可以用标签限制 *break*{: .keyword } 或者*continue*{: .keyword }：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 loop@ for (i in 1..100) {
     for (j in 1..100) {
-        if (...) break@loop
+        if (……) break@loop
     }
 }
 ```
 </div>
 
-A *break*{: .keyword } qualified with a label jumps to the execution point right after the loop marked with that label.
-A *continue*{: .keyword } proceeds to the next iteration of that loop.
+标签限制的 break 跳转到刚好位于该标签指定的循环后面的执行点。
+*continue*{: .keyword } 继续标签指定的循环的下一次迭代。
 
 
-## Return at Labels
+## 返回到标签
 
-With function literals, local functions and object expression, functions can be nested in Kotlin.
-Qualified *return*{: .keyword }s allow us to return from an outer function.
-The most important use case is returning from a lambda expression. Recall that when we write this:
+Kotlin 有函数字面量、局部函数和对象表达式。因此 Kotlin 的函数可以被嵌套。
+标签限制的 *return*{: .keyword } 允许我们从外层函数返回。
+最重要的一个用途就是从 lambda 表达式中返回。回想一下我们这么写的时候：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -65,7 +65,7 @@ The most important use case is returning from a lambda expression. Recall that w
 //sampleStart
 fun foo() {
     listOf(1, 2, 3, 4, 5).forEach {
-        if (it == 3) return // non-local return directly to the caller of foo()
+        if (it == 3) return // 非局部直接返回到 foo() 的调用者
         print(it)
     }
     println("this point is unreachable")
@@ -78,9 +78,9 @@ fun main() {
 ```
 </div>
 
-The *return*{: .keyword }-expression returns from the nearest enclosing function, i.e. `foo`.
-(Note that such non-local returns are supported only for lambda expressions passed to [inline functions](inline-functions.html).)
-If we need to return from a lambda expression, we have to label it and qualify the *return*{: .keyword }:
+这个 *return*{: .keyword } 表达式从最直接包围它的函数即 `foo` 中返回。
+（注意，这种非局部的返回只支持传给[内联函数](inline-functions.html)的 lambda 表达式。）
+如果我们需要从 lambda 表达式中返回，我们必须给它加标签并用以限制 *return*{: .keyword }。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -88,7 +88,7 @@ If we need to return from a lambda expression, we have to label it and qualify t
 //sampleStart
 fun foo() {
     listOf(1, 2, 3, 4, 5).forEach lit@{
-        if (it == 3) return@lit // local return to the caller of the lambda, i.e. the forEach loop
+        if (it == 3) return@lit // 局部返回到该 lambda 表达式的调用者，即 forEach 循环
         print(it)
     }
     print(" done with explicit label")
@@ -101,8 +101,8 @@ fun main() {
 ```
 </div>
 
-Now, it returns only from the lambda expression. Oftentimes it is more convenient to use implicit labels:
-such a label has the same name as the function to which the lambda is passed.
+现在，它只会从 lambda 表达式中返回。通常情况下使用隐式标签更方便。
+该标签与接受该 lambda 的函数同名。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -110,7 +110,7 @@ such a label has the same name as the function to which the lambda is passed.
 //sampleStart
 fun foo() {
     listOf(1, 2, 3, 4, 5).forEach {
-        if (it == 3) return@forEach // local return to the caller of the lambda, i.e. the forEach loop
+        if (it == 3) return@forEach // 局部返回到该 lambda 表达式的调用者，即 forEach 循环
         print(it)
     }
     print(" done with implicit label")
@@ -123,8 +123,8 @@ fun main() {
 ```
 </div>
 
-Alternatively, we can replace the lambda expression with an [anonymous function](lambdas.html#anonymous-functions).
-A *return*{: .keyword } statement in an anonymous function will return from the anonymous function itself.
+或者，我们用一个[匿名函数](lambdas.html#匿名函数)替代 lambda 表达式。
+匿名函数内部的 *return*{: .keyword } 语句将从该匿名函数自身返回
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -132,7 +132,7 @@ A *return*{: .keyword } statement in an anonymous function will return from the 
 //sampleStart
 fun foo() {
     listOf(1, 2, 3, 4, 5).forEach(fun(value: Int) {
-        if (value == 3) return  // local return to the caller of the anonymous fun, i.e. the forEach loop
+        if (value == 3) return  // 局部返回到匿名函数的调用者，即 forEach 循环
         print(value)
     })
     print(" done with anonymous function")
@@ -145,7 +145,7 @@ fun main() {
 ```
 </div>
 
-Note that the use of local returns in previous three examples is similar to the use of *continue*{: .keyword } in regular loops. There is no direct equivalent for *break*{: .keyword }, but it can be simulated by adding another nesting lambda and non-locally returning from it:
+请注意，前文三个示例中使用的局部返回类似于在常规循环中使用 *continue*{: .keyword }。并没有 *break*{: .keyword } 的直接等价形式，不过可以通过增加另一层嵌套 lambda 表达式并从其中非局部返回来模拟：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -154,7 +154,7 @@ Note that the use of local returns in previous three examples is similar to the 
 fun foo() {
     run loop@{
         listOf(1, 2, 3, 4, 5).forEach {
-            if (it == 3) return@loop // non-local return from the lambda passed to run
+            if (it == 3) return@loop // 从传入 run 的 lambda 表达式非局部返回
             print(it)
         }
     }
@@ -168,7 +168,7 @@ fun main() {
 ```
 </div>
 
-When returning a value, the parser gives preference to the qualified return, i.e.
+当要返一个回值的时候，解析器优先选用标签限制的 return，即
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -176,4 +176,4 @@ return@a 1
 ```
 </div>
 
-means "return `1` at label `@a`" and not "return a labeled expression `(@a 1)`".
+意为“返回 `1` 到 `@a`”，而不是“返回一个标签标注的表达式 `(@a 1)`”。

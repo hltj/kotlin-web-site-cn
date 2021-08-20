@@ -2,31 +2,31 @@
 type: doc
 layout: reference
 category: "Syntax"
-title: "Basic Types: Numbers, Strings, Arrays"
+title: "基本类型：数字、字符串、数组"
 ---
 
-# Basic Types
+# 基本类型
 
-In Kotlin, everything is an object in the sense that we can call member functions and properties on any variable.
-Some of the types can have a special internal representation - for example, numbers, characters and booleans can be
-represented as primitive values at runtime - but to the user they look like ordinary classes.
-In this section we describe the basic types used in Kotlin: numbers, characters, booleans, arrays, and strings.
+在 Kotlin 中，所有东西都是对象，在这个意义上讲我们可以在任何变量上调用成员函数与属性。
+一些类型可以有特殊的内部表示——例如，数字、字符以及布尔值可以<!--
+-->在运行时表示为原生类型值，但是对于用户来说，它们看起来就像普通的类。
+在本节中，我们会描述 Kotlin 中使用的基本类型：数字、字符、布尔值、数组与字符串。
 
-## Numbers
+## 数字
 
-Kotlin provides a set of built-in types that represent numbers.  
-For integer numbers, there are four types with different sizes and, hence, value ranges.
+Kotlin 提供了一组表示数字的内置类型。
+对于整数，有四种不同大小的类型，因此值的范围也不同。
 
-| Type	 |Size (bits)| Min value| Max value|
-|--------|-----------|----------|--------- |
-| Byte	 | 8         |-128      |127       |
-| Short	 | 16        |-32768    |32767     |
-| Int	 | 32        |-2,147,483,648 (-2<sup>31</sup>)| 2,147,483,647 (2<sup>31</sup> - 1)|
-| Long	 | 64        |-9,223,372,036,854,775,808 (-2<sup>63</sup>)|9,223,372,036,854,775,807 (2<sup>63</sup> - 1)|
+| 类型	 | 大小（比特数）| 最小值 | 最大值 |
+|--------|---------------|--------|------- |
+| Byte	 | 8             |-128    |127     |
+| Short	 | 16            |-32768  |32767   |
+| Int	 | 32            |-2,147,483,648 (-2<sup>31</sup>)| 2,147,483,647 (2<sup>31</sup> - 1)|
+| Long	 | 64            |-9,223,372,036,854,775,808 (-2<sup>63</sup>)|9,223,372,036,854,775,807 (2<sup>63</sup> - 1)|
 
-All variables initialized with integer values not exceeding the maximum value of `Int`
-have the inferred type `Int`. If the initial value exceeds this value, then the type is `Long`.
-To specify the `Long` value explicitly, append the suffix `L` to the value.
+所有以未超出 `Int` 最大值的整型值初始化的变量<!--
+-->都会推断为 `Int` 类型。如果初始值超过了其最大值，那么推断为 `Long` 类型。
+如需显式指定 `Long` 型值，请在该值后追加 `L` 后缀。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -39,34 +39,34 @@ val oneByte: Byte = 1
 
 </div>
 
-For floating-point numbers, Kotlin provides types `Float` and `Double`.
-According to the [IEEE 754 standard](https://en.wikipedia.org/wiki/IEEE_754),
-floating point types differ by their _decimal place_, that is, how many decimal digits they can store.
-`Float` reflects the IEEE 754 _single precision_, while `Double` provides _double precision_.
+对于浮点数，Kotlin 提供了 `Float` 与 `Double` 类型。
+根据 [IEEE 754 标准](https://zh.wikipedia.org/wiki/IEEE_754)，
+两种浮点类型的*十进制位数*（即可以存储多少位十进制数）不同。
+`Float` 反映了 IEEE 754 *单精度*，而 `Double` 提供了*双精度*。
 
 
-| Type	 |Size (bits)|Significant bits|Exponent bits|Decimal digits|
-|--------|-----------|--------------- |-------------|--------------|
-| Float	 | 32        |24              |8            |6-7            |
-| Double | 64        |53              |11           |15-16          |    
+| 类型	 | 大小（比特数）| 有效数字比特数 | 指数比特数 | 十进制位数 |
+|--------|---------------|--------------- |------------|------------|
+| Float	 | 32            |24              |8           |6-7         |
+| Double | 64            |53              |11          |15-16       |    
 
-For variables initialized with fractional numbers, the compiler infers the `Double` type.
-To explicitly specify the `Float` type for a value, add the suffix `f` or `F`.
-If such a value contains more than 6-7 decimal digits, it will be rounded.
+对于以小数初始化的变量，编译器会推断为 `Double` 类型。
+如需将一个值显式指定为 `Float` 类型，请添加 `f` 或 `F` 后缀。
+如果这样的值包含多于 6～7 位十进制数，那么会将其舍入。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 val pi = 3.14 // Double
 val e = 2.7182818284 // Double
-val eFloat = 2.7182818284f // Float, actual value is 2.7182817
+val eFloat = 2.7182818284f // Float，实际值为 2.7182817
 ```
 
 </div>
 
-Note that unlike some other languages, there are no implicit widening conversions for numbers in Kotlin.
-For example, a function with a `Double` parameter can be called only on `Double` values, but not `Float`,
-`Int`, or other numeric values.
+请注意，与一些其他语言不同，Kotlin 中的数字没有隐式拓宽转换。
+例如，具有 `Double` 参数的函数只能对 `Double` 值调用，而不能对 `Float`、
+`Int` 或者其他数字值调用。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -79,33 +79,33 @@ fun main() {
     val f = 1.1f 
 
     printDouble(d)
-//    printDouble(i) // Error: Type mismatch
-//    printDouble(f) // Error: Type mismatch
+//    printDouble(i) // 错误：类型不匹配
+//    printDouble(f) // 错误：类型不匹配
 }
 ```
 </div>
 
-To convert numeric values to different types, use [Explicit conversions](#explicit-conversions).
+如需将数值转换为不同的类型，请使用[显式转换](#显式转换)。
 
-### Literal constants
+### 字面常量
 
-There are the following kinds of literal constants for integral values:
+数值常量字面值有以下几种:
 
-* Decimals: `123`
-    * Longs are tagged by a capital `L`: `123L`
-* Hexadecimals: `0x0F`
-* Binaries: `0b00001011`
+* 十进制: `123`
+  * Long 类型用大写 `L` 标记: `123L`
+* 十六进制: `0x0F`
+* 二进制: `0b00001011`
 
-NOTE: Octal literals are not supported.
+注意: 不支持八进制
 
-Kotlin also supports a conventional notation for floating-point numbers:
+Kotlin 同样支持浮点数的常规表示方法:
 
-* Doubles by default: `123.5`, `123.5e10`
-* Floats are tagged by `f` or `F`: `123.5f`
+* 默认 double：`123.5`、`123.5e10`
+* Float 用 `f` 或者 `F` 标记: `123.5f`
 
-### Underscores in numeric literals (since 1.1)
+### 数字字面值中的下划线（自 1.1 起）
 
-You can use underscores to make number constants more readable:
+你可以使用下划线使数字常量更易读：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -119,12 +119,12 @@ val bytes = 0b11010010_01101001_10010100_10010010
 
 </div>
 
-### Representation
+### 表示方式
 
-On the Java platform, numbers are physically stored as JVM primitive types, unless we need a nullable number reference (e.g. `Int?`) or generics are involved.
-In the latter cases numbers are boxed.
+在 Java 平台数字是物理存储为 JVM 的原生类型，除非我们需要一个可空的引用（如 `Int?`）或泛型。
+后者情况下会把数字装箱。
 
-Note that boxing of numbers does not necessarily preserve identity:
+注意数字装箱不一定保留同一性:
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -147,7 +147,7 @@ fun main() {
 
 </div>
 
-On the other hand, it preserves equality:
+另一方面，它保留了相等性:
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -155,51 +155,51 @@ On the other hand, it preserves equality:
 fun main() {
 //sampleStart
     val a: Int = 10000
-    println(a == a) // Prints 'true'
+    println(a == a) // 输出“true”
     val boxedA: Int? = a
     val anotherBoxedA: Int? = a
-    println(boxedA == anotherBoxedA) // Prints 'true'
+    println(boxedA == anotherBoxedA) // 输出“true”
 //sampleEnd
 }
 ```
 
 </div>
 
-### Explicit conversions
+### 显式转换
 
-Due to different representations, smaller types are not subtypes of bigger ones.
-If they were, we would have troubles of the following sort:
+由于不同的表示方式，较小类型并不是较大类型的子类型。
+如果它们是的话，就会出现下述问题：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// Hypothetical code, does not actually compile:
-val a: Int? = 1 // A boxed Int (java.lang.Integer)
-val b: Long? = a // implicit conversion yields a boxed Long (java.lang.Long)
-print(b == a) // Surprise! This prints "false" as Long's equals() checks whether the other is Long as well
+// 假想的代码，实际上并不能编译：
+val a: Int? = 1 // 一个装箱的 Int (java.lang.Integer)
+val b: Long? = a // 隐式转换产生一个装箱的 Long (java.lang.Long)
+print(b == a) // 惊！这将输出“false”鉴于 Long 的 equals() 会检测另一个是否也为 Long
 ```
 
 </div>
 
-So equality would have been lost silently all over the place, not to mention identity.
+所以相等性会在所有地方悄无声息地失去，更别说同一性了。
 
-As a consequence, smaller types are NOT implicitly converted to bigger types.
-This means that we cannot assign a value of type `Byte` to an `Int` variable without an explicit conversion
+因此较小的类型**不能**隐式转换为较大的类型。
+这意味着在不进行显式转换的情况下我们不能把 `Byte` 型值赋给一个 `Int` 变量。
 
 <div class="sample" markdown="1" theme="idea">
 
 ```kotlin
 fun main() {
 //sampleStart
-    val b: Byte = 1 // OK, literals are checked statically
-    val i: Int = b // ERROR
+    val b: Byte = 1 // OK, 字面值是静态检测的
+    val i: Int = b // 错误
 //sampleEnd
 }
 ```
 
 </div>
 
-We can use explicit conversions to widen numbers
+我们可以显式转换来拓宽数字
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -207,7 +207,7 @@ We can use explicit conversions to widen numbers
 fun main() {
     val b: Byte = 1
 //sampleStart
-    val i: Int = b.toInt() // OK: explicitly widened
+    val i: Int = b.toInt() // OK：显式拓宽
     print(i)
 //sampleEnd
 }
@@ -215,7 +215,7 @@ fun main() {
 
 </div>
 
-Every number type supports the following conversions:
+每个数字类型支持如下的转换:
 
 * `toByte(): Byte`
 * `toShort(): Short`
@@ -225,7 +225,7 @@ Every number type supports the following conversions:
 * `toDouble(): Double`
 * `toChar(): Char`
 
-Absence of implicit conversions is rarely noticeable because the type is inferred from the context, and arithmetical operations are overloaded for appropriate conversions, for example
+缺乏隐式类型转换很少会引起注意，因为类型会从上下文推断出来，而算术运算会有重载做适当转换，例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -235,15 +235,15 @@ val l = 1L + 3 // Long + Int => Long
 
 </div>
 
-### Operations
+### 运算
 
-Kotlin supports the standard set of arithmetical operations over numbers (`+` `-` `*` `/` `%`), which are declared
-as members of appropriate classes (but the compiler optimizes the calls down to the corresponding instructions).
-See [Operator overloading](operator-overloading.html).
+Kotlin支持数字运算的标准集（`+` `-` `*` `/` `%`），运算被定义<!--
+-->为相应的类成员（但编译器会将函数调用优化为相应的指令）。
+参见[运算符重载](operator-overloading.html)。
 
-#### Division of integers
+#### 整数除法
 
-Note that division between integers always returns an integer. Any fractional part is discarded. For example:
+请注意，整数间的除法总是返回整数。会丢弃任何小数部分。例如：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -259,7 +259,7 @@ fun main() {
 
 </div>
 
-This is true for a division between any two integer types.
+对于任何两个整数类型之间的除法来说都是如此。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -274,7 +274,7 @@ fun main() {
 
 </div>
 
-To return a floating-point type, explicitly convert one of the arguments to a floating-point type.
+如需返回浮点类型，请将其中的一个参数显式转换为浮点类型。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -289,9 +289,9 @@ fun main() {
 
 </div>
 
-#### Bitwise operations
+#### 位运算
 
-As for bitwise operations, there're no special characters for them, but just named functions that can be called in infix form, for example:
+对于位运算，没有特殊字符来表示，而只可用中缀方式调用具名函数，例如:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -301,58 +301,58 @@ val x = (1 shl 2) and 0x000FF000
 
 </div>
 
-Here is the complete list of bitwise operations (available for `Int` and `Long` only):
+这是完整的位运算列表（只用于 `Int` 与 `Long`）：
 
-* `shl(bits)` – signed shift left
-* `shr(bits)` – signed shift right
-* `ushr(bits)` – unsigned shift right
-* `and(bits)` – bitwise __and__
-* `or(bits)` – bitwise __or__
-* `xor(bits)` – bitwise __xor__
-* `inv()` – bitwise inversion
+* `shl(bits)` – 有符号左移
+* `shr(bits)` – 有符号右移
+* `ushr(bits)` – 无符号右移
+* `and(bits)` – 位**与**
+* `or(bits)` – 位**或**
+* `xor(bits)` – 位**异或**
+* `inv()` – 位非
 
-### Floating point numbers comparison
+### 浮点数比较
 
-The operations on floating point numbers discussed in this section are:
+本节讨论的浮点数操作如下：
 
-* Equality checks: `a == b` and `a != b`
-* Comparison operators: `a < b`, `a > b`, `a <= b`, `a >= b`
-* Range instantiation and range checks: `a..b`, `x in a..b`, `x !in a..b`
+* 相等性检测：`a == b` 与 `a != b`
+* 比较操作符：`a < b`、 `a > b`、 `a <= b`、 `a >= b`
+* 区间实例以及区间检测：`a..b`、 `x in a..b`、 `x !in a..b`
 
-When the operands `a` and `b` are statically known to be `Float` or `Double` or their nullable counterparts (the type is
-declared or inferred or is a result of a [smart cast](typecasts.html#smart-casts)), the operations on the
-numbers and the range that they form follow the IEEE 754 Standard for Floating-Point Arithmetic.
+当其中的操作数 `a` 与 `b` 都是静态已知的 `Float` 或 `Double` 或者它们对应的可空类型（声明为<!--
+-->该类型，或者推断为该类型，或者[智能类型转换](typecasts.html#智能转换)的结果是该类型），两数字所形成的操作<!--
+-->或者区间遵循 IEEE 754 浮点运算标准。
 
-However, to support generic use cases and provide total ordering, when the operands are **not** statically typed as
-floating point numbers (e.g. `Any`, `Comparable<...>`, a type parameter), the operations use the
-`equals` and `compareTo` implementations for `Float` and `Double`, which disagree with the standard, so that:
+然而，为了支持泛型场景并提供全序支持，当这些操作数**并非**静态类型为<!--
+-->浮点数（例如是 `Any`、 `Comparable<……>`、 类型参数）时，这些操作使用<!--
+-->为 `Float` 与 `Double` 实现的不符合标准的 `equals` 与 `compareTo`，这会出现：
 
-* `NaN` is considered equal to itself
-* `NaN` is considered greater than any other element including `POSITIVE_INFINITY`
-* `-0.0` is considered less than `0.0`
+* 认为 `NaN` 与其自身相等
+* 认为 `NaN` 比包括正无穷大（`POSITIVE_INFINITY`）在内的任何其他元素都大
+* 认为 `-0.0` 小于 `0.0`
 
-## Characters
+## 字符
 
-Characters are represented by the type `Char`. They can not be treated directly as numbers
+字符用 `Char` 类型表示。它们不能直接当作数字
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 fun check(c: Char) {
-    if (c == 1) { // ERROR: incompatible types
-        // ...
+    if (c == 1) { // 错误：类型不兼容
+        // ……
     }
 }
 ```
 
 </div>
 
-Character literals go in single quotes: `'1'`.
-Special characters can be escaped using a backslash.
-The following escape sequences are supported: `\t`, `\b`, `\n`, `\r`, `\'`, `\"`, `\\` and `\$`.
-To encode any other character, use the Unicode escape sequence syntax: `'\uFF00'`.
+字符字面值用单引号括起来: `'1'`。
+特殊字符可以用反斜杠转义。
+支持这几个转义序列：`\t`、 `\b`、`\n`、`\r`、`\'`、`\"`、`\\` 与 `\$`。
+编码其他字符要用 Unicode 转义序列语法：`'\uFF00'`。
 
-We can explicitly convert a character to an `Int` number:
+我们可以显式把字符转换为 `Int` 数字：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -360,29 +360,29 @@ We can explicitly convert a character to an `Int` number:
 fun decimalDigitValue(c: Char): Int {
     if (c !in '0'..'9')
         throw IllegalArgumentException("Out of range")
-    return c.toInt() - '0'.toInt() // Explicit conversions to numbers
+    return c.toInt() - '0'.toInt() // 显式转换为数字
 }
 ```
 
 </div>
 
-Like numbers, characters are boxed when a nullable reference is needed. Identity is not preserved by the boxing operation.
+当需要可空引用时，像数字、字符会被装箱。装箱操作不会保留同一性。
 
-## Booleans
+## 布尔
 
-The type `Boolean` represents booleans, and has two values: *true*{: .keyword } and *false*{: .keyword }.
+布尔用 `Boolean` 类型表示，它有两个值：*true*{: .keyword } 与 *false*{: .keyword }。
 
-Booleans are boxed if a nullable reference is needed.
+若需要可空引用布尔会被装箱。
 
-Built-in operations on booleans include
+内置的布尔运算有：
 
-* `||` – lazy disjunction
-* `&&` – lazy conjunction
-* `!` - negation
+* `||` – 短路逻辑或
+* `&&` – 短路逻辑与
+* `!` - 逻辑非
 
-## Arrays
+## 数组
 
-Arrays in Kotlin are represented by the `Array` class, that has `get` and `set` functions (that turn into `[]` by operator overloading conventions), and `size` property, along with a few other useful member functions:
+数组在 Kotlin 中使用 `Array` 类来表示，它定义了 `get` 与 `set` 函数（按照运算符重载约定这会转变为 `[]`）以及 `size` 属性，以及一些其他有用的成员函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -393,24 +393,24 @@ class Array<T> private constructor() {
     operator fun set(index: Int, value: T): Unit
 
     operator fun iterator(): Iterator<T>
-    // ...
+    // ……
 }
 ```
 
 </div>
 
-To create an array, we can use a library function `arrayOf()` and pass the item values to it, so that `arrayOf(1, 2, 3)` creates an array `[1, 2, 3]`.
-Alternatively, the `arrayOfNulls()` library function can be used to create an array of a given size filled with null elements.
+我们可以使用库函数 `arrayOf()` 来创建一个数组并传递元素值给它，这样 `arrayOf(1, 2, 3)` 创建了 array `[1, 2, 3]`。
+或者，库函数 `arrayOfNulls()` 可以用于创建一个指定大小的、所有元素都为空的数组。
 
-Another option is to use the `Array` constructor that takes the array size and the function that can return the initial value
-of each array element given its index:
+另一个选项是用接受数组大小以及一个函数参数的 `Array` 构造函数，用作参数的函数能够返回<!--
+-->给定索引的每个元素初始值：
 
 <div class="sample" markdown="1" theme="idea">
 
 ```kotlin
 fun main() {
 //sampleStart
-    // Creates an Array<String> with values ["0", "1", "4", "9", "16"]
+    // 创建一个 Array<String> 初始化为 ["0", "1", "4", "9", "16"]
     val asc = Array(5) { i -> (i * i).toString() }
     asc.forEach { println(it) }
 //sampleEnd
@@ -419,17 +419,17 @@ fun main() {
 
 </div>
 
-As we said above, the `[]` operation stands for calls to member functions `get()` and `set()`.
+如上所述，`[]` 运算符代表调用成员函数 `get()` 与 `set()`。
 
-Arrays in Kotlin are _invariant_. This means that Kotlin does not let us assign an `Array<String>`
-to an `Array<Any>`, which prevents a possible runtime failure (but you can use `Array<out Any>`,
-see [Type Projections](generics.html#type-projections)).
+Kotlin 中数组是*不型变的（invariant）*。这意味着 Kotlin 不让我们把 `Array<String>`
+赋值给 `Array<Any>`，以防止可能的运行时失败（但是你可以使用 `Array<out Any>`,
+参见[类型投影](generics.html#类型投影)）。
 
-### Primitive type arrays
+### 原生类型数组
 
-Kotlin also has specialized classes to represent arrays of primitive types without boxing overhead: `ByteArray`,
-`ShortArray`, `IntArray` and so on. These classes have no inheritance relation to the `Array` class, but they
-have the same set of methods and properties. Each of them also has a corresponding factory function:
+Kotlin 也有无装箱开销的专门的类来表示原生类型数组: `ByteArray`、
+`ShortArray`、`IntArray` 等等。这些类与 `Array` 并没有继承关系，但是<!--
+-->它们有同样的方法属性集。它们也都有相应的工厂方法:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -443,103 +443,103 @@ x[0] = x[1] + x[2]
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// Array of int of size 5 with values [0, 0, 0, 0, 0]
+// 大小为 5、值为 [0, 0, 0, 0, 0] 的整型数组
 val arr = IntArray(5)
 
-// e.g. initialise the values in the array with a constant
-// Array of int of size 5 with values [42, 42, 42, 42, 42]
+// 例如：用常量初始化数组中的值
+// 大小为 5、值为 [42, 42, 42, 42, 42] 的整型数组
 val arr = IntArray(5) { 42 }
 
-// e.g. initialise the values in the array using a lambda
-// Array of int of size 5 with values [0, 1, 2, 3, 4] (values initialised to their index value)
+// 例如：使用 lambda 表达式初始化数组中的值
+// 大小为 5、值为 [0, 1, 2, 3, 4] 的整型数组（值初始化为其索引值）
 var arr = IntArray(5) { it * 1 } 
 ```
 
 </div>
 
 
-## Unsigned integers
+## 无符号整型
 
-> Unsigned types are available only since Kotlin 1.3 and currently in [Beta](evolution/components-stability.html). See details [below](#beta-status-of-unsigned-integers)
+> 无符号类型自 Kotlin 1.3 起才可用，并且目前处于 [Beta](evolution/components-stability.html) 版。详见[下文](#无符号整数的-beta-状态)
 {:.note}
 
-Kotlin introduces following types for unsigned integers:
+Kotlin 为无符号整数引入了以下类型：
 
-* `kotlin.UByte`: an unsigned 8-bit integer, ranges from 0 to 255
-* `kotlin.UShort`: an unsigned 16-bit integer, ranges from 0 to 65535
-* `kotlin.UInt`: an unsigned 32-bit integer, ranges from 0 to 2^32 - 1
-* `kotlin.ULong`: an unsigned 64-bit integer, ranges from 0 to 2^64 - 1
+* `kotlin.UByte`: 无符号 8 比特整数，范围是 0 到 255
+* `kotlin.UShort`: 无符号 16 比特整数，范围是 0 到 65535
+* `kotlin.UInt`: 无符号 32 比特整数，范围是 0 到 2^32 - 1
+* `kotlin.ULong`: 无符号 64 比特整数，范围是 0 到 2^64 - 1
 
-Unsigned types support most of the operations of their signed counterparts.
+无符号类型支持其对应有符号类型的大多数操作。
 
-> Note that changing type from unsigned type to signed counterpart (and vice versa) is a *binary incompatible* change
+> 请注意，将类型从无符号类型更改为对应的有符号类型（反之亦然）是*二进制不兼容*变更
 {:.note}
 
-Unsigned types are implemented using another feature that's not yet stable, namely [inline classes](inline-classes.html).
+无符号类型是使用另一个尚未稳定特性（即[内联类](inline-classes.html)）实现的。
 
-### Specialized classes
+### 特化的类
 
-Same as for primitives, each of unsigned type has corresponding type that represents array, specialized for that unsigned type:
+与原生类型相同，每个无符号类型都有相应的为该类型特化的表示数组的类型：
 
-* `kotlin.UByteArray`: an array of unsigned bytes
-* `kotlin.UShortArray`: an array of unsigned shorts
-* `kotlin.UIntArray`: an array of unsigned ints
-* `kotlin.ULongArray`: an array of unsigned longs
+* `kotlin.UByteArray`: 无符号字节数组
+* `kotlin.UShortArray`: 无符号短整型数组
+* `kotlin.UIntArray`: 无符号整型数组
+* `kotlin.ULongArray`: 无符号长整型数组
 
-Same as for signed integer arrays, they provide similar API to `Array` class without boxing overhead.
+与有符号整型数组一样，它们提供了类似于 `Array` 类的 API 而没有装箱开销。
 
-Also, [ranges and progressions](ranges.html) supported for `UInt` and `ULong` by classes `kotlin.ranges.UIntRange`, `kotlin.ranges.UIntProgression`, `kotlin.ranges.ULongRange`, `kotlin.ranges.ULongProgression`
+此外，[区间与数列](ranges.html)也支持 `UInt` 与 `ULong`（通过这些类 `kotlin.ranges.UIntRange`、 `kotlin.ranges.UIntProgression`、 `kotlin.ranges.ULongRange`、 `kotlin.ranges.ULongProgression`）
 
-### Literals
+### 字面值
 
-To make unsigned integers easier to use, Kotlin provides an ability to tag an integer literal with a suffix indicating a specific unsigned type (similarly to Float/Long):
-* suffixes `u` and `U` tag literal as unsigned. Exact type will be determined based on the expected type. If no expected type is provided, `UInt` or `ULong` will be chosen based on the size of literal
+为使无符号整型更易于使用，Kotlin 提供了用后缀标记整型字面值来表示指定无符号类型（类似于 Float/Long）：
+* 后缀 `u` 与 `U` 将字面值标记为无符号。确切类型会根据预期类型确定。如果没有提供预期的类型，会根据字面值大小选择 `UInt` 或者 `ULong`
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val b: UByte = 1u  // UByte, expected type provided
-val s: UShort = 1u // UShort, expected type provided
-val l: ULong = 1u  // ULong, expected type provided
+val b: UByte = 1u  // UByte，已提供预期类型
+val s: UShort = 1u // UShort，已提供预期类型
+val l: ULong = 1u  // ULong，已提供预期类型
 
-val a1 = 42u // UInt: no expected type provided, constant fits in UInt
-val a2 = 0xFFFF_FFFF_FFFFu // ULong: no expected type provided, constant doesn't fit in UInt
-```
-
-</div> 
-
-* suffixes `uL` and `UL` explicitly tag literal as unsigned long.
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
-```kotlin
-val a = 1UL // ULong, even though no expected type provided and constant fits into UInt
+val a1 = 42u // UInt：未提供预期类型，常量适于 UInt
+val a2 = 0xFFFF_FFFF_FFFFu // ULong：未提供预期类型，常量不适于 UInt
 ```
 
 </div>
 
-### Beta status of unsigned integers
+* 后缀 `uL` 与 `UL` 显式将字面值标记为无符号长整型。
 
-The design of unsigned types is in [Beta](evolution/components-stability.html), meaning that its compatibility is best-effort only and not guaranteed. When using unsigned arithmetics in Kotlin 1.3+, a warning will be reported, indicating that this feature has not been released as stable. To remove the warning, you have to opt in for usage of unsigned types.
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-There are two possible ways to opt-in for unsigned types: with requiring an opt-in for your API, or without doing that.
+```kotlin
+val a = 1UL // ULong，即使未提供预期类型并且常量适于 UInt
+```
 
-- To propagate the opt-in requirement, annotate declarations that use unsigned integers with `@ExperimentalUnsignedTypes`.
-- To opt-in without propagating, either annotate declarations with `@OptIn(ExperimentalUnsignedTypes::class)` or pass `-Xopt-in=kotlin.ExperimentalUnsignedTypes` to the compiler.
+</div>
 
-It's up to you to decide if your clients have to explicitly opt-in into usage of your API, but bear in mind that unsigned types are not a stable feature, so API which uses them can be broken by changes in the language.
+### 无符号整数的 beta 状态
 
-See also the Opt-in Requirements API [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/experimental.md) for technical details.
+无符号类型的设计还是 [Beta](evolution/components-stability.html) 版，这意味着其兼容性仅是尽力而为，不能保证。在 Kotlin 1.3+ 中使用无符号算术时，会报一个警告，提示该特性尚未稳定发布。如需消除警告，必须选择加入对无符号类型的使用。
 
-### Further discussion
+选择加入无符号整型有两种可行的方式：将 API 配置为需要选择加入，或者无需。
 
-See [language proposal for unsigned types](https://github.com/Kotlin/KEEP/blob/master/proposals/unsigned-types.md) for technical details and further discussion.
+- 如需传播选择加入要求，请以 `@ExperimentalUnsignedTypes` 标注使用了无符号整型的声明。
+- 如需选择加入而不传播，要么使用 `@OptIn(ExperimentalUnsignedTypes::class)` 注解标注声明，要么将 `-Xopt-in=kotlin.ExperimentalUnsignedTypes` 传给编译器。
 
-## Strings
+你的客户是否必须选择使用你的 API 取决于你，不过请记住，无符号整型是一个非稳定特性，因此使用它们的 API 可能会因语言的变更而发生突然破坏。
 
-Strings are represented by the type `String`. Strings are immutable.
-Elements of a string are characters that can be accessed by the indexing operation: `s[i]`.
-A string can be iterated over with a *for*{: .keyword }-loop:
+技术细节也参见具有选择加入要求的 API 的 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/experimental.md)。
+
+### 深入探讨
+
+关于技术细节与深入探讨请参见[无符号类型的语言提案](https://github.com/Kotlin/KEEP/blob/master/proposals/unsigned-types.md)。
+
+## 字符串
+
+字符串用 `String` 类型表示。字符串是不可变的。
+字符串的元素——字符可以使用索引运算符访问: `s[i]`。
+可以用 *for*{: .keyword } 循环迭代字符串:
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -556,8 +556,8 @@ for (c in str) {
 
 </div>
 
-You can concatenate strings using the `+` operator. This also works for concatenating strings with values of other types, as long
-as the first element in the expression is a string:
+可以用 `+` 操作符连接字符串。这也适用于连接字符串与其他类型的值，
+只要表达式中的第一个元素是字符串：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -572,12 +572,12 @@ println(s + "def")
 
 </div>
 
-Note that in most cases using [string templates](#string-templates) or raw strings is preferable to string concatenation.
+请注意，在大多数情况下，优先使用[字符串模板](#字符串模板)或原始字符串而不是字符串连接。
 
-### String literals
+### 字符串字面值
 
-Kotlin has two types of string literals: escaped strings that may have escaped characters in them
-and raw strings that can contain newlines and arbitrary text. Here's an example of an escaped string:
+Kotlin 有两种类型的字符串字面值: 转义字符串可以有转义字符，
+以及原始字符串可以包含换行以及任意文本。以下是转义字符串的一个示例:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -587,9 +587,9 @@ val s = "Hello, world!\n"
 
 </div>
 
-Escaping is done in the conventional way, with a backslash. See [Characters](#characters) above for the list of supported escape sequences.
+转义采用传统的反斜杠方式。参见上面的 [字符](#字符) 查看支持的转义序列。
 
-A raw string is delimited by a triple quote (`"""`), contains no escaping and can contain newlines and any other characters:
+*原始字符串* 使用三个引号（`"""`）分界符括起来，内部没有转义并且可以包含换行以及任何其他字符:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -602,7 +602,7 @@ val text = """
 
 </div>
 
-You can remove leading whitespace with [`trimMargin()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim-margin.html) function:
+你可以通过 [`trimMargin()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim-margin.html) 函数去除前导空格：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -617,12 +617,12 @@ val text = """
 
 </div>
 
-By default `|` is used as margin prefix, but you can choose another character and pass it as a parameter, like `trimMargin(">")`.
+默认 `|` 用作边界前缀，但你可以选择其他字符并作为参数传入，比如 `trimMargin(">")`。
 
-### String templates
+### 字符串模板
 
-String literals may contain template expressions, i.e. pieces of code that are evaluated and whose results are concatenated into the string.
-A template expression starts with a dollar sign ($) and consists of either a simple name:
+字符串字面值可以包含*模板表达式* ，即一些小段代码，会求值并把结果合并到字符串中。
+模板表达式以美元符（`$`）开头，由一个简单的名字构成:
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -630,14 +630,14 @@ A template expression starts with a dollar sign ($) and consists of either a sim
 fun main() {
 //sampleStart
     val i = 10
-    println("i = $i") // prints "i = 10"
+    println("i = $i") // 输出“i = 10”
 //sampleEnd
 }
 ```
 
 </div>
 
-or an arbitrary expression in curly braces:
+或者用花括号括起来的任意表达式:
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -645,15 +645,15 @@ or an arbitrary expression in curly braces:
 fun main() {
 //sampleStart
     val s = "abc"
-    println("$s.length is ${s.length}") // prints "abc.length is 3"
+    println("$s.length is ${s.length}") // 输出“abc.length is 3”
 //sampleEnd
 }
 ```
 
 </div>
 
-Templates are supported both inside raw strings and inside escaped strings.
-If you need to represent a literal `$` character in a raw string (which doesn't support backslash escaping), you can use the following syntax:
+原始字符串与转义字符串内部都支持模板。
+如果你需要在原始字符串中表示字面值 `$` 字符（它不支持反斜杠转义），你可以用下列语法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
