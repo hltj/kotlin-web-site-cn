@@ -1,10 +1,4 @@
----
-type: doc
-layout: reference
-title: "Kotlin 1.2 的新特性"
----
-
-# Kotlin 1.2 的新特性
+[//]: # (title: Kotlin 1.2 的新特性)
 
 ## 目录
 
@@ -15,10 +9,10 @@ title: "Kotlin 1.2 的新特性"
 * [JavaScript 后端](#javascript-后端)
 
 {:#多平台项目实验性的}
-
 ## 多平台项目（实验性的）
 
-多平台项目是 Kotlin 1.2 中的一个新的**实验性的**特性，允许你在支持 Kotlin 的目标平台——JVM、JavaScript 以及（将来的）Native 之间重用代码。在多平台项目中，你有三种模块：
+多平台项目是 Kotlin 1.2 中的一个新的**实验性的**特性，允许你在支持 Kotlin 的目标平台——
+JVM、JavaScript 以及（将来的）Native 之间重用代码。在多平台项目中，你有三种模块：
 
 * 一个*公共*模块包含平台无关代码，以及无实现的依赖平台的 API 声明。
 * *平台*模块包含通用模块中的平台相关声明在指定平台的实现，以及其他平台相关代码。
@@ -26,11 +20,12 @@ title: "Kotlin 1.2 的新特性"
 
 当你为指定平台编译多平台项目时，既会生成公共代码也会生成平台相关代码。
 
-多平台项目支持的一个主要特点是可以通过**预期声明与实际声明**来表达公共代码对平台相关部分的依赖关系。一个预期声明指定一个 API（类、接口、注解、顶层声明等）。一个实际声明要么是该 API 的平台相关实现，要么是一个引用到在一个外部库中该 API 的一个既有实现的别名。这是一个示例：
+多平台项目支持的一个主要特点是可以<!--
+-->通过*预期*声明与*实际*声明来表达公共代码对平台相关部分的依赖关系。 一个*预期*声明指定一个 API（类、接口、注解、顶层声明等）。
+一个*实际*声明要么是该 API 的平台相关实现，要么是一个引用到在一个<!--
+-->外部库中该 API 的一个既有实现的别名。这是一个示例：
 
 在公共代码中：
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 // 预期平台相关 API:
@@ -48,11 +43,7 @@ expect class URL(spec: String) {
 }
 ```
 
-</div>
-
 在 JVM 平台代码中：
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 actual fun hello(world: String): String =
@@ -62,10 +53,7 @@ actual fun hello(world: String): String =
 actual typealias URL = java.net.URL
 ```
 
-</div>
-
-关于构建多平台项目的详细信息与步骤，请参见其[文档](http://www.kotlincn.net/docs/reference/multiplatform.html)<!--
--->。
+关于构建多平台项目的详细信息与步骤，请参见其[文档](multiplatform.md)。
 
 ## 其他语言特性
 
@@ -74,16 +62,12 @@ actual typealias URL = java.net.URL
 自 Kotlin 1.2 起，注解的数组参数可以通过新的数组字面值语法传入，而无需<!--
 -->使用 `arrayOf` 函数：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
 ```kotlin
 @CacheConfig(cacheNames = ["books", "default"])
 public class BookRepositoryImpl {
     // ……
 }
 ```
-
-</div>
 
 该数组字面值语法仅限于注解参数。
 
@@ -92,8 +76,6 @@ public class BookRepositoryImpl {
 `lateinit` 修饰符现在可以用于顶层属性与局部变量了。例如，后者可用于<!--
 -->当一个 lambda 表达式作为构造函数参数传给一个对象时，引用另一个<!--
 -->必须稍后定义的对象：
-
-<div class="sample" markdown="1" data-min-compiler-version="1.2" theme="idea">
 
 ```kotlin
 class Node<T>(val value: T, val next: () -> Node<T>)
@@ -111,14 +93,11 @@ fun main(args: Array<String>) {
     println("Values in the cycle: ${nodes.take(7).joinToString { it.value.toString() }}, ...")
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ### 检测 lateinit 变量是否已初始化
 
 现在可以通过属性引用的 `isInitialized` 来检测该 lateinit var 是否已初始化：
-
-<div class="sample" markdown="1" data-min-compiler-version="1.2" theme="idea">
 
 ```kotlin
 class Foo {
@@ -137,14 +116,11 @@ fun main(args: Array<String>) {
 	Foo().initializationLogic()
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ### 内联函数带有默认函数式参数
 
 内联函数现在允许其内联函式数参数具有默认值：
-
-<div class="sample" markdown="1" data-min-compiler-version="1.2" theme="idea" auto-indent="false">
 
 ```kotlin
 //sampleStart
@@ -160,8 +136,7 @@ fun main(args: Array<String>) {
     println("customStrings = $customStrings")
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ### 源自显式类型转换的信息会用于类型推断
 
@@ -172,20 +147,14 @@ Kotlin 编译器现在可将类型转换信息用于类型推断。如果你调�
 这对于 Android 开发者来说尤为重要，因为编译器现在可以正确分析
 Android API 级别 26中的泛型 `findViewById` 调用：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
 ```kotlin
 val button = findViewById(R.id.button) as Button
 ```
-
-</div>
 
 ### 智能类型转换改进
 
 当一个变量有安全调用表达式与空检测赋值时，其智能转换现在也可以应用于<!--
 -->安全调用接收者：
-
-<div class="sample" markdown="1" data-min-compiler-version="1.2" theme="idea" auto-indent="false" indent="2">
 
 ```kotlin
 fun countFirst(s: Any): Int {
@@ -211,12 +180,9 @@ fun main(args: Array<String>) {
   println("called on $list: $countInList")
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 智能转换现在也允许用于在 lambda 表达式中局部变量，只要这些局部变量仅在 lambda 表达式之前修改即可：
-
-<div class="sample" markdown="1" data-min-compiler-version="1.2" theme="idea">
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -233,8 +199,7 @@ fun main(args: Array<String>) {
 //sampleEnd
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ### 支持 ::foo 作为 this::foo 的简写
 
@@ -271,13 +236,9 @@ Kotlin 以前将 `try` 块中的赋值语句用于块后的智能转换，这可
 -->的用法（`foo(items = i)`）已被弃用。请使用伸展操作符连同相应的<!--
 -->数组工厂函数：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
 ```kotlin
 foo(items = *intArrayOf(1))
 ```
-
-</div>
 
 在这种情况下有一项防止性能下降的优化可以消除冗余的数组创建。
 单参数形式在 Kotlin 1.2 中会产生警告，而在 Kotlin 1.3中会放弃。
@@ -314,8 +275,6 @@ Java看来有不同的包名。因此，切换到新的构件无需修改任何<
 -->批处理（`chunked`）、 滑动窗口与计算滑动均值（`windowed`）以及处理成对<!--
 -->的后续条目（`zipWithNext`）：
 
-<div class="sample" markdown="1" data-min-compiler-version="1.2" theme="idea">
-
 ```kotlin
 fun main(args: Array<String>) {
 //sampleStart
@@ -337,15 +296,12 @@ fun main(args: Array<String>) {
     println("pairwise differences: $pairwiseDifferences")
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ### fill、replaceAll、shuffle/shuffled
 
 添加了一些用于操作列表的扩展函数：`MutableList` 的 `fill`、 `replaceAll` 与 `shuffle` ，
 以及只读 `List`的 `shuffled`：
-
-<div class="sample" markdown="1" data-min-compiler-version="1.2" theme="idea">
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -363,31 +319,30 @@ fun main(args: Array<String>) {
 //sampleEnd
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ### kotlin-stdlib 中的数学运算
 
 为满足由来已久的需求，Kotlin 1.2 添加了 JVM 与 JS 公用的用于数学运算的 `kotlin.math` API，
 包含以下内容：
 
-* 常量：`PI` 与 `E`；
-* 三角函数：`cos`、 `sin`、 `tan` 及其反函数：`acos`、 `asin`、 `atan`、 `atan2`；
+* 常量：`PI` 与 `E`
+* 三角函数：`cos`、 `sin`、 `tan` 及其反函数：`acos`、 `asin`、 `atan`、 `atan2`
 * 双曲函数：`cosh`、 `sinh`、 `tanh` 及其反函数：`acosh`、 `asinh`、 `atanh`
-* 指数函数：`pow`（扩展函数）、 `sqrt`、 `hypot`、 `exp`、 `expm1`；
-* 对数函数：`log`、 `log2`、 `log10`、 `ln`、 `ln1p`；
-* 取整:
-  * `ceil`、 `floor`、 `truncate`、 `round`（奇进偶舍）函数；
-  * `roundToInt`、 `roundToLong`（四舍五入）扩展函数；
+* 指数函数：`pow`（扩展函数）、 `sqrt`、 `hypot`、 `exp`、 `expm1`
+* 对数函数：`log`、 `log2`、 `log10`、 `ln`、 `ln1p`
+* 取整：
+    * `ceil`、 `floor`、 `truncate`、 `round`（奇进偶舍）函数
+    * `roundToInt`、 `roundToLong`（四舍五入）扩展函数
 * 符号与绝对值：
-  * `abs` 与 `sign` 函数；
-  * `absoluteValue` 与 `sign` 扩展属性；
-  * `withSign` 扩展函数；
-* 两个数的最值函数：`max` 与 `min`；
+    * `abs` 与 `sign` 函数
+    * `absoluteValue` 与 `sign` 扩展属性
+    * `withSign` 扩展函数
+* 两个数的最值函数：`max` 与 `min`
 * 二进制表示：
-  * `ulp` 扩展属性；
-  * `nextUp`、 `nextDown`、 `nextTowards` 扩展函数；
-  * `toBits`、 `toRawBits`、 `Double.fromBits`（这些在 `kotlin` 包中）。
+    * `ulp` 扩展属性
+    * `nextUp`、 `nextDown`、 `nextTowards` 扩展函数
+    * `toBits`、 `toRawBits`、 `Double.fromBits`（这些在 `kotlin` 包中）
 
 这些函数同样也有 `Float` 参数版本（但不包括常量）。
 
@@ -396,18 +351,18 @@ fun main(args: Array<String>) {
 Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由其他<!--
 -->数字类型创建它们的函数。具体如下：
 
-* `toBigInteger` 用于 `Int` 与 `Long`；
-* `toBigDecimal` 用于 `Int`、 `Long`、 `Float`、 `Double` 以及 `BigInteger`；
+* `toBigInteger` 用于 `Int` 与 `Long`
+* `toBigDecimal` 用于 `Int`、 `Long`、 `Float`、 `Double` 以及 `BigInteger`
 * 算术与位运算操作符函数：
-  * 二元操作符  `+`、 `-`、 `*`、 `/`、 `%` 以及中缀函数 `and`、 `or`、 `xor`、 `shl`、 `shr`；
-  * 一元操作符 `-`、 `++`、 `--` 以及函数 `inv`。
+    * 二元操作符  `+`、 `-`、 `*`、 `/`、 `%` 以及中缀函数 `and`、 `or`、 `xor`、 `shl`、 `shr`
+    * 一元操作符 `-`、 `++`、 `--` 以及函数 `inv`
 
 ### 浮点数到比特的转换
 
 添加了用于将 `Double` 及 `Float` 与其比特表示形式相互转换的函数：
 
-* `toBits` 与 `toRawBits` 对于 `Double` 返回 `Long` 而对于 `Float` 返回 `Int`；
-* `Double.fromBits` 与 `Float.fromBits` 用于有相应比特表示形式创建浮点数。
+* `toBits` 与 `toRawBits` 对于 `Double` 返回 `Long` 而对于 `Float` 返回 `Int`
+* `Double.fromBits` 与 `Float.fromBits` 用于有相应比特表示形式创建浮点数
 
 ### 正则表达式现在可序列化
 
@@ -429,13 +384,13 @@ Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由�
 当这样的表达式出现在构造函数调用的参数中时，一些字节码处理工具不能很好地处理这种代码
 。
 
-为了缓解这种字节码处理工具用户的这一问题，我们添加了一个命令行<!--
+为了缓解这种字节码处理工具用户的这一问题，我们添加了一个命令行编译器<!--
 -->选项（`-Xnormalize-constructor-calls=模式`），告诉编译器为这样的构造过程生成更接近 Java 的字节码
 。其中`模式`是下列之一：
 
-* `disable`（默认）——以与 Kotlin 1.0 即 1.1 相同的方式生成字节码；
+* `disable`（默认）——以与 Kotlin 1.0 即 1.1 相同的方式生成字节码。
 * `enable`——为构造函数调用生成类似 Java 的字节码。 这可能会改变类加载与初始化的顺序
-  ；
+。
 * `preserve-class-initialization`——为构造函数调用生成类似 Java 的字节码，并确保类<!--
 -->初始化顺序得到保留。这可能会影响应用程序的整体性能；仅用在<!--
 -->多个类之间共享一些复杂状态并在类初始化时更新的场景中。
@@ -481,12 +436,8 @@ Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由�
 编译器现在提供一个将所有警告视为错误的选项。可在命令行中使用 `-Werror`，或者<!--
 -->在 Gradle 中使用以下代码片段：
 
-<div class="sample" markdown="1" mode="groovy" theme="idea">
-
 ```groovy
 compileKotlin {
   kotlinOptions.allWarningsAsErrors = true
 }
 ```
-
-</div>
