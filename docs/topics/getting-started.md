@@ -1,25 +1,25 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Getting Started with Kotlin"
+title:  "Kotlin 入门"
 ---
 
-It’s easy to get started with Kotlin using the Kotlin plugin integrated in [IntelliJ IDEA](https://www.jetbrains.com/idea/).
-Benefit from code highlighting, code completion, refactoring, debugging, and other features available for Kotlin.
+使用 [IntelliJ IDEA](https://www.jetbrains.com/idea/) 中集成的 Kotlin 插件，可以轻松开始使用 Kotlin。
+从代码高亮显示、代码补全、重构、调试与 Kotlin 的其他可用特性中获益。
 
-If you want to **start from scratch**, you can [create a basic Kotlin application](jvm-get-started.html).
-Once you’ve created the application, you can dive deeper into Kotlin syntax:
+如果想 **从头开始**，可以[创建一个基本的 Kotlin 应用程序](jvm-get-started.html)。
+创建应用程序后，可以更深入地了解 Kotlin 语法：
 
-*   Add sample code from [Kotlin examples](https://play.kotlinlang.org/byExample/overview)
-*   Install the [EduTools plugin](https://plugins.jetbrains.com/plugin/10081-edutools) for IDEA and complete exercises
-    from the [Kotlin Koans course](https://www.jetbrains.com/help/education/learner-start-guide.html?section=Kotlin%20Koans)
+*   从 [Kotlin 范例](https://play.kotlinlang.org/byExample/overview)中添加示例代码
+*   安装 IDEA 的 [EduTools 插件](https://plugins.jetbrains.com/plugin/10081-edutools)，
+    并完成 [Kotlin 心印课程](https://www.jetbrains.com/help/education/learner-start-guide.html?section=Kotlin%20Koans)的练习
 
-If you already **have a Java project**, you can:
+如果已经 **有一个 Java 项目**，那么可以：
 
-*   **[Start adding Kotlin code to your project](mixing-java-kotlin-intellij.html).**  
-    Begin with a small class or function with the annotations required for proper [interoperability with Java code](../reference/java-interop.html).
-*   **Write some tests in Kotlin** for your code.  
-    Tests are a safe place to add Kotlin to the codebase because they are not bundled with your application during packaging.
-*   **[Convert Java code to Kotlin](mixing-java-kotlin-intellij.html#converting-an-existing-java-file-to-kotlin-with-j2k)**.  
-    Extract small pieces of Java functionality and convert to Kotlin classes and functions using the Java-to-Kotlin converter.
+*   **[开始将 Kotlin 代码添加到项目中](mixing-java-kotlin-intellij.html)。**  
+    从一个小类或函数开始，并带有[与 Java 代码正确互操作性](../reference/java-interop.html)所需的注解。
+*   用 **Kotlin** 为代码 **编写一些测试**。
+    测试是将 Kotlin 添加到代码库中的安全场所，因为在打包过程中它们并未与应用程序捆绑在一起。
+*   **[将 Java 代码转换为 Kotlin](mixing-java-kotlin-intellij.html#converting-an-existing-java-file-to-kotlin-with-j2k)**。
+    提取 Java 函数的小片段，并使用 Java-to-Kotlin 转换器将其转换为 Kotlin 类与函数。
 
