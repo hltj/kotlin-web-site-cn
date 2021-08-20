@@ -1,15 +1,6 @@
----
-type: doc
-layout: reference
-category: "Syntax"
-title: "Packages and Imports"
----
-
-# Packages
+[//]: # (title: Packages and imports)
 
 A source file may start with a package declaration:
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 package org.example
@@ -19,75 +10,64 @@ class Message { /*...*/ }
 
 // ...
 ```
-</div>
 
-All the contents (such as classes and functions) of the source file are contained by the package declared.
+All the contents, such as classes and functions, of the source file are included in this package.
 So, in the example above, the full name of `printMessage()` is `org.example.printMessage`,
-and the full name of `Message` is `org.example.Message`.
+and the full name of `Message` is `org.example.Message`. 
 
-If the package is not specified, the contents of such a file belong to the default package that has no name.
+If the package is not specified, the contents of such a file belong to the _default_ package with no name.
 
-## Default Imports
+## Default imports
 
 A number of packages are imported into every Kotlin file by default:
 
-- [kotlin.*](/api/latest/jvm/stdlib/kotlin/index.html)
-- [kotlin.annotation.*](/api/latest/jvm/stdlib/kotlin.annotation/index.html)
-- [kotlin.collections.*](/api/latest/jvm/stdlib/kotlin.collections/index.html)
-- [kotlin.comparisons.*](/api/latest/jvm/stdlib/kotlin.comparisons/index.html)  (since 1.1)
-- [kotlin.io.*](/api/latest/jvm/stdlib/kotlin.io/index.html)
-- [kotlin.ranges.*](/api/latest/jvm/stdlib/kotlin.ranges/index.html)
-- [kotlin.sequences.*](/api/latest/jvm/stdlib/kotlin.sequences/index.html)
-- [kotlin.text.*](/api/latest/jvm/stdlib/kotlin.text/index.html)
+- [kotlin.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/index.html)
+- [kotlin.annotation.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/index.html)
+- [kotlin.collections.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html)
+- [kotlin.comparisons.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.comparisons/index.html)
+- [kotlin.io.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/index.html)
+- [kotlin.ranges.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/index.html)
+- [kotlin.sequences.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/index.html)
+- [kotlin.text.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/index.html)
 
 Additional packages are imported depending on the target platform:
 
 - JVM:
   - java.lang.*
-  - [kotlin.jvm.*](/api/latest/jvm/stdlib/kotlin.jvm/index.html)
+  - [kotlin.jvm.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/index.html)
 
-- JS:
-  - [kotlin.js.*](/api/latest/jvm/stdlib/kotlin.js/index.html)
+- JS:    
+  - [kotlin.js.*](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/index.html)
 
 ## Imports
 
-Apart from the default imports, each file may contain its own import directives.
-Syntax for imports is described in the [grammar](grammar.html#importHeader).
+Apart from the default imports, each file may contain its own `import` directives.
 
-We can import either a single name, e.g.
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+You can import either a single name:
 
 ```kotlin
 import org.example.Message // Message is now accessible without qualification
 ```
-</div>
 
-or all the accessible contents of a scope (package, class, object etc):
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+or all the accessible contents of a scope: package, class, object, and so on:
 
 ```kotlin
 import org.example.* // everything in 'org.example' becomes accessible
 ```
-</div>
 
-If there is a name clash, we can disambiguate by using *as*{: .keyword } keyword to locally rename the clashing entity:
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+If there is a name clash, you can disambiguate by using `as` keyword to locally rename the clashing entity:
 
 ```kotlin
 import org.example.Message // Message is accessible
 import org.test.Message as testMessage // testMessage stands for 'org.test.Message'
 ```
-</div>
 
 The `import` keyword is not restricted to importing classes; you can also use it to import other declarations:
 
-* top-level functions and properties;
-* functions and properties declared in [object declarations](object-declarations.html#object-declarations);
-* [enum constants](enum-classes.html).
+  * top-level functions and properties
+  * functions and properties declared in [object declarations](object-declarations.md#object-declarations)
+  * [enum constants](enum-classes.md)
 
-## Visibility of Top-level Declarations
+## Visibility of top-level declarations
 
-If a top-level declaration is marked *private*{: .keyword }, it is private to the file it's declared in (see [Visibility Modifiers](visibility-modifiers.html)).
+If a top-level declaration is marked `private`, it is private to the file it's declared in (see [Visibility modifiers](visibility-modifiers.md)).
