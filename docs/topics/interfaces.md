@@ -1,4 +1,4 @@
-[//]: # (title: Interfaces)
+# Interfaces
 
 Interfaces in Kotlin can contain declarations of abstract methods, as well as method
 implementations. What makes them different from abstract classes is that interfaces cannot store state. They can have
@@ -6,6 +6,7 @@ properties but these need to be abstract or to provide accessor implementations.
 
 An interface is defined using the keyword `interface`
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 interface MyInterface {
     fun bar()
@@ -14,11 +15,13 @@ interface MyInterface {
     }
 }
 ```
+</div>
 
-## Implementing interfaces
+## Implementing Interfaces
 
 A class or object can implement one or more interfaces
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 class Child : MyInterface {
     override fun bar() {
@@ -26,12 +29,15 @@ class Child : MyInterface {
     }
 }
 ```
+</div>
 
-## Properties in interfaces
+## Properties in Interfaces
 
 You can declare properties in interfaces. A property declared in an interface can either be abstract, or it can provide
 implementations for accessors. Properties declared in interfaces can't have backing fields, and therefore accessors
 declared in interfaces can't reference them.
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 interface MyInterface {
@@ -49,12 +55,13 @@ class Child : MyInterface {
     override val prop: Int = 29
 }
 ```
+</div>
 
 ## Interfaces Inheritance
 
-An interface can derive from other interfaces and thus both provide implementations for their members and declare new 
-functions and properties. Quite naturally, classes implementing such an interface are only required to define 
-the missing implementations:
+An interface can derive from other interfaces and thus both provide implementations for their members and declare new functions and properties. Quite naturally, classes implementing such an interface are only required to define the missing implementations:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 interface Named {
@@ -75,11 +82,13 @@ data class Employee(
     val position: Position
 ) : Person
 ```
+</div>
 
 ## Resolving overriding conflicts
 
-When you declare many types in your supertype list, you may inherit more than one implementation of the same method. 
-See the following example.
+When we declare many types in our supertype list, it may appear that we inherit more than one implementation of the same method. For example
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 interface A {
@@ -107,11 +116,12 @@ class D : A, B {
     }
 }
 ```
+</div>
 
-Interfaces *A* and *B* both declare functions *foo()* and *bar()*. Both of them implement *foo()*, but only *B* implements 
-*bar()* (*bar()* is not marked abstract in *A*, because this is the default for interfaces, if the function has no body). 
-Now, if you derive a concrete class *C* from *A*, you, obviously, have to override *bar()* and provide an implementation.
+Interfaces *A* and *B* both declare functions *foo()* and *bar()*. Both of them implement *foo()*, but only *B* implements *bar()* (*bar()* is not marked abstract in *A*,
+because this is the default for interfaces, if the function has no body). Now, if we derive a concrete class *C* from *A*, we, obviously, have to override *bar()* and provide
+an implementation.
 
-However, if you derive *D* from *A* and *B*, you need to implement all the methods which you have
+However, if we derive *D* from *A* and *B*, we need to implement all the methods which we have
 inherited from multiple interfaces, and to specify how exactly *D* should implement them. This rule applies
-both to methods for which you've inherited a single implementation (*bar()*) and multiple implementations (*foo()*).
+both to methods for which we've inherited a single implementation (*bar()*) and multiple implementations (*foo()*).
