@@ -1,40 +1,58 @@
-[//]: # (title: Classes)
+## Classes
 
 Classes in Kotlin are declared using the keyword `class`:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class Invoice { /*...*/ }
 ```
 
+</div>
+
 The class declaration consists of the class name, the class header (specifying its type parameters, the primary
 constructor etc.) and the class body, surrounded by curly braces. Both the header and the body are optional;
 if the class has no body, curly braces can be omitted.
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class Empty
 ```
 
-## Constructors
+</div>
 
-A class in Kotlin can have a _primary constructor_ and one or more _secondary constructors_. The primary
+### Constructors
+
+A class in Kotlin can have a **primary constructor** and one or more **secondary constructors**. The primary
 constructor is part of the class header: it goes after the class name (and optional type parameters).
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class Person constructor(firstName: String) { /*...*/ }
 ```
 
+</div>
+
 If the primary constructor does not have any annotations or visibility modifiers, the `constructor`
 keyword can be omitted:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class Person(firstName: String) { /*...*/ }
 ```
 
-The primary constructor cannot contain any code. Initialization code can be placed
-in _initializer blocks_, which are prefixed with the `init` keyword.
+</div>
 
-During an instance initialization, the initializer blocks are executed in the same order as they appear 
+The primary constructor cannot contain any code. Initialization code can be placed
+in **initializer blocks**, which are prefixed with the `init` keyword.
+
+During an instance initialization, the initializer blocks are executed in the same order as they appear
 in the class body, interleaved with the property initializers:
+
+<div class="sample" markdown="1" theme="idea">
 
 ```kotlin
 //sampleStart
@@ -57,10 +75,13 @@ fun main() {
     InitOrderDemo("hello")
 }
 ```
-{kotlin-runnable="true"}
 
-Parameters of the primary constructor can be used in the initializer blocks. They can also be used in
+</div>
+
+Note that parameters of the primary constructor can be used in the initializer blocks. They can also be used in
 property initializers declared in the class body:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class Customer(name: String) {
@@ -68,13 +89,21 @@ class Customer(name: String) {
 }
 ```
 
+</div>
+
 In fact, for declaring properties and initializing them from the primary constructor, Kotlin has a concise syntax:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class Person(val firstName: String, val lastName: String, var age: Int) { /*...*/ }
 ```
 
+</div>
+
 You can use a [trailing comma](coding-conventions.md#trailing-commas) when you declare class properties:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class Person(
@@ -84,21 +113,29 @@ class Person(
 ) { /*...*/ }
 ```
 
+</div>
+
 Much the same way as regular properties, the properties declared in the primary constructor can be
 mutable (`var`) or read-only (`val`).
 
 If the constructor has annotations or visibility modifiers, the `constructor` keyword is required, and
 the modifiers go before it:
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Customer public @Inject constructor(name: String) { /*...*/ }
 ```
 
-Learn more about [visibility modifiers](visibility-modifiers.md#constructors).
+</div>
 
-### Secondary constructors
+For more details, see [Visibility Modifiers](visibility-modifiers.md#constructors).
 
-The class can also declare _secondary constructors_, which are prefixed with `constructor`:
+#### Secondary constructors
+
+The class can also declare **secondary constructors**, which are prefixed with `constructor`:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class Person {
@@ -109,9 +146,13 @@ class Person {
 }
 ```
 
+</div>
+
 If the class has a primary constructor, each secondary constructor needs to delegate to the primary constructor, either
 directly or indirectly through another secondary constructor(s). Delegation to another constructor of the same class
 is done using the `this` keyword:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class Person(val name: String) {
@@ -122,12 +163,14 @@ class Person(val name: String) {
 }
 ```
 
-Code in initializer blocks effectively becomes part of the primary constructor. Delegation to the primary
-constructor happens as the first statement of a secondary constructor, so the code in all initializer blocks and property initializers is executed
-before the secondary constructor body. 
+</div>
 
-Even if the class has no primary constructor, the delegation still happens
+Note that code in initializer blocks effectively becomes part of the primary constructor. Delegation to the primary
+constructor happens as the first statement of a secondary constructor, so the code in all initializer blocks and property initializers is executed
+before the secondary constructor body. Even if the class has no primary constructor, the delegation still happens
 implicitly, and the initializer blocks are still executed:
+
+<div class="sample" markdown="1" theme="idea">
 
 ```kotlin
 //sampleStart
@@ -146,31 +189,40 @@ fun main() {
     Constructors(1)
 }
 ```
-{kotlin-runnable="true"}
+
+</div>
 
 If a non-abstract class does not declare any constructors (primary or secondary), it will have a generated primary
-constructor with no arguments. The visibility of the constructor will be public.
+constructor with no arguments. The visibility of the constructor will be public. If you do not want your class
+to have a public constructor, you need to declare an empty primary constructor with non-default visibility:
 
-If you don't want your class
-to have a public constructor, declare an empty primary constructor with non-default visibility:
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 class DontCreateMe private constructor () { /*...*/ }
 ```
 
-> On the JVM, if all of the parameters of the primary constructor have default values, the compiler will
+</div>
+
+> **NOTE**: On the JVM, if all of the parameters of the primary constructor have default values, the compiler will
 > generate an additional parameterless constructor which will use the default values. This makes it easier to use
 > Kotlin with libraries such as Jackson or JPA that create class instances through parameterless constructors.
+
+><div class="sample" markdown="1" theme="idea" data-highlight-only>
 >
-> ```kotlin
-> class Customer(val customerName: String = "")
-> ```
-> 
-{type="note"}
+>```kotlin
+>class Customer(val customerName: String = "")
+>```
+>
+></div>
 
-## Creating instances of classes
+{:.info}
 
-To create an instance of a class, call the constructor as if it were a regular function:
+### Creating instances of classes
+
+To create an instance of a class, we call the constructor as if it were a regular function:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 val invoice = Invoice()
@@ -178,21 +230,21 @@ val invoice = Invoice()
 val customer = Customer("Joe Smith")
 ```
 
-> Kotlin does not have a `new` keyword.
->
-{type="note"}
+</div>
 
-Creating instances of nested, inner and anonymous inner classes is described in [Nested classes](nested-classes.md).
+Note that Kotlin does not have a `new` keyword.
 
-## Class members
+Creating instances of nested, inner and anonymous inner classes is described in [Nested classes](nested-classes.html).
+
+### Class members
 
 Classes can contain:
 
 * [Constructors and initializer blocks](classes.md#constructors)
-* [Functions](functions.md)
-* [Properties](properties.md)
-* [Nested and inner classes](nested-classes.md)
-* [Object declarations](object-declarations.md)
+* [Functions](functions.html)
+* [Properties](properties.html)
+* [Nested and Inner Classes](nested-classes.html)
+* [Object Declarations](object-declarations.html)
 
 ## Inheritance
 
@@ -203,9 +255,11 @@ Classes can be derived from each other and form inheritance hierarchies.
 
 A class and some of its members may be declared `abstract`.
 An abstract member does not have an implementation in its class.
-You don't need to annotate an abstract class or function with `open`.
+Note that we do not need to annotate an abstract class or function with open – it goes without saying.
 
-You can override a non-abstract `open` member with an abstract one.
+We can override a non-abstract open member with an abstract one
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 open class Polygon {
@@ -217,10 +271,12 @@ abstract class Rectangle : Polygon() {
 }
 ```
 
+</div>
+
 ## Companion objects
 
 If you need to write a function that can be called without having a class instance but needs access to the internals
-of a class (for example, a factory method), you can write it as a member of an [object declaration](object-declarations.md)
+of a class (for example, a factory method), you can write it as a member of an [object declaration](object-declarations.html)
 inside that class.
 
 Even more specifically, if you declare a [companion object](object-declarations.md#companion-objects) inside your class,
