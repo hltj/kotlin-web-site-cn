@@ -1,9 +1,9 @@
 [//]: # (title: 基本类型)
 
 在 Kotlin 中，所有东西都是对象，在这个意义上讲我们可以在任何变量上调用成员函数与属性。
-一些类型可以有特殊的内部表示——例如，数字、字符以及布尔值可以<!--
+一些类型可以有特殊的内部表示——例如，数字、字符以及布尔可以<!--
 -->在运行时表示为原生类型值，但是对于用户来说，它们看起来就像普通的类。
-在本节中，我们会描述 Kotlin 中使用的基本类型：[数字](#数字)、[布尔值](#布尔值)、
+在本节中，我们会描述 Kotlin 中使用的基本类型：[数字](#数字)、[布尔](#布尔)、
 [字符](#字符)、[数组](#数组)与[字符串](#字符串)。
 
 ## 数字
@@ -372,7 +372,7 @@ See the [opt-in requirements](opt-in-requirements.md) for details on using APIs 
 关于技术细节与深入探讨<!--
 -->请参见[无符号类型的语言提案](https://github.com/Kotlin/KEEP/blob/master/proposals/unsigned-types.md)。
 
-## Booleans
+## 布尔
 
 The type `Boolean` represents boolean objects that can have two values: `true` and `false`.
 
@@ -405,14 +405,14 @@ fun main() {
 >
 {type="note"}
 
-## Characters
+## 字符
 
-Characters are represented by the type `Char`. Character literals go in single quotes: `'1'`.
+字符用 `Char` 类型表示。 字符字面值用单引号括起来: `'1'`。
 
-Special characters start from an ecsaping backslash `\`. 
-The following escape sequences are supported: `\t`, `\b`, `\n`, `\r`, `\'`, `\"`, `\\` and `\$`.
+特殊字符可以以转义反斜杠 `\` 开始。
+支持这几个转义序列：`\t`、 `\b`、`\n`、`\r`、`\'`、`\"`、`\\` 与 `\$`。
 
-To encode any other character, use the Unicode escape sequence syntax: `'\uFF00'`.
+编码其他字符要用 Unicode 转义序列语法：`'\uFF00'`。
 
 ```kotlin
 fun main() {
@@ -427,13 +427,13 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-If a value of character variable is a digit, you can explicitly convert it to an `Int` number:
+If a value of character variable is a digit, 可以显式将其转换为 `Int` 数字：
 
 ```kotlin
 fun decimalDigitValue(c: Char): Int {
     if (c !in '0'..'9')
         throw IllegalArgumentException("Out of range")
-    return c.toInt() - '0'.toInt() // Explicit conversions to numbers
+    return c.toInt() - '0'.toInt() // 显式转换为数字
 }
 ```
 
@@ -450,7 +450,7 @@ Kotlin 中字符串用 `String` 类型表示。 Generally, a string value is a s
 val str = "abcd 123"
 ```
 
-Elements of a string are characters that you can access via the indexing operation: `s[i]`.
+字符串的元素——字符可以使用索引运算符访问: `s[i]`。
 You can iterate over these characters with a `for` loop:
 
 ```kotlin
@@ -569,8 +569,8 @@ ${'$'}9.99
 
 ## Arrays
 
-Arrays in Kotlin are represented by the `Array` class. It has `get` and `set` functions that turn into `[]` by operator overloading conventions,
- and the `size` property, along with other useful member functions:
+数组在 Kotlin 中使用 `Array` 类来表示。它定义了 `get` 与 `set` 函数（按照运算符重载约定这会转变为 `[]`）<!--
+-->与 `size` 属性及其他有用的成员函数：
 
 ```kotlin
 class Array<T> private constructor() {
@@ -579,20 +579,20 @@ class Array<T> private constructor() {
     operator fun set(index: Int, value: T): Unit
 
     operator fun iterator(): Iterator<T>
-    // ...
+    // ……
 }
 ```
 
-To create an array, use the function `arrayOf()` and pass the item values to it, so that `arrayOf(1, 2, 3)` creates an array `[1, 2, 3]`.
-Alternatively, the `arrayOfNulls()` function can be used to create an array of a given size filled with `null` elements.
+可以使用函数 `arrayOf()` 来创建一个数组并传递元素值给它，这样 `arrayOf(1, 2, 3)` 创建了 array `[1, 2, 3]`。
+或者，函数 `arrayOfNulls()` 可以用于创建一个指定大小的、所有元素都为空的数组。
 
-Another option is to use the `Array` constructor that takes the array size and the function that returns values
-of array elements given its index:
+另一个选项是用接受数组大小以及一个函数参数的 `Array` 构造函数，用作参数的函数能够返回<!--
+-->给定索引的元素：
 
 ```kotlin
 fun main() {
 //sampleStart
-    // Creates an Array<String> with values ["0", "1", "4", "9", "16"]
+    // 创建一个 Array<String> 初始化为 ["0", "1", "4", "9", "16"]
     val asc = Array(5) { i -> (i * i).toString() }
     asc.forEach { println(it) }
 //sampleEnd
@@ -600,17 +600,17 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-As we said above, the `[]` operation stands for calls to member functions `get()` and `set()`.
+如上所述，`[]` 运算符代表调用成员函数 `get()` 与 `set()`。
 
-Arrays in Kotlin are _invariant_. This means that Kotlin does not let us assign an `Array<String>`
-to an `Array<Any>`, which prevents a possible runtime failure (but you can use `Array<out Any>`, 
-see [Type Projections](generics.md#type-projections)).
+Kotlin 中数组是*不型变的（invariant）*。这意味着 Kotlin 不让我们把 `Array<String>`
+赋值给 `Array<Any>`，以防止可能的运行时失败（但是你可以使用 `Array<out Any>`,
+参见[类型投影](generics.md#类型投影)）。
 
-### Primitive type arrays
+### 原生类型数组
 
-Kotlin also has classes that represent arrays of primitive types without boxing overhead: `ByteArray`,
-`ShortArray`, `IntArray`, and so on. These classes have no inheritance relation to the `Array` class, but they
-have the same set of methods and properties. Each of them also has a corresponding factory function:
+Kotlin 也有无装箱开销的类来表示原生类型数组: `ByteArray`、
+`ShortArray`、`IntArray` 等等。这些类与 `Array` 并没有继承关系，但是<!--
+-->它们有同样的方法属性集。它们也都有相应的工厂方法:
 
 ```kotlin
 val x: IntArray = intArrayOf(1, 2, 3)
@@ -618,14 +618,14 @@ x[0] = x[1] + x[2]
 ```
 
 ```kotlin
-// Array of int of size 5 with values [0, 0, 0, 0, 0]
+// 大小为 5、值为 [0, 0, 0, 0, 0] 的整型数组
 val arr = IntArray(5)
 
-// e.g. initialise the values in the array with a constant
-// Array of int of size 5 with values [42, 42, 42, 42, 42]
+// 例如：用常量初始化数组中的值
+// 大小为 5、值为 [42, 42, 42, 42, 42] 的整型数组
 val arr = IntArray(5) { 42 }
 
-// e.g. initialise the values in the array using a lambda
-// Array of int of size 5 with values [0, 1, 2, 3, 4] (values initialised to their index value)
+// 例如：使用 lambda 表达式初始化数组中的值
+// 大小为 5、值为 [0, 1, 2, 3, 4] 的整型数组（值初始化为其索引值）
 var arr = IntArray(5) { it * 1 } 
 ```
