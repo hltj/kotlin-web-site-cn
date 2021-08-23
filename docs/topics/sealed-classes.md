@@ -1,4 +1,4 @@
-# Sealed Classes
+# 密封类
 
 _Sealed_ classes represent restricted class hierarchies that provide more control over inheritance.
 All subclasses of a sealed class are known at compile time. No other subclasses may appear after
@@ -22,9 +22,9 @@ object NotANumber : Expr()
 ```
 </div>
 
-A sealed class is [abstract](classes.md#abstract-classes) by itself, it cannot be instantiated directly and can have `abstract` members.
+一个密封类是自身[抽象的](classes.md#抽象类)，它不能直接实例化并可以有抽象（`abstract`）成员。
 
-Sealed classes are not allowed to have non-`private` constructors (their constructors are `private` by default).
+密封类不允许有非-`private` 构造函数（其构造函数默认为 `private`）。
 
 ## Sealed interfaces
 
@@ -71,9 +71,9 @@ Subclasses of sealed classes must have a proper qualified name. They can't be lo
 
 ## Sealed classes and when expression
 
-The key benefit of using sealed classes comes into play when you use them in a [`when` expression](control-flow.md#when-expression). If it's possible
-to verify that the statement covers all cases, you don't need to add an `else` clause to the statement.
-However, this works only if you use `when` as an expression (using the result) and not as a statement.
+使用密封类的关键好处在于使用 [`when` 表达式](control-flow.md#when-表达式) 的时候，如果能够<!--
+-->验证语句覆盖了所有情况，就不需要为该语句再添加一个 `else` 子句了。
+当然，这只有当你用 `when` 作为表达式（使用结果）而不是作为语句时才有用。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -82,7 +82,7 @@ fun eval(expr: Expr): Double = when(expr) {
     is Const -> expr.number
     is Sum -> eval(expr.e1) + eval(expr.e2)
     NotANumber -> Double.NaN
-    // the `else` clause is not required because we've covered all the cases
+    // 不再需要 `else` 子句，因为我们已经覆盖了所有的情况
 }
 ```
 </div>

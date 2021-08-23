@@ -1,8 +1,8 @@
-# Data Classes
+# 数据类
 
-We frequently create classes whose main purpose is to hold data.
-In such a class some standard functionality and utility functions are often mechanically
-derivable from the data. In Kotlin, this is called a _data class_ and is marked as `data`:
+我们经常创建一些只保存数据的类。
+在这些类中，一些标准函数往往是从<!--
+-->数据机械推导而来的。在 Kotlin 中，这叫做 _数据类_ 并标记为 `data`：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -12,36 +12,36 @@ data class User(val name: String, val age: Int)
 
 </div>
 
-The compiler automatically derives the following members from all properties declared in the primary constructor:
+编译器自动从主构造函数中声明的所有属性导出以下成员：
 
-* `equals()`/`hashCode()` pair;
-* `toString()` of the form `"User(name=John, age=42)"`;
-* [`componentN()` functions](multi-declarations.html) corresponding to the properties in their order of declaration;
-* `copy()` function (see below).
+* `equals()`/`hashCode()` 对；
+* `toString()` 格式是 `"User(name=John, age=42)"`；
+* [`componentN()` 函数](multi-declarations.html) 按声明顺序对应于所有属性；
+* `copy()` 函数（见下文）。
 
-To ensure consistency and meaningful behavior of the generated code, data classes have to fulfill the following requirements:
+为了确保生成的代码的一致性以及有意义的行为，数据类必须满足以下要求：
 
-* The primary constructor needs to have at least one parameter;
-* All primary constructor parameters need to be marked as `val` or `var`;
-* Data classes cannot be abstract, open, sealed or inner;
-* (before 1.1) Data classes may only implement interfaces.
+* 主构造函数需要至少有一个参数；
+* 主构造函数的所有参数需要标记为 `val` 或 `var`；
+* 数据类不能是抽象、开放、密封或者内部的；
+* （在1.1之前）数据类只能实现接口。
 
-Additionally, the members generation follows these rules with regard to the members inheritance:
+此外，成员生成遵循关于成员继承的这些规则：
 
-* If there are explicit implementations of `equals()`, `hashCode()` or `toString()` in the data class body or
-  `final` implementations in a superclass, then these functions are not generated, and the existing
-  implementations are used;
-* If a supertype has the `componentN()` functions that are `open` and return compatible types, the
-  corresponding functions are generated for the data class and override those of the supertype. If the functions of the
-  supertype cannot be overridden due to incompatible signatures or being final, an error is reported;
-* Deriving a data class from a type that already has a `copy(...)` function with a matching signature is deprecated in
-  Kotlin 1.2 and is prohibited in Kotlin 1.3.
-* Providing explicit implementations for the `componentN()` and `copy()` functions is not allowed.
+* 如果在数据类体中有显式实现 `equals()`、 `hashCode()` 或者 `toString()`，或者这些函数在父类中有
+  `final` 实现，那么不会生成这些函数，而会使用现有<!--
+-->函数；
+* 如果超类型具有 `open` 的 `componentN()` 函数并且返回兼容的类型，
+  那么会为数据类生成相应的函数，并覆盖超类的实现。如果超类型的这些函数<!--
+-->由于签名不兼容或者是 final 而导致无法覆盖，那么会报错；
+* 从一个已具 `copy(……)` 函数且签名匹配的类型派生一个数据类在
+  Kotlin 1.2 中已弃用，并且在 Kotlin 1.3 中已禁用。
+* 不允许为 `componentN()` 以及 `copy()` 函数提供显式实现。
 
-Since 1.1, data classes may extend other classes (see [Sealed classes](sealed-classes.html) for examples).
+自 1.1 起，数据类可以扩展其他类（示例请参见[密封类](sealed-classes.html)）。
 
-On the JVM, if the generated class needs to have a parameterless constructor, default values for all properties have to be specified
-(see [Constructors](classes.md#constructors)).
+在 JVM 中，如果生成的类需要含有一个无参的构造函数，则所有的属性必须指定默认值。
+（参见[构造函数](classes.md#构造函数)）。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -51,9 +51,9 @@ data class User(val name: String = "", val age: Int = 0)
 
 </div>
 
-## Properties Declared in the Class Body
+## 在类体中声明的属性
 
-Note that the compiler only uses the properties defined inside the primary constructor for the automatically generated functions. To exclude a property from the generated implementations, declare it inside the class body:
+请注意，对于那些自动生成的函数，编译器只使用在主构造函数内部定义的属性。如需在生成的实现中排除一个属性，请将其声明在类体中：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -65,7 +65,7 @@ data class Person(val name: String) {
 
 </div>
 
-Only the property `name` will be used inside the `toString()`, `equals()`, `hashCode()`, and `copy()` implementations, and there will only be one component function `component1()`. While two `Person` objects can have different ages, they will be treated as equal.
+在 `toString()`、 `equals()`、 `hashCode()` 以及 `copy()` 的实现中只会用到 `name` 属性，并且只有一个 component 函数 `component1()`。虽然两个 `Person` 对象可以有不同的年龄，但它们会视为相等。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -88,10 +88,10 @@ fun main() {
 
 </div>
 
-## Copying
+## 复制
 
-It's often the case that we need to copy an object altering _some_ of its properties, but keeping the rest unchanged.
-This is what `copy()` function is generated for. For the `User` class above, its implementation would be as follows:
+在很多情况下，我们需要复制一个对象改变它的一些属性，但其余部分保持不变。
+`copy()` 函数就是为此而生成。对于上文的 `User` 类，其实现会类似下面这样：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -101,7 +101,7 @@ fun copy(name: String = this.name, age: Int = this.age) = User(name, age)
 
 </div>
 
-This allows us to write:
+这让我们可以写：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -139,21 +139,21 @@ fun main() {
 
 </div>
 
-## Data Classes and Destructuring Declarations
+## 数据类与解构声明
 
-_Component functions_ generated for data classes enable their use in [destructuring declarations](multi-declarations.html):
+为数据类生成的 _Component 函数_ 使它们可在[解构声明](multi-declarations.html)中使用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val jane = User("Jane", 35) 
+val jane = User("Jane", 35)
 val (name, age) = jane
-println("$name, $age years of age") // prints "Jane, 35 years of age"
+println("$name, $age years of age") // 输出 "Jane, 35 years of age"
 ```
 
 </div>
 
-## Standard Data Classes
+## 标准数据类
 
-The standard library provides `Pair` and `Triple`. In most cases, though, named data classes are a better design choice,
-because they make the code more readable by providing meaningful names for properties.
+标准库提供了 `Pair` 与 `Triple`。尽管在很多情况下具名数据类是更好的设计选择，
+因为它们通过为属性提供有意义的名称使代码更具可读性。

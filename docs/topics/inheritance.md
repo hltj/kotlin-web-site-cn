@@ -1,24 +1,24 @@
-## Inheritance
+## 继承
 
-All classes in Kotlin have a common superclass `Any`, that is the default superclass for a class with no supertypes declared:
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
-```kotlin
-class Example // Implicitly inherits from Any
-```
-
-</div>
-
-`Any` has three methods: `equals()`, `hashCode()` and `toString()`. Thus, they are defined for all Kotlin classes.
-
-By default, Kotlin classes are final: they can’t be inherited.
-To make a class inheritable, mark it with the `open` keyword.
+在 Kotlin 中所有类都有一个共同的超类 `Any`，这对于没有超类型声明的类是默认超类：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-open class Base //Class is open for inheritance
+class Example // 从 Any 隐式继承
+```
+
+</div>
+
+`Any` 有三个方法：`equals()`、 `hashCode()` 与 `toString()`。因此，为所有 Kotlin 类都定义了这些方法。
+
+默认情况下，Kotlin 类是最终（final）的：它们不能被继承。
+要使一个类可继承，请用 `open` 关键字标记它。
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+open class Base // 该类开放继承
 
 ```
 
@@ -26,7 +26,7 @@ open class Base //Class is open for inheritance
 
 
 
-To declare an explicit supertype, place the type after a colon in the class header:
+如需声明一个显式的超类型，请在类头中把超类型放到冒号之后：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -38,12 +38,12 @@ class Derived(p: Int) : Base(p)
 
 </div>
 
-If the derived class has a primary constructor, the base class can (and must) be initialized right there,
-using the parameters of the primary constructor.
+如果派生类有一个主构造函数，其基类可以（并且必须）
+用派生类主构造函数的参数就地初始化。
 
-If the derived class has no primary constructor, then each secondary constructor has to initialize the base type
-using the `super` keyword, or to delegate to another constructor which does that.
-Note that in this case different secondary constructors can call different constructors of the base type:
+如果派生类没有主构造函数，那么每个次构造函数必须<!--
+-->使用 *super*{: .keyword} 关键字初始化其基类型，或委托给另一个构造函数做到这一点。
+注意，在这种情况下，不同的次构造函数可以调用基类型的不同的构造函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -57,47 +57,47 @@ class MyView : View {
 
 </div>
 
-### Overriding methods
+### 覆盖方法
 
-As we mentioned before, we stick to making things explicit in Kotlin. So, Kotlin requires explicit
-modifiers for overridable members (we call them *open*) and for overrides:
+我们之前提到过，Kotlin 力求清晰显式。因此，Kotlin 对于<!--
+-->可覆盖的成员（我们称之为*开放*）以及覆盖后的成员需要显式修饰符：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 open class Shape {
-    open fun draw() { /*...*/ }
-    fun fill() { /*...*/ }
+    open fun draw() { /*……*/ }
+    fun fill() { /*……*/ }
 }
 
 class Circle() : Shape() {
-    override fun draw() { /*...*/ }
+    override fun draw() { /*……*/ }
 }
 ```
 
 </div>
 
-The `override` modifier is required for `Circle.draw()`. If it were missing, the compiler would complain.
-If there is no `open` modifier on a function, like `Shape.fill()`, declaring a method with the same signature in a subclass is illegal,
-either with `override` or without it. The `open` modifier has no effect when added on members of a final class (i.e.. a class with no `open` modifier).
+`Circle.draw()` 函数上必须加上 *override*{: .keyword} 修饰符。如果没写，编译器将会报错。
+如果函数没有标注 *open*{: .keyword} 如 `Shape.fill()`，那么子类中不允许定义相同签名的函数，
+不论加不加 **override**。将 `open` 修饰符添加到 final 类（即没有 `open` 的类）的成员上不起作用。
 
-A member marked `override` is itself open, i.e. it may be overridden in subclasses. If you want to prohibit re-overriding, use `final`:
+标记为 *override*{: .keyword} 的成员本身是开放的，也就是说，它可以在子类中覆盖。如果你想禁止再次覆盖，使用 *final*{: .keyword} 关键字：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 open class Rectangle() : Shape() {
-    final override fun draw() { /*...*/ }
+    final override fun draw() { /*……*/ }
 }
 ```
 
 </div>
 
-### Overriding properties
+### 覆盖属性
 
-Overriding properties works in a similar way to overriding methods; properties declared on a superclass
-that are then redeclared on a derived class must be prefaced with `override`, and they must have a compatible type.
-Each declared property can be overridden by a property with an initializer or by a property with a `get` method.
+属性覆盖与方法覆盖类似；在超类中声明<!--
+-->然后在派生类中重新声明的属性必须以 `override` 开头，并且它们必须具有兼容的类型。
+每个声明的属性可以由具有初始化器的属性或者具有 `get` 方法的属性覆盖。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -113,11 +113,11 @@ class Rectangle : Shape() {
 
 </div>
 
-You can also override a `val` property with a `var` property, but not vice versa.
-This is allowed because a `val` property essentially declares a `get` method,
-and overriding it as a `var` additionally declares a `set` method in the derived class.
+你也可以用一个 `var` 属性覆盖一个 `val` 属性，但反之则不行。
+这是允许的，因为一个 `val` 属性本质上声明了一个 `get` 方法，
+而将其覆盖为 `var` 只是在子类中额外声明一个 `set` 方法。
 
-Note that you can use the `override` keyword as part of the property declaration in a primary constructor.
+请注意，你可以在主构造函数中使用 `override` 关键字作为属性声明的一部分。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -126,18 +126,18 @@ interface Shape {
     val vertexCount: Int
 }
 
-class Rectangle(override val vertexCount: Int = 4) : Shape // Always has 4 vertices
+class Rectangle(override val vertexCount: Int = 4) : Shape // 总是有 4 个顶点
 
 class Polygon : Shape {
-    override var vertexCount: Int = 0  // Can be set to any number later
+    override var vertexCount: Int = 0  // 以后可以设置为任何数
 }
 ```
 
 </div>
 
-### Derived class initialization order
+### 派生类初始化顺序
 
-During construction of a new instance of a derived class, the base class initialization is done as the first step (preceded only by evaluation of the arguments for the base class constructor) and thus happens before the initialization logic of the derived class is run.
+在构造派生类的新实例的过程中，第一步完成其基类的初始化（在之前只有对基类构造函数参数的求值），因此发生在派生类的初始化逻辑运行之前。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -171,11 +171,11 @@ fun main() {
 
 </div>
 
-It means that, by the time of the base class constructor execution, the properties declared or overridden in the derived class are not yet initialized. If any of those properties are used in the base class initialization logic (either directly or indirectly, through another overridden `open` member implementation), it may lead to incorrect behavior or a runtime failure. When designing a base class, you should therefore avoid using `open` members in the constructors, property initializers, and `init` blocks.
+这意味着，基类构造函数执行时，派生类中声明或覆盖的属性都还没有初始化。如果在基类初始化逻辑中（直接或通过另一个覆盖的 `open` 成员的实现间接）使用了任何一个这种属性，那么都可能导致不正确的行为或运行时故障。设计一个基类时，应该避免在构造函数、属性初始化器以及 `init` 块中使用 `open` 成员。
 
-### Calling the superclass implementation
+### 调用超类实现
 
-Code in a derived class can call its superclass functions and property accessors implementations using the `super` keyword:
+派生类中的代码可以使用 `super` 关键字调用其超类的函数与属性访问器的实现：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -197,7 +197,7 @@ class FilledRectangle : Rectangle() {
 
 </div>
 
-Inside an inner class, accessing the superclass of the outer class is done with the `super` keyword qualified with the outer class name: `super@Outer`:
+在一个内部类中访问外部类的超类，可以通过由外部类名限定的 `super` 关键字来实现：`super@Outer`：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -217,9 +217,9 @@ class FilledRectangle: Rectangle() {
     inner class Filler {
         fun fill() { println("Filling") }
         fun drawAndFill() {
-            super@FilledRectangle.draw() // Calls Rectangle's implementation of draw()
+            super@FilledRectangle.draw() // 调用 Rectangle 的 draw() 实现
             fill()
-            println("Drawn a filled rectangle with color ${super@FilledRectangle.borderColor}") // Uses Rectangle's implementation of borderColor's get()
+            println("Drawn a filled rectangle with color ${super@FilledRectangle.borderColor}") // 使用 Rectangle 所实现的 borderColor 的 get()
         }
     }
 }
@@ -233,34 +233,34 @@ fun main() {
 
 </div>
 
-### Overriding rules
+### 覆盖规则
 
-In Kotlin, implementation inheritance is regulated by the following rule: if a class inherits multiple implementations of the same member from its immediate superclasses,
-it must override this member and provide its own implementation (perhaps, using one of the inherited ones).
-To denote the supertype from which the inherited implementation is taken, we use `super` qualified by the supertype name in angle brackets, e.g. `super<Base>`:
+在 Kotlin 中，实现继承由下述规则规定：如果一个类从它的直接超类继承相同成员的多个实现，
+它必须覆盖这个成员并提供其自己的实现（也许用继承来的其中之一）。
+为了表示采用从哪个超类型继承的实现，我们使用由尖括号中超类型名限定的 `super`，如 `super<Base>`：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 open class Rectangle {
-    open fun draw() { /* ... */ }
+    open fun draw() { /* …… */ }
 }
 
 interface Polygon {
-    fun draw() { /* ... */ } // interface members are 'open' by default
+    fun draw() { /* …… */ } // 接口成员默认就是“open”的
 }
 
 class Square() : Rectangle(), Polygon {
-    // The compiler requires draw() to be overridden:
+    // 编译器要求覆盖 draw()：
     override fun draw() {
-        super<Rectangle>.draw() // call to Rectangle.draw()
-        super<Polygon>.draw() // call to Polygon.draw()
+        super<Rectangle>.draw() // 调用 Rectangle.draw()
+        super<Polygon>.draw() // 调用 Polygon.draw()
     }
 }
 ```
 
 </div>
 
-It's fine to inherit from both `Rectangle` and `Polygon`,
-but both of them have their implementations of `draw()`, so we have to override `draw()` in `Square`
-and provide its own implementation that eliminates the ambiguity.
+可以同时继承 `Rectangle` 与 `Polygon`，
+但是二者都有各自的 `draw()` 实现，所以我们必须在 `Square` 中覆盖 `draw()`，
+并提供其自身的实现以消除歧义。

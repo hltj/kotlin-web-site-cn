@@ -1,18 +1,18 @@
-## Classes
+## 类
 
-Classes in Kotlin are declared using the keyword `class`:
+Kotlin 中使用关键字 *class*{:.keyword} 声明类
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class Invoice { /*...*/ }
+class Invoice { /*……*/ }
 ```
 
 </div>
 
-The class declaration consists of the class name, the class header (specifying its type parameters, the primary
-constructor etc.) and the class body, surrounded by curly braces. Both the header and the body are optional;
-if the class has no body, curly braces can be omitted.
+类声明由类名、类头（指定其类型参数、主<!--
+-->构造函数等）以及由花括号包围的类体构成。类头与类体都是可选的；
+如果一个类没有类体，可以省略花括号。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -22,35 +22,35 @@ class Empty
 
 </div>
 
-### Constructors
+### 构造函数
 
-A class in Kotlin can have a **primary constructor** and one or more **secondary constructors**. The primary
-constructor is part of the class header: it goes after the class name (and optional type parameters).
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
-```kotlin
-class Person constructor(firstName: String) { /*...*/ }
-```
-
-</div>
-
-If the primary constructor does not have any annotations or visibility modifiers, the `constructor`
-keyword can be omitted:
+在 Kotlin 中的一个类可以有一个**主构造函数**以及一个或多个**次构造函数**。主<!--
+-->构造函数是类头的一部分：它跟在类名（与可选的类型参数）后。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class Person(firstName: String) { /*...*/ }
+class Person constructor(firstName: String) { /*……*/ }
 ```
 
 </div>
 
-The primary constructor cannot contain any code. Initialization code can be placed
-in **initializer blocks**, which are prefixed with the `init` keyword.
+如果主构造函数没有任何注解或者可见性修饰符，可以省略这个 `constructor`
+关键字。
 
-During an instance initialization, the initializer blocks are executed in the same order as they appear
-in the class body, interleaved with the property initializers:
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+class Person(firstName: String) { /*……*/ }
+```
+
+</div>
+
+主构造函数不能包含任何的代码。初始化的代码可以放<!--
+-->到以 *init*{:.keyword} 关键字作为前缀的**初始化块（initializer blocks）**中。
+
+在实例初始化期间，初始化块按照它们出现在<!--
+-->类体中的顺序执行，与属性初始化器交织在一起：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -78,8 +78,8 @@ fun main() {
 
 </div>
 
-Note that parameters of the primary constructor can be used in the initializer blocks. They can also be used in
-property initializers declared in the class body:
+请注意，主构造的参数可以在初始化块中使用。它们也可以在<!--
+-->类体内声明的属性初始化器中使用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -91,17 +91,17 @@ class Customer(name: String) {
 
 </div>
 
-In fact, for declaring properties and initializing them from the primary constructor, Kotlin has a concise syntax:
+事实上，声明属性以及从主构造函数初始化属性，Kotlin 有简洁的语法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class Person(val firstName: String, val lastName: String, var age: Int) { /*...*/ }
+class Person(val firstName: String, val lastName: String, var age: Int) { /*……*/ }
 ```
 
 </div>
 
-You can use a [trailing comma](coding-conventions.md#trailing-commas) when you declare class properties:
+声明类属性时，可以使用[尾部逗号](coding-conventions.md#trailing-commas)：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -109,31 +109,31 @@ You can use a [trailing comma](coding-conventions.md#trailing-commas) when you d
 class Person(
     val firstName: String,
     val lastName: String,
-    var age: Int, // trailing comma
+    var age: Int, // 尾部逗号
 ) { /*...*/ }
 ```
 
 </div>
 
-Much the same way as regular properties, the properties declared in the primary constructor can be
-mutable (`var`) or read-only (`val`).
+与普通属性一样，主构造函数中声明的属性可以是<!--
+-->可变的（`var`）或只读的（`val`）。
 
-If the constructor has annotations or visibility modifiers, the `constructor` keyword is required, and
-the modifiers go before it:
+如果构造函数有注解或可见性修饰符，这个 `constructor` 关键字是必需的，并且<!--
+-->这些修饰符在它前面：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class Customer public @Inject constructor(name: String) { /*...*/ }
+class Customer public @Inject constructor(name: String) { /*……*/ }
 ```
 
 </div>
 
-For more details, see [Visibility Modifiers](visibility-modifiers.md#constructors).
+更多详情，参见[可见性修饰符](visibility-modifiers.md#构造函数)
 
-#### Secondary constructors
+#### 次构造函数
 
-The class can also declare **secondary constructors**, which are prefixed with `constructor`:
+类也可以声明前缀有 `constructor`的**次构造函数**：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -148,9 +148,9 @@ class Person {
 
 </div>
 
-If the class has a primary constructor, each secondary constructor needs to delegate to the primary constructor, either
-directly or indirectly through another secondary constructor(s). Delegation to another constructor of the same class
-is done using the `this` keyword:
+如果类有一个主构造函数，每个次构造函数需要委托给主构造函数，
+可以直接委托或者通过别的次构造函数间接委托。委托到同一个类的另一个构造函数<!--
+-->用 `this` 关键字即可：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -165,10 +165,10 @@ class Person(val name: String) {
 
 </div>
 
-Note that code in initializer blocks effectively becomes part of the primary constructor. Delegation to the primary
-constructor happens as the first statement of a secondary constructor, so the code in all initializer blocks and property initializers is executed
-before the secondary constructor body. Even if the class has no primary constructor, the delegation still happens
-implicitly, and the initializer blocks are still executed:
+请注意，初始化块中的代码实际上会成为主构造函数的一部分。委托给主<!--
+-->构造函数会作为次构造函数的第一条语句，因此所有初始化块与属性初始化器中的代码都会<!--
+-->在次构造函数体之前执行。即使该类没有主构造函数，这种委托仍会<!--
+-->隐式发生，并且仍会执行初始化块：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -192,21 +192,21 @@ fun main() {
 
 </div>
 
-If a non-abstract class does not declare any constructors (primary or secondary), it will have a generated primary
-constructor with no arguments. The visibility of the constructor will be public. If you do not want your class
-to have a public constructor, you need to declare an empty primary constructor with non-default visibility:
+如果一个非抽象类没有声明任何（主或次）构造函数，它会有一个生成的<!--
+-->不带参数的主构造函数。构造函数的可见性是 public。如果你不希望你的类<!--
+-->有一个公有构造函数，你需要声明一个带有非默认可见性的空的主构造函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class DontCreateMe private constructor () { /*...*/ }
+class DontCreateMe private constructor () { /*……*/ }
 ```
 
 </div>
 
-> **NOTE**: On the JVM, if all of the parameters of the primary constructor have default values, the compiler will
-> generate an additional parameterless constructor which will use the default values. This makes it easier to use
-> Kotlin with libraries such as Jackson or JPA that create class instances through parameterless constructors.
+> **注意**：在 JVM 上，如果主构造函数的所有的参数都有默认值，编译器会生成
+> 一个额外的无参构造函数，它将使用默认值。这使得
+> Kotlin 更易于使用像 Jackson 或者 JPA 这样的通过无参构造函数创建类的实例的库。
 
 ><div class="sample" markdown="1" theme="idea" data-highlight-only>
 >
@@ -218,9 +218,9 @@ class DontCreateMe private constructor () { /*...*/ }
 
 {:.info}
 
-### Creating instances of classes
+### 创建类的实例
 
-To create an instance of a class, we call the constructor as if it were a regular function:
+要创建一个类的实例，我们就像普通函数一样调用构造函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -232,32 +232,32 @@ val customer = Customer("Joe Smith")
 
 </div>
 
-Note that Kotlin does not have a `new` keyword.
+注意 Kotlin 并没有 `new` 关键字。
 
-Creating instances of nested, inner and anonymous inner classes is described in [Nested classes](nested-classes.html).
+创建嵌套类、内部类与匿名内部类的类实例在[嵌套类](nested-classes.html)中有述。
 
-### Class members
+### 类成员
 
-Classes can contain:
+类可以包含：
 
-* [Constructors and initializer blocks](classes.md#constructors)
-* [Functions](functions.html)
-* [Properties](properties.html)
-* [Nested and Inner Classes](nested-classes.html)
-* [Object Declarations](object-declarations.html)
+* [构造函数与初始化块](classes.md#构造函数)
+* [函数](functions.html)
+* [属性](properties.html)
+* [嵌套类与内部类](nested-classes.html)
+* [对象声明](object-declarations.html)
 
 ## Inheritance
 
 Classes can be derived from each other and form inheritance hierarchies.
 [Learn more about inheritance in Kotlin](inheritance.md).
 
-## Abstract classes
+## 抽象类
 
-A class and some of its members may be declared `abstract`.
-An abstract member does not have an implementation in its class.
-Note that we do not need to annotate an abstract class or function with open – it goes without saying.
+类以及其中的某些成员可以声明为 *abstract*{: .keyword}。
+抽象成员在本类中可以不用实现。
+需要注意的是，我们并不需要用 `open` 标注一个抽象类或者函数——因为这不言而喻。
 
-We can override a non-abstract open member with an abstract one
+我们可以用一个抽象成员覆盖一个非抽象的开放成员
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -273,11 +273,11 @@ abstract class Rectangle : Polygon() {
 
 </div>
 
-## Companion objects
+## 伴生对象
 
-If you need to write a function that can be called without having a class instance but needs access to the internals
-of a class (for example, a factory method), you can write it as a member of an [object declaration](object-declarations.html)
-inside that class.
+如果你需要写一个可以无需用一个类的实例来调用、但需要访问类内部的<!--
+-->函数（例如，工厂方法），你可以把它写成该类内[对象声明](object-declarations.html)<!--
+-->中的一员。
 
-Even more specifically, if you declare a [companion object](object-declarations.md#companion-objects) inside your class,
-you can access its members using only the class name as a qualifier.
+更具体地讲，如果在你的类内声明了一个[伴生对象](object-declarations.md#伴生对象)，
+你就可以访问其成员，只是以类名作为限定符。

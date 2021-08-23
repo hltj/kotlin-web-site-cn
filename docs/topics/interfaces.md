@@ -1,47 +1,47 @@
-# Interfaces
+# 接口
 
-Interfaces in Kotlin can contain declarations of abstract methods, as well as method
-implementations. What makes them different from abstract classes is that interfaces cannot store state. They can have
-properties but these need to be abstract or to provide accessor implementations.
+Kotlin 的接口可以既包含抽象方法的声明也包含<!--
+-->实现。与抽象类不同的是，接口无法保存状态。它可以有<!--
+-->属性但必须声明为抽象或提供访问器实现。
 
-An interface is defined using the keyword `interface`
+使用关键字 `interface` 来定义接口
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 interface MyInterface {
     fun bar()
     fun foo() {
-      // optional body
+      // 可选的方法体
     }
 }
 ```
 </div>
 
-## Implementing Interfaces
+## 实现接口
 
-A class or object can implement one or more interfaces
+一个类或者对象可以实现一个或多个接口。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 class Child : MyInterface {
     override fun bar() {
-        // body
+        // 方法体
     }
 }
 ```
 </div>
 
-## Properties in Interfaces
+## 接口中的属性
 
-You can declare properties in interfaces. A property declared in an interface can either be abstract, or it can provide
-implementations for accessors. Properties declared in interfaces can't have backing fields, and therefore accessors
-declared in interfaces can't reference them.
+你可以在接口中定义属性。在接口中声明的属性要么是抽象的，要么提供<!--
+-->访问器的实现。在接口中声明的属性不能有幕后字段（backing field），因此接口中声明的访问器<!--
+-->不能引用它们。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 interface MyInterface {
-    val prop: Int // abstract
+    val prop: Int // 抽象的
 
     val propertyWithImplementation: String
         get() = "foo"
@@ -57,9 +57,9 @@ class Child : MyInterface {
 ```
 </div>
 
-## Interfaces Inheritance
+## 接口继承
 
-An interface can derive from other interfaces and thus both provide implementations for their members and declare new functions and properties. Quite naturally, classes implementing such an interface are only required to define the missing implementations:
+一个接口可以从其他接口派生，从而既提供基类型成员的实现也声明新的函数与属性。很自然地，实现这样接口的类只需定义所缺少的实现：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -76,7 +76,7 @@ interface Person : Named {
 }
 
 data class Employee(
-    // implementing 'name' is not required
+    // 不必实现“name”
     override val firstName: String,
     override val lastName: String,
     val position: Position
@@ -84,9 +84,9 @@ data class Employee(
 ```
 </div>
 
-## Resolving overriding conflicts
+## 解决覆盖冲突
 
-When we declare many types in our supertype list, it may appear that we inherit more than one implementation of the same method. For example
+实现多个接口时，可能会遇到同一方法继承多个实现的问题。例如
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -118,10 +118,10 @@ class D : A, B {
 ```
 </div>
 
-Interfaces *A* and *B* both declare functions *foo()* and *bar()*. Both of them implement *foo()*, but only *B* implements *bar()* (*bar()* is not marked abstract in *A*,
-because this is the default for interfaces, if the function has no body). Now, if we derive a concrete class *C* from *A*, we, obviously, have to override *bar()* and provide
-an implementation.
+上例中，接口 *A* 和 *B* 都定义了方法 *foo()* 和 *bar()*。 两者都实现了 *foo()*, 但是只有 *B* 实现了 *bar()* (*bar()* 在 *A* 中没有标记为抽象，
+因为在接口中没有方法体时默认为抽象）。因为 *C* 是一个实现了 *A* 的具体类，所以必须要重写 *bar()* 并<!--
+-->实现这个抽象方法。
 
-However, if we derive *D* from *A* and *B*, we need to implement all the methods which we have
-inherited from multiple interfaces, and to specify how exactly *D* should implement them. This rule applies
-both to methods for which we've inherited a single implementation (*bar()*) and multiple implementations (*foo()*).
+然而，如果我们从 *A* 和 *B* 派生 *D*，我们需要实现<!--
+-->我们从多个接口继承的所有方法，并指明 *D* 应该如何实现它们。这一规则<!--
+-->既适用于继承单个实现（*bar()*）的方法也适用于继承多个实现（*foo()*）的方法。
