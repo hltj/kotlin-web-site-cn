@@ -1,61 +1,51 @@
-# Data Classes
+[//]: # (title: Data classes)
 
-We frequently create classes whose main purpose is to hold data.
-In such a class some standard functionality and utility functions are often mechanically
-derivable from the data. In Kotlin, this is called a _data class_ and is marked as `data`:
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+You often create classes whose main purpose is to hold data.
+In such classes, some standard functionality and utility functions are often mechanically
+derivable from the data. In Kotlin, these are called _data classes_ and are marked with `data`:
 
 ```kotlin
 data class User(val name: String, val age: Int)
 ```
 
-</div>
-
 The compiler automatically derives the following members from all properties declared in the primary constructor:
-
-* `equals()`/`hashCode()` pair;
-* `toString()` of the form `"User(name=John, age=42)"`;
-* [`componentN()` functions](multi-declarations.html) corresponding to the properties in their order of declaration;
-* `copy()` function (see below).
+  
+  * `equals()`/`hashCode()` pair
+  * `toString()` of the form `"User(name=John, age=42)"`
+  * [`componentN()` functions](destructuring-declarations.md) corresponding to the properties in their order of declaration.
+  * `copy()` function (see below).
 
 To ensure consistency and meaningful behavior of the generated code, data classes have to fulfill the following requirements:
 
-* The primary constructor needs to have at least one parameter;
-* All primary constructor parameters need to be marked as `val` or `var`;
-* Data classes cannot be abstract, open, sealed or inner;
-* (before 1.1) Data classes may only implement interfaces.
-
+  * The primary constructor needs to have at least one parameter.
+  * All primary constructor parameters need to be marked as `val` or `var`.
+  * Data classes cannot be abstract, open, sealed or inner.
+  
 Additionally, the members generation follows these rules with regard to the members inheritance:
 
-* If there are explicit implementations of `equals()`, `hashCode()` or `toString()` in the data class body or
-  `final` implementations in a superclass, then these functions are not generated, and the existing
-  implementations are used;
-* If a supertype has the `componentN()` functions that are `open` and return compatible types, the
-  corresponding functions are generated for the data class and override those of the supertype. If the functions of the
-  supertype cannot be overridden due to incompatible signatures or being final, an error is reported;
-* Deriving a data class from a type that already has a `copy(...)` function with a matching signature is deprecated in
-  Kotlin 1.2 and is prohibited in Kotlin 1.3.
+* If there are explicit implementations of `equals()`, `hashCode()` or `toString()` in the data class body or 
+`final` implementations in a superclass, then these functions are not generated, and the existing 
+implementations are used.
+* If a supertype has the `componentN()` functions that are `open` and return compatible types, the 
+corresponding functions are generated for the data class and override those of the supertype. If the functions of the 
+supertype cannot be overridden due to incompatible signatures or being final, an error is reported. 
 * Providing explicit implementations for the `componentN()` and `copy()` functions is not allowed.
+  
+Data classes may extend other classes (see [Sealed classes](sealed-classes.md) for examples).
 
-Since 1.1, data classes may extend other classes (see [Sealed classes](sealed-classes.html) for examples).
-
-On the JVM, if the generated class needs to have a parameterless constructor, default values for all properties have to be specified
-(see [Constructors](classes.md#constructors)).
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+> On the JVM, if the generated class needs to have a parameterless constructor, default values for all properties have 
+> to be specified (see [Constructors](classes.md#constructors)).
+>
+{type="note"}
 
 ```kotlin
 data class User(val name: String = "", val age: Int = 0)
 ```
 
-</div>
+## Properties declared in the class body
 
-## Properties Declared in the Class Body
-
-Note that the compiler only uses the properties defined inside the primary constructor for the automatically generated functions. To exclude a property from the generated implementations, declare it inside the class body:
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+The compiler only uses the properties defined inside the primary constructor for the automatically generated 
+functions. To exclude a property from the generated implementations, declare it inside the class body:
 
 ```kotlin
 data class Person(val name: String) {
@@ -63,11 +53,9 @@ data class Person(val name: String) {
 }
 ```
 
-</div>
-
-Only the property `name` will be used inside the `toString()`, `equals()`, `hashCode()`, and `copy()` implementations, and there will only be one component function `component1()`. While two `Person` objects can have different ages, they will be treated as equal.
-
-<div class="sample" markdown="1" theme="idea">
+Only the property `name` will be used inside the `toString()`, `equals()`, `hashCode()`, and `copy()` implementations, 
+and there will only be one component function `component1()`. While two `Person` objects can have different ages, 
+they will be treated as equal.
 
 ```kotlin
 data class Person(val name: String) {
@@ -85,65 +73,27 @@ fun main() {
     println("person2 with age ${person2.age}: ${person2}")
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ## Copying
-
-It's often the case that we need to copy an object altering _some_ of its properties, but keeping the rest unchanged.
-This is what `copy()` function is generated for. For the `User` class above, its implementation would be as follows:
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+  
+To copy an object for changing _some_ of its properties, but keeping the rest unchanged, use  
+the `copy()` function. For the `User` class above, its implementation would be as follows:
 
 ```kotlin
 fun copy(name: String = this.name, age: Int = this.age) = User(name, age)     
 ```
 
-</div>
-
-This allows us to write:
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+You can write the following:
 
 ```kotlin
 val jack = User(name = "Jack", age = 1)
 val olderJack = jack.copy(age = 2)
 ```
 
-</div>
+## Data classes and destructuring declarations
 
-Note that the `copy()` call performs a shallow copy, meaning that the copy's reference properties point to the _same objects_ as the original object's references. However, the copy has its own primitive properties not linked to the original.
-
-<div class="sample" markdown="1" theme="idea">
-
-```kotlin
-data class User(var name : String)
-
-data class Address(var user: User, var city: String)
-
-fun main() {
-//sampleStart
-
-    var userJack = User(name="Jack")
-    var address = Address(user = userJack, city = "London")
-    var addressCopy = address.copy()
-
-    addressCopy.city = "New York"
-    addressCopy.user.name = "John"  // Propagates to `address.user` because they both point to userJack.
-
-//sampleEnd
-    println("address.city is ${address.city}")  // Prints "London"
-    println("address.user.name is ${address.user.name}")  // Prints "John"
-}
-```
-
-</div>
-
-## Data Classes and Destructuring Declarations
-
-_Component functions_ generated for data classes enable their use in [destructuring declarations](multi-declarations.html):
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+_Component functions_ generated for data classes enable their use in [destructuring declarations](destructuring-declarations.md):
 
 ```kotlin
 val jane = User("Jane", 35) 
@@ -151,9 +101,7 @@ val (name, age) = jane
 println("$name, $age years of age") // prints "Jane, 35 years of age"
 ```
 
-</div>
+## Standard data classes
 
-## Standard Data Classes
-
-The standard library provides `Pair` and `Triple`. In most cases, though, named data classes are a better design choice,
+The standard library provides `Pair` and `Triple`. In most cases, though, named data classes are a better design choice, 
 because they make the code more readable by providing meaningful names for properties.

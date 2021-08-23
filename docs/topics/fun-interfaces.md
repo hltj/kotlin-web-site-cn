@@ -1,19 +1,15 @@
-# Functional (SAM) interfaces
+[//]: # (title: Functional \(SAM\) interfaces)
 
 An interface with only one abstract method is called a _functional interface_, or a _Single Abstract
 Method (SAM) interface_. The functional interface can have several non-abstract members but only one abstract member.
 
 To declare a functional interface in Kotlin, use the `fun` modifier.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
 ```kotlin
 fun interface KRunnable {
    fun invoke()
 }
 ```
-
-</div>
 
 ## SAM conversions
 
@@ -26,19 +22,13 @@ the signature of the interface's single method into an instance of a class that 
 
 For example, consider the following Kotlin functional interface:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
 ```kotlin
 fun interface IntPredicate {
    fun accept(i: Int): Boolean
 }
 ```
 
-</div>
-
 If you don't use a SAM conversion, you will need to write code like this:
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 // Creating an instance of a class
@@ -49,22 +39,14 @@ val isEven = object : IntPredicate {
 }
 ```
 
-</div>
-
 By leveraging Kotlin's SAM conversion, you can write the following equivalent code instead:
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 // Creating an instance using lambda
 val isEven = IntPredicate { it % 2 == 0 }
 ```
 
-</div>
-
 A short lambda expression replaces all the unnecessary code.
-
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.4-M1">
 
 ```kotlin
 fun interface IntPredicate {
@@ -77,14 +59,13 @@ fun main() {
    println("Is 7 even? - ${isEven.accept(7)}")
 }
 ```
-
-</div>
+{kotlin-runnable="true" kotlin-min-compiler-version="1.4"}
 
 You can also use [SAM conversions for Java interfaces](java-interop.md#sam-conversions).
 
 ## Functional interfaces vs. type aliases
 
-Functional interfaces and [type aliases](type-aliases.html) serve different purposes. Type aliases are just names for
+Functional interfaces and [type aliases](type-aliases.md) serve different purposes. Type aliases are just names for
 existing types – they don't create a new type, while functional interfaces do.
 
 Type aliases can have only one member, while functional interfaces can have multiple non-abstract members and one abstract member.
