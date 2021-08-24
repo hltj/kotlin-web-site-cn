@@ -1,15 +1,11 @@
-[//]: # (title: Object Expressions, Object Declarations and Companion Objects)
+[//]: # (title: Object expressions and declarations)
 
-# Object Expressions and Declarations
-
-Sometimes we need to create an object of a slight modification of some class, without explicitly declaring a new subclass for it.
+Sometimes you need to create an object of a slight modification of some class, without explicitly declaring a new subclass for it.
 Kotlin handles this case with *object expressions* and *object declarations*.
 
 ## Object expressions
 
-To create an object of an anonymous class that inherits from some type (or types), we write:
-
-
+To create an object of an anonymous class that inherits from some type (or types), write:
 
 ```kotlin
 window.addMouseListener(object : MouseAdapter() {
@@ -19,11 +15,8 @@ window.addMouseListener(object : MouseAdapter() {
 })
 ```
 
-
 If a supertype has a constructor, appropriate constructor parameters must be passed to it.
-Many supertypes may be specified as a comma-separated list after the colon:
-
-
+Many supertypes can be specified as a comma-delimited list after the colon:
 
 ```kotlin
 open class A(x: Int) {
@@ -37,10 +30,7 @@ val ab: A = object : A(1), B {
 }
 ```
 
-
-If, by any chance, we need "just an object", with no nontrivial supertypes, we can simply say:
-
-
+If you need just an object, with no nontrivial supertypes, write:
 
 ```kotlin
 fun foo() {
@@ -52,13 +42,10 @@ fun foo() {
 }
 ```
 
-
 Note that anonymous objects can be used as types only in local and private declarations. If you use an anonymous object as a
 return type of a public function or the type of a public property, the actual type of that function or property
-will be the declared supertype of the anonymous object, or `Any` if you didn't declare any supertype. Members added
+will be the declared supertype of the anonymous object, or `Any` if you haven't declared any supertype. Members added
 in the anonymous object will not be accessible.
-
-
 
 ```kotlin
 class C {
@@ -79,10 +66,7 @@ class C {
 }
 ```
 
-
 The code in object expressions can access variables from the enclosing scope.
-
-
 
 ```kotlin
 fun countClicks(window: JComponent) {
@@ -102,13 +86,10 @@ fun countClicks(window: JComponent) {
 }
 ```
 
-
 ## Object declarations
 
-[Singleton](http://en.wikipedia.org/wiki/Singleton_pattern) may be useful in several cases,
+[Singleton](http://en.wikipedia.org/wiki/Singleton_pattern) can be useful in several cases,
 and Kotlin (after Scala) makes it easy to declare singletons:
-
-
 
 ```kotlin
 object DataProviderManager {
@@ -121,24 +102,18 @@ object DataProviderManager {
 }
 ```
 
-
 This is called an *object declaration*, and it always has a name following the `object` keyword.
 Just like a variable declaration, an object declaration is not an expression, and cannot be used on the right hand side of an assignment statement.
 
 Object declaration's initialization is thread-safe and done at first access.
 
-To refer to the object, we use its name directly:
-
-
+To refer to the object, use its name directly:
 
 ```kotlin
 DataProviderManager.registerDataProvider(...)
 ```
 
-
 Such objects can have supertypes:
-
-
 
 ```kotlin
 object DefaultListener : MouseAdapter() {
@@ -148,15 +123,14 @@ object DefaultListener : MouseAdapter() {
 }
 ```
 
+> Object declarations can't be local (i.e. be nested directly inside a function), but they can be nested into other 
+> object declarations or non-inner classes.
+>
+{type="note"}
 
-**NOTE**: object declarations can't be local (i.e. be nested directly inside a function), but they can be nested into other object declarations or non-inner classes.
-
-
-### Companion Objects
+### Companion objects
 
 An object declaration inside a class can be marked with the `companion` keyword:
-
-
 
 ```kotlin
 class MyClass {
@@ -166,19 +140,13 @@ class MyClass {
 }
 ```
 
-
 Members of the companion object can be called by using simply the class name as the qualifier:
-
-
 
 ```kotlin
 val instance = MyClass.create()
 ```
 
-
 The name of the companion object can be omitted, in which case the name `Companion` will be used:
-
-
 
 ```kotlin
 class MyClass {
@@ -188,11 +156,8 @@ class MyClass {
 val x = MyClass.Companion
 ```
 
-
 The name of a class used by itself (not as a qualifier to another name) acts as a reference to the companion
 object of the class (whether named or not):
-
-
 
 ```kotlin
 class MyClass1 {
@@ -208,11 +173,8 @@ class MyClass2 {
 val y = MyClass2
 ```
 
-
 Note that, even though the members of companion objects look like static members in other languages, at runtime those
 are still instance members of real objects, and can, for example, implement interfaces:
-
-
 
 ```kotlin
 interface Factory<T> {
@@ -228,16 +190,15 @@ class MyClass {
 val f: Factory<MyClass> = MyClass
 ```
 
-
 However, on the JVM you can have members of companion objects generated as real static methods and fields, if you use
 the `@JvmStatic` annotation. See the [Java interoperability](java-to-kotlin-interop.md#static-fields) section
 for more details.
-
 
 ### Semantic difference between object expressions and declarations
 
 There is one important semantic difference between object expressions and object declarations:
 
-* object expressions are executed (and initialized) **immediately**, where they are used;
-* object declarations are initialized **lazily**, when accessed for the first time;
-* a companion object is initialized when the corresponding class is loaded (resolved), matching the semantics of a Java static initializer.
+* Object expressions are executed (and initialized) *immediately*, where they are used.
+* Object declarations are initialized *lazily*, when accessed for the first time.
+* A companion object is initialized when the corresponding class is loaded (resolved), matching the semantics of a Java 
+static initializer.
