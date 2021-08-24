@@ -1,29 +1,38 @@
 [//]: # (title: Inline classes)
 
-> Inline classes are in [Beta](components-stability.md). They are almost stable, but migration steps may be required in the future. 
+# Inline classes
+
+> Inline classes are in [Beta](evolution/components-stability.md). They are almost stable, but migration steps may be required in the future.
 > We'll do our best to minimize any changes you will have to make.
 > We would appreciate your feedback on the inline classes feature in [YouTrack](https://youtrack.jetbrains.com/issue/KT-42434).
->
-{type="warning"}
+{:.note}
 
-Sometimes it is necessary for business logic to create a wrapper around some type. However, it introduces runtime 
-overhead due to additional heap allocations. Moreover, if the wrapped type is primitive, the performance hit is terrible, 
-because primitive types are usually heavily optimized by the runtime, while their wrappers don't get any special treatment. 
+Sometimes it is necessary for business logic to create a wrapper around some type. However, it introduces runtime overhead due to additional heap allocations. Moreover, if the wrapped type is primitive, the performance hit is terrible, because primitive types are usually heavily optimized by the runtime, while their wrappers don't get any special treatment.
 
-To solve such issues, Kotlin introduces a special kind of class called an _inline class_. 
+To solve such issues, Kotlin introduces a special kind of class called an _inline class_.
 Inline classes are a subset of value-based classes. They don't have an identity and can only hold values.
 
 To declare an inline class, use an `inline` or `value` modifier before the name of the class:
 
+
+
 ```kotlin
 inline class Password(val value: String)
-```
+```  
+
+
+
+
 
 ```kotlin
 value class Password(private val s: String)
 ```
 
-To declare an inline class for the JVM backend, use the `value` modifier along with the `@JvmInline` annotation before the class declaration: 
+
+
+To declare an inline class for the JVM backend, use the `value` modifier along with the `@JvmInline` annotation before the class declaration:
+
+
 
 ```kotlin
 // For JVM backends
@@ -31,8 +40,11 @@ To declare an inline class for the JVM backend, use the `value` modifier along w
 value class Password(private val s: String)
 ```
 
-An inline class must have a single property initialized in the primary constructor. At runtime, instances of the inline 
-class will be represented using this single property (see details about runtime representation [below](#representation)):
+
+
+An inline class must have a single property initialized in the primary constructor. At runtime, instances of the inline class will be represented using this single property (see details about runtime representation [below](#representation)):
+
+
 
 ```kotlin
 // No actual instantiation of class 'Password' happens
@@ -40,13 +52,15 @@ class will be represented using this single property (see details about runtime 
 val securePassword = Password("Don't try this in production") 
 ```
 
-This is the main feature of inline classes, which inspired the name *inline*: data of the class is *inlined* into its 
-usages (similar to how content of [inline functions](inline-functions.md) is inlined to call sites).
+
+
+This is the main feature of inline classes, which inspired the name "inline": data of the class is "inlined" into its usages (similar to how content of [inline functions](inline-functions.md) is inlined to call sites).
 
 ## Members
 
-Inline classes support some functionality of regular classes. In particular, they are allowed to declare properties and 
-functions, and have the `init` block:
+Inline classes support some functionality of regular classes. In particular, they are allowed to declare properties and functions, and have the `init` block:
+
+
 
 ```kotlin
 @JvmInline
@@ -61,7 +75,7 @@ value class Name(val s: String) {
     fun greet() {
         println("Hello, $s")
     }
-}
+}    
 
 fun main() {
     val name = Name("Kotlin")
@@ -70,14 +84,18 @@ fun main() {
 }
 ```
 
+
+
 There are some restrictions for inline class members:
-* Inline class properties cannot have [backing fields](properties.md#backing-fields). They can only have simple computable 
-properties (no `lateinit`/delegated properties).
+* inline class properties cannot have [backing fields](properties.md#backing-fields). They can only have simple computable properties (no `lateinit`/delegated properties).
 * Inline classes cannot have `var` properties or extension `var` properties.
+
 
 ## Inheritance
 
 Inline classes are allowed to inherit from interfaces:
+
+
 
 ```kotlin
 interface Printable {
@@ -87,26 +105,25 @@ interface Printable {
 @JvmInline
 value class Name(val s: String) : Printable {
     override fun prettyPrint(): String = "Let's $s!"
-}
+}    
 
 fun main() {
     val name = Name("Kotlin")
     println(name.prettyPrint()) // Still called as a static method
 }
-```
+```  
 
-It is forbidden for inline classes to participate in a class hierarchy. This means that inline classes cannot extend 
-other classes and must be `final`.
+
+
+It is forbidden for inline classes to participate in a class hierarchy. This means that inline classes cannot extend other classes and must be `final`.
 
 ## Representation
 
-In generated code, the Kotlin compiler keeps a *wrapper* for each inline class. Inline class instances can be represented 
-at runtime either as wrappers or as the underlying type. This is similar to how `Int` can be 
-[represented](basic-types.md#numbers-representation-on-the-jvm) either as a primitive `int` or as the wrapper `Integer`.
+In generated code, the Kotlin compiler keeps a *wrapper* for each inline class. Inline class instances can be represented at runtime either as wrappers or as the underlying type. This is similar to how `Int` can be [represented](basic-types.md#representation) either as a primitive `int` or as the wrapper `Integer`.
 
-The Kotlin compiler will prefer using underlying types instead of wrappers to produce the most performant and optimized code. 
-However, sometimes it is necessary to keep wrappers around. As a rule of thumb, inline classes are boxed whenever they 
-are used as another type.
+The Kotlin compiler will prefer using underlying types instead of wrappers to produce the most performant and optimized code. However, sometimes it is necessary to keep wrappers around. As a rule of thumb, inline classes are boxed whenever they are used as another type.
+
+
 
 ```kotlin
 interface I
@@ -133,14 +150,17 @@ fun main() {
     // In the end, 'c' contains unboxed representation (just '42'), as 'f' 
     val c = id(f)  
 }
-```
+```  
 
-Because inline classes may be represented both as the underlying value and as a wrapper, [referential equality](equality.md#referential-equality) 
-is pointless for them and is therefore prohibited.
+
+
+Because inline classes may be represented both as the underlying value and as a wrapper, [referential equality](equality.md#referential-equality) is pointless for them and is therefore prohibited.
 
 ### Mangling
 
 Since inline classes are compiled to their underlying type, it may lead to various obscure errors, for example unexpected platform signature clashes:
+
+
 
 ```kotlin
 @JvmInline
@@ -153,18 +173,20 @@ fun compute(x: Int) { }
 fun compute(x: UInt) { }
 ```
 
-To mitigate such issues, functions using inline classes are *mangled* by adding some stable hashcode to the function name. 
-Therefore, `fun compute(x: UInt)` will be represented as `public final void compute-<hashcode>(int x)`, which solves the clash problem.
 
-> The mangling scheme has been changed in Kotlin 1.4.30. 
+
+To mitigate such issues, functions using inline classes are *mangled* by adding some stable hashcode to the function name. Therefore, `fun compute(x: UInt)` will be represented as `public final void compute-<hashcode>(int x)`, which solves the clash problem.
+
+> The mangling scheme has been changed in Kotlin 1.4.30.
 > Use the `-Xuse-14-inline-classes-mangling-scheme` compiler flag to force the compiler to use the old 1.4.0 mangling scheme and preserve binary compatibility.
->
-{type="note"}
+{:.note}
 
 ### Calling from Java code
 
 You can call functions that accept inline classes from Java code. To do so, you should manually disable mangling:
 add the `@JvmName` annotation before the function declaration:
+
+
 
 ```kotlin
 @JvmInline
@@ -176,16 +198,17 @@ fun compute(x: Int) { }
 fun compute(x: UInt) { }
 ```
 
+
+
 ## Inline classes vs type aliases
 
-At first sight, inline classes seem very similar to [type aliases](type-aliases.md). Indeed, both seem to introduce 
-a new type and both will be represented as the underlying type at runtime.
+At first sight, inline classes may appear to be very similar to [type aliases](type-aliases.md). Indeed, both seem to introduce a new type and both will be represented as the underlying type at runtime.
 
-However, the crucial difference is that type aliases are *assignment-compatible* with their underlying type (and with 
-other type aliases with the same underlying type), while inline classes are not.
+However, the crucial difference is that type aliases are *assignment-compatible* with their underlying type (and with other type aliases with the same underlying type), while inline classes are not.
 
-In other words, inline classes introduce a truly _new_ type, contrary to type aliases which only introduce an alternative name 
-(alias) for an existing type:
+In other words, inline classes introduce a truly _new_ type, contrary to type aliases which only introduce an alternative name (alias) for an existing type:
+
+
 
 ```kotlin
 typealias NameTypeAlias = String
@@ -211,15 +234,18 @@ fun main() {
 }
 ```
 
+
+
+
 ## Enabling inline classes
- 
-When using inline classes, a warning will be reported, indicating that this feature has not been released as stable.
+
+When using inline classes in Kotlin 1.3+, a warning will be reported, indicating that this feature has not been released as stable.
 To remove the warning you have to opt in to the usage of this feature by passing the compiler argument `-Xinline-classes`.
 
 ### Gradle
 
-<tabs>
-<tab title="Groovy">
+
+
 
 ```groovy
 kotlin {
@@ -229,8 +255,11 @@ kotlin {
 }
 ```
 
-</tab>
-<tab title="Kotlin">
+
+
+
+
+
 
 ```kotlin
 kotlin {
@@ -240,13 +269,15 @@ kotlin {
 }
 ```
 
-</tab>
-</tabs>
 
-See [compiler options in Gradle](gradle.md#compiler-options) for details. For [multiplatform project](mpp-intro.md) settings, 
+
+
+See [Compiler options in Gradle](using-gradle.md#compiler-options) for details. For [multiplatform projects](mpp-intro.md),
 see [language settings](mpp-dsl-reference.md#language-settings).
 
 ### Maven
+
+
 
 ```xml
 <configuration>
@@ -256,9 +287,10 @@ see [language settings](mpp-dsl-reference.md#language-settings).
 </configuration>
 ```
 
-See [compiler options in Maven](maven.md#specifying-compiler-options) for details.
+
+
+See [Compiler options in Maven](using-maven.md#specifying-compiler-options) for details.
 
 ## Further discussion
 
-See this [language proposal for inline classes](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-classes.md) 
-for other technical details and discussion.
+See this [language proposal for inline classes](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-classes.md) for other technical details and discussion.
