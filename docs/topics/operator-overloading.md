@@ -1,34 +1,34 @@
-[//]: # (title: Operator overloading)
+[//]: # (title: 操作符重载)
 
-# Operator overloading
+# 操作符重载
 
-Kotlin allows us to provide implementations for a predefined set of operators on our types. These operators have fixed symbolic representation
-(like `+` or `*`) and fixed [precedence](grammar.md#expressions). To implement an operator, we provide a [member function](functions.md#member-functions)
-or an [extension function](extensions.md) with a fixed name, for the corresponding type, i.e. left-hand side type for binary operations and argument type for unary ones.
-Functions that overload operators need to be marked with the `operator` modifier.
+Kotlin 允许我们为自己的类型提供预定义的一组操作符的实现。这些操作符具有固定的符号表示
+（如 `+` 或 `*`）和固定的[优先级](grammar.md#expressions)。为实现这样的操作符，我们为相应的类型（即二元操作符左侧的类型和一元操作符的参数类型）提供了一个固定名字的[成员函数](functions.md#成员函数)<!--
+-->或[扩展函数](extensions.md)。
+重载操作符的函数需要用 `operator` 修饰符标记。
 
-Further we describe the conventions that regulate operator overloading for different operators.
+另外，我们描述为不同操作符规范操作符重载的约定。
 
-## Unary operations
+## 一元操作
 
-### Unary prefix operators
+### 一元前缀操作符
 
-| Expression | Translated to |
+| 表达式     | 翻译为        |
 |------------|---------------|
 | `+a` | `a.unaryPlus()` |
 | `-a` | `a.unaryMinus()` |
 | `!a` | `a.not()` |
 
-This table says that when the compiler processes, for example, an expression `+a`, it performs the following steps:
+这个表是说，当编译器处理例如表达式 `+a` 时，它执行以下步骤：
 
-* Determines the type of `a`, let it be `T`;
-* Looks up a function `unaryPlus()` with the `operator` modifier and no parameters for the receiver `T`, i.e. a member function or an extension function;
-* If the function is absent or ambiguous, it is a compilation error;
-* If the function is present and its return type is `R`, the expression `+a` has type `R`;
+* 确定 `a` 的类型，令其为 `T`；
+* 为接收者 `T` 查找一个带有 `operator` 修饰符的无参函数 `unaryPlus（）`，即成员函数或扩展函数；
+* 如果函数不存在或不明确，则导致编译错误；
+* 如果函数存在且其返回类型为 `R`，那就表达式 `+a` 具有类型 `R`；
 
-*Note* that these operations, as well as all the others, are optimized for [Basic types](basic-types.md) and do not introduce overhead of function calls for them.
+*注意* 这些操作以及所有其他操作都针对[基本类型](basic-types.md)做了优化，不会为它们引入函数调用的开销。
 
-As an example, here's how you can overload the unary minus operator:
+以下是如何重载一元减运算符的示例：
 
 
 ```kotlin
@@ -39,63 +39,63 @@ operator fun Point.unaryMinus() = Point(-x, -y)
 val point = Point(10, 20)
 
 fun main() {
-   println(-point)  // prints "Point(x=-10, y=-20)"
+   println(-point)  // 输出“Point(x=-10, y=-20)”
 }
 
 ```
 
 
-### Increments and decrements
+### 递增与递减
 
-| Expression | Translated to |
+| 表达式     | 翻译为        |
 |------------|---------------|
-| `a++` | `a.inc()` + see below |
-| `a--` | `a.dec()` + see below |
+| `a++` | `a.inc()` + 见下文 |
+| `a--` | `a.dec()` + 见下文 |
 
-The `inc()` and `dec()` functions must return a value, which will be assigned to the variable on which the
-`++` or `--` operation was used. They shouldn't mutate the object on which the `inc` or `dec` was invoked.
+`inc()` 和 `dec()` 函数必须返回一个值，它用于赋值给使用
+`++` 或 `--` 操作的变量。它们不应该改变在其上调用 `inc()` 或 `dec()` 的对象。
 
-The compiler performs the following steps for resolution of an operator in the *postfix* form, e.g. `a++`:
+编译器执行以下步骤来解析*后缀*形式的操作符，例如 `a++`：
 
-* Determines the type of `a`, let it be `T`;
-* Looks up a function `inc()` with the `operator` modifier and no parameters, applicable to the receiver of type `T`;
-* Checks that the return type of the function is a subtype of `T`.
+* 确定 `a` 的类型，令其为 `T`；
+* 查找一个适用于类型为 `T` 的接收者的、带有 `operator` 修饰符的无参数函数 `inc()`；
+* 检测函数的返回类型是 `T` 的子类型。
 
-The effect of computing the expression is:
+计算表达式的步骤是：
 
-* Store the initial value of `a` to a temporary storage `a0`;
-* Assign the result of `a0.inc()` to `a`;
-* Return `a0` as a result of the expression.
+* 把 `a` 的初始值存储到临时存储 `a0` 中；
+* 把 `a0.inc()` 结果赋值给 `a`；
+* 把 `a0` 作为表达式的结果返回。
 
-For `a--` the steps are completely analogous.
+对于 `a--`，步骤是完全类似的。
 
-For the *prefix* forms `++a` and `--a` resolution works the same way, and the effect is:
+对于*前缀*形式 `++a` 和 `--a` 以相同方式解析，其步骤是：
 
-* Assign the result of `a.inc()` to `a`;
-* Return the new value of `a` as a result of the expression.
+* 把 `a.inc()` 结果赋值给 `a`；
+* 把 `a` 的新值作为表达式结果返回。
 
-## Binary operations
+## 二元操作
 
-### Arithmetic operators
+### 算术运算符
 
-| Expression | Translated to |
+| 表达式     | 翻译为        |
 | -----------|-------------- |
 | `a + b` | `a.plus(b)` |
 | `a - b` | `a.minus(b)` |
 | `a * b` | `a.times(b)` |
 | `a / b` | `a.div(b)` |
-| `a % b` | `a.rem(b)`, `a.mod(b)` (deprecated) |
+| `a % b` | `a.rem(b)`、 `a.mod(b)` （已弃用） |
 | `a..b ` | `a.rangeTo(b)` |
 
-For the operations in this table, the compiler just resolves the expression in the *Translated to* column.
+对于此表中的操作，编译器只是解析成*翻译为*列中的表达式。
 
-Note that the `rem` operator is supported since Kotlin 1.1. Kotlin 1.0 uses the `mod` operator, which is deprecated
-in Kotlin 1.1.
+请注意，自 Kotlin 1.1 起支持 `rem` 运算符。Kotlin 1.0 使用 `mod` 运算符，它在
+Kotlin 1.1 中被弃用。
 
 
-#### Example
+#### 示例
 
-Below is an example Counter class that starts at a given value and can be incremented using the overloaded `+` operator:
+下面是一个从给定值起始的 Counter 类的示例，它可以使用重载的 `+` 运算符来增加计数：
 
 ```kotlin
 data class Counter(val dayIndex: Int) {
@@ -105,89 +105,89 @@ data class Counter(val dayIndex: Int) {
 }
 ```
 
-### 'In' operator
+### “In”操作符
 
 
-| Expression | Translated to |
+| 表达式     | 翻译为        |
 | -----------|-------------- |
 | `a in b` | `b.contains(a)` |
 | `a !in b` | `!b.contains(a)` |
 
-For `in` and `!in` the procedure is the same, but the order of arguments is reversed.
+对于 `in` 和 `!in`，过程是相同的，但是参数的顺序是相反的。
 
-### Indexed access operator
+### 索引访问操作符
 
-| Expression | Translated to |
+| 表达式 | 翻译为        |
 | -------|-------------- |
 | `a[i]`  | `a.get(i)` |
 | `a[i, j]`  | `a.get(i, j)` |
-| `a[i_1, ...,  i_n]`  | `a.get(i_1, ...,  i_n)` |
+| `a[i_1, ……,  i_n]`  | `a.get(i_1, ……,  i_n)` |
 | `a[i] = b` | `a.set(i, b)` |
 | `a[i, j] = b` | `a.set(i, j, b)` |
-| `a[i_1, ...,  i_n] = b` | `a.set(i_1, ..., i_n, b)` |
+| `a[i_1, ……,  i_n] = b` | `a.set(i_1, ……, i_n, b)` |
 
-Square brackets are translated to calls to `get` and `set` with appropriate numbers of arguments.
+方括号转换为调用带有适当数量参数的 `get` 和 `set`。
 
-### Invoke operator
+### 调用操作符
 
-| Expression | Translated to |
+| 表达式 | 翻译为        |
 |--------|---------------|
 | `a()`  | `a.invoke()` |
 | `a(i)`  | `a.invoke(i)` |
 | `a(i, j)`  | `a.invoke(i, j)` |
-| `a(i_1, ...,  i_n)`  | `a.invoke(i_1, ...,  i_n)` |
+| `a(i_1, ……,  i_n)`  | `a.invoke(i_1, ……,  i_n)` |
 
-Parentheses are translated to calls to `invoke` with appropriate number of arguments.
+圆括号转换为调用带有适当数量参数的 `invoke`。
 
-### Augmented assignments
+### 广义赋值
 
-| Expression | Translated to |
+| 表达式     | 翻译为        |
 |------------|---------------|
 | `a += b` | `a.plusAssign(b)` |
 | `a -= b` | `a.minusAssign(b)` |
 | `a *= b` | `a.timesAssign(b)` |
 | `a /= b` | `a.divAssign(b)` |
-| `a %= b` | `a.remAssign(b)`, `a.modAssign(b)` (deprecated) |
+| `a %= b` | `a.remAssign(b)`, `a.modAssign(b)`（已弃用） |
 
-For the assignment operations, e.g. `a += b`, the compiler performs the following steps:
+对于赋值操作，例如 `a += b`，编译器执行以下步骤：
 
-* If the function from the right column is available
-  * If the corresponding binary function (i.e. `plus()` for `plusAssign()`) is available too, report error (ambiguity),
-  * Make sure its return type is `Unit`, and report an error otherwise,
-  * Generate code for `a.plusAssign(b)`;
-* Otherwise, try to generate code for `a = a + b` (this includes a type check: the type of `a + b` must be a subtype of `a`).
+* 如果右列的函数可用
+  * 如果相应的二元函数（即 `plusAssign()` 对应于 `plus()`）也可用，那么报告错误（模糊），
+  * 确保其返回类型是 `Unit`，否则报告错误，
+  * 生成 `a.plusAssign(b)` 的代码；
+* 否则试着生成 `a = a + b` 的代码（这里包含类型检测：`a + b` 的类型必须是 `a` 的子类型）。
 
-*Note*: assignments are *NOT* expressions in Kotlin.
+*注意*：赋值在 Kotlin 中*不是*表达式。
 
-### Equality and inequality operators
+### 相等与不等操作符
 
-| Expression | Translated to |
+| 表达式     | 翻译为        |
 |------------|---------------|
 | `a == b` | `a?.equals(b) ?: (b === null)` |
 | `a != b` | `!(a?.equals(b) ?: (b === null))` |
 
-These operators only work with the function [`equals(other: Any?): Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/equals.html), which can be overridden to provide custom equality check implementation. Any other function with the same name (like `equals(other: Foo)`) will not be called.
+这些操作符只使用函数 [`equals(other: Any?): Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/equals.html)，可以覆盖它来提供自定义的相等性检测实现。不会调用任何其他同名函数（如 `equals(other: Foo)`）。
 
-*Note*: `===` and `!==` (identity checks) are not overloadable, so no conventions exist for them.
+*注意*：`===` 和 `!==`（同一性检测）不可重载，因此不存在对他们的约定。
 
-The `==` operation is special: it is translated to a complex expression that screens for `null`'s.
-`null == null` is always true, and `x == null` for a non-null `x` is always false and won't invoke `x.equals()`.
+这个 `==` 操作符有些特殊：它被翻译成一个复杂的表达式，用于筛选 `null` 值。
+`null == null`  总是 true，对于非空的 `x`，`x == null` 总是 false 而不会调用 `x.equals()`。
 
-### Comparison operators
+### 比较操作符
 
-| Expression | Translated to |
+| 表达式 | 翻译为        |
 |--------|---------------|
 | `a > b`  | `a.compareTo(b) > 0` |
 | `a < b`  | `a.compareTo(b) < 0` |
 | `a >= b` | `a.compareTo(b) >= 0` |
 | `a <= b` | `a.compareTo(b) <= 0` |
 
-All comparisons are translated into calls to `compareTo`, that is required to return `Int`.
+所有的比较都转换为对 `compareTo` 的调用，这个函数需要返回 `Int` 值
 
-### Property delegation operators
-`provideDelegate`, `getValue` and `setValue` operator functions are described
-in [Delegated properties](delegated-properties.md).
+### 属性委托操作符
+`provideDelegate`、 `getValue` 以及 `setValue` 操作符函数已在<!--
+-->[委托属性](delegated-properties.md)中描述。
 
-## Infix calls for named functions
+## 具名函数的中缀调用
 
-We can simulate custom infix operations by using [infix function calls](functions.md#infix-notation).
+我们可以通过[中缀函数的调用](functions.md#中缀表示法) 来模拟自定义中缀操作符。
