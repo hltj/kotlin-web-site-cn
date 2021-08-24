@@ -1,13 +1,17 @@
-[//]: # (title: Delegated properties)
+[//]: # (title: Delegated Properties)
 
-There are certain common kinds of properties, that, though you can implement them manually every time you need them, 
-it would be helpful to implement them once and add to a library. Examples include:
+# Delegated Properties
 
-* _Lazy_ properties: the value gets computed only upon first access.
-* _Observable_ properties: listeners get notified about changes to this property.
-* Storing properties in a _map_, instead of a separate field for each property.
+There are certain common kinds of properties, that, though we can implement them manually every time we need them,
+would be very nice to implement once and for all, and put into a library. Examples include:
+
+* lazy properties: the value gets computed only upon first access;
+* observable properties: listeners get notified about changes to this property;
+* storing properties in a map, instead of a separate field for each property.
 
 To cover these (and other) cases, Kotlin supports _delegated properties_:
+
+
 
 ```kotlin
 class Example {
@@ -15,11 +19,14 @@ class Example {
 }
 ```
 
-The syntax is: `val/var <property name>: <Type> by <expression>`. The expression after `by` is a _delegate_, 
+
+
+The syntax is: `val/var <property name>: <Type> by <expression>`. The expression after `by` is the _delegate_,
 because `get()` (and `set()`) corresponding to the property will be delegated to its `getValue()` and `setValue()` methods.
 Property delegates don’t have to implement any interface, but they have to provide a `getValue()` function (and `setValue()` --- for `var`s).
-
 For example:
+
+
 
 ```kotlin
 import kotlin.reflect.KProperty
@@ -35,48 +42,59 @@ class Delegate {
 }
 ```
 
-When you read from `p` that delegates to an instance of `Delegate`, the `getValue()` function from `Delegate` is called,
-so that its first parameter is the object you read `p` from and the second parameter holds a description of `p` itself 
-(for example, you can take its name). 
+
+
+When we read from `p` that delegates to an instance of `Delegate`, the `getValue()` function from `Delegate` is called,
+so that its first parameter is the object we read `p` from and the second parameter holds a description of `p` itself
+(e.g. you can take its name). For example:
+
+
 
 ```kotlin
 val e = Example()
 println(e.p)
 ```
 
+
+
 This prints:
 
 ```
 Example@33a17727, thank you for delegating ‘p’ to me!
 ```
- 
-Similarly, when you assign to `p`, the `setValue()` function is called. The first two parameters are the same, and 
-the third holds the value being assigned:
+
+Similarly, when we assign to `p`, the `setValue()` function is called. The first two parameters are the same, and the third holds the value being assigned:
+
+
 
 ```kotlin
 e.p = "NEW"
 ```
 
+
+
 This prints
- 
+
 ```
 NEW has been assigned to ‘p’ in Example@33a17727.
 ```
 
-The specification of the requirements to the delegated object can be found [below](#property-delegate-requirements).
+The specification of the requirements to the delegated object can be found [below](delegated-properties.md#property-delegate-requirements).
 
-Note that you can declare a delegated property inside a function or code block, it shouldn't necessarily be a member of a class.
-Below you can find [an example](#local-delegated-properties).
+Note that since Kotlin 1.1 you can declare a delegated property inside a function or code block, it shouldn't necessarily be a member of a class.
+Below you can find [an example](delegated-properties.md#local-delegated-properties).
 
 ## Standard delegates
 
 The Kotlin standard library provides factory methods for several useful kinds of delegates.
 
-### Lazy properties
+### Lazy
 
 [`lazy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/lazy.html) is a function that takes a lambda and returns an instance of `Lazy<T>` which can serve as a delegate for implementing a lazy property:
-the first call to `get()` executes the lambda passed to `lazy()` and remembers the result, 
-subsequent calls to `get()` simply return the remembered result. 
+the first call to `get()` executes the lambda passed to `lazy()` and remembers the result,
+subsequent calls to `get()` simply return the remembered result.
+
+
 
 ```kotlin
 val lazyValue: String by lazy {
@@ -89,22 +107,24 @@ fun main() {
     println(lazyValue)
 }
 ```
-{kotlin-runnable="true"}
 
-By default, the evaluation of lazy properties is *synchronized*: the value is computed only in one thread, and all threads
+
+
+By default, the evaluation of lazy properties is **synchronized**: the value is computed only in one thread, and all threads
 will see the same value. If the synchronization of initialization delegate is not required, so that multiple threads
-can execute it simultaneously, pass `LazyThreadSafetyMode.PUBLICATION` as a parameter to the `lazy()` function. 
-
+can execute it simultaneously, pass `LazyThreadSafetyMode.PUBLICATION` as a parameter to the `lazy()` function.
 And if you're sure that the initialization will always happen on the same thread as the one where you use the property,
 you can use `LazyThreadSafetyMode.NONE`: it doesn't incur any thread-safety guarantees and the related overhead.
 
-### Observable properties
+
+### Observable
 
 [`Delegates.observable()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/observable.html)
 takes two arguments: the initial value and a handler for modifications.
-
-The handler is called every time you assign to the property (*after* the assignment has been performed). It has three
+The handler is called every time we assign to the property (_after_ the assignment has been performed). It has three
 parameters: a property being assigned to, the old value and the new one:
+
+
 
 ```kotlin
 import kotlin.properties.Delegates
@@ -122,14 +142,15 @@ fun main() {
     user.name = "second"
 }
 ```
-{kotlin-runnable="true"}
 
-If you want to intercept assignments and *veto* them, use [`vetoable()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/vetoable.html) instead of `observable()`.
-The handler passed to the `vetoable` is called *before* the assignment of a new property value.
+
+
+If you want to intercept assignments and "veto" them, use [`vetoable()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/vetoable.html) instead of `observable()`.
+The handler passed to the `vetoable` is called _before_ the assignment of a new property value has been performed.
 
 ## Delegating to another property
 
-A property can delegate its getter and setter to another property. Such delegation is available for
+Since Kotlin 1.4, a property can delegate its getter and setter to another property. Such delegation is available for
 both top-level and class properties (member and extension). The delegate property can be:
 - a top-level property
 - a member or an extension property of the same class
@@ -138,10 +159,13 @@ both top-level and class properties (member and extension). The delegate propert
 To delegate a property to another property, use the proper `::` qualifier in the delegate name, for example, `this::delegate` or
 `MyClass::delegate`.
 
+
+
 ```kotlin
 var topLevelInt: Int = 0
-class ClassWithDelegate(val anotherClassInt: Int)
 
+class ClassWithDelegate(val anotherClassInt: Int)
+//sampleStart
 class MyClass(var memberInt: Int, val anotherClassInstance: ClassWithDelegate) {
     var delegatedToMember: Int by this::memberInt
     var delegatedToTopLevel: Int by ::topLevelInt
@@ -149,10 +173,15 @@ class MyClass(var memberInt: Int, val anotherClassInstance: ClassWithDelegate) {
     val delegatedToAnotherClass: Int by anotherClassInstance::anotherClassInt
 }
 var MyClass.extDelegated: Int by ::topLevelInt
+//sampleEnd
 ```
+
+
 
 This may be useful, for example, when you want to rename a property in a backward-compatible way: you introduce a new property,
 annotate the old one with the `@Deprecated` annotation, and delegate its implementation.
+
+
 
 ```kotlin
 class MyClass {
@@ -160,6 +189,7 @@ class MyClass {
    @Deprecated("Use 'newName' instead", ReplaceWith("newName"))
    var oldName: Int by this::newName
 }
+
 fun main() {
    val myClass = MyClass()
    // Notification: 'oldName: Int' is deprecated.
@@ -168,13 +198,16 @@ fun main() {
    println(myClass.newName) // 42
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.4"}
+
+
 
 ## Storing properties in a map
 
 One common use case is storing the values of properties in a map.
 This comes up often in applications like parsing JSON or doing other “dynamic” things.
 In this case, you can use the map instance itself as the delegate for a delegated property.
+
+
 
 ```kotlin
 class User(val map: Map<String, Any?>) {
@@ -183,7 +216,11 @@ class User(val map: Map<String, Any?>) {
 }
 ```
 
+
+
 In this example, the constructor takes a map:
+
+
 
 ```kotlin
 val user = User(mapOf(
@@ -192,7 +229,11 @@ val user = User(mapOf(
 ))
 ```
 
-Delegated properties take values from this map (by the string keys – names of properties):
+
+
+Delegated properties take values from this map (by the string keys --– names of properties):
+
+
 
 ```kotlin
 class User(val map: Map<String, Any?>) {
@@ -211,9 +252,12 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true"}
+
+
 
 This works also for `var`’s properties if you use a `MutableMap` instead of read-only `Map`:
+
+
 
 ```kotlin
 class MutableUser(val map: MutableMap<String, Any?>) {
@@ -222,10 +266,14 @@ class MutableUser(val map: MutableMap<String, Any?>) {
 }
 ```
 
+
+
 ## Local delegated properties
 
 You can declare local variables as delegated properties.
-For example, you can make a local variable lazy:
+For instance, you can make a local variable lazy:
+
+
 
 ```kotlin
 fun example(computeFoo: () -> Foo) {
@@ -237,19 +285,23 @@ fun example(computeFoo: () -> Foo) {
 }
 ```
 
+
+
 The `memoizedFoo` variable will be computed on the first access only.
 If `someCondition` fails, the variable won't be computed at all.
 
 ## Property delegate requirements
 
-Here are requirements for delegating properties. 
+Here we summarize requirements to delegate objects.
 
-For a *read-only* property (`val`), a delegate should provide an operator function `getValue()` with the following parameters:
+For a **read-only** property (`val`), a delegate has to provide an operator function `getValue()` with the following parameters:
 
-* `thisRef` must be the same or a supertype of the *property owner* (for extension properties, it should be the type being extended).
-* `property`  must be of type `KProperty<*>` or its supertype.
- 
+* `thisRef` --- must be the same or a supertype of the _property owner_ (for extension properties --- the type being extended).
+* `property` --- must be of type `KProperty<*>` or its supertype.
+
 `getValue()` must return the same type as the property (or its subtype).
+
+
 
 ```kotlin
 class Resource
@@ -265,13 +317,17 @@ class ResourceDelegate {
 }
 ```
 
-For a *mutable* property (`var`), a delegate has to additionally provide an operator function `setValue()` 
+
+
+For a **mutable** property (`var`), a delegate has to additionally provide an operator function `setValue()`
 with the following parameters:
 
-* `thisRef` must be the same or a supertype of the *property owner* (for extension properties, it should be the type being extended).
-* `property` must be of type `KProperty<*>` or its supertype.
-* `value` must be of the same type as the property (or its supertype).
- 
+* `thisRef` --- must be the same or a supertype of the _property owner_ (for extension properties --- the type being extended).
+* `property` --- must be of type `KProperty<*>` or its supertype.
+* `value` --- must be of the same type as the property (or its supertype).
+
+
+
 ```kotlin
 class Resource
 
@@ -291,13 +347,18 @@ class ResourceDelegate(private var resource: Resource = Resource()) {
 }
 ```
 
-`getValue()` and/or `setValue()` functions can be provided either as member functions of the delegate class or extension functions.
+
+
+`getValue()` and/or `setValue()` functions may be provided either as member functions of the delegate class or extension functions.
 The latter is handy when you need to delegate property to an object which doesn't originally provide these functions.
 Both of the functions need to be marked with the `operator` keyword.
 
-You can create delegates as anonymous objects without creating new classes using the interfaces `ReadOnlyProperty` and `ReadWriteProperty` from the Kotlin standard library. 
-They provide the required methods: `getValue()` is declared in `ReadOnlyProperty`; `ReadWriteProperty` 
+You can create delegates as anonymous objects without creating new classes using the interfaces `ReadOnlyProperty`
+and `ReadWriteProperty` from the Kotlin standard library.
+They provide the required methods: `getValue()` is declared in `ReadOnlyProperty`; `ReadWriteProperty`
 extends it and adds `setValue()`. Thus, you can pass a `ReadWriteProperty` whenever a `ReadOnlyProperty` is expected.
+
+
 
 ```kotlin
 fun resourceDelegate(): ReadWriteProperty<Any?, Int> =
@@ -313,11 +374,15 @@ val readOnly: Int by resourceDelegate()  // ReadWriteProperty as val
 var readWrite: Int by resourceDelegate()
 ```
 
+
+
 ### Translation rules
 
-Under the hood for every delegated property the Kotlin compiler generates an auxiliary property and delegates to it.
-For example, for the property `prop` the hidden property `prop$delegate` is generated, and the code of the accessors 
+Under the hood, for every delegated property the Kotlin compiler generates an auxiliary property and delegates to it.
+For instance, for the property `prop` the hidden property `prop$delegate` is generated, and the code of the accessors
 simply delegates to this additional property:
+
+
 
 ```kotlin
 class C {
@@ -333,8 +398,13 @@ class C {
 }
 ```
 
-The Kotlin compiler provides all the necessary information about `prop` in the arguments: the first argument `this` 
-refers to an instance of the outer class `C` and `this::prop` is a reflection object of the `KProperty` type describing `prop` itself.
+
+
+The Kotlin compiler provides all the necessary information about `prop` in the arguments: the first argument `this` refers
+to an instance of the outer class `C` and `this::prop` is a reflection object of the `KProperty` type describing `prop` itself.
+
+Note that the syntax `this::prop` to refer a [bound callable reference](reflection.md#bound-function-and-property-references-since-11)
+in the code directly has only been available since Kotlin 1.1.
 
 ### Providing a delegate
 
@@ -345,6 +415,8 @@ that function will be called to create the property delegate instance.
 One of the possible use cases of `provideDelegate` is to check the consistency of the property upon its initialization.
 
 For example, if you want to check the property name before binding, you can write something like this:
+
+
 
 ```kotlin
 class ResourceDelegate<T> : ReadOnlyProperty<MyUI, T> {
@@ -372,16 +444,20 @@ class MyUI {
 }
 ```
 
+
+
 The parameters of `provideDelegate` are the same as for `getValue`:
 
-* `thisRef` must be the same or a supertype of the _property owner_ (for extension properties, it should be the type being extended);
-* `property` must be of type `KProperty<*>` or its supertype.
+* `thisRef` --- must be the same or a supertype of the _property owner_ (for extension properties --- the type being extended);
+* `property` --- must be of type `KProperty<*>` or its supertype.
 
-The `provideDelegate` method is called for each property during the creation of the `MyUI` instance, and it performs 
-the necessary validation right away.
+The `provideDelegate` method is called for each property during the creation of the `MyUI` instance, and it performs the
+necessary validation right away.
 
 Without this ability to intercept the binding between the property and its delegate, to achieve the same functionality
 you'd have to pass the property name explicitly, which isn't very convenient:
+
+
 
 ```kotlin
 // Checking the property name without "provideDelegate" functionality
@@ -394,14 +470,18 @@ fun <T> MyUI.bindResource(
         id: ResourceID<T>,
         propertyName: String
 ): ReadOnlyProperty<MyUI, T> {
-    checkProperty(this, propertyName)
-    // create delegate
+   checkProperty(this, propertyName)
+   // create delegate
 }
 ```
 
+
+
 In the generated code, the `provideDelegate` method is called to initialize the auxiliary `prop$delegate` property.
-Compare the generated code for the property declaration `val prop: Type by MyDelegate()` with the generated code 
-[above](#translation-rules) (when the `provideDelegate` method is not present):
+Compare the generated code for the property declaration `val prop: Type by MyDelegate()` with the generated code
+[above](delegated-properties.md#translation-rules) (when the `provideDelegate` method is not present):
+
+
 
 ```kotlin
 class C {
@@ -419,15 +499,20 @@ class C {
 }
 ```
 
+
+
 Note that the `provideDelegate` method affects only the creation of the auxiliary property and doesn't affect the code
 generated for getter or setter.
 
 With the `PropertyDelegateProvider` interface from the standard library, you can create delegate providers without creating new classes.
 
+
+
 ```kotlin
 val provider = PropertyDelegateProvider { thisRef: Any?, property ->
     ReadOnlyProperty<Any?, Int> {_, property -> 42 }
 }
+
 val delegate: Int by provider
 ```
 
