@@ -1,8 +1,8 @@
-[//]: # (title: Enum Classes)
+[//]: # (title: 枚举类)
 
-# Enum Classes
+# 枚举类
 
-The most basic usage of enum classes is implementing type-safe enums:
+枚举类的最基本的用法是实现类型安全的枚举：
 
 
 
@@ -13,11 +13,11 @@ enum class Direction {
 ```
 
 
-Each enum constant is an object. Enum constants are separated with commas.
+每个枚举常量都是一个对象。枚举常量用逗号分隔。
 
-## Initialization
+## 初始化
 
-Since each enum is an instance of the enum class, they can be initialized as:
+因为每一个枚举都是枚举类的实例，所以他们可以是这样初始化过的：
 
 
 
@@ -30,9 +30,9 @@ enum class Color(val rgb: Int) {
 ```
 
 
-## Anonymous Classes
+## 匿名类
 
-Enum constants can also declare their own anonymous classes with their corresponding methods, as well as overriding base methods.
+枚举常量还可以声明其带有相应方法以及覆盖了基类方法的匿名类。
 
 
 
@@ -51,13 +51,13 @@ enum class ProtocolState {
 ```
 
 
-If the enum class defines any members, separate the enum constant definitions from the member definitions with a semicolon.
+如果枚举类定义任何成员，那么使用分号将成员定义中的枚举常量定义分隔开。
 
-Enum entries cannot contain nested types other than inner classes (deprecated in Kotlin 1.2).
+枚举条目不能包含内部类以外的嵌套类型（已在 Kotlin 1.2 中弃用）。
 
-## Implementing Interfaces in Enum Classes
+## 在枚举类中实现接口
 
-An enum class may implement an interface (but not derive from a class), providing either a single interface members implementation for all of the entries, or separate ones for each entry within its anonymous class. This is done by adding the interfaces to the enum class declaration as follows:
+一个枚举类可以实现接口（但不能从类继承），可以为所有条目提供统一的接口成员实现，也可以在相应匿名类中为每个条目提供各自的实现。只需将接口添加到枚举类声明中即可，如下所示：
 
 
 
@@ -88,11 +88,11 @@ fun main() {
 ```
 
 
-## Working with Enum Constants
+## 使用枚举常量
 
-Enum classes in Kotlin have synthetic methods allowing to list
-the defined enum constants and to get an enum constant by its name. The signatures
-of these methods are as follows (assuming the name of the enum class is `EnumClass`):
+Kotlin 中的枚举类也有合成方法允许列出<!--
+-->定义的枚举常量以及通过名称获取枚举常量。这些方法的<!--
+-->签名如下（假设枚举类的名称是 `EnumClass`）：
 
 
 
@@ -102,11 +102,11 @@ EnumClass.values(): Array<EnumClass>
 ```
 
 
-The `valueOf()` method throws an `IllegalArgumentException` if the specified name does
-not match any of the enum constants defined in the class.
+如果指定的名称与类中定义的任何枚举常量均不匹配，
+`valueOf()` 方法会抛出 `IllegalArgumentException` 异常。
 
-Since Kotlin 1.1, it's possible to access the constants in an enum class in a generic way, using
-the `enumValues<T>()` and `enumValueOf<T>()` functions:
+自 Kotlin 1.1 起，可以使用 `enumValues<T>()` 与 `enumValueOf<T>()` 函数以泛型的方式访问枚举类中的常量
+：
 
 
 
@@ -117,11 +117,11 @@ inline fun <reified T : Enum<T>> printAllValues() {
     print(enumValues<T>().joinToString { it.name })
 }
 
-printAllValues<RGB>() // prints RED, GREEN, BLUE
+printAllValues<RGB>() // 输出 RED, GREEN, BLUE
 ```
 
 
-Every enum constant has properties to obtain its name and position in the enum class declaration:
+每个枚举常量都具有在枚举类声明中获取其名称与位置的属性：
 
 
 
@@ -131,5 +131,5 @@ val ordinal: Int
 ```
 
 
-The enum constants also implement the [Comparable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html) interface,
-with the natural order being the order in which they are defined in the enum class.
+枚举常量还实现了 [Comparable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html) 接口，
+其中自然顺序是它们在枚举类中定义的顺序。

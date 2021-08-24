@@ -1,16 +1,16 @@
-[//]: # (title: Delegation)
+[//]: # (title: 委托)
 
-# Delegation
+# 委托
 
-## Property Delegation
+## 属性委托
 
-Delegated properties are described on a separate page: [Delegated Properties](delegated-properties.md).
+属性委托在单独一页中讲：[属性委托](delegated-properties.md)。
 
-## Implementation by Delegation
+## 由委托实现
 
-The [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) has proven to be a good alternative to implementation inheritance,
-and Kotlin supports it natively requiring zero boilerplate code.
-A class `Derived` can implement an interface `Base` by delegating all of its public members to a specified object:
+[委托模式](https://zh.wikipedia.org/wiki/%E5%A7%94%E6%89%98%E6%A8%A1%E5%BC%8F)已经证明是实现继承的一个很好的替代方式，
+而 Kotlin 可以零样板代码地原生支持它。
+`Derived` 类可以通过将其所有公有成员都委托给指定对象来实现一个接口 `Base`：
 
 
 
@@ -33,14 +33,14 @@ fun main() {
 
 
 
-The `by`-clause in the supertype list for `Derived` indicates that `b` will be stored internally in objects
-of `Derived` and the compiler will generate all the methods of `Base` that forward to `b`.
+`Derived` 的超类型列表中的 `by`-子句表示 `b` 将会在 `Derived` 中内部存储，
+并且编译器将生成转发给 `b` 的所有 `Base` 的方法。
 
-### Overriding a member of an interface implemented by delegation
+### 覆盖由委托实现的接口成员
 
-[Overrides](classes.md#overriding-methods) work as you might expect: the compiler will use your `override`
-implementations instead of those in the delegate object. If we were to add `override fun printMessage() { print("abc") }` to
-`Derived`, the program would print "abc" instead of "10" when `printMessage` is called:
+[覆盖](classes.md#覆盖方法)符合预期：编译器会使用 `override`
+覆盖的实现而不是委托对象中的。如果将 `override fun printMessage() { print("abc") }` 添加到
+`Derived`，那么当调用 `printMessage` 时程序会输出“abc”而不是“10”：
 
 
 
@@ -68,8 +68,8 @@ fun main() {
 
 
 
-Note, however, that members overridden in this way do not get called from the members of the
-delegate object, which can only access its own implementations of the interface members:
+但请注意，以这种方式重写的成员不会在委托对象的成员中调用
+，委托对象的成员只能访问其自身对接口成员实现：
 
 
 
@@ -85,7 +85,7 @@ class BaseImpl(val x: Int) : Base {
 }
 
 class Derived(b: Base) : Base by b {
-    // This property is not accessed from b's implementation of `print`
+    // 在 b 的 `print` 实现中不会访问到这个属性
     override val message = "Message of Derived"
 }
 

@@ -1,27 +1,27 @@
-[//]: # (title: Object Expressions, Object Declarations and Companion Objects)
+[//]: # (title: 对象表达式、对象声明与伴生对象)
 
-# Object Expressions and Declarations
+# 对象表达式与对象声明
 
-Sometimes we need to create an object of a slight modification of some class, without explicitly declaring a new subclass for it.
-Kotlin handles this case with *object expressions* and *object declarations*.
+有时候，我们需要创建一个对某个类做了轻微改动的类的对象，而不用为之显式声明新的子类。
+Kotlin 用*对象表达式*和*对象声明*处理这种情况。
 
-## Object expressions
+## 对象表达式
 
-To create an object of an anonymous class that inherits from some type (or types), we write:
+要创建一个继承自某个（或某些）类型的匿名类的对象，我们会这么写：
 
 
 
 ```kotlin
 window.addMouseListener(object : MouseAdapter() {
-    override fun mouseClicked(e: MouseEvent) { /*...*/ }
+    override fun mouseClicked(e: MouseEvent) { /*……*/ }
 
-    override fun mouseEntered(e: MouseEvent) { /*...*/ }
+    override fun mouseEntered(e: MouseEvent) { /*……*/ }
 })
 ```
 
 
-If a supertype has a constructor, appropriate constructor parameters must be passed to it.
-Many supertypes may be specified as a comma-separated list after the colon:
+如果超类型有一个构造函数，则必须传递适当的构造函数参数给它。
+多个超类型可以由跟在冒号后面的逗号分隔的列表指定：
 
 
 
@@ -30,7 +30,7 @@ open class A(x: Int) {
     public open val y: Int = x
 }
 
-interface B { /*...*/ }
+interface B { /*……*/ }
 
 val ab: A = object : A(1), B {
     override val y = 15
@@ -38,7 +38,7 @@ val ab: A = object : A(1), B {
 ```
 
 
-If, by any chance, we need "just an object", with no nontrivial supertypes, we can simply say:
+任何时候，如果我们只需要“一个对象而已”，并不需要特殊超类型，那么我们可以简单地写：
 
 
 
@@ -53,34 +53,34 @@ fun foo() {
 ```
 
 
-Note that anonymous objects can be used as types only in local and private declarations. If you use an anonymous object as a
-return type of a public function or the type of a public property, the actual type of that function or property
-will be the declared supertype of the anonymous object, or `Any` if you didn't declare any supertype. Members added
-in the anonymous object will not be accessible.
+请注意，匿名对象可以用作只在本地和私有作用域中声明的类型。如果你使用匿名对象作为公有函数的<!--
+-->返回类型或者用作公有属性的类型，那么该函数或属性的实际类型<!--
+-->会是匿名对象声明的超类型，如果你没有声明任何超类型，就会是 `Any`。在匿名对象<!--
+-->中添加的成员将无法访问。
 
 
 
 ```kotlin
 class C {
-    // Private function, so the return type is the anonymous object type
+    // 私有函数，所以其返回类型是匿名对象类型
     private fun foo() = object {
         val x: String = "x"
     }
 
-    // Public function, so the return type is Any
+    // 公有函数，所以其返回类型是 Any
     fun publicFoo() = object {
         val x: String = "x"
     }
 
     fun bar() {
-        val x1 = foo().x        // Works
-        val x2 = publicFoo().x  // ERROR: Unresolved reference 'x'
+        val x1 = foo().x        // 没问题
+        val x2 = publicFoo().x  // 错误：未能解析的引用“x”
     }
 }
 ```
 
 
-The code in object expressions can access variables from the enclosing scope.
+对象表达式中的代码可以访问来自包含它的作用域的变量。
 
 
 
@@ -98,63 +98,63 @@ fun countClicks(window: JComponent) {
             enterCount++
         }
     })
-    // ...
+    // ……
 }
 ```
 
 
-## Object declarations
+## 对象声明
 
-[Singleton](http://en.wikipedia.org/wiki/Singleton_pattern) may be useful in several cases,
-and Kotlin (after Scala) makes it easy to declare singletons:
+[单例模式](http://en.wikipedia.org/wiki/Singleton_pattern)在一些场景中很有用，
+而 Kotlin（继 Scala 之后）使单例声明变得很容易：
 
 
 
 ```kotlin
 object DataProviderManager {
     fun registerDataProvider(provider: DataProvider) {
-        // ...
+        // ……
     }
 
     val allDataProviders: Collection<DataProvider>
-        get() = // ...
+        get() = // ……
 }
 ```
 
 
-This is called an *object declaration*, and it always has a name following the `object` keyword.
-Just like a variable declaration, an object declaration is not an expression, and cannot be used on the right hand side of an assignment statement.
+这称为*对象声明*。并且它总是在 `object` 关键字后跟一个名称。
+就像变量声明一样，对象声明不是一个表达式，不能用在赋值语句的右边。
 
-Object declaration's initialization is thread-safe and done at first access.
+对象声明的初始化过程是线程安全的并且在首次访问时进行。
 
-To refer to the object, we use its name directly:
+如需引用该对象，我们直接使用其名称即可：
 
 
 
 ```kotlin
-DataProviderManager.registerDataProvider(...)
+DataProviderManager.registerDataProvider(……)
 ```
 
 
-Such objects can have supertypes:
+这些对象可以有超类型：
 
 
 
 ```kotlin
 object DefaultListener : MouseAdapter() {
-    override fun mouseClicked(e: MouseEvent) { ... }
+    override fun mouseClicked(e: MouseEvent) { …… }
 
-    override fun mouseEntered(e: MouseEvent) { ... }
+    override fun mouseEntered(e: MouseEvent) { …… }
 }
 ```
 
 
-**NOTE**: object declarations can't be local (i.e. be nested directly inside a function), but they can be nested into other object declarations or non-inner classes.
+**注意**：对象声明不能在局部作用域（即直接嵌套在函数内部），但是它们可以嵌套到其他对象声明或非内部类中。
 
 
-### Companion Objects
+### 伴生对象
 
-An object declaration inside a class can be marked with the `companion` keyword:
+类内部的对象声明可以用 `companion` 关键字标记：
 
 
 
@@ -167,7 +167,7 @@ class MyClass {
 ```
 
 
-Members of the companion object can be called by using simply the class name as the qualifier:
+该伴生对象的成员可通过只使用类名作为限定符来调用：
 
 
 
@@ -176,7 +176,7 @@ val instance = MyClass.create()
 ```
 
 
-The name of the companion object can be omitted, in which case the name `Companion` will be used:
+可以省略伴生对象的名称，在这种情况下将使用名称 `Companion`：
 
 
 
@@ -189,8 +189,8 @@ val x = MyClass.Companion
 ```
 
 
-The name of a class used by itself (not as a qualifier to another name) acts as a reference to the companion
-object of the class (whether named or not):
+其自身所用的类的名称（不是另一个名称的限定符）可用作对该类的伴生对象
+（无论是否具名）的引用：
 
 
 
@@ -209,8 +209,8 @@ val y = MyClass2
 ```
 
 
-Note that, even though the members of companion objects look like static members in other languages, at runtime those
-are still instance members of real objects, and can, for example, implement interfaces:
+请注意，即使伴生对象的成员看起来像其他语言的静态成员，在运行时他们<!--
+-->仍然是真实对象的实例成员，而且，例如还可以实现接口：
 
 
 
@@ -229,15 +229,15 @@ val f: Factory<MyClass> = MyClass
 ```
 
 
-However, on the JVM you can have members of companion objects generated as real static methods and fields, if you use
-the `@JvmStatic` annotation. See the [Java interoperability](java-to-kotlin-interop.md#static-fields) section
-for more details.
+当然，在 JVM 平台，如果使用 `@JvmStatic` 注解，你可以将伴生对象的成员生成为真正的<!--
+-->静态方法和字段。更详细信息请参见[Java 互操作性](java-to-kotlin-interop.md#静态字段)一节
+。
 
 
-### Semantic difference between object expressions and declarations
+### 对象表达式和对象声明之间的语义差异
 
-There is one important semantic difference between object expressions and object declarations:
+对象表达式和对象声明之间有一个重要的语义差别：
 
-* object expressions are executed (and initialized) **immediately**, where they are used;
-* object declarations are initialized **lazily**, when accessed for the first time;
-* a companion object is initialized when the corresponding class is loaded (resolved), matching the semantics of a Java static initializer.
+* 对象表达式是在使用他们的地方**立即**执行（及初始化）的；
+* 对象声明是在第一次被访问到时**延迟**初始化的；
+* 伴生对象的初始化是在相应的类被加载（解析）时，与 Java 静态初始化器的语义相匹配。
