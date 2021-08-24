@@ -1,25 +1,15 @@
 [//]: # (title: 枚举类)
 
-# 枚举类
-
 枚举类的最基本的用法是实现类型安全的枚举：
-
-
 
 ```kotlin
 enum class Direction {
     NORTH, SOUTH, WEST, EAST
 }
 ```
-
-
 每个枚举常量都是一个对象。枚举常量用逗号分隔。
 
-## 初始化
-
-因为每一个枚举都是枚举类的实例，所以他们可以是这样初始化过的：
-
-
+因为每一个枚举都是枚举类的实例，所以可以这样初始化：
 
 ```kotlin
 enum class Color(val rgb: Int) {
@@ -29,12 +19,10 @@ enum class Color(val rgb: Int) {
 }
 ```
 
-
 ## 匿名类
 
-枚举常量还可以声明其带有相应方法以及覆盖了基类方法的匿名类。
-
-
+枚举常量还可以声明其带有相应方法以及覆盖了基类方法的匿名类
+。
 
 ```kotlin
 enum class ProtocolState {
@@ -50,16 +38,13 @@ enum class ProtocolState {
 }
 ```
 
-
 如果枚举类定义任何成员，那么使用分号将成员定义中的枚举常量定义分隔开。
-
-枚举条目不能包含内部类以外的嵌套类型（已在 Kotlin 1.2 中弃用）。
 
 ## 在枚举类中实现接口
 
-一个枚举类可以实现接口（但不能从类继承），可以为所有条目提供统一的接口成员实现，也可以在相应匿名类中为每个条目提供各自的实现。只需将接口添加到枚举类声明中即可，如下所示：
-
-
+一个枚举类可以实现接口（但不能从类继承），可以为所有条目提供<!--
+-->统一的接口成员实现，也可以在相应匿名类中为每个条目提供各自的实现。
+只需将接口添加到枚举类声明中即可，如下所示：
 
 ```kotlin
 import java.util.function.BinaryOperator
@@ -86,29 +71,24 @@ fun main() {
     }
 }
 ```
-
+{kotlin-runnable="true"}
 
 ## 使用枚举常量
 
-Kotlin 中的枚举类也有合成方法允许列出<!--
+Kotlin 中的枚举类也有合成方法用于列出<!--
 -->定义的枚举常量以及通过名称获取枚举常量。这些方法的<!--
 -->签名如下（假设枚举类的名称是 `EnumClass`）：
-
-
 
 ```kotlin
 EnumClass.valueOf(value: String): EnumClass
 EnumClass.values(): Array<EnumClass>
 ```
 
-
 如果指定的名称与类中定义的任何枚举常量均不匹配，
 `valueOf()` 方法会抛出 `IllegalArgumentException` 异常。
 
-自 Kotlin 1.1 起，可以使用 `enumValues<T>()` 与 `enumValueOf<T>()` 函数以泛型的方式访问枚举类中的常量
-：
-
-
+可以使用 `enumValues<T>()` 与 `enumValueOf<T>()` 函数<!--
+-->以泛型的方式访问枚举类中的常量：
 
 ```kotlin
 enum class RGB { RED, GREEN, BLUE }
@@ -120,16 +100,12 @@ inline fun <reified T : Enum<T>> printAllValues() {
 printAllValues<RGB>() // 输出 RED, GREEN, BLUE
 ```
 
-
 每个枚举常量都具有在枚举类声明中获取其名称与位置的属性：
-
-
 
 ```kotlin
 val name: String
 val ordinal: Int
 ```
-
 
 枚举常量还实现了 [Comparable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html) 接口，
 其中自然顺序是它们在枚举类中定义的顺序。
