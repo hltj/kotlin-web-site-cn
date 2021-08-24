@@ -1,13 +1,11 @@
 [//]: # (title: Operator overloading)
 
-# Operator overloading
-
-Kotlin allows us to provide implementations for a predefined set of operators on our types. These operators have fixed symbolic representation
-(like `+` or `*`) and fixed [precedence](grammar.md#expressions). To implement an operator, we provide a [member function](functions.md#member-functions)
-or an [extension function](extensions.md) with a fixed name, for the corresponding type, i.e. left-hand side type for binary operations and argument type for unary ones.
+Kotlin allows us to provide implementations for a predefined set of operators on our types. These operators have fixed 
+symbolic representation (like `+` or `*`) and fixed precedence. To implement an operator, provide a [member function](functions.md#member-functions)
+or an [extension function](extensions.md) with a fixed name, for the corresponding type, that means a left-hand side type for binary operations and argument type for unary ones.
 Functions that overload operators need to be marked with the `operator` modifier.
 
-Further we describe the conventions that regulate operator overloading for different operators.
+Further you describe the conventions that regulate operator overloading for different operators.
 
 ## Unary operations
 
@@ -21,15 +19,18 @@ Further we describe the conventions that regulate operator overloading for diffe
 
 This table says that when the compiler processes, for example, an expression `+a`, it performs the following steps:
 
-* Determines the type of `a`, let it be `T`;
-* Looks up a function `unaryPlus()` with the `operator` modifier and no parameters for the receiver `T`, i.e. a member function or an extension function;
-* If the function is absent or ambiguous, it is a compilation error;
-* If the function is present and its return type is `R`, the expression `+a` has type `R`;
+* Determines the type of `a`, let it be `T`.
+* Looks up a function `unaryPlus()` with the `operator` modifier and no parameters for the receiver `T`, that means a member 
+function or an extension function.
+* If the function is absent or ambiguous, it is a compilation error.
+* If the function is present and its return type is `R`, the expression `+a` has type `R`.
 
-*Note* that these operations, as well as all the others, are optimized for [Basic types](basic-types.md) and do not introduce overhead of function calls for them.
+> These operations, as well as all the others, are optimized for [basic types](basic-types.md) and do not introduce 
+> overhead of function calls for them.
+>
+{type="note"}
 
 As an example, here's how you can overload the unary minus operator:
-
 
 ```kotlin
 data class Point(val x: Int, val y: Int)
@@ -41,9 +42,8 @@ val point = Point(10, 20)
 fun main() {
    println(-point)  // prints "Point(x=-10, y=-20)"
 }
-
 ```
-
+{kotlin-runnable="true"}
 
 ### Increments and decrements
 
@@ -55,28 +55,28 @@ fun main() {
 The `inc()` and `dec()` functions must return a value, which will be assigned to the variable on which the
 `++` or `--` operation was used. They shouldn't mutate the object on which the `inc` or `dec` was invoked.
 
-The compiler performs the following steps for resolution of an operator in the *postfix* form, e.g. `a++`:
+The compiler performs the following steps for resolution of an operator in the *postfix* form, for example `a++`:
 
-* Determines the type of `a`, let it be `T`;
-* Looks up a function `inc()` with the `operator` modifier and no parameters, applicable to the receiver of type `T`;
+* Determines the type of `a`, let it be `T`.
+* Looks up a function `inc()` with the `operator` modifier and no parameters, applicable to the receiver of type `T`.
 * Checks that the return type of the function is a subtype of `T`.
 
 The effect of computing the expression is:
 
-* Store the initial value of `a` to a temporary storage `a0`;
-* Assign the result of `a0.inc()` to `a`;
-* Return `a0` as a result of the expression.
+* Store the initial value of `a` to a temporary storage `a0`.
+* Assign the result of `a0.inc()` to `a`.
+* Return `a0` as the result of the expression.
 
 For `a--` the steps are completely analogous.
 
 For the *prefix* forms `++a` and `--a` resolution works the same way, and the effect is:
 
-* Assign the result of `a.inc()` to `a`;
+* Assign the result of `a.inc()` to `a`.
 * Return the new value of `a` as a result of the expression.
 
 ## Binary operations
 
-### Arithmetic operators
+### Arithmetic operators 
 
 | Expression | Translated to |
 | -----------|-------------- |
@@ -89,13 +89,7 @@ For the *prefix* forms `++a` and `--a` resolution works the same way, and the ef
 
 For the operations in this table, the compiler just resolves the expression in the *Translated to* column.
 
-Note that the `rem` operator is supported since Kotlin 1.1. Kotlin 1.0 uses the `mod` operator, which is deprecated
-in Kotlin 1.1.
-
-
-#### Example
-
-Below is an example Counter class that starts at a given value and can be incremented using the overloaded `+` operator:
+Below is an example `Counter` class that starts at a given value and can be incremented using the overloaded `+` operator:
 
 ```kotlin
 data class Counter(val dayIndex: Int) {
@@ -105,8 +99,7 @@ data class Counter(val dayIndex: Int) {
 }
 ```
 
-### 'In' operator
-
+### `in` operator
 
 | Expression | Translated to |
 | -----------|-------------- |
@@ -128,7 +121,7 @@ For `in` and `!in` the procedure is the same, but the order of arguments is reve
 
 Square brackets are translated to calls to `get` and `set` with appropriate numbers of arguments.
 
-### Invoke operator
+### `invoke` operator
 
 | Expression | Translated to |
 |--------|---------------|
@@ -149,15 +142,17 @@ Parentheses are translated to calls to `invoke` with appropriate number of argum
 | `a /= b` | `a.divAssign(b)` |
 | `a %= b` | `a.remAssign(b)`, `a.modAssign(b)` (deprecated) |
 
-For the assignment operations, e.g. `a += b`, the compiler performs the following steps:
+For the assignment operations, for example `a += b`, the compiler performs the following steps:
 
-* If the function from the right column is available
-  * If the corresponding binary function (i.e. `plus()` for `plusAssign()`) is available too, report error (ambiguity),
-  * Make sure its return type is `Unit`, and report an error otherwise,
-  * Generate code for `a.plusAssign(b)`;
+* If the function from the right column is available:
+  * If the corresponding binary function (that means `plus()` for `plusAssign()`) is available too, report error (ambiguity).
+  * Make sure its return type is `Unit`, and report an error otherwise.
+  * Generate code for `a.plusAssign(b)`.
 * Otherwise, try to generate code for `a = a + b` (this includes a type check: the type of `a + b` must be a subtype of `a`).
 
-*Note*: assignments are *NOT* expressions in Kotlin.
+> Assignments are *NOT* expressions in Kotlin.
+>
+{type="note"}
 
 ### Equality and inequality operators
 
@@ -166,9 +161,12 @@ For the assignment operations, e.g. `a += b`, the compiler performs the followin
 | `a == b` | `a?.equals(b) ?: (b === null)` |
 | `a != b` | `!(a?.equals(b) ?: (b === null))` |
 
-These operators only work with the function [`equals(other: Any?): Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/equals.html), which can be overridden to provide custom equality check implementation. Any other function with the same name (like `equals(other: Foo)`) will not be called.
+These operators only work with the function [`equals(other: Any?): Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/equals.html), 
+which can be overridden to provide custom equality check implementation. Any other function with the same name (like `equals(other: Foo)`) will not be called.
 
-*Note*: `===` and `!==` (identity checks) are not overloadable, so no conventions exist for them.
+> `===` and `!==` (identity checks) are not overloadable, so no conventions exist for them.
+>
+{type="note"}
 
 The `==` operation is special: it is translated to a complex expression that screens for `null`'s.
 `null == null` is always true, and `x == null` for a non-null `x` is always false and won't invoke `x.equals()`.
@@ -190,4 +188,4 @@ in [Delegated properties](delegated-properties.md).
 
 ## Infix calls for named functions
 
-We can simulate custom infix operations by using [infix function calls](functions.md#infix-notation).
+You can simulate custom infix operations by using [infix function calls](functions.md#infix-notation).
