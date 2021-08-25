@@ -1,41 +1,41 @@
-[//]: # (title: This expressions)
+[//]: # (title: This 表达式)
 
-# This Expression
+# This 表达式
 
-To denote the current _receiver_, we use `this` expressions:
+为了表示当前的 _接收者_ 我们使用 `this` 表达式：
 
-* In a member of a [class](classes.md#inheritance), `this` refers to the current object of that class.
-* In an [extension function](extensions.md) or a [function literal with receiver](lambdas.md#function-literals-with-receiver)
-  `this` denotes the _receiver_ parameter that is passed on the left-hand side of a dot.
+* 在[类](classes.md#继承)的成员中，`this` 指的是该类的当前对象。
+* 在[扩展函数](extensions.md)或者[带有接收者的函数字面值](lambdas.md#带有接收者的函数字面值)中，
+  `this` 表示在点左侧传递的 _接收者_ 参数。
 
-If `this` has no qualifiers, it refers to the _innermost enclosing scope_. To refer to `this` in other scopes, _label qualifiers_ are used:
+如果 `this` 没有限定符，它指的是最内层的包含它的作用域。要引用其他作用域中的 `this`，请使用 _标签限定符_：
 
-## Qualified `this`
+## 限定的 `this`
 
-To access `this` from an outer scope (a [class](classes.md), or [extension function](extensions.md),
-or labeled [function literal with receiver](lambdas.md#function-literals-with-receiver)) we write `this@label` where `@label` is a [label](returns.md)
-on the scope `this` is meant to be from:
+要访问来自外部作用域的`this`（一个[类](classes.md) 或者[扩展函数](extensions.md)，
+或者带标签的[带有接收者的函数字面值](lambdas.md#带有接收者的函数字面值)）我们使用`this@label`，其中 `@label` 是一个<!--
+-->代指 `this` 来源的标签：
 
 
 
 ```kotlin
-class A { // implicit label @A
-    inner class B { // implicit label @B
-        fun Int.foo() { // implicit label @foo
-            val a = this@A // A's this
-            val b = this@B // B's this
+class A { // 隐式标签 @A
+    inner class B { // 隐式标签 @B
+        fun Int.foo() { // 隐式标签 @foo
+            val a = this@A // A 的 this
+            val b = this@B // B 的 this
 
-            val c = this // foo()'s receiver, an Int
-            val c1 = this@foo // foo()'s receiver, an Int
+            val c = this // foo() 的接收者，一个 Int
+            val c1 = this@foo // foo() 的接收者，一个 Int
 
             val funLit = lambda@ fun String.() {
-                val d = this // funLit's receiver
+                val d = this // funLit 的接收者
             }
 
 
             val funLit2 = { s: String ->
-                // foo()'s receiver, since enclosing lambda expression
-                // doesn't have any receiver
+                // foo() 的接收者，因为它包含的 lambda 表达式
+                // 没有任何接收者
                 val d1 = this
             }
         }
@@ -47,27 +47,27 @@ class A { // implicit label @A
 
 ## Implicit `this`
 
-When you call a member function on `this`, you can skip the `this.` part.
-If you have a non-member function with the same name, use this with caution, because in some cases it can be called instead:
+当对 `this` 调用成员函数时，可以省略 `this.` 部分。
+但是如果有一个同名的非成员函数时，请谨慎使用，因为在某些情况下会调用同名的非成员：
 
 
 
 ```kotlin
 fun main() {
-//sampleStart
-    fun printLine() { println("Top-level function") }
-    
-    class A {
-        fun printLine() { println("Member function") }
+  //sampleStart
+  fun printLine() { println("Top-level function") }
 
-        fun invokePrintLine(omitThis: Boolean = false)  { 
-            if (omitThis) printLine()
-            else this.printLine()
-        }
+  class A {
+    fun printLine() { println("Member function") }
+
+    fun invokePrintLine(omitThis: Boolean = false)  {
+      if (omitThis) printLine()
+      else this.printLine()
     }
-    
-    A().invokePrintLine() // Member function
-    A().invokePrintLine(omitThis = true) // Top-level function
+  }
+
+  A().invokePrintLine() // Member function
+  A().invokePrintLine(omitThis = true) // Top-level function
 //sampleEnd()
 }
 ```

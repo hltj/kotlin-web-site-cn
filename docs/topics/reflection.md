@@ -1,10 +1,10 @@
-[//]: # (title: Reflection)
+[//]: # (title: 反射)
 
-# Reflection
+# 反射
 
-Reflection is a set of language and library features that allows for introspecting the structure of your own program at runtime.
-Kotlin makes functions and properties first-class citizens in the language, and introspecting them (i.e. learning a name or
-a type of a property or function at runtime) is closely intertwined with simply using a functional or reactive style.
+反射是这样的一组语言和库功能，它允许在运行时自省你的程序的结构。
+Kotlin 让语言中的函数和属性做为一等公民、并对其自省（即在运行时获悉<!--
+-->一个名称或者一个属性或函数的类型）与简单地使用函数式或响应式风格紧密相关。
 
 > On the JavaScript platform, only class references are currently supported. [Learn more about reflection in Kotlin/JS](js-reflection.md).
 {:.note}
@@ -60,10 +60,10 @@ In other supported cases (IntelliJ IDEA projects, using command-line compiler or
 it is added by default. In command-line compiler and Ant, you can use `-no-reflect` compiler option to exclude
 `kotlin-reflect.jar` from the classpath.
 
-## Class references
+## 类引用
 
-The most basic reflection feature is getting the runtime reference to a Kotlin class. To obtain the reference to a
-statically known Kotlin class, you can use the _class literal_ syntax:
+最基本的反射功能是获取 Kotlin 类的运行时引用。要获取对<!--
+-->静态已知的 Kotlin 类的引用，可以使用 _类字面值_ 语法：
 
 
 ```kotlin
@@ -71,35 +71,35 @@ val c = MyClass::class
 ```
 
 
-The reference is a value of type [KClass](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html).
+该引用是 [KClass](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html) 类型的值。
 
-Note that a Kotlin class reference is not the same as a Java class reference. To obtain a Java class reference,
-use the `.java` property on a `KClass` instance.
+请注意，Kotlin 类引用与 Java 类引用不同。要获得 Java 类引用，
+请在 `KClass` 实例上使用 `.java` 属性。
 
-## Bound class references (since 1.1)
+## 绑定的类引用（自 1.1 起）
 
-You can get the reference to a class of a specific object with the same `::class` syntax by using the object as a receiver:
+通过使用对象作为接收者，可以用相同的 `::class` 语法获取指定对象的类的引用：
 
 
 ```kotlin
-val widget: Widget = ...
+val widget: Widget = ……
 assert(widget is GoodWidget) { "Bad widget: ${widget::class.qualifiedName}" }
 ```
 
 
-You obtain the reference to an exact class of an object, for instance `GoodWidget` or `BadWidget`, despite the type of the receiver expression (`Widget`).
+你可以获取对象的精确类的引用，例如 `GoodWidget` 或 `BadWidget`，尽管接收者表达式的类型是 `Widget`。
 
-## Callable references
+## 可调用引用
 
-References to functions, properties, and constructors, apart from introspecting the program structure, can
-also be called or used as instances of [function types](lambdas.md#function-types).
+函数、属性以及构造函数的引用，除了作为自省程序结构外，
+还可以用于调用或者用作[函数类型](lambdas.md#函数类型)的实例。
 
-The common supertype for all callable references is [`KCallable<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-callable/index.html),
-where `R` is the return value type, which is the property type for properties, and the constructed type for constructors.
+所有可调用引用的公共超类型是 [`KCallable<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-callable/index.html)，
+其中 `R` 是返回值类型，对于属性是属性类型，对于构造函数是所构造类型。
 
-### Function references
+### 函数引用
 
-When we have a named function declared like this:
+当我们有一个具名函数声明如下：
 
 
 
@@ -108,8 +108,8 @@ fun isOdd(x: Int) = x % 2 != 0
 ```
 
 
-We can easily call it directly (`isOdd(5)`), but we can also use it as a function type value, e.g. pass it
-to another function. To do this, we use the `::` operator:
+我们可以很容易地直接调用它（`isOdd(5)`），但是我们也可以将其作为一个函数类型的值，例如将其传给<!--
+-->另一个函数。为此，我们使用 `::` 操作符：
 
 
 
@@ -125,13 +125,13 @@ fun main() {
 ```
 
 
-Here `::isOdd` is a value of function type `(Int) -> Boolean`.
+这里 `::isOdd` 是函数类型 `(Int) -> Boolean` 的一个值。
 
-Function references belong to one of the [`KFunction<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-function/index.html)
-subtypes, depending on the parameter count, e.g. `KFunction3<T1, T2, T3, R>`.
+函数引用属于 [`KFunction<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-function/index.html)
+的子类型之一，取决于参数个数，例如 `KFunction3<T1, T2, T3, R>`。
 
-`::` can be used with overloaded functions when the expected type is known from the context.
-For example:
+当上下文中已知函数期望的类型时，`::` 可以用于重载函数。
+例如：
 
 
 
@@ -142,25 +142,25 @@ fun main() {
     fun isOdd(s: String) = s == "brillig" || s == "slithy" || s == "tove"
     
     val numbers = listOf(1, 2, 3)
-    println(numbers.filter(::isOdd)) // refers to isOdd(x: Int)
+    println(numbers.filter(::isOdd)) // 引用到 isOdd(x: Int)
 //sampleEnd
 }
 ```
 
 
-Alternatively, you can provide the necessary context by storing the method reference in a variable with an explicitly specified type:
+或者，你可以通过将方法引用存储在具有显式指定类型的变量中来提供必要的上下文：
 
 
 ```kotlin
-val predicate: (String) -> Boolean = ::isOdd   // refers to isOdd(x: String)
+val predicate: (String) -> Boolean = ::isOdd   // 引用到 isOdd(x: String)
 ```
 
 
-If we need to use a member of a class, or an extension function, it needs to be qualified, e.g. `String::toCharArray`.
+如果我们需要使用类的成员函数或扩展函数，它需要是限定的，例如 `String::toCharArray`。
 
-Note that even if you initialize a variable with a reference to an extension function, the inferred function type will
-have no receiver (it will have an additional parameter accepting a receiver object). To have a function type
-with receiver instead, specify the type explicitly:
+请注意，即使以扩展函数的引用初始化一个变量，其推断出的函数类型也会<!--
+-->没有接收者（它会有一个接受接收者对象的额外参数）。如需改为<!--
+-->带有接收者的函数类型，请明确指定其类型：
 
 
 
@@ -169,9 +169,9 @@ val isEmptyStringList: List<String>.() -> Boolean = List<String>::isEmpty
 ```
 
 
-### Example: function composition
+### 示例：函数组合
 
-Consider the following function:
+考虑以下函数：
 
 
 ```kotlin
@@ -181,8 +181,8 @@ fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
 ```
 
 
-It returns a composition of two functions passed to it: `compose(f, g) = f(g(*))`.
-Now, you can apply it to callable references:
+它返回一个传给它的两个函数的组合：`compose(f, g) = f(g(*))`。
+现在，你可以将其应用于可调用引用：
 
 
 
@@ -206,9 +206,9 @@ fun main() {
 ```
 
 
-### Property references
+### 属性引用
 
-To access properties as first-class objects in Kotlin, we can also use the `::` operator:
+要把属性作为 Kotlin中 的一等对象来访问，我们也可以使用 `::` 运算符：
 
 
 
@@ -222,12 +222,12 @@ fun main() {
 ```
 
 
-The expression `::x` evaluates to a property object of type `KProperty<Int>`, which allows us to read its
-value using `get()` or retrieve the property name using the `name` property. For more information, please refer to
-the [docs on the `KProperty` class](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-property/index.html).
+表达式 `::x` 求值为 `KProperty<Int>` 类型的属性对象，它允许我们使用
+`get()` 读取它的值，或者使用 `name` 属性来获取属性名。更多信息请参见<!--
+-->[关于 `KProperty` 类的文档](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-property/index.html)。
 
-For a mutable property, e.g. `var y = 1`, `::y` returns a value of type [`KMutableProperty<Int>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-mutable-property/index.html),
-which has a `set()` method:
+对于可变属性，例如 `var y = 1`，`::y` 返回 [`KMutableProperty<Int>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-mutable-property/index.html) 类型的一个值，
+该类型有一个 `set()` 方法。
 
 
 
@@ -241,7 +241,7 @@ fun main() {
 ```       
 
 
-A property reference can be used where a function with a single generic parameter is expected:
+属性引用可以用在预期具有单个泛型参数的函数的地方：
 
 
 
@@ -255,7 +255,7 @@ fun main() {
 ```
 
 
-To access a property that is a member of a class, we qualify it:
+要访问属于类的成员的属性，我们这样限定它：
 
 
 ```kotlin
@@ -269,7 +269,7 @@ fun main() {
 ```
 
 
-For an extension property:
+对于扩展属性：
 
 
 
@@ -283,27 +283,27 @@ fun main() {
 ```
 
 
-### Interoperability with Java reflection
+### 与 Java 反射的互操作性
 
-On the JVM platform, standard library contains extensions for reflection classes that provide a mapping to and from Java
-reflection objects (see package `kotlin.reflect.jvm`).
-For example, to find a backing field or a Java method that serves as a getter for a Kotlin property, you can say something like this:
+在 JVM 平台上，标准库包含反射类的扩展，它提供了与 Java
+反射对象之间映射（参见 `kotlin.reflect.jvm` 包）。
+例如，要查找一个用作 Kotlin 属性 getter 的 幕后字段或 Java方法，可以这样写：
 
 
 
 ```kotlin
 import kotlin.reflect.jvm.*
- 
+
 class A(val p: Int)
- 
+
 fun main() {
-    println(A::p.javaGetter) // prints "public final int A.getP()"
-    println(A::p.javaField)  // prints "private final int A.p"
+    println(A::p.javaGetter) // 输出 "public final int A.getP()"
+    println(A::p.javaField)  // 输出 "private final int A.p"
 }
 ```
 
 
-To get the Kotlin class corresponding to a Java class, use the `.kotlin` extension property:
+要获得对应于 Java 类的 Kotlin 类，请使用 `.kotlin` 扩展属性：
 
 
 ```kotlin
@@ -311,12 +311,12 @@ fun getKClass(o: Any): KClass<Any> = o.javaClass.kotlin
 ```
 
 
-### Constructor references
+### 构造函数引用
 
-Constructors can be referenced just like methods and properties. They can be used wherever an object of function type
-is expected that takes the same parameters as the constructor and returns an object of the appropriate type.
-Constructors are referenced by using the `::` operator and adding the class name. Consider the following function
-that expects a function parameter with no parameters and return type `Foo`:
+构造函数可以像方法和属性那样引用。他们可以用于期待这样的函数类型对象的任何<!--
+-->地方：它与该构造函数接受相同参数并且返回相应类型的对象。
+通过使用 `::` 操作符并添加类名来引用构造函数。考虑下面的函数，
+它期待一个无参并返回 `Foo` 类型的函数参数：
 
 
 
@@ -329,7 +329,7 @@ fun function(factory: () -> Foo) {
 ```
 
 
-Using `::Foo`, the zero-argument constructor of the class Foo, we can simply call it like this:
+使用 `::Foo`，类 Foo 的零参数构造函数，我们可以这样简单地调用它：
 
 
 
@@ -338,13 +338,13 @@ function(::Foo)
 ```
 
 
-Callable references to constructors are typed as one of the
-[`KFunction<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-function/index.html) subtypes
-, depending on the parameter count.
+构造函数的可调用引用的类型也是
+[`KFunction<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-function/index.html) 的子类型之一
+，取决于其参数个数。
 
-## Bound function and property references (since 1.1)
+## 绑定的函数与属性引用（自 1.1 起）
 
-You can refer to an instance method of a particular object:
+你可以引用特定对象的实例方法：
 
 
 
@@ -361,9 +361,9 @@ fun main() {
 ```
 
 
-Instead of calling the method `matches` directly we are storing a reference to it.
-Such reference is bound to its receiver.
-It can be called directly (like in the example above) or used whenever an expression of function type is expected:
+取代直接调用方法 `matches` 的是我们存储其引用。
+这样的引用会绑定到其接收者上。
+它可以直接调用（如上例所示）或者用于任何期待一个函数类型表达式的时候：
 
 
 
@@ -378,8 +378,8 @@ fun main() {
 ```
 
 
-Compare the types of bound and the corresponding unbound references.
-Bound callable reference has its receiver "attached" to it, so the type of the receiver is no longer a parameter:
+比较绑定的类型和相应的未绑定类型的引用。
+绑定的可调用引用有其接收者“附加”到其上，因此接收者的类型不再是参数：
 
 
 
@@ -390,7 +390,7 @@ val matches: (Regex, CharSequence) -> Boolean = Regex::matches
 ```
 
 
-Property reference can be bound as well:
+属性引用也可以绑定：
 
 
 ```kotlin
@@ -403,12 +403,12 @@ fun main() {
 ```
 
 
-Since Kotlin 1.2, explicitly specifying `this` as the receiver is not necessary: `this::foo` and `::foo` are equivalent.
+自 Kotlin 1.2 起，无需显式指定 `this` 作为接收者：`this::foo` 与 `::foo` 是等价的。
 
-### Bound constructor references
+### 绑定的构造函数引用
 
-A bound callable reference to a constructor of an [`inner` class](nested-classes.md#inner-classes) can
-be obtained by providing an instance of the outer class:
+[`inner` 类](nested-classes.md#内部类)的构造函数的绑定的可调用引用可<!--
+-->通过提供外部类的实例来获得：
 
 
 ```kotlin

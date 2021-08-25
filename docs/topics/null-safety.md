@@ -1,46 +1,46 @@
-[//]: # (title: Null Safety)
+[//]: # (title: 空安全)
 
-# Null Safety
+# 空安全
 
-## Nullable types and Non-Null Types
+## 可空类型与非空类型
 
-Kotlin's type system is aimed at eliminating the danger of null references from code, also known as the [The Billion Dollar Mistake](https://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions).
+Kotlin 的类型系统旨在消除来自代码空引用的危险，也称为[《十亿美元的错误》](https://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions)。
 
-One of the most common pitfalls in many programming languages, including Java, is that accessing a member of a null reference will result in a null reference exception. In Java this would be the equivalent of a `NullPointerException` or NPE for short.
+许多编程语言（包括 Java）中最常见的陷阱之一，就是访问空引用的成员会导致空引用异常。在 Java 中，这等同于 `NullPointerException` 或简称 `NPE`。
 
-Kotlin's type system is aimed to eliminate `NullPointerException`'s from our code. The only possible causes of NPE's may be:
+Kotlin 的类型系统旨在从我们的代码中消除 `NullPointerException`。NPE 的唯一可能的原因可能是：
 
-* An explicit call to `throw NullPointerException()`;
-* Usage of the `!!` operator that is described below;
-* Some data inconsistency with regard to initialization, such as when:
-  * An uninitialized `this` available in a constructor is passed and used somewhere ("leaking `this`");
-  * [A superclass constructor calls an open member](classes.md#derived-class-initialization-order) whose implementation in the derived class uses uninitialized state;
-* Java interoperation:
-  * Attempts to access a member on a `null` reference of a [platform type](java-interop.md#null-safety-and-platform-types);
-  * Generic types used for Java interoperation with incorrect nullability, e.g. a piece of Java code might add `null` into a Kotlin `MutableList<String>`, meaning that `MutableList<String?>` should be used for working with it;
-  * Other issues caused by external Java code.
+* 显式调用 `throw NullPointerException()`；
+* 使用了下文描述的 `!!` 操作符；
+* 有些数据在初始化时不一致，例如当：
+  * 传递一个在构造函数中出现的未初始化的 `this` 并用于其他地方（“泄漏 `this`”）；
+  * [超类的构造函数调用一个开放成员](classes.md#派生类初始化顺序)，该成员在派生中类的实现使用了未初始化的状态；
+* Java 互操作：
+  * 企图访问[平台类型](java-interop.md#空安全与平台类型)的 `null` 引用的成员；
+  * 用于具有错误可空性的 Java 互操作的泛型类型，例如一段 Java 代码可能会向 Kotlin 的 `MutableList<String>` 中加入 `null`，这意味着应该使用 `MutableList<String?>` 来处理它；
+  * 由外部 Java 代码引发的其他问题。
 
-In Kotlin, the type system distinguishes between references that can hold `null` (nullable references) and those that can not (non-null references).
-For example, a regular variable of type `String` can not hold `null`:
+在 Kotlin 中，类型系统区分一个引用可以容纳 `null` （可空引用）还是不能容纳（非空引用）。
+例如，String 类型的常规变量不能容纳 `null`：
 
 
 ```kotlin
 fun main() {
 //sampleStart
-    var a: String = "abc" // Regular initialization means non-null by default
-    a = null // compilation error
+    var a: String = "abc" // 默认情况下，常规初始化意味着非空
+    a = null // 编译错误
 //sampleEnd
 }
 ```
 
 
-To allow nulls, we can declare a variable as nullable string, written `String?`:
+如果要允许为空，我们可以声明一个变量为可空字符串，写作 `String?`：
 
 
 ```kotlin
 fun main() {
 //sampleStart
-    var b: String? = "abc" // can be set null
+    var b: String? = "abc" // 可以设置为空
     b = null // ok
     print(b)
 //sampleEnd
@@ -48,7 +48,7 @@ fun main() {
 ```
 
 
-Now, if you call a method or access a property on `a`, it's guaranteed not to cause an NPE, so you can safely say:
+现在，如果你调用 `a` 的方法或者访问它的属性，它保证不会导致 `NPE`，这样你就可以放心地使用：
 
 
 ```kotlin
@@ -56,19 +56,19 @@ val l = a.length
 ```
 
 
-But if you want to access the same property on `b`, that would not be safe, and the compiler reports an error:
+但是如果你想访问 `b` 的同一个属性，那么这是不安全的，并且编译器会报告一个错误：
 
 
 ```kotlin
-val l = b.length // error: variable 'b' can be null
+val l = b.length // 错误：变量“b”可能为空
 ```
 
 
-But we still need to access that property, right? There are a few ways of doing that.
+但是我们还是需要访问该属性，对吧？有几种方式可以做到。
 
-## Checking for `null` in conditions
+## 在条件中检测 `null`
 
-First, you can explicitly check if `b` is `null`, and handle the two options separately:
+首先，你可以显式检测 `b` 是否为 `null`，并分别处理两种可能：
 
 
 ```kotlin
@@ -76,8 +76,8 @@ val l = if (b != null) b.length else -1
 ```
 
 
-The compiler tracks the information about the check you performed, and allows the call to `length` inside the `if`.
-More complex conditions are supported as well:
+编译器会跟踪所执行检测的信息，并允许你在 `if` 内部调用 `length`。
+同时，也支持更复杂（更智能）的条件：
 
 
 ```kotlin
@@ -95,13 +95,13 @@ fun main() {
 ```
 
 
-Note that this only works where `b` is immutable (i.e. a local variable which is not modified between the check and the
-usage or a member `val` which has a backing field and is not overridable), because otherwise it might
-happen that `b` changes to `null` after the check.
+请注意，这只适用于 `b` 是不可变的情况（即在检测和使用之间没有修改过的局部变量
+，或者不可覆盖并且有幕后字段的 `val` 成员），因为否则可能会发生<!--
+-->在检测之后 `b` 又变为 `null` 的情况。
 
-## Safe Calls
+## 安全的调用
 
-Your second option is the safe call operator, written `?.`:
+你的第二个选择是安全调用操作符，写作 `?.`：
 
 
 ```kotlin
@@ -110,16 +110,16 @@ fun main() {
     val a = "Kotlin"
     val b: String? = null
     println(b?.length)
-    println(a?.length) // Unnecessary safe call
+    println(a?.length) // 无需安全调用
 //sampleEnd
 }
 ```
 
 
-This returns `b.length` if `b` is not null, and `null` otherwise. The type of this expression is `Int?`.
+如果 `b` 非空，就返回 `b.length`，否则返回 `null`，这个表达式的类型是 `Int?`。
 
-Safe calls are useful in chains. For example, if Bob, an Employee, may be assigned to a Department (or not),
-that in turn may have another Employee as a department head, then to obtain the name of Bob's department head (if any), we write the following:
+安全调用在链式调用中很有用。例如，如果一个员工 Bob 可能会（或者不会）分配给一个部门，
+并且可能有另外一个员工是该部门的负责人，那么获取 Bob 所在部门负责人（如果有的话）的名字，我们写作：
 
 
 ```kotlin
@@ -127,9 +127,9 @@ bob?.department?.head?.name
 ```
 
 
-Such a chain returns `null` if any of the properties in it is null.
+如果任意一个属性（环节）为空，这个链式调用就会返回 `null`。
 
-To perform a certain operation only for non-null values, you can use the safe call operator together with [`let`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/let.html):
+如果要只对非空值执行某个操作，安全调用操作符可以与 [`let`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/let.html) 一起使用：
 
 
 ```kotlin
@@ -137,25 +137,25 @@ fun main() {
 //sampleStart
     val listWithNulls: List<String?> = listOf("Kotlin", null)
     for (item in listWithNulls) {
-         item?.let { println(it) } // prints Kotlin and ignores null
+         item?.let { println(it) } // 输出 Kotlin 并忽略 null
     }
 //sampleEnd
 }
 ```
 
 
-A safe call can also be placed on the left side of an assignment. Then, if one of the receivers in the safe calls chain is null, the assignment is skipped, and the expression on the right is not evaluated at all:
+安全调用也可以出现在赋值的左侧。这样，如果调用链中的任何一个接收者为空都会跳过赋值，而右侧的表达式根本不会求值：
 
 
 ```kotlin
-// If either `person` or `person.department` is null, the function is not called:
+// 如果 `person` 或者 `person.department` 其中之一为空，都不会调用该函数：
 person?.department?.head = managersPool.getManager()
 ```
 
 
-## Elvis Operator
+## Elvis 操作符
 
-When we have a nullable reference `b`, we can say "if `b` is not null, use it, otherwise use some non-null value":
+当我们有一个可空的引用 `b` 时，我们可以说“如果 `b` 非空，我使用它；否则使用某个非空的值”：
 
 
 ```kotlin
@@ -163,7 +163,7 @@ val l: Int = if (b != null) b.length else -1
 ```
 
 
-Along with the complete `if`-expression, this can be expressed with the Elvis operator, written `?:`:
+除了完整的 `if`-表达式，这还可以通过 Elvis 操作符表达，写作 `?:`：
 
 
 ```kotlin
@@ -171,27 +171,27 @@ val l = b?.length ?: -1
 ```
 
 
-If the expression to the left of `?:` is not null, the elvis operator returns it, otherwise it returns the expression to the right.
-Note that the right-hand side expression is evaluated only if the left-hand side is null.
+如果 `?:` 左侧表达式非空，elvis 操作符就返回其左侧表达式，否则返回右侧表达式。
+请注意，当且仅当左侧为空时，才会对右侧表达式求值。
 
-Note that, since `throw` and `return` are expressions in Kotlin, they can also be used on
-the right hand side of the elvis operator. This can be very handy, for example, for checking function arguments:
+请注意，因为 `throw` 和 `return` 在 Kotlin 中都是表达式，所以它们也可以用在
+elvis 操作符右侧。这可能会非常方便，例如，检测函数参数：
 
 
 ```kotlin
 fun foo(node: Node): String? {
     val parent = node.getParent() ?: return null
     val name = node.getName() ?: throw IllegalArgumentException("name expected")
-    // ...
+    // ……
 }
 ```
 
 
-## The `!!` Operator
+## `!!` 操作符
 
-The third option is for NPE-lovers: the not-null assertion operator (`!!`) converts any value to a non-null
-type and throws an exception if the value is null. We can write `b!!`, and this will return a non-null value of `b`
-(e.g., a `String` in our example) or throw an NPE if `b` is null:
+第三种选择是为 NPE 爱好者准备的：非空断言运算符（`!!`）将任何值转换为非空<!--
+-->类型，若该值为空则抛出异常。我们可以写 `b!!` ，这会返回一个非空的 `b` 值
+（例如：在我们例子中的 `String`）或者如果 `b` 为空，就会抛出一个 `NPE` 异常：
 
 
 ```kotlin
@@ -199,12 +199,12 @@ val l = b!!.length
 ```
 
 
-Thus, if you want an NPE, you can have it, but you have to ask for it explicitly, and it does not appear out of the blue.
+因此，如果你想要一个 NPE，你可以得到它，但是你必须显式要求它，否则它不会不期而至。
 
-## Safe Casts
+## 安全的类型转换
 
-Regular casts may result into a `ClassCastException` if the object is not of the target type.
-Another option is to use safe casts that return `null` if the attempt was not successful:
+如果对象不是目标类型，那么常规类型转换可能会导致 `ClassCastException`。
+另一个选择是使用安全的类型转换，如果尝试转换不成功则返回 `null`：
 
 
 ```kotlin
@@ -212,9 +212,9 @@ val aInt: Int? = a as? Int
 ```
 
 
-## Collections of Nullable Type
+## 可空类型的集合
 
-If you have a collection of elements of a nullable type and want to filter non-null elements, you can do so by using `filterNotNull`:
+如果你有一个可空类型元素的集合，并且想要过滤非空元素，你可以使用 `filterNotNull` 来实现：
 
 
 ```kotlin

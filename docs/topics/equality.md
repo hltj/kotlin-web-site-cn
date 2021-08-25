@@ -1,15 +1,15 @@
-[//]: # (title: Equality)
+[//]: # (title: 相等性)
 
-# Equality
+# 相等性
 
-In Kotlin there are two types of equality:
+Kotlin 中有两种类型的相等性：
 
-* Structural equality (a check for `equals()`).
-* Referential equality (two references point to the same object);
+* 结构相等（用 `equals()` 检测）；
+* 引用相等（两个引用指向同一对象）。
 
-## Structural equality
+## 结构相等
 
-Structural equality is checked by the `==` operation (and its negated counterpart `!=`). By convention, an expression like `a == b` is translated to:
+结构相等由 `==`（以及其否定形式 `!=`）操作判断。按照惯例，像 `a == b` 这样的表达式会翻译成：
 
 
 ```kotlin
@@ -17,25 +17,25 @@ a?.equals(b) ?: (b === null)
 ```
 
 
-I.e. if `a` is not `null`, it calls the `equals(Any?)` function, otherwise (i.e. `a` is `null`) it checks that `b` is referentially equal to `null`.
+也就是说如果 `a` 不是 `null` 则调用 `equals(Any?)` 函数，否则（即 `a` 是 `null`）检测 b 是否与 `null` 引用相等。
 
-Note that there's no point in optimizing your code when comparing to `null` explicitly: `a == null` will be automatically translated to `a === null`.
+请注意，当与 `null` 显式比较时完全没必要优化你的代码：`a == null` 会被自动转换为 `a === null`。
 
-To provide a custom equals check implementation, override the [`equals(other: Any?): Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/equals.html) function. Functions with the same name and other signatures, like `equals(other: Foo)`, don't affect equality checks with the operators `==` and `!=`.
+如需提供自定义的相等检测实现，请覆盖 [`equals(other: Any?): Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/equals.html) 函数。名称相同但签名不同的函数，如 `equals(other: Foo)` 并不会影响操作符 `==` 与 `!=` 的相等性检测。
 
-Structural equality has nothing to do with comparison defined by the `Comparable<...>` interface, so only a custom `equals(Any?)` implementation may affect the behavior of the operator.
+结构相等与 `Comparable<……>` 接口定义的比较无关，因此只有自定义的 `equals(Any?)` 实现可能会影响该操作符的行为。
 
-## Floating point numbers equality
+## 浮点数相等性
 
-When an equality check operands are statically known to be `Float` or `Double` (nullable or not), the check follows the IEEE 754
-Standard for Floating-Point Arithmetic.
+当相等性检测的两个操作数都是静态已知的（可空或非空的）`Float` 或 `Double` 类型时，该检测遵循 IEEE 754
+浮点数运算标准。
 
-Otherwise, the structural equality is used, which disagrees with the standard so that `NaN` is equal to itself, and `-0.0` is not equal to `0.0`.
+否则会使用不符合该标准的结构相等性检测，这会导致 `NaN` 等于其自身，而 `-0.0` 不等于 `0.0`。
 
-See: [Floating Point Numbers Comparison](basic-types.md#floating-point-numbers-comparison).
+参见：[浮点数比较](basic-types.md#浮点数比较)。
 
-## Referential equality
+## 引用相等
 
-Referential equality is checked by the `===` operation (and its negated counterpart `!==`). `a === b` evaluates to
-true if and only if `a` and `b` point to the same object. For values which are represented as primitive types at runtime
-(for example, `Int`), the `===` equality check is equivalent to the `==` check.
+引用相等由 `===`（以及其否定形式 `!==`）操作判断。`a === b`
+当且仅当 `a` 与 `b` 指向同一个对象时求值为 true。对于运行时表示为原生类型的值
+（例如 `Int`），`===` 相等检测等价于 `==` 检测。

@@ -1,9 +1,9 @@
-[//]: # (title: Annotations)
+[//]: # (title: 注解)
 
-# Annotations
+# 注解
 
-## Annotation Declaration
-Annotations are means of attaching metadata to code. To declare an annotation, put the `annotation` modifier in front of a class:
+## 注解声明
+注解是将元数据附加到代码的方法。要声明注解，请将 `annotation` 修饰符放在类的前面：
 
 
 ```kotlin
@@ -11,18 +11,18 @@ annotation class Fancy
 ```
 
 
-Additional attributes of the annotation can be specified by annotating the annotation class with meta-annotations:
+注解的附加属性可以通过用元注解标注注解类来指定：
 
-* [`@Target`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-target/index.html) specifies the possible kinds of
-  elements which can be annotated with the annotation (classes, functions, properties, expressions etc.);
-* [`@Retention`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-retention/index.html) specifies whether the
-  annotation is stored in the compiled class files and whether it's visible through reflection at runtime
-  (by default, both are true);
-* [`@Repeatable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-repeatable/index.html) allows using the same annotation
-  on a single element multiple times;
-* [`@MustBeDocumented`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-must-be-documented/index.html) specifies that the
-  annotation is part of the public API and should be included in the class or method signature shown in the
-  generated API documentation.
+* [`@Target`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-target/index.html) 指定可以用<!--
+    -->该注解标注的元素的可能的类型（类、函数、属性、表达式等）；
+* [`@Retention`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-retention/index.html) 指定该注解是否<!--
+    -->存储在编译后的 class 文件中，以及它在运行时能否通过反射可见
+  （默认都是 true）；
+* [`@Repeatable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-repeatable/index.html) 允许<!--
+    -->在单个元素上多次使用相同的该注解；
+* [`@MustBeDocumented`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-must-be-documented/index.html) 指定<!--
+    -->该注解是公有 API 的一部分，并且应该包含在<!--
+    -->生成的 API 文档中显示的类或方法的签名中。
 
 
 
@@ -35,7 +35,7 @@ annotation class Fancy
 ```
 
 
-### Usage
+### 用法
 
 
 
@@ -48,17 +48,17 @@ annotation class Fancy
 ```
 
 
-If you need to annotate the primary constructor of a class, you need to add the `constructor` keyword
-to the constructor declaration, and add the annotations before it:
+如果需要对类的主构造函数进行标注，则需要在构造函数声明中添加 `constructor` 关键字
+，并将注解添加到其前面：
 
 
 
 ```kotlin
-class Foo @Inject constructor(dependency: MyDependency) { ... }
+class Foo @Inject constructor(dependency: MyDependency) { …… }
 ```
 
 
-You can also annotate property accessors:
+你也可以标注属性访问器：
 
 
 
@@ -70,9 +70,9 @@ class Foo {
 ```
 
 
-### Constructors
+### 构造函数
 
-Annotations may have constructors that take parameters.
+注解可以有接受参数的构造函数。
 
 
 
@@ -83,19 +83,19 @@ annotation class Special(val why: String)
 ```
 
 
-Allowed parameter types are:
+允许的参数类型有：
 
-* types that correspond to Java primitive types (Int, Long etc.);
-* strings;
-* classes (`Foo::class`);
-* enums;
-* other annotations;
-* arrays of the types listed above.
+* 对应于 Java 原生类型的类型（Int、 Long等）；
+* 字符串；
+* 类（`Foo::class`）；
+* 枚举；
+* 其他注解；
+* 上面已列类型的数组。
 
-Annotation parameters cannot have nullable types, because the JVM does not support storing `null` as a value
-of an annotation attribute.
+注解参数不能有可空类型，因为 JVM 不支持将 `null` 作为<!--
+-->注解属性的值存储。
 
-If an annotation is used as a parameter of another annotation, its name is not prefixed with the @ character:
+如果注解用作另一个注解的参数，则其名称不以 @ 字符为前缀：
 
 
 
@@ -110,10 +110,10 @@ annotation class Deprecated(
 ```
 
 
-If you need to specify a class as an argument of an annotation, use a Kotlin class
-([KClass](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html)). The Kotlin compiler will
-automatically convert it to a Java class, so that the Java code can access the annotations and arguments
-normally.
+如果需要将一个类指定为注解的参数，请使用 Kotlin 类
+（[KClass](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html)）。Kotlin 编译器会<!--
+-->自动将其转换为 Java 类，以便 Java 代码能够正常访问该注解与参数
+。
 
 
 
@@ -127,11 +127,11 @@ annotation class Ann(val arg1: KClass<*>, val arg2: KClass<out Any>)
 ```
 
 
-### Lambdas
+### Lambda 表达式
 
-Annotations can also be used on lambdas. They will be applied to the `invoke()` method into which the body
-of the lambda is generated. This is useful for frameworks like [Quasar](https://docs.paralleluniverse.co/quasar/),
-which uses annotations for concurrency control.
+注解也可以用于 lambda 表达式。它们会被应用于生成 lambda 表达式体的 `invoke()`
+方法上。这对于像 [Quasar](https://docs.paralleluniverse.co/quasar/) 这样的框架很有用，
+该框架使用注解进行并发控制。
 
 
 
@@ -142,23 +142,23 @@ val f = @Suspendable { Fiber.sleep(10) }
 ```
 
 
-## Annotation Use-site Targets
+## 注解使用处目标
 
-When you're annotating a property or a primary constructor parameter, there are multiple Java elements which are
-generated from the corresponding Kotlin element, and therefore multiple possible locations for the annotation in
-the generated Java bytecode. To specify how exactly the annotation should be generated, use the following syntax:
+当对属性或主构造函数参数进行标注时，从相应的 Kotlin 元素<!--
+-->生成的 Java 元素会有多个，因此在生成的 Java 字节码中该注解有多个可能位置
+。如果要指定精确地指定应该如何生成该注解，请使用以下语法：
 
 
 
 ```kotlin
-class Example(@field:Ann val foo,    // annotate Java field
-              @get:Ann val bar,      // annotate Java getter
-              @param:Ann val quux)   // annotate Java constructor parameter
+class Example(@field:Ann val foo,    // 标注 Java 字段
+              @get:Ann val bar,      // 标注 Java getter
+              @param:Ann val quux)   // 标注 Java 构造函数参数
 ```
 
 
-The same syntax can be used to annotate the entire file. To do this, put an annotation with the target `file` at
-the top level of a file, before the package directive or before all imports if the file is in the default package:
+可以使用相同的语法来标注整个文件。 要做到这一点，把带有目标 `file` 的注解放在<!--
+-->文件的顶层、package 指令之前或者在所有导入之前（如果文件在默认包中的话）：
 
 
 
@@ -169,8 +169,8 @@ package org.jetbrains.demo
 ```
 
 
-If you have multiple annotations with the same target, you can avoid repeating the target by adding brackets after the
-target and putting all the annotations inside the brackets:
+如果你对同一目标有多个注解，那么可以这样来避免目标重复——在目标后面添加方括号<!--
+-->并将所有注解放在方括号内：
 
 
 
@@ -182,19 +182,19 @@ class Example {
 ```
 
 
-The full list of supported use-site targets is:
+支持的使用处目标的完整列表为：
 
-* `file`;
-* `property` (annotations with this target are not visible to Java);
-* `field`;
-* `get` (property getter);
-* `set` (property setter);
-* `receiver` (receiver parameter of an extension function or property);
-* `param` (constructor parameter);
-* `setparam` (property setter parameter);
-* `delegate` (the field storing the delegate instance for a delegated property).
+* `file`；
+* `property`（具有此目标的注解对 Java 不可见）；
+* `field`；
+* `get`（属性 getter）；
+* `set`（属性 setter）；
+* `receiver`（扩展函数或属性的接收者参数）；
+* `param`（构造函数参数）；
+* `setparam`（属性 setter 参数）；
+* `delegate`（为委托属性存储其委托实例的字段）。
 
-To annotate the receiver parameter of an extension function, use the following syntax:
+要标注扩展函数的接收者参数，请使用以下语法：
 
 
 
@@ -203,16 +203,16 @@ fun @receiver:Fancy String.myExtension() { ... }
 ```
 
 
-If you don't specify a use-site target, the target is chosen according to the `@Target` annotation of the annotation
-being used. If there are multiple applicable targets, the first applicable target from the following list is used:
+如果不指定使用处目标，则根据正在使用的注解的 `@Target` 注解来选择目标
+。如果有多个适用的目标，则使用以下列表中的第一个适用目标：
 
 * `param`;
 * `property`;
 * `field`.
 
-## Java Annotations
+## Java 注解
 
-Java annotations are 100% compatible with Kotlin:
+Java 注解与 Kotlin 100% 兼容：
 
 
 
@@ -223,7 +223,7 @@ import org.junit.Rule
 import org.junit.rules.*
 
 class Tests {
-    // apply @Rule annotation to property getter
+    // 将 @Rule 注解应用于属性 getter
     @get:Rule val tempFolder = TemporaryFolder()
 
     @Test fun simple() {
@@ -234,8 +234,8 @@ class Tests {
 ```
 
 
-Since the order of parameters for an annotation written in Java is not defined, you can't use a regular function
-call syntax for passing the arguments. Instead, you need to use the named argument syntax:
+因为 Java 编写的注解没有定义参数顺序，所以不能使用常规函数调用<!--
+-->语法来传递参数。相反，你需要使用具名参数语法：
 
 
 
@@ -256,7 +256,7 @@ public @interface Ann {
 ```
 
 
-Just like in Java, a special case is the `value` parameter; its value can be specified without an explicit name:
+就像在 Java 中一样，一个特殊的情况是 `value` 参数；它的值无需显式名称指定：
 
 
 
@@ -276,9 +276,9 @@ public @interface AnnWithValue {
 ```
 
 
-### Arrays as annotation parameters
+### 数组作为注解参数
 
-If the `value` argument in Java has an array type, it becomes a `vararg` parameter in Kotlin:
+如果 Java 中的 `value` 参数具有数组类型，它会成为 Kotlin 中的一个 `vararg` 参数：
 
 
 
@@ -298,8 +298,8 @@ public @interface AnnWithArrayValue {
 ```
 
 
-For other arguments that have an array type, you need to use the array literal syntax (since Kotlin 1.2) or
-`arrayOf(...)`:
+对于具有数组类型的其他参数，你需要显式使用数组字面值语法（自 Kotlin 1.2 起）或者
+`arrayOf(……)`：
 
 
 
@@ -314,19 +314,19 @@ public @interface AnnWithArrayMethod {
 
 
 ```kotlin
-// Kotlin 1.2+:
+// Kotlin 1.2+：
 @AnnWithArrayMethod(names = ["abc", "foo", "bar"]) 
 class C
 
-// Older Kotlin versions:
+// 旧版本 Kotlin：
 @AnnWithArrayMethod(names = arrayOf("abc", "foo", "bar")) 
 class D
 ```
 
 
-### Accessing properties of an annotation instance
+### 访问注解实例的属性
 
-Values of an annotation instance are exposed as properties to Kotlin code:
+注解实例的值会作为属性暴露给 Kotlin 代码：
 
 
 
