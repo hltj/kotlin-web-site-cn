@@ -1,8 +1,6 @@
 [//]: # (title: This 表达式)
 
-# This 表达式
-
-为了表示当前的 _接收者_ 我们使用 `this` 表达式：
+表示当前的 _接收者_ 可使用 `this` 表达式：
 
 * 在[类](classes.md#继承)的成员中，`this` 指的是该类的当前对象。
 * 在[扩展函数](extensions.md)或者[带有接收者的函数字面值](lambdas.md#带有接收者的函数字面值)中，
@@ -12,11 +10,9 @@
 
 ## 限定的 `this`
 
-要访问来自外部作用域的`this`（一个[类](classes.md) 或者[扩展函数](extensions.md)，
-或者带标签的[带有接收者的函数字面值](lambdas.md#带有接收者的函数字面值)）我们使用`this@label`，其中 `@label` 是一个<!--
--->代指 `this` 来源的标签：
-
-
+要访问来自外部作用域的 `this`（一个[类](classes.md) 或者[扩展函数](extensions.md)，
+或者带标签的[带有接收者的函数字面值](lambdas.md#带有接收者的函数字面值)）使用`this@label`，
+其中 `@label` 是一个代指 `this` 来源的标签：
 
 ```kotlin
 class A { // 隐式标签 @A
@@ -32,8 +28,7 @@ class A { // 隐式标签 @A
                 val d = this // funLit 的接收者
             }
 
-
-            val funLit2 = { s: String ->
+val funLit2 = { s: String ->
                 // foo() 的接收者，因为它包含的 lambda 表达式
                 // 没有任何接收者
                 val d1 = this
@@ -43,14 +38,10 @@ class A { // 隐式标签 @A
 }
 ```
 
-
-
 ## Implicit `this`
 
 当对 `this` 调用成员函数时，可以省略 `this.` 部分。
 但是如果有一个同名的非成员函数时，请谨慎使用，因为在某些情况下会调用同名的非成员：
-
-
 
 ```kotlin
 fun main() {
@@ -71,4 +62,5 @@ fun main() {
 //sampleEnd()
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
