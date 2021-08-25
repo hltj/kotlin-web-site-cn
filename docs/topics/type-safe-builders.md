@@ -1,19 +1,16 @@
-[//]: # (title: Type-Safe Builders)
+[//]: # (title: Type-safe builders)
 
-# Type-Safe Builders
+By using well-named functions as builders in combination with [function literals with receiver](lambdas.md#function-literals-with-receiver) 
+it is possible to create type-safe, statically-typed builders in Kotlin.
 
-By using well-named functions as builders in combination with [function literals with receiver](lambdas.md#function-literals-with-receiver) it is possible to create type-safe, statically-typed builders in Kotlin.
+Type-safe builders allow creating Kotlin-based domain-specific languages (DSLs) suitable for building complex hierarchical 
+data structures in a semi-declarative way. Sample use cases for the builders are:
 
-Type-safe builders allow creating Kotlin-based domain-specific languages (DSLs) suitable for building complex hierarchical data structures in a semi-declarative way. Some of the example use cases for the builders are:
-
-* Generating markup with Kotlin code, such as [HTML](https://github.com/Kotlin/kotlinx.html) or XML;
+* Generating markup with Kotlin code, such as [HTML](https://github.com/Kotlin/kotlinx.html) or XML
 * Programmatically laying out UI components: [Anko](https://github.com/Kotlin/anko/wiki/Anko-Layouts)
-* Configuring routes for a web server: [Ktor](https://ktor.io/docs/routing.html).
-
-## A type-safe builder example
+* Configuring routes for a web server: [Ktor](https://ktor.io/docs/routing.html)
 
 Consider the following code:
-
 
 ```kotlin
 import com.example.html.* // see declarations below
@@ -49,20 +46,18 @@ fun result() =
     }
 ```
 
-
 This is completely legitimate Kotlin code.
 You can play with this code online (modify it and run in the browser) [here](https://play.kotlinlang.org/byExample/09_Kotlin_JS/06_HtmlBuilder).
 
 ## How it works
 
-Let's walk through the mechanisms of implementing type-safe builders in Kotlin.
-First of all, we need to define the model we want to build, in this case we need to model HTML tags.
+Assume that you need to implement a type-safe builder in Kotlin.
+First of all, define the model you want to build. In this case you need to model HTML tags.
 It is easily done with a bunch of classes.
-For example, `HTML` is a class that describes the `<html>` tag, i.e. it defines children like `<head>` and `<body>`.
-(See its declaration [below](#full-definition-of-the-comexamplehtml-package).)
+For example, `HTML` is a class that describes the `<html>` tag defining children like `<head>` and `<body>`.
+(See its declaration [below](#full-definition-of-the-com-example-html-package).)
 
-Now, let's recall why we can say something like this in the code:
-
+Now, let's recall why you can say something like this in the code:
 
 ```kotlin
 html {
@@ -70,10 +65,8 @@ html {
 }
 ```
 
-
 `html` is actually a function call that takes a [lambda expression](lambdas.md) as an argument.
 This function is defined as follows:
-
 
 ```kotlin
 fun html(init: HTML.() -> Unit): HTML {
@@ -83,13 +76,12 @@ fun html(init: HTML.() -> Unit): HTML {
 }
 ```
 
-
 This function takes one parameter named `init`, which is itself a function.
-The type of the function is `HTML.() -> Unit`, which is a _function type with receiver_.
-This means that we need to pass an instance of type `HTML` (a _receiver_) to the function,
-and we can call members of that instance inside the function.
-The receiver can be accessed through the `this` keyword:
+The type of the function is `HTML.() -> Unit`, which is a *function type with receiver*.
+This means that you need to pass an instance of type `HTML` (a *receiver*) to the function,
+and you can call members of that instance inside the function.
 
+The receiver can be accessed through the `this` keyword:
 
 ```kotlin
 html {
@@ -98,11 +90,9 @@ html {
 }
 ```
 
-
 (`head` and `body` are member functions of `HTML`.)
 
-Now, `this` can be omitted, as usual, and we get something that looks very much like a builder already:
-
+Now, `this` can be omitted, as usual, and you get something that looks very much like a builder already:
 
 ```kotlin
 html {
@@ -111,15 +101,13 @@ html {
 }
 ```
 
-
 So, what does this call do? Let's look at the body of `html` function as defined above.
 It creates a new instance of `HTML`, then it initializes it by calling the function that is passed as an argument
-(in our example this boils down to calling `head` and `body` on the `HTML` instance), and then it returns this instance.
+(in this example this boils down to calling `head` and `body` on the `HTML` instance), and then it returns this instance. 
 This is exactly what a builder should do.
 
-The `head` and `body` functions in the `HTML` class are defined similarly to `html`.
+The `head` and `body` functions in the `HTML` class are defined similarly to `html`. 
 The only difference is that they add the built instances to the `children` collection of the enclosing `HTML` instance:
-
 
 ```kotlin
 fun head(init: Head.() -> Unit) : Head {
@@ -137,9 +125,7 @@ fun body(init: Body.() -> Unit) : Body {
 }
 ```
 
-
-Actually these two functions do just the same thing, so we can have a generic version, `initTag`:
-
+Actually these two functions do just the same thing, so you can have a generic version, `initTag`:
 
 ```kotlin
 protected fun <T : Element> initTag(tag: T, init: T.() -> Unit): T {
@@ -149,9 +135,7 @@ protected fun <T : Element> initTag(tag: T, init: T.() -> Unit): T {
 }
 ```
 
-
-So, now our functions are very simple:
-
+So, now your functions are very simple:
 
 ```kotlin
 fun head(init: Head.() -> Unit) = initTag(Head(), init)
@@ -159,12 +143,9 @@ fun head(init: Head.() -> Unit) = initTag(Head(), init)
 fun body(init: Body.() -> Unit) = initTag(Body(), init)
 ```
 
+And you can use them to build `<head>` and `<body>` tags. 
 
-And we can use them to build `<head>` and `<body>` tags.
-
-
-One other thing to be discussed here is how we add text to tag bodies. In the example above we say something like:
-
+One other thing to be discussed here is how you add text to tag bodies. In the example above you say something like:
 
 ```kotlin
 html {
@@ -175,11 +156,10 @@ html {
 }
 ```
 
-
-So basically, we just put a string inside a tag body, but there is this little `+` in front of it,
+So basically, you just put a string inside a tag body, but there is this little `+` in front of it,
 so it is a function call that invokes a prefix `unaryPlus()` operation.
-That operation is actually defined by an extension function `unaryPlus()` that is a member of the `TagWithText` abstract class (a parent of `Title`):
-
+That operation is actually defined by an extension function `unaryPlus()` that is a member of the `TagWithText` abstract 
+class (a parent of `Title`):
 
 ```kotlin
 operator fun String.unaryPlus() {
@@ -187,18 +167,17 @@ operator fun String.unaryPlus() {
 }
 ```
 
-
 So, what the prefix `+` does here is wrapping a string into an instance of `TextElement` and adding it to the `children` collection,
 so that it becomes a proper part of the tag tree.
 
 All this is defined in a package `com.example.html` that is imported at the top of the builder example above.
 In the last section you can read through the full definition of this package.
 
-## Scope control: @DslMarker (since 1.1)
+## Scope control: `@DslMarker`
 
-When using DSLs, one might have come across the problem that too many functions can be called in the context.
-We can call methods of every available implicit receiver inside a lambda and therefore get an inconsistent result, like the tag `head` inside another `head`:
-
+When using DSLs, one might have come across the problem that too many functions can be called in the context. 
+You can call methods of every available implicit receiver inside a lambda and therefore get an inconsistent result, 
+like the tag `head` inside another `head`: 
 
 ```kotlin
 html {
@@ -209,44 +188,39 @@ html {
 }
 ```
 
+In this example only members of the nearest implicit receiver `this@head` must be available; `head()` is a member of the 
+outer receiver `this@html`, so it must be illegal to call it.
 
-In this example only members of the nearest implicit receiver `this@head` must be available; `head()` is a member of the outer receiver `this@html`, so it must be illegal to call it.
+To address this problem, there is a special mechanism to control receiver scope.
 
-To address this problem, in Kotlin 1.1 a special mechanism to control receiver scope was introduced.
-
-To make the compiler start controlling scopes we only have to annotate the types of all receivers used in the DSL with the same marker annotation.
-For instance, for HTML Builders we declare an annotation `@HTMLTagMarker`:
-
+To make the compiler start controlling scopes you only have to annotate the types of all receivers used in the DSL with 
+the same marker annotation.
+For instance, for HTML Builders you declare an annotation `@HTMLTagMarker`:
 
 ```kotlin
 @DslMarker
 annotation class HtmlTagMarker
 ```
 
-
 An annotation class is called a DSL marker if it is annotated with the `@DslMarker` annotation.
 
 In our DSL all the tag classes extend the same superclass `Tag`.
-It's enough to annotate only the superclass with `@HtmlTagMarker` and after that the Kotlin compiler will treat all the inherited classes as annotated:
-
+It's enough to annotate only the superclass with `@HtmlTagMarker` and after that the Kotlin compiler will treat all the 
+inherited classes as annotated:
 
 ```kotlin
 @HtmlTagMarker
 abstract class Tag(val name: String) { ... }
 ```
 
-
-We don't have to annotate the `HTML` or `Head` classes with `@HtmlTagMarker` because their superclass is already annotated:
-
+You don't have to annotate the `HTML` or `Head` classes with `@HtmlTagMarker` because their superclass is already annotated:
 
 ```
 class HTML() : Tag("html") { ... }
 class Head() : Tag("head") { ... }
 ```
 
-
-After we've added this annotation, the Kotlin compiler knows which implicit receivers are part of the same DSL and allows to call members of the nearest receivers only:
-
+After you've added this annotation, the Kotlin compiler knows which implicit receivers are part of the same DSL and allows to call members of the nearest receivers only: 
 
 ```kotlin
 html {
@@ -257,9 +231,7 @@ html {
 }
 ```
 
-
 Note that it's still possible to call the members of the outer receiver, but to do that you have to specify this receiver explicitly:
-
 
 ```kotlin
 html {
@@ -270,17 +242,11 @@ html {
 }
 ```
 
-
 ## Full definition of the `com.example.html` package
 
 This is how the package `com.example.html` is defined (only the elements used in the example above).
 It builds an HTML tree. It makes heavy use of [extension functions](extensions.md) and
 [lambdas with receiver](lambdas.md#function-literals-with-receiver).
-
-Note that the `@DslMarker` annotation is available only since Kotlin 1.1.
-
-<a name='declarations'></a>
-
 
 ```kotlin
 package com.example.html

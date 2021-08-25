@@ -1,22 +1,18 @@
 [//]: # (title: This expressions)
 
-# This Expression
-
-To denote the current _receiver_, we use `this` expressions:
+To denote the current _receiver_, you use `this` expressions:
 
 * In a member of a [class](classes.md#inheritance), `this` refers to the current object of that class.
 * In an [extension function](extensions.md) or a [function literal with receiver](lambdas.md#function-literals-with-receiver)
-  `this` denotes the _receiver_ parameter that is passed on the left-hand side of a dot.
+`this` denotes the _receiver_ parameter that is passed on the left-hand side of a dot.
 
 If `this` has no qualifiers, it refers to the _innermost enclosing scope_. To refer to `this` in other scopes, _label qualifiers_ are used:
 
-## Qualified `this`
+## Qualified `this` 
 
-To access `this` from an outer scope (a [class](classes.md), or [extension function](extensions.md),
-or labeled [function literal with receiver](lambdas.md#function-literals-with-receiver)) we write `this@label` where `@label` is a [label](returns.md)
-on the scope `this` is meant to be from:
-
-
+To access `this` from an outer scope (a [class](classes.md), [extension function](extensions.md),
+or labeled [function literal with receiver](lambdas.md#function-literals-with-receiver)) you write `this@label`,
+ where `@label` is a [label](returns.md) on the scope `this` is meant to be from:
 
 ```kotlin
 class A { // implicit label @A
@@ -32,8 +28,7 @@ class A { // implicit label @A
                 val d = this // funLit's receiver
             }
 
-
-            val funLit2 = { s: String ->
+val funLit2 = { s: String ->
                 // foo()'s receiver, since enclosing lambda expression
                 // doesn't have any receiver
                 val d1 = this
@@ -43,14 +38,10 @@ class A { // implicit label @A
 }
 ```
 
-
-
 ## Implicit `this`
 
 When you call a member function on `this`, you can skip the `this.` part.
-If you have a non-member function with the same name, use this with caution, because in some cases it can be called instead:
-
-
+If you have a non-member function with the same name, use this with caution because in some cases it can be called instead:
 
 ```kotlin
 fun main() {
@@ -71,4 +62,5 @@ fun main() {
 //sampleEnd()
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
