@@ -1,22 +1,22 @@
-[//]: # (title: Discover your project)
+[//]: # (title: 了解项目)
 
-# Discover your project
+# 了解项目
 
-Discover main parts of your multiplatform project:
+探索多平台项目的主要部分：
 
-* [Multiplatform plugin](#multiplatform-plugin)
-* [Targets](#targets)
-* [Source sets](#source-sets)
-* [Compilations](#compilations)
+* [多平台插件](#多平台插件)
+* [目标](#目标)
+* [源集](#源集)
+* [编译项](#编译项)
 
-## Multiplatform plugin
+## 多平台插件
 
-When you [create a multiplatform project](mpp-create-lib.md), the Project Wizard automatically applies the `kotlin-multiplatform` Gradle
-plugin in the file `build.gradle`(`.kts`).
+[创建多平台项目](mpp-create-lib.md)时，
+项目向导会自动在 `build.gradle`(`.kts`) 文件中应用 `kotlin-multiplatform` 插件。
 
-You can also apply it manually.
+也可以手动应用它。
 
->The `kotlin-multiplatform` plugin works with Gradle 6.0 or later.
+> `kotlin-multiplatform` 插件适用于 Gradle 6.0 或更高版本。
 {:.note}
 
 
@@ -43,20 +43,20 @@ plugins {
 
 
 
-The `kotlin-multiplatform` plugin configures the project for creating an application or library to work on multiple platforms
-and prepares it for building on these platforms.
+`kotlin-multiplatform` 插件可配置项目以创建可在多个平台上工作的应用程序或库，
+并为在这些平台上构建做好准备。
 
-In the file `build.gradle`(`.kts`), it creates the `kotlin` extension at the top level, which includes
-configuration for [targets](#targets), [source sets](#source-sets), and dependencies.
+在 `build.gradle`(`.kts`) 文件中，它在顶层创建 `kotlin` 扩展，
+其中包括[目标](#目标)、[源集](#源集)与依赖项的配置。
 
 
-## Targets
+## 目标
 
-A multiplatform project is aimed at multiple platforms that are represented by different targets. A target is part of the
-build that is responsible for building, testing, and packaging the application for a specific platform, such as macOS,
-iOS, or Android. See the list of [supported platforms](mpp-supported-platforms.md).
+一个多平台项目针对以不同目标表示的多个平台。
+目标是构建的一部分，负责为特定平台（例如 macOS、iOS或Android）构建、测试与打包应用程序。
+请参阅[支持的平台](mpp-supported-platforms.md)列表。
 
-When you create a multiplatform project, targets are added to the `kotlin` block in the file `build.gradle` (`build.gradle.kts`).
+创建多平台项目时，会将目标添加到 `build.gradle`(`build.gradle.kts`) 文件中的 `kotlin` 块中。
 
 
 
@@ -71,23 +71,23 @@ kotlin {
 
 
 
-Learn how to [set up targets manually](mpp-set-up-targets.md).
+了解如何[手动设置目标](mpp-set-up-targets.md)。
 
-## Source sets
+## 源集
 
-The project includes the directory `src` with Kotlin source sets, which are collections of Kotlin code files, along with
-their resources, dependencies, and language settings. A source set can be used in Kotlin compilations for one or more
-target platforms.
+该项目包括带有 Kotlin 源集的 `src` 目录，
+这些源集是 Kotlin 代码文件的集合，以及源集的资源、依赖与语言设置。
+可以在 Kotlin 编译项中使用一个或多个源集目标平台。
 
-Each source set directory includes Kotlin code files (the `kotlin` directory) and `resources`. The Project Wizard creates
-default source sets for the `main` and `test` compilations of the common code and all added targets.
+每个源集目录都包含 Kotlin 代码文件（`kotlin` 目录）与 `resources`。
+项目向导会为公共代码以及所有已添加目标的 `main` 与 `test` 编译项创建默认源集。
 
-<img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/source-sets.png' )}}" alt="Source sets" width="300"/>
+<img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/source-sets.png' )}}" alt="源集" width="300"/>
 
->Source set names are case sensitive.
+> 源集名称区分大小写。
 {:.note}
 
-Source sets are added to the `sourceSets` block of the top-level `kotlin` block.
+源集被添加到顶层 `kotlin` 块的 `sourceSets` 块中。
 
 
 
@@ -128,27 +128,27 @@ kotlin {
 
 
 
-Source sets form a hierarchy, which is used for sharing the common code. In a source set shared among several targets,
-you can use the platform-specific language features and dependencies that are available for all these targets.
+源集形成一个层次结构，用于共享公共代码。
+在多个目标之间共享的源集中，可以使用所有这些目标可用的特定于平台的语言特性与依赖。
 
-For example, all Kotlin/Native features are available in the `desktopMain` source set, which targets the Linux (`linuxX64`),
-Windows (`mingwX64`), and macOS (`macosX64`) platforms.
+例如，所有 Kotlin 原生特性都可以在 `desktopMain` 源集中可用，
+该源集的目标是 Linux(`linuxX64`)、Windows(`mingwX64`) 与 macOS(`macosX64`) 平台。
 
-![Hierarchical structure]({{ url_for('asset', path='images/reference/mpp/hierarchical-structure.png') }})
+![层次结构]({{ url_for('asset', path='images/reference/mpp/hierarchical-structure.png') }})
 
-Learn how to [build the hierarchy of source sets](mpp-share-on-platforms.md#share-code-on-similar-platforms).
+了解如何[构建源集的层次结构](mpp-share-on-platforms.md#对相似平台共享代码)。
 
-## Compilations
+## 编译项
 
-Each target can have one or more compilations, for example, for production and test purposes.
+每个目标可以具有一个或多个编译项，例如，用于生产与测试目的。
 
-For each target, default compilations include:
+对于每个目标，默认编译项包括：
 
-*   `main` and `test` compilations for JVM, JS, and Native targets.
-*   A compilation per [Android build variant](https://developer.android.com/studio/build/build-variants), for Android targets.
+*   针对 JVM、JS 与原生目标的 `main` 与 `test`编译项。
+*   针对 Android 目标的每个 [Android 构建变体](https://developer.android.com/studio/build/build-variants) 的编译。
 
-![Compilations]({{ url_for('asset', path='images/reference/mpp/compilations.png') }})
+![编译项]({{ url_for('asset', path='images/reference/mpp/compilations.png') }})
 
-Each compilation has a default source set, which contains sources and dependencies specific to that compilation.
+每个编译都有默认的源集，其中包含特定于该编译的源代码与依赖。
 
-Learn how to [configure compilations](mpp-configure-compilations.md). 
+了解如何[配置编译项](mpp-configure-compilations.md)。

@@ -1,6 +1,6 @@
-[//]: # (title: Configure compilations)
+[//]: # (title: 配置编译项)
 
-# Configure compilations
+# 配置编译项
 
 Kotlin multiplatform projects use compilations for producing artifacts. Each target can have one or more compilations,
 for example, for production and test purposes.
@@ -17,14 +17,14 @@ you can [create a custom compilation](#create-a-custom-compilation).
 
 You can configure how artifacts are produced in:
 
-* [All compilations](#configure-all-compilations) in your project at once.
-* [Compilations for one target](#configure-compilations-for-one-target) since one target can have multiple compilations.
-* [A specific compilation](#configure-one-compilation).
+* [所有编译项](#配置所有编译项) in your project at once.
+* [一个目标的编译项](#为一个目标配置编译项) since one target can have multiple compilations.
+* [具体编译项](#配置一个编译项).
 
 See the [list of compilation parameters](mpp-dsl-reference.md#compilation-parameters) and [compiler options](using-gradle.md#compiler-options)
 available for all or specific targets.
 
-## Configure all compilations
+## 配置所有编译项
 
 
 
@@ -42,7 +42,7 @@ kotlin {
 
 
 
-## Configure compilations for one target
+## 为一个目标配置编译项
 
 
 
@@ -78,7 +78,7 @@ kotlin {
 
 
 
-## Configure one compilation
+## 配置一个编译项
 
 
 
@@ -114,7 +114,7 @@ kotlin {
 
 
 
-## Create a custom compilation
+## 创建自定义编译项
 
 If you need to compile something other than production code and unit tests, for example, integration or performance tests,
 create a custom compilation.
@@ -240,7 +240,7 @@ Due to current limitations, the Kotlin plugin replaces some tasks configured by 
 
 The publication of this target is handled by the Kotlin plugin and doesn't require steps that are specific for the Java plugin.
 
-## Configure interop with native languages
+## 配置与原生语言的互操作
 
 Kotlin provides [interoperability with native languages](native/c_interop.md) and DSL to configure this for a specific
 compilation.
@@ -335,7 +335,7 @@ kotlin {
 
 
 
-## Compilation for Android
+## Android 编译项
 
 The compilations created for an Android target by default are tied to [Android build variants](https://developer.android.com/studio/build/build-variants):
 for each build variant, a Kotlin compilation is created under the same name.
@@ -366,7 +366,7 @@ dependencies {
 
 
 
-## Compilation of the source set hierarchy
+## 源集层次结构的编译项
 
 Kotlin can build a [source set hierarchy](mpp-share-on-platforms.md#share-code-on-similar-platforms) with the `dependsOn` relation.
 
