@@ -1,7 +1,5 @@
 [//]: # (title: Comparison to Java)
 
-# Comparison to Java Programming Language
-
 ## Some Java issues addressed in Kotlin
 
 Kotlin fixes a series of issues that Java suffers from:
@@ -10,16 +8,20 @@ Kotlin fixes a series of issues that Java suffers from:
 * [No raw types](java-interop.md#java-generics-in-kotlin)
 * Arrays in Kotlin are [invariant](basic-types.md#arrays)
 * Kotlin has proper [function types](lambdas.md#function-types), as opposed to Java's SAM-conversions
-* [Use-site variance](generics.md#use-site-variance-type-projections) without wildcards
+* [Use-site variance](generics.md#use-site-variance-type-projections)  without wildcards
 * Kotlin does not have checked [exceptions](exceptions.md)
 
 ## What Java has that Kotlin does not
 
 * [Checked exceptions](exceptions.md)
-* [Primitive types](basic-types.md) that are not classes - The byte-code uses primitives where possible, but they are not explicitly available.
-* [Static members](classes.md) - replaced with [companion objects](object-declarations.md#companion-objects), [top-level functions](functions.md), [extension functions](extensions.md#extension-functions), or [@JvmStatic](java-to-kotlin-interop.md#static-methods).
-* [Wildcard-types](generics.md) - replaced with [declaration-site variance](generics.md#declaration-site-variance) and [type projections](generics.md#type-projections).
-* [Ternary-operator `a ? b : c`](control-flow.md#if-expression) - replaced with [if expression](control-flow.md#if-expression).
+* [Primitive types](basic-types.md) that are not classes. The byte-code uses primitives where possible, but they are not
+    explicitly available.
+* [Static members](classes.md) are replaced with [companion objects](object-declarations.md#companion-objects),
+    [top-level functions](functions.md), [extension functions](extensions.md#extension-functions), or [@JvmStatic](java-to-kotlin-interop.md#static-methods).
+* [Wildcard-types](generics.md) are replaced with [declaration-site variance](generics.md#declaration-site-variance) and
+    [type projections](generics.md#type-projections).
+* [Ternary-operator `a ? b : c`](control-flow.md#if-expression) is replaced with [if expression](control-flow.md#if-expression). 
+
 
 ## What Kotlin has that Java does not
 
@@ -39,4 +41,4 @@ Kotlin fixes a series of issues that Java suffers from:
 * [Companion objects](classes.md#companion-objects)
 * [Data classes](data-classes.md)
 * [Separate interfaces for read-only and mutable collections](collections-overview.md)
-* [Coroutines](coroutines.md)
+* [Coroutines](coroutines-overview.md)
