@@ -14,7 +14,7 @@ For each target, default compilations include:
 * `main` and `test` compilations for JVM, JS, and Native targets.
 * A [compilation](#compilation-for-android) per [Android build variant](https://developer.android.com/studio/build/build-variants), for Android targets.
 
-![Compilations]({{ url_for('asset', path='images/reference/mpp/compilations.png') }})
+![Compilations](/assets/images/reference/mpp/compilations.png)
 
 If you need to compile something other than production code and unit tests, for example, integration or performance tests, 
 you can [create a custom compilation](#create-a-custom-compilation).
@@ -212,7 +212,7 @@ To include Java sources in the compilations of the JVM target, explicitly enable
 
 * When [creating a project with the Project Wizard](mpp-create-lib.html). 
    
-   ![Enable Java language support]({{ url_for('asset', path='images/reference/mpp/enable-java-support.png') }})
+   ![Enable Java language support](/assets/images/reference/mpp/enable-java-support.png)
     
 * In the build script of an existing project.
 
@@ -232,7 +232,7 @@ To include Java sources in the compilations of the JVM target, explicitly enable
 
 The Java source files are placed in the child directories of the Kotlin source roots. For example, the paths are:
 
-<img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/java-source-paths.png') }}" alt="Java source files" width="200"/>
+<img class="img-responsive" src="/assets/images/reference/mpp/java-source-paths.png" alt="Java source files" width="200"/>
 
 The common source sets cannot include Java sources.
 
@@ -374,7 +374,7 @@ dependencies {
 
 Kotlin can build a [source set hierarchy](mpp-share-on-platforms.html#share-code-on-similar-platforms) with the `dependsOn` relation.
 
-<img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/jvm-js-main.png') }}" alt="Source set hierarchy" width="400"/>
+<img class="img-responsive" src="/assets/images/reference/mpp/jvm-js-main.png" alt="Source set hierarchy" width="400"/>
 
 If the source set `jvmMain` depends on a source set `commonMain` then:
 

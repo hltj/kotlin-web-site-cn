@@ -22,7 +22,7 @@ declarations](mpp-connect-to-apis.html).
 If you have business logic that is common for all platforms, you don’t need to write the same code for each platform – 
 just share it in the common source set.
 
-![Code shared for all platforms]({{ url_for('asset', path='images/reference/mpp/flat-structure.png') }})
+![Code shared for all platforms](/assets/images/reference/mpp/flat-structure.png)
 
 All platform-specific source sets depend on the common source set by default. You don’t need to specify any `dependsOn` 
 relations manually for default source sets, such as `jvmMain`, `macosX64Main`, and others. 
@@ -66,7 +66,7 @@ Learn more about [sharing code in libraries](#share-code-in-libraries) and [usin
 In a typical multiplatform project with two iOS-related targets – `iosArm64` and `iosX64`, the hierarchical structure 
 includes an intermediate source set (`iosMain`), which is used by the platform-specific source sets. 
 
-<img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/iosmain-hierarchy.png') }}" alt="Code shared for iOS targets" width="400"/>
+<img class="img-responsive" src="/assets/images/reference/mpp/iosmain-hierarchy.png" alt="Code shared for iOS targets" width="400"/>
 
 The `kotlin-multiplatform` plugin provides target shortcuts for creating structures for common combinations of targets.
 
@@ -122,7 +122,7 @@ kotlin {
 To create the hierarchical structure manually, introduce an intermediate source set that holds the shared code for several 
 targets and create a structure of the source sets including the intermediate one.
 
-![Hierarchical structure]({{ url_for('asset', path='images/reference/mpp/hierarchical-structure.png') }})
+![Hierarchical structure](/assets/images/reference/mpp/hierarchical-structure.png)
 
 For example, if you want to share code among native Linux, Windows, and macOS targets – `linuxX64M`, `mingwX64`, and 
 `macosX64`:
@@ -208,7 +208,7 @@ the library which are available to the targets of each source set.
 
 For example, check out the following source set hierarchy from the `kotlinx.coroutines` repository:
 
-![Library hierarchical structure]({{ url_for('asset', path='images/reference/mpp/lib-hierarchical-structure.png') }})
+![Library hierarchical structure](/assets/images/reference/mpp/lib-hierarchical-structure.png)
 
 The `concurrent` source set declares the function runBlocking and is compiled for the JVM and the native targets. 
 Once the `kotlinx.coroutines` library is updated and published with the hierarchical project structure, you can depend on 

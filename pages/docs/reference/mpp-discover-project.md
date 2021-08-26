@@ -86,7 +86,7 @@ kotlin {
 每个源集目录都包含 Kotlin 代码文件（`kotlin` 目录）与 `resources`。
 项目向导会为公共代码以及所有已添加目标的 `main` 与 `test` 编译项创建默认源集。
 
-<img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/source-sets.png' )}}" alt="源集" width="300"/>
+<img class="img-responsive" src="/assets/images/reference/mpp/source-sets.png" alt="源集" width="300"/>
 
 > 源集名称区分大小写。
 {:.note}
@@ -138,7 +138,7 @@ kotlin {
 例如，所有 Kotlin 原生特性都可以在 `desktopMain` 源集中可用，
 该源集的目标是 Linux(`linuxX64`)、Windows(`mingwX64`) 与 macOS(`macosX64`) 平台。
 
-![层次结构]({{ url_for('asset', path='images/reference/mpp/hierarchical-structure.png') }})
+![层次结构](/assets/images/reference/mpp/hierarchical-structure.png)
 
 了解如何[构建源集的层次结构](mpp-share-on-platforms.html#对相似平台共享代码)。
 
@@ -151,7 +151,7 @@ kotlin {
 *   针对 JVM、JS 与原生目标的 `main` 与 `test`编译项。
 *   针对 Android 目标的每个 [Android 构建变体](https://developer.android.com/studio/build/build-variants) 的编译。
 
-![编译项]({{ url_for('asset', path='images/reference/mpp/compilations.png') }})
+![编译项](/assets/images/reference/mpp/compilations.png)
 
 每个编译都有默认的源集，其中包含特定于该编译的源代码与依赖。
 

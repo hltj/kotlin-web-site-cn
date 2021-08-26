@@ -18,15 +18,15 @@ With Kotlin Multiplatform, share the code using the mechanisms Kotlin provides:
 *   [Share code among all platforms used in your project](mpp-share-on-platforms.html#share-code-on-all-platforms). Use it for sharing the common 
 business logic that applies to all platforms. 
      
-    ![Code shared for all platforms]({{ url_for('asset', path='images/reference/mpp/flat-structure.png') }})
+    ![Code shared for all platforms](/assets/images/reference/mpp/flat-structure.png)
     
 *   [Share code among some platforms](mpp-share-on-platforms.html#share-code-on-similar-platforms) included in your project but not all. You can 
 reuse much of the code in similar platforms using a hierarchical structure. You can use [target shortcuts](mpp-share-on-platforms.html#use-target-shortcuts) 
 for common combinations of targets or [create the hierarchical structure manually](mpp-share-on-platforms.html#configure-the-hierarchical-structure-manually).
     
-    <img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/iosmain-hierarchy.png') }}" alt="Code shared for iOS targets" width="400"/>
+    <img class="img-responsive" src="/assets/images/reference/mpp/iosmain-hierarchy.png" alt="Code shared for iOS targets" width="400"/>
 
-    ![Hierarchical structure]({{ url_for('asset', path='images/reference/mpp/hierarchical-structure.png') }})
+    ![Hierarchical structure](/assets/images/reference/mpp/hierarchical-structure.png)
 
 If you need to access platform-specific APIs from the shared code, use the Kotlin mechanism of [expected and actual 
 declarations](mpp-connect-to-apis.html).
