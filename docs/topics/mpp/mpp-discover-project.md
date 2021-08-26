@@ -1,7 +1,5 @@
 [//]: # (title: 了解项目)
 
-# 了解项目
-
 探索多平台项目的主要部分：
 
 * [多平台插件](#多平台插件)
@@ -16,39 +14,31 @@
 
 也可以手动应用它。
 
-> `kotlin-multiplatform` 插件适用于 Gradle 6.0 或更高版本。
-{:.note}
+> `kotlin-multiplatform` 插件适用于 Gradle 6.0 或更高版本。 
+>
+{type="note"}
 
-
-
+<tabs>
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '{{ site.data.releases.latest.version }}'
+    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
 }
 ```
-
-
-
-
-
-
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "{{ site.data.releases.latest.version }}"
+    kotlin("multiplatform") version "%kotlinVersion%"
 }
 ```
 
-
-
+</tabs>
 
 `kotlin-multiplatform` 插件可配置项目以创建可在多个平台上工作的应用程序或库，
 并为在这些平台上构建做好准备。
 
 在 `build.gradle`(`.kts`) 文件中，它在顶层创建 `kotlin` 扩展，
 其中包括[目标](#目标)、[源集](#源集)与依赖项的配置。
-
 
 ## 目标
 
@@ -58,8 +48,6 @@ plugins {
 
 创建多平台项目时，会将目标添加到 `build.gradle`(`build.gradle.kts`) 文件中的 `kotlin` 块中。
 
-
-
 ```kotlin
 kotlin {
     jvm()    
@@ -68,8 +56,6 @@ kotlin {
     }
  }
 ```
-
-
 
 了解如何[手动设置目标](mpp-set-up-targets.md)。
 
@@ -82,15 +68,15 @@ kotlin {
 每个源集目录都包含 Kotlin 代码文件（`kotlin` 目录）与 `resources`。
 项目向导会为公共代码以及所有已添加目标的 `main` 与 `test` 编译项创建默认源集。
 
-<img class="img-responsive" src="{{ url_for('asset', path='images/reference/mpp/source-sets.png' )}}" alt="源集" width="300"/>
+![源集](source-sets.png){width=300}
 
 > 源集名称区分大小写。
-{:.note}
+>
+{type="note"}
 
 源集被添加到顶层 `kotlin` 块的 `sourceSets` 块中。
 
-
-
+<tabs>
 
 ```groovy
 kotlin {
@@ -105,13 +91,6 @@ kotlin {
 }
 ```
 
-
-
-
-
-
-
-
 ```kotlin
 kotlin {
     sourceSets {
@@ -125,8 +104,7 @@ kotlin {
 }
 ```
 
-
-
+</tabs>
 
 源集形成一个层次结构，用于共享公共代码。
 在多个目标之间共享的源集中，可以使用所有这些目标可用的特定于平台的语言特性与依赖。
@@ -134,7 +112,7 @@ kotlin {
 例如，所有 Kotlin 原生特性都可以在 `desktopMain` 源集中可用，
 该源集的目标是 Linux(`linuxX64`)、Windows(`mingwX64`) 与 macOS(`macosX64`) 平台。
 
-![层次结构]({{ url_for('asset', path='images/reference/mpp/hierarchical-structure.png') }})
+![层次结构](hierarchical-structure.png)
 
 了解如何[构建源集的层次结构](mpp-share-on-platforms.md#对相似平台共享代码)。
 
@@ -147,7 +125,7 @@ kotlin {
 *   针对 JVM、JS 与原生目标的 `main` 与 `test`编译项。
 *   针对 Android 目标的每个 [Android 构建变体](https://developer.android.com/studio/build/build-variants) 的编译。
 
-![编译项]({{ url_for('asset', path='images/reference/mpp/compilations.png') }})
+![编译项](compilations.png)
 
 每个编译都有默认的源集，其中包含特定于该编译的源代码与依赖。
 

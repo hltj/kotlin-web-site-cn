@@ -1,7 +1,5 @@
 [//]: # (title: 所支持平台)
 
-# 所支持平台
-
 Kotlin 支持以下平台并且为每个平台提供了目标预设。请参见如何[使用目标预设](mpp-set-up-targets.md)。
 
 <table>
@@ -24,7 +22,7 @@ Kotlin 支持以下平台并且为每个平台提供了目标预设。请参见�
                 <li><code>browser {}</code> 用于在浏览器中运行的应用程序。</li>
                 <li><code>nodejs{}</code> 用于在 Node.js 上运行的应用程序。</li>
             </ul>
-            <p>在<a href="js-project-setup.html#choosing-execution-environment">搭建 Kotlin/JS 项目</a>中了解更多信息。</p>
+            <p>在<a href="js-project-setup.md#execution-environments">搭建 Kotlin/JS 项目</a>中了解更多信息。</p>
         </td>
     </tr>
     <tr>
@@ -84,4 +82,5 @@ Kotlin 支持以下平台并且为每个平台提供了目标预设。请参见�
 </table>
 
 > 当前主机不支持的目标在构建期间会被忽略，因此不会发布。
-{:.note}
+>
+{type="note"}
