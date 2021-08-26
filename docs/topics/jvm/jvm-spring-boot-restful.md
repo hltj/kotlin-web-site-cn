@@ -1,4 +1,4 @@
-[//]: # (title: Create a RESTful Web Service with Spring Boot)
+[//]: # (title: 用 Spring Boot 创建 RESTful Web 服务)
 
 You will create an application with the HTTP endpoint that returns a data objects list in the JSON format.
 

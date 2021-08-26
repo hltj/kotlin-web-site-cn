@@ -60,7 +60,7 @@ Enter your name and accept the greetings from your application!
 
 ![Kotlin run output]({{ url_for('tutorial_img', filename='getting-started/jvm-output-2.png') }})
 
-Congratulations! You have just run your first Kotlin application.
+恭喜！ 你现在运行了第一个 Kotlin 应用程序。
 
 ## What's next?
 

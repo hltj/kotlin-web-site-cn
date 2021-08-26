@@ -1,23 +1,23 @@
-[//]: # (title: Calling Kotlin from Java)
+[//]: # (title: Java 中调用 Kotlin)
 
-# Calling Kotlin from Java
+# Java 中调用 Kotlin
 
-Kotlin code can be easily called from Java.
-For example, instances of a Kotlin class can be seamlessly created and operated in Java methods.
-However, there are certain differences between Java and Kotlin that require attention when
-integrating Kotlin code into Java.
-On this page, we'll describe the ways to tailor the interop of your Kotlin code with its Java clients.
+Java 可以轻松调用 Kotlin 代码。
+例如，可以在 Java 方法中无缝创建与操作 Kotlin 类的实例。
+然而，在将 Kotlin 代码集成到 Java 中时，
+需要注意 Java 与 Kotlin 之间的一些差异。
+在本页，我们会描述定制 Kotlin 代码与其 Java 客户端的互操作的方法。
 
 
-## Properties
+## 属性
 
-A Kotlin property is compiled to the following Java elements:
+Kotlin 属性会编译成以下 Java 元素：
 
-* A getter method, with the name calculated by prepending the `get` prefix;
-* A setter method, with the name calculated by prepending the `set` prefix (only for `var` properties);
-* A private field, with the same name as the property name (only for properties with backing fields).
+* 一个 getter 方法，名称通过加前缀 `get` 算出；
+* 一个 setter 方法，名称通过加前缀 `set` 算出（只适用于 `var` 属性）；
+* 一个私有字段，与属性名称相同（仅适用于具有幕后字段的属性）。
 
-For example, `var firstName: String` gets compiled to the following Java declarations:
+例如，`var firstName: String` 编译成以下 Java 声明：
 
 
 
@@ -34,15 +34,15 @@ public void setFirstName(String firstName) {
 ```
 
 
-If the name of the property starts with `is`, a different name mapping rule is used: the name of the getter will be
-the same as the property name, and the name of the setter will be obtained by replacing `is` with `set`.
-For example, for a property `isOpen`, the getter will be called `isOpen()` and the setter will be called `setOpen()`.
-This rule applies for properties of any type, not just `Boolean`.
+如果属性的名称以 `is` 开头，则使用不同的名称映射规则：getter 的名称<!--
+-->与属性名称相同，并且 setter 的名称是通过将 `is` 替换为 `set` 获得。
+例如，对于属性 `isOpen`，其 getter 会称做 `isOpen()`，而其 setter 会称做 `setOpen()`。
+这一规则适用于任何类型的属性，并不仅限于 `Boolean`。
 
-## Package-level functions
+## 包级函数
 
-All the functions and properties declared in a file `app.kt` inside a package `org.example`, including extension functions,
-are compiled into static methods of a Java class named `org.example.AppKt`.
+在 `org.example` 包内的 `app.kt` 文件中声明的所有的函数和属性，包括扩展函数，
+都编译成一个名为 `org.example.AppKt` 的 Java 类的静态方法。
 
 
 
@@ -52,7 +52,7 @@ package org.example
 
 class Util
 
-fun getTime() { /*...*/ }
+fun getTime() { /*……*/ }
 
 ```
 
@@ -66,7 +66,7 @@ org.example.AppKt.getTime();
 ```
 
 
-The name of the generated Java class can be changed using the `@JvmName` annotation:
+可以使用 `@JvmName` 注解修改生成的 Java 类的类名：
 
 
 
@@ -77,7 +77,7 @@ package org.example
 
 class Util
 
-fun getTime() { /*...*/ }
+fun getTime() { /*……*/ }
 
 ```
 
@@ -91,10 +91,10 @@ org.example.DemoUtils.getTime();
 ```
 
 
-Having multiple files which have the same generated Java class name (the same package and the same name or the same
-[`@JvmName`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html) annotation) is normally an error.
-However, the compiler has the ability to generate a single Java facade class which has the specified name and contains all the declarations from all the files which have that name.
-To enable the generation of such a facade, use the [`@JvmMultifileClass`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-multifile-class/index.html) annotation in all of the files.
+如果多个文件中生成了相同的 Java 类名（包名相同并且类名相同或者有相同的
+[`@JvmName`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html) 注解）通常是错误的。然而，编译器能够生成一个单一的 Java 外观<!--
+-->类，它具有指定的名称且包含来自所有文件中具有该名称的所有声明。
+要启用生成这样的外观，请在所有相关文件中使用 [`@JvmMultifileClass`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-multifile-class/index.html) 注解。
 
 
 
@@ -105,7 +105,7 @@ To enable the generation of such a facade, use the [`@JvmMultifileClass`](https:
 
 package org.example
 
-fun getTime() { /*...*/ }
+fun getTime() { /*……*/ }
 ```
 
 
@@ -118,7 +118,7 @@ fun getTime() { /*...*/ }
 
 package org.example
 
-fun getDate() { /*...*/ }
+fun getDate() { /*……*/ }
 ```
 
 
@@ -131,11 +131,11 @@ org.example.Utils.getDate();
 ```
 
 
-## Instance fields
+## 实例字段
 
-If you need to expose a Kotlin property as a field in Java, annotate it with the [`@JvmField`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-field/index.html) annotation.
-The field will have the same visibility as the underlying property. You can annotate a property with `@JvmField`
-if it has a backing field, is not private, does not have `open`, `override` or `const` modifiers, and is not a delegated property.
+如果需要在 Java 中将 Kotlin 属性作为字段暴露，那就使用 [`@JvmField`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-field/index.html) 注解对其标注。
+该字段将具有与底层属性相同的可见性。如果一个属性有幕后字段（backing field）、非私有、没有 `open`
+/`override` 或者 `const` 修饰符并且不是被委托的属性，那么你可以用 `@JvmField` 注解该属性。
 
 
 
@@ -158,21 +158,21 @@ class JavaClient {
 ```
 
 
-[Late-Initialized](properties.md#late-initialized-properties-and-variables) properties are also exposed as fields.
-The visibility of the field will be the same as the visibility of `lateinit` property setter.
+[延迟初始化的](properties.md#延迟初始化属性与变量)属性（在Java中）也会暴露为字段。
+该字段的可见性与 `lateinit` 属性的 setter 相同。
 
-## Static fields
+## 静态字段
 
-Kotlin properties declared in a named object or a companion object will have static backing fields
-either in that named object or in the class containing the companion object.
+在具名对象或伴生对象中声明的 Kotlin 属性会在该具名对象或包含伴生对象的类中<!--
+-->具有静态幕后字段。
 
-Usually these fields are private but they can be exposed in one of the following ways:
+通常这些字段是私有的，但可以通过以下方式之一暴露出来：
 
-- [`@JvmField`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-field/index.html) annotation;
-- `lateinit` modifier;
-- `const` modifier.
+- [`@JvmField`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-field/index.html) 注解；
+- `lateinit` 修饰符；
+- `const` 修饰符。
 
-Annotating such a property with `@JvmField` makes it a static field with the same visibility as the property itself.
+使用 `@JvmField` 标注这样的属性使其成为与属性本身具有相同可见性的静态字段。
 
 
 
@@ -191,12 +191,12 @@ class Key(val value: Int) {
 ``` java
 // Java
 Key.COMPARATOR.compare(key1, key2);
-// public static final field in Key class
+// Key 类中的 public static final 字段
 ```
 
 
-A [late-initialized](properties.md#late-initialized-properties-and-variables) property in an object or a companion object
-has a static backing field with the same visibility as the property setter.
+在具名对象或者伴生对象中的一个[延迟初始化的](properties.md#延迟初始化属性与变量)属性<!--
+-->具有与属性 setter 相同可见性的静态幕后字段。
 
 
 
@@ -212,16 +212,16 @@ object Singleton {
 ``` java
 // Java
 Singleton.provider = new Provider();
-// public static non-final field in Singleton class
+// 在 Singleton 类中的 public static 非-final 字段
 ```
 
 
-Properties declared as `const` (in classes as well as at the top level) are turned into static fields in Java:
+（在类中以及在顶层）以 `const` 声明的属性在 Java 中会成为静态字段：
 
 
 
 ```kotlin
-// file example.kt
+// 文件 example.kt
 
 object Obj {
     const val CONST = 1
@@ -237,7 +237,7 @@ const val MAX = 239
 ```
 
 
-In Java:
+在 Java 中：
 
 
 
@@ -248,12 +248,12 @@ int version = C.VERSION;
 ```
 
 
-## Static methods
+## 静态方法
 
-As mentioned above, Kotlin represents package-level functions as static methods.
-Kotlin can also generate static methods for functions defined in named objects or companion objects if you annotate those functions as [`@JvmStatic`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html).
-If you use this annotation, the compiler will generate both a static method in the enclosing class of the object and an instance method in the object itself.
-For example:
+如上所述，Kotlin 将包级函数表示为静态方法。
+Kotlin 还可以为具名对象或伴生对象中定义的函数生成静态方法，如果你将这些函数标注为 [`@JvmStatic`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html) 的话。
+如果你使用该注解，编译器既会在相应对象的类中生成静态方法，也会在对象自身中生成实例方法。
+例如：
 
 
 
@@ -267,19 +267,19 @@ class C {
 ```
 
 
-Now, `callStatic()` is static in Java, while `callNonStatic()` is not:
+现在，`callStatic()` 在 Java 中是静态的，而 `callNonStatic()` 不是：
 
 
 
 ``` java
-C.callStatic(); // works fine
-C.callNonStatic(); // error: not a static method
-C.Companion.callStatic(); // instance method remains
-C.Companion.callNonStatic(); // the only way it works
+C.callStatic(); // 没问题
+C.callNonStatic(); // 错误：不是一个静态方法
+C.Companion.callStatic(); // 保留实例方法
+C.Companion.callNonStatic(); // 唯一的工作方式
 ```
 
 
-Same for named objects:
+对于具名对象也同样：
 
 
 
@@ -291,21 +291,21 @@ object Obj {
 ```
 
 
-In Java:
+在 Java 中：
 
 
 
 ``` java
-Obj.callStatic(); // works fine
-Obj.callNonStatic(); // error
-Obj.INSTANCE.callNonStatic(); // works, a call through the singleton instance
-Obj.INSTANCE.callStatic(); // works too
+Obj.callStatic(); // 没问题
+Obj.callNonStatic(); // 错误
+Obj.INSTANCE.callNonStatic(); // 没问题，通过单例实例调用
+Obj.INSTANCE.callStatic(); // 也没问题
 ```
 
 
-Starting from Kotlin 1.3, `@JvmStatic` applies to functions defined in companion objects of interfaces as well.
-Such functions compile to static methods in interfaces. Note that static method in interfaces were introduced in Java 1.8,
-so be sure to use the corresponding targets.
+自 Kotlin 1.3 起，`@JvmStatic` 也适用于在接口的伴生对象中定义的函数。
+这类函数会编译为接口中的静态方法。请注意，接口中的静态方法是 Java 1.8 中引入的，
+因此请确保使用相应的编译目标。
 
 
 
@@ -320,19 +320,19 @@ interface ChatBot {
 ```
 
 
-`@JvmStatic` annotation can also be applied on a property of an object or a companion object
-making its getter and setter methods static members in that object or the class containing the companion object.
+`@JvmStatic`　注解也可以应用于对象或伴生对象的属性，
+使其 getter 和 setter 方法在该对象或包含该伴生对象的类中是静态成员。
 
-## Default methods in interfaces
+## 接口中的默认方法
 
-> Default methods are available only for targets JVM 1.8 and above.
+> 默认方法仅适用于面向 JVM 1.8 及更高版本。
 {:.note}
 
-Starting from JDK 1.8, interfaces in Java can contain [default methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html).
+自 JDK 1.8 起，Java 中的接口可以包含[默认方法](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html)。
 To make all non-abstract members of Kotlin interfaces default for the Java classes implementing them, compile the Kotlin
 code with the `-Xjvm-default=all` compiler option.
 
-Here is an example of a Kotlin interface with a default method:
+这是一个带有默认方法的 Kotlin 接口的一个示例：
 
 
 
@@ -346,14 +346,14 @@ interface Robot {
 ```
 
 
-The default implementation is available for Java classes implementing the interface.
+默认实现对于实现该接口的 Java 类都可用。
 
 
 
 ```java
-//Java implementation
+//Java 实现
 public class C3PO implements Robot {
-    // move() implementation from Robot is available implicitly
+    // 来自 Robot 的 move() 实现隐式可用
     @Override
     public void speak() {
         System.out.println("I beg your pardon, sir");
@@ -366,19 +366,19 @@ public class C3PO implements Robot {
 
 ```java
 C3PO c3po = new C3PO();
-c3po.move(); // default implementation from the Robot interface
+c3po.move(); // 来自 Robot 接口的默认实现
 c3po.speak();
 ```
 
 
-Implementations of the interface can override default methods.
+接口的实现者可以覆盖默认方法。
 
 
 
 ```java
 //Java
 public class BB8 implements Robot {
-    //own implementation of the default method
+    //自己实现默认方法
     @Override
     public void move() {
         System.out.println("~rolling~");
@@ -415,24 +415,24 @@ with `-Xjvm-default=all`.
 Additionally, in the `all-compatibility` mode you can use `@JvmDefaultWithoutCompatibility` to annotate all interfaces
 which are not exposed in the public API and therefore aren’t used by the existing clients.
 
-## Visibility
+## 可见性
 
-The Kotlin visibility modifiers map to Java in the following way:
+Kotlin 的可见性以下列方式映射到 Java：
 
-* `private` members are compiled to `private` members;
-* `private` top-level declarations are compiled to package-local declarations;
-* `protected` remains `protected` (note that Java allows accessing protected members from other classes in the same package
-  and Kotlin doesn't, so Java classes will have broader access to the code);
-* `internal` declarations become `public` in Java. Members of `internal` classes go through name mangling, to make
-  it harder to accidentally use them from Java and to allow overloading for members with the same signature that don't see
-  each other according to Kotlin rules;
-* `public` remains `public`.
+* `private` 成员编译成 `private` 成员；
+* `private` 的顶层声明编译成包级局部声明；
+* `protected` 保持 `protected`（注意 Java 允许访问同一个包中其他类的受保护成员，
+  而 Kotlin 不能，所以 Java 类会访问更广泛的代码）；
+* `internal` 声明会成为 Java 中的 `public`。`internal` 类的成员会通过名字修饰，使其<!--
+-->更难以在 Java 中意外使用到，并且根据 Kotlin 规则使其允许重载相同签名的成员<!--
+-->而互不可见；
+* `public` 保持 `public`。
 
 ## KClass
 
-Sometimes you need to call a Kotlin method with a parameter of type `KClass`.
-There is no automatic conversion from `Class` to `KClass`, so you have to do it manually by invoking the equivalent of
-the `Class<T>.kotlin` extension property:
+有时你需要调用有 `KClass` 类型参数的 Kotlin 方法。
+因为没有从 `Class` 到 `KClass` 的自动转换，所以你必须通过调用
+`Class<T>.kotlin` 扩展属性的等价形式来手动进行转换：
 
 
 
@@ -441,10 +441,10 @@ kotlin.jvm.JvmClassMappingKt.getKotlinClass(MainView.class)
 ```
 
 
-## Handling signature clashes with `@JvmName`
+## 用 `@JvmName` 解决签名冲突
 
-Sometimes we have a named function in Kotlin, for which we need a different JVM name in the byte code.
-The most prominent example happens due to *type erasure*:
+有时我们想让一个 Kotlin 中的具名函数在字节码中有另外一个 JVM 名称。
+最突出的例子是由于*类型擦除*引发的：
 
 
 
@@ -454,8 +454,8 @@ fun List<Int>.filterValid(): List<Int>
 ```
 
 
-These two functions can not be defined side-by-side, because their JVM signatures are the same: `filterValid(Ljava/util/List;)Ljava/util/List;`.
-If we really want them to have the same name in Kotlin, we can annotate one (or both) of them with [`@JvmName`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html) and specify a different name as an argument:
+这两个函数不能同时定义，因为它们的 JVM 签名是一样的：`filterValid(Ljava/util/List;)Ljava/util/List;`。
+如果我们真的希望它们在 Kotlin 中用相同名称，我们需要用 [`@JvmName`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html) 去标注其中的一个（或两个），并指定不同的名称作为参数：
 
 
 
@@ -467,9 +467,9 @@ fun List<Int>.filterValid(): List<Int>
 ```
 
 
-From Kotlin they will be accessible by the same name `filterValid`, but from Java it will be `filterValid` and `filterValidInt`.
+在 Kotlin 中它们可以用相同的名称 `filterValid` 来访问，而在 Java 中，它们分别是 `filterValid` 和 `filterValidInt`。
 
-The same trick applies when we need to have a property `x` alongside with a function `getX()`:
+同样的技巧也适用于属性 `x` 和函数 `getX()` 共存：
 
 
 
@@ -482,7 +482,7 @@ fun getX() = 10
 ```
 
 
-To change the names of generated accessor methods for properties without explicitly implemented getters and setters, you can use `@get:JvmName` and `@set:JvmName`:
+如需在没有显式实现 getter 与 setter 的情况下更改属性生成的访问器方法的名称，可以使用 `@get:JvmName` 与 `@set:JvmName`：
 
 
 
@@ -493,52 +493,52 @@ var x: Int = 23
 ```
 
 
-## Overloads generation
+## 生成重载
 
-Normally, if you write a Kotlin function with default parameter values, it will be visible in Java only as a full
-signature, with all parameters present. If you wish to expose multiple overloads to Java callers, you can use the
-[`@JvmOverloads`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html) annotation.
+通常，如果你写一个有默认参数值的 Kotlin 函数，在 Java 中只会有一个所有参数都存在的完整参数<!--
+-->签名的方法可见，如果希望向 Java 调用者暴露多个重载，可以使用
+[`@JvmOverloads`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html) 注解。
 
-The annotation also works for constructors, static methods, and so on. It can't be used on abstract methods, including methods
-defined in interfaces.
+该注解也适用于构造函数、静态方法等。它不能用于抽象方法，包括<!--
+-->在接口中定义的方法。
 
 
 
 ```kotlin
 class Circle @JvmOverloads constructor(centerX: Int, centerY: Int, radius: Double = 1.0) {
-    @JvmOverloads fun draw(label: String, lineWidth: Int = 1, color: String = "red") { /*...*/ }
+    @JvmOverloads fun draw(label: String, lineWidth: Int = 1, color: String = "red") { /*……*/ }
 }
 ```
 
 
-For every parameter with a default value, this will generate one additional overload, which has this parameter and
-all parameters to the right of it in the parameter list removed. In this example, the following will be
-generated:
+对于每一个有默认值的参数，都会生成一个额外的重载，这个重载会把这个参数和<!--
+-->它右边的所有参数都移除掉。在上例中，会生成以下代码
+：
 
 
 
 ``` java
-// Constructors:
+// 构造函数：
 Circle(int centerX, int centerY, double radius)
 Circle(int centerX, int centerY)
 
-// Methods
+// 方法
 void draw(String label, int lineWidth, String color) { }
 void draw(String label, int lineWidth) { }
 void draw(String label) { }
 ```
 
 
-Note that, as described in [Secondary Constructors](classes.md#secondary-constructors), if a class has default
-values for all constructor parameters, a public no-argument constructor will be generated for it. This works even
-if the `@JvmOverloads` annotation is not specified.
+请注意，如[次构造函数](classes.md#次构造函数)中所述，如果一个类的所有构造函数参数都有默认<!--
+-->值，那么会为其生成一个公有的无参构造函数。这就算<!--
+-->没有 `@JvmOverloads` 注解也有效。
 
 
-## Checked exceptions
+## 受检异常
 
-As we mentioned above, Kotlin does not have checked exceptions.
-So, normally, the Java signatures of Kotlin functions do not declare exceptions thrown.
-Thus if we have a function in Kotlin like this:
+如上所述，Kotlin 没有受检异常。
+所以，通常 Kotlin 函数的 Java 签名不会声明抛出异常。
+于是如果我们有一个这样的 Kotlin 函数：
 
 
 
@@ -547,13 +547,13 @@ Thus if we have a function in Kotlin like this:
 package demo
 
 fun writeToFile() {
-    /*...*/
+    /*……*/
     throw IOException()
 }
 ```
 
 
-And we want to call it from Java and catch the exception:
+然后我们想要在 Java 中调用它并捕捉这个异常：
 
 
 
@@ -561,36 +561,36 @@ And we want to call it from Java and catch the exception:
 // Java
 try {
   demo.Example.writeToFile();
-} catch (IOException e) { // error: writeToFile() does not declare IOException in the throws list
-  // ...
+} catch (IOException e) { // 错误：writeToFile() 未在 throws 列表中声明 IOException
+  // ……
 }
 ```
 
 
-we get an error message from the Java compiler, because `writeToFile()` does not declare `IOException`.
-To work around this problem, use the [`@Throws`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throws/index.html) annotation in Kotlin:
+因为 `writeToFile()` 没有声明 `IOException`，我们从 Java 编译器得到了一个报错消息。
+为了解决这个问题，要在 Kotlin 中使用 [`@Throws`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throws/index.html) 注解。
 
 
 
 ```kotlin
 @Throws(IOException::class)
 fun writeToFile() {
-    /*...*/
+    /*……*/
     throw IOException()
 }
 ```
 
 
-## Null-safety
+## 空安全性
 
-When calling Kotlin functions from Java, nobody prevents us from passing `null` as a non-null parameter.
-That's why Kotlin generates runtime checks for all public functions that expect non-nulls.
-This way we get a `NullPointerException` in the Java code immediately.
+当从 Java 中调用 Kotlin 函数时，没人阻止我们将 `null` 作为非空参数传递。
+这就是为什么 Kotlin 给所有期望非空参数的公有函数生成运行时检测。
+这样我们就能在 Java 代码里立即得到 `NullPointerException`。
 
-## Variant generics
+## 型变的泛型
 
-When Kotlin classes make use of [declaration-site variance](generics.md#declaration-site-variance), there are two
-options of how their usages are seen from the Java code. Let's say we have the following class and two functions that use it:
+当 Kotlin 的类使用了[声明处型变](generics.md#声明处型变)，有两种选择<!--
+-->可以从 Java 代码中看到它们的用法。让我们假设我们有以下类和两个使用它的函数：
 
 
 
@@ -605,85 +605,85 @@ fun unboxBase(box: Box<Base>): Base = box.value
 ```
 
 
-A naive way of translating these functions into Java would be this:
+一种看似理所当然地将这俩函数转换成 Java 代码的方式可能会是：
 
 
 
 ``` java
-Box<Derived> boxDerived(Derived value) { ... }
-Base unboxBase(Box<Base> box) { ... }
+Box<Derived> boxDerived(Derived value) { …… }
+Base unboxBase(Box<Base> box) { …… }
 ```
 
 
-The problem is that in Kotlin we can say `unboxBase(boxDerived("s"))`, but in Java that would be impossible, because in Java
-the class `Box` is *invariant* in its parameter `T`, and thus `Box<Derived>` is not a subtype of `Box<Base>`.
-To make it work in Java we'd have to define `unboxBase` as follows:
+问题是，在 Kotlin 中我们可以这样写 `unboxBase(boxDerived("s"))`，但是在 Java 中是行不通的，因为在 Java 中<!--
+-->类 `Box` 在其泛型参数 `T` 上是*不型变的*，于是 `Box<Derived>` 并不是 `Box<Base>` 的子类。
+要使其在 Java 中工作，我们按以下这样定义 `unboxBase`：
 
 
 
 ``` java
-Base unboxBase(Box<? extends Base> box) { ... }  
+Base unboxBase(Box<? extends Base> box) { …… }
 ```
 
 
-Here we make use of Java's *wildcards types* (`? extends Base`) to emulate declaration-site variance through use-site
-variance, because it is all Java has.
+这里我们使用 Java 的*通配符类型*（`? extends Base`）来<!--
+-->通过使用处型变来模拟声明处型变，因为在 Java 中只能这样。
 
-To make Kotlin APIs work in Java we generate `Box<Super>` as `Box<? extends Super>` for covariantly defined `Box`
-(or `Foo<? super Bar>` for contravariantly defined `Foo`) when it appears *as a parameter*. When it's a return value,
-we don't generate wildcards, because otherwise Java clients will have to deal with them (and it's against the common
-Java coding style). Therefore, the functions from our example are actually translated as follows:
+当它*作为参数*出现时，为了让 Kotlin 的 API 在 Java 中工作，对于协变定义的 `Box` 我们生成 `Box<Super>` 作为 `Box<? extends Super>`
+（或者对于逆变定义的 `Foo` 生成 `Foo<? super Bar>`）。当它是一个返回值时，
+我们不生成通配符，因为否则 Java 客户端将必须处理它们（并且它违反常用
+Java 编码风格）。因此，我们的示例中的对应函数实际上翻译如下：
 
 
 
 ``` java
-// return type - no wildcards
-Box<Derived> boxDerived(Derived value) { ... }
+// 作为返回类型——没有通配符
+Box<Derived> boxDerived(Derived value) { …… }
  
-// parameter - wildcards 
-Base unboxBase(Box<? extends Base> box) { ... }
+// 作为参数——有通配符
+Base unboxBase(Box<? extends Base> box) { …… }
 ```
 
 
-> When the argument type is final, there's usually no point in generating the wildcard, so `Box<String>` is always `Box<String>`, no matter what position it takes.
+当参数类型是 final 时，生成通配符通常没有意义，所以无论在什么地方 `Box<String>`始终转换为 `Box<String>`。
 {:.note}
 
-If we need wildcards where they are not generated by default, we can use the `@JvmWildcard` annotation:
+如果我们在默认不生成通配符的地方需要通配符，我们可以使用 `@JvmWildcard` 注解：
 
 
 
 ```kotlin
 fun boxDerived(value: Derived): Box<@JvmWildcard Derived> = Box(value)
-// is translated to 
-// Box<? extends Derived> boxDerived(Derived value) { ... }
+// 将被转换成
+// Box<? extends Derived> boxDerived(Derived value) { …… }
 ```
 
 
-On the other hand, if we don't need wildcards where they are generated, we can use `@JvmSuppressWildcards`:
+另一方面，如果我们根本不需要默认的通配符转换，我们可以使用`@JvmSuppressWildcards`
 
 
 
 ```kotlin
 fun unboxBase(box: Box<@JvmSuppressWildcards Base>): Base = box.value
-// is translated to 
-// Base unboxBase(Box<Base> box) { ... }
+// 会翻译成
+// Base unboxBase(Box<Base> box) { …… }
 ```
 
 
->`@JvmSuppressWildcards` can be used not only on individual type arguments, but on entire declarations, such as functions or classes, causing all wildcards inside them to be suppressed.
+`@JvmSuppressWildcards` 不仅可用于单个类型参数，还可用于整个声明（如函数或类），从而抑制其中的所有通配符。
 {:.note}
 
-### Translation of type `Nothing`
+### `Nothing` 类型翻译
 
-The type [`Nothing`](exceptions.md#the-nothing-type) is special, because it has no natural counterpart in Java. Indeed, every Java reference type, including
-`java.lang.Void`, accepts `null` as a value, and `Nothing` doesn't accept even that. So, this type cannot be accurately
-represented in the Java world. This is why Kotlin generates a raw type where an argument of type `Nothing` is used:
+类型 [`Nothing`](exceptions.md#nothing-类型) 是特殊的，因为它在 Java 中没有自然的对应。确实，每个 Java 引用类型，包括
+`java.lang.Void` 都可以接受 `null` 值，但是 Nothing 不行。因此，这种类型不能在 Java 世界中<!--
+-->准确表示。这就是为什么在使用 `Nothing` 参数的地方 Kotlin 生成一个原始类型：
 
 
 
 ```kotlin
 fun emptyList(): List<Nothing> = listOf()
-// is translated to
-// List emptyList() { ... }
+// 会翻译成
+// List emptyList() { …… }
 ```
 

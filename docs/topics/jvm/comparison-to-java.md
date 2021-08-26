@@ -1,42 +1,42 @@
-[//]: # (title: Comparison to Java)
+[//]: # (title: 与 Java 比较)
 
-# Comparison to Java Programming Language
+# 与 Java 语言比较
 
-## Some Java issues addressed in Kotlin
+## Kotlin 解决了一些 Java 中的问题
 
-Kotlin fixes a series of issues that Java suffers from:
+Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题：
 
-* Null references are [controlled by the type system](null-safety.md).
-* [No raw types](java-interop.md#java-generics-in-kotlin)
-* Arrays in Kotlin are [invariant](basic-types.md#arrays)
-* Kotlin has proper [function types](lambdas.md#function-types), as opposed to Java's SAM-conversions
-* [Use-site variance](generics.md#use-site-variance-type-projections) without wildcards
-* Kotlin does not have checked [exceptions](exceptions.md)
+* 空引用由[类型系统控制](null-safety.md)。
+* [无原始类型](java-interop.md#kotlin-中的-java-泛型)
+* Kotlin 中数组是[不型变的](basic-types.md#数组)
+* 相对于 Java 的 SAM-转换，Kotlin 有更合适的[函数类型](lambdas.md#函数类型)
+* 没有通配符的[使用处型变](generics.md#使用处型变类型投影)
+* Kotlin 没有受检[异常](exceptions.md)
 
-## What Java has that Kotlin does not
+## Java 有而 Kotlin 没有的东西
 
-* [Checked exceptions](exceptions.md)
-* [Primitive types](basic-types.md) that are not classes - The byte-code uses primitives where possible, but they are not explicitly available.
-* [Static members](classes.md) - replaced with [companion objects](object-declarations.md#companion-objects), [top-level functions](functions.md), [extension functions](extensions.md#extension-functions), or [@JvmStatic](java-to-kotlin-interop.md#static-methods).
-* [Wildcard-types](generics.md) - replaced with [declaration-site variance](generics.md#declaration-site-variance) and [type projections](generics.md#type-projections).
-* [Ternary-operator `a ? b : c`](control-flow.md#if-expression) - replaced with [if expression](control-flow.md#if-expression).
+* [受检异常](exceptions.md)
+* 不是类的[原生类型](basic-types.md) —— 字节码会尽可能试用原生类型，但不是显式可用的。
+* [静态成员](classes.md) —— 以 [伴生对象](object-declarations.md#伴生对象)、 [顶层函数](functions.md)、 [扩展函数](extensions.md#extension-functions) 或者 [@JvmStatic](java-to-kotlin-interop.md#static-methods) 取代。
+* [通配符类型](generics.md) —— 以 [声明处型变](generics.md#declaration-site-variance) 与 [类型投影](generics.md#类型投影) 取代。
+* [三目操作符 `a ? b : c`](control-flow.md#if-表达式) —— 以 [if 表达式](control-flow.md#if-表达式)取代。
 
-## What Kotlin has that Java does not
+## Kotlin 有而 Java 没有的东西
 
-* [Lambda expressions](lambdas.md) + [Inline functions](inline-functions.md) = performant custom control structures
-* [Extension functions](extensions.md)
-* [Null-safety](null-safety.md)
-* [Smart casts](typecasts.md)
-* [String templates](basic-types.md#strings)
-* [Properties](properties.md)
-* [Primary constructors](classes.md)
-* [First-class delegation](delegation.md)
-* [Type inference for variable and property types](basic-types.md)
-* [Singletons](object-declarations.md)
-* [Declaration-site variance & Type projections](generics.md)
-* [Range expressions](ranges.md)
-* [Operator overloading](operator-overloading.md)
-* [Companion objects](classes.md#companion-objects)
-* [Data classes](data-classes.md)
-* [Separate interfaces for read-only and mutable collections](collections-overview.md)
-* [Coroutines](coroutines.md)
+* [Lambda 表达式](lambdas.md) + [内联函数](inline-functions.md) = 高性能自定义控制结构
+* [扩展函数](extensions.md)
+* [空安全](null-safety.md)
+* [智能类型转换](typecasts.md)
+* [字符串模板](basic-types.md#字符串)
+* [属性](properties.md)
+* [主构造函数](classes.md)
+* [一等公民的委托](delegation.md)
+* [变量与属性类型的类型推断](basic-types.md)
+* [单例](object-declarations.md)
+* [声明处型变 & 类型投影](generics.md)
+* [区间表达式](ranges.md)
+* [操作符重载](operator-overloading.md)
+* [伴生对象](classes.md#伴生对象)
+* [数据类](data-classes.md)
+* [分离用于只读与可变集合的接口](collections-overview.md)
+* [协程](coroutines.md)
