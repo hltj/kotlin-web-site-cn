@@ -1,5 +1,7 @@
 [//]: # (title: Supported platforms)
 
+# Supported platforms
+
 Kotlin supports the following platforms and provides target presets for each platform. See how to [use a target preset](mpp-set-up-targets.md).
 
 <table>
@@ -22,7 +24,7 @@ Kotlin supports the following platforms and provides target presets for each pla
                 <li><code>browser {}</code> for applications running in the browser.</li>
                 <li><code>nodejs{}</code> for applications running on Node.js.</li>
             </ul>
-            <p>Learn more in <a href="js-project-setup.md#execution-environments">Setting up a Kotlin/JS project</a>.</p>
+            <p>Learn more in <a href="js-project-setup.html#choosing-execution-environment">Setting up a Kotlin/JS project</a>.</p>
         </td>
     </tr>
     <tr>
@@ -82,5 +84,4 @@ Kotlin supports the following platforms and provides target presets for each pla
 </table>
 
 > A target that is not supported by the current host is ignored during building and therefore not published.
->
-{type="note"}
+{:.note}
