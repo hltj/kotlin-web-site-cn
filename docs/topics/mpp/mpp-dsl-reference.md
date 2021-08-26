@@ -1,64 +1,34 @@
-[//]: # (title: Kotlin Multiplatform Gradle DSL Reference)
+[//]: # (title: Multiplatform Gradle DSL reference)
 
-# Kotlin Multiplatform Gradle DSL Reference
-
-> Multiplatform projects are in [Alpha](evolution/components-stability.md). Language features and tooling may change in future Kotlin versions.
-{:.note}
+> Multiplatform projects are in [Alpha](components-stability.md). Language features and tooling may change in future Kotlin versions.
+>
+{type="note"}
 
 The Kotlin Multiplatform Gradle plugin is a tool for creating [Kotlin multiplatform](multiplatform.md)
 projects. Here we provide a reference of its contents; use it as a reminder when writing Gradle build scripts
 for Kotlin multiplatform projects. Learn the [concepts of Kotlin multiplatform projects, how to create and configure them](mpp-intro.md).
 
-## Table of Contents
-
-* [Id and version](#id-and-version)
-* [Top-level blocks](#top-level-blocks)
-* [Targets](#targets)
- * [Common target configuration](#common-target-configuration)
- * [JVM targets](#jvm-targets)
- * [JavaScript targets](#javascript-targets)
- * [Native targets](#native-targets)
- * [Android targets](#android-targets)
-* [Source sets](#source-sets)
- * [Predefined source sets](#predefined-source-sets)
- * [Custom source sets](#custom-source-sets)
- * [Source set parameters](#source-set-parameters)
-* [Compilations](#compilations)
- * [Predefine compilations](#predefined-compilations)
- * [Custom compilations](#custom-compilations)
- * [Compilation parameters](#compilation-parameters)
-* [Dependencies](#dependencies)
-* [Language settings](#language-settings)
-
 ## Id and version
 
-The fully qualified name of the Kotlin Multiplatform Gradle plugin is `org.jetbrains.kotlin.multiplatform`.
+The fully qualified name of the Kotlin Multiplatform Gradle plugin is `org.jetbrains.kotlin.multiplatform`. 
 If you use the Kotlin Gradle DSL, you can apply the plugin with `kotlin(“multiplatform”)`.
-The plugin versions match the Kotlin release versions. The most recent version is {{ site.data.releases.latest.version }}.
+The plugin versions match the Kotlin release versions. The most recent version is %kotlinVersion%.
 
-
-
+<tabs>
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '{{ site.data.releases.latest.version }}'
+    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
 }
 ```
-
-
-
-
-
-
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "{{ site.data.releases.latest.version }}"
+    kotlin("multiplatform") version "%kotlinVersion%"
 }
 ```
 
-
-
+</tabs>
 
 ## Top-level blocks
 
@@ -74,16 +44,16 @@ Inside `kotlin`, you can write the following blocks:
 
 ## Targets
 
-_Target_ is a part of the build responsible for compiling, testing, and packaging a piece of software aimed for
-one of the [supported platforms](mpp-supported-platforms.md).
+_Target_ is a part of the build responsible for compiling, testing, and packaging a piece of software aimed for 
+one of the [supported platforms](mpp-supported-platforms.md). 
 
 Each target can have one or more [compilations](#compilations). In addition to default compilations for
 test and production purposes, you can [create custom compilations](mpp-configure-compilations.md#create-a-custom-compilation).
 
 The targets of a multiplatform project
-are described in the corresponding blocks inside `kotlin`, for example, `jvm`, `android`, `iosArm64`.
+ are described in the corresponding blocks inside `kotlin`, for example, `jvm`, `android`, `iosArm64`.
 The complete list of available targets is the following:
-
+ 
 |**Name**|**Description**| 
 | --- | --- |
 |`jvm`| Java Virtual Machine|
@@ -112,8 +82,6 @@ The complete list of available targets is the following:
 |`mingwX86`|32-bit Microsoft Windows|
 |`wasm32`|WebAssembly|
 
-
-
 ```groovy
 kotlin {
     jvm()
@@ -122,8 +90,6 @@ kotlin {
     js().browser()
 }
 ```
-
-
 
 Configuration of a target can include two parts:
 
@@ -157,8 +123,6 @@ don't follow the Java plugin's defaults. Instead, they are derived from the Kotl
 has the default name `jvm`, the paths are `src/jvmMain/java` (for production Java sources) and `src/jvmTest/java` for test Java sources.
 Learn how to [include Java sources in JVM compilations](mpp-configure-compilations.md#include-java-sources-in-jvm-compilations).
 
-
-
 ```kotlin
 kotlin {
     jvm {
@@ -166,8 +130,6 @@ kotlin {
     } 
 }
 ```
-
-
 
 ### JavaScript targets
 
@@ -192,8 +154,6 @@ Learn more about [configuring Kotlin/JS projects](js-project-setup.md).
 |`dceTask`|Configuration of [Dead Code Elimination](javascript-dce.md).|
 |`distribution`|Path to output files.|
 
-
-
 ```kotlin
 kotlin {
     js().browser {
@@ -209,8 +169,6 @@ kotlin {
 }
 ```
 
-
-
 #### Node.js
 
 `nodejs` can contain configurations of test and run tasks:
@@ -220,8 +178,6 @@ kotlin {
 |`testRuns`|Configuration of test execution.|
 |`runTask`|Configuration of project running.|
 
-
-
 ```kotlin
 kotlin {
     js().nodejs {
@@ -230,8 +186,6 @@ kotlin {
     }
 }
 ```
-
-
 
 ### Native targets
 
@@ -254,8 +208,6 @@ There are the following kinds of binaries:
 |`staticLib`|Static library.|
 |`framework`|Objective-C framework.|
 
-
-
 ```kotlin
 kotlin {
     linuxX64 { // Use your target instead.
@@ -267,8 +219,6 @@ kotlin {
     }
 }
 ```
-
-
 
 For binaries configuration, the following parameters are available:
 
@@ -283,8 +233,7 @@ For binaries configuration, the following parameters are available:
 |`runTask`|Access to the run task for executable binaries. For targets other than `linuxX64`, `macosX64`, or `mingwX64` the value is `null`.|
 |`isStatic`|For Objective-C frameworks. Includes a static library instead of a dynamic one.|
 
-
-
+<tabs>
 
 ```groovy
 binaries {
@@ -319,12 +268,6 @@ binaries {
 }
 ```
 
-
-
-
-
-
-
 ```kotlin
 binaries {
     executable("my_executable", listOf(RELEASE)) {
@@ -358,8 +301,7 @@ binaries {
 }
 ```
 
-
-
+</tabs>
 
 Learn more about [building native binaries](mpp-build-native-binaries.md).
 
@@ -377,8 +319,7 @@ To provide an interop with a library, add an entry to `cinterops` and define its
 
 Learn more how to [configure interop with native languages](mpp-configure-compilations.md#configure-interop-with-native-languages).
 
-
-
+<tabs>
 
 ```groovy
 kotlin {
@@ -410,12 +351,6 @@ kotlin {
 }
 ```
 
-
-
-
-
-
-
 ```kotlin
 kotlin {
     linuxX64 {  // Replace with a target you need.
@@ -445,8 +380,7 @@ kotlin {
 
 ```
 
-
-
+</tabs>
 
 ### Android targets
 
@@ -458,8 +392,6 @@ Two functions help you configure [build variants](https://developer.android.com/
 |`publishLibraryVariants()`|Specifies build variants to publish. Learn more about [publishing Android libraries](mpp-publish-lib.md#publish-an-android-library).|
 |`publishAllLibraryVariants()`|Publishes all build variants.|
 
-
-
 ```kotlin
 kotlin {
     android {
@@ -468,18 +400,17 @@ kotlin {
 }
 ```
 
-
-
 Learn more about [compilation for Android](mpp-configure-compilations.md#compilation-for-android).
 
 >The `android` configuration inside `kotlin` doesn’t replace the build configuration of any Android project.
 Learn more about writing build scripts for Android projects in [Android developer documentation](https://developer.android.com/studio/build).
-{:.note}
+>
+{type="note"}
 
 ## Source sets
 
 The `sourceSets` block describes source sets of the project. A source set contains Kotlin source files that participate
-in compilations together, along with their resources, dependencies, and language settings.
+in compilations together, along with their resources, dependencies, and language settings. 
 
 A multiplatform project contains [predefined](#predefined-source-sets) source sets for its targets;
 developers can also create [custom](#custom-source-sets) source sets for their needs.
@@ -497,8 +428,7 @@ Available predefined source sets are the following:
 
 With Kotlin Gradle DSL, the sections of predefined source sets should be marked `by getting`.
 
-
-
+<tabs>
 
 ```groovy
 kotlin { 
@@ -508,12 +438,6 @@ kotlin {
 }
 ``` 
 
-
-
-
-
-
-
 ```kotlin
 kotlin { 
     sourceSets { 
@@ -522,8 +446,7 @@ kotlin {
 }
 ```
 
-
-
+</tabs>
 
 Learn more about [source sets](mpp-discover-project.md#source-sets).
 
@@ -533,8 +456,7 @@ Custom source sets are created by the project developers manually.
 To create a custom source set, add a section with its name inside the `sourceSets` section.
 If using Kotlin Gradle DSL, mark custom source sets `by creating`.
 
-
-
+<tabs>
 
 ```groovy
 kotlin { 
@@ -544,12 +466,6 @@ kotlin {
 }
 ``` 
 
-
-
-
-
-
-
 ```kotlin
 kotlin { 
     sourceSets { 
@@ -558,8 +474,7 @@ kotlin {
 }
 ```
 
-
-
+</tabs>
 
 Note that a newly created source set isn’t connected to other ones. To use it in the project’s compilations,
 [connect it with other source sets](mpp-share-on-platforms.md#configure-the-hierarchical-structure-manually).
@@ -576,8 +491,7 @@ Configurations of source sets are stored inside the corresponding blocks of `sou
 |`dependencies`|[Dependencies](#dependencies) of the source set.|
 |`languageSettings`|[Language settings](mpp-dsl-reference.md#language-settings) applied to the source set.|
 
-
-
+<tabs>
 
 ```groovy
 kotlin { 
@@ -594,12 +508,6 @@ kotlin {
 }
 ``` 
 
-
-
-
-
-
-
 ```kotlin
 kotlin { 
     sourceSets { 
@@ -615,8 +523,7 @@ kotlin {
 }
 ```
 
-
-
+</tabs>
 
 ## Compilations
 
@@ -638,8 +545,7 @@ Available predefined compilations are the following:
 |`main`|Compilation for production sources.|
 |`test`|Compilation for tests.|
 
-
-
+<tabs>
 
 ```groovy
 kotlin {
@@ -649,12 +555,6 @@ kotlin {
     }
 }
 ```
-
-
-
-
-
-
 
 ```kotlin
 kotlin {
@@ -668,8 +568,7 @@ kotlin {
 }
 ```
 
-
-
+</tabs>
 
 ### Custom compilations
 
@@ -679,8 +578,7 @@ If using Kotlin Gradle DSL, mark custom compilations `by creating`.
 
 Learn more about creating a [custom compilation](mpp-configure-compilations.md#create-a-custom-compilation).
 
-
-
+<tabs>
 
 ```groovy
 kotlin {
@@ -700,12 +598,6 @@ kotlin {
     }
 }
 ```
-
-
-
-
-
-
 
 ```kotlin
 kotlin {
@@ -728,8 +620,7 @@ kotlin {
 }
 ```
 
-
-
+</tabs>
 
 ### Compilation parameters
 
@@ -740,7 +631,7 @@ A compilation has the following parameters:
 |`defaultSourceSet`|The compilation’s default source set.|
 |`kotlinSourceSets`|Source sets participating in the compilation.|
 |`allKotlinSourceSets`|Source sets participating in the compilation and their connections via `dependsOn()`.|
-|`kotlinOptions`|Compiler options applied to the compilation. For the list of available options, see [Compiler options](using-gradle.md#compiler-options).|
+|`kotlinOptions`|Compiler options applied to the compilation. For the list of available options, see [Compiler options](gradle.md#compiler-options).|
 |`compileKotlinTask`|Gradle task for compiling Kotlin sources.|
 |`compileKotlinTaskName`|Name of `compileKotlinTask`.|
 |`compileAllTaskName`|Name of the Gradle task for compiling all sources of a compilation.|
@@ -748,8 +639,7 @@ A compilation has the following parameters:
 |`compileDependencyFiles`|Compile-time dependency files (classpath) of the compilation.|
 |`runtimeDependencyFiles`|Runtime dependency files (classpath) of the compilation.|
 
-
-
+<tabs>
 
 ```groovy
 kotlin {
@@ -774,12 +664,6 @@ kotlin {
     }
 }
 ```
-
-
-
-
-
-
 
 ```kotlin
 kotlin {
@@ -808,14 +692,13 @@ kotlin {
 }
 ```
 
-
-
+</tabs>
 
 ## Dependencies
 
 The `dependencies` block of the source set declaration contains the dependencies of this source set.
 
-Learn more about [configuring dependencies](using-gradle.md#configuring-dependencies).
+Learn more about [configuring dependencies](gradle.md#configuring-dependencies).
 
 There are four types of dependencies:
 
@@ -826,8 +709,7 @@ There are four types of dependencies:
 |`compileOnly`|Dependencies used only for compilation of the current module.|
 |`runtimeOnly`|Dependencies available at runtime but not visible during compilation of any module.|
 
-
-
+<tabs>
 
 ```groovy
 kotlin {
@@ -846,12 +728,6 @@ kotlin {
 }
 ```
 
-
-
-
-
-
-
 ```groovy
 kotlin {
     sourceSets {
@@ -869,16 +745,14 @@ kotlin {
 }
 ```
 
-
-
+</tabs>
 
 Additionally, source sets can depend on each other and form a hierarchy. In this case, the [dependsOn()](#source-set-parameters) relation is used.
 
 Source set dependencies can also be declared in the top-level `dependencies` block of the build script.
 In this case, their declarations follow the pattern `<sourceSetName><DependencyKind>`, for example, `commonMainApi`.
 
-
-
+<tabs>
 
 ```groovy
 dependencies {
@@ -887,12 +761,6 @@ dependencies {
 }
 ```
 
-
-
-
-
-
-
 ```kotlin
 dependencies {
     "commonMainApi"("com.example:foo-common:1.0")
@@ -900,8 +768,7 @@ dependencies {
 }
 ```
 
-
-
+</tabs>
 
 ## Language settings
 
@@ -915,8 +782,7 @@ The `languageSettings` block of a source set defines certain aspects of project 
 |`useExperimentalAnnotation`|Allows using the specified [opt-in annotation](opt-in-requirements.md).|
 |`progressiveMode`|Enables the [progressive mode](whatsnew13.md#progressive-mode).|
 
-
-
+<tabs>
 
 ```groovy
 kotlin {
@@ -932,12 +798,6 @@ kotlin {
 }
 ```
 
-
-
-
-
-
-
 ```kotlin
 kotlin {
     sourceSets.all {
@@ -952,5 +812,4 @@ kotlin {
 }
 ```
 
-
-
+</tabs>
