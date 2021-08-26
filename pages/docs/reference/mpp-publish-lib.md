@@ -10,7 +10,7 @@ You can publish a multiplatform library to a Maven repository with the [`maven-p
 Specify the group, version, and the [repositories](https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:repositories) 
 where the library should be published. The plugin creates publications automatically.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 plugins {
@@ -30,7 +30,7 @@ publishing {
 }
 ```
 
-</div>
+
 
 You can also use [`gradle-bintray-plugin`](https://github.com/bintray/gradle-bintray-plugin) for publishing multiplatform libraries. 
 However, this plugin does not support publishing Gradle module metadata required for [hierarchical structure support](mpp-share-on-platforms.html#share-code-on-similar-platforms).
@@ -68,8 +68,8 @@ platform. Alternatively, you can pass the flag from an external source, for exam
 This simplified example ensures that publications are only uploaded when `isMainHost=true` is passed. This means that 
 a publication that can be published from multiple platforms will be published only once – from the main host.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -91,11 +91,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 kotlin {
@@ -118,8 +118,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
  
 By default, each publication includes a sources JAR that contains the sources used by the main compilation of the target. 
 
@@ -130,7 +130,7 @@ To publish an Android library, you need to provide additional configuration.
 By default, no artifacts of an Android library are published. To publish artifacts produced by a set of [Android variants](https://developer.android.com/studio/build/build-variants), 
 specify the variant names in the Android target block:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 kotlin {
@@ -141,7 +141,7 @@ kotlin {
 
 ```
 
-</div>
+
 
 The example works for Android libraries without [product flavors](https://developer.android.com/studio/build/build-variants#product-flavors). 
 For a library with product flavors, the variant names also contain the flavors, like `fooBarDebug` or `fooBazRelease`.
@@ -150,8 +150,8 @@ For a library with product flavors, the variant names also contain the flavors, 
 > For example, if a library does not have or does not publish a staging build type, the library consumer must provide a fallback for the 
 > consumers who have such a build type, specifying at least one of the build types that the library publishes:
 > 
-> <div class="multi-language-sample" data-lang="groovy">
-> <div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> > Groovy DSL
+> 
 > 
 > ```groovy
 > android {
@@ -164,11 +164,11 @@ For a library with product flavors, the variant names also contain the flavors, 
 > }
 > ```
 > 
-> </div>
-> </div>
 > 
-> <div class="multi-language-sample" data-lang="kotlin">
-> <div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+> 
+> 
+> > Kotlin DSL
+> 
 > 
 > ```kotlin
 > android {
@@ -181,8 +181,8 @@ For a library with product flavors, the variant names also contain the flavors, 
 > }
 > ```
 > 
-> </div>
-> </div>
+> 
+> 
 {:.note}
 
 Similarly, a library consumer needs to provide matching fallbacks for custom product flavors if some are missing in the 
@@ -192,7 +192,7 @@ You can also publish variants grouped by the product flavor, so that the outputs
 in a single module, with the build type becoming a classifier for the artifacts (the release build type is still published 
 with no classifier). This mode is disabled by default and can be enabled as follows:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 kotlin {
@@ -202,7 +202,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 > It is not recommended that you publish variants grouped by the product flavor in case they have different dependencies, 
 > as those will be merged into one dependencies list.

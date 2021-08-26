@@ -22,7 +22,7 @@ For testing shared code, you can use [actual declarations](mpp-connect-to-apis.h
 
 For example, to test the shared code in `commonMain`:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 expect object Platform {
@@ -36,11 +36,11 @@ class Proxy {
 }
 ```
 
-</div>
+
 
 You can use the following test in `commonTest`:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 import kotlin.test.Test
@@ -54,11 +54,11 @@ class SampleTests {
 }
 ```
 
-</div>
+
 
 And the following test in `iosTest`:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 import kotlin.test.Test
@@ -73,6 +73,6 @@ class SampleTestsIOS {
 
 ```
 
-</div>
+
 
 You can also learn how to create and run multiplatform tests in [this tutorial](../tutorials/mpp/multiplatform-library.html#testing).

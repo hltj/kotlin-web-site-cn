@@ -9,8 +9,8 @@ title: "添加依赖项"
 To add a dependency on a library, set the dependency of the required [type](using-gradle.html#dependency-types) (for example, `implementation`) in the 
 `dependencies` block of the source sets DSL.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -24,11 +24,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
- 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+
+> Kotlin DSL
+
 
 ```kotlin
 kotlin {
@@ -42,8 +42,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 Alternatively, you can [set dependencies at the top level](using-gradle.html#set-dependencies-at-the-top-level).
 
@@ -71,8 +71,8 @@ If you use a kotlinx library and need a platform-specific dependency, you can us
 of libraries with suffixes such as `-jvm` or `-js`, for example, `kotlinx-coroutines-core-jvm`. You can also use the library 
 base artifact name instead – `kotlinx-coroutines-core`.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -86,11 +86,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
- 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+
+> Kotlin DSL
+
 
 ```kotlin
 kotlin {
@@ -105,14 +105,14 @@ kotlin {
 
 ```
 
-</div>
-</div>
+
+
 
 If you use a multiplatform library and need to depend on the shared code, set the dependency only once in the shared 
 source set. Use the library base artifact name, such as `kotlinx-coroutines-core` or `ktor-client-core`. 
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -126,11 +126,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
- 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+
+> Kotlin DSL
+
 
 ```kotlin
 kotlin {
@@ -145,5 +145,5 @@ kotlin {
 
 ```
 
-</div>
-</div>
+
+

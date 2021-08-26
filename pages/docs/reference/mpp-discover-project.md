@@ -23,8 +23,8 @@ title: "了解项目"
 > `kotlin-multiplatform` 插件适用于 Gradle 6.0 或更高版本。
 {:.note}
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy">
+> Groovy DSL
+
 
 ```groovy
 plugins {
@@ -32,11 +32,11 @@ plugins {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 plugins {
@@ -44,8 +44,8 @@ plugins {
 }
 ```
 
-</div>
-</div>
+
+
 
 `kotlin-multiplatform` 插件可配置项目以创建可在多个平台上工作的应用程序或库，
 并为在这些平台上构建做好准备。
@@ -62,7 +62,7 @@ plugins {
 
 创建多平台项目时，会将目标添加到 `build.gradle`(`build.gradle.kts`) 文件中的 `kotlin` 块中。
 
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
 
 ```kotlin
 kotlin {
@@ -73,7 +73,7 @@ kotlin {
  }
 ```
 
-</div>
+
 
 了解如何[手动设置目标](mpp-set-up-targets.html)。
 
@@ -93,8 +93,8 @@ kotlin {
 
 源集被添加到顶层 `kotlin` 块的 `sourceSets` 块中。
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy">
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -109,11 +109,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 
 ```kotlin
@@ -129,8 +129,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 源集形成一个层次结构，用于共享公共代码。
 在多个目标之间共享的源集中，可以使用所有这些目标可用的特定于平台的语言特性与依赖。

@@ -11,7 +11,7 @@ later, you can do this manually using target presets for [supported platforms](m
 
 Learn more about [additional settings for targets](mpp-dsl-reference.html#common-target-configuration).
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 kotlin {
@@ -23,7 +23,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 Each target can have one or more [compilations](mpp-configure-compilations.html). In addition to default compilations for
 test and production purposes, you can [create custom compilations](mpp-configure-compilations.html#create-a-custom-compilation).
@@ -40,8 +40,8 @@ during dependency resolution.
 For example, consider a testing library that supports both JUnit and TestNG in the two targets. The library author needs 
 to add an attribute to both targets as follows:
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 def testFrameworkAttribute = Attribute.of('com.example.testFramework', String)
@@ -56,11 +56,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 val testFrameworkAttribute = Attribute.of("com.example.testFramework", String::class.java)
@@ -75,7 +75,7 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 The consumer has to add the attribute to a single target where the ambiguity arises.

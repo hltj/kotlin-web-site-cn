@@ -46,13 +46,13 @@ In this case, you can share code across native targets in your project using the
 
 To enable the hierarchy structure support, add the following flag to your `gradle.properties`.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 kotlin.mpp.enableGranularSourceSetsMetadata=true
 ```
 
-</div>
+
 
 There are two ways you can create the hierarchical structure:
 
@@ -78,8 +78,8 @@ The `kotlin-multiplatform` plugin provides target shortcuts for creating structu
 
 All shortcuts create similar hierarchical structures in the code. For example, the `ios` shortcut creates the following hierarchical structure:
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -93,11 +93,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 kotlin {
@@ -114,8 +114,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
  
 ### 手动配置层次结构
 
@@ -130,8 +130,8 @@ For example, if you want to share code among native Linux, Windows, and macOS ta
 1. Add the intermediate source set `desktopMain` that holds the shared logic for these targets.
 2. Specify the hierarchy of source sets using the `dependsOn` relation.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -153,11 +153,11 @@ kotlin {
 
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 kotlin{
@@ -178,8 +178,8 @@ kotlin{
 }
 ```
 
-</div>
-</div>
+
+
 
 You can have a shared source set for the following combinations of targets:
 
@@ -233,13 +233,13 @@ for native source sets shared at higher levels of the source set hierarchy.
 
 To enable usage of platform-dependent libraries in shared source sets, add the following to your `gradle.properties`:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 kotlin.mpp.enableGranularSourceSetsMetadata=true
 kotlin.native.enableDependencyPropagation=false
 ```
 
-</div>
+
 
 Learn more about the [technical details](https://github.com/JetBrains/kotlin/blob/1.4.0/native/commonizer/README.md).

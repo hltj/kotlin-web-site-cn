@@ -30,7 +30,7 @@ available for all or specific targets.
 
 ## 配置所有编译项
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 kotlin {
@@ -44,12 +44,12 @@ kotlin {
 }
 ```
 
-</div>
+
 
 ## 为一个目标配置编译项
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -62,11 +62,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
- 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+
+> Kotlin DSL
+
 
 ```kotlin
 kotlin {
@@ -79,13 +79,13 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
  
 ## 配置一个编译项
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -97,11 +97,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 kotlin {
@@ -115,8 +115,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 ## 创建自定义编译项
 
@@ -130,8 +130,8 @@ collection.
 > does not depend on the `commonMain` and the `commonTest` source sets.
 {:.note}
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -161,11 +161,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 kotlin {
@@ -198,8 +198,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 You also need to create a custom compilation in other cases, for example, if you want to combine compilations for different 
 JVM versions in your final artifact, or you have already set up source sets in Gradle and want to migrate to a multiplatform project.
@@ -216,7 +216,7 @@ To include Java sources in the compilations of the JVM target, explicitly enable
     
 * In the build script of an existing project.
 
-  <div class="sample" markdown="1" theme="idea" data-highlight-only>
+  
   
   ```kotlin
   kotlin {
@@ -226,7 +226,7 @@ To include Java sources in the compilations of the JVM target, explicitly enable
   }
   ```
   
-  </div>  
+  
   
   This applies the Gradle `java` plugin and configures the target to cooperate with it.
 
@@ -258,8 +258,8 @@ compilation.
 A compilation can interact with several native libraries. Configure interoperability in the `cinterops` block of the 
 compilation with [available parameters](mpp-dsl-reference.html#cinterops).
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -295,11 +295,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 kotlin {
@@ -336,8 +336,8 @@ kotlin {
 
 ```
 
-</div>
-</div>
+
+
 
 ## Android 编译项 
  
@@ -356,7 +356,7 @@ Annotation processing with [`kapt`](kapt.html) is also supported, but due to cur
 is created before the `kapt` dependencies are configured, which needs to be done in a top-level `dependencies` block rather 
 than within Kotlin source set dependencies.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 kotlin {
@@ -368,7 +368,7 @@ dependencies {
 }
 ```
 
-</div>
+
 
 ## 源集层次结构的编译项
 

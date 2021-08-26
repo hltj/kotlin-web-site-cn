@@ -19,16 +19,16 @@ functions, classes, interfaces, enumerations, properties, and annotations.
 
 ![Expect and actual declarations]({{ url_for('asset', path='images/reference/mpp/expect-actual.png') }})
  
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 //Common
 expect fun randomUUID(): String
 ```
 
-</div>
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+
 
 ```kotlin
 //Android
@@ -36,9 +36,9 @@ import java.util.*
 actual fun randomUUID() = UUID.randomUUID().toString()
 ```
 
-</div>
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+
 
 ```kotlin
 //iOS
@@ -46,39 +46,39 @@ import platform.Foundation.NSUUID
 actual fun randomUUID(): String = NSUUID().UUIDString()
 ```
 
-</div>
+
 
 Here's another example of code sharing and interaction between the common and platform logic in a minimalistic 
 logging framework. 
 
-<div style="display:flex">
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+
 
 ```kotlin
 //Common
-enum class LogLevel {
+enum class LogLevel {                                                      // compiled for all platforms
     DEBUG, WARN, ERROR
 }
 
-internal expect fun writeLogMessage(message: String, logLevel: LogLevel)
+internal expect fun writeLogMessage(message: String, logLevel: LogLevel)   // expected platform-specific API
 
-fun logDebug(message: String) = writeLogMessage(message, LogLevel.DEBUG)
+fun logDebug(message: String) = writeLogMessage(message, LogLevel.DEBUG)   // expected API can be used in the common code
 fun logWarn(message: String) = writeLogMessage(message, LogLevel.WARN)
 fun logError(message: String) = writeLogMessage(message, LogLevel.ERROR)
 ```
 
-</div>
-<div style="margin-left: 5px;white-space: pre-line; line-height: 18px; font-family: Tahoma;">
-    <div style="display:flex">├<i style="margin-left:5px">compiled for all platforms</i></div>
-    <div style="display:flex">├<i style="margin-left:5px">expected platform-specific API</i></div>
-    <div style="display:flex">├<i style="margin-left:5px">expected API can be used in the common code</i></div>
-</div>
-</div>
+
+
+
+
+
+
+
 
 It expects the targets to provide platform-specific implementations for `writeLogMessage`, and the common code can 
 now use this declaration without any consideration of how it is implemented.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 //JVM
@@ -87,11 +87,11 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 }
 ```
 
-</div>
+
 
 For JavaScript, a completely different set of APIs is available, and the `actual` declaration will look like this.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 //JS
@@ -104,7 +104,7 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 }
 ```
 
-</div>
+
 
 The main rules regarding expected and actual declarations are:
 * An expected declaration is marked with the `expect` keyword; the actual declaration is marked with the `actual` keyword.
@@ -118,7 +118,7 @@ The IDE provides tools that help you create the missing actual declarations.
 If you have a platform-specific library that you want to use in shared code while providing your own implementation for 
 another platform, you can provide a `typealias` to an existing class as the actual declaration:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 expect class AtomicRef<V>(value: V) {
@@ -129,15 +129,15 @@ expect class AtomicRef<V>(value: V) {
 }
 ```
 
-</div>
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+
 
 ```kotlin
 actual typealias AtomicRef<V> = java.util.concurrent.atomic.AtomicReference<V>
 ```
 
-</div>
+
 
 > We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific 
 > dependencies. It is better to implement as much functionality as possible in the shared module even if doing so takes 

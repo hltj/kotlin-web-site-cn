@@ -37,7 +37,7 @@ Currently there are two build types available:
 
 The following snippet creates two executable binaries: debug and release.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 kotlin {
@@ -51,11 +51,11 @@ kotlin {
 }
 ```
 
-</div>
+
 
 You can drop the lambda if there is no need for [additional configuration](mpp-dsl-reference.html#native-targets):
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 binaries {
@@ -64,12 +64,12 @@ binaries {
 
 ```
 
-</div> 
+
 
 You can specify for which build types to create binaries. In the following example, only the `debug` executable is created.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 binaries {
@@ -79,11 +79,11 @@ binaries {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 binaries {
@@ -93,13 +93,13 @@ binaries {
 }
 ```
 
-</div>
-</div>
+
+
  
 You can also declare binaries with custom names.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 binaries {
@@ -114,11 +114,11 @@ binaries {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 binaries {
@@ -133,8 +133,8 @@ binaries {
 }
 ```
 
-</div>
-</div>
+
+
 
 The first argument sets a name prefix, which is the default name for the binary file. For example, for Windows the code 
 produces the files `foo.exe` and `bar.exe`. You can also use the name prefix to [access the binary in the build script](#access-binaries).
@@ -150,8 +150,8 @@ binary kind following the pattern: `<optional-name-prefix><build-type><binary-ki
 > Static and shared libraries have the suffixes static and shared respectively, for example, `fooDebugStatic` or `barReleaseShared`. 
 {:.note}
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 // Fails if there is no such binary.
@@ -163,11 +163,11 @@ binaries.getByName('fooDebugExecutable')
 binaries.findByName('fooDebugExecutable')
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 // Fails if there is no such binary.
@@ -179,13 +179,13 @@ binaries.findByName("fooDebugExecutable")
 
 ```
 
-</div>
-</div> 
+
+
 
 Alternatively, you can access a binary by its name prefix and build type using typed getters.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 // Fails if there is no such binary.
@@ -204,11 +204,11 @@ binaries.findExecutable('foo', DEBUG)
 
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 // Fails if there is no such binary.
@@ -226,8 +226,8 @@ binaries.findExecutable("foo", DEBUG)
 // findFramework, findStaticLib and findSharedLib.
 ```
 
-</div>
-</div>
+
+
 
 ## 将依赖项导出到二进制文件
 
@@ -235,8 +235,8 @@ When building an Objective-C framework or a native library (shared or static), y
 of the current project, but also the classes of its dependencies. Specify which dependencies to export to a binary using 
 the `export` method.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 kotlin {
@@ -262,11 +262,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 kotlin {
@@ -293,8 +293,8 @@ kotlin {
 
 ```
 
-</div>
-</div> 
+
+
 
 > You can export only [`api` dependencies](using-gradle.html#dependency-types) of the corresponding source set.  
 > You can export maven dependencies, but due to current limitations of Gradle metadata, such a dependency should be 
@@ -308,8 +308,8 @@ only methods of `foo` are added to the output framework.
 You can change this behavior using the `transitiveExport` flag. If set to `true`, the declarations of the library `bar` 
 are exported as well. 
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+> Groovy DSL
+
 
 ```groovy
 binaries {
@@ -321,11 +321,11 @@ binaries {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 binaries {
@@ -337,8 +337,8 @@ binaries {
 }
 ```
 
-</div>
-</div>
+
+
 
 For example, assume that you write several modules in Kotlin and then want to access them from Swift. Since usage of 
 several Kotlin/Native frameworks in one Swift application is limited, you can create a single umbrella framework and 
@@ -353,9 +353,9 @@ framework on both 32-bit and 64-bit devices.
  
 > The fat framework must have the same base name as the initial frameworks.
 {:.note}
- 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+
+> Groovy DSL
+
 
 ```groovy
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
@@ -387,10 +387,10 @@ kotlin {
 
 ```
 
-</div>
-</div>
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
+
 
 ```kotlin
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
@@ -420,5 +420,5 @@ kotlin {
 
 ```
 
-</div>
-</div>
+
+

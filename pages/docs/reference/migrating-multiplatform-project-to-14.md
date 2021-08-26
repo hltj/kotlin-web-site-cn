@@ -24,7 +24,7 @@ Starting from 1.4.0, you also no longer need to declare a dependency on `stdlib`
 
 With these features, you can make your Gradle build file much more concise and easy to read:
 
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
 
 ```kotlin
 ...
@@ -43,7 +43,7 @@ sourceSets {
 ...
 ```
 
-</div>
+
 
 Don’t use kotlinx library artifact names with suffixes `-common`  or `-native`, as they are no longer supported. Instead, use the library root artifact name, which in the example above is `kotlinx-coroutines-core`. 
 
@@ -52,7 +52,7 @@ Don’t use kotlinx library artifact names with suffixes `-common`  or `-native`
 With [the new hierarchical project structure support](mpp-share-on-platforms.html#share-code-on-similar-platforms), you can share code among several targets in a multiplatform project. You can use platform-dependent libraries, such as `Foundation`, `UIKit`, and `posix` in source sets shared among several native targets. This can help you share more native code without being limited by platform-specific dependencies.  
 By enabling the hierarchical structure along with its ability to use platform-dependent libraries in shared source sets, you can eliminate the need to use certain workarounds to get IDE support for sharing source sets among several native targets, for example `iosArm64` and `iosX64`:
 
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only> 
+ 
 
 ```kotlin
 kotlin {
@@ -67,39 +67,39 @@ kotlin {
 }
 ```
 
-</div>
 
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
+
 
 ```bash
 # workaround 2: make symbolic links to use one source set for two targets
 ln -s iosMain iosArm64Main && ln -s iosMain iosX64Main
 ```
 
-</div>
+
 
 Instead of doing this, you can create a hierarchical structure with [target shortcuts](mpp-share-on-platforms.html#use-target-shortcuts) available for typical multi-target scenarios, or you can manually declare and connect the source sets. For example, you can create two iOS targets and a shared source set with the `ios()` shortcut:
 
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
 
 ```kotlin
 kotlin {
    ios() // iOS device and simulator targets; iosMain and iosTest source sets
 }
 ```
-</div>
+
 
 To enable the hierarchical project structure along with the use of platform-dependent libraries in shared source sets, just add the following to your `gradle.properties`:
 
-<div class="sample" markdown="1" theme="idea" mode='xml'>
+
 
 ```
 kotlin.mpp.enableGranularSourceSetsMetadata=true
 kotlin.native.enableDependencyPropagation=false
 ```
 
-</div>
+
 
 In future versions, the hierarchical project structure will become default for Kotlin multiplatform project, so we strongly encourage you to start using it now. 
 
@@ -130,13 +130,13 @@ A hierarchical project structure allows reusing code in similar targets, as well
 
 To enable hierarchical project structure support, add the following to your `gradle.properties`:
 
-<div class="sample" markdown="1" theme="idea" mode='xml'>
+
 
 ```
 kotlin.mpp.enableGranularSourceSetsMetadata=true
 ```
 
-</div>
+
 
 ## 对于构建作者
 
@@ -165,7 +165,7 @@ Kotlin 1.4.0 introduces the Alpha IR compiler for Kotlin/JS. For more detailed i
 To choose between the different Kotlin/JS compiler options, set the key `kotlin.js.compiler` in your `gradle.properties` to `legacy`, `ir`, or `both`. Alternatively, pass `LEGACY`, `IR`, or `BOTH` to the `js` function in your `build.gradle(.kts)`.
 
 <!--suppress ALL -->
-<div class="sample" markdown="1" mode="groovy" theme="idea">
+
 
 ```groovy
 kotlin {
@@ -176,7 +176,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 #### `both` 模式的变更
 Choosing `both` as the compiler option (so that it will compile with both the legacy and the IR backend) means that some Gradle tasks are renamed to explicitly mark them as only affecting the legacy compilation. `compileKotlinJs` is renamed to `compileKotlinJsLegacy`, and `compileTestKotlinJs` is renamed to `compileTestKotlinJsLegacy`.
