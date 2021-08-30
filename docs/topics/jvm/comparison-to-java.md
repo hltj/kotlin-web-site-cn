@@ -1,7 +1,5 @@
 [//]: # (title: 与 Java 比较)
 
-# 与 Java 语言比较
-
 ## Kotlin 解决了一些 Java 中的问题
 
 Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题：
@@ -16,10 +14,14 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 ## Java 有而 Kotlin 没有的东西
 
 * [受检异常](exceptions.md)
-* 不是类的[原生类型](basic-types.md) —— 字节码会尽可能试用原生类型，但不是显式可用的。
-* [静态成员](classes.md) —— 以 [伴生对象](object-declarations.md#伴生对象)、 [顶层函数](functions.md)、 [扩展函数](extensions.md#extension-functions) 或者 [@JvmStatic](java-to-kotlin-interop.md#static-methods) 取代。
-* [通配符类型](generics.md) —— 以 [声明处型变](generics.md#declaration-site-variance) 与 [类型投影](generics.md#类型投影) 取代。
+* 不是类的[原生类型](basic-types.md)。字节码会尽可能试用原生类型，但不是<!--
+  -->显式可用的。
+* [静态成员](classes.md) 以 [伴生对象](object-declarations.md#伴生对象)、
+  [顶层函数](functions.md)、 [扩展函数](extensions.md#extension-functions) 或者 [@JvmStatic](java-to-kotlin-interop.md#static-methods) 取代。
+* [通配符类型](generics.md) 以 [声明处型变](generics.md#declaration-site-variance) 与
+  [类型投影](generics.md#类型投影) 取代。
 * [三目操作符 `a ? b : c`](control-flow.md#if-表达式) —— 以 [if 表达式](control-flow.md#if-表达式)取代。
+
 
 ## Kotlin 有而 Java 没有的东西
 
@@ -39,4 +41,4 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 * [伴生对象](classes.md#伴生对象)
 * [数据类](data-classes.md)
 * [分离用于只读与可变集合的接口](collections-overview.md)
-* [协程](coroutines.md)
+* [协程](coroutines-overview.md)
