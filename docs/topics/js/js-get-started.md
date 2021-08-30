@@ -1,4 +1,4 @@
-[//]: # (title: Get started with Kotlin/JS for React)
+[//]: # (title: 以 Kotlin/JS for React 入门)
 
 To get started, install the latest version of [IntelliJ IDEA](http://www.jetbrains.com/idea/download/index.html).
 
