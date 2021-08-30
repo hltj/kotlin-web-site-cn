@@ -1,8 +1,7 @@
-[//]: # (title: Run tests in Kotlin/JS)
+[//]: # (title: Running tests)
 
-The Kotlin/JS Gradle plugin lets you run tests through a variety of test runners that can be specified via the Gradle
-configuration. In order to make test annotations and functionality available for the JavaScript target, add the correct
-platform artifact for [`kotlin.test`](https://kotlinlang.org/api/latest/kotlin.test/index.html) in `build.gradle.kts`:
+The Kotlin/JS Gradle plugin allows us to run tests through a variety of test runners that can be specified via the Gradle configuration. In order to make test annotations and functionality available for the JavaScript target, let's add the correct platform artifact for [`kotlin.test`](https://kotlinlang.org/api/latest/kotlin.test/index.html) in our `build.gradle.kts`:
+
 
 ```kotlin
 dependencies {
@@ -11,9 +10,9 @@ dependencies {
 }
 ```
 
-You can tune how tests are executed in Kotlin/JS by adjusting the settings available in the `testTask` block in the Gradle
-build script. For example, using the Karma test runner together with a headless instance of Chrome and an instance of
-Firefox looks like this:
+
+We can tune how tests are executed in Kotlin/JS by adjusting the settings available in the `testTask` block in our `build.gradle.kts`. For example, using the Karma test runner together with a headless instance of Chrome and an instance of Firefox looks like this:
+
 
 ```kotlin
 target {
@@ -28,12 +27,12 @@ target {
 }
 ```
 
-For a detailed description of the available functionality, check out the Kotlin/JS reference on [configuring the test task](js-project-setup.md#test-task). 
+For a detailed description of the available functionality, check out the Kotlin/JS reference on [configuring the test task](/docs/reference/js-project-setup.md#configuring-test-task).
 
-Please note that by default, no browsers are bundled with the plugin. This means that you'll have to ensure they're
-available on the target system.
+Please note that by default, no browsers are bundled with the plugin. This means that you'll have to ensure they're available on the target system.
 
-To check that tests are executed properly, add a file `src/test/kotlin/AppTest.kt` and fill it with this content:
+To check that tests are executed properly, we can add a file `src/test/kotlin/AppTest.kt` and fill it with this content:
+
 
 ```kotlin
 import kotlin.test.Test
@@ -52,29 +51,24 @@ class AppTest {
 }
 ```
 
-To run the tests in the browser, execute the `browserTest` task via IntelliJ IDEA, or use the gutter icons to execute all
-or individual tests:
 
-![Gradle browserTest task](browsertest-task.png)
+To run the tests in the browser, we can execute the `browserTest` task via IntelliJ IDEA, or use the gutter icons to execute all or individual tests:
 
-Alternatively, if you want to run the tests via the command line, use the Gradle wrapper:
+![Gradle browserTest task]({{ url_for('tutorial_img', filename='javascript/running-tests/browsertest-task.png')}})
 
-```bash
-./gradlew browserTest
-```
+Alternatively, if we would like to run the tests via the command line, we can make use of the Gradle wrapper:
 
-After running the tests from IntelliJ IDEA, the **Run** tool window will show the test results. You can click failed tests
-to see their stack trace, and navigate to the corresponding test implementation via a double-click.
+```./gradlew browserTest```
 
-![Test results in IntelliJ IDEA](test-stacktrace-ide.png)
+After running the tests from IntelliJ IDEA, the "Run" tool window will show the test results. We can click failed tests to see their stack trace, and navigate to the corresponding test implementation via a double-click.
 
-After each test run, regardless of how you executed the test, you can find a properly formatted test report from Gradle
-in `build/reports/tests/browserTest/index.html`. Open this file in a browser to see another overview of the test results:
+![Test results in IntelliJ IDEA]({{ url_for('tutorial_img', filename='javascript/running-tests/test-stacktrace-ide.png')}})
 
-![Gradle test summary](test-summary.png)
+After each test run, regardless of how we executed the test, we can find a properly formatted test report from Gradle in `build/reports/tests/browserTest/index.html`. We can open this file in the browser of our choice to see another overview of our test results:
 
-If you are using the set of example tests shown in the snippet above, one test passes, and one test breaks, which gives 
-the resulting total of 50% successful tests. To get more information about individual test cases, you can navigate via
-the provided hyperlinks:
+![Gradle test summary]({{ url_for('tutorial_img', filename='javascript/running-tests/test-summary.png')}})
 
-![Stacktrace of failed test in the Gradle summary](failed-test.png)
+If we are using the set of example tests shown in the snippet above, one test passes, and one test breaks, which gives us the resulting total of 50% successful tests. To get more information about individual test cases, we can navigate via the provided hyperlinks:
+
+![Stacktrace of failed test in the Gradle summary]({{ url_for('tutorial_img', filename='javascript/running-tests/failed-test.png')}})
+
