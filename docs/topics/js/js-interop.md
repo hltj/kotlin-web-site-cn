@@ -1,17 +1,17 @@
-[//]: # (title: Calling JavaScript from Kotlin)
+[//]: # (title: Kotlin 中调用 JavaScript)
 
-# Calling JavaScript from Kotlin
+# Kotlin 中调用 JavaScript
 
-Kotlin was first designed for easy interoperation with the Java platform: it sees Java classes as Kotlin classes, and Java sees Kotlin classes as Java classes.
+Kotlin 最初被设计为能够与 Java 平台轻松互操作。它将 Java 类视为 Kotlin 类，并且 Java 也将 Kotlin 类视为 Java 类。
 
-However, JavaScript is a dynamically typed language, which means it does not check types at compile time. You can freely talk to JavaScript from Kotlin via  [dynamic](dynamic-type.md) types. If you want to use the full power of the Kotlin type system, you can create external declarations for JavaScript libraries which will be understood by the Kotlin compiler and the surrounding tooling.
+但是，JavaScript 是一种动态类型语言，这意味着它不会在编译期检测类型。可以通过[动态](dynamic-type.md)类型在 Kotlin 中自由地与 JavaScript 交流。如果想要使用 Kotlin 类型系统的全部威力，可以为 JavaScript 库创建 Kotlin 编译器与周边工具可理解的外部声明。
 
-An experimental tool to automatically create Kotlin external declarations for npm dependencies which provide type definitions (TypeScript / `d.ts`) called [Dukat](js-external-declarations-with-dukat.md) is also available.
+还提供了一种实验工具，可为 npm 依赖自动创建 Kotlin 外部声明，该声明提供称为 [Dukat](js-external-declarations-with-dukat.md) 的类型定义（TypeScript / `d.ts`）。
 
-## Inline JavaScript
+## 内联 JavaScript
 
-You can inline some JavaScript code into your Kotlin code using the [`js("...")`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/js.html) function.
-For example:
+你可以使用 [`js("……")`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/js.html) 函数将一些 JavaScript 代码嵌入到 Kotlin 代码中。
+例如：
 
 
 ```kotlin
@@ -21,24 +21,24 @@ fun jsTypeOf(o: Any): String {
 ```
 
 
-Because the parameter of `js` is parsed at compile time and translated to JavaScript code "as-is", it is required to be a string constant. So, the following code is incorrect:
+因为 `js` 的参数是在编译期解析并且按原样翻译成 JavaScript 代码的，因此它必须是字符串常量。因此，以下代码是不正确的：
 
 
 ```kotlin
 fun jsTypeOf(o: Any): String {
-    return js(getTypeof() + " o") // error reported here
+    return js(getTypeof() + " o") // 此处报错
 }
 fun getTypeof() = "typeof"
 ```
 
 
-Note that invoking `js()` returns a result of type [`dynamic`](dynamic-type.md), which provides no type safety at compile time.
+请注意，调用 `js()` 会返回动态类型的结果，该结果在编译时不提供任何类型安全性。
 
-## `external` modifier
+## `external` 修饰符
 
-To tell Kotlin that a certain declaration is written in pure JavaScript, you should mark it with the `external` modifier.
-When the compiler sees such a declaration, it assumes that the implementation for the corresponding class, function or
-property is provided externally (by the developer or via an [npm dependency](js-project-setup.md#npm-dependencies)), and therefore does not try to generate any JavaScript code from the declaration. This is also why `external` declarations can't have a body. For example:
+要告诉 Kotlin 某个声明是用纯 JavaScript 编写的，你应该用 `external` 修饰符来标记它。
+当编译器看到这样的声明时，它假定相应类、函数或属性的实现是由外部提供的（由开发人员或者通过 [npm 依赖项](js-project-setup.md#npm-dependencies)），因此不会尝试从声明中生成任何 JavaScript 代码。
+这也是为什么 `external` 声明不能具有主体的原因。例如：
 
 
 ```kotlin
@@ -51,32 +51,32 @@ external class Node {
 
     fun removeChild(child: Node): Node
 
-    // etc
+    // 等等
 }
 
 external val window: Window
 ```
 
 
-Note that the `external` modifier is inherited by nested declarations. This is why in the example `Node` class, we do not need to add the `external` modifier before member functions and properties.
+请注意，嵌套的声明会继承 `external` 修饰符，这也是 `Node` 类中成员函数和属性之前不需要加 `external` 修饰符的原因。
 
-The `external` modifier is only allowed on package-level declarations. You can't declare an `external` member of a non-`external` class.
+`external` 修饰符只允许在包级声明中使用。 你不能声明一个非 `external` 类的 `external` 成员。
 
 
-### Declaring (static) members of a class
+### 声明类的（静态）成员
 
-In JavaScript you can define members either on a prototype or a class itself:
+在 JavaScript 中，你可以在原型或者类本身上定义成员：
 
 
 ``` javascript
-function MyClass() { ... }
-MyClass.sharedMember = function() { /* implementation */ };
-MyClass.prototype.ownMember = function() { /* implementation */ };
+function MyClass() { …… }
+MyClass.sharedMember = function() { /* 实现 */ };
+MyClass.prototype.ownMember = function() { /* 实现 */ };
 ```
 
 
-There is no such syntax in Kotlin. However, in Kotlin we have [`companion`](object-declarations.md#companion-objects) objects. Kotlin treats companion objects
-of `external` classes in a special way: instead of expecting an object, it assumes members of companion objects to be members of the class itself. `MyClass` from the example above can be described as follows:
+Kotlin 中没有这样的语法。然而，在 Kotlin 中我们有[伴生（`companion`）对象](object-declarations.md#companion-objects)。Kotlin 以特殊的方式处理
+`external` 类的伴生对象：替代期待一个对象的是，它假定伴生对象的成员就是该类自身的成员。可以这样描述来自上例中的 `MyClass`：
 
 
 ```kotlin
@@ -91,9 +91,9 @@ external class MyClass {
 
 
 
-### Declaring optional parameters
+### 声明可选参数
 
-If you are writing an external declaration for a JavaScript function which has an optional parameter, use `definedExternally`. This delegates the generation of the default values to the JavaScript function itself:
+如果正在为具有可选参数的 JavaScript 函数编写外部声明，请使用 `definedExternally`。这将默认值的生成委托给 JavaScript 函数本身：
 
 
 ```kotlin
@@ -105,13 +105,13 @@ external fun myFunWithOptionalArgs(
 ```
 
 
-With this external declaration, you can call `myFunWithOptionalArgs` with one required argument and two optional arguments, where the default values are calculated by the JavaScript implementation of `myFunWithOptionalArgs`.
+使用此外部声明，可以调用带有一个必需参数和两个可选参数的 `myFunWithOptionalArgs`，其中默认值由 `myFunWithOptionalArgs` 的 JavaScript 实现计算得出。
 
 
-### Extending JavaScript classes
+### 扩展 JavaScript 类
 
-You can easily extend JavaScript classes as if they were Kotlin classes. Just define an `external open` class and
-extend it by a non-`external` class. For example:
+你可以轻松扩展 JavaScript 类，因为它们是 Kotlin 类。只需定义一个 `external open` 类并用<!--
+-->非 `external` 类扩展它。例如：
 
 
 ```kotlin
@@ -132,18 +132,18 @@ class Bar: Foo() {
 ```
 
 
-There are some limitations:
+有一些限制：
 
-- When a function of an external base class is overloaded by signature, you can't override it in a derived class.
-- You can't override a function with default arguments.
-- Non-external classes can't be extended by external classes.
+- 当一个外部基类的函数被签名重载时，不能在派生类中覆盖它。
+- 不能覆盖一个使用默认参数的函数。
+- 不能用外部类扩展非外部类。
 
-### `external` interfaces
+### `external` 接口
 
-JavaScript does not have the concept of interfaces. When a function expects its parameter to support two methods `foo`
-and `bar`, you would just pass in an object that actually has these methods.
+JavaScript 没有接口的概念。当函数期望其参数支持 `foo`
+和 `bar` 两个方法时，只需传入实际具有这些方法的对象。
 
-You can use interfaces to express this concept in statically typed Kotlin:
+在静态类型的 Kotlin 中，你可以使用接口来表达这一概念：
 
 
 ```kotlin
@@ -157,7 +157,7 @@ external fun myFunction(p: HasFooAndBar)
 ```
 
 
-A typical use case for external interfaces is to describe settings objects. For example:
+外部接口的典型使用场景是描述设置对象。例如：
 
 
 ```kotlin
@@ -168,7 +168,7 @@ external interface JQueryAjaxSettings {
 
     var complete: (JQueryXHR, String) -> Unit
 
-    // etc
+    // 等等
 }
 
 fun JQueryAjaxSettings(): JQueryAjaxSettings = js("{}")
@@ -189,18 +189,18 @@ fun sendQuery() {
 ```
 
 
-External interfaces have some restrictions:
+外部接口有一些限制：
 
-- They can't be used on the right-hand side of `is` checks.
-- They can't be passed as reified type arguments.
-- They can't be used in class literal expressions (such as `I::class`).
-- `as` casts to external interfaces always succeed.
-  Casting to external interfaces produces the "Unchecked cast to external interface" compile time warning. The warning can be suppressed with the `@Suppress("UNCHECKED_CAST_TO_EXTERNAL_INTERFACE")` annotation.
+- 它们不能在 `is` 检测的右侧使用。
+- 它们不能作为具体化类型参数传递。
+- 它们不能用在类的字面值表达式（例如 `I::class`）中。
+- `as` 转换为外部接口总是成功。
+  强制转换为外部接口会产生“未检查强制转换到外部接口（Unchecked cast to external interface）”编译时警告。可以使用 `@Suppress("UNCHECKED_CAST_TO_EXTERNAL_INTERFACE")` 注解取消警告。
 
-  IntelliJ IDEA can also automatically generate the `@Suppress` annotation. Open the intentions menu via the light bulb icon or Alt-Enter, and click the small arrow next to the "Unchecked cast to external interface" inspection. Here, you can select the suppression scope, and your IDE will add the annotation to your file accordingly.
+  IntelliJ IDEA 还可以自动生成 `@Suppress` 注解。通过灯泡图标或 <kbd>Alt</kbd> + <kbd>Enter</kbd> 打开意图菜单，然后单击“未检查强制转换到外部接口”检查旁边的小箭头。在这里，可以选择抑制作用域，IDE 将相应地将注解添加到文件中。
 
-### Casting
-In addition to the ["unsafe" cast operator](/docs/reference/typecasts.md#unsafe-cast-operator) `as`, which throws a `ClassCastException` in case a cast is not possible, Kotlin/JS also provides [`unsafeCast<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/unsafe-cast.html). When using `unsafeCast`, _no type checking is done at all_ during runtime. For example, consider the following two methods:
+### 强制转换
+除了[“unsafe”强制转换运算符](/docs/reference/typecasts.md#unsafe-cast-operator) `as`（在无法进行强制转换时抛出 `ClassCastException`）之外，Kotlin/JS 还提供 [`unsafeCast<T>()`](/api/latest/jvm/stdlib/kotlin.js/unsafe-cast.md)。使用 `unsafeCast` 时，在运行时 _完全不进行类型检查_。例如，考虑以下两种方法：
 
 
 
@@ -210,7 +210,7 @@ fun usingAsOperator(s: Any) = s as String
 ```
 
 
-They will be compiled accordingly:
+它们将进行相应的编译：
 
 
 ``` javascript

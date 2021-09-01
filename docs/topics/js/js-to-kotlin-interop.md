@@ -1,11 +1,11 @@
-[//]: # (title: Calling Kotlin from JavaScript)
+[//]: # (title: JavaScript 中调用 Kotlin)
 
-# Calling Kotlin from JavaScript
+# JavaScript 中调用 Kotlin
 
-Depending on the selected [JavaScript Module](js-modules.md) system, the Kotlin/JS compiler generates different output. But in general, the Kotlin compiler generates normal JavaScript classes, functions and properties, which you can freely use from JavaScript code. There are some subtle things you should remember, though.
+根据所选的 [JavaScript 模块](js-modules.md)系统，Kotlin/JS 编译器会生成不同的输出。当然通常 Kotlin 编译器生成正常的 JavaScript 类，可以在 JavaScript 代码中自由地使用的函数和属性。不过，应该记住一些微妙的事情。
 
-## Isolating declarations in a separate JavaScript object in `plain` mode
-If you have explicitly set your module kind to be `plain`, Kotlin creates an object that contains all Kotlin declarations from the current module. This is done to prevent spoiling the global object. This means that for a module `myModule`, all declarations are available to JavaScript via the `myModule` object. For example:
+## 在 `plain` 模式中用独立的 JavaScript 隔离声明
+如果将模块种类明确设置为 `plain`, 为了防止损坏全局对象，Kotlin 创建一个包含当前模块中所有 Kotlin 声明的对象。这意味着对于一个模块 `myModule`，所有的声明都可以通过 `myModule` 对象在 JavaScript 中使用。例如：
 
 
 ```kotlin
@@ -13,7 +13,7 @@ fun foo() = "Hello"
 ```
 
 
-Can be called from JavaScript like this:
+可以在 JavaScript 中这样调用：
 
 
 ``` javascript
@@ -21,7 +21,7 @@ alert(myModule.foo());
 ```
 
 
-This is not applicable when you compile your Kotlin module to JavaScript modules like UMD (which is the default setting for both `browser` and `nodejs` targets), CommonJS or AMD. In this case, your declarations will be exposed in the format specified by your chosen JavaScript module system. When using UMD or CommonJS, for example, your call site could look like this:
+将 Kotlin 模块编译为 JavaScript 模块（例如 UMD（这是 `browser` 与 `nodejs` 目标的默认设置）、CommonJS 或 AMD）时，此方法不适用。在这种情况下，声明将以选择的 JavaScript 模块系统指定的格式暴露。例如，当使用 UMD 或 CommonJS 时，调用处可能如下所示：
 
 
 ``` javascript
@@ -29,12 +29,12 @@ alert(require('myModule').foo());
 ```
 
 
-Check the article on [JavaScript Modules](js-modules.md) for more information on the topic of JavaScript module systems.
+查看有关 [JavaScript 模块](js-modules.md)的文章，以获取有关 JavaScript 模块系统专题的更多信息。
 
-## Package structure
+## 包结构
 
-Kotlin exposes its package structure to JavaScript, so unless you define your declarations in the root package,
-you have to use fully qualified names in JavaScript. For example:
+Kotlin 将其包结构暴露给 JavaScript，因此除非你在根包中定义声明，
+否则必须在 JavaScript 中使用完整限定名。例如：
 
 
 ```kotlin
@@ -44,7 +44,7 @@ fun foo() = "Hello"
 ```
 
 
-When using UMD or CommonJS, for example, your callsite could look like this:
+例如，当使用 UMD 或 CommonJS 时，调用处可能如下所示：
 
 
 ``` javascript
@@ -52,7 +52,7 @@ alert(require('myModule').my.qualified.packagename.foo())
 ```
 
 
-Or, in the case of using `plain` as a module system setting:
+或者，在使用 `plain` 格式作为模块系统设置的情况下：
 
 
 ``` javascript
@@ -61,14 +61,14 @@ alert(myModule.my.qualified.packagename.foo());
 
 
 
-### `@JsName` annotation
+### `@JsName` 注解
 
-In some cases (for example, to support overloads), the Kotlin compiler mangles the names of generated functions and attributes
-in JavaScript code. To control the generated names, you can use the `@JsName` annotation:
+在某些情况下（例如为了支持重载），Kotlin 编译器会修饰（mangle） JavaScript 代码中生成的函数和属性<!--
+-->的名称。要控制生成的名称，可以使用 `@JsName` 注解：
 
 
 ```kotlin
-// Module 'kjs'
+// 模块“kjs”
 class Person(val name: String) {
     fun hello() {
         println("Hello $name!")
@@ -82,53 +82,53 @@ class Person(val name: String) {
 ```
 
 
-Now you can use this class from JavaScript in the following way:
+现在，你可以通过以下方式在 JavaScript 中使用这个类：
 
 
 ``` javascript
-// If necessary, import 'kjs' according to chosen module system
-var person = new kjs.Person("Dmitry");   // refers to module 'kjs'
-person.hello();                          // prints "Hello Dmitry!"
-person.helloWithGreeting("Servus");      // prints "Servus Dmitry!"
+// 如有必要，根据所选模块系统导入“kjs”
+var person = new kjs.Person("Dmitry");   // 引用到模块“kjs”
+person.hello();                          // 输出“Hello Dmitry!”
+person.helloWithGreeting("Servus");      // 输出“Servus Dmitry!”
 ```
 
 
-If we didn't specify the `@JsName` annotation, the name of the corresponding function would contain a suffix
-calculated from the function signature, for example `hello_61zpoe$`.
+如果我们没有指定 `@JsName` 注解，相应函数的名称会包含<!--
+-->从函数签名计算而来的后缀，例如 `hello_61zpoe$`。
 
-Note that there are some cases in which the Kotlin compiler does not apply mangling:
-- `external` declarations are not mangled.
-- Any overridden functions in non-`external` classes inheriting from `external` classes are not mangled.
+请注意，在某些情况下，Kotlin 编译器不应用修饰：
+- `external` 声明不会被修饰
+- 从 `external` 类继承的非 `external` 类中的任何重写函数都不会被修饰。
 
 
-The parameter of `@JsName` is required to be a constant string literal which is a valid identifier.
-The compiler will report an error on any attempt to pass non-identifier string to `@JsName`.
-The following example produces a compile-time error:
+`@JsName` 的参数需要是一个常量字符串字面值，该字面值是一个有效的标识符。
+任何尝试将非标识符字符串传递给 `@JsName` 时，编译器都会报错。
+以下示例会产生编译期错误：
 
 
 ```kotlin
-@JsName("new C()")   // error here
+@JsName("new C()")   // 此处出错
 external fun newC()
 ```
 
 
-### `@JsExport` annotation
-> The `@JsExport` annotation is currently marked as experimental. Its design may change in future versions.
+### `@JsExport` 注解
+> `@JsExport` 注解当前标记为实验性的。其设计可能会在将来的版本中更改。
 {:.note}
 
-By applying the `@JsExport` annotation to a top-level declaration (like a class or function), you make the Kotlin declaration available from JavaScript. The annotation exports all nested declarations with the name given in Kotlin. It can also be applied on file-level using `@file:JsExport`.
+通过将 `@JsExport` 注解应用于顶级声明（如类或函数），可以从 JavaScript 使用 Kotlin 声明。注解会导出所有嵌套声明，并使用 Kotlin 中给出的名称。也可以使用 `@file:JsExport` 将其应用于文件级。
 
-To resolve ambiguities in exports (like overloads for functions with the same name), you can use the `@JsExport` annotation together with `@JsName` to specify the names for the generated and exported functions.
+要解决导出中的歧义（例如，具有相同名称的函数的重载），可以将 `@JsExport` 批注与 `@JsName` 一起使用，以指定生成与导出函数的名称。
 
-The `@JsExport` annotation is available in the current default compiler backend and the new [IR compiler backend](js-ir-compiler.md). If you are targeting the IR compiler backend, you **must** use the `@JsExport` annotation to make your functions visible from Kotlin in the first place.
+`@JsExport` 注解在当前的默认编译器后端与新的 [IR 编译器](js-ir-compiler.md)后端中可用。如果以 IR 编译器后端为目标，则 **必须** 使用 `@JsExport` 批注使函数首先在 Kotlin 中可见。
 
-For multiplatform projects, `@JsExport` is available in common code as well. It only has an effect when compiling for the JavaScript target, and allows you to also export Kotlin declarations that are not platform specific.
+对于多平台项目，`@JsExport` 也可以在公共代码中使用。它仅在针对 JavaScript 目标进行编译时才有效，并且还允许导出不是特定于平台的 Kotlin 声明。
 
-## Representing Kotlin types in JavaScript
+## 在 JavaScript 中表示 Kotlin 类型
 
-* Kotlin numeric types, except for `kotlin.Long` are mapped to JavaScript Number.
-* `kotlin.Char` is mapped to JavaScript Number representing character code.
-* Kotlin can't distinguish between numeric types at run time (except for `kotlin.Long`), so the following code works:
+* 除了 `kotlin.Long` 的 Kotlin 数字类型映射到 JavaScript Number。
+* `kotlin.Char` 映射到 JavaScript Number 来表示字符代码。
+* Kotlin 在运行时无法区分数字类型（`kotlin.Long` 除外），因此以下代码能够工作：
 
   ```kotlin
   fun f() {
@@ -139,21 +139,21 @@ For multiplatform projects, `@JsExport` is available in common code as well. It 
   ```
 
 
-* Kotlin preserves overflow semantics for `kotlin.Int`, `kotlin.Byte`, `kotlin.Short`, `kotlin.Char` and `kotlin.Long`.
-* `kotlin.Long` is not mapped to any JavaScript object, as there is no 64-bit integer number type in JavaScript. It is emulated by a Kotlin class.
-* `kotlin.String` is mapped to JavaScript String.
-* `kotlin.Any` is mapped to JavaScript Object (`new Object()`, `{}`, etc).
-* `kotlin.Array` is mapped to JavaScript Array.
-* Kotlin collections (`List`, `Set`, `Map`, etc.) are not mapped to any specific JavaScript type.
-* `kotlin.Throwable` is mapped to JavaScript Error.
-* Kotlin preserves lazy object initialization in JavaScript.
-* Kotlin does not implement lazy initialization of top-level properties in JavaScript.
+* Kotlin 保留了 `kotlin.Int`、 `kotlin.Byte`、 `kotlin.Short`、 `kotlin.Char` 和 `kotlin.Long` 的溢出语义。
+* `kotlin.Long` 没有映射到任何 JavaScript 对象，因为 JavaScript 中没有 64 位整数，它是由一个 Kotlin 类模拟的。
+* `kotlin.String` 映射到 JavaScript String。
+* `kotlin.Any` 映射到 JavaScript Object（`new Object()`、 `{}` 等）。
+* `kotlin.Array` 映射到 JavaScript Array。
+* Kotlin 集合（`List`、 `Set`、 `Map` 等）没有映射到任何特定的 JavaScript 类型。
+* `kotlin.Throwable` 映射到 JavaScript Error。
+* Kotlin 在 JavaScript 中保留了惰性对象初始化。
+* Kotlin 不会在 JavaScript 中实现顶层属性的惰性初始化。
 
-Starting with version 1.1.50 primitive array translation utilizes JavaScript TypedArray:
+自 1.1.50 版起，原生数组转换到 JavaScript 时采用 TypedArray：
 
-* `kotlin.ByteArray`, `-.ShortArray`, `-.IntArray`, `-.FloatArray`, and `-.DoubleArray` are mapped to
-  JavaScript Int8Array, Int16Array, Int32Array, Float32Array, and Float64Array correspondingly.
-* `kotlin.BooleanArray` is mapped to JavaScript Int8Array with a property `$type$ == "BooleanArray"`
-* `kotlin.CharArray` is mapped to JavaScript UInt16Array with a property `$type$ == "CharArray"`
-* `kotlin.LongArray` is mapped to JavaScript Array of `kotlin.Long` with a property `$type$ == "LongArray"`.
+* `kotlin.ByteArray`、 `-.ShortArray`、 `-.IntArray`、 `-.FloatArray` 以及 `-.DoubleArray` 会相应地映射为
+  JavaScript 中的 Int8Array、 Int16Array、 Int32Array、 Float32Array 以及 Float64Array。
+* `kotlin.BooleanArray` 会映射为 JavaScript 中具有 `$type$ == "BooleanArray"` 属性的 Int8Array
+* `kotlin.CharArray` 会映射为 JavaScript 中具有 `$type$ == "CharArray"` 属性的 UInt16Array
+* `kotlin.LongArray` 会映射为 JavaScript 中具有 `$type$ == "LongArray"` 属性的 `kotlin.Long` 的数组。
 
