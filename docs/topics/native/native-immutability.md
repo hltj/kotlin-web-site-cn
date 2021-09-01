@@ -1,4 +1,4 @@
-# Immutability in Kotlin/Native
+[//]: # (title: Immutability in Kotlin/Native)
 
 Kotlin/Native implements strict mutability checks, ensuring
 the important invariant that the object is either immutable or
@@ -28,4 +28,3 @@ from other threads.
 
 Class `AtomicReference` can be used to publish the changed frozen state to
 other threads, and so build patterns like shared caches.
-
