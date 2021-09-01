@@ -1,34 +1,64 @@
-[//]: # (title: JavaScript 反射)
+[//]: # (title: Kotlin/JS 反射)
 
-# JavaScript 反射
+Kotlin/JS provides a limited support for the Kotlin [reflection API](reflection.md). The only supported parts of the API
+are:
+* [class references](reflection.md#class-references) (`::class`).
+* [`KType`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-type/) and [`typeof()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/type-of.html) function.
 
-目前，JavaScript 不支持完整的 Kotlin 反射 API。唯一支持的该 API 部分<!--
--->是 `::class` 语法，它允许你引用一个实例的类或者与给定类型相对应的类。
-一个 `::class` 表达式的值是一个只能支持 [simpleName](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/simple-name.html) 和
-[isInstance](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/is-instance.html) 成员<!--
--->的精简版 [KClass](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/) 实现。
+## Class references
+
+The `::class` syntax returns a reference to the class of an instance, or the class corresponding to the given type.
+In Kotlin/JS, the value of a `::class` expression is a stripped-down [KClass](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/)
+implementation that supports only:
+* [simpleName](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/simple-name.html)
+and [isInstance()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/is-instance.html) members.
+* [cast()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/cast.html) and 
+[safeCast()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/safe-cast.html) extension functions.
 
 除此之外，你可以使用 [KClass.js](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/js.html) 访问<!--
 -->与 [JsClass](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-class/index.html) 类对应的实例。
 该 `JsClass` 实例本身就是对构造函数的引用。
 这可以用于与期望构造函数的引用的 JS 函数进行互操作。
 
-示例：
+## KType and typeOf()
 
+> The `typeOf()` function is [Experimental](components-stability.md). It may be dropped or changed at any time.
+> Opt-in is required (see details below). Use it only for evaluation purposes. We appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
+>
+{type="warning"}
+
+The [`typeof()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/type-of.html) function constructs an instance of [`KType`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-type/)
+for a given type. To use `typeOf()` in your code, [opt in](opt-in-requirements.md#opt-in-to-using-api) to the experimental
+API of the standard library, for example, add `@OptIn(ExperimentalStdlibApi::class)` to your code.
+
+The `KType` API is fully supported in Kotlin/JS except for Java-specific parts.
+
+## Example
+
+Here is an example of the reflection usage in Kotlin/JS.
 
 ```kotlin
-class A
-class B
-class C
+open class Shape
+class Rectangle : Shape()
 
-inline fun <reified T> foo() {
-    println(T::class.simpleName)
+@OptIn(ExperimentalStdlibApi::class) // typeOf() is experimental and requires an opt-in
+inline fun <reified T> accessReifiedTypeArg() =
+    println(typeOf<T>().toString())
+
+fun main() {
+    val s = Shape()
+    val r = Rectangle()
+
+    println(r::class.simpleName) // Prints "Rectangle"
+    println(Shape::class.simpleName) // Prints "Shape"
+    println(Shape::class.js.name) // Prints "Shape"
+
+    println(Shape::class.isInstance(r)) // Prints "true"
+    println(Rectangle::class.isInstance(s)) // Prints "false"
+    val rShape = Shape::class.cast(r) // Casts a Rectangle "r" to Shape
+
+    accessReifiedTypeArg<Rectangle>() // Accesses the type via typeOf(). Prints "Rectangle"
 }
-
-val a = A()
-println(a::class.simpleName)  // 获取一个实例的类；输出“A”
-println(B::class.simpleName)  // 获取一个类型的类；输出“B”
-println(B::class.js.name)     // 输出“B”
-foo<C>()                      // 输出“C”
 ```
+
 

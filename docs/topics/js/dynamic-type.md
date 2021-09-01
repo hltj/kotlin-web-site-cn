@@ -1,57 +1,50 @@
 [//]: # (title: 动态类型)
 
-# 动态类型
-
 > 在面向 JVM 平台的代码中不支持动态类型。
-{:.note}
+>
+{type="note"}
 
-Kotlin 是一种静态类型的语言，这使得它不同于动态类型的 JavaScript。为了方便与 JavaScript 代码的互操作，Kotlin/JS 提供了 `dynamic` 类型：
-
+Being a statically typed language, Kotlin still has to interoperate with untyped or loosely typed environments,
+such as the JavaScript ecosystem. To facilitate these use cases, the `dynamic` type is available in the language:
 
 ```kotlin
 val dyn: dynamic = ……
 ```
 
-
 `dynamic` 类型基本上关闭了 Kotlin 的类型检测系统：
 
-- `dynamic` 值可以赋值给任何类型的变量，也可以作为参数传递到任何地方。
-- `dynamic` 变量可以具有任何类型的值。
-- 带有 `dynamic` 参数的函数可以带有任何类型的参数。
-- 对于 `dynamic` 类型的值，将禁用 `null` 检查。
+- A value of the `dynamic` type can be assigned to any variable or passed anywhere as a parameter.
+- Any value can be assigned to a variable of the `dynamic` type or passed to a function that takes `dynamic` as a parameter.
+- `null`-checks are disabled for the `dynamic` type values.
 
-在 `dynamic` 变量上，可以使用任何参数调用 **任何** 属性或函数：
-
+The most peculiar feature of `dynamic` is that we are allowed to call **any** property or function with any parameters
+on a `dynamic` variable:
 
 ```kotlin
 dyn.whatever(1, "foo", dyn) // “whatever”在任何地方都没有定义
 dyn.whatever(*arrayOf(1, 2, 3))
 ```
 
-
-这段代码会按照原样编译：在生成的 JavaScript 代码中，Kotlin中的 `dyn.whatever(1)` 变为 `dyn.whatever(1)`
+On the JavaScript platform 这段代码会按照原样编译：在生成的 JavaScript 代码中，Kotlin中的 `dyn.whatever(1)` 变为 `dyn.whatever(1)`
 。
 
 当在 `dynamic` 类型的值上调用 Kotlin 写的函数时，请记住由
-Kotlin 到 JavaScript 编译器执行的名字修饰。你可能需要使用 [@JsName 注解](js-to-kotlin-interop.md#jsname-注解) 或者 [@JsExport 注解](js-to-kotlin-interop.md#jsexport-annotation)为要调用的函数分配明确定义的名称。
+Kotlin 到 JavaScript 编译器执行的名字修饰。你可能需要使用 [@JsName 注解](js-to-kotlin-interop.md#jsname-注解)
+为需要调用的函数分配明确定义的名称。
 
-动态调用总是返回 `dynamic` 作为结果，这意味着可以自由链式调用：
-
+动态调用总是返回 `dynamic` 作为结果，因此可以自由链式调用：
 
 ```kotlin
 dyn.foo().bar.baz()
 ```
 
-
-当我们把一个 lambda 表达式传给一个动态调用时，它的所有参数默认都是 `dynamic` 类型的：
-
+当把一个 lambda 表达式传给一个动态调用时，它的所有参数默认都是 `dynamic` 类型的：
 
 ```kotlin
 dyn.foo {
     x -> x.bar() // x 是 dynamic
 }
 ```
-
 
 使用 `dynamic` 类型值的表达式会按照原样转换为 JavaScript，并且不使用 Kotlin 运算符约定。
 支持以下运算符：
