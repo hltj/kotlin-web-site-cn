@@ -1,4 +1,4 @@
-## Debugging
+## 调试
 
 Currently the Kotlin/Native compiler produces debug info compatible with the DWARF 2 specification, so modern debugger tools can
 perform the following operations:

@@ -1,31 +1,31 @@
-# Immutability in Kotlin/Native
+# Kotlin/Native 中的不可变性
 
-Kotlin/Native implements strict mutability checks, ensuring
-the important invariant that the object is either immutable or
-accessible from the single thread at that moment in time (`mutable XOR global`).
+Kotlin/Native 实现了严格的可变性检测，确保了<!--
+-->重要的不变式：对象要么不可变，要么<!--
+-->在同一时刻只在单个线程中访问（`mutable XOR global`）。
 
-Immutability is a runtime property in Kotlin/Native, and can be applied
-to an arbitrary object subgraph using the `kotlin.native.concurrent.freeze` function.
-It makes all the objects reachable from the given one immutable,
-such a transition is a one-way operation (i.e., objects cannot be unfrozen later).
-Some naturally immutable objects such as `kotlin.String`, `kotlin.Int`, and
-other primitive types, along with `AtomicInt` and `AtomicReference` are frozen
-by default. If a mutating operation is applied to a frozen object,
-an `InvalidMutabilityException` is thrown.
+在 Kotlin/Native 中不可变性是运行时属性，可以<!--
+-->将 `kotlin.native.concurrent.freeze` 函数应用到任意对象子图。
+它使从给定的对象递归可达的所有对象都不可变，
+这样的转换是单向操作（即这些对象之后不能解冻）。
+一些天然不可变的对象（如 `kotlin.String`、 `kotlin.Int` 与<!--
+-->其他原生类型，以及 `AtomicInt` 与 `AtomicReference`）
+默认就是冻结的。如果对已冻结对象应用了修改操作，
+那么会抛出 `InvalidMutabilityException` 异常。
 
-To achieve `mutable XOR global` invariant, all globally visible state (currently,
-`object` singletons and enums) are automatically frozen. If object freezing
-is not desired, a `kotlin.native.ThreadLocal` annotation can be used, which will make
-the object state thread local, and so, mutable (but the changed state is not visible to
-other threads).
+为了实现 `mutable XOR global` 不变式，所有全局可见状态（目前有
+`object` 单例与枚举）都会自动冻结。如果对象无需冻结<!--
+-->，可以使用 `kotlin.native.ThreadLocal` 注解，这会使<!--
+-->该对象状态成为线程局部的，因此可修改（但是变更后的状态对<!--
+-->其他线程不可见）。
 
-Top level/global variables of non-primitive types are by default accessible in the
-main thread (i.e., the thread which initialized _Kotlin/Native_ runtime first) only.
-Access from another thread will lead to an `IncorrectDereferenceException` being thrown.
-To make such variables accessible in other threads, you can use either the `@ThreadLocal` annotation,
-and mark the value thread local or `@SharedImmutable`, which will make the value frozen and accessible
-from other threads.
+非基本类型的顶层/全局变量默认只能在<!--
+-->主线程（即首先初始化 _Kotlin/Native_ 运行时的线程）中访问。
+在其他线程中访问会引发 `IncorrectDereferenceException` 异常。
+如需其他线程可访问这种变量，可以使用 `@ThreadLocal`
+注解将该值标记为线程局部，或者使用 `@SharedImmutable` 注解，它会冻结该值并使<!--
+-->其他线程可访问。
 
-Class `AtomicReference` can be used to publish the changed frozen state to
-other threads, and so build patterns like shared caches.
+`AtomicReference` 类可用于将变更后的冻结状态发布给<!--
+ -->其他线程，从而构建共享缓存等模式。
 

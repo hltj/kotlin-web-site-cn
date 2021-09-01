@@ -1,4 +1,4 @@
-# _Kotlin/Native_ interoperability #
+# _Kotlin/Native_ 互操作 #
 
 ## Introduction ##
 

@@ -1,4 +1,4 @@
-# _Kotlin/Native_ interoperability with Swift/Objective-C
+# _Kotlin/Native_ 与 Swift/Objective-C 互操作
 
 This document covers some details of Kotlin/Native interoperability with
 Swift/Objective-C.

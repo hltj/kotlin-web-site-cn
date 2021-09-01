@@ -1,29 +1,29 @@
-[//]: # (title: Mapping Strings from C)
+[//]: # (title: 映射来自 C 语言的字符串)
 
-This is the last tutorial in the series. The first tutorial of the series is
-[Mapping Primitive Data Types from C](mapping-primitive-data-types-from-c.md).
-There are also [Mapping Struct and Union Types from C](mapping-struct-union-types-from-c.md) and
-[Mapping Function Pointers from C](mapping-function-pointers-from-c.md) tutorials.
+这是本系列的最后一篇教程。本系列的第一篇教程是<!--
+-->[映射来自 C 语言的原始数据类型](mapping-primitive-data-types-from-c.md)。
+系列其余教程包括[映射来自 C 语言的结构与联合类型](mapping-struct-union-types-from-c.md)与<!--
+-->[映射来自 C 语言的函数指针](mapping-function-pointers-from-c.md)。
 
-In this tutorial we see how to deal with C strings in Kotlin/Native.
-We will learn how to:
-- [Pass a Kotlin string to C](#passing-kotlin-string-to-c)
-- [Read a C string in Kotlin](#reading-c-strings-in-kotlin)
-- [Receive C string bytes into a Kotlin string](#receiving-c-string-bytes-from-kotlin)
+在本教程中我们将看到如何在 Kotlin/Native 中处理 C 语言的字符串。
+我们将学习到如何：
+- [传递一个 Kotlin 字符串给 C](#将-kotlin-字符串传递给-c)
+- [在 Kotlin 中读取一个 C 字符串](#在-kotlin-中读取-c-字符串)
+- [接收 C 字符串字节并转换为 Kotlin 字符串](#在-kotlin-中接收-c-字符串字节)
 
-## Working with C strings
+## 使用 C 语言字符串
 
-There is no dedicated type in C language for strings. A developer knows from a method
-signature or the documentation, whether a given `char *` means a C string in the context.
-Strings in the C language are null-terminated, a trailing zero character `\0` is added at the
-end of a bytes sequence to mark a string termination.
-Usually, [UTF-8 encoded strings](https://en.wikipedia.org/wiki/UTF-8) are used. The UTF-8 encoding uses
-variable width characters, and it is backward compatible with [ASCII](https://en.wikipedia.org/wiki/ASCII).
-Kotlin/Native uses UTF-8 character encoding by default.
+在 C 语言中，没有专门用于字符串的类型。开发者需要从方法签名<!--
+-->或文档中才能得知给定的 `char *` 在上下文中是否表示 C 字符串。
+C 语言中的字符串以空值终止，即在字节序列尾部添加零字符 `\0`
+来标记字符串终止。
+通常，使用 [UTF-8 编码字符串](https://en.wikipedia.org/wiki/UTF-8)。UTF-8 编码使用<!--
+-->可变长度的字符，并且它向后兼容 [ASCII](https://en.wikipedia.org/wiki/ASCII)。
+Kotlin/Native 默认使用 UTF-8 字符编码。
 
-The best way to understand the mapping between C and Kotlin languages is to try it out on a small example. We will create
-a small library headers for that. First, we need to create a `lib.h` file with the following
-declaration of functions that deal with the C strings:
+理解在 C 语言与 Kotlin 之间进行映射的最好方式是尝试编写一个小型示例。我们将为此创建<!--
+-->一个小型库的头文件。首先，我们需要为以下处理 C 字符串的函数声明<!--
+-->创建一个 `lib.h` 文件。
 
 
 
@@ -39,16 +39,16 @@ int copy_string(char* str, int size);
 ```  
 
 
-In the example we have the most popular ways to pass or receive a string in the C language. We should
-take the return of `return_string` with care. In general, it is best to make sure we
-use the right function to dispose the returned `char*` with the right `free(..)` function call.
+在示例中，我们使用了大多数情况下受欢迎的方式来传递或接收 C 语言中的字符串。我们应该<!--
+-->小心地返回 `return_string`。通常，最好确保我们<!--
+-->使用正确的函数来处理被正确调用 `free(..)` 函数返回的 `char*`。
 
-Kotlin/Native comes with the `cinterop` tool; the tool generates bindings between the C language and Kotlin.
-It uses a `.def` file to specify a C library to import. More details on this are
-in the [Interop with C Libraries](/docs/reference/native/c_interop.md) tutorial.
-The quickest way to try out C API mapping is to have all C declarations in the
-`interop.def` file, without creating any `.h` of `.c` files at all. Then place the C declarations
-in a `interop.def` file after the special `---` separator line:
+Kotlin/Native 附带 `cinterop` 工具；该工具可以生成 C 语言与 Kotlin 之间的绑定。
+它使用一个 .def 文件指定一个 C 库来导入。更多的细节将在<!--
+-->[与 C 库互操作](/docs/reference/native/c_interop.md)教程中讨论。
+最快速的尝试 C API 映射的方法是将所有的 C 声明写到
+`interop.def` 文件，而不用创建任何 `.h` 或 `.c` 文件。在 `.def` 文件中，
+所有的 C 声明都在特殊的 `---` 分割行之后。
 
 
 
@@ -76,16 +76,16 @@ int copy_string(char* str, int size) {
 ``` 
 
 
-The `interop.def` file is enough to compile and run the application or open it in an IDE.
-Now it is time to create project files, open the project in
-[IntelliJ IDEA](https://jetbrains.com/idea) and run it.
+该 `interop.def` 文件足够用来编译并运行应用程序，或在 IDE 中打开它。
+现在是时候创建工程文件，并在
+[IntelliJ IDEA](https://jetbrains.com/idea) 中打开这个工程，然后运行它。
 
-## Inspecting Generated Kotlin APIs for a C library
+## 探查为 C 库生成的 Kotlin API
 
 [[include pages-includes/docs/tutorials/native/mapping-primitive-data-types-gradle.md]]
 
-Let's create a `src/nativeMain/kotlin/hello.kt` stub file with the following content
-to see how C primitive type declarations are visible from Kotlin:
+我们使用下面的内容创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件，
+以用来观察 C 中的原始类型是如何在 Kotlin 中可见的：
 
 
 
@@ -102,15 +102,15 @@ fun main() {
 ```
 
 
-Now we are ready to
-[open the project in IntelliJ IDEA](using-intellij-idea.md)
-and to see how to fix the example project. While doing that,
-we'll examine how C primitive types are mapped into Kotlin/Native.
+现在我们已经准备好<!--
+-->[在 IntelliJ IDEA 中打开这个工程](using-intellij-idea.md)<!--
+-->并且看看如何修正这个示例工程。当我们做了这些之后，
+我们将观察 C 函数是如何映射到 Kotlin/Native 声明的。
 
-## Primitive Types in Kotlin
+## Kotlin 中的原始类型
 
-With the help of IntelliJ IDEA's _Goto Declaration_ or
-compiler errors we see the following generated API for our C functions:
+通过 IntelliJ IDEA 的 _Goto Declaration_ 或<!--
+-->编译器错误的帮助，我们可以看到如下为 C 函数生成的声明：
 
 
 
@@ -121,16 +121,16 @@ fun copy_string(str: CValuesRef<ByteVar /* = ByteVarOf<Byte> */>?, size: Int): I
 ```
 
 
-These declarations look clear. All `char *` pointers are turned into `str: CValuesRef<ByteVar>?` for
-parameters and to `CPointer<ByteVar>?` in return types. Kotlin turns `char` type into `kotlin.Byte` type,
-as it is usually an 8-bit signed value.
+这些声明看起来很清晰。所有的 `char *` 指针在参数处都被转换为 `str: CValuesRef<ByteVar>?`
+而返回值类型则被转换为 `CPointer<ByteVar>?`。Kotlin 将 `char` 类型转换为 `kotlin.Byte` 类型，
+因为它通常是 8 位有符号值。
 
-In the generated Kotlin declarations, we see that `str` is represented as `CValuesRef<ByteVar/>?`. The type
-is nullable, and we can simply pass Kotlin `null` as the parameter value.
+在生成的 Kotlin 声明中，我们看到 `str` 被 `CValuesRef<ByteVar/>?` 表示。该类型<!--
+-->是可空的，我们可以简单地将 Kotlin `null` 作为参数值。
 
-## Passing Kotlin string to C
+## 将 Kotlin 字符串传递给 C
 
-Let's try to use the API from Kotlin. Let's call `pass_string` first:
+我们来尝试在 Kotlin 中使用这些 API。首先我们调用 `pass_string`：
 
 
 
@@ -142,15 +142,15 @@ fun passStringToC() {
 ```
 
 
-Passing a Kotlin string to C is easy, thanks to the fact that we have `String.cstr`
-[extension property](../../reference/extensions.md#extension-properties)
-in Kotlin for it. There is also `String.wcstr` for cases where we
-need UTF-16 wide characters.
+将 Kotlin 字符串传递到 C 非常简单，幸亏事实上在 Kotlin 中我们拥有 `String.cstr`
+[扩展属性](../../reference/extensions.md#extension-properties)<!--
+-->来应对这种情况。在我们需要 UTF-16 字符编码的地方，
+我们也有 `String.wcstr` 来应对这种案例。
 
-## Reading C Strings in Kotlin
+## 在 Kotlin 中读取 C 字符串
 
-This time we take a returned `char *` from the `return_string` function and turn it into
-a Kotlin string. For that we do the following in Kotlin:
+这次我们将从 `return_string` 函数获取一个返回的 `char *` 并将其转换为<!--
+-->一个 Kotlin 字符串。为此我们在 Kotlin 中做了如下这些事：
 
 
 
@@ -163,8 +163,8 @@ fun passStringToC() {
 ``` 
 
 
-we use the `toKString()` extension function above. Please do not miss out the
-`toString()` function. The `toKString()` has two overloaded extension functions in Kotlin:
+在上面的示例中我们使用了 `toKString()` 扩展函数。请不要与
+`toString()` 函数混淆。`toKString()` 在 Kotlin 中拥有两个版本的重载扩展函数：
 
 
 
@@ -174,16 +174,16 @@ fun CPointer<ShortVar>.toKString(): String
 ```
 
 
-The first extension takes a `char *` as a UTF-8 string and turns it into a String.
-The second function does the same but for wide UTF-16 strings.
+第一个重载扩展函数将得到一个 `char *` 作为 UTF-8 字符串并转换到 String。
+第二个重载函数做了相同的事，但是它针对 UTF-16 字符串。
 
 
-## Receiving C string bytes from Kotlin
+## 在 Kotlin 中接收 C 字符串字节
 
-This time we will ask a C function to write us a C string to a given buffer. The function
-is called `copy_string`. It takes a pointer to the location writing characters and
-the allowed buffer size. The function returns something to indicate if it has succeeded or failed.
-Let's assume `0` means it succeeded, and the supplied buffer was big enough:
+这次我们将要求 C 函数将 C 字符串写入给定的缓冲区。这个函数<!--
+-->被称为 `copy_string`。它需要一个指针来定位写入字符的位置并<!--
+-->分配缓冲区的大小。该函数返回一些内容以指示它是成功还是失败。
+我们假设 `0` 表示成功，并且提供的缓冲区足够大：
 
 
 
@@ -203,22 +203,22 @@ fun sendString() {
 ``` 
 
 
-First of all, we need to have a native pointer to pass
-to the C function. We use the `usePinned` extension function
-to temporarily pin the native memory address of the
-byte array. The C function fills in the
-byte array with data. We use another extension
-function `ByteArray.toKString()` to turn the byte
-array into a Kotlin `String`, assuming UTF-8 encoding.
+首先，我们需要拥有一个原生的指针来传递<!--
+-->这个 C 函数。我们使用 `usePinned` 扩展函数<!--
+-->来临时固定字节数组的<!--
+-->原生内存地址。该 C 函数填充了<!--
+-->带数据的字节数组。我们使用另一个扩展<!--
+-->函数 `ByteArray.toKString()` 将字节<!--
+-->数组转换为一个 Kotlin `String`，假设它是 UTF-8 编码的。
 
-## Fixing the Code
+## 修改代码
 
-We've now seen all the definitions and it is time to fix the code.
-Let's run the `runDebugExecutableNative` Gradle task [in the IDE](using-intellij-idea.md)
-or use the following command to run the code:
+我们已经看到了所有的定义并且是时候来修改代码了。
+我们[在 IDE 中](using-intellij-idea.md)运行 `runDebugExecutableNative` Gradle 任务<!--
+-->或使用下面的命令来运行代码：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 
-The code in the final `hello.kt` file may look like this:
+`hello.kt` 文件中的代码最终看起来会是这样的：
 
 
 
@@ -246,13 +246,13 @@ fun main() {
 }
 ```
 
-## Next Steps
+## 接下来
 
-We continue to explore more C language types and their representation in Kotlin/Native
-in our other tutorials:
-- [Mapping Primitive Data Types from C](mapping-primitive-data-types-from-c.md)
-- [Mapping Struct and Union Types from C](mapping-struct-union-types-from-c.md)
-- [Mapping Function Pointers from C](mapping-function-pointers-from-c.md)
+我们将继续在下面几篇教程中继续探索更多的 C 语言类型及其在 Kotlin/Native
+中的表示：
+- [映射来自 C 语言的原始数据类型](mapping-primitive-data-types-from-c.md)
+- [映射来自 C 语言的结构与联合类型](mapping-struct-union-types-from-c.md)
+- [映射来自 C 语言的函数指针](mapping-function-pointers-from-c.md)
 
-The [C Interop documentation](/docs/reference/native/c_interop.md)
-documentation covers more advanced scenarios of the interop.
+这篇 [C 互操作文档](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)<!--
+-->涵盖了更多的高级互操作场景

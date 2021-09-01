@@ -1,4 +1,4 @@
-# Symbolicating iOS crash reports
+# 符号化 iOS 崩溃报告
 
 Debugging an iOS application crash sometimes involves analyzing crash reports.
 More info about crash reports can be found

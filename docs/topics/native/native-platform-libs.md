@@ -1,18 +1,18 @@
-# Platform libraries
+# 平台库
 
-## Overview
+## 概述
 
-To provide access to user's native operating system services,
-`Kotlin/Native` distribution includes a set of prebuilt libraries specific to
-each target. We call them **Platform Libraries**.
+为了提供对用户原生操作系统服务的访问，
+`Kotlin/Native` 发行版包含了一组为每个目标平台预构建的库<!--
+-->。我们称之为**平台库**。
 
-### POSIX bindings
+### POSIX 绑定
 
-For all `Unix` or `Windows` based targets (including `Android` and
-`iOS`) we provide the `posix` platform lib. It contains bindings
-to platform's implementation of `POSIX` standard.
+对于所有基于 `Unix` 或 `Windows` 的目标平台（包括 `Android` 与
+`iOS`），我们提供了 `posix` 平台库。它包含对
+`POSIX` 标准的平台实现的绑定。
 
-To use the library just
+使用该库只需
 
 
 
@@ -22,40 +22,40 @@ import platform.posix.*
 
 
 
-The only target for which it is not available is [WebAssembly](https://en.wikipedia.org/wiki/WebAssembly).
+唯一不可用的目标平台是 [WebAssembly](https://zh.wikipedia.org/wiki/WebAssembly)。
 
-Note that the content of `platform.posix` is NOT identical on
-different platforms, in the same way as different `POSIX` implementations
-are a little different.
+请注意，`platform.posix` 的内容在<!--
+-->不同平台上并不相同，就像不同的 `POSIX` 实现<!--
+-->一样略有不同。
 
 
-### Popular native libraries
+### 热门原生库
 
-There are many more platform libraries available for host and
-cross-compilation targets.  `Kotlin/Native` distribution provides access to
-`OpenGL`, `zlib` and other popular native libraries on
-applicable platforms.
+还有很多平台库可用于所在主机以及<!--
+-->交叉编译目标。`Kotlin/Native` 发行版可以在适用的平台上访问
+`OpenGL`、 `zlib` 以及其他热门原生库<!--
+-->。
 
-On Apple platforms `objc` library is provided for interoperability with [Objective-C](https://en.wikipedia.org/wiki/Objective-C).
+在苹果平台上提供了 `objc` 库，用来与 [Objective-C](https://zh.wikipedia.org/wiki/Objective-C) 进行互操作。
 
-Inspect the contents of `dist/klib/platform/$target` of the distribution for the details.
+详细信息请核查发行版的 `dist/klib/platform/$target` 的内容。
 
-## Availability by default
+## 默认可用
 
-The packages from platform libraries are available by default. No
-special link flags need to be specified to use them. `Kotlin/Native`
-compiler automatically detects which of the platform libraries have
-been accessed and automatically links the needed libraries.
+来自平台库的包都默认可用。使用时无需<!--
+-->指定特殊的链接标志。`Kotlin/Native`
+编译器会自动检测访问了哪些平台库，
+并自动链接所需的库。
 
-On the other hand, the platform libs in the distribution are merely
-just wrappers and bindings to the native libraries.  That means the
-native libraries themselves (`.so`, `.a`, `.dylib`, `.dll` etc)
-should be installed on the machine.
+另一方面，发行版中的平台库仅仅是<!--
+-->对原生库的包装与绑定。这意味着<!--
+-->计算机上需要已经安装了<!--
+-->原生库自身（`.so`、 `.a`、 `.dylib`、 `.dll` 等）。
 
-## Examples
+## 示例
 
-`Kotlin/Native` installation provides a wide spectrum of examples
-demonstrating the use of platform libraries.
-See [samples](https://github.com/JetBrains/kotlin-native/tree/master/samples) for details.
+`Kotlin/Native` 安装包中提供了大量的示例<!--
+-->演示平台库的使用。
+详见[样例](https://github.com/JetBrains/kotlin-native/tree/master/samples)。
 
 

@@ -1,24 +1,24 @@
-[//]: # (title: Hello Kotlin/Native using Command Line Compiler)
+[//]: # (title: 使用命令行编译器的 Hello Kotlin/Native)
 
 <!--- To become a How-To. Need to change type to new "HowTo" --->
 
 
-## Obtaining the Compiler
+## 获取编译器
 
-The Kotlin/Native compiler is available for macOS, Linux, and Windows. It is available as a command line tool and ships as part of the standard Kotlin distribution and can be downloaded from [GitHub Releases]({{ site.data.releases.latest.url }}). It supports
-different targets including iOS (arm32, arm64, simulator x86_64), Windows (mingw32 and x86_64),
-Linux (x86_64, arm64, MIPS), macOS (x86_64), Raspberry PI, STM32, WASM. For the full list of targets please see the [Kotlin/Native overview](/docs/reference/native-overview.md).
+Kotlin/Native 编译器适用于 macOS、Linux 及 Windows。它是一个命令行工具，作为标准 Kotlin 发行版的一部分提供，可以从 [GitHub 发行版]({{site.data.releases.latest.url }})下载。它支持包括
+iOS （arm32、arm64、simulator x86_64）、Windows （mingw32 及 x86_64）在内的多个不同目标平台，
+Linux （x86_64、arm64、MIPS）、macOS （x86_64）、Raspberry PI、STM32、WASM。有关目标的完整列表，请参见 [Kotlin/Native 概述](/docs/reference/native-overview.md)。
 
-While cross-platform compilation is possible, which means using one platform to compile for a different one,
-in this case we'll be targeting the same platform we're compiling on.
+进行跨平台交叉编译，这意味着可以使用一个平台针对另一个平台进行编译，
+在本例中，我们将针对跟本机相同的单平台。
 
-While the output of the compiler does not have any dependencies or virtual machine requirements,
-the compiler itself requires [Java 1.8 or higher runtime](https://jdk.java.net/11/).
+尽管编译器的输出没有任何依赖项或虚拟机要求，
+但编译器本身需要 [Java 1.8 或更高版本的运行时](https://jdk.java.net/11/)。
 
-## Creating Hello Kotlin/Native
+## 创建 Hello Kotlin/Native
 
-The application will print "Hello Kotlin/Native" on the standard output. In a working directory of choice, create a file named
-`hello.kt` and enter the following contents:
+该应用程序将在标准输出上打印 "Hello Kotlin/Native"。在选择的工作目录中，创建一个名为
+`hello.kt` 的文件，并输入以下内容:
 
 
 
@@ -29,18 +29,18 @@ fun main() {
 ```
 
 
-## Compiling the code from the console
+## 从控制台编译代码
 
-To compile the application use the [downloaded]({{ site.data.releases.latest.url }})
-compiler to execute the following command:
+要编译这个应用程序，请[下载]({{ site.data.releases.latest.url }})
+编译器执行以下命令:
 
 ```bash
 kotlinc-native hello.kt -o hello
 ```
 
-The value of `-o` option specifies the name of the output file, so this call should generate a `hello.kexe` (Linux and macOS) or `hello.exe` (Windows) binary file.
-For the full list of available compiler options, see the [compiler options reference](/docs/reference/compiler-reference.md).
+`-o` 选项的值指定了输出文件的名称，所以这个调用应该生成一个 `hello.kexe` （Linux 及 macOS） 或 `hello.exe` （Windows）二进制文件。
+有关可用编译器选项的完整列表，请参见[编译器选项参考](/docs/reference/compiler-reference.md)。
 
-While compilation from the console seems to be easy and clear, it
-does not scale well for larger projects with hundreds of files and libraries. For real-world projects it is recommended
-to use a [build system](using-gradle.md) and [IDE](using-intellij-idea.md).
+虽然从控制台编译看起来简单明了，但它<!--
+-->对于包含数百个文件和库的大型项目来说，这种方法不太适用。对于现实项目，建议<!--
+-->使用[构建系统](using-gradle.md)和[集成开发环境](using-intellij-idea.md)。

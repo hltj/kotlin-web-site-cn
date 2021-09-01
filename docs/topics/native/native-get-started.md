@@ -39,9 +39,9 @@ IntelliJ IDEA opens the **Run** tab and shows the output:
 
 1. Open the file `main.kt` in `src/<your_app_name>Main/kotlin`.
 
-   The `src` directory contains the Kotlin source files and resources. The file `main.kt` includes sample code that prints "Hello, Kotlin/Native!" using the [`println()`](https://kotlinlang.org/api/latest/jvm/stdlib/stdlib/kotlin.io/println.html) function.
+   The `src` directory contains the Kotlin source files and resources. The file `main.kt` includes sample code that prints "Hello, Kotlin/Native!" using the [`println()`](/api/latest/jvm/stdlib/stdlib/kotlin.io/println.md) function.
 
-2. Add code to read the input. Use the [`readLine()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/read-line.html) function to read the input value and assign it to the `name` variable.
+2. Add code to read the input. Use the [`readLine()`](/api/latest/jvm/stdlib/kotlin.io/read-line.md) function to read the input value and assign it to the `name` variable.
 
 
 
@@ -57,7 +57,7 @@ IntelliJ IDEA opens the **Run** tab and shows the output:
 
 3. Eliminate the whitespaces and count the letters:
    * Check that the provided name is not `null` with the [safe call operator `?.`](/docs/reference/null-safety.md#safe-calls).
-   * Use the [`replace()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/replace.html) function to remove the empty spaces in the name.
+   * Use the [`replace()`](/api/latest/jvm/stdlib/kotlin.text/replace.md) function to remove the empty spaces in the name.
    * Use the scope function [`let`](/docs/reference/scope-functions.md#let) to run the function within the object context.
    * Use a [string template](/docs/reference/basic-types.md#string-templates) to insert your name length into the string by adding a dollar sign `$` and enclosing it in curly braces – `${it.length}`.
      `it` is the default name of a [lambda parameter](/docs/reference/coding-conventions.md#lambda-parameters).
@@ -78,7 +78,7 @@ IntelliJ IDEA opens the **Run** tab and shows the output:
 
 
 
-4. Report a null value using the [`error()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/error.html) function after the [Elvis operator `?:`](/docs/reference/null-safety.md#elvis-operator).
+4. Report a null value using the [`error()`](/api/latest/jvm/stdlib/kotlin/error.md) function after the [Elvis operator `?:`](/docs/reference/null-safety.md#elvis-operator).
 
 
 
@@ -112,10 +112,10 @@ IntelliJ IDEA opens the **Run** tab and shows the output:
 
 2. Declare the new [extension function](/docs/reference/extensions.md#extension-functions) `countDistinctCharacters()` for `String`:
 
-   * Convert the name to lowercase using the [`toLowerCase()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-lower-case.html) function.
-   * Convert the input string to a list of characters using the [`toList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-list.html) function.
-   * Select only the distinct characters in your name using the [`distinct()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/distinct.html) function.
-   * Count the distinct characters using the [`count()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/count.html) function.
+   * Convert the name to lowercase using the [`toLowerCase()`](/api/latest/jvm/stdlib/kotlin.text/to-lower-case.md) function.
+   * Convert the input string to a list of characters using the [`toList()`](/api/latest/jvm/stdlib/kotlin.text/to-list.md) function.
+   * Select only the distinct characters in your name using the [`distinct()`](/api/latest/jvm/stdlib/kotlin.collections/distinct.md) function.
+   * Count the distinct characters using the [`count()`](/api/latest/jvm/stdlib/kotlin.collections/count.md) function.
 
 
 
@@ -156,7 +156,7 @@ IntelliJ IDEA opens the **Run** tab and shows the output:
    ![Application output]({{ url_for('tutorial_img', filename='native/using-intellij-idea/native-output-3.png') }})
 
 
-## What's next?
+## 下一步是什么？
 
 Once you have created your first application, you can go to Kotlin hands-on labs and complete long-form tutorials on Kotlin/Native.
 

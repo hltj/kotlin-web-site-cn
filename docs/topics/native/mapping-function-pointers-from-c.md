@@ -1,28 +1,28 @@
-[//]: # (title: Mapping Function Pointers from C)
+[//]: # (title: 映射来自 C 语言的函数指针)
 
-This is the third post in the series. The very first tutorial is
-[Mapping Primitive Data Types from C](mapping-primitive-data-types-from-c.md). There are also
-[Mapping Struct and Union Types from C](mapping-struct-union-types-from-c.md) and
-[Mapping Strings from C](mapping-strings-from-c.md) tutorials.
+这是本系列的第三篇教程。本系列的第一篇教程是<!--
+-->[映射来自 C 语言的原始数据类型](mapping-primitive-data-types-from-c.md)。系列其余教程包括<!--
+-->[映射来自 C 语言的结构与联合类型](mapping-struct-union-types-from-c.md)与<!--
+-->[映射来自 C 语言的字符串](mapping-strings-from-c.md)。
 
-In this tutorial We will learn how to:
-- [Pass Kotlin function as C function pointer](#passing-kotlin-function-as-c-function-pointer)
-- [Use C function pointer from Kotlin](#using-the-c-function-pointer-from-kotlin)
+在本篇教程中我们将学习如何：
+- [将 Kotlin 函数作为 C 函数指针传递](#将-kotlin-函数作为-c-函数指针传递)
+- [在 Kotlin 中使用 C 函数指针](#在-kotlin-中使用-c-函数指针)
 
 
-## Mapping Function Pointer Types from C
+## 映射 C 中的函数指针类型
 
-The best way to understand the mapping between Kotlin and C is to try a tiny
-example. We declare a function that accepts a function pointer as a parameter and
-another function that returns a function pointer.
+理解在 Kotlin 与 C 之间进行映射的最好方式是尝试编写一个小型<!--
+-->示例。我们声明一个函数，它接收一个函数指针作为参数，而<!--
+-->另一个函数返回一个函数指针。
 
-Kotlin/Native comes with the `cinterop` tool; the tool generates bindings between the C language and Kotlin.
-It uses a `.def` file to specify a C library to import. More details on this are
-in the [Interop with C Libraries](/docs/reference/native/c_interop.md) tutorial.
+Kotlin/Native 附带 `cinterop` 工具；该工具可以生成 C 语言与 Kotlin 之间的绑定。
+它使用一个 .def 文件指定一个 C 库来导入。更多的细节将在<!--
+-->[与 C 库互操作](/docs/reference/native/c_interop.md)教程中讨论。
 
-The quickest way to try out C API mapping is to have all C declarations in the
-`interop.def` file, without creating any `.h` of `.c` files at all. Then place the C declarations
-in a `.def` file after the special `---` separator line:
+最快速的尝试 C API 映射的方法是将所有的 C 声明写到
+`interop.def` 文件，而不用创建任何 `.h` 或 `.c` 文件。在 `.def` 文件中，
+所有的 C 声明都在特殊的 `---` 分割行之后。
 
 
 
@@ -47,16 +47,16 @@ MyFun supply_fun() {
 ``` 
 
 
-The `interop.def` file is enough to compile and run the application or open it in an IDE.
-Now it is time to create project files, open the project in
-[IntelliJ IDEA](https://jetbrains.com/idea) and run it.
+该 `interop.def` 文件足够用来编译并运行应用程序，或在 IDE 中打开它。
+现在是时候创建工程文件，并在
+[IntelliJ IDEA](https://jetbrains.com/idea) 中打开这个工程，然后运行它。
 
-## Inspecting Generated Kotlin APIs for a C library
+## 探查为 C 库生成的 Kotlin API
 
 [[include pages-includes/docs/tutorials/native/mapping-primitive-data-types-gradle.md]]
 
-Let's create a `src/nativeMain/kotlin/hello.kt` stub file with the following content
-to see how C primitive type declarations are visible from Kotlin:
+我们使用下面的内容创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件，
+以用来观察 C 中的原始类型是如何在 Kotlin 中可见的：
 
 
 
@@ -72,15 +72,15 @@ fun main() {
 ```
 
 
-Now we are ready to
-[open the project in IntelliJ IDEA](using-intellij-idea.md)
-and to see how to fix the example project. While doing that,
-we'll examine how C functions are mapped into Kotlin/Native declarations.
+现在我们已经准备好<!--
+-->[在 IntelliJ IDEA 中打开这个工程](using-intellij-idea.md)<!--
+-->并且看看如何修正这个示例工程。当我们做了这些之后，
+我们将观察到 C 函数是如何映射到 Kotlin/Native 声明的。
 
-## C Function Pointers in Kotlin
+## Kotlin 中的 C 函数指针
 
-With the help of IntelliJ IDEA's _Goto Declaration_ or
-compiler errors we see the following declarations for our C functions:
+通过 IntelliJ IDEA 的 _Goto Declaration_ 或<!--
+-->编译器错误的帮助，我们可以看到如下为 C 函数生成的声明：
 
 
 
@@ -96,15 +96,15 @@ typealias MyFunVar = kotlinx.cinterop.CPointerVarOf<lib.MyFun>
 ```
 
 
-We see that our function typedef from C has been turned into Kotlin `typealias`. It uses `CPointer<..>` type
-to represent the pointer parameters, and `CFunction<(Int)->Int>` to represent the function signature.
-There is an `invoke` operator extension function available for all `CPointer<CFunction<..>` types, so that
-it is possible to call it as we would call any other function in Kotlin.
+我们看到 C 中的函数类型定义已经被转换到了 Kotlin `typealias`。它使用 `CPointer<..>` 类型<!--
+-->表示指针参数，使用 `CFunction<(Int)->Int>` 表示函数签名。
+这里有一个  `invoke` 操作符扩展函数，它可以用于所有的 `CPointer<CFunction<..>` 类型，因此<!--
+-->它可以在任何一个我们可以调用其它 Kotlin 函数的地方调用。
 
-## Passing Kotlin Function as C Function Pointer
+## 将 Kotlin 函数作为 C 函数指针传递
 
-It is the time to try using C Functions from our Kotlin program. Let's call the `accept_fun`
-function and pass the C function pointer to a Kotlin lambda:
+是时候尝试在我们的 Kotlin 程序中使用 C 函数了。我们调用 `accept_fun`
+函数并传递 C 函数指针到一个 Kotlin lambda：
 
 
 ```kotlin
@@ -115,15 +115,15 @@ fun myFun() {
 ```
 
 
-We use the `staticCFunction{..}` helper function from Kotlin/Native to wrap a Kotlin lambda function into a C function pointer.
-It only allows having unbound and non-capturing lambda functions. For example, it is not able
-to use a local variable from the function. We may only use globally visible declarations. Throwing exceptions
-from a `staticCFunction{..}` will end up in non-deterministic side-effects. It is vital to make sure that we are not
-throwing any sudden exceptions from it.
+我们使用 Kotlin/Native 中的 `staticCFunction{..}` 辅助函数将一个 Kotlin lambda 函数包装为 C 函数指针。
+它只能是非绑定的以及没有发生变量捕捉的 lambda functions。举例来说，它不能<!--
+-->使用函数中的局部变量。我们只能使用全局可见的声明。抛出来自
+`staticCFunction{..}` 的异常将导致非确定性的副作用。确保我们不会<!--
+-->从中抛出任何意想不到的异常是非常重要的。
 
-## Using the C Function Pointer from Kotlin
+## 在 Kotlin 中使用 C 函数指针
 
-The next step is to call a C function pointer from a C pointer that we have from the `supply_fun()` call:
+接下来是调用 `supply_fun()` 获得一个 C 函数指针，并调用它：
 
 
 
@@ -137,20 +137,20 @@ fun myFun2() {
 ```
 
 
-Kotlin turns the function pointer return type into a nullable `CPointer<CFunction<..>` object. There is the need
-to explicitly check for `null` first. We use [elvis operator](../../reference/null-safety.md) for that.
-The `cinterop` tool helps us to turn a C function pointer into an easy to call object in Kotlin. This is
-what we did on the last line.
+Kotlin 将函数指针返回类型转换到一个可空的 `CPointer<CFunction<..>` 对象。这里首先需要<!--
+-->显式检查 `null` 值。我们为此使用 [elvis（猫王）操作符](../../reference/null-safety.md)。
+`cinterop` 工具帮助我们将一个 C 函数指针转换为一个 Kotlin 中可以简单调用的对象。这就是<!--
+-->我们在最后一行所做的事。
 
 
-## Fixing the Code
+## 修改代码
 
-We've seen all definitions and it is time to fix and run the code.
-Let's run the `runDebugExecutableNative` Gradle task [in the IDE](using-intellij-idea.md)
-or use the following command to run the code:
+我们已经看到了所有的声明，所以是时候修改并运行代码了。
+我们[在 IDE 中](using-intellij-idea.md)运行 `runDebugExecutableNative` Gradle 任务<!--
+-->或使用下面的命令来运行代码：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 
-The code in the `hello.kt` file may look like this:
+`hello.kt` 文件中的代码最终看起来会是这样的：
 
 
 ```kotlin
@@ -170,13 +170,13 @@ fun main() {
 
 
 
-## Next Steps
+## 接下来
 
-We will continue exploring more C language types and their representation in Kotlin/Native
-in next tutorials:
-- [Mapping Primitive Data Types from C](mapping-primitive-data-types-from-c.md)
-- [Mapping Struct and Union Types from C](mapping-struct-union-types-from-c.md)
-- [Mapping Strings from C](mapping-strings-from-c.md)
+我们将继续在下面几篇教程中继续探索更多的 C 语言类型及其在 Kotlin/Native
+中的表示：
+- [映射来自 C 语言的原始数据类型](mapping-primitive-data-types-from-c.md)
+- [映射来自 C 语言的结构与联合类型](mapping-struct-union-types-from-c.md)
+- [映射来自 C 语言的字符串](mapping-strings-from-c.md)
 
-The [C Interop documentation](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)
-documentation covers more advanced scenarios of the interop.
+这篇 [C 互操作文档](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)<!--
+-->涵盖了更多的高级互操作场景
