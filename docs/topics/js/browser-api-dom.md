@@ -1,18 +1,22 @@
-[//]: # (title: Browser API and the DOM)
+[//]: # (title: Browser and DOM API)
 
-The Kotlin/JS standard library allows us to access browser-specific functionality using the `kotlinx.browser` package, which includes typical top-level objects such as `document` and `window`. The standard library provides typesafe wrappers for the functionality exposed by these objects wherever possible. As a fallback, the `dynamic` type is used to provide interaction with functions that do not map well into the Kotlin type system.
+The Kotlin/JS standard library lets you access browser-specific functionality using the `kotlinx.browser` package,
+which includes typical top-level objects such as `document` and `window`. The standard library provides typesafe wrappers
+for the functionality exposed by these objects wherever possible. As a fallback, the `dynamic` type is used to provide
+interaction with functions that do not map well into the Kotlin type system.
 
-## Interacting with the DOM
-For interaction with the Document Object Model (DOM), we can use the variable `document`. For example, we can set the background color of our website through this object:
+## Interaction with the DOM
 
+For interaction with the Document Object Model (DOM), you can use the variable `document`. For example, you can set the
+background color of our website through this object:
 
 ```kotlin
 document.bgColor = "FFAA12" 
 ```
 
-
-The `document` object also provides us a way to retrieve a specific element by ID, name, class name, tag name and so on. All returned elements are of type `Element?`. To access their properties, we need to cast them to their appropriate type. For example, say we have an HTML page with an email `<input>` field:
-
+The `document` object also provides you a way to retrieve a specific element by ID, name, class name, tag name and so on.
+All returned elements are of type `Element?`. To access their properties, you need to cast them to their appropriate type.
+For example, assume that you have an HTML page with an email `<input>` field:
 
 ```html
 <body>
@@ -22,18 +26,18 @@ The `document` object also provides us a way to retrieve a specific element by I
 </body>
 ```
 
+Note that your script is included at the bottom of the ``body`` tag. This ensures that the DOM is fully available before
+the script is loaded.
 
-Note that we include our script at the bottom of the ``body`` tag. This ensures that the DOM is fully available before the script is loaded.
-
-With this setup, we can access elements of our DOM. To access the properties of the `input` field, we invoke `getElementById` and cast it to `HTMLInputElement`. We can then safely access its properties, such as `value`:
-
+With this setup, you can access elements of the DOM. To access the properties of the `input` field, invoke `getElementById`
+and cast it to `HTMLInputElement`. You can then safely access its properties, such as `value`:
 
 ```kotlin
 val email = document.getElementById("email") as HTMLInputElement
 email.value = "hadi@jetbrains.com"
 ```
 
+Much like you reference this `input` element, you can access other elements on the page, casting them to the appropriate
+types.
 
-Much like we reference this `input` element, we can access other elements on the page, casting them to the appropriate types.
-
-To see how we can express how elements in the DOM can be created and structured in a concise way, check out the the [Typesafe HTML DSL](typesafe-html-dsl.md).
+To see how to create and structure elements in the DOM in a concise way, check out the [Typesafe HTML DSL](typesafe-html-dsl.md).
