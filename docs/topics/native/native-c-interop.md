@@ -1,57 +1,75 @@
-[//]: # (title: Interoperability with C)
+# _Kotlin/Native_ interoperability #
 
-Kotlin/Native follows the general tradition of Kotlin to provide excellent
+## Introduction ##
+
+_Kotlin/Native_ follows the general tradition of Kotlin to provide excellent
 existing platform software interoperability. In the case of a native platform,
-the most important interoperability target is a C library. So Kotlin/Native
+the most important interoperability target is a C library. So _Kotlin/Native_
 comes with a `cinterop` tool, which can be used to quickly generate
 everything needed to interact with an external library.
 
-The following workflow is expected when interacting with the native library:
-1. Create a `.def` file describing what to include into bindings.
-2. Use the `cinterop` tool to produce Kotlin bindings.
-3. Run the Kotlin/Native compiler on an application to produce the final executable.
+The following workflow is expected when interacting with the native library.
+* create a `.def` file describing what to include into bindings
+* use the `cinterop` tool to produce Kotlin bindings
+* run _Kotlin/Native_ compiler on an application to produce the final executable
 
 The interoperability tool analyses C headers and produces a "natural" mapping of
 the types, functions, and constants into the Kotlin world. The generated stubs can be
 imported into an IDE for the purpose of code completion and navigation.
 
-Interoperability with Swift/Objective-C is provided too and covered in [Objective-C interop](native-objc-interop.md).
+Interoperability with Swift/Objective-C is provided too and covered in a
+separate document [OBJC_INTEROP.md](OBJC_INTEROP.md).
 
-## Platform libraries
+## Platform libraries ##
 
 Note that in many cases there's no need to use custom interoperability library creation mechanisms described below,
-as for APIs available on the platform standardized bindings called [platform libraries](native-platform-libs.md)
+as for APIs available on the platform standardized bindings called [platform libraries](PLATFORM_LIBS.md)
 could be used. For example, POSIX on Linux/macOS platforms, Win32 on Windows platform, or Apple frameworks
 on macOS/iOS are available this way.
 
-## Simple example
+## Simple example ##
 
 Install libgit2 and prepare stubs for the git library:
+
+
 
 ```bash
 
 cd samples/gitchurn
-../../dist/bin/cinterop -def src/nativeInterop/cinterop/libgit2.def \
+../../dist/bin/cinterop -def src/main/c_interop/libgit2.def \
  -compiler-option -I/usr/local/include -o libgit2
 ```
 
+
+
 Compile the client:
 
+
+
 ```bash
-../../dist/bin/kotlinc src/gitChurnMain/kotlin \
+../../dist/bin/kotlinc src/main/kotlin \
  -library libgit2 -o GitChurn
 ```
 
+
+
 Run the client:
+
+
 
 ```bash
 ./GitChurn.kexe ../..
 ```
 
-## Create bindings for a new library
 
-To create bindings for a new library, start from creating a `.def` file.
+
+
+## Creating bindings for a new library ##
+
+To create bindings for a new library, start by creating a `.def` file.
 Structurally it's a simple property file, which looks like this:
+
+
 
 ```c
 headers = png.h
@@ -59,12 +77,20 @@ headerFilter = png.h
 package = png
 ```
 
+
+
+
 Then run the `cinterop` tool with something like this (note that for host libraries that are not included
 in the sysroot search paths, headers may be needed):
+
+
 
 ```bash
 cinterop -def png.def -compiler-option -I/usr/local/include -o png
 ```
+
+
+
 
 This command will produce a `png.klib` compiled library and
 `png-build/kotlin` directory containing Kotlin source code for the library.
@@ -73,7 +99,7 @@ If the behavior for a certain platform needs to be modified, you can use a forma
 `compilerOpts.osx` or `compilerOpts.linux` to provide platform-specific values
 to the options.
 
-Note that the generated bindings are generally platform-specific, so if you are developing for
+Note, that the generated bindings are generally platform-specific, so if you are developing for
 multiple targets, the bindings need to be regenerated.
 
 After the generation of bindings, they can be used by the IDE as a proxy view of the
@@ -85,7 +111,7 @@ the output of a config script with the `--cflags` flag (maybe without exact path
 The output of a config script with `--libs` will be passed as a `-linkedArgs`  `kotlinc`
 flag value (quoted) when compiling.
 
-### Select library headers
+### Selecting library headers
 
 When library headers are imported to a C program with the `#include` directive,
 all of the headers included by these headers are also included in the program.
@@ -96,7 +122,7 @@ it is possible to specify in the `.def` file which of the included headers are t
 be imported. The separate declarations from other headers can also be imported
 in case of direct dependencies.
 
-#### Filter headers by globs
+#### Filtering headers by globs
 
 It is possible to filter headers by globs. The `headerFilter` property value
 from the `.def` file is treated as a space-separated list of globs. If the
@@ -108,15 +134,19 @@ path elements, e.g. `time.h` or `curl/curl.h`. So if the library is usually
 included with `#include <SomeLibrary/Header.h>`, then it would probably be
 correct to filter headers with
 
+
+
 ```c
 headerFilter = SomeLibrary/**
 ```
 
+
+
 If a `headerFilter` is not specified, then all headers are included.
 
-#### Filter headers by module maps
+#### Filtering by module maps
 
-Some libraries have proper `module.modulemap` or `module.map` files in their
+Some libraries have proper `module.modulemap` or `module.map` files in its
 headers. For example, macOS and iOS system libraries and frameworks do.
 The [module map file](https://clang.llvm.org/docs/Modules.html#module-map-language)
 describes the correspondence between header files and modules. When the module
@@ -124,45 +154,59 @@ maps are available, the headers from the modules that are not included directly
 can be filtered out using the experimental `excludeDependentModules` option of the
 `.def` file:
 
+
+
 ```c
 headers = OpenGL/gl.h OpenGL/glu.h GLUT/glut.h
 compilerOpts = -framework OpenGL -framework GLUT
 excludeDependentModules = true
 ```
 
+
+
+
 When both `excludeDependentModules` and `headerFilter` are used, they are
 applied as an intersection.
 
-### C compiler and linker options
+### C compiler and linker options ###
 
 Options passed to the C compiler (used to analyze headers, such as preprocessor definitions) and the linker
 (used to link final executables) can be passed in the definition file as `compilerOpts` and `linkerOpts`
-respectively. For example:
+respectively. For example
+
+
 
 ```c
 compilerOpts = -DFOO=bar
 linkerOpts = -lpng
 ```
 
-Target-specific options only applicable to the certain target can be specified as well:
 
-```c
+
+Target-specific options, only applicable to the certain target can be specified as well, such as
+
+
+
+ ```c
  compilerOpts = -DBAR=bar
  compilerOpts.linux_x64 = -DFOO=foo1
  compilerOpts.mac_x64 = -DFOO=foo2
  ```
 
-With such a configuration, C headers will be analyzed with `-DBAR=bar -DFOO=foo1` on Linux and
-with `-DBAR=bar -DFOO=foo2` on macOS .
+
+
+and so, C headers on Linux will be analyzed with `-DBAR=bar -DFOO=foo1` and on macOS with `-DBAR=bar -DFOO=foo2`.
 Note that any definition file option can have both common and the platform-specific part.
 
-### Add custom declarations
+### Adding custom declarations ###
 
 Sometimes it is required to add custom C declarations to the library before
 generating bindings (e.g., for [macros](#macros)). Instead of creating an
 additional header file with these declarations, you can include them directly
 to the end of the `.def` file, after a separating line, containing only the
 separator sequence `---`:
+
+
 
 ```c
 headers = errno.h
@@ -174,16 +218,20 @@ static inline int getErrno() {
 }
 ```
 
+
+
 Note that this part of the `.def` file is treated as part of the header file, so
 functions with the body should be declared as `static`.
 The declarations are parsed after including the files from the `headers` list.
 
-### Include a static library in your klib
+### Including static library in your klib
 
 Sometimes it is more convenient to ship a static library with your product,
 rather than assume it is available within the user's environment.
 To include a static library into `.klib` use `staticLibrary` and `libraryPaths`
 clauses. For example:
+
+
 
 ```c
 headers = foo.h
@@ -191,15 +239,17 @@ staticLibraries = libfoo.a
 libraryPaths = /opt/local/lib /usr/local/opt/curl/lib
 ```
 
-When given the above snippet the `cinterop` tool will search `libfoo.a` in 
-`/opt/local/lib` and `/usr/local/opt/curl/lib`, and if it is found include the 
-library binary into `klib`. 
+
+
+When given the above snippet the `cinterop` tool will search `libfoo.a` in
+`/opt/local/lib` and `/usr/local/opt/curl/lib`, and if it is found include the
+library binary into `klib`.
 
 When using such `klib` in your program, the library is linked automatically.
 
-## Bindings
+## Using bindings ##
 
-### Basic interop types
+### Basic interop types ###
 
 All the supported C types have corresponding representations in Kotlin:
 
@@ -208,7 +258,7 @@ All the supported C types have corresponding representations in Kotlin:
 *   Pointers and arrays are mapped to `CPointer<T>?`.
 *   Enums can be mapped to either Kotlin enum or integral values, depending on
     heuristics and the [definition file hints](#definition-file-hints).
-*   Structs and unions are mapped to types having fields available via the dot notation,
+*   Structs / unions are mapped to types having fields available via the dot notation,
     i.e. `someStructInstance.field1`.
 *   `typedef` are represented as `typealias`.
 
@@ -223,7 +273,7 @@ types it is `${type}Var`.
 For types that have both representations, the one with a "lvalue" has a mutable
 `.value` property for accessing the value.
 
-#### Pointer types
+#### Pointer types ####
 
 The type argument `T` of `CPointer<T>` must be one of the "lvalue" types
 described above, e.g., the C type `struct S*` is mapped to `CPointer<S>`,
@@ -235,12 +285,18 @@ C null pointer is represented as Kotlin's `null`, and the pointer type
 type support all the Kotlin operations related to handling `null`, e.g. `?:`, `?.`,
 `!!` etc.:
 
+
+
 ```kotlin
 val path = getenv("PATH")?.toKString() ?: ""
 ```
 
+
+
 Since the arrays are also mapped to `CPointer<T>`, it supports the `[]` operator
 for accessing values by index:
+
+
 
 ```kotlin
 fun shift(ptr: CPointer<BytePtr>, length: Int) {
@@ -249,6 +305,8 @@ fun shift(ptr: CPointer<BytePtr>, length: Int) {
     }
 }
 ```
+
+
 
 The `.pointed` property for `CPointer<T>` returns the lvalue of type `T`,
 pointed by this pointer. The reverse operation is `.ptr`: it takes the lvalue
@@ -261,15 +319,23 @@ the Kotlin binding accepts any `CPointer`.
 Casting a pointer (including `COpaquePointer`) can be done with
 `.reinterpret<T>`, e.g.:
 
+
+
 ```kotlin
 val intPtr = bytePtr.reinterpret<IntVar>()
 ```
 
+
+
 or
+
+
 
 ```kotlin
 val intPtr: CPointer<IntVar> = bytePtr.reinterpret()
 ```
+
+
 
 As is with C, these reinterpret casts are unsafe and can potentially lead to
 subtle memory problems in the application.
@@ -277,37 +343,53 @@ subtle memory problems in the application.
 Also there are unsafe casts between `CPointer<T>?` and `Long` available,
 provided by the `.toLong()` and `.toCPointer<T>()` extension methods:
 
+
+
 ```kotlin
 val longValue = ptr.toLong()
 val originalPtr = longValue.toCPointer<T>()
 ```
 
+
+
 Note that if the type of the result is known from the context, the type argument
 can be omitted as usual due to the type inference.
 
-### Memory allocation
+### Memory allocation ###
 
 The native memory can be allocated using the `NativePlacement` interface, e.g.
+
+
 
 ```kotlin
 val byteVar = placement.alloc<ByteVar>()
 ```
 
+
+
 or
+
+
 
 ```kotlin
 val bytePtr = placement.allocArray<ByteVar>(5)
 ```
 
+
+
 The most "natural" placement is in the object `nativeHeap`.
 It corresponds to allocating native memory with `malloc` and provides an additional
 `.free()` operation to free allocated memory:
+
+
 
 ```kotlin
 val buffer = nativeHeap.allocArray<ByteVar>(size)
 <use buffer>
 nativeHeap.free(buffer)
 ```
+
+
 
 However, the lifetime of allocated memory is often bound to the lexical scope.
 It is possible to define such scope with `memScoped { ... }`.
@@ -318,6 +400,8 @@ and the allocated memory will be automatically freed after leaving the scope.
 For example, the C function returning values through pointer parameters can be
 used like
 
+
+
 ```kotlin
 val fileSize = memScoped {
     val statBuf = alloc<stat>()
@@ -326,7 +410,9 @@ val fileSize = memScoped {
 }
 ```
 
-### Pass pointers to bindings
+
+
+### Passing pointers to bindings ###
 
 Although C pointers are mapped to the `CPointer<T>` type, the C function
 pointer-typed parameters are mapped to `CValuesRef<T>`. When passing
@@ -348,6 +434,8 @@ For example:
 
 C:
 
+
+
 ```c
 void foo(int* elements, int count);
 ...
@@ -355,13 +443,19 @@ int elements[] = {1, 2, 3};
 foo(elements, 3);
 ```
 
+
+
 Kotlin:
+
+
 
 ```kotlin
 foo(cValuesOf(1, 2, 3), 3)
 ```
 
-### Strings
+
+
+### Working with the strings ###
 
 Unlike other pointers, the parameters of type `const char*` are represented as
 a Kotlin `String`. So it is possible to pass any Kotlin string to a binding
@@ -373,23 +467,33 @@ manually:
 *   `fun CPointer<ByteVar>.toKString(): String`
 *   `val String.cstr: CValuesRef<ByteVar>`.
 
-To get the pointer, `.cstr` should be allocated in native memory, e.g.
+    To get the pointer, `.cstr` should be allocated in native memory, e.g.
 
-```
-val cString = kotlinString.cstr.getPointer(nativeHeap)
-```
+
+
+    ```
+    val cString = kotlinString.cstr.getPointer(nativeHeap)
+    ```
+
+
 
 In all cases, the C string is supposed to be encoded as UTF-8.
 
 To skip automatic conversion and ensure raw pointers are used in the bindings, a `noStringConversion`
 statement in the `.def` file could be used, i.e.
 
+
+
 ```c
 noStringConversion = LoadCursorA LoadCursorW
 ```
 
+
+
 This way any value of type `CPointer<ByteVar>` can be passed as an argument of `const char*` type.
 If a Kotlin string should be passed, code like this could be used:
+
+
 
 ```kotlin
 memScoped {
@@ -398,11 +502,15 @@ memScoped {
 }
 ```
 
-### Scope-local pointers
+
+
+### Scope-local pointers ###
 
 It is possible to create a scope-stable pointer of C representation of `CValues<T>`
 instance using the `CValues<T>.ptr` extension property, available under `memScoped { ... }`.
 It allows using the APIs which require C pointers with a lifetime bound to a certain `MemScope`. For example:
+
+
 
 ```kotlin
 memScoped {
@@ -413,10 +521,12 @@ memScoped {
 }
 ```
 
+
+
 In this example, all values passed to the C API `new_menu()` have a lifetime of the innermost `memScope`
 it belongs to. Once the control flow leaves the `memScoped` scope the C pointers become invalid.
 
-### Pass and receive structs by value
+### Passing and receiving structs by value ###
 
 When a C function takes or returns a struct / union `T` by value, the corresponding
 argument type or return type is represented as `CValue<T>`.
@@ -435,21 +545,26 @@ methods available:
     value `T` as receiver. So to read a single field, the following code can be
     used:
 
+
+
     ```kotlin
     val fieldValue = structValue.useContents { field }
     ```
 
-### Callbacks
+
+
+
+### Callbacks ###
 
 To convert a Kotlin function to a pointer to a C function,
 `staticCFunction(::kotlinFunction)` can be used. It is also able to provide
 the lambda instead of a function reference. The function or lambda must not
 capture any values.
 
-If the callback doesn't run in the main thread, it is mandatory to init the Kotlin/Native
+If the callback doesn't run in the main thread, it is mandatory to init the _Kotlin/Native_
 runtime by calling `kotlin.native.initRuntimeIfNeeded()`.
 
-#### Pass user data to callbacks
+#### Passing user data to callbacks ####
 
 Often C APIs allow passing some user data to callbacks. Such data is usually
 provided by the user when configuring the callback. It is passed to some C function
@@ -461,40 +576,54 @@ Such wrapping is possible with `StableRef` class.
 
 To wrap the reference:
 
+
+
 ```kotlin
 val stableRef = StableRef.create(kotlinReference)
 val voidPtr = stableRef.asCPointer()
 ```
 
+
+
 where the `voidPtr` is a `COpaquePointer` and can be passed to the C function.
 
 To unwrap the reference:
+
+
 
 ```kotlin
 val stableRef = voidPtr.asStableRef<KotlinClass>()
 val kotlinReference = stableRef.get()
 ```
 
+
+
 where `kotlinReference` is the original wrapped reference.
 
 The created `StableRef` should eventually be manually disposed using
 the `.dispose()` method to prevent memory leaks:
 
+
+
 ```kotlin
 stableRef.dispose()
 ```
+
+
 
 After that it becomes invalid, so `voidPtr` can't be unwrapped anymore.
 
 See the `samples/libcurl` for more details.
 
-### Macros
+### Macros ###
 
 Every C macro that expands to a constant is represented as a Kotlin property.
 Other macros are not supported. However, they can be exposed manually by
 wrapping them with supported declarations. E.g. function-like macro `FOO` can be
 exposed as function `foo` by
-[adding the custom declaration](#add-custom-declarations) to the library:
+[adding the custom declaration](#adding-custom-declarations) to the library:
+
+
 
 ```c
 headers = library/base.h
@@ -506,7 +635,9 @@ static inline int foo(int arg) {
 }
 ```
 
-### Definition file hints
+
+
+### Definition file hints ###
 
 The `.def` file supports several options for adjusting the generated bindings.
 
@@ -524,17 +655,20 @@ The `.def` file supports several options for adjusting the generated bindings.
 *    `noStringConversion` property value is space-separated lists of the functions whose
      `const char*` parameters shall not be autoconverted as Kotlin string
 
-### Portability
+### Portability ###
 
- Sometimes the C libraries have function parameters or struct fields of a
+Sometimes the C libraries have function parameters or struct fields of a
 platform-dependent type, e.g. `long` or `size_t`. Kotlin itself doesn't provide
 neither implicit integer casts nor C-style integer casts (e.g.
 `(size_t) intValue`), so to make writing portable code in such cases easier,
 the `convert` method is provided:
 
+
+
 ```kotlin
 fun ${type1}.convert<${type2}>(): ${type2}
 ```
+
 
 where each of `type1` and `type2` must be an integral type, either signed or unsigned.
 
@@ -545,19 +679,26 @@ methods, depending on `type`.
 
 The example of using `convert`:
 
+
+
 ```kotlin
 fun zeroMemory(buffer: COpaquePointer, size: Int) {
     memset(buffer, 0, size.convert<size_t>())
 }
 ```
 
+
+
 Also, the type parameter can be inferred automatically and so may be omitted
 in some cases.
 
-### Object pinning
 
- Kotlin objects could be pinned, i.e. their position in memory is guaranteed to be stable
+### Object pinning ###
+
+Kotlin objects could be pinned, i.e. their position in memory is guaranteed to be stable
 until unpinned, and pointers to such objects inner data could be passed to the C functions. For example
+
+
 
 ```kotlin
 fun readData(fd: Int): String {
@@ -574,6 +715,8 @@ fun readData(fd: Int): String {
     }
 }
 ```
+
+
 
 Here we use service function `usePinned`, which pins an object, executes block and unpins it on normal and
 exception paths.
