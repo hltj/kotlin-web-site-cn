@@ -1,8 +1,7 @@
-# 符号化 iOS 崩溃报告
+[//]: # (title: 符号化 iOS 崩溃报告)
 
 Debugging an iOS application crash sometimes involves analyzing crash reports.
-More info about crash reports can be found
-[in the official documentation](https://developer.apple.com/library/archive/technotes/tn2151/_index.html).
+More info about crash reports can be found in the [Apple documentation](https://developer.apple.com/library/archive/technotes/tn2151/_index.html).
 
 Crash reports generally require symbolication to become properly readable:
 symbolication turns machine code addresses into human-readable source locations.
@@ -14,10 +13,23 @@ from iOS applications using Kotlin.
 To symbolicate addresses in Kotlin code (e.g. for stack trace elements
 corresponding to Kotlin code) `.dSYM` bundle for Kotlin code is required.
 
-By default Kotlin/Native compiler produces `.dSYM` for release
+By default, Kotlin/Native compiler produces `.dSYM` for release
 (i.e. optimized) binaries on Darwin platforms. This can be disabled with `-Xadd-light-debug=disable`
-compiler flag. At the same time this option is disabled by default for other platforms, to enable it use `-Xadd-light-debug=enable`.
-To control option in Gradle, use
+compiler flag. At the same time, this option is disabled by default for other platforms. To enable it, use the `-Xadd-light-debug=enable`
+compiler option.
+
+<tabs>
+
+```groovy
+kotlin {
+    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget) {
+        binaries.all {
+            freeCompilerArgs += "-Xadd-light-debug={enable|disable}"
+        }
+    }
+}
+```
+
 
 ```kotlin
 kotlin {
@@ -29,7 +41,7 @@ kotlin {
 }
 ```
 
-(in Kotlin DSL).
+</tabs>
 
 In projects created from IntelliJ IDEA or AppCode templates these `.dSYM` bundles
 are then discovered by Xcode automatically.
@@ -42,7 +54,19 @@ crash reports.
 
 If rebuilding is performed on App Store side, then `.dSYM` of rebuilt *dynamic* framework
 seems discarded and not downloadable from App Store Connect.
-So in this case it may be required to make the framework static, e.g. with
+In this case, it may be required to make the framework static.
+
+<tabs>
+
+```groovy
+kotlin {
+    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget) {
+        binaries.withType(org.jetbrains.kotlin.gradle.plugin.mpp.Framework) {
+            isStatic = true
+        }
+    }
+}
+```
 
 ```kotlin
 kotlin {
@@ -54,7 +78,7 @@ kotlin {
 }
 ```
 
-(in Kotlin DSL).
+</tabs>
 
 ## Decode inlined stack frames
 

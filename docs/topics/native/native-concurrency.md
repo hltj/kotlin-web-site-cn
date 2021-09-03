@@ -1,10 +1,11 @@
-## Kotlin/Native 中的并发
+[//]: # (title: Kotlin/Native 中的并发)
 
 Kotlin/Native 运行时并不鼓励<!--
  -->带有互斥代码块与条件变量的经典线程式并发模型，因为已知该模型<!--
  -->易出错且不可靠。相反，我们建议使用一系列<!--
  -->替代方法，让你可以使用硬件并发并实现阻塞 IO。
 这些方法如下，并且分别会在后续各部分详细阐述：
+
 * 带有消息传递的 worker
 * 对象子图所有权转移
 * 对象子图冻结
@@ -13,21 +14,19 @@ Kotlin/Native 运行时并不鼓励<!--
 * Atomic primitives and references
 * 用于阻塞操作的协程（本文档未涉及）
 
-### Worker
+## Worker
 
 Kotlin/Native 运行时提供了 worker 的概念来取代线程：并发执行的<!--
  -->控制流以及与其关联的请求队列。Worker 非常像参与者模型<!--
  -->中的参与者。一个 worker 可以与另一个 worker 交换 Kotlin 对象，从而在任何时刻<!--
  -->每个可变对象都隶属于单个 worker，不过所有权可以转移。
-请参见[对象转移与冻结](#transfer)部分。
+请参见[对象转移与冻结](#对象转移与冻结)部分。
 
 一旦以 `Worker.start` 函数调用启动了一个 worker，就可以使用其自身唯一的整数
 worker id 来寻址。其他 worker 或者非 worker 的并发原语（如 OS 线程）可以<!--
  -->使用 `execute` 调用向 worker 发消息。
 
-
-
- ```kotlin
+```kotlin
 val future = execute(TransferMode.SAFE, { SomeDataForWorker() }) {
    // 第二个函数参数所返回的数据
    // 作为“input”参数进入 worker 例程
@@ -44,8 +43,6 @@ future.consume {
 }
 ```
 
-
-
 调用 `execute` 会使用作为第二个参数传入的函数来生成一个对象子图
 （即一组相互引用的对象）然后将其作为一个整体传给该 worker，之后<!--
  -->发出该请求的线程不可以再使用该对象子图。如果第一个参数<!--
@@ -60,7 +57,6 @@ future.consume {
 
 更完整的示例请参考 Kotlin/Native 版本库中的 [worker 示例](https://github.com/JetBrains/kotlin-native/tree/master/samples/workers)<!--
 -->。
-
 
 ### 对象转移与冻结
 
@@ -84,18 +80,15 @@ O(N) 复杂度进行算法检测，其中 N 是这种子图中元素的数量。
   -->共享。目前，Kotlin/Native 运行时只能在枚举对象创建后进行冻结，尽管<!--
   -->将来可能实现自动冻结某些可证明不可变的对象。
 
-
-### 对象子图分离
+## 对象子图分离
 
 没有外部引用的对象子图可以使用 `DetachedObjectGraph<T>`
 断开到 `COpaquePointer` 值的连接，该值可以存储在 `void*` 数据中，因此断开连接的对象子图<!--
   -->可以存储在 C 语言数据结构中，并且之后还能在任意线程或 worker 中通过 `DetachedObjectGraph<T>.attach()`
-加回。如果 worker 机制不足以完成特定任务，那么可以将对象子图分离与[原始共享内存](#shared)相结合，能够在<!--
+加回。如果 worker 机制不足以完成特定任务，那么可以将对象子图分离与[原始共享内存](#raw-shared-memory)相结合，能够在<!--
   -->并发线程之间进行旁路对象传输。 Note, that object detachment
 may require explicit leaving function holding object references and then performing cyclic garbage collection.
 For example, code like:
-
-
 
 ```kotlin
 val graph = DetachedObjectGraph {
@@ -106,12 +99,8 @@ val graph = DetachedObjectGraph {
     map
 }
 ```
-
-
-
+ 
 will not work as expected and will throw runtime exception, as there are uncollected cycles in the detached graph, while:
-
-
 
 ```kotlin
 val graph = DetachedObjectGraph {
@@ -127,20 +116,15 @@ val graph = DetachedObjectGraph {
  }
 ```
 
-
-
 will work properly, as holding references will be released, and then cyclic garbage affecting reference counter is
 collected.
 
-
-### 原始共享内存
+## 原始共享内存
 
 考虑到 Kotlin/Native 与 C 语言之间通过互操作性的紧密联系，结合上文中提到的其他机制，
 可以构建流行的数据结构，如并发的 hashmap 或者与
 Kotlin/Native 共享缓存。可以依赖共享的 C 语言数据，并在其中存储分离的对象子图的引用。
 考虑以下 .def 文件：
-
-
 
 ```c
 package = global
@@ -154,12 +138,8 @@ typedef struct {
 SharedData sharedData;
 ```
 
-
-
 在运行 cinterop 工具之后，可以在版本化的全局结构中共享 Kotlin 数据，
 并通过自动生成的 Kotlin 代码在 Kotlin 中与其透明交互，如下所示：
-
-
 
 ```kotlin
 class SharedData(rawPtr: NativePtr) : CStructVar(rawPtr) {
@@ -168,11 +148,8 @@ class SharedData(rawPtr: NativePtr) : CStructVar(rawPtr) {
 }
 ```
 
-
-
 因此，结合上文声明的顶层变量，可以让不同的线程看到相同的内存，
 并使用平台相关的同步原语来构建传统的并发结构。
-
 
 ### 全局变量与单例
 
@@ -191,8 +168,7 @@ class SharedData(rawPtr: NativePtr) : CStructVar(rawPtr) {
 
 结合起来，这些机制允许在多平台（MPP）项目中跨平台复用代码的自然竞态冻结编程。
 
-
-### Atomic primitives and references
+## Atomic primitives and references
 
 Kotlin/Native standard library provides primitives for safe working with concurrently mutable data, namely
 `AtomicInt`, `AtomicLong`, `AtomicNativePtr`, `AtomicReference` and `FreezableAtomicReference` in the package
@@ -211,7 +187,7 @@ To achieve such functionality Kotlin/Native runtime provides two related classes
 `kotlin.native.concurrent.AtomicReference` and `kotlin.native.concurrent.FreezableAtomicReference`.
 Atomic reference holds reference to a frozen or immutable object, and its value could be updated by set
 or compare-and-swap operation. Thus, dedicated set of objects could be used to create mutable shared object graphs
-(of immutable objects). Cycles in the shared memory could be created using atomic references.
+(of immutable objects).  Cycles in the shared memory could be created using atomic references.
 Kotlin/Native runtime doesn't support garbage collecting cyclic data when reference cycle goes through
 `AtomicReference` or frozen `FreezableAtomicReference`. So to avoid memory leaks atomic references
 that are potentially parts of shared cyclic data should be zeroed out once no longer needed.

@@ -1,18 +1,11 @@
-[//]: # (title: 使用 Gradle 的 Hello Kotlin/Native)
-
-
-<!--- To become a How-To. Need to change type to new "HowTo" --->
-
-
-## 创建 Kotlin/Native 的 Gradle项目
+[//]: # (title: Get started with Kotlin/Native using Gradle)
 
 [Gradle](https://gradle.org) 是一个在 Java、Android 与其他生态系统工程中非常常用的构建系统。
 它是 Kotlin/Native 与 Multiplatform 的默认构建系统。
 
-尽管包括 [IntelliJ IDEA](https://www.jetbrains.com/idea) 在内的大多数 IDE 都可以生成相应的 Gradle 文件，
-但还是建议看一下如何手动创建此 Gradle 文件，以更好地了解事物的本质。
-如果想使用 IDE，请参阅[使用 IntelliJ IDEA 的 Hello Kotlin/Native](using-intellij-idea.md)。
-
+尽管包括 [IntelliJ IDEA](https://www.jetbrains.com/idea) 在内的大多数 IDE 都可以生成相应的 Gradle 文件， 
+但还是建议看一下如何手动创建此 Gradle 文件，以更好地了解事物的本质。 
+如果想使用 IDE，请参阅[使用 IntelliJ IDEA 的 Hello Kotlin/Native](native-get-started.md)。 
 
 Gradle 支持两种语言的构建脚本：
 
@@ -25,28 +18,74 @@ Groovy 语言是 Gradle 最早支持的脚本语言，它利用了该语言的�
 
 两种都可以使用，示例将展示两种语言的语法。
 
-第一步是创建一个项目文件夹。在其中，创建包含以下内容的
-<span class="multi-language-span" data-lang="groovy">
-`build.gradle`
-</span>
-<span class="multi-language-span" data-lang="kotlin">
-`build.gradle.kts`
-</span>
-Gradle 构建文件：
-[[include pages-includes/docs/tutorials/native/basic-kotlin-native-app-codeblocks-code.md]]
+## Create project files 
 
-准备好的项目源代码可以直接从
-[[include pages-includes/docs/tutorials/native/basic-kotlin-native-app-codeblocks-link.md]] 下载。
+First, create a project directory. Inside it, create `build.gradle` or `build.gradle.kts` 
+Gradle build file with the following contents:
 
-接下来，在项目文件夹中创建一个空的
-<span class="multi-language-span" data-lang="kotlin">
-`settings.gradle.kts`
-</span><span class="multi-language-span" data-lang="groovy">
-`settings.gradle`
-</span>
-文件。
+<tabs>
 
-取决于目标平台，不同的[函数](/docs/reference/mpp-intro.md)，
+```groovy
+plugins {
+    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
+}
+
+repositories {
+    mavenCentral()
+}
+
+kotlin {
+  macosX64('native') { // on macOS
+  // linuxX64('native') // on Linux
+  // mingwX64('native') // on Windows
+    binaries {
+      executable()
+    }
+  }
+}
+
+wrapper {
+  gradleVersion = '%gradleVersion%'
+  distributionType = 'BIN'
+}
+```
+
+```kotlin
+plugins {
+    kotlin("multiplatform") version "%kotlinVersion%"
+}
+
+repositories {
+    mavenCentral()
+}
+
+kotlin {
+  macosX64("native") { // on macOS
+  // linuxX64("native") // on Linux
+  // mingwX64("native") // on Windows
+    binaries {
+      executable()
+    }
+  }
+}
+
+tasks.withType<Wrapper> {
+  gradleVersion = "%gradleVersion%"
+  distributionType = Wrapper.DistributionType.BIN
+}
+```
+
+</tabs>
+
+The prepared project sources can be directly downloaded from Github:
+
+* for macOS: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-groovy-macos.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-kotlin-macos.zip)
+* for Linux: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-groovy-linux.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-kotlin-linux.zip)
+* for Windows: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-groovy-windows.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-kotlin-windows.zip)
+
+Next, create an empty `settings.gradle` or `settings.gradle.kts` file in the project folder.
+
+取决于目标平台，不同的[函数](mpp-supported-platforms.md)，
 例如：`macosX64`、`mingwX64`、`linuxX64`、`iosX64`，用于创建 Kotlin 目标。
 函数名称是其编译代码的平台。
 这些函数可以选择将目标名称作为参数，在本例中为 `"native"`。
@@ -57,15 +96,11 @@ Gradle 构建文件：
 
 创建一个文件夹 `src/nativeMain/kotlin`，并在其中放置文件 `hello.kt`，其内容如下：
 
-
-
 ```kotlin
 fun main() {
   println("Hello Kotlin/Native!")
 }
 ```
-
-
 
 ## 构建项目
 
@@ -76,12 +111,12 @@ fun main() {
 这将创建一个文件夹 `build/bin/native`，其中包含两个子文件夹 `debugExecutable` 与 `releaseExecutable` 以及相应的二进制文件。
 默认情况下，二进制文件的名称与项目文件夹的名称相同。
 
-
 ## 在 IDE 中打开项目
 
-任何支持 Gradle 的 IDE 都应允许在 IDE 中打开项目。
-对于 [IntelliJ IDEA](https://www.jetbrains.com/idea)，只需打开项目文件夹，会自动将其检测为 Kotlin/Native 项目。
+任何支持 Gradle 的 IDE 都应允许在 IDE 中打开项目。 对于 [IntelliJ IDEA](https://www.jetbrains.com/idea)，
+只需打开项目文件夹，会自动将其检测为 Kotlin/Native 项目。
 
 ## 下一步做什么？
 
-Learn about [multiplatform projects](/docs/reference/mpp-discover-project.md).
+Learn how to [write Gradle build scripts for real-life Kotlin/Native projects](mpp-dsl-reference.md).
+
