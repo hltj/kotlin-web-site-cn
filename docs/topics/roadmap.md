@@ -1,4 +1,6 @@
-[//]: # (title: Kotlin roadmap)
+[//]: # (title: Kotlin Roadmap)
+
+# Kotlin Roadmap
 
 <table>
     <tr>
@@ -17,15 +19,19 @@
 
 Welcome to the Kotlin roadmap! Get a sneak peek into the priorities of the Kotlin Team.
 
+* [Key priorities](#key-priorities)
+* [Kotlin roadmap by subsystem](#kotlin-roadmap-by-subsystem)
+* [What's changed since October 2020](#whats-changed-since-october-2020)
+
 ## Key priorities
 
 The goal of this roadmap is to give you a big picture. Here’s a list of our key priorities – the areas we are investing the most effort into:
 
-* **Fast turnaround**: making the change-test-debug cycle really fast.
-* **New compiler**: a rewrite of the Kotlin compiler optimized for speed, parallelism, and unification. Later we will also work on pluggability.
-* **Fast and smooth IDE**: improving the stability and performance of the Kotlin IDE.
-* **Kotlin for JVM server-side development**: expanding support for server-side use cases across the Kotlin ecosystem.
-* **Kotlin Multiplatform Mobile**: improving the user experience and feature set for sharing code on mobile platforms.
+- **Fast turnaround**: making the change-test-debug cycle really fast.
+- **New compiler**: a rewrite of the Kotlin compiler optimized for speed, parallelism, and unification. Later we will also work on pluggability.
+- **Fast and smooth IDE**: improving the stability and performance of the Kotlin IDE.
+- **Kotlin for JVM server-side development**: expanding support for server-side use cases across the Kotlin ecosystem.
+- **Kotlin Multiplatform Mobile**: improving the user experience and feature set for sharing code on mobile platforms.
 
 ## Kotlin roadmap by subsystem
 
@@ -35,9 +41,9 @@ If you have any questions or feedback about the roadmap or the items on it, feel
 
 ### YouTrack board
 
-Visit the [new roadmap board in our issue tracker ![YouTrack](youtrack-logo.png){width=30}{type="joined"} YouTrack](https://youtrack.jetbrains.com/agiles/153-1251/current)!
+Visit the [new roadmap board in our issue tracker, YouTrack](https://youtrack.jetbrains.com/agiles/153-1251/current)!
 
-![Roadmap board in YouTrack](roadmap-board.png)
+<a href="https://youtrack.jetbrains.com/agiles/153-1251/current"><img class="img-responsive" src="{{ url_for('asset', path='images/reference/roadmap/roadmap-board.png' )}}" alt="Roadmap board in YouTrack"/></a>
 
 ### Roadmap details
 
@@ -136,7 +142,8 @@ Visit the [new roadmap board in our issue tracker ![YouTrack](youtrack-logo.png)
         </td>
     </tr>
     <tr>
-        <td><strong>Kotlin Multiplatform</strong></td>
+        <td><strong>Kotlin Multiplatform</strong>
+        </td>
         <td>
             <ul>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-44325" target="_blank">Improve frontend and IDE import stability for Multiplatform projects</a></li>
@@ -148,7 +155,7 @@ Visit the [new roadmap board in our issue tracker ![YouTrack](youtrack-logo.png)
         <td>
             <ul>
                 <li>⏸ <a href="https://youtrack.jetbrains.com/issue/KT-42301" target="_blank">Improve dependency management for iOS</a></li>
-                <li>⏸ <a href="https://youtrack.jetbrains.com/issue/KT-42303" target="_blank">Improve Gradle and Compiler error messages</a></li>
+                <li>⏸ <a href="https://youtrack.jetbrains.com/issue/KT-42303" target="_blank">Improve Gradle & Compiler error messages</a></li>
                 <li>⏸ Sharing code between JVM and Android</li>
                 <li>⏸ KMM plugin: support for IntelliJ IDEA</li>
             </ul>
@@ -192,12 +199,12 @@ Visit the [new roadmap board in our issue tracker ![YouTrack](youtrack-logo.png)
         <td><strong>Libraries</strong></td>
         <td>
             <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-42436" target="_blank">Support java.nio.Path extension in the standard library</a></li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-42437" target="_blank">Make multiplatform kotlin.text API locale-agnostic by default</a></li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-42315" target="_blank">Improve kotlinx-datetime library</a></li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-42316" target="_blank">Improve kotlinx-serialization (release v1.1)</a></li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-44335" target="_blank">Improve kotlinx-serialization (release v1.2)</a></li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-44336" target="_blank">Improve kotlinx-coroutines (release v1.5)</a></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-42436" target="_blank">Support <code>java.nio.Path</code> extension in the standard library</a></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-42437" target="_blank">Make multiplatform <code>kotlin.text</code> API locale-agnostic by default</a></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-42315" target="_blank">Improve <code>kotlinx-datetime</code> library</a></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-42316" target="_blank">Improve <code>kotlinx-serialization</code> (release v1.1)</a></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-44335" target="_blank">Improve <code>kotlinx-serialization</code> (release v1.2)</a></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-44336" target="_blank">Improve <code>kotlinx-coroutines</code> (release v1.5)</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-44333" target="_blank">Implement unambiguous API for Char conversion</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-44334" target="_blank">Implement multiplatform API for characters</a></li>
             </ul>
@@ -219,7 +226,7 @@ Visit the [new roadmap board in our issue tracker ![YouTrack](youtrack-logo.png)
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-44338" target="_blank">Revamp Kotlin documentation</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-44339" target="_blank">Make the Kotlin website mobile friendly</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-44340" target="_blank">Design a new Kotlin visual style</a></li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-44342" target="_blank">Close try.kotlinlang.org</a></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-44342" target="_blank">Close <em>try.kotlinlang.org</em></a></li>
             </ul>
         </td>
         <td></td>
@@ -234,12 +241,11 @@ Visit the [new roadmap board in our issue tracker ![YouTrack](youtrack-logo.png)
     </tr>
 </table>
 
-> * This roadmap is not an exhaustive list of all things the team is working on, only the biggest projects.
-> * There’s no commitment to delivering specific features or fixes in specific versions.
-> * It lists some things that are postponed and will NOT get the team’s attention in the nearest future.
-> * We will adjust our priorities as we go and update the roadmap approximately every three months.
-> 
-{type="note"}
+>* This roadmap is not an exhaustive list of all things the team is working on, only the biggest projects.
+>* There’s no commitment to delivering specific features or fixes in specific versions.
+>* It lists some things that are postponed and will NOT get the team’s attention in the nearest future.
+>* We will adjust our priorities as we go and update the roadmap approximately every three months.
+   {:.note}
 
 ## What's changed since October 2020
 
@@ -260,7 +266,7 @@ We've decided to **postpone** the following items from the previous roadmap:
 * ⏸ Kotlin/JVM: [Maintain the old JVM backend by fixing critical bugs](https://youtrack.jetbrains.com/issue/KT-42288)
 * ⏸ Kotlin/JS: [Improve Dukat support](https://youtrack.jetbrains.com/issue/KT-42290)
 * ⏸ Multiplatform: [Improve dependency management for iOS](https://youtrack.jetbrains.com/issue/KT-42301)
-* ⏸ Multiplatform: [Improve Gradle and Compiler error messages](https://youtrack.jetbrains.com/issue/KT-42303)
+* ⏸ Multiplatform: [Improve Gradle & Compiler error messages](https://youtrack.jetbrains.com/issue/KT-42303)
 * ⏸ Libraries: [Improve usability of multi-threaded coroutines library for Kotlin/Native](https://youtrack.jetbrains.com/issue/KT-42314)
 
 ### New items
@@ -277,8 +283,8 @@ We've **added** the following items to the roadmap:
 * 🆕 Multiplatform: [Improve Kotlin/Native debugging experience](https://youtrack.jetbrains.com/issue/KT-44328)
 * 🆕 Multiplatform: [Improve UX of using Native libraries in Kotlin](https://youtrack.jetbrains.com/issue/KT-44329)
 * 🆕 IDE: [Improve debugging experience](https://youtrack.jetbrains.com/issue/KT-44330)
-* 🆕 Libraries: [Improve kotlinx-serialization (release v1.2)](https://youtrack.jetbrains.com/issue/KT-44335)
-* 🆕 Libraries: [Improve kotlinx-coroutines (release v1.5)](https://youtrack.jetbrains.com/issue/KT-44336)
+* 🆕 Libraries: [Improve `kotlinx-serialization` (release v1.2)](https://youtrack.jetbrains.com/issue/KT-44335)
+* 🆕 Libraries: [Improve `kotlinx-coroutines` (release v1.5)](https://youtrack.jetbrains.com/issue/KT-44336)
 * 🆕 Libraries: [Implement unambiguous API for Char conversion](https://youtrack.jetbrains.com/issue/KT-44333)
 * 🆕 Libraries: [Implement multiplatform API for characters](https://youtrack.jetbrains.com/issue/KT-44334)
 
@@ -287,7 +293,7 @@ We've also added a new subsystem, **Website**, to share our roadmap for [kotlinl
 * 🆕 Website: [Revamp Kotlin documentation](https://youtrack.jetbrains.com/issue/KT-44338)
 * 🆕 Website: [Make the Kotlin website mobile friendly](https://youtrack.jetbrains.com/issue/KT-44339)
 * 🆕 Website: [Design a new Kotlin visual style](https://youtrack.jetbrains.com/issue/KT-44340)
-* 🆕 Website: [Close try.kotlinlang.org](https://youtrack.jetbrains.com/issue/KT-44342)
+* 🆕 Website: [Close _try.kotlinlang.org_](https://youtrack.jetbrains.com/issue/KT-44342)
 
 ### Items in progress
 
