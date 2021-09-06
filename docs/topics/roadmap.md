@@ -1,39 +1,39 @@
-[//]: # (title: Kotlin Roadmap)
+[//]: # (title: Kotlin 路线图)
 
-# Kotlin Roadmap
+# Kotlin 路线图
 
 <table>
     <tr>
-        <td><strong>Last modified on</strong></td>
-        <td>January 2021</td>
+        <td><strong>最后修改时间</strong></td>
+        <td>2021 年 1 月</td>
     </tr>
     <tr>
-        <td><strong>Time frame</strong></td>
-        <td>6 months until June 2021</td>
+        <td><strong>预计时效</strong></td>
+        <td>6 个月，到 2021 年 6 月</td>
     </tr>
     <tr>
-        <td><strong>Next update</strong></td>
-        <td>April 2021</td>
+        <td><strong>下次更新时间</strong></td>
+        <td>2021 年 4 月</td>
     </tr>
 </table>
 
-Welcome to the Kotlin roadmap! Get a sneak peek into the priorities of the Kotlin Team.
+欢迎来看 Kotlin 路线图！一窥 Kotlin 团队的工作重点。
 
 * [Key priorities](#key-priorities)
 * [Kotlin roadmap by subsystem](#kotlin-roadmap-by-subsystem)
 * [What's changed since October 2020](#whats-changed-since-october-2020)
 
-## Key priorities
+## 关键优先事项
 
-The goal of this roadmap is to give you a big picture. Here’s a list of our key priorities – the areas we are investing the most effort into:
+这个路线图的目标是给出一个大的图景。这里列出了主要优先事项——我们投入精力最多的领域：
 
-- **Fast turnaround**: making the change-test-debug cycle really fast.
-- **New compiler**: a rewrite of the Kotlin compiler optimized for speed, parallelism, and unification. Later we will also work on pluggability.
-- **Fast and smooth IDE**: improving the stability and performance of the Kotlin IDE.
-- **Kotlin for JVM server-side development**: expanding support for server-side use cases across the Kotlin ecosystem.
-- **Kotlin Multiplatform Mobile**: improving the user experience and feature set for sharing code on mobile platforms.
+- **快速流转**：让“变更-测试-调试”周期非常快。
+- **新版编译器**：重写 Kotlin 编译器，针对速度、并行性与统一性进行优化。晚些还会研究插件化。
+- **快速流畅的 IDE**：改善 Kotlin IDE 的稳定性与性能。
+- **Kotlin 用于 JVM 服务器端开发**：在整个 Kotlin 生态系统中扩展对服务器端使用场景的支持。
+- **Kotlin 多平台移动端**：改善在移动平台上共享代码的用户体验与特性集。
 
-## Kotlin roadmap by subsystem
+## 以子系统划分的 Kotlin 路线图
 
 To view the biggest projects we're working on, visit the [YouTrack board](https://youtrack.jetbrains.com/agiles/153-1251/current) or the [Roadmap details](#roadmap-details) table.
 
@@ -49,16 +49,16 @@ Visit the [new roadmap board in our issue tracker, YouTrack](https://youtrack.je
 
 <table>
     <tr>
-        <th>Subsystem</th>
-        <th>In focus now</th>
-        <th>Postponed for later</th>
+        <th>子系统</th>
+        <th>当前聚焦</th>
+        <th>推迟后续</th>
     </tr>
     <tr>
-        <td><strong>Language</strong></td>
+        <td><strong>语言</strong></td>
         <td>
             <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-42430" target="_blank">Support JVM records</a></li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-42433" target="_blank">Support JVM sealed classes</a></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-42430" target="_blank">支持 JVM 的记录</a></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-42433" target="_blank">支持 JVM 的密封类</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-42434" target="_blank">Release inline classes as Stable, secure Valhalla compatibility</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-42435" target="_blank">Prototype multiple receivers</a></li>
             </ul>
@@ -66,7 +66,7 @@ Visit the [new roadmap board in our issue tracker, YouTrack](https://youtrack.je
         <td></td>
     </tr>
     <tr>
-        <td><strong>Compiler core</strong></td>
+        <td><strong>编译器核心</strong></td>
         <td>
             <ul>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-44317" target="_blank">Support incremental compilation for the new compiler</a></li>
@@ -142,7 +142,7 @@ Visit the [new roadmap board in our issue tracker, YouTrack](https://youtrack.je
         </td>
     </tr>
     <tr>
-        <td><strong>Kotlin Multiplatform</strong>
+        <td><strong>Kotlin 多平台</strong>
         </td>
         <td>
             <ul>
@@ -181,7 +181,7 @@ Visit the [new roadmap board in our issue tracker, YouTrack](https://youtrack.je
         </td>
     </tr>
     <tr>
-        <td><strong>Build tools</strong></td>
+        <td><strong>构建工具</strong></td>
         <td>
             <ul>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-42309" target="_blank">Improve incremental compilation performance in Gradle</a></li>
@@ -196,7 +196,7 @@ Visit the [new roadmap board in our issue tracker, YouTrack](https://youtrack.je
         </td>
     </tr>
     <tr>
-        <td><strong>Libraries</strong></td>
+        <td><strong>库</strong></td>
         <td>
             <ul>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-42436" target="_blank">Support <code>java.nio.Path</code> extension in the standard library</a></li>
@@ -234,7 +234,7 @@ Visit the [new roadmap board in our issue tracker, YouTrack](https://youtrack.je
     <tr>
         <td><strong>Ktor</strong></td>
         <td>
-           <p><a href="https://blog.jetbrains.com/ktor/2020/08/10/ktor-roadmap-for-2020-2021/" target="_blank">Ktor roadmap</a></p>
+           <p><a href="https://blog.jetbrains.com/ktor/2020/08/10/ktor-roadmap-for-2020-2021/" target="_blank">Ktor 路线图</a></p>
          </td>
         <td>
         </td>
