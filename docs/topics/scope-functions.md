@@ -1,12 +1,12 @@
-[//]: # (title: Scope Functions)
+[//]: # (title: 作用域函数)
 
-# Scope Functions
+# 作用域函数
 
-The Kotlin standard library contains several functions whose sole purpose is to execute a block of code within the context of an object. When you call such a function on an object with a [lambda expression](lambdas.md) provided, it forms a temporary scope. In this scope, you can access the object without its name. Such functions are called _scope functions_. There are five of them: `let`, `run`, `with`, `apply`, and `also`.
+Kotlin 标准库包含几个函数，它们的唯一目的是在对象的上下文中执行代码块。当对一个对象调用这样的函数并提供一个 [lambda 表达式](lambdas.md)时，它会形成一个临时作用域。在此作用域中，可以访问该对象而无需其名称。这些函数称为*作用域函数*。共有以下五种：`let`、`run`、`with`、`apply` 以及 `also`。
 
-Basically, these functions do the same: execute a block of code on an object. What's different is how this object becomes available inside the block and what is the result of the whole expression.
+这些函数基本上做了同样的事情：在一个对象上执行一个代码块。不同的是这个对象在块中如何使用，以及整个表达式的结果是什么。
 
-Here's a typical usage of a scope function:
+下面是作用域函数的典型用法:
 
 
 
@@ -30,7 +30,7 @@ fun main() {
 
 
 
-If you write the same without `let`, you'll have to introduce a new variable and repeat its name whenever you use it.
+如果不使用 `let` 来写这段代码，就必须引入一个新变量，并在每次使用它时重复其名称。
 
 
 
@@ -53,19 +53,19 @@ fun main() {
 
 
 
-The scope functions do not introduce any new technical capabilities, but they can make your code more concise and readable.
+作用域函数没有引入任何新的技术，但是它们可以使你的代码更加简洁易读。
 
-Due to the similar nature of scope functions, choosing the right one for your case can be a bit tricky. The choice mainly depends on your intent and the consistency of use in your project. Below we'll provide detailed descriptions of the distinctions between scope functions and the conventions on their usage.
+由于作用域函数的相似性质，为你的案例选择正确的函数可能有点棘手。选择主要取决于你的意图和项目中使用的一致性。下面我们将详细描述各种作用域函数及其约定用法之间的区别。
 
-## Distinctions
+## 区别
 
-Because the scope functions are all quite similar in nature, it's important to understand the differences between them. There are two main differences between each scope function:
-* The way to refer to the context object
-* The return value.
+由于作用域函数本质上都非常相似，因此了解它们之间的区别很重要。每个作用域函数之间有两个主要区别：
+* 引用上下文对象的方式
+* 返回值
 
-### Context object: `this` or `it`
+### 上下文对象：`this` 还是 `it`
 
-Inside the lambda of a scope function, the context object is available by a short reference instead of its actual name. Each scope function uses one of two ways to access the context object: as a lambda [receiver](lambdas.md#function-literals-with-receiver) (`this`) or as a lambda argument (`it`). Both provide the same capabilities, so we'll describe the pros and cons of each for different cases and provide recommendations on their use.
+在作用域函数的 lambda 表达式里，上下文对象可以不使用其实际名称而是使用一个更简短的引用来访问。每个作用域函数都使用以下两种方式之一来访问上下文对象：作为 lambda 表达式的[接收者](lambdas.md#带有接收者的函数字面值)（`this`）或者作为 lambda 表达式的参数（`it`）。两者都提供了同样的功能，因此我们将针对不同的场景描述两者的优缺点，并提供使用建议。
 
 
 
@@ -75,7 +75,7 @@ fun main() {
     // this
     str.run {
         println("The receiver string length: $length")
-        //println("The receiver string length: ${this.length}") // does the same
+        //println("The receiver string length: ${this.length}") // 和上句效果相同
     }
 
     // it
@@ -89,7 +89,7 @@ fun main() {
 
 #### this
 
-`run`, `with`, and `apply` refer to the context object as a lambda receiver - by keyword `this`. Hence, in their lambdas, the object is available as it would be in ordinary class functions. In most cases, you can omit `this` when accessing the members of the receiver object, making the code shorter. On the other hand, if `this` is omitted, it can be hard to distinguish between the receiver members and external objects or functions. So, having the context object as a receiver (`this`) is recommended for lambdas that mainly operate on the object members: call its functions or assign properties.
+`run`、`with` 以及 `apply` 通过关键字 `this` 引用上下文对象。因此，在它们的 lambda 表达式中可以像在普通的类函数中一样访问上下文对象。在大多数场景，当你访问接收者对象时你可以省略 `this`，来让你的代码更简短。相对地，如果省略了 `this`，就很难区分接收者对象的成员及外部对象或函数。因此，对于主要对对象成员进行操作（调用其函数或赋值其属性）的 lambda 表达式，建议将上下文对象作为接收者（`this`）。
 
 
 
@@ -99,7 +99,7 @@ data class Person(var name: String, var age: Int = 0, var city: String = "")
 fun main() {
 //sampleStart
     val adam = Person("Adam").apply { 
-        age = 20                       // same as this.age = 20 or adam.age = 20
+        age = 20                       // 和 this.age = 20 或者 adam.age = 20 一样
         city = "London"
     }
     println(adam)
@@ -111,7 +111,7 @@ fun main() {
 
 #### it
 
-In turn, `let` and `also` have the context object as a lambda argument. If the argument name is not specified, the object is accessed by the implicit default name `it`. `it` is shorter than `this` and expressions with `it` are usually easier for reading. However, when calling the object functions or properties you don't have the object available implicitly like `this`. Hence, having the context object as `it` is better when the object is mostly used as an argument in function calls. `it` is also better if you use multiple variables in the code block.
+反过来，`let` 及 `also` 将上下文对象作为 lambda 表达式参数。如果没有指定参数名，对象可以用隐式默认名称 `it` 访问。`it` 比 `this` 简短，带有 `it` 的表达式通常更容易阅读。然而，当调用对象函数或属性时，不能像 `this` 这样隐式地访问对象。因此，当上下文对象在作用域中主要用作函数调用中的参数时，使用 `it` 作为上下文对象会更好。若在代码块中使用多个变量，则 `it` 也更好。
 
 
 
@@ -137,7 +137,7 @@ fun main() {
 
 
 
-Additionally, when you pass the context object as an argument, you can provide a custom name for the context object inside the scope.
+此外，当将上下文对象作为参数传递时，可以为上下文对象指定在作用域内的自定义名称。
 
 
 
@@ -163,17 +163,17 @@ fun main() {
 
 
 
-### Return value
+### 返回值
 
-The scope functions differ by the result they return:
-* `apply` and `also` return the context object.
-* `let`, `run`, and `with` return the lambda result.
+根据返回结果，作用域函数可以分为以下两类：
+* `apply` 及 `also` 返回上下文对象。
+* `let`、`run` 及 `with` 返回 lambda 表达式结果.
 
-These two options let you choose the proper function depending on what you do next in your code.
+这两个选项使你可以根据在代码中的后续操作来选择适当的函数。
 
-#### Context object
+#### 上下文对象
 
-The return value of `apply` and `also` is the context object itself. Hence, they can be included into call chains as _side steps_: you can continue chaining function calls on the same object after them.
+`apply` 及 `also` 的返回值是上下文对象本身。因此，它们可以作为辅助步骤包含在调用链中：你可以继续在同一个对象上进行链式函数调用。
 
 
 
@@ -196,7 +196,7 @@ fun main() {
 
 
 
-They also can be used in return statements of functions returning the context object.
+它们还可以用在返回上下文对象的函数的 return 语句中。
 
 
 
@@ -222,9 +222,9 @@ fun main() {
 
 
 
-#### Lambda result
+#### Lambda 表达式结果
 
-`let`, `run`, and `with` return the lambda result. So, you can use them when assigning the result to a variable, chaining operations on the result, and so on.
+`let`、`run` 及 `with` 返回 lambda 表达式的结果。所以，在需要使用其结果给一个变量赋值，或者在需要对其结果进行链式操作等情况下，可以使用它们。
 
 
 
@@ -244,7 +244,7 @@ fun main() {
 
 
 
-Additionally, you can ignore the return value and use a scope function to create a temporary scope for variables.
+此外，还可以忽略返回值，仅使用作用域函数为变量创建一个临时作用域。
 
 
 
@@ -263,15 +263,15 @@ fun main() {
 
 
 
-## Functions
+## 几个函数
 
-To help you choose the right scope function for your case, we'll describe them in detail and provide usage recommendations. Technically, functions are interchangeable in many cases, so the examples show the conventions that define the common usage style.
+为了帮助你为你的场景选择合适的作用域函数，我们会详细地描述它们并且提供一些使用建议。从技术角度来说，作用域函数在很多场景里是可以互换的，所以这些示例展示了定义通用使用风格的约定用法。
 
 ### `let`
 
-**The context object** is available as an argument (`it`). **The return value** is the lambda result.
+**上下文对象**作为 lambda 表达式的参数（`it`）来访问。**返回值**是 lambda 表达式的结果。
 
-`let` can be used to invoke one or more functions on results of call chains. For example, the following code prints the results of two operations on a collection:
+`let` 可用于在调用链的结果上调用一个或多个函数。例如，以下代码打印对集合的两个操作的结果：
 
 
 
@@ -280,14 +280,14 @@ fun main() {
 //sampleStart
     val numbers = mutableListOf("one", "two", "three", "four", "five")
     val resultList = numbers.map { it.length }.filter { it > 3 }
-    println(resultList)    
+    println(resultList)
 //sampleEnd
 }
 ```
 
 
 
-With `let`, you can rewrite it:
+使用 `let`，可以写成这样：
 
 
 
@@ -297,7 +297,7 @@ fun main() {
     val numbers = mutableListOf("one", "two", "three", "four", "five")
     numbers.map { it.length }.filter { it > 3 }.let { 
         println(it)
-        // and more function calls if needed
+        // 如果需要可以调用更多函数
     } 
 //sampleEnd
 }
@@ -305,7 +305,7 @@ fun main() {
 
 
 
-If the code block contains a single function with `it` as an argument, you can use the method reference (`::`) instead of the lambda:
+若代码块仅包含以 `it` 作为参数的单个函数，则可以使用方法引用(`::`)代替 lambda 表达式：
 
 
 
@@ -320,7 +320,7 @@ fun main() {
 
 
 
-`let` is often used for executing a code block only with non-null values. To perform actions on a non-null object, use the safe call operator `?.` on it and call `let` with the actions in its lambda.
+`let` 经常用于仅使用非空值执行代码块。如需对非空对象执行操作，可对其使用安全调用操作符 `?.` 并调用 `let` 在 lambda 表达式中执行操作。
 
 
 
@@ -329,11 +329,11 @@ fun processNonNullString(str: String) {}
 
 fun main() {
 //sampleStart
-    val str: String? = "Hello"   
-    //processNonNullString(str)       // compilation error: str can be null
+    val str: String? = "Hello" 
+    //processNonNullString(str)       // 编译错误：str 可能为空
     val length = str?.let { 
-        println("let() called on $it")        
-        processNonNullString(it)      // OK: 'it' is not null inside '?.let { }'
+        println("let() called on $it")
+        processNonNullString(it)      // 编译通过：'it' 在 '?.let { }' 中必不为空
         it.length
     }
 //sampleEnd
@@ -342,7 +342,7 @@ fun main() {
 
 
 
-Another case for using `let` is introducing local variables with a limited scope for improving code readability. To define a new variable for the context object, provide its name as the lambda argument so that it can be used instead of the default `it`.
+使用 `let` 的另一种情况是引入作用域受限的局部变量以提高代码的可读性。如需为上下文对象定义一个新变量，可提供其名称作为 lambda 表达式参数来替默认的 `it`。
 
 
 
@@ -363,9 +363,9 @@ fun main() {
 
 ### `with`
 
-A non-extension function: **the context object** is passed as an argument, but inside the lambda, it's available as a receiver (`this`). **The return value** is the lambda result.
+一个非扩展函数：**上下文对象**作为参数传递，但是在 lambda 表达式内部，它可以作为接收者（`this`）使用。 **返回值**是 lambda 表达式结果。
 
-We recommend `with` for calling functions on the context object without providing the lambda result. In the code, `with` can be read as “_with this object, do the following._”
+我们建议使用 `with` 来调用上下文对象上的函数，而不使用 lambda 表达式结果。 在代码中，`with` 可以理解为“*对于这个对象，执行以下操作。*”
 
 
 
@@ -383,7 +383,7 @@ fun main() {
 
 
 
-Another use case for `with` is introducing a helper object whose properties or functions will be used for calculating a value.
+`with` 的另一个使用场景是引入一个辅助对象，其属性或函数将用于计算一个值。
 
 
 
@@ -404,11 +404,11 @@ fun main() {
 
 ### `run`
 
-**The context object** is available as a receiver (`this`). **The return value** is the lambda result.
+**上下文对象** 作为接收者（`this`）来访问。 **返回值** 是 lambda 表达式结果。
 
-`run` does the same as `with` but invokes as `let` - as an extension function of the context object.
+`run` 和 `with` 做同样的事情，但是调用方式和 `let` 一样——作为上下文对象的扩展函数.
 
-`run` is useful when your lambda contains both the object initialization and the computation of the return value.
+当 lambda 表达式同时包含对象初始化和返回值的计算时，`run` 很有用。
 
 
 
@@ -427,7 +427,7 @@ fun main() {
         query(prepareRequest() + " to port $port")
     }
     
-    // the same code written with let() function:
+    // 同样的代码如果用 let() 函数来写:
     val letResult = service.let {
         it.port = 8080
         it.query(it.prepareRequest() + " to port ${it.port}")
@@ -440,7 +440,7 @@ fun main() {
 
 
 
-Besides calling `run` on a receiver object, you can use it as a non-extension function. Non-extension `run` lets you execute a block of several statements where an expression is required.
+除了在接收者对象上调用 `run` 之外，还可以将其用作非扩展函数。 非扩展 `run` 可以使你在需要表达式的地方执行一个由多个语句组成的块。
 
 
 
@@ -466,9 +466,9 @@ fun main() {
 
 ### `apply`
 
-**The context object** is available as a receiver (`this`). **The return value** is the object itself.
+**上下文对象** 作为接收者（`this`）来访问。 **返回值** 是上下文对象本身。
 
-Use `apply` for code blocks that don't return a value and mainly operate on the members of the receiver object. The common case for `apply` is the object configuration. Such calls can be read as “_apply the following assignments to the object._”
+对于不返回值且主要在接收者（`this`）对象的成员上运行的代码块使用 `apply`。`apply` 的常见情况是对象配置。这样的调用可以理解为“*将以下赋值操作应用于对象*”。
 
 
 
@@ -488,15 +488,15 @@ fun main() {
 
 
 
-Having the receiver as the return value, you can easily include `apply` into call chains for more complex processing.
+将接收者作为返回值，你可以轻松地将 `apply` 包含到调用链中以进行更复杂的处理。
 
 ### `also`
 
-**The context object** is available as an argument (`it`). **The return value** is the object itself.
+**上下文对象**作为 lambda 表达式的参数（`it`）来访问。 **返回值**是上下文对象本身。
 
-`also` is good for performing some actions that take the context object as an argument. Use `also` for actions that need a reference rather to the object than to its properties and functions, or when you don't want to shadow `this` reference from an outer scope.
+`also` 对于执行一些将上下文对象作为参数的操作很有用。 对于需要引用对象而不是其属性与函数的操作，或者不想屏蔽来自外部作用域的 `this` 引用时，请使用 `also`。
 
-When you see `also` in the code, you can read it as “_and also do the following with the object._”
+当你在代码中看到 `also` 时，可以将其理解为“*并且用该对象执行以下操作*”。
 
 
 
@@ -513,38 +513,38 @@ fun main() {
 
 
 
-## Function selection
+## 函数选择
 
-To help you choose the right scope function for your purpose, we provide the table of key differences between them.
+为了帮助你选择合适的作用域函数，我们提供了它们之间的主要区别表。
 
-|Function|Object reference|Return value|Is extension function|
+|函数|对象引用|返回值|是否是扩展函数|
 |---|---|---|---|
-|`let`|`it`|Lambda result|Yes|
-|`run`|`this`|Lambda result|Yes|
-|`run`|-|Lambda result|No: called without the context object|
-|`with`|`this`|Lambda result|No: takes the context object as an argument.|
-|`apply`|`this`|Context object|Yes|
-|`also`|`it`|Context object|Yes|
+|`let`|`it`|Lambda 表达式结果|是|
+|`run`|`this`|Lambda 表达式结果|是|
+|`run`|-|Lambda 表达式结果|不是：调用无需上下文对象|
+|`with`|`this`|Lambda 表达式结果|不是：把上下文对象当做参数|
+|`apply`|`this`|上下文对象|是|
+|`also`|`it`|上下文对象|是|
 
-Here is a short guide for choosing scope functions depending on the intended purpose:
+以下是根据预期目的选择作用域函数的简短指南：
 
-* Executing a lambda on non-null objects: `let`
-* Introducing an expression as a variable in local scope: `let`
-* Object configuration: `apply`
-* Object configuration and computing the result: `run`
-* Running statements where an expression is required: non-extension `run`
-* Additional effects: `also`
-* Grouping function calls on an object: `with`
+* 对一个非空（non-null）对象执行 lambda 表达式：`let`
+* 将表达式作为变量引入为局部作用域中：`let`
+* 对象配置：`apply`
+* 对象配置并且计算结果：`run`
+* 在需要表达式的地方运行语句：非扩展的 `run`
+* 附加效果：`also`
+* 一个对象的一组函数调用：`with`
 
-The use cases of different functions overlap, so that you can choose the functions based on the specific conventions used in your project or team.
+不同函数的使用场景存在重叠，你可以根据项目或团队中使用的特定约定选择函数。
 
-Although the scope functions are a way of making the code more concise, avoid overusing them: it can decrease your code readability and lead to errors. Avoid nesting scope functions and be careful when chaining them: it's easy to get confused about the current context object and the value of `this` or `it`.
+尽管作用域函数是使代码更简洁的一种方法，但请避免过度使用它们：这会降低代码的可读性并可能导致错误。避免嵌套作用域函数，同时链式调用它们时要小心：此时很容易对当前上下文对象及 `this` 或 `it` 的值感到困惑。
 
-## `takeIf` and `takeUnless`
+## `takeIf` 与 `takeUnless`
 
-In addition to scope functions, the standard library contains the functions `takeIf` and `takeUnless`. These functions let you embed checks of the object state in call chains.
+除了作用域函数外，标准库还包含函数 `takeIf` 及 `takeUnless`。这俩函数使你可以将对象状态检查嵌入到调用链中。
 
-When called on an object with a predicate provided, `takeIf` returns this object if it matches the predicate. Otherwise, it returns `null`. So, `takeIf` is a filtering function for a single object. In turn, `takeUnless` returns the object if it doesn't match the predicate and `null` if it does. The object is available as a lambda argument (`it`).
+当以提供的谓词在对象上进行调用时，若该对象与谓词匹配，则 `takeIf` 返回此对象。否则返回 `null`。因此，`takeIf` 是单个对象的过滤函数。反之，`takeUnless`如果不匹配谓词，则返回对象，如果匹配则返回 `null`。该对象作为 lambda 表达式参数（`it`）来访问。
 
 
 
@@ -564,7 +564,7 @@ fun main() {
 
 
 
-When chaining other functions after `takeIf` and `takeUnless`, don't forget to perform the null check or the safe call (`?.`) because their return value is nullable.
+当在 `takeIf` 及 `takeUnless` 之后链式调用其他函数，不要忘记执行空检查或安全调用（`?.`），因为他们的返回值是可为空的。
 
 
 
@@ -573,7 +573,7 @@ fun main() {
 //sampleStart
     val str = "Hello"
     val caps = str.takeIf { it.isNotEmpty() }?.toUpperCase()
-   //val caps = str.takeIf { it.isNotEmpty() }.toUpperCase() //compilation error
+   //val caps = str.takeIf { it.isNotEmpty() }.toUpperCase() // 编译错误
     println(caps)
 //sampleEnd
 }
@@ -581,7 +581,7 @@ fun main() {
 
 
 
-`takeIf` and `takeUnless` are especially useful together with scope functions. A good case is chaining them with `let` for running a code block on objects that match the given predicate. To do this, call `takeIf` on the object and then call `let` with a safe call (`?`). For objects that don't match the predicate, `takeIf` returns `null` and `let` isn't invoked.
+`takeIf` 及 `takeUnless` 与作用域函数一起特别有用。 一个很好的例子是用 `let` 链接它们，以便在与给定谓词匹配的对象上运行代码块。 为此，请在对象上调用 `takeIf`，然后通过安全调用（`?.`）调用 `let`。对于与谓词不匹配的对象，`takeIf` 返回 `null`，并且不调用 `let`。
 
 
 
@@ -603,7 +603,7 @@ fun main() {
 
 
 
-This is how the same function looks without the standard library functions:
+没有标准库函数时，相同的函数看起来是这样的：
 
 
 
