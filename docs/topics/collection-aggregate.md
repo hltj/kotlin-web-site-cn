@@ -1,12 +1,12 @@
-[//]: # (title: Aggregate operations)
+[//]: # (title: 聚合操作)
 
-Kotlin collections contain functions for commonly used _aggregate operations_ – operations that return a single value based on the collection content.
-Most of them are well known and work the same way as they do in other languages:
+Kotlin 集合包含用于常用的 _聚合操作_ （基于集合内容返回单个值的操作）的函数 。
+其中大多数是众所周知的，并且其工作方式与在其他语言中相同。
 
-* [`minOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-or-null.html) and [`maxOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-or-null.html) return the smallest and the largest element respectively. On empty collections, they return `null`.
-* [`average()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/average.html) returns the average value of elements in the collection of numbers.
-* [`sum()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum.html) returns the sum of elements in the collection of numbers.
-* [`count()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/count.html) returns the number of elements in a collection.
+* [`minOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-or-null.html) 与 [`maxOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-or-null.html) 分别返回最小和最大的元素。 On empty collections, they return `null`.
+* [`average()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/average.html) 返回数字集合中元素的平均值。
+* [`sum()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum.html) 返回数字集合中元素的总和。
+* [`count()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/count.html) 返回集合中元素的数量。
 
 
 
@@ -25,10 +25,10 @@ fun main() {
 ```
 
 
-There are also functions for retrieving the smallest and the largest elements by certain selector function or custom [`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator/index.html):
+还有一些通过某些选择器函数或自定义 [`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator/index.html) 来检索最小和最大元素的函数。
 
-* [`maxByOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-by-or-null.html)/[`minByOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-by-or-null.html) take a selector function and return the element for which it returns the largest or the smallest value.
-* [`maxWithOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-with-or-null.html)/[`minWithOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-with-or-null.html) take a `Comparator` object and return the largest or smallest element according to that `Comparator`.
+* [`maxByOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-by.html)/[`minByOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-by-or-null.html) 接受一个选择器函数并返回使选择器返回最大或最小值的元素。
+* [`maxWithOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-with.html)/[`minWithOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-with-or-null.html) 接受一个 `Comparator` 对象并且根据此 `Comparator` 对象返回最大或最小元素。
 
 All these functions return `null` on empty collections.
 
@@ -49,10 +49,10 @@ fun main() {
 ```
 
 
-Additionally, there are advanced summation functions that take a function and return the sum of its return values on all elements:
+此外，有一些高级的求和函数，它们接受一个函数并返回对所有元素调用此函数的返回值的总和：
 
-* [`sumBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum-by.html) applies functions that return `Int` values on collection elements.
-* [`sumByDouble()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum-by-double.html) works with functions that return `Double`.
+* [`sumBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum-by.html) 使用对集合元素调用返回 `Int` 值的函数。
+* [`sumByDouble()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum-by-double.html) 与返回 `Double` 的函数一起使用。
 
 
 
@@ -67,12 +67,12 @@ fun main() {
 ```
 
 
-## Fold and reduce
+## Fold 与 reduce
 
-For more specific cases, there are the functions [`reduce()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce.html) and [`fold()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold.html) that apply the provided operation to the collection elements sequentially and return the accumulated result.
-The operation takes two arguments:  the previously accumulated value and the collection element.
+对于更特定的情况，有函数 [`reduce()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce.html) 和 [`fold()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold.html)，它们依次将所提供的操作应用于集合元素并返回累积的结果。
+操作有两个参数：先前的累积值和集合元素。
 
-The difference between the two functions is that `fold()` takes an initial value and uses it as the accumulated value on the first step, whereas the first step of `reduce()` uses the first and the second elements as operation arguments on the first step.
+这两个函数的区别在于：`fold()` 接受一个初始值并将其用作第一步的累积值，而 `reduce()` 的第一步则将第一个和第二个元素作为第一步的操作参数。
 
 
 
@@ -86,19 +86,19 @@ fun main() {
     val sumDoubled = numbers.fold(0) { sum, element -> sum + element * 2 }
     println(sumDoubled)
 
-    //val sumDoubledReduce = numbers.reduce { sum, element -> sum + element * 2 } //incorrect: the first element isn't doubled in the result
+    //val sumDoubledReduce = numbers.reduce { sum, element -> sum + element * 2 } //错误：第一个元素在结果中没有加倍
     //println(sumDoubledReduce)
 //sampleEnd
 }
 ```
 
 
-The example above shows the difference: `fold()` is used for calculating the sum of doubled elements.
-If you pass the same function to `reduce()`, it will return another result because it uses the list's first and second elements as arguments on the first step, so the first element won't be doubled.
+上面的实例展示了区别：`fold()` 用于计算加倍的元素之和。
+如果将相同的函数传给 `reduce()`，那么它会返回另一个结果，因为在第一步中它将列表的第一个和第二个元素作为参数，所以第一个元素不会被加倍。
 
-To apply a function to elements in the reverse order, use functions [`reduceRight()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right.html) and [`foldRight()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-right.html).
-They work in a way similar to `fold()` and `reduce()` but start from the last element and then continue to previous.
-Note that when folding or reducing right, the operation arguments change their order: first goes the element, and then the accumulated value.
+如需将函数以相反的顺序应用于元素，可以使用函数 [`reduceRight()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right.html) 和 [`foldRight()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-right.html)
+它们的工作方式类似于 `fold()` 和 `reduce()`，但从最后一个元素开始，然后再继续到前一个元素。
+记住，在使用 foldRight 或 reduceRight 时，操作参数会更改其顺序：第一个参数变为元素，然后第二个参数变为累积值。
 
 
 
@@ -113,10 +113,10 @@ fun main() {
 ```
 
 
-You can also apply operations that take element indices as parameters.
-For this purpose, use functions [`reduceIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-indexed.html) and [`foldIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-indexed.html) passing element index as the first argument of the operation.
+你还可以使用将元素索引作为参数的操作。
+为此，使用函数 [`reduceIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-indexed.html) 和 [`foldIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-indexed.html) 传递元素索引作为操作的第一个参数。
 
-Finally, there are functions that apply such operations to collection elements from right to left - [`reduceRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right-indexed.html) and [`foldRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-right-indexed.html).
+最后，还有将这些操作从右到左应用于集合元素的函数——[`reduceRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right-indexed.html) 与 [`foldRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-right-indexed.html)。
 
 
 

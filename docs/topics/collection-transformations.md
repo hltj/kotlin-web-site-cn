@@ -1,16 +1,16 @@
-[//]: # (title: Collection transformation operations)
+[//]: # (title: 集合转换操作)
 
-The Kotlin standard library provides a set of extension functions for collection _transformations_.
-These functions build new collections from existing ones based on the transformation rules provided.
-In this page, we'll give an overview of the available collection transformation functions.
+Kotlin 标准库为集合 _转换_ 提供了一组扩展函数。
+这些函数根据提供的转换规则从现有集合中构建新集合。
+在此页面中，我们将概述可用的集合转换函数。
 
-## Mapping
+## 映射
 
-The _mapping_ transformation creates a collection from the results of a function on the elements of another collection.
-The basic mapping function is [`map()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html).
-It applies the given lambda function to each subsequent element and returns the list of the lambda results.
-The order of results is the same as the original order of elements.
-To apply a transformation that additionally uses the element index as an argument, use [`mapIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html).
+_映射_ 转换从另一个集合的元素上的函数结果创建一个集合。
+基本的映射函数是 [`map()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html)。
+它将给定的 lambda 函数应用于每个后续元素，并返回 lambda 结果列表。
+结果的顺序与元素的原始顺序相同。
+如需应用还要用到元素索引作为参数的转换，请使用 [`mapIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html)。
 
 
 
@@ -25,7 +25,7 @@ fun main() {
 ```
 
 
-If the transformation produces `null` on certain elements, you can filter out the `null`s from the result collection by calling the [`mapNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html) function instead of `map()`, or [`mapIndexedNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html) instead of `mapIndexed()`.
+如果转换在某些元素上产生 `null` 值，则可以通过调用 [`mapNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html) 函数取代 `map()` 或 [`mapIndexedNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html) 取代 `mapIndexed()` 来从结果集中过滤掉 `null` 值。
 
 
 
@@ -40,9 +40,9 @@ fun main() {
 ```
 
 
-When transforming maps, you have two options: transform keys leaving values unchanged and vice versa.
-To apply a given transformation to keys, use [`mapKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-keys.html); in turn, [`mapValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-values.html) transforms values.
-Both functions use the transformations that take a map entry as an argument, so you can operate both its key and value.
+映射转换时，有两个选择：转换键，使值保持不变，反之亦然。
+要将指定转换应用于键，请使用 [`mapKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-keys.html)；反过来，[`mapValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-values.html) 转换值。
+这两个函数都使用将映射条目作为参数的转换，因此可以操作其键与值。
 
 
 
@@ -57,14 +57,14 @@ fun main() {
 ```
 
 
-## Zipping
+## 合拢
 
-_Zipping_ transformation is building pairs from elements with the same positions in both collections.
-In the Kotlin standard library, this is done by the [`zip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip.html) extension function.
-When called on a collection or an array with another collection (array) as an argument, `zip()` returns the `List` of `Pair` objects.
-The elements of the receiver collection are the first elements in these pairs.
-If the collections have different sizes, the result of the `zip()` is the smaller size; the last elements of the larger collection are not included in the result.
-`zip()` can also be called in the infix form `a zip b`.
+_合拢_ 转换是根据两个集合中具有相同位置的元素构建配对。
+在 Kotlin 标准库中，这是通过 [`zip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip.html) 扩展函数完成的。
+在一个集合（或数组）上以另一个集合（或数组）作为参数调用时，`zip()` 返回 `Pair` 对象的列表（`List`）。
+接收者集合的元素是这些配对中的第一个元素。
+如果集合的大小不同，则 `zip()` 的结果为较小集合的大小；结果中不包含较大集合的后续元素。
+`zip()` 也可以中缀形式调用 `a zip b` 。
 
 
 
@@ -82,8 +82,8 @@ fun main() {
 ```
 
 
-You can also call `zip()` with a transformation function that takes two parameters: the receiver element and the argument element.
-In this case, the result `List` contains the return values of the transformation function called on pairs of the receiver and the argument elements with the same positions.
+也可以使用带有两个参数的转换函数来调用 `zip()`：接收者元素和参数元素。
+在这种情况下，结果 `List` 包含在具有相同位置的接收者对和参数元素对上调用的转换函数的返回值。
 
 
 
@@ -99,12 +99,12 @@ fun main() {
 ```
 
 
-When you have a `List` of `Pair`s, you can do the reverse transformation – _unzipping_ – that builds two lists from these pairs:
+当拥有 `Pair` 的 `List` 时，可以进行反向转换 _unzipping_——从这些键值对中构建两个列表：
 
-* The first list contains the first elements of each `Pair` in the original list.
-* The second list contains the second elements.
+* 第一个列表包含原始列表中每个 `Pair` 的键。
+* 第二个列表包含原始列表中每个 `Pair` 的值。
 
-To unzip a list of pairs, call [`unzip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/unzip.html).
+要分割键值对列表，请调用 [`unzip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/unzip.html)。
 
 
 
@@ -118,13 +118,13 @@ fun main() {
 ```
 
 
-## Association
+## 关联
 
-_Association_ transformations allow building maps from the collection elements and certain values associated with them.
-In different association types, the elements can be either keys or values in the association map.
+_关联_ 转换允许从集合元素和与其关联的某些值构建 Map。
+在不同的关联类型中，元素可以是关联 Map 中的键或值。
 
-The basic association function [`associateWith()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-with.html) creates a `Map` in which the elements of the original collection are keys, and values are produced from them by the given transformation function.
-If two elements are equal, only the last one remains in the map.
+基本的关联函数 [`associateWith()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-with.html) 创建一个 `Map`，其中原始集合的元素是键，并通过给定的转换函数从中产生值。
+如果两个元素相等，则仅最后一个保留在 Map 中。
 
 
 
@@ -138,9 +138,9 @@ fun main() {
 ```
 
 
-For building maps with collection elements as values, there is the function [`associateBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-by.html).
-It takes a function that returns a key based on an element's value. If two elements are equal, only the last one remains in the map.
-`associateBy()` can also be called with a value transformation function.
+为了使用集合元素作为值来构建 Map，有一个函数 [`associateBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-by.html)。
+它需要一个函数，该函数根据元素的值返回键。如果两个元素相等，则仅最后一个保留在 Map 中。
+还可以使用值转换函数来调用 `associateBy()`。
 
 
 
@@ -156,13 +156,13 @@ fun main() {
 ```
 
 
-Another way to build maps in which both keys and values are somehow produced from collection elements is the function [`associate()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate.html).
-It takes a lambda function that returns a `Pair`: the key and the value of the corresponding map entry.
+另一种构建 Map 的方法是使用函数 [`associate()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate.html)，其中 Map 键和值都是通过集合元素生成的。
+它需要一个 lambda 函数，该函数返回 `Pair`：键和相应 Map 条目的值。
 
-Note that `associate()` produces short-living `Pair` objects which may affect the performance.
-Thus, `associate()` should be used when the performance isn't critical or it's more preferable than other options.
+请注意，`associate()` 会生成临时的 `Pair` 对象，这可能会影响性能。
+因此，当性能不是很关键或比其他选项更可取时，应使用 `associate()`。
 
-An example of the latter is when a key and the corresponding value are produced from an element together.
+后者的一个示例：从一个元素一起生成键和相应的值。
 
 
 
@@ -185,15 +185,15 @@ fun parseFullName(fullName: String): FullName {
 ```
 
 
-Here we call a transform function on an element first, and then build a pair from the properties of that function's result.
+此时，首先在一个元素上调用一个转换函数，然后根据该函数结果的属性建立 Pair。
 
 
-## Flattening
+## 打平
 
-If you operate nested collections, you may find the standard library functions that provide flat access to nested collection elements useful.
+如需操作嵌套的集合，则可能会发现提供对嵌套集合元素进行打平访问的标准库函数很有用。
 
-The first function is [`flatten()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flatten.html). You can call it on a collection of collections, for example, a `List` of `Set`s.
-The function returns a single `List` of all the elements of the nested collections.
+第一个函数为 [`flatten()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flatten.html)。可以在一个集合的集合（例如，一个 `Set` 组成的 `List`）上调用它。
+该函数返回嵌套集合中的所有元素的一个 `List`。
 
 
 
@@ -207,10 +207,10 @@ fun main() {
 ```
 
 
-Another function – [`flatMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flat-map.html) provides a flexible way to process nested collections.
-It takes a function that maps a collection element to another collection.
-As a result, `flatMap()` returns a single list of its return values on all the elements.
-So, `flatMap()` behaves as a subsequent call of `map()` (with a collection as a mapping result) and `flatten()`.
+另一个函数——[`flatMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flat-map.html) 提供了一种灵活的方式来处理嵌套的集合。
+它需要一个函数将一个集合元素映射到另一个集合。
+因此，`flatMap()` 返回单个列表其中包含所有元素的值。
+所以，`flatMap()` 表现为 `map()`（以集合作为映射结果）与 `flatten()` 的连续调用。
 
 
 
@@ -230,14 +230,14 @@ fun main() {
 ```
 
 
-## String representation
+## 字符串表示
 
-If you need to retrieve the collection content in a readable format, use functions that transform the collections to strings: [`joinToString()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html) and [`joinTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to.html).
+如果需要以可读格式检索集合内容，请使用将集合转换为字符串的函数：[`joinToString()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html) 与 [`joinTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to.html)。
 
-`joinToString()` builds a single `String` from the collection elements based on the provided arguments.
-`joinTo()` does the same but appends the result to the given [`Appendable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-appendable/index.html) object.
+`joinToString()` 根据提供的参数从集合元素构建单个 `String`。
+`joinTo()` 执行相同的操作，但将结果附加到给定的 [`Appendable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-appendable/index.html) 对象。
 
-When called with the default arguments, the functions return the result similar to calling `toString()` on the collection: a `String` of elements' string representations separated by commas with spaces.
+当使用默认参数调用时，函数返回的结果类似于在集合上调用 `toString()`：各元素的字符串表示形式以空格分隔而成的 `String`。
 
 
 
@@ -257,8 +257,8 @@ fun main() {
 ```
 
 
-To build a custom string representation, you can specify its parameters in function arguments `separator`, `prefix`, and `postfix`.
-The resulting string will start with the `prefix` and end with the `postfix`. The `separator` will come after each element except the last.
+要构建自定义字符串表示形式，可以在函数参数 `separator`、`prefix` 与 `postfix`中指定其参数。
+结果字符串将以 `prefix` 开头，以 `postfix` 结尾。除最后一个元素外，`separator` 将位于每个元素之后。
 
 
 
@@ -272,8 +272,8 @@ fun main() {
 ```
 
 
-For bigger collections, you may want to specify the `limit` – a number of elements that will be included into result.
-If the collection size exceeds the `limit`, all the other elements will be replaced with a single value of the `truncated` argument.
+对于较大的集合，可能需要指定 `limit` ——将包含在结果中元素的数量。
+如果集合大小超出 `limit`，所有其他元素将被 `truncated` 参数的单个值替换。
 
 
 
@@ -287,7 +287,7 @@ fun main() {
 ```
 
 
-Finally, to customize the representation of elements themselves, provide the `transform` function.
+最后，要自定义元素本身的表示形式，请提供 `transform` 函数。
 
 
 

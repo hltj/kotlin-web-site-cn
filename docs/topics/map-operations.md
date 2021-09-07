@@ -1,18 +1,18 @@
-[//]: # (title: Map-specific operations)
+[//]: # (title: Map 相关操作)
 
-In [maps](collections-overview.md#map), types of both keys and values are user-defined.
-Key-based access to map entries enables various map-specific processing capabilities from getting a value by key to separate filtering of keys and values.
-On this page, we provide descriptions of the map processing functions from the standard library.
+在 [map](collections-overview.md#map) 中，键和值的类型都是用户定义的。
+对基于键的访问启用了各种特定于 map 的处理函数，从键获取值到对键和值进行单独过滤。
+在此页面上，我们提供了来自标准库的 map 处理功能的描述。
 
-## Retrieving keys and values
+## 取键与值
 
-For retrieving a value from a map, you must provide its key as an argument of the [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) function.
-The shorthand `[key]` syntax is also supported. If the given key is not found, it returns `null`.
-There is also the function [`getValue()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-value.html) which has slightly different behavior: it throws an exception if the key is not found in the map.
-Additionally, you have two more options to handle the key absence:
+要从 Map 中检索值，必须提供其键作为 [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) 函数的参数。
+还支持简写 `[key]` 语法。 如果找不到给定的键，则返回 `null` 。
+还有一个函数 [`getValue()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-value.html) ，它的行为略有不同：如果在 Map 中找不到键，则抛出异常。
+此外，还有两个选项可以解决键缺失的问题：
 
-* [`getOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html) works the same way as for lists: the values for non-existent keys are returned from the given lambda function.
-* [`getOrDefault()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-default.html) returns the specified default value if the key is not found.
+* [`getOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html) 与 list 的工作方式相同：对于不存在的键，其值由给定的 lambda 表达式返回。
+* [`getOrDefault()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-default.html) 如果找不到键，则返回指定的默认值。
 
 
 
@@ -31,7 +31,7 @@ fun main() {
 ```
 
 
-To perform operations on all keys or all values of a map, you can retrieve them from the properties `keys` and `values` accordingly. `keys` is a set of all map keys and `values` is a collection of all map values.
+要对 map 的所有键或所有值执行操作，可以从属性 `keys` 和 `values` 中相应地检索它们。 `keys` 是 Map 中所有键的集合， `values` 是 Map 中所有值的集合。
 
 
 
@@ -47,11 +47,11 @@ fun main() {
 ```
 
 
-## Filtering
+## 过滤
 
-You can [filter](collection-filtering.md) maps with the [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html) function as well as other collections.
-When calling `filter()` on a map, pass to it a predicate with a `Pair` as an argument.
-This enables you to use both the key and the value in the filtering predicate.
+可以使用 [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html) 函数来[过滤](collection-filtering.md) map 或其他集合。
+对 map 使用 `filter()` 函数时， `Pair` 将作为参数的谓词传递给它。
+它将使用谓词同时过滤其中的键和值。
 
 
 
@@ -67,10 +67,10 @@ fun main() {
 ```
 
 
-There are also two specific ways for filtering maps: by keys and by values.
-For each way, there is a function: [`filterKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-keys.html) and [`filterValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-values.html).
-Both return a new map of entries which match the given predicate.
-The predicate for `filterKeys()` checks only the element keys, the one for `filterValues()` checks only values.
+还有两种用于过滤 map 的特定函数：按键或按值。
+这两种方式，都有对应的函数： [`filterKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-keys.html) 和 [`filterValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-values.html) 。
+两者都将返回一个新 Map ，其中包含与给定谓词相匹配的条目。
+`filterKeys()` 的谓词仅检查元素键， `filterValues()` 的谓词仅检查值。
 
 
 
@@ -89,11 +89,11 @@ fun main() {
 ```
 
 
-## `plus` and `minus` operators
+## `plus` 与 `minus` 操作
 
-Due to the key access to elements, [`plus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus.html) (`+`) and [`minus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus.html) (`-`) operators work for maps differently than for other collections.
-`plus` returns a `Map` that contains elements of its both operands: a `Map` on the left and a `Pair` or another `Map` on the right.
-When the right-hand side operand contains entries with keys present in the left-hand side `Map`, the result map contains the entries from the right side.
+由于需要访问元素的键，[`plus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus.html)（`+`）与 [`minus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus.html)（`-`）运算符对 map 的作用与其他集合不同。
+`plus` 返回包含两个操作数元素的 `Map` ：左侧的 Map 与右侧的 Pair 或另一个 Map 。
+当右侧操作数中有左侧 `Map` 中已存在的键时，该条目将使用右侧的值。
 
 
 
@@ -110,8 +110,8 @@ fun main() {
 ```
 
 
-`minus` creates a `Map` from entries of a `Map` on the left except those with keys from the right-hand side operand.
-So, the right-hand side operand can be either a single key or a collection of keys: list, set, and so on.
+`minus` 将根据左侧 `Map` 条目创建一个新 `Map` ，右侧操作数带有键的条目将被剔除。
+因此，右侧操作数可以是单个键或键的集合： list 、 set 等。
 
 
 
@@ -127,25 +127,25 @@ fun main() {
 ```
 
 
-For details on using [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) and [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operators on mutable maps, see [Map write operations](#map-write-operations) below.
+关于在可变 Map 中使用 [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html)（`+=`）与 [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html)（`-=`）运算符的详细信息，请参见 [Map 写操作](#map-写操作) 。
 
-## Map write operations
+## Map 写操作
 
-[Mutable](collections-overview.md#collection-types) maps offer map-specific write operations.
-These operations let you change the map content using the key-based access to the values.
+[Mutable](collections-overview.md#集合类型) Map （可变 Map ）提供特定的 Map 写操作。
+这些操作使你可以使用键来访问或更改 Map 值。
 
-There are certain rules that define write operations on maps:
+Map 写操作的一些规则：
 
-* Values can be updated. In turn, keys never change: once you add an entry, its key is constant.
-* For each key, there is always a single value associated with it. You can add and remove whole entries.
+* 值可以更新。 反过来，键也永远不会改变：添加条目后，键是不变的。
+* 每个键都有一个与之关联的值。也可以添加和删除整个条目。
 
-Below are descriptions of the standard library functions for write operations available on mutable maps.
+下面是对可变 Map 中可用写操作的标准库函数的描述。
 
-### Adding and updating entries
+### 添加与更新条目
 
-To  add a new key-value pair to a mutable map, use [`put()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/put.html).
-When a new entry is put into a `LinkedHashMap` (the default map implementation), it is added so that it comes last when iterating the map.
-In sorted maps, the positions of new elements are defined by the order of their keys.
+要将新的键值对添加到可变 Map ，请使用 [`put()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/put.html) 。
+将新条目放入 `LinkedHashMap` （Map的默认实现）后，会添加该条目，以便在 Map 迭代时排在最后。
+在 Map 类中，新元素的位置由其键顺序定义。
 
 
 
@@ -161,7 +161,7 @@ fun main() {
 ```
 
 
-To add multiple entries at a time, use [`putAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/put-all.html). Its argument can be a `Map` or a group of `Pair`s: `Iterable`, `Sequence`, or `Array`.
+要一次添加多个条目，请使用 [`putAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/put-all.html) 。它的参数可以是 `Map` 或一组 `Pair` ： `Iterable` 、 `Sequence` 或 `Array` 。
 
 
 
@@ -177,7 +177,7 @@ fun main() {
 ```
 
 
-Both `put()` and `putAll()` overwrite the values if the given keys already exist in the map. Thus, you can use them to update values of map entries.
+如果给定键已存在于 Map 中，则 `put()` 与 `putAll()` 都将覆盖值。 因此，可以使用它们来更新 Map 条目的值。
 
 
 
@@ -194,10 +194,10 @@ fun main() {
 ```
 
 
-You can also add new entries to maps using the shorthand operator form. There are two ways:
+还可以使用快速操作符将新条目添加到 Map 。 有两种方式：
 
-* [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) operator.
-* the `[]` operator alias for `set()`.
+* [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) （`+=`） 操作符。
+*  `[]` 操作符为 `set()` 的别名。
 
 
 
@@ -205,7 +205,7 @@ You can also add new entries to maps using the shorthand operator form. There ar
 fun main() {
 //sampleStart
     val numbersMap = mutableMapOf("one" to 1, "two" to 2)
-    numbersMap["three"] = 3     // calls numbersMap.set("three", 3)
+    numbersMap["three"] = 3     // 调用 numbersMap.set("three", 3)
     numbersMap += mapOf("four" to 4, "five" to 5)
     println(numbersMap)
 //sampleEnd
@@ -214,13 +214,13 @@ fun main() {
 ```
 
 
-When called with the key present in the map, operators overwrite the values of the corresponding entries.
+使用 Map 中存在的键进行操作时，将覆盖相应条目的值。
 
-### Removing entries
+### 删除条目
 
-To remove an entry from a mutable map, use the [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/remove.html) function.
-When calling `remove()`, you can pass either a key or a whole key-value-pair.
-If you specify both the key and value, the element with this key will be removed only if its value matches the second argument.
+要从可变 Map 中删除条目，请使用 [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/remove.html) 函数。
+调用 `remove()` 时，可以传递键或整个键值对。
+如果同时指定键和值，则仅当键值都匹配时，才会删除此的元素。
 
 
 
@@ -230,7 +230,7 @@ fun main() {
     val numbersMap = mutableMapOf("one" to 1, "two" to 2, "three" to 3)
     numbersMap.remove("one")
     println(numbersMap)
-    numbersMap.remove("three", 4)            //doesn't remove anything
+    numbersMap.remove("three", 4)            //不会删除任何条目
     println(numbersMap)
 //sampleEnd
 }
@@ -238,9 +238,9 @@ fun main() {
 ```
 
 
-You can also remove entries from a mutable map by their keys or values.
-To do this, call `remove()` on the map's keys or values providing the key or the value of an entry.
-When called on values, `remove()` removes only the first entry with the given value.
+还可以通过键或值从可变 Map 中删除条目。
+在 Map 的 `.keys` 或 `.values` 中调用 `remove()` 并提供键或值来删除条目。
+在 `.values` 中调用时， `remove()` 仅删除给定值匹配到的的第一个条目。
 
 
 
@@ -259,7 +259,7 @@ fun main() {
 
 
 
-The [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operator is also available for mutable maps.
+[`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) （`-=`） 操作符也可用于可变 Map 。
 
 
 
@@ -269,7 +269,7 @@ fun main() {
     val numbersMap = mutableMapOf("one" to 1, "two" to 2, "three" to 3)
     numbersMap -= "two"
     println(numbersMap)
-    numbersMap -= "five"             //doesn't remove anything
+    numbersMap -= "five"             //不会删除任何条目
     println(numbersMap)
 //sampleEnd
 }

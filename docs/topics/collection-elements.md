@@ -1,28 +1,28 @@
-[//]: # (title: Retrieve single elements)
+[//]: # (title: 取单个元素)
 
-Kotlin collections provide a set of functions for retrieving single elements from collections.
-Functions described on this page apply to both lists and sets.
+Kotlin 集合提供了一套从集合中检索单个元素的函数。
+此页面描述的函数适用于 list 和 set。
 
-As the [definition of list](collections-overview.md) says, a list is an ordered collection.
-Hence, every element of a list has its position that you can use for referring.
-In addition to functions described on this page, lists offer a wider set of ways to retrieve and search for elements by indices.
-For more details, see [List Specific Operations](list-operations.md).
+正如 [list 的定义](collections-overview.md)所言，list 是有序集合。
+因此，list 中的每个元素都有其位置可供你引用。
+除了此页面上描述的函数外，list 还提供了更广泛的一套方法去按索引检索和搜索元素。
+有关更多详细信息，请参见 [List 相关操作](list-operations.md)。
 
-In turn, set is not an ordered collection by [definition](collections-overview.md).
-However, the Kotlin `Set` stores elements in certain orders.
-These can be the order of insertion (in `LinkedHashSet`), natural sorting order (in `SortedSet`), or another order.
-The order of a set of elements can also be unknown.
-In such cases, the elements are still ordered somehow, so the functions that rely on the element positions still return their results.
-However, such results are unpredictable to the caller unless they know the specific implementation of `Set` used.
+反过来，从[定义](collections-overview.md)来看，set 并不是有序集合。
+但是，Kotlin 中的 `Set` 按某些顺序存储元素。
+这些可以是插入顺序（在 `LinkedHashSet` 中）、自然排序顺序（在 `SortedSet` 中）或者其他顺序。
+一组元素的顺序也可以是未知的。
+在这种情况下，元素仍会以某种顺序排序，因此，依赖元素位置的函数仍会返回其结果。
+但是，除非调用者知道所使用的 `Set` 的具体实现，否则这些结果对于调用者是不可预测的。
 
-## Retrieving by position
+## 按位置取
 
-For retrieving an element at a specific position, there is the function [`elementAt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at.html).
-Call it with the integer number as an argument, and you'll receive the collection element at the given position.
-The first element has the position `0`, and the last one is `(size - 1)`.
+为了检索特定位置的元素，有一个函数 [`elementAt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at.html)。
+用一个整数作为参数来调用它，你会得到给定位置的集合元素。
+第一个元素的位置是 `0`，最后一个元素的位置是 `(size - 1)`。
 
-`elementAt()` is useful for collections that do not provide indexed access, or are not statically known to provide one.
-In case of `List`, it's more idiomatic to use [indexed access operator](list-operations.md#retrieving-elements-by-index) (`get()` or `[]`).
+`elementAt()` 对于不提供索引访问或非静态已知提供索引访问的集合很有用。
+在使用 `List` 的情况下，使用[索引访问操作符](list-operations.md#按索引取元素) （`get()` 或 `[]`）更为习惯。
 
 
 
@@ -33,13 +33,13 @@ fun main() {
     println(numbers.elementAt(3))    
 
     val numbersSortedSet = sortedSetOf("one", "two", "three", "four")
-    println(numbersSortedSet.elementAt(0)) // elements are stored in the ascending order
+    println(numbersSortedSet.elementAt(0)) // 元素以升序存储
 //sampleEnd
 }
 ```
 
 
-There are also useful aliases for retrieving the first and the last element of the collection: [`first()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html) and [`last()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html).
+还有一些有用的别名来检索集合的第一个和最后一个元素：[`first()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html) 和 [`last()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html)。
 
 
 
@@ -54,11 +54,11 @@ fun main() {
 ```
 
 
-To avoid exceptions when retrieving element with non-existing positions, use safe variations of `elementAt()`:
+为了避免在检索位置不存在的元素时出现异常，请使用 `elementAt()` 的安全变体：
 
-* [`elementAtOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html) returns null when the specified position is out of the collection bounds.
-* [`elementAtOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-else.html) additionally takes a lambda function that maps an `Int` argument to an instance of the collection element type.
-  When called with an out-of-bounds position, the `elementAtOrElse()` returns the result of the lambda on the given value.
+* 当指定位置超出集合范围时，[`elementAtOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html) 返回 null。
+* [`elementAtOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-else.html) 还接受一个 lambda 表达式，该表达式能将一个 `Int` 参数映射为一个集合元素类型的实例。
+  当使用一个越界位置来调用时，`elementAtOrElse()` 返回对给定值调用该 lambda 表达式的结果。
 
 
 
@@ -73,11 +73,11 @@ fun main() {
 ```
 
 
-## Retrieving by condition
+## 按条件取
 
-Functions [`first()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html) and [`last()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html) also let you search a collection for elements matching a given predicate.
-When you call `first()` with a predicate that tests a collection element, you'll receive the first element on which the predicate yields `true`.
-In turn, `last()` with a predicate returns the last element matching it.
+函数 [`first()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html) 和 [`last()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html) 还可以让你在集合中搜索与给定谓词匹配的元素。
+当你使用测试集合元素的谓词调用 `first()` 时，你会得到对其调用谓词产生 `true` 的第一个元素。
+反过来，带有一个谓词的 `last()` 返回与其匹配的最后一个元素。
 
 
 
@@ -92,8 +92,8 @@ fun main() {
 ```
 
 
-If no elements match the predicate, both functions throw exceptions.
-To avoid them, use [`firstOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html) and [`lastOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html) instead: they return `null` if no matching elements are found.
+如果没有元素与谓词匹配，两个函数都会抛异常。
+为了避免它们，请改用 [`firstOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html) 和 [`lastOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html)：如果找不到匹配的元素，它们将返回 `null`。
 
 
 
@@ -107,10 +107,10 @@ fun main() {
 ```
 
 
-Alternatively, you can use the aliases if their names suit your situation better:
+或者，如果别名更适合你的情况，那么可以使用别名：
 
-* [`find()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html) instead of `firstOrNull()`
-* [`findLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html) instead of `lastOrNull()`
+* 使用 [`find()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html) 代替 `firstOrNull()`
+* 使用 [`findLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html) 代替 `lastOrNull()`
 
 
 
@@ -125,10 +125,10 @@ fun main() {
 ```
 
 
-## Random element
+## 随机取元素
 
-If you need to retrieve an arbitrary element of a collection, call the [`random()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/random.html) function.
-You can call it without arguments or with a [`Random`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.random/-random/index.html) object as a source of the randomness.
+如果需要检索集合的一个随机元素，那么请调用 [`random()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/random.html) 函数。
+你可以不带参数或者使用一个 [`Random`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.random/-random/index.html) 对象作为随机源来调用它。
 
 
 
@@ -144,13 +144,13 @@ fun main() {
 
 On empty collections, `random()` throws an exception. To receive `null` instead, use [`randomOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/random-or-null.html)
 
-## Checking existence
+## 检测存在与否
 
-To check the presence of an element in a collection, use the [`contains()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/contains.html) function.
-It returns `true` if there is a collection element that `equals()` the function argument.
-You can call `contains()` in the operator form with the `in` keyword.
+如需检查集合中某个元素的存在，可以使用 [`contains()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/contains.html) 函数。
+如果存在一个集合元素等于（`equals()`）函数参数，那么它返回 `true`。
+你可以使用 `in` 关键字以操作符的形式调用 `contains()`。
 
-To check the presence of multiple instances together at once, call [`containsAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/contains-all.html) with a collection of these instances as an argument.
+如需一次检查多个实例的存在，可以使用这些实例的集合作为参数调用 [`containsAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/contains-all.html)。
 
 
 
@@ -168,20 +168,20 @@ fun main() {
 ```
 
 
-Additionally, you can check if the collection contains any elements by calling [`isEmpty()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/is-empty.html) or [`isNotEmpty()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/is-not-empty.html).
+此外，你可以通过调用 [`isEmpty()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/is-empty.html) 和 [`isNotEmpty()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/is-not-empty.html) 来检查集合中是否包含任何元素。
 
 
 
 ```kotlin
 fun main() {
 //sampleStart
-    val numbers = listOf("one", "two", "three", "four", "five", "six")
-    println(numbers.isEmpty())
-    println(numbers.isNotEmpty())
-    
-    val empty = emptyList<String>()
-    println(empty.isEmpty())
-    println(empty.isNotEmpty())
+  val numbers = listOf("one", "two", "three", "four", "five", "six")
+  println(numbers.isEmpty())
+  println(numbers.isNotEmpty())
+
+  val empty = emptyList<String>()
+  println(empty.isEmpty())
+  println(empty.isNotEmpty())
 //sampleEnd
 }
 ```
