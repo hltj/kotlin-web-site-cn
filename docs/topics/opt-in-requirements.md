@@ -1,15 +1,15 @@
 [//]: # (title: 选择加入要求)
 
-# 选择加入要求
-
-> 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn` 是[实验性的](evolution/components-stability.md)。
-> 请参阅[以下](#experimental-status-of-the-opt-in-requirements)用法详细信息。
-{:.note}
+> 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn` 是[实验性的](components-stability.md)。
+> They may be dropped or changed at any time. Opt-in is required (see details below).
+> Use them only for evaluation purposes. We appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
+>
+{type="warning"}
 
 > 1.3.70 中引入了 `@RequireOptIn` 与 `@OptIn` 注解以取代先前使用的 `@Experimental` 与 `@UseExperimental`；
 > 同时 `-Xopt-in` 编译器选项也取代了 `-Xuse-experimental`。
-{:.note}
-
+>
+{type="note"}
 
 Kotlin 标准库提供了一种机制，用于要求并明确同意使用 API 的某些元素。
 通过这种机制，库开发人员可以将使用其 API 需要选择加入的特定条件告知用户，
@@ -20,7 +20,7 @@ Kotlin 标准库提供了一种机制，用于要求并明确同意使用 API �
 
 ## 选择使用 API
 
-如果库作者将一个库的 API 声明标记为[_要求选择加入_](#requiring-opt-in-for-api)
+如果库作者将一个库的 API 声明标记为[_要求选择加入_](#require-opt-in-for-api)
 你应该明确同意在代码中使用它。
 有多种方式可以选择加入使用此类 API，所有方法均不受技术限制。
 你可以自由选择最适合自己的方式。
@@ -28,10 +28,8 @@ Kotlin 标准库提供了一种机制，用于要求并明确同意使用 API �
 ### 传播选择加入
 
 在使用供第三方（库）使用的 API 时，你也可以把其选择加入的要求传播到自己的 API。
-为此，请在你的 API 主体声明中添加注解 [_要求选择加入的注解_](#opt-in-requirement-annotations)。
+为此，请在你的 API 主体声明中添加注解 [_要求选择加入的注解_](#create-opt-in-requirement-annotations)。
 这可以让你使用带有此注解的 API 元素。
-
-
 
 ```kotlin
 // 库代码
@@ -43,10 +41,6 @@ annotation class MyDateTime // 要求选择加入的注解
 @MyDateTime                            
 class DateProvider // 要求选择加入的类
 ```
-
-
-
-
 
 ```kotlin
 // 客户端代码
@@ -66,20 +60,16 @@ fun displayDate() {
 }
 ```
 
-
-
 如本例所示，带注释的函数看起来是 `@MyDateTime` API 的一部分。
 因此，这种选择加入会将选择加入的要求传播到客户端代码；其客户将看到相同的警告消息，
 并且也必须同意。
 要使用多个需要选择加入的API，请在声明中标记所有需要选择加入的注解。
 
-### 非传播的用法
+### 非传播的选择加入
 
 在不公开其自身API的模块（例如应用程序）中，你可以选择使用 API 而无需将选择加入的要求传播到代码中。
-这种情况下，请使用 [@OptIn](/api/latest/jvm/stdlib/kotlin/-opt-in/index.md) 标记你的声明，
+这种情况下，请使用 [@OptIn](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-opt-in/) 标记你的声明，
 并以要求选择加入的注解作为参数：
-
-
 
 ```kotlin
 // 库代码
@@ -91,10 +81,6 @@ annotation class MyDateTime // 要求选择加入的注解
 @MyDateTime                            
 class DateProvider // 要求选择加入的类
 ```
-
-
-
-
 
 ```kotlin
 //客户端代码
@@ -109,21 +95,15 @@ fun displayDate() {
 }
 ```
 
-
-
 当有人调用函数 `getDate()` 时，不会通知他们函数主体中使用的选择加入 API 的要求。
 
 要在一个文件的所有函数和类中使用要求选择加入的 API，请在文件的顶部，
 文件包说明和导入声明前添加文件级注释 `@file:OptIn`。
 
-
-
  ```kotlin
  //客户端代码
  @file:OptIn(MyDateTime::class)
  ```
-
-
 
 ### 模块范围的选择加入
 
@@ -134,8 +114,7 @@ fun displayDate() {
 
 如果使用 Gradle 构建模块，可以添加如下参数：
 
-
-
+<tabs>
 
 ```groovy
 tasks.withType(KotlinCompile).configureEach {
@@ -145,25 +124,17 @@ tasks.withType(KotlinCompile).configureEach {
 }
 ```
 
-
-
-
-
-
-
 ```kotlin
 tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions.freeCompilerArgs += "-Xopt-in=org.mylibrary.OptInAnnotation"
 }
 ```
 
-
-
+</tabs>
 
 如果你的 Gradle 模块是多平台模块，请使用 `useExperimentalAnnotation` 方法：
 
-
-
+<tabs>
 
 ```groovy
 sourceSets {
@@ -175,12 +146,6 @@ sourceSets {
 }
 ```
 
-
-
-
-
-
-
 ```kotlin
 sourceSets {
     all {
@@ -189,12 +154,9 @@ sourceSets {
 }
 ```
 
-
-
+</tabs>
 
 对于 Maven，它将是：
-
-
 
 ```xml
 <build>
@@ -214,18 +176,14 @@ sourceSets {
 </build>
 ```
 
-
-
 要在模块级别选择加入多个 API，请为每个要求选择加入的 API 添加以上描述的参数之一。
 
 ## 要求选择加入 API
 
-### 要求选择加入的注解
+### 创建选择加入要求的注解
 
 如果想获得使用者使用你的模块 API 的明确同意，请创建一个注解类，作为_要求选择加入的注解_。
-这个类必须使用 [@RequiresOptIn](/api/latest/jvm/stdlib/kotlin/-requires-opt-in/index.md) 注解：
-
-
+这个类必须使用 [@RequiresOptIn](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-requires-opt-in/) 注解：
 
 ```kotlin
 @RequiresOptIn
@@ -234,14 +192,12 @@ sourceSets {
 annotation class MyDateTime
 ```
 
-
-
 要求选择加入的注解必须满足以下几个要求：
-* `BINARY` [retention](/api/latest/jvm/stdlib/kotlin.annotation/-annotation-retention/index.md)
-* [targets](/api/latest/jvm/stdlib/kotlin.annotation/-annotation-target/index.md)中没有 `EXPRESSION` 与 `FILE`
+* `BINARY` [retention](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-retention/)
+* [targets](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-target/)中没有 `EXPRESSION` 与 `FILE`
 * 没有参数
 
-选择加入的要求可以具有以下两个严格[级别](/api/latest/jvm/stdlib/kotlin/-requires-opt-in/-level/index.md)之一：
+选择加入的要求可以具有以下两个严格[级别](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-requires-opt-in/-level/)之一：
 * `RequiresOptIn.Level.ERROR`。选择加入是强制性的。 否则，使用标记 API 的代码将无法编译。 默认级别。
 * `RequiresOptIn.Level.WARNING`。选择加入不是强制性的，而是建议使用的。 没有它，编译器会发出警告。
 
@@ -250,16 +206,12 @@ annotation class MyDateTime
 另外，你可以提供一个 `message` 来通知用户有关使用该 API 的特定条件。
 编译器会将其显示给使用该 API 但未选择加入的用户。
 
-
-
 ```kotlin
 @RequiresOptIn(level = RequiresOptIn.Level.WARNING, message = "This API is experimental. It can be incompatibly changed in the future.")
 @Retention(AnnotationRetention.BINARY)
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
 annotation class ExperimentalDateTime
 ```
-
-
 
 如果你发布了多个需要选择加入的独立功能，请为每个功能声明一个注解。
 这使你的用户可以更安全地使用 API：他们只能使用其明确接受的功能。
@@ -269,8 +221,6 @@ annotation class ExperimentalDateTime
 
 要在使用 API 时要求选择加入，请给它的声明添加要求选择加入的注解。
 
-
-
 ```kotlin
 @MyDateTime
 class DateProvider
@@ -278,9 +228,6 @@ class DateProvider
 @MyDateTime
 fun getTime(): Time {}
 ```
-
-
-
 
 ## 稳定前 API 的选择加入要求
 
@@ -292,10 +239,8 @@ fun getTime(): Time {}
 -->与现有的客户端代码保持兼容。
 
 为了让 API 用户相应地更新其模块（从代码中删除注解并重新编译），
-请将注解标记为 [`@Deprecated`](/api/latest/jvm/stdlib/kotlin/-deprecated/index.md)
+请将注解标记为 [`@Deprecated`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-deprecated/)
 并在弃用 message 中提供说明。
-
-
 
 ```kotlin
 @Deprecated("This opt-in requirement is not used anymore. Remove its usages from your code.")
@@ -303,11 +248,9 @@ fun getTime(): Time {}
 annotation class ExperimentalDateTime
 ```
 
-
-
 ## 选择加入要求的实验状态
 
-选择加入要求的机制在 Kotlin 1.3 中是[实验性的](evolution/components-stability.md)。
+选择加入要求的机制目前是[实验性的](components-stability.md)。
 这意味着在将来的版本中，可能会以不兼容的方式进行更改。
 
 为了让使用注解 `@OptIn` 和 `@RequiresOptIn` 的用户了解其实验状态，
@@ -315,4 +258,4 @@ annotation class ExperimentalDateTime
 
 ```This class can only be used with the compiler argument '-Xopt-in=kotlin.RequiresOptIn'```
 
-要移除警告，请添加编译器参数 `-Xopt-in=kotlin.RequiresOptIn`。
+如需移除警告，请添加编译器参数 `-Xopt-in=kotlin.RequiresOptIn`。
