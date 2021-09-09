@@ -8,11 +8,9 @@ Kotlin 集合包含用于常用的 _聚合操作_ （基于集合内容返回单
 * [`sum()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum.html) 返回数字集合中元素的总和。
 * [`count()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/count.html) 返回集合中元素的数量。
 
-
-
 ```kotlin
+
 fun main() {
-//sampleStart
     val numbers = listOf(6, 42, 10, 4)
 
     println("Count: ${numbers.count()}")
@@ -20,21 +18,21 @@ fun main() {
     println("Min: ${numbers.minOrNull()}")
     println("Average: ${numbers.average()}")
     println("Sum: ${numbers.sum()}")
-//sampleEnd
 }
 ```
-
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 还有一些通过某些选择器函数或自定义 [`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator/index.html) 来检索最小和最大元素的函数。
 
-* [`maxByOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-by.html)/[`minByOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-by-or-null.html) 接受一个选择器函数并返回使选择器返回最大或最小值的元素。
-* [`maxWithOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-with.html)/[`minWithOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-with-or-null.html) 接受一个 `Comparator` 对象并且根据此 `Comparator` 对象返回最大或最小元素。
+* [`maxByOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-by.html) 与 [`minByOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-by-or-null.html) 接受一个选择器函数并返回使选择器返回最大或最小值的元素。
+* [`maxWithOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-with.html) 与 [`minWithOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-with-or-null.html) 接受一个 `Comparator` 对象并且根据此 `Comparator` 对象返回最大或最小元素。
 
-All these functions return `null` on empty collections.
-
-
+These functions return `null` on empty collections. There are also alternatives for `maxByOrNull()` and `minByOrNull()`: 
+[`maxOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-of.html) and [`minOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-of.html), 
+which do the same but throw a `NoSuchElementException` on empty collections.
 
 ```kotlin
+
 fun main() {
 //sampleStart
     val numbers = listOf(5, 42, 10, 4)
@@ -47,36 +45,34 @@ fun main() {
 //sampleEnd
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-
-此外，有一些高级的求和函数，它们接受一个函数并返回对所有元素调用此函数的返回值的总和：
-
-* [`sumBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum-by.html) 使用对集合元素调用返回 `Int` 值的函数。
-* [`sumByDouble()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum-by-double.html) 与返回 `Double` 的函数一起使用。
-
-
+Besides regular `sum()`, there is an advanced summation function [`sumOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum-of.html)
+that takes a selector function and returns the sum of its application to all collection elements. Selector can return 
+different numeric types: `Int`, `Long`, `Double`, `UInt`, and `ULong` (also `BigInteger` and `BigDecimal` on the JVM).
 
 ```kotlin
+
 fun main() {
-//sampleStart    
+//sampleStart
     val numbers = listOf(5, 42, 10, 4)
-    println(numbers.sumBy { it * 2 })
-    println(numbers.sumByDouble { it.toDouble() / 2 })
+    println(numbers.sumOf { it * 2 })
+    println(numbers.sumOf { it.toDouble() / 2 })
 //sampleEnd
 }
 ```
-
+{kotlin-runnable="true" kotlin-min-compiler-version="1.4"}
 
 ## Fold 与 reduce
 
 对于更特定的情况，有函数 [`reduce()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce.html) 和 [`fold()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold.html)，它们依次将所提供的操作应用于集合元素并返回累积的结果。
 操作有两个参数：先前的累积值和集合元素。
 
-这两个函数的区别在于：`fold()` 接受一个初始值并将其用作第一步的累积值，而 `reduce()` 的第一步则将第一个和第二个元素作为第一步的操作参数。
-
-
+这两个函数的区别在于：`fold()` 接受一个初始值并将其用作<!--
+-->第一步的累积值，而 `reduce()` 的第一步则将第一个和第二个元素作为第一步的操作参数。
 
 ```kotlin
+
 fun main() {
 //sampleStart
     val numbers = listOf(5, 2, 10, 4)
@@ -91,18 +87,19 @@ fun main() {
 //sampleEnd
 }
 ```
-
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 上面的实例展示了区别：`fold()` 用于计算加倍的元素之和。
-如果将相同的函数传给 `reduce()`，那么它会返回另一个结果，因为在第一步中它将列表的第一个和第二个元素作为参数，所以第一个元素不会被加倍。
+如果将相同的函数传给 `reduce()`，那么它会返回另一个结果，因为在第一步中它将列表的第一个和第二个<!--
+-->元素作为参数，所以第一个元素不会被加倍。
 
-如需将函数以相反的顺序应用于元素，可以使用函数 [`reduceRight()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right.html) 和 [`foldRight()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-right.html)
+如需将函数以相反的顺序应用于元素，可以使用函数 [`reduceRight()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right.html)
+和 [`foldRight()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-right.html)
 它们的工作方式类似于 `fold()` 和 `reduce()`，但从最后一个元素开始，然后再继续到前一个元素。
 记住，在使用 foldRight 或 reduceRight 时，操作参数会更改其顺序：第一个参数变为元素，然后第二个参数变为累积值。
 
-
-
 ```kotlin
+
 fun main() {
 //sampleStart
     val numbers = listOf(5, 2, 10, 4)
@@ -111,16 +108,18 @@ fun main() {
 //sampleEnd
 }
 ```
-
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 你还可以使用将元素索引作为参数的操作。
-为此，使用函数 [`reduceIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-indexed.html) 和 [`foldIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-indexed.html) 传递元素索引作为操作的第一个参数。
+为此，使用函数 [`reduceIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-indexed.html)
+与 [`foldIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-indexed.html) 传递元素<!--
+-->索引作为操作的第一个参数。
 
-最后，还有将这些操作从右到左应用于集合元素的函数——[`reduceRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right-indexed.html) 与 [`foldRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-right-indexed.html)。
-
-
+最后，还有将这些操作从右到左应用于集合元素的函数——[`reduceRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right-indexed.html)
+与 [`foldRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-right-indexed.html)。
 
 ```kotlin
+
 fun main() {
 //sampleStart
     val numbers = listOf(5, 2, 10, 4)
@@ -132,10 +131,32 @@ fun main() {
 //sampleEnd
 }
 ```
-
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 All reduce operations throw an exception on empty collections. To receive `null` instead, use their `*OrNull()` counterparts:
 * [`reduceOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-or-null.html)
 * [`reduceRightOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right-or-null.html)
 * [`reduceIndexedOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-indexed-or-null.html)
 * [`reduceRightIndexedOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right-indexed-or-null.html)
+
+For cases where you want to save intermediate accumulator values, there are functions
+[`runningFold()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/running-fold.html) (or its synonym [`scan()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/scan.html)) 
+and [`runningReduce()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/running-reduce.html).
+
+```kotlin
+
+fun main() {
+//sampleStart
+    val numbers = listOf(0, 1, 2, 3, 4, 5)
+    val runningReduceSum = numbers.runningReduce { sum, item -> sum + item }
+    val runningFoldSum = numbers.runningFold(10) { sum, item -> sum + item }
+//sampleEnd
+    val transform = { index: Int, element: Int -> "N = ${index + 1}: $element" }
+    println(runningReduceSum.mapIndexed(transform).joinToString("\n", "Sum of first N elements with runningReduce:\n"))
+    println(runningFoldSum.mapIndexed(transform).joinToString("\n", "Sum of first N elements with runningFold:\n"))
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.4"}
+
+If you need an index in the operation parameter, use [`runningFoldIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/running-fold-indexed.html)
+or [`runningReduceIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/running-reduce-indexed.html).

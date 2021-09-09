@@ -2,15 +2,14 @@
 
 [可变集合](collections-overview.md#集合类型)支持更改集合内容的操作，例如添加或删除元素。
 在此页面上，我们将描述实现 `MutableCollection` 的所有写操作。
-有关 `List` 与 `Map` 可用的更多特定操作，请分别参见 [List 相关操作](list-operations.md)与 [Map 相关操作](map-operations.md)。
+关于 `List` 与 `Map` 可用的更多特定操作，请分别参见 [List 相关操作](list-operations.md)与 [Map 相关操作](map-operations.md)。
 
 ## 添加元素
 
 要将单个元素添加到列表或集合，请使用 [`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) 函数。指定的对象将添加到集合的末尾。
 
-
-
 ```kotlin
+
 fun main() {
 //sampleStart
     val numbers = mutableListOf(1, 2, 3, 4)
@@ -19,7 +18,7 @@ fun main() {
 //sampleEnd
 }
 ```
-
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 [`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) 将参数对象的每个元素添加到列表或集合中。参数可以是 `Iterable`、`Sequence` 或 `Array`。
 接收者的类型和参数可能不同，例如，你可以将所有内容从 `Set` 添加到 `List`。
@@ -29,9 +28,8 @@ fun main() {
 参数集合的第一个元素会被插入到这个位置。
 其他元素将跟随在它后面，将接收者元素移到末尾。
 
-
-
 ```kotlin
+
 fun main() {
 //sampleStart
     val numbers = mutableListOf(1, 2, 5, 6)
@@ -42,14 +40,13 @@ fun main() {
 //sampleEnd
 }
 ```
-
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 你还可以使用 [`plus` 运算符](collection-plus-minus.md) - [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) 添加元素。
 当应用于可变集合时，`+=` 将第二个操作数(一个元素或另一个集合)追加到集合的末尾。
 
-
-
 ```kotlin
+
 fun main() {
 //sampleStart
     val numbers = mutableListOf("one", "two")
@@ -60,16 +57,15 @@ fun main() {
 //sampleEnd
 }
 ```
-
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ## 删除元素
 
 若要从可变集合中移除元素，请使用 [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/remove.html) 函数。
 `remove()` 接受元素值，并删除该值的一个匹配项。
 
-
-
 ```kotlin
+
 fun main() {
 //sampleStart
     val numbers = mutableListOf(1, 2, 3, 4, 3)
@@ -80,7 +76,7 @@ fun main() {
 //sampleEnd
 }
 ```
-
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 要一次删除多个元素，有以下函数：
 
@@ -90,9 +86,8 @@ fun main() {
   当与谓词一起使用时，它只留下与之匹配的元素。
 * [`clear()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/clear.html) 从列表中移除所有元素并将其置空。
 
-
-
 ```kotlin
+
 fun main() {
 //sampleStart
     val numbers = mutableListOf(1, 2, 3, 4)
@@ -108,7 +103,7 @@ fun main() {
 //sampleEnd
 }
 ```
-
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 从集合中移除元素的另一种方法是使用 [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) ——原地修改版的 [`minus`](collection-plus-minus.md) 操作符。 [`minus`](collection-plus-minus.md) 操作符。
 第二个参数可以是元素类型的单个实例或另一个集合。
@@ -117,9 +112,8 @@ fun main() {
 例如，如果列表包含重复的元素，它们将被同时删除。
 第二个操作数可以包含集合中不存在的元素。这些元素不会影响操作的执行。
 
-
-
 ```kotlin
+
 fun main() {
 //sampleStart
     val numbers = mutableListOf("one", "two", "three", "three", "four")
@@ -131,7 +125,7 @@ fun main() {
 //sampleEnd
 }
 ```
-
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ## 更新元素
 
