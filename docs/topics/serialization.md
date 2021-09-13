@@ -1,4 +1,4 @@
-[//]: # (title: Serialization)
+[//]: # (title: 序列化)
 
 _Serialization_ is the process of converting data used by an application to a format that can be transferred over a network
 or stored in a database or a file. In turn, _deserialization_ is the opposite process of reading data from an external source
