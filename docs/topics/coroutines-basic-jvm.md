@@ -1,19 +1,19 @@
-[//]: # (title: Your first coroutine with Kotlin)
+[//]: # (title: 你的第一个 Kotlin 协程程序)
 
-Kotlin 1.1 introduced coroutines, a new way of writing asynchronous, non-blocking code (and much more). In this tutorial we will go through some basics of using Kotlin coroutines with the help of the `kotlinx.coroutines` library, which is a collection of helpers and wrappers for existing Java libraries.
+在 Kotlin 1.1 中引入的协程，一种全新的编写异步、非阻塞（以及更多）代码的方式。在这篇教程中我们将通过一些使用 Kotlin 协程的基础示例来帮助我们学习 `kotlinx.coroutines` 库，它是现有 Java 库的帮助程序和包装器的集合。
 
-## Setting up a project
+## 创建一个工程
 
 ### Gradle
 
-In IntelliJ IDEA go to *File -> New > Project...*:
+在 IntelliJ IDEA 中依次点击 *File -> New > Project...*：
 
 <img src="{{ url_for('tutorial_img', filename='coroutines-basic-jvm/new_gradle_project_jvm.png')}}"/>
 
-Then follow the wizard steps. You'll have a `build.gradle` file created with Kotlin configured according to [this document](/docs/reference/using-gradle.md).
-Make sure it's configured for Kotlin 1.3 or higher.
+接下来跟随向导的步伐。你将根据[这篇文档](/docs/reference/using-gradle.md)配置使用启用 Kotlin 的 `build.gradle` 文件。
+确保它配置了 Kotlin 1.3 或者更高版本。
 
-Since we'll be using the [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines), let's add its recent version to our dependencies:
+由于我们将使用 [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines)，来让我们将它最近的版本添加到依赖中：
 
 
 
@@ -42,7 +42,7 @@ dependencies {
 
 
 
-This library is published to Bintray JCenter repository, so let us add it:
+这个库已经发布到了 Bintray JCenter 仓库，所以让我们添加它：
 
 
 
@@ -54,16 +54,16 @@ repositories {
 
 
 
-That's it, we are good to go and write code under `src/main/kotlin`.
+就是这样，我们很高兴去 `src/main/kotlin` 路径下编写代码。
 
 ### Maven
 
-In IntelliJ IDEA go to *File -> New > Project...* and check the *Create from archetype* box:
+在 IntelliJ IDEA 中依次点击 *File -> New > Project...* 并检查 *Create from archetype* 框：
 
 <img src="{{ url_for('tutorial_img', filename='coroutines-basic-jvm/new_mvn_project_jvm.png')}}"/>
 
-Then follow the wizard steps. You'll have a `pom.xml`  file created with Kotlin configured according to [this document](/docs/reference/using-maven.md).
-Make sure it's configured for Kotlin 1.3 or higher.
+接下来跟随向导的步伐。你将根据[这篇文档](/docs/reference/using-maven.md)配置使用启用 Kotlin 的 `pom.xml` 文件。
+确保它配置了 Kotlin 1.3 或者更高版本。
 
 
 
@@ -82,7 +82,7 @@ Make sure it's configured for Kotlin 1.3 or higher.
 
 
 
-Since we'll be using the [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines), let's add its recent version to our dependencies:
+由于我们将使用 [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines)，来让我们将它最近的版本添加到依赖中：
 
 
 
@@ -99,7 +99,7 @@ Since we'll be using the [`kotlinx.coroutines`](https://github.com/Kotlin/kotlin
 
 
 
-This library is published to Bintray JCenter repository, so let us add it:
+这个库已经发布到了 Bintray JCenter 仓库，所以让我们添加它：
 
 
 
@@ -115,15 +115,15 @@ This library is published to Bintray JCenter repository, so let us add it:
 
 
 
-That's it, we are good to go and write code under `src/main/kotlin`.
+就是这样，我们很高兴去 `src/main/kotlin` 路径下编写代码。
 
-## My first coroutine
+## 我的第一个协程
 
-One can think of a coroutine as a light-weight thread. Like threads, coroutines can run in parallel, wait for each other and communicate.
-The biggest difference is that coroutines are very cheap, almost free: we can create thousands of them, and pay very little in terms of performance.
-True threads, on the other hand, are expensive to start and keep around. A thousand threads can be a serious challenge for a modern machine.
+人们可以将协程视为轻量级线程。就像线程一样，协程可以并行运行，等待其它协程以及通信。
+最大的不同是协程是非常廉价的，几乎免费的：我们可以创建上千个协程，并且在性能的消耗上非常之低。
+在另一方面，启动真正的线程并保持它们运行的代价是非常昂贵的。一千个线程对于现代机器来说可能是一个严峻的挑战。
 
-So, how do we start a coroutine? Let's use the `launch {}` function:
+所以，我们如何才能启动一个协程？让我们使用 `launch {}` 函数：
 
 
 
@@ -135,11 +135,11 @@ launch {
 
 
 
-This starts a new coroutine. By default, coroutines are run on a shared pool of threads.
-Threads still exist in a program based on coroutines, but one thread can run many coroutines, so there's no need for
-too many threads.
+这里启动了一个新的协程。默认的，协程运行在一个共享的线程池中。
+线程仍然存在于基于协程的程序中，但是一个线程可以运行大量的协程，所以这里不需要<!--
+-->太多线程。
 
-Let's look at a full program that uses `launch`:
+让我们看看使用 `launch` 函数的完整程序：
 
 
 
@@ -150,13 +150,13 @@ fun main(args: Array<String>) {
 //sampleStart
     println("Start")
 
-    // Start a coroutine
+    // 启动一个协程
     GlobalScope.launch {
         delay(1000)
         println("Hello")
     }
 
-    Thread.sleep(2000) // wait for 2 seconds
+    Thread.sleep(2000) // 等待 2 秒钟
     println("Stop")
 //sampleEnd
 }
@@ -164,20 +164,20 @@ fun main(args: Array<String>) {
 
 
 
-Here we start a coroutine that waits for 1 second and prints `Hello`.
+这里我们启动了一个协程并等待 1 秒钟以及打印 `Hello`。
 
-We are using the `delay()` function that's like `Thread.sleep()`, but better: it _doesn't block a thread_, but only suspends the coroutine itself.
-The thread is returned to the pool while the coroutine is waiting, and when the waiting is done, the coroutine resumes on a free thread in the pool.
+我们使用了类似 `Thread.sleep()` 的 `delay()` 函数，但是它更优异：它 _不会阻塞一个线程_ ，但是会挂起协程自身。
+当这个协程处于等待状态时该线程会返回线程池中，当等待结束的时候，这个协程会在线程池中的空闲线程上恢复。
 
-The main thread (that runs the `main()` function) must wait until our coroutine completes, otherwise the program ends before `Hello` is printed.
+主线程（通过 `main()` 函数运行的线程）必须等到我们的协程完成，否则程序会在 `Hello` 被打印之前终止。
 
-_Exercise: try removing the `sleep()` from the program above and see the result._
+_练习：尝试从上面的程序中删除 `sleep()` 并查看结果。_
 
-If we try to use the same non-blocking `delay()` function directly inside `main()`, we'll get a compiler error:
+如果我们直接在 `main()` 中尝试使用诸如 `delay()` 这样的非阻塞函数，我们将得到一个编译错误：
 
-> Suspend functions are only allowed to be called from a coroutine or another suspend function
+> 挂起函数只被允许在协程或另一个挂起函数中调用
 
-This is because we are not inside any coroutine. We can use delay if we wrap it into `runBlocking {}` that starts a coroutine and waits until it's done:
+这是因为我们不在任何协程中。我们可以在 `runBlocking {}` 包装中使用 delay，它启动了一个协程并等待直到它结束：
 
 
 
@@ -189,11 +189,11 @@ runBlocking {
 
 
 
-So, first the resulting program prints `Start`, then it runs a coroutine through `launch {}`, then it runs another one through `runBlocking {}` and blocks until it's done, then prints `Stop`. Meanwhile the first coroutine completes and prints `Hello`. Just like threads, we told you :)
+所以，程序首先打印 `Start`，接下来通过 `launch {}` 来运行一个协程，再接下来通过 `runBlocking {}` 运行另一个协程并阻塞直至它结束，然后打印 `Stop`。与此同时第一个协程执行完毕并打印 `Hello`。 我们告诉过你，就像线程一样 :)
 
-## Let's run a lot of them
+## 让我们大量创建它们
 
-Now, let's make sure that coroutines are really cheaper than threads. How about starting a million of them? Let's try starting a million threads first:
+现在，让我们来确认协程真的比线程更廉价。那启动它们一百万次会怎样？让我们先来启动一百万个线程：
 
 
 
@@ -210,9 +210,9 @@ println(c.get())
 
 
 
-This runs a 1'000'000 threads each of which adds to a common counter. My patience runs out before this program completes on my machine (definitely over a minute).
+这里运行了 1'000'000 个线程并为每个都增加了一个共同的计数器。在我的机器上执行完这个程序之前，我的耐心已经耗尽（绝对超过一分钟）。
 
-Let's try the same with coroutines:
+让我们尝试使用协程来做相同的事：
 
 
 
@@ -229,17 +229,17 @@ println(c.get())
 
 
 
-This example completes in less than a second for me, but it prints some arbitrary number, because some coroutines don't finish before `main()` prints the result. Let's fix that.
+这个示例在不到一秒的时间内就完成了，但它打印一些任意数字，因为一些协程没有在 `main()` 打印结果之前执行完毕。让我们来修正它。
 
-We could use the same means of synchronization that are applicable to threads (a `CountDownLatch` is what crosses my mind in this case), but let's take a safer and cleaner path.
-
-
-## Async: returning a value from a coroutine
-
-Another way of starting a coroutine is `async {}`. It is like `launch {}`, but returns an instance of `Deferred<T>`, which has an `await()` function that returns the result of the coroutine. `Deferred<T>` is a very basic [future](https://en.wikipedia.org/wiki/Futures_and_promises) (fully-fledged JDK futures are also supported, but here we'll confine ourselves to `Deferred` for now).
+我们可以使用一些同样适用于线程的同步方法（在这种情况下，一个 `CountDownLatch` 就是我的想法），但是，让我们走一条更安全，更简洁的道路。
 
 
-Let's create a million coroutines again, keeping their `Deferred` objects. Now there's no need in the atomic counter, as we can just return the numbers to be added from our coroutines:
+## 异步：从协程中返回一个值
+
+另一个启动协程的方法是 `async {}`。它类似于 `launch {}`，但返回一个 `Deferred<T>` 实例，它拥有一个 `await()` 函数来返回协程执行的结果。`Deferred<T>` 是一个非常基础的 [future](https://en.wikipedia.org/wiki/Futures_and_promises)（还支持完全成熟的 JDK future，但是现在我们将局限于我们自己的 `Deferred`）。
+
+
+让我们再次创建一百万个协程，并保持它们的 `Deferred` 对象的引用。现在这里不再需要原子计数，我们可以仅仅返回从协程中添加的数字：
 
 
 
@@ -253,7 +253,7 @@ val deferred = (1..1_000_000).map { n ->
 
 
 
-All these have already started, all we need is collect the results:
+所有这些都已经启动，我们所需要的只是收集结果：
 
 
 
@@ -263,11 +263,11 @@ val sum = deferred.sumOf { it.await().toLong() }
 
 
 
-We simply take every coroutine and await its result here, then all results are added together by the standard library function `sumOf()`. But the compiler rightfully complains:
+这里我们简单从每个协程等待并取得它的执行结果，接下来将使用标准库的 `sumOf()` 函数来将所有结果叠加到一起。但编译器理所当然地抱怨道：
 
-> Suspend functions are only allowed to be called from a coroutine or another suspend function
+> 挂起函数只被允许在协程或另一个挂起函数中调用
 
-`await()` can not be called outside a coroutine, because it needs to suspend until the computation finishes, and only coroutines can suspend in a non-blocking way. So, let's put this inside a coroutine:
+`await()` 不能在协程外调用，因为它需要挂起直至计算结束，并且只有协程可以被无阻塞的挂起。因此，让我们将它们放到协程中：
 
 
 
@@ -280,9 +280,9 @@ runBlocking {
 
 
 
-Now it prints something sensible: `500000500000`, because all coroutines complete.
+现在它打印了一些合理的东西：`500000500000`，因为所有的协程都执行完毕了。
 
-Let's also make sure that our coroutines actually run in parallel. If we add a 1-second `delay()` to each of the `async`'s, the resulting program won't run for 1'000'000 seconds (over 11,5 days):
+让我们也确保我们的协程是实际并行运行的。如果我们在每个 `async` 中添加了 1 秒钟的 `delay()`，程序将不会运行 1'000'000 秒（超过 11.5 天）：
 
 
 
@@ -297,11 +297,11 @@ val deferred = (1..1_000_000).map { n ->
 
 
 
-This takes about 10 seconds on my machine, so yes, coroutines do run in parallel.
+这在我的机器上花费了 10 秒，所以，协程是并行的。
 
-## Suspending functions
+## 挂起函数
 
-Now, let's say we want to extract our _workload_ (which is "wait 1 second and return a number") into a separate function:
+现在，假设我们要将 _工作_ （“等待 1 秒并返回一个数字”）提取到一个单独的函数中：
 
 
 
@@ -314,11 +314,11 @@ fun workload(n: Int): Int {
 
 
 
-A familiar error pops up:
+弹出一个熟悉的错误：
 
-> Suspend functions are only allowed to be called from a coroutine or another suspend function
+> 挂起函数只被允许在协程或另一个挂起函数中调用
 
-Let's dig a little into what it means. The biggest merit of coroutines is that they can _suspend_ without blocking a thread. The compiler has to emit some special code to make this possible, so we have to mark functions that _may suspend_ explicitly in the code. We use the `suspend` modifier for it:
+让我们深入了解它的含义。协程的最大优点是它们可以 _挂起_ 而不会阻塞一个线程。编译器必须发出一些特殊代码才能实现这一点，所以在这段代码中我们需要显式地将函数标记为 _可挂起_ 。我们对它使用了 `suspend` 修饰符：
 
 
 
@@ -331,7 +331,7 @@ suspend fun workload(n: Int): Int {
 
 
 
-Now when we call `workload()` from a coroutine, the compiler knows that it may suspend and will prepare accordingly:
+现在当我们从协程中调用 `workload()`，编译器知道它可以挂起并相应地准备：
 
 
 
@@ -343,4 +343,4 @@ GlobalScope.async {
 
 
 
-Our `workload()` function can be called from a coroutine (or another suspending function), but _cannot_ be called from outside a coroutine. Naturally, `delay()` and `await()` that we used above are themselves declared as `suspend`, and this is why we had to put them inside `runBlocking {}`, `launch {}` or `async {}`.
+我们的 `workload()` 可以在一个协程中调用（或另一个挂起函数），但是 _不能_ 在协程外调用。自然地，`delay()` 与 `await()` 这些我们在上面使用的函数它们自己也被修饰为 `suspend`，并且这也是为什么我们要将它们放入 `runBlocking {}`，`launch {}` 或者 `async {}` 中。
