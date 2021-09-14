@@ -1,74 +1,74 @@
-[//]: # (title: Getting Started with Eclipse IDE)
+[//]: # (title: 以 Eclipse IDE 入门)
 
-## Set up the environment
+## 搭建环境
 
-First of all, you need the Eclipse IDE installed on your system.
-You can download its latest version from [download page](https://www.eclipse.org/downloads/). The "Eclipse IDE for Java Developers" bundle is recommended.
+首先，需要在系统上安装 Eclipse IDE。
+可以从[下载页面](https://www.eclipse.org/downloads/)下载最新版本。建议使用 “Eclipse IDE for Java Developers” 软件包。
 
-To add the Kotlin support to your Eclipse IDE, install the _Kotlin Plugin for Eclipse_.
-We recommend installing the Kotlin plugin from [Eclipse Marketplace](http://marketplace.eclipse.org/content/kotlin-plugin-eclipse).
-One option is to drag this button into a running Eclipse window:
+要将 Kotlin 支持添加到 Eclipse IDE 中，请安装 _Kotlin Plugin for Eclipse_。
+我们建议从 [Eclipse Marketplace](http://marketplace.eclipse.org/content/kotlin-plugin-eclipse) 安装 Kotlin 插件。
+另一种选择是将此按钮拖动到正在运行的Eclipse窗口中：
 
 <a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2257536" class="drag" title="Drag to your running Eclipse workspace."><img class="img-responsive" src="http://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace." /></a>
 
-Alternatively, open the __Help \| Eclipse Marketplace...__ menu and search for __Kotlin Plugin for Eclipse__:
+或者，打开这个 __Help \| Eclipse Marketplace...__ 菜单并搜索 __Kotlin Plugin for Eclipse__ ：
 
 ![Eclipse Marketplace]({{ url_for('tutorial_img', filename='getting-started-eclipse/marketplace.png') }})
 
-A more old-fashioned way is using an *update site* directly:
+一个老套的办法是直接使用 *update site*：
 
 ```
 https://dl.bintray.com/jetbrains/kotlin/eclipse-plugin/last/
 ```
 
-Once the plugin is installed and Eclipse is restarted, make sure the plugin is installed correctly: open the __Kotlin perspective__
-in the menu __Window \| Open Perspective \| Other...__
+安装插件并重新启动 Eclipse 后，请确保插件安装正确：打开菜单 __Window \| Open Perspective \| Other...__
+中的 __Kotlin perspective__
 
 ![Kotlin Perspective]({{ url_for('tutorial_img', filename='getting-started-eclipse/open-perspective.png') }})
 
-## Create a new project
+## 创建一个新的项目
 
-Now you are ready to create a new Kotlin project.
+现在你已准备好创建一个新的 Kotlin 项目。
 
-1. Select __File \| New \| Kotlin Project__.
+1. 选择 __File \| New \| Kotlin Project__。
 
    ![New Kotlin Project]({{ url_for('tutorial_img', filename='getting-started-eclipse/project-name.png') }})
 
-   An empty Kotlin/JVM project will be created.
-   For Eclipse IDE, the project is also a Java project but configured with Kotlin nature, meaning it has the Kotlin
-   Builder and reference to the Kotlin Runtime Library. Great thing about this solution is that you can add both Kotlin and Java
-   code to the same project.
+   一个空的 Kotlin/JVM 项目创建完成。
+   对于 Eclipse IDE，这个项目也是一个 Java 项目但是配置了 Kotlin 特性，意思是他可以构建
+   Kotlin 并且可以引用 Kotlin 的运行时库。这个解决方案的好处是你可以添加 Kotlin 和 Java 代码<!--
+-->到同一个项目。
 
-   The project structure looks like this:
+   项目结构如下所示：
 
    ![Empty Kotlin Project]({{ url_for('tutorial_img', filename='getting-started-eclipse/empty-project.png') }})
 
-2. Create a new Kotlin file in the the source directory.
+2. 在源集目录中创建一个新的 Kotlin 文件。
 
    ![New File From Context Menu]({{ url_for('tutorial_img', filename='getting-started-eclipse/new-file.png') }})
 
-   You can enter the name without the __.kt__ extension. Eclipse will add it automatically.
+   可以输入不带 __.kt__  扩展名的名称。 Eclipse 将自动添加它。
 
    ![New Kotlin File Wizard]({{ url_for('tutorial_img', filename='getting-started-eclipse/file-name.png') }})
 
-3. Once you have a source file, add the `main` function - the entry point to a Kotlin application. You
-   can simply type `main` and invoke code completion by hitting `Ctrl + Space`.
+3. 你获得源集文件后，添加 `main` 函数 - 作为 Kotlin 应用程序的入口点。你只需<!--
+-->键入 `main` 并通过点击 `Ctrl + Space` 调用代码完成。
 
    ![Main Template]({{ url_for('tutorial_img', filename='getting-started-eclipse/main.png') }})
 
-4. Add a simple line of Kotlin code to print a message:
+4. 添加一行简单的代码来输出消息：
 
    ![Hello World Example]({{ url_for('tutorial_img', filename='getting-started-eclipse/hello-world.png') }})
 
-## Run the application
+## 运行这个应用程序
 
-To run the application, right-click somewhere in the main file and select __Run As \| Kotlin Application__.
+要运行该应用程序，请右键单击主文件中的某个位置，然后选择 __Run As \| Kotlin Application__。
 
 ![Run Kotlin Application]({{ url_for('tutorial_img', filename='getting-started-eclipse/run-as.png') }})
 
-If everything went well, you'll see the result in the **Console** window.
+如果一切顺利，你可以在 **Console** 窗口看到返回结果。
 
 ![Program Output View]({{ url_for('tutorial_img', filename='getting-started-eclipse/output.png') }})
 
-Congratulations! You now have your Kotlin application running in Eclipse IDE.
+恭喜！现在可以在Eclipse IDE中运行Kotlin应用程序。
 

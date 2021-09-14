@@ -1,13 +1,13 @@
-[//]: # (title: Kotlin and OSGi)
+[//]: # (title: Kotlin 与 OSGi)
 
-To enable Kotlin OSGi support you need to include `kotlin-osgi-bundle` instead of regular Kotlin libraries.
-It is recommended to remove `kotlin-runtime`, `kotlin-stdlib` and `kotlin-reflect` dependencies as `kotlin-osgi-bundle`
-already contains all of them. You also should pay attention in case when external Kotlin libraries are included.
-Most regular Kotlin dependencies are not OSGi-ready, so you shouldn't use them and should remove them from your project.
+要启用 Kotlin OSGi 支持，你需要引入 `kotlin-osgi-bundle` 而不是常规的 Kotlin 库。
+建议删除 `kotlin-runtime`、 `kotlin-stdlib` 和 `kotlin-reflect` 依赖，因为 `kotlin-osgi-bundle`
+已经包含了所有这些。当引入外部 Kotlin 库时你也应该注意。
+大多数常规 Kotlin 依赖不是 OSGi-就绪的，所以你不应该使用它们，且应该从你的项目中删除它们。
 
 ## Maven
 
-To include the Kotlin OSGi bundle to a Maven project:
+将 Kotlin OSGi 包引入到 Maven 项目中：
 
 
 
@@ -23,7 +23,7 @@ To include the Kotlin OSGi bundle to a Maven project:
 
 
 
-To exclude the standard library from external libraries (notice that "star exclusion" works in Maven 3 only):
+从外部库中排除标准库（注意“星排除”只在 Maven 3 中有效）：
 
 
 
@@ -46,7 +46,7 @@ To exclude the standard library from external libraries (notice that "star exclu
 
 ## Gradle
 
-To include `kotlin-osgi-bundle` to a gradle project:
+将 `kotlin-osgi-bundle` 引入到 gradle 项目中：
 
 
 
@@ -56,7 +56,7 @@ compile "org.jetbrains.kotlin:kotlin-osgi-bundle:$kotlinVersion"
 
 
 
-To exclude default Kotlin libraries that comes as transitive dependencies you can use the following approach:
+要排除作为传递依赖的默认 Kotlin 库，你可以使用以下方法：
 
 
 
@@ -64,7 +64,7 @@ To exclude default Kotlin libraries that comes as transitive dependencies you ca
 dependencies {
  compile (
    [group: 'some.group.id', name: 'some.library', version: 'someversion'],
-   .....) {
+   ……) {
   exclude group: 'org.jetbrains.kotlin'
 }
 ```
@@ -73,10 +73,10 @@ dependencies {
 
 ## FAQ
 
-#### Why not just add required manifest options to all Kotlin libraries
+#### 为什么不只是添加必需的清单选项到所有 Kotlin 库
 
-Even though it is the most preferred way to provide OSGi support, unfortunately it couldn't be done for now due to so called
-["package split" issue](http://wiki.osgi.org/wiki/Split_Packages) that couldn't be easily eliminated and such a big change is
-not planned for now. There is `Require-Bundle` feature but it is not the best option too and not recommended to use.
-So it was decided to make a separate artifact for OSGi.
+尽管它是提供 OSGi 支持的最好的方式，遗憾的是现在做不到，是因为不能轻易消除的所谓的
+[“包拆分”问题](http://wiki.osgi.org/wiki/Split_Packages)并且这么大的变化<!--
+-->不可能现在规划。有 `Require-Bundle` 功能，但它也不是最好的选择，不推荐使用。
+所以决定为 OSGi 做一个单独的构件。
 

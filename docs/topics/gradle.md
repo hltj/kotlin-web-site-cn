@@ -1,13 +1,13 @@
-[//]: # (title: Using Gradle)
+[//]: # (title: 使用 Gradle)
 
 In order to build a Kotlin project with Gradle, you should [apply the Kotlin Gradle plugin to your project](#plugin-and-versions)
 and [configure dependencies](#configuring-dependencies).
 
-## Plugin and versions
+## 插件与版本
 
-Apply the Kotlin Gradle plugin by using [the Gradle plugins DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block).
+使用 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 应用 Kotlin Gradle 插件。
 
-The Kotlin Gradle plugin {{ site.data.releases.latest.version }} works with Gradle 5.4 and later. The `kotlin-multiplatform` plugin
+Kotlin Gradle 插件 {{ site.data.releases.latest.version }} 适用于 Gradle 5.4 及更高版本。The `kotlin-multiplatform` plugin
 requires Gradle 6.0 or later.
 
 
@@ -15,7 +15,7 @@ requires Gradle 6.0 or later.
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.<...>' version '{{ site.data.releases.latest.version }}'
+    id 'org.jetbrains.kotlin.＜……＞' version '{{ site.data.releases.latest.version }}'
 }
 ```
 
@@ -27,14 +27,14 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("<...>") version "{{ site.data.releases.latest.version }}"
+    kotlin("＜……＞") version "{{ site.data.releases.latest.version }}"
 }
 ```
 
 
 
 
-The placeholder `<...>` should be replaced with one of the plugin names that can be found in further sections.
+需要将其中的占位符 `＜……＞` 替换为可在后续部分中找到的插件名之一。
 
 ## Targeting multiple platforms
 
@@ -69,9 +69,9 @@ plugins {
 
 
 
-## Targeting the JVM
+## 面向 JVM
 
-To target the JVM, apply the Kotlin JVM plugin.
+如需面向 JVM 平台，请应用 Kotlin JVM 插件。
 
 
 
@@ -97,9 +97,9 @@ plugins {
 
 
 
-The `version` should be literal in this block, and it cannot be applied from another build script.
+在这个代码块中的 `version` 应该是字面值，并且不能在其他构建脚本中应用。
 
-Alternatively, you can use the older `apply plugin` approach:
+或者使用旧版 `apply plugin` 方式：
 
 
 
@@ -109,11 +109,11 @@ apply plugin: 'kotlin'
 
 
 
-It's not recommended that you apply Kotlin plugins with `apply` in Gradle Kotlin DSL – [see why](#using-gradle-kotlin-dsl).
+不建议在 Gradle Kotlin DSL 中以 `apply` 的方式应用 Kotlin 插件 – [see why](#使用-gradle-kotlin-dsl)。
 
 ### Kotlin and Java sources
 
-Kotlin sources can be stored with Java sources in the same folder, or placed to different folders. The default convention is using different folders:
+Kotlin 源代码可以与同一个文件夹或不同文件夹中的 Java 源代码一同存放。默认约定是使用不同的文件夹：
 
 
 
@@ -127,7 +127,7 @@ project
 
 
 
-The corresponding `sourceSets` property should be updated if not using the default convention:
+如果不使用默认约定，那么应该更新相应的 `sourceSets` 属性：
 
 
 
@@ -147,14 +147,14 @@ sourceSets {
 
 ```kotlin
 sourceSets.main {
-    java.srcDirs("src/main/myJava", "src/main/myKotlin")
+    java.srcDirs("src/main/myJava","src/main/myKotlin")}
 }
 ```
 
 
 
 
-## Targeting JavaScript
+## 面向 JavaScript
 
 When targeting only JavaScript, use the `kotlin-js` plugin. [Learn more](js-project-setup.md)
 
@@ -184,8 +184,8 @@ plugins {
 
 ### Kotlin and Java sources
 
-This plugin only works for Kotlin files so it is recommended that you keep Kotlin and Java files separately (in case the
-project contains Java files). If you don't store them separately , specify the source folder in the `sourceSets` block:
+这个插件只适用于 Kotlin 文件，因此建议将 Kotlin 和 Java 文件分开（当<!--
+-->同一项目包含 Java 文件时）。 If you don't store them separately , specify the source folder in the `sourceSets` block:
 
 
 
@@ -215,7 +215,7 @@ kotlin {
 
 
 
-## Targeting Android
+## 面向 Android
 
 It's recommended that you use Android Studio for creating Android applications. [Learn how to use Android Gradle plugin](https://developer.android.com/studio/releases/gradle-plugin).
 
@@ -511,40 +511,40 @@ dependencies {
 
 
 
-## Annotation processing
+## 注解处理
 
-Kotlin supports annonation processing via the Kotlin annotation processing tool [`kapt`](kapt.md).
+Kotlin 通过 Kotlin 注解处理工具 [`kapt`](kapt.md) 支持注解处理。
 
-## Incremental compilation
+## 增量编译
 
-The Kotlin Gradle plugin supports incremental compilation. Incremental compilation tracks changes of source files between
-builds so only files affected by these changes would be compiled.
+Kotlin Gradle 插件支持支持增量编译。增量编译会跟踪多次构建之间<!--
+-->源文件的变更，因此只会编译这些变更所影响的文件。
 
-Incremental compilation is supported for Kotlin/JVM and Kotlin/JS projects and is enabled by default since Kotlin 1.1.1.
+Kotlin/JVM 与 Kotlin/JS 项目均支持增量编译 and is enabled by default since Kotlin 1.1.1。
 
-There are several ways to disable the setting:
+有几种方法可以禁用该设置：
 
 * Add the following line to the `gradle.properties` or `local.properties` file:
-    * `kotlin.incremental=false` for Kotlin/JVM
-    * `kotlin.incremental.js=false` for Kotlin/JS projects
+  * `kotlin.incremental=false` 用于 Kotlin/JVM
+  * `kotlin.incremental.js=false` 用于 Kotlin/JS 项目。
 
-* As the command line parameter, use `-Pkotlin.incremental=false` or `-Pkotlin.incremental.js=false`.
+* As the command line parameter, use `-Pkotlin.incremental=false` 或者 `-Pkotlin.incremental.js=false`。
 
-  Note that in this case the parameter should be added to each subsequent build, and any build with disabled incremental
-  compilation invalidates incremental caches.
+  请注意，这样用法中，该参数必须添加到后续每个子构建，并且任何具有禁用增量编译的构建都会<!--
+    -->使增量缓存失效。
 
-Note that the first build isn't incremental in any case.
+请注意，任何情况下首次构建都不会是增量的。
 
-## Gradle build cache support
+## Gradle 构建缓存支持
 
 The Kotlin plugin supports [Gradle build cache](https://docs.gradle.org/current/userguide/build_cache.html) that stores
 the build outputs for reuse in future builds.
 
-To disable the caching for all Kotlin tasks, set the system property flag `kotlin.caching.enabled` to `false`
-(run the build with the argument `-Dkotlin.caching.enabled=false`).
+如需禁用所有 Kotlin 任务的缓存，请将系统属性标志 `kotlin.caching.enabled` 设置为 `false`
+（运行构建带上参数 `-Dkotlin.caching.enabled=false`）。
 
-If you use [kapt](kapt.md), note that the kapt annotation processing tasks are not cached by default. However, you can
-[enable caching for them manually](kapt.md#gradle-build-cache-support-since-1220).
+如果使用 [kapt](kapt.md)，请注意默认情况下不会缓存注解处理任务。不过，可以<!--
+-->[手动为它们启用缓存](kapt.md#gradle-构建缓存支持自-1220-起)。
 
 ## Gradle configuration cache support
 
@@ -560,18 +560,18 @@ to learn how to enable the configuration cache. Once you enable the configuratio
 start using it.
 
 
-## Compiler options
+## 编译器选项
 
-To specify additional compilation options, use the `kotlinOptions` property of a Kotlin compilation task.
+要指定附加的编译选项，请使用 Kotlin 编译任务的 `kotlinOptions` 属性。
 
-When targeting the JVM, the tasks are called `compileKotlin` for production code and `compileTestKotlin`
-for test code. The tasks for custom source sets are called accordingly to the `compile<Name>Kotlin` pattern.
+当面向 JVM 时，对于生产代码这些任务称为 `compileKotlin` 而对于<!--
+-->测试代码称为 `compileTestKotlin`。对于自定义源文件集（source set）这些任务称呼取决于 `compile＜Name＞Kotlin` 模式。
 
-The names of the tasks in Android Projects contain the [build variant](https://developer.android.com/studio/build/build-variants.html) names and follow the pattern `compile<BuildVariant>Kotlin`, for example, `compileDebugKotlin`, `compileReleaseUnitTestKotlin`.
+Android 项目中的任务名称包含[构建变体](https://developer.android.com/studio/build/build-variants.html) 名称，并遵循 `compile<BuildVariant>Kotlin` 的模式，例如 `compileDebugKotlin`、 `compileReleaseUnitTestKotlin`。
 
-When targeting JavaScript, the tasks are called `compileKotlinJs` and `compileTestKotlinJs` respectively, and `compile<Name>KotlinJs` for custom source sets.
+当面向 JavaScript 时，这些任务分别称为 `compileKotlinJs` 与 `compileTestKotlinJs`，以及对于自定义源文件集称为 `compile＜Name＞KotlinJs`。
 
-To configure a single task, use its name. Examples:
+要配置单个任务，请使用其名称。示例：
 
 
 
@@ -581,7 +581,7 @@ compileKotlin {
     kotlinOptions.suppressWarnings = true
 }
 
-//or
+//或者
 
 compileKotlin {
     kotlinOptions {
@@ -598,7 +598,7 @@ compileKotlin {
 
 ```kotlin
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-// ...
+// ……
 
 val compileKotlin: KotlinCompile by tasks
 
@@ -608,18 +608,18 @@ compileKotlin.kotlinOptions.suppressWarnings = true
 
 
 
-Note that with Gradle Kotlin DSL, you should get the task from the project's `tasks` first.
+请注意，对于 Gradle Kotlin DSL，首先从项目的 `tasks` 中获取任务。
 
-Use the types `Kotlin2JsCompile` and `KotlinCompileCommon` for the JS and Common targets, accordingly.
+相应地，为 JS 与 Common 目标使用类型 `Kotlin2JsCompile` 与 `KotlinCompileCommon`。
 
-It is also possible to configure all Kotlin compilation tasks in the project:
+也可以在项目中配置所有 Kotlin 编译任务：
 
 
 
 
 ```groovy
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-    kotlinOptions { /*...*/ }
+    kotlinOptions { /*……*/ }
 }
 ```
 
@@ -631,74 +631,74 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
 
 ```kotlin
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions { /*...*/ }
+    kotlinOptions { /*……*/ }
 }
 ```
 
 
 
 
-The complete list of options for the Gradle tasks is the following:
+对于 Gradle 任务的完整选项列表如下：
 
-### Attributes common for JVM, JS, and JS DCE
+### JVM、JS 与 JS DCE 的公共属性
+
+| 名称 | 描述        | 可能的值        |默认值        |
+|------|-------------|-----------------|--------------|
+| `allWarningsAsErrors` | 任何警告都报告为错误 |  | false |
+| `suppressWarnings` | 不生成警告 |  | false |
+| `verbose` | 启用详细日志输出 |  | false |
+| `freeCompilerArgs` | 附加编译器参数的列表 |  | [] |
+
+### JVM 与 JS 的公共属性
 
 | Name | Description | Possible values |Default value |
 |------|-------------|-----------------|--------------|
-| `allWarningsAsErrors` | Report an error if there are any warnings |  | false |
-| `suppressWarnings` | Generate no warnings |  | false |
-| `verbose` | Enable verbose logging output |  | false |
-| `freeCompilerArgs` | A list of additional compiler arguments |  | [] |
+| `apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.2"（已弃用）、 "1.3"、 "1.4"、 "1.5"（实验性） |  |
+| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.2"（已弃用）、 "1.3"、 "1.4"、 "1.5"（实验性） |  |
 
-### Attributes common for JVM and JS
+### JVM 特有的属性
 
-| Name | Description | Possible values |Default value |
+| 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
-| `apiVersion` | Allow using declarations only from the specified version of bundled libraries | "1.2" (DEPRECATED), "1.3", "1.4", "1.5" (EXPERIMENTAL) |  |
-| `languageVersion` | Provide source compatibility with the specified version of Kotlin | "1.2" (DEPRECATED), "1.3", "1.4", "1.5" (EXPERIMENTAL) |  |
-
-### Attributes specific for JVM
-
-| Name | Description | Possible values |Default value |
-|------|-------------|-----------------|--------------|
-| `javaParameters` | Generate metadata for Java 1.8 reflection on method parameters |  | false |
-| `jdkHome` | Include a custom JDK from the specified location into the classpath instead of the default JAVA_HOME |  |  |
-| `jvmTarget` | Target version of the generated JVM bytecode | "1.6", "1.8", "9", "10", "11", "12", "13", "14", "15" | "1.6" |
-| `noJdk` | Don't automatically include the Java runtime into the classpath |  | false |
-| `noReflect` | Don't automatically include Kotlin reflection into the classpath |  | true |
-| `noStdlib` | Don't automatically include the Kotlin/JVM stdlib and Kotlin reflection into the classpath |  | true |
+| `javaParameters` | 为方法参数生成 Java 1.8 反射的元数据 |  | false |
+| `jdkHome` | 将来自指定位置的自定义 JDK 而不是默认的 JAVA_HOME 包含到类路径中 |  |  |
+| `jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"、 "1.8"、 "9"、 "10"、 "11"、 "12"、 "13"、 "14", "15" | "1.6" |
+| `noJdk` | 不要自动在类路径中包含 Java 运行时 |  | false |
+| `noReflect` | 不要自动在类路径中包含 Kotlin 反射实现 |  | true |
+| `noStdlib` | 不要自动在类路径中包含 Kotlin 运行时与 Kotlin 反射 |  | true |
 | `useIR` | Use the IR backend |  | false |
 
-### Attributes specific for JS
+### JS 特有的属性
 
-| Name | Description | Possible values |Default value |
+| 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
-| `friendModulesDisabled` | Disable internal declaration export |  | false |
-| `main` | Define whether the `main` function should be called upon execution | "call", "noCall" | "call" |
-| `metaInfo` | Generate .meta.js and .kjsm files with metadata. Use to create a library |  | true |
-| `moduleKind` | The kind of JS module generated by the compiler | "umd", "commonjs", "amd", "plain"  | "umd" |
-| `noStdlib` | Don't automatically include the default Kotlin/JS stdlib into compilation dependencies |  | true |
-| `outputFile` | Destination *.js file for the compilation result |  | "\<buildDir>/js/packages/\<project.name>/kotlin/\<project.name>.js" |
-| `sourceMap` | Generate source map |  | true |
-| `sourceMapEmbedSources` | Embed source files into source map | "never", "always", "inlining" |  |
-| `sourceMapPrefix` | Add the specified prefix to paths in the source map |  |  |
-| `target` | Generate JS files for specific ECMA version | "v5" | "v5" |
-| `typedArrays` | Translate primitive arrays to JS typed arrays |  | true |
+| `friendModulesDisabled` | 禁用内部声明导出 |  | false |
+| `main` | 定义是否在执行时调用 `main` 函数 | "call"、 "noCall" | "call" |
+| `metaInfo` | 使用元数据生成 .meta.js 与 .kjsm 文件。用于创建库 |  | true |
+| `moduleKind` | 编译器生成的 JS 模块类型 | "umd"、 "commonjs"、 "amd"、 "plain" | "umd" |
+| `noStdlib` | 不要自动将默认的 Kotlin/JS stdlib 包含到编译依赖项中 |  | true |
+| `outputFile` | 编译结果的目标 *.js 文件 |  | "\<buildDir>/js/packages/\<project.name>/kotlin/\<project.name>.js" |
+| `sourceMap` | 生成源代码映射（source map） |  | true |
+| `sourceMapEmbedSources` | 将源代码嵌入到源代码映射中 | "never"、 "always"、 "inlining" | |
+| `sourceMapPrefix` | 将指定前缀添加到源代码映射中的路径 |  |  |
+| `target` | 生成指定 ECMA 版本的 JS 文件 | "v5" | "v5" |
+| `typedArrays` | 将原生数组转换为 JS 带类型数组 |  | true |
 
-## Generating documentation
+## 生成文档
 
-To generate documentation for Kotlin projects, use [Dokka](https://github.com/Kotlin/dokka);
-please refer to the [Dokka README](https://github.com/Kotlin/dokka/blob/master/README.md#using-the-gradle-plugin)
-for configuration instructions. Dokka supports mixed-language projects and can generate output in multiple
-formats, including standard JavaDoc.
+要生成 Kotlin 项目的文档，请使用 [Dokka](https://github.com/Kotlin/dokka)；
+相关配置说明请参见 [Dokka README](https://github.com/Kotlin/dokka/blob/master/README.md#using-the-maven-plugin)
+。Dokka 支持混合语言项目，并且可以生成多种格式的输出
+，包括标准 JavaDoc。
 
 ## OSGi
 
-For OSGi support see the [Kotlin OSGi page](kotlin-osgi.md).
+关于 OSGi 支持请参见 [Kotlin OSGi 页](kotlin-osgi.md)。
 
-## Using Gradle Kotlin DSL
+## 使用 Gradle Kotlin DSL
 
-When using [Gradle Kotlin DSL](https://github.com/gradle/kotlin-dsl), apply the Kotlin plugins using the `plugins { ... }` block.
-If you apply them with `apply { plugin(...) }` instead, you may encounter unresolved references to the extensions generated
-by Gradle Kotlin DSL. To resolve that, you can comment out the erroneous usages, run the Gradle task `kotlinDslAccessorsSnapshot`,
-then uncomment the usages back and rerun the build or reimport the project into the IDE.
+使用 [Gradle Kotlin DSL](https://github.com/gradle/kotlin-dsl) 时，请使用 `plugins { …… }` 块应用 Kotlin 插件。
+如果使用 `apply { plugin(……) }` 来应用的话，可能会遇到未解析的到由
+Gradle Kotlin DSL 所生成扩展的引用问题。为了解决这个问题，可以注释掉出错的用法，运行 Gradle 任务 `kotlinDslAccessorsSnapshot`，
+然后解除该用法注释并重新运行构建或者重新将项目导入到 IDE 中。
 

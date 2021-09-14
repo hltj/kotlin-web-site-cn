@@ -1,56 +1,56 @@
-[//]: # (title: Coding Conventions)
+[//]: # (title: 代码风格迁移指南)
 
-## Kotlin coding conventions and IntelliJ IDEA formatter
+## Kotlin 编码规范与 IntelliJ IDEA 格式化程序
 
-[Kotlin Coding Conventions](/docs/reference/coding-conventions.md) affect several aspects of writing idiomatic Kotlin, and a set of formatting recommendations aimed at improving Kotlin code readability is among them.
+[Kotlin 编码规范](https://www.kotlincn.net/docs/reference/coding-conventions.html)影响了编写地道 Kotlin 代码的几个方面，其中包括一组旨在提高 Kotlin 代码可读性的格式建议。
 
-Unfortunately, the code formatter built into IntelliJ IDEA had to work long before this document was released and now has a default setup that produces different formatting from what is now recommended.
+遗憾的是，IntelliJ IDEA 中内置的代码格式化工具在这篇文档发布很久之前就已经在使用了，并且现在具有默认设置，该默认设置产生的格式不同于现在建议格式。
 
-It may seem a logical next step to remove this obscurity by switching the defaults in IntelliJ IDEA and make formatting consistent with the Kotlin Coding Conventions. But this would mean that all the existing Kotlin projects will have a new code style enabled the moment the Kotlin plugin is installed. Not really the expected result for plugin update, right?
+接下来，通过改变 IntelliJ IDEA 中的默认设置并使格式与 Kotlin 编码规范一致来消除这种隔阂似乎是符合逻辑的。但这意味着所有现有 Kotlin 项目将在安装 Kotlin 插件后启用新的代码格式。这并不是插件更新的预期结果，对不对？
 
-That's why we have the following migration plan instead:
+这就是为什么我们有以下迁移计划的原因：
 
-* Enable the official code style formatting by default starting from Kotlin 1.3 and only for new projects (old formatting can be enabled manually)
-* Authors of existing projects may choose to migrate to the Kotlin Coding Conventions
-* Authors of existing projects may choose to explicitly declare using the old code style in a project (this way the project won't be affected by switching to the defaults in the future)
-* Switch to the default formatting and make it consistent with Kotlin Coding Conventions in Kotlin 1.4
+* 从 Kotlin 1.3 开始，默认情况下启用官方代码格式，并且仅对新项目启用（旧风格可以手动启用）
+* 现有项目的作者可以选择迁移到现有的 Kotlin 编码规范
+* 现有项目的作者可以选择进行显式声明在项目中使用旧代码风格（这样，将来不会因改变默认值而影响项目）
+* 切换到默认格式，使其与 Kotlin 1.4 中的 Kotlin 编码规范一致
 
-## Differences between "Kotlin Coding Conventions" and "IntelliJ IDEA default code style"
+## “Kotlin 编码规范” 与 “IntelliJ IDEA 默认代码风格” 之间的差异
 
-The most notable change is in the continuation indentation policy. There's a nice idea to use the double indent for showing that a multi-line expression hasn't ended on the previous line. This is a very simple and general rule, but several Kotlin constructions look a bit awkward when they are formatted this way. In Kotlin Coding Conventions it's recommended to use a single indent in cases where the long continuation indent has been forced before
+最显着的变化是延续缩进策略。使用双缩进来显示多行表达式尚未在前一行结束是一个好主意。这是一个非常简单且通用的规则，但是以这种方式格式化时，一些 Kotlin 构造看起来有些尴尬。在 Kotlin 编码规范中，建议在之前强制使用长延续缩进的场景中使用单个缩进
 
-![Code formatting difference]({{ url_for('tutorial_img', filename='codestyle-migration/code-formatting-diff.png') }})
+![代码格式差异]({{ url_for('tutorial_img', filename='codestyle-migration/code-formatting-diff.png') }})
 
-In practice, quite a bit of code is affected, so this can be considered a major code style update.
+实际上，很多代码都会受到影响，因此可以将其视为重大的代码风格更新。
 
-## Migration to a new code style discussion
+## 迁移到新的代码风格讨论
 
-A new code style adoption might be a very natural process if it starts with a new project, when there's no code formatted in the old way. That is why starting from version 1.3, the Kotlin IntelliJ Plugin creates new projects with formatting from the Code Conventions document which is enabled by default.
+如果没有使用旧风格的代码，那么从新项目开始就采用新的代码风格应该是很自然的过程。因此，从 1.3 版开始，Kotlin IntelliJ 插件使用默认情况下启用的编码规范文档中的格式创建新项目。
 
-Changing formatting in an existing project is a far more demanding task, and should probably be started with discussing all the caveats with the team.
+在现有项目中更改格式是一项更加艰巨的任务，应该与团队讨论所有注意事项然后一起开始。
 
-The main disadvantage of changing the code style in an existing project is that the blame/annotate VCS feature will point to irrelevant commits more often. While each VCS has some kind of way to deal with this problem (["Annotate Previous Revision"](https://www.jetbrains.com/help/idea/investigate-changes.html) can be used in IntelliJ IDEA), it's important to decide if a new style is worth all the effort. The practice of separating reformatting commits from meaningful changes can help a lot with later investigations.
+更改现有项目中的代码风格的主要缺点是，blame/annotate 版本控制系统特性将更频繁地指向无关的提交。尽管每种版本控制系统都有某种方式可以解决此问题（IntelliJ IDEA 中可以使用[“Annotate Previous Revision”](https://www.jetbrains.com/help/idea/investigate-changes.html)），但重要的是确定新风格是否值得所有努力。将修改格式的提交与有意义的更改分开的做法可以为以后的调查提供很大帮助。
 
-Also migrating can be harder for larger teams because committing a lot of files in several subsystems may produce merging conflicts in personal branches. And while each conflict resolution is usually trivial, it's still wise to know if there are large feature branches currently in work.
+对于大型团队来说，迁移也可能会比较困难，因为在多个子系统中提交大量文件可能会在个人的分支中产生合并冲突。 尽管每个冲突解决方案通常都很琐碎，但明智的做法是知道当前是否正在使用大型功能分支。
 
-In general, for small projects, we recommend converting all the files at once.
+通常，对于小型项目，建议一次转换所有文件。
 
-For medium and large projects the decision may be tough. If you are not ready to update many files right away you may decide to migrate module by module, or continue with gradual migration for modified files only.
+对于大中型项目，决定可能会很艰难。如果还没有准备好立即更新许多文件，则可以决定逐模块迁移，或者继续只对已修改文件逐步迁移。
 
-## Migration to a new code style
+## 迁移到新的代码风格
 
-Switching to the Kotlin Coding Conventions code style can be done in `Settings → Editor → Code Style → Kotlin`
-dialog. Switch scheme to *Project* and activate `Set from... → Predefined Style → Kotlin Style Guide`.
+可以在 `Settings → Editor → Code Style → Kotlin` 对话框中切换 Kotlin 代码风格。
+将 Scheme 切换到 *Project* 并从下方选择 `Set from... → Predefined Style → Kotlin Style Guide`。
 
-In order to share those changes for all project developers `.idea/codeStyle` folder have to be committed to VCS.
+为了向所有项目开发人员共享这些更改，必须将 `.idea/codeStyle` 文件夹提交给版本控制系统。
 
-If an external build system is used for configuring the project, and it's been decided not to share `.idea/codeStyle` folder, Kotlin Coding Conventions can be forced with an additional property:
+如果使用外部构建系统来配置项目，并且已决定不共享 `.idea/codeStyle` 文件夹，那么可以通过附加属性强制使用 Kotlin 编码规范：
 
-### In Gradle
-Add **kotlin.code.style**=**official** property to the **gradle.properties** file at the project root and commit the file to VCS.
+### 在 Gradle 中
+在项目根目录的 **gradle.properties** 文件中添加 **kotlin.code.style**=**official** 属性，并将其提交到版本控制系统。
 
-### In Maven
-Add **kotlin.code.style official** property to root **pom.xml** project file.
+### 在 Maven 中
+在项目根目录的 **pom.xml** 文件中添加 **kotlin.code.style official** 属性。
 
 
 
@@ -62,17 +62,17 @@ Add **kotlin.code.style official** property to root **pom.xml** project file.
 
 
 
-_Warning:_ having the **kotlin.code.style** option set may modify the code style scheme during a project import and may change the code style settings.
+_警告：_ 设置 **kotlin.code.style** 选项可能会在项目导入期间修改代码风格方案，并且可能会更改代码风格设置。
 
-After updating your code style settings, activate “Reformat Code” in the project view on the desired scope.
+更新代码风格设置后，在所需范围的项目视图中选择“Reformat Code”。
 
-![Reformat code dialog]({{ url_for('tutorial_img', filename='codestyle-migration/reformat-code.png') }})
+![Reformat code 对话框]({{ url_for('tutorial_img', filename='codestyle-migration/reformat-code.png') }})
 
 
-For a gradual migration, it's possible to enable the *"File is not formatted according to project settings"* inspection. It will highlight the places that should be reformatted. After enabling the *"Apply only to modified files"* option, inspection will show formatting problems only in modified files. Such files are probably going to be committed soon anyway.
+对于逐步迁移，可以启用*“File is not formatted according to project settings”（文件未根据项目设置格式化）*探查项。这将突出显示应修改格式的地方。启用*“Apply only to modified files”（仅应用于修改后的文件）*选项后，检查将仅在修改后的文件中显示格式问题。无论如何，此类文件应该尽快修改并提交。
 
-## Store old code style in project
+## 在项目中存储旧的代码风格
 
-It's always possible to explicitly set the IntelliJ IDEA code style as the correct code style for the project. To do so please switch to the *Project* scheme in `Settings → Editor → Code Style → Kotlin` and select *"Kotlin obsolete IntelliJ IDEA codestyle"* in the *"Use defaults from:"* on the *Load* tab.
+随时可以将 IntelliJ IDEA 代码风格明确设置为项目的正确代码风格。为此，请在 `Settings → Editor → Code Style → Kotlin` 中将 Scheme 切换到 *Project*，然后在 *Load/Save* 选项卡中的 *"Use defaults from:"* 中选择 *"Kotlin obsolete IntelliJ IDEA codestyle"* 。
 
-In order to share the changes across the project developers `.idea/codeStyle` folder, it has to be committed to VCS. Alternatively **kotlin.code.style**=**obsolete** can be used for projects configured with Gradle or Maven.
+为了在项目开发人员的 `.idea/codeStyle` 文件夹中共享更改，必须将其提交给版本控制系统。另外， **kotlin.code.style**=**obsolete** 可以用于配置了 Gradle 或 Maven 的项目。
