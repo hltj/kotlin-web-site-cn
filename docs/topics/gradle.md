@@ -1,91 +1,121 @@
-[//]: # (title: Gradle)
+[//]: # (title: Using Gradle)
 
 In order to build a Kotlin project with Gradle, you should [apply the Kotlin Gradle plugin to your project](#plugin-and-versions)
- and [configure dependencies](#configuring-dependencies).
+and [configure dependencies](#configuring-dependencies).
 
 ## Plugin and versions
 
 Apply the Kotlin Gradle plugin by using [the Gradle plugins DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block).
 
-The Kotlin Gradle plugin %kotlinVersion% works with Gradle 5.4 and later. The `kotlin-multiplatform` plugin
+The Kotlin Gradle plugin {{ site.data.releases.latest.version }} works with Gradle 5.4 and later. The `kotlin-multiplatform` plugin
 requires Gradle 6.0 or later.
 
-<tabs>
+
+
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.<...>' version '%kotlinVersion%'
+    id 'org.jetbrains.kotlin.<...>' version '{{ site.data.releases.latest.version }}'
 }
 ```
+
+
+
+
+
+
 
 ```kotlin
 plugins {
-    kotlin("<...>") version "%kotlinVersion%"
+    kotlin("<...>") version "{{ site.data.releases.latest.version }}"
 }
 ```
 
-</tabs>
+
+
 
 The placeholder `<...>` should be replaced with one of the plugin names that can be found in further sections.
 
 ## Targeting multiple platforms
 
-Projects targeting [multiple platforms](mpp-supported-platforms.md), called [multiplatform projects](mpp-intro.md), 
+Projects targeting [multiple platforms](mpp-supported-platforms.md), called [multiplatform projects](mpp-intro.md),
 require the `kotlin-multiplatform` plugin. [Learn more about the plugin](mpp-discover-project.md#multiplatform-plugin).
 
->The `kotlin-multiplatform` plugin works with Gradle 6.0 or later. 
->
-{type="note"}
+>The `kotlin-multiplatform` plugin works with Gradle 6.0 or later.
+{:.note}
 
-<tabs>
+
+
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
+    id 'org.jetbrains.kotlin.multiplatform' version '{{ site.data.releases.latest.version }}'
 }
 ```
+
+
+
+
+
+
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "%kotlinVersion%"
+    kotlin("multiplatform") version "{{ site.data.releases.latest.version }}"
 }
 ```
 
-</tabs>
+
+
+
 
 ## Targeting the JVM
 
-To target the JVM, apply the Kotlin JVM plugin. 
+To target the JVM, apply the Kotlin JVM plugin.
 
-<tabs>
+
+
 
 ```groovy
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "%kotlinVersion%"
+    id "org.jetbrains.kotlin.jvm" version "{{ site.data.releases.latest.version }}"
 }
 ```
+
+
+
+
+
+
 
 ```kotlin
 plugins {
-    kotlin("jvm") version "%kotlinVersion%"
+    kotlin("jvm") version "{{ site.data.releases.latest.version }}"
 }
 ```
 
-</tabs>
+
+
 
 The `version` should be literal in this block, and it cannot be applied from another build script.
 
 Alternatively, you can use the older `apply plugin` approach:
 
+
+
 ```groovy
 apply plugin: 'kotlin'
 ```
+
+
 
 It's not recommended that you apply Kotlin plugins with `apply` in Gradle Kotlin DSL – [see why](#using-gradle-kotlin-dsl).
 
 ### Kotlin and Java sources
 
 Kotlin sources can be stored with Java sources in the same folder, or placed to different folders. The default convention is using different folders:
+
+
 
 ```groovy
 project
@@ -95,9 +125,12 @@ project
             - java
 ```
 
+
+
 The corresponding `sourceSets` property should be updated if not using the default convention:
 
-<tabs>
+
+
 
 ```groovy
 sourceSets {
@@ -106,40 +139,56 @@ sourceSets {
 }
 ```
 
+
+
+
+
+
+
 ```kotlin
 sourceSets.main {
     java.srcDirs("src/main/myJava", "src/main/myKotlin")
 }
 ```
 
-</tabs>
+
+
 
 ## Targeting JavaScript
 
 When targeting only JavaScript, use the `kotlin-js` plugin. [Learn more](js-project-setup.md)
 
-<tabs>
+
+
 
 ``` groovy
 plugins {
-    id 'org.jetbrains.kotlin.js' version '%kotlinVersion%'
+    id 'org.jetbrains.kotlin.js' version '{{ site.data.releases.latest.version }}'
 }
 ```
+
+
+
+
+
+
 
 ```kotlin
 plugins {
-    kotlin("js") version "%kotlinVersion%"
+    kotlin("js") version "{{ site.data.releases.latest.version }}"
 }
 ```
 
-</tabs>
 
-### Kotlin and Java sources for JavaScript
 
-This plugin only works for Kotlin files so it is recommended that you keep Kotlin and Java files separately (in case the 
+
+### Kotlin and Java sources
+
+This plugin only works for Kotlin files so it is recommended that you keep Kotlin and Java files separately (in case the
 project contains Java files). If you don't store them separately , specify the source folder in the `sourceSets` block:
 
-<tabs>
+
+
 
 ```groovy
 kotlin {
@@ -149,6 +198,12 @@ kotlin {
 }
 ```
 
+
+
+
+
+
+
 ```kotlin
 kotlin {
     sourceSets["main"].apply {    
@@ -157,7 +212,8 @@ kotlin {
 }
 ```
 
-</tabs>
+
+
 
 ## Targeting Android
 
@@ -165,10 +221,11 @@ It's recommended that you use Android Studio for creating Android applications. 
 
 ## Configuring dependencies
 
-To add a dependency on a library, set the dependency of the required [type](#dependency-types) (for example, `implementation`) in the 
+To add a dependency on a library, set the dependency of the required [type](#dependency-types) (for example, `implementation`) in the
 `dependencies` block of the source sets DSL.
 
-<tabs>
+
+
 
 ```groovy
 kotlin {
@@ -182,6 +239,12 @@ kotlin {
 }
 ```
 
+
+
+
+
+
+
 ```kotlin
 kotlin {
     sourceSets {
@@ -194,7 +257,8 @@ kotlin {
 }
 ```
 
-</tabs>
+
+
 
 Alternatively, you can [set dependencies at the top level](#set-dependencies-at-the-top-level).
 
@@ -238,35 +302,40 @@ Choose the dependency type based on your requirements.
 
 ### Dependency on the standard library
 
-A dependency on a standard library (`stdlib`) in each source set is added automatically. The version 
+A dependency on a standard library (`stdlib`) in each source set is added automatically. The version
 of the standard library is the same as the version of the Kotlin Gradle plugin.
 
-For platform-specific source sets, the corresponding platform-specific variant of the library is used, while a common standard 
-library is added to the rest. The Kotlin Gradle plugin will select the appropriate JVM standard library depending on 
+For platform-specific source sets, the corresponding platform-specific variant of the library is used, while a common standard
+library is added to the rest. The Kotlin Gradle plugin will select the appropriate JVM standard library depending on
 the `kotlinOptions.jvmTarget` [compiler option](#compiler-options) of your Gradle build script.
 
-If you declare a standard library dependency explicitly (for example, if you need a different version), the Kotlin Gradle 
-plugin won’t override it or add a second standard library. 
+If you declare a standard library dependency explicitly (for example, if you need a different version), the Kotlin Gradle
+plugin won’t override it or add a second standard library.
 
 If you do not need a standard library at all, you can add the opt-out flag to the `gradle.properties`:
+
+
 
 ```kotlin
 kotlin.stdlib.default.dependency=false
 ```
 
+
+
 ### Set dependencies on test libraries
 
-The [`kotlin.test` API](https://kotlinlang.org/api/latest/kotlin.test/) is available for testing different Kotlin projects. 
+The [`kotlin.test` API](../../api/latest/kotlin.test/index.md) is available for testing different Kotlin projects.
 
 Add the corresponding dependencies on test libraries:
 
 * For `commonTest`, add the `kotlin-test-common` and `kotlin-test-annotations-common` dependencies.
 * For JVM targets, use `kotlin-test-junit` or `kotlin-test-testng` for the corresponding asserter implementation and annotations mapping.
-* For Kotlin/JS targets, add `kotlin-test-js` as a test dependency. 
+* For Kotlin/JS targets, add `kotlin-test-js` as a test dependency.
 
 Kotlin/Native targets do not require additional test dependencies, and the `kotlin.test` API implementations are built-in.
 
-<tabs>
+
+
 
 ```groovy
 kotlin{
@@ -291,6 +360,12 @@ kotlin{
 }
 ```
 
+
+
+
+
+
+
 ```kotlin
 kotlin{
     sourceSets {
@@ -314,139 +389,168 @@ kotlin{
 }
 ```
 
-</tabs>
+
+
 
 > You can use shorthand for a dependency on a Kotlin module, for example, kotlin("test") for "org.jetbrains.kotlin:kotlin-test".
->
-{type="note"}
+{:.note}
 
-### Set a dependency on a kotlinx library
+## Set a dependency on a kotlinx library
 
-If you use a kotlinx library and need a platform-specific dependency, you can use platform-specific variants 
-of libraries with suffixes such as `-jvm` or `-js`, for example, `kotlinx-coroutines-core-jvm`. You can also use the library 
+If you use a kotlinx library and need a platform-specific dependency, you can use platform-specific variants
+of libraries with suffixes such as `-jvm` or `-js`, for example, `kotlinx-coroutines-core-jvm`. You can also use the library
 base artifact name instead – `kotlinx-coroutines-core`.
 
-<tabs>
+
+
 
 ```groovy
 kotlin {
     sourceSets {
         jvmMain {
             dependencies {
-                implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:%coroutinesVersion%'
+                implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:{{ site.data.releases.latest.coroutines.version }}'
             }
         }
     }
 }
 ```
+
+
+
+
+
+
 
 ```kotlin
 kotlin {
     sourceSets {
         val jvmMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:%coroutinesVersion%")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:{{ site.data.releases.latest.coroutines.version }}")
             }
         }
     }
 }
+
 ```
 
-</tabs>
 
-If you use a multiplatform library and need to depend on the shared code, set the dependency only once in the shared 
-source set. Use the library base artifact name, such as `kotlinx-coroutines-core` or `ktor-client-core`. 
 
-<tabs>
+
+If you use a multiplatform library and need to depend on the shared code, set the dependency only once in the shared
+source set. Use the library base artifact name, such as `kotlinx-coroutines-core` or `ktor-client-core`.
+
+
+
 
 ```groovy
 kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%'
+                implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:{{ site.data.releases.latest.coroutines.version }}'
             }
         }
     }
 }
 ```
+
+
+
+
+
+
 
 ```kotlin
 kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:{{ site.data.releases.latest.coroutines.version }}")
             }
         }
     }
 }
+
 ```
 
-</tabs> 
+
+
 
 ### Set dependencies at the top level
 
-Alternatively, you can specify the dependencies at the top level with the configuration names following the pattern 
-`<sourceSetName><DependencyType>`. This is helpful for some Gradle built-in dependencies, like `gradleApi()`, `localGroovy()`, 
+Alternatively, you can specify the dependencies at the top level with the configuration names following the pattern
+`<sourceSetName><DependencyType>`. This is helpful for some Gradle built-in dependencies, like `gradleApi()`, `localGroovy()`,
 or `gradleTestKit()`, which are not available in the source sets dependency DSL.
 
-<tabs>
+
+
 
 ```groovy
 dependencies {
     commonMainImplementation 'com.example:my-library:1.0'
 }
+
 ```
+
+
+
+
+
+
 
 ```kotlin
 dependencies {
     "commonMainImplementation"("com.example:my-library:1.0")
 }
+
 ```
 
-</tabs>
+
+
+
 
 ## Annotation processing
 
-Kotlin supports annotation processing via the Kotlin annotation processing tool [`kapt`](kapt.md).
+Kotlin supports annonation processing via the Kotlin annotation processing tool [`kapt`](kapt.md).
 
 ## Incremental compilation
 
-The Kotlin Gradle plugin supports incremental compilation. Incremental compilation tracks changes of source files between 
+The Kotlin Gradle plugin supports incremental compilation. Incremental compilation tracks changes of source files between
 builds so only files affected by these changes would be compiled.
 
-Incremental compilation is supported for Kotlin/JVM and Kotlin/JS projects and is enabled by default.
+Incremental compilation is supported for Kotlin/JVM and Kotlin/JS projects and is enabled by default since Kotlin 1.1.1.
 
-There are several ways to switch off incremental compilation:
+There are several ways to disable the setting:
 
-    * `kotlin.incremental=false` for Kotlin/JVM 
+* Add the following line to the `gradle.properties` or `local.properties` file:
+    * `kotlin.incremental=false` for Kotlin/JVM
     * `kotlin.incremental.js=false` for Kotlin/JS projects
-    
+
 * As the command line parameter, use `-Pkotlin.incremental=false` or `-Pkotlin.incremental.js=false`.
 
-    Note that in this case the parameter should be added to each subsequent build, and any build with disabled incremental 
-    compilation invalidates incremental caches.
+  Note that in this case the parameter should be added to each subsequent build, and any build with disabled incremental
+  compilation invalidates incremental caches.
 
 Note that the first build isn't incremental in any case.
 
-## Gradle build cache support 
+## Gradle build cache support
 
 The Kotlin plugin supports [Gradle build cache](https://docs.gradle.org/current/userguide/build_cache.html) that stores
 the build outputs for reuse in future builds.
 
-To disable the caching for all Kotlin tasks, set the system property flag `kotlin.caching.enabled` to `false` 
+To disable the caching for all Kotlin tasks, set the system property flag `kotlin.caching.enabled` to `false`
 (run the build with the argument `-Dkotlin.caching.enabled=false`).
 
 If you use [kapt](kapt.md), note that the kapt annotation processing tasks are not cached by default. However, you can
- [enable caching for them manually](kapt.md#gradle-build-cache-support). 
+[enable caching for them manually](kapt.md#gradle-build-cache-support-since-1220).
 
 ## Gradle configuration cache support
 
 > The configuration cache is available in Gradle 6.5 and later as an experimental feature.
 > You can check the [Gradle releases page](https://gradle.org/releases/) to see whether it has been promoted to stable.
->
-{type="note"}
+{:.note}
 
 The Kotlin plugin supports [Gradle configuration cache](https://docs.gradle.org/current/userguide/configuration_cache.html),
 which speeds up the build process by reusing the results of the configuration phase.
@@ -455,12 +559,13 @@ See the [Gradle documentation](https://docs.gradle.org/current/userguide/configu
 to learn how to enable the configuration cache. Once you enable the configuration cache feature, the Kotlin Gradle plugin will
 start using it.
 
+
 ## Compiler options
 
 To specify additional compilation options, use the `kotlinOptions` property of a Kotlin compilation task.
 
 When targeting the JVM, the tasks are called `compileKotlin` for production code and `compileTestKotlin`
-for test code. The tasks for custom source sets are called accordingly to the `compile<Name>Kotlin` pattern. 
+for test code. The tasks for custom source sets are called accordingly to the `compile<Name>Kotlin` pattern.
 
 The names of the tasks in Android Projects contain the [build variant](https://developer.android.com/studio/build/build-variants.html) names and follow the pattern `compile<BuildVariant>Kotlin`, for example, `compileDebugKotlin`, `compileReleaseUnitTestKotlin`.
 
@@ -468,7 +573,8 @@ When targeting JavaScript, the tasks are called `compileKotlinJs` and `compileTe
 
 To configure a single task, use its name. Examples:
 
-<tabs>
+
+
 
 ```groovy
 compileKotlin {
@@ -484,6 +590,12 @@ compileKotlin {
 }
 ```
 
+
+
+
+
+
+
 ```kotlin
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 // ...
@@ -493,7 +605,8 @@ val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions.suppressWarnings = true
 ```
 
-</tabs>
+
+
 
 Note that with Gradle Kotlin DSL, you should get the task from the project's `tasks` first.
 
@@ -501,7 +614,8 @@ Use the types `Kotlin2JsCompile` and `KotlinCompileCommon` for the JS and Common
 
 It is also possible to configure all Kotlin compilation tasks in the project:
 
-<tabs>
+
+
 
 ```groovy
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
@@ -509,13 +623,20 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
 }
 ```
 
+
+
+
+
+
+
 ```kotlin
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     kotlinOptions { /*...*/ }
 }
 ```
 
-</tabs>
+
+
 
 The complete list of options for the Gradle tasks is the following:
 
@@ -576,7 +697,8 @@ For OSGi support see the [Kotlin OSGi page](kotlin-osgi.md).
 
 ## Using Gradle Kotlin DSL
 
-When using [Gradle Kotlin DSL](https://github.com/gradle/kotlin-dsl), apply the Kotlin plugins using the `plugins { ... }` block. 
-If you apply them with `apply { plugin(...) }` instead, you may encounter unresolved references to the extensions generated 
-by Gradle Kotlin DSL. To resolve that, you can comment out the erroneous usages, run the Gradle task `kotlinDslAccessorsSnapshot`, 
+When using [Gradle Kotlin DSL](https://github.com/gradle/kotlin-dsl), apply the Kotlin plugins using the `plugins { ... }` block.
+If you apply them with `apply { plugin(...) }` instead, you may encounter unresolved references to the extensions generated
+by Gradle Kotlin DSL. To resolve that, you can comment out the erroneous usages, run the Gradle task `kotlinDslAccessorsSnapshot`,
 then uncomment the usages back and rerun the build or reimport the project into the IDE.
+
