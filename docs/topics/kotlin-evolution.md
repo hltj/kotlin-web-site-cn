@@ -1,103 +1,103 @@
-[//]: # (title: Kotlin Evolution)
+[//]: # (title: Kotlin 演进)
 
-## Principles of Pragmatic Evolution
+## 实用主义演进原则
 
 
-                        Language design is cast in stone,
-                        but this stone is reasonably soft,
-                        and with some effort we can reshape it later.
+                        语言的设计是坚如磐石的，
+                        但这块石头相当柔软，
+                        经过一番努力，我们可以后期重塑它。
                         
-                        Kotlin Design Team
+                        Kotlin 设计团队
 
-Kotlin is designed to be a pragmatic tool for programmers. When it comes to language evolution, its pragmatic nature is captured by the following principles:
-
-
-
-*   Keep the language modern over the years.
-*   Stay in the constant feedback loop with the users.
-*   Make updating to new versions comfortable for the users.
-
-As this is key to understanding how Kotlin is moving forward, let's expand on these principles.
-
-**Keeping the Language Modern**. We acknowledge that systems accumulate legacy over time. What had once been cutting-edge technology can be hopelessly outdated today. We have to evolve the language to keep it relevant to the needs of the users and up-to-date with their expectations. This includes not only adding new features, but also phasing out old ones that are no longer recommended for production use and have altogether become legacy.
-
-**Comfortable Updates**. Incompatible changes, such as removing things from a language, may lead to painful migration from one version to the next if carried out without proper care. We will always announce such changes well in advance, mark things as deprecated and provide automated migration tools _before the change happens_. By the time the language is changed we want most of the code in the world to be already updated and thus have no issues migrating to the new version.
-
-**Feedback Loop**. Going through deprecation cycles requires significant effort, so we want to minimize the number of incompatible changes we'll be making in the future. Apart from using our best judgement, we believe that trying things out in real life is the best way to validate a design. Before casting things in stone we want them battle-tested. This is why we use every opportunity to make early versions of our designs available in production versions of the language, but in one of the  _pre-stable_ statuses: [Experimental, Alpha, or Beta](components-stability.md). Such features are not stable, they can be changed at any time, and the users that opt into using them do so explicitly to indicate that they are ready to deal with the future migration issues. These users provide invaluable feedback that we gather to iterate on the design and make it rock-solid.
-
-
-## Incompatible changes
-
-If, upon updating from one version to another, some code that used to work doesn't work any more, it is an _incompatible change_ in the language (sometimes referred to as "breaking change"). There can be debates as to what "doesn't work any more" means precisely in some cases, but it definitely includes the following:
+Kotlin 旨在成为程序员的实用工具。在语言演进方面，它的实用主义本质遵循以下原则：
 
 
 
-*   Code that compiled and ran fine is now rejected with an error (at compile or link time). This includes removing language constructs and adding new restrictions.
-*   Code that executed normally is now throwing an exception.
+*   一直保持语言的现代性。
+*   与用户保持持续的反馈循环。
+*   使版本更新对用户来说是舒适的。
 
-The less obvious cases that belong to the "grey area" include handling corner cases differently, throwing an exception of a different type than before, changing behavior observable only through reflection, changes in undocumented/undefined behavior, renaming binary artifacts, etc. Sometimes such changes are very important and affect migration experience dramatically, sometimes they are insignificant.
+由于这是理解 Kotlin 如何向前发展的关键，我们来展开来看这些原则。
 
-Some examples of what definitely isn't an incompatible change include
+**保持语言现代性**。我们承认系统随着时间的推移积累了很多遗留问题。曾经是尖端技术的东西如今可能已经无可救药地过时了。我们必须改进语言，使其与用户需求保持一致、与用户期望保持同步。这不仅包括添加新特性，还包括逐步淘汰不再推荐用于生产的旧特性，并且完全成为历史特性。
 
+**舒适的更新**。如果没有适度谨慎地进行不兼容的变更（例如从语言中删除内容）可能会导致从一个版本到下一个版本的痛苦迁移过程。我们会始终提前公布这类变更，将相应内容标记为已弃用并 _在变更发生之前_ 提供自动化的迁移工具。当语言发生变更之时，我们希望世界上绝大多数代码都已经更新，这样迁移到新版本就没有问题了。
 
-
-*   Adding new warnings.
-*   Enabling new language constructs or relaxing limitations for existing ones.
-*   Changing private/internal APIs and other implementation details.
-
-The principles of Keeping the Language Modern and Comfortable Updates suggest that incompatible changes are sometimes necessary, but they should be introduced carefully. Our goal is to make the users aware of upcoming changes well in advance to let them migrate their code comfortably.
-
-Ideally, every incompatible change should be announced through a compile-time warning reported in the problematic code (usually referred to as a _deprecation warning_) and accompanied with automated migration aids. So, the ideal migration workflow goes as follows:
+**反馈循环**。 通过弃用周期需要付出很大的努力，因此我们希望最大限度地减少将来不兼容变更的数量。除了使用我们的最佳判断之外，我们相信在现实生活中试用是验证设计的最佳方法。在最终定论之前，我们希望已经实战测试过。这就是为什么我们利用每个机会在语言的生产版本中提供我们早期版设计，只是处于*稳定前*状态的一种：[实验性、 Alpha、 Beta](components-stability.md)。这些特性并不稳定，可以随时更改，选择使用它们的用户明确表示已准备好了应对未来的迁移问题。这些用户提供了宝贵的反馈，而我们收集这些反馈来迭代设计并使其坚如磐石。
 
 
+## 不兼容的变更
 
-*   Update to version A (where the change is announced)
-    *   See warnings about the upcoming change
-    *   Migrate the code with the help of the tooling
-*   Update to version B (where the change happens)
-    *   See no issues at all
-
-In practice some changes can't be accurately detected at compile time, so no warnings can be reported, but at least the users will be notified through Release notes of version A that a change is coming in version B.
+如果从一个版本更新到另一个版本时，一些以前工作的代码不再工作，那么它是语言中的 _不兼容的变更_ （有时称为“破坏性变更”）。在一些场景中“不再工作”的确切含义可能会有争议，但是它肯定包含以下内容：
 
 
-### Dealing with compiler bugs
 
-Compilers are complicated software and despite the best effort of their developers they have bugs. The bugs that cause the compiler itself to fail or report spurious errors or generate obviously failing code, though annoying and often embarrassing, are easy to fix, because the fixes do not constitute incompatible changes. Other bugs may cause the compiler to generate incorrect code that does not fail: e.g. by missing some errors in the source or simply generating wrong instructions. Fixes of such bugs are technically incompatible changes (some code used to compile fine, but now it won't any more), but we are inclined to fixing them as soon as possible to prevent the bad code patterns from spreading across user code. In our opinion, this serves the principle of Comfortable Updates, because fewer users have a chance of encountering the issue. Of course, this applies only to bugs that are found soon after appearing in a released version.
+*   之前编译运行正常的代码现在（编译或链接）失败并报错。这包括删除语言结构以及添加新的限制。
+*   之前正常执行的代码现在抛异常了。
 
+属于“灰色区域”的不太明显的情况包括以不同方式处理极端情况，抛出与以前不同类型的异常，仅通过反射可以观察到的行为更改，未记录/未定义的行为更改，重命名二进制文件等。有时这些更改非常重要，并且会极大地影响迁移体验，有时影响微不足道。
 
-## Decision making
-
-[JetBrains](https://jetbrains.com), the original creator of Kotlin, is driving its progress with the help of the community and in accord with the [Kotlin Foundation](/foundation/kotlin-foundation.md).
-
-All changes to the Kotlin Programming Language are overseen by the [Lead Language Designer](/foundation/kotlin-foundation.md#lead-designer) (currently Roman Elizarov). The Lead Designer has the final say in all matters related to language evolution. Additionally, incompatible changes to fully stable components have to be approved to by the [Language Committee](/foundation/kotlin-foundation.md#language-committee) designated under the [Kotlin Foundation](/foundation/kotlin-foundation.md) (currently comprised of Jeffrey van Gogh, William R. Cook and Roman Elizarov).
-
-The Language Committee makes final decisions on what incompatible changes will be made and what exact measures should be taken to make user updates comfortable. In doing so, it relies on a set of guidelines available [here](/foundation/language-committee-guidelines.md).
+绝对不是不兼容的变更的一些示例包括
 
 
-## Feature releases and incremental releases
 
-Stable releases with versions 1.2, 1.3, etc. are usually considered to be _feature releases_ bringing major changes in the language. Normally, we publish _incremental releases_, numbered 1.2.20, 1.2.30, etc, in between feature releases.
+*   添加新的警告。
+*   启用新的语言结构或放宽对现有语言结构的限制。
+*   更改私有/内部 API 和其他实现细节。
 
-Incremental releases bring updates in the tooling (often including features), performance improvements and bug fixes. We try to keep such versions compatible with each other, so changes to the compiler are mostly optimizations and warning additions/removals. Pre-stable features may, of course, be added, removed or changed at any time.
+保持语言现代化和舒适更新的原则表明，有时需要进行不兼容的更改，但应该详细介绍这些更改。我们的目标是使用户提前了解即将发生的更改，以便他们能够轻松地迁移代码。
 
-Feature releases often add new features and may remove or change previously deprecated ones. Feature graduation from pre-stable to stable also happens in feature releases.
-
-
-### EAP builds
-
-Before releasing stable versions, we usually publish a number of preview builds dubbed EAP (for "Early Access Preview") that let us iterate faster and gather feedback from the community. EAPs of feature releases usually produce binaries that will be later rejected by the stable compiler to make sure that possible bugs in the binary format survive no longer than the preview period. Final Release Candidates normally do not bear this limitation.
+理想情况下，应通过有问题的代码中报告的编译期警告（通常称为弃用警告）来声明每个不兼容的更改，并提供自动迁移辅助工具。 因此，理想的迁移工作流程如下：
 
 
-### Pre-stable features
 
-According to the Feedback Loop principle described above, we iterate on our designs in the open and release versions of the language where some features have one of the _pre-stable_ statuses and _are supposed to change_. Such features can be added, changed or removed at any point and without warning. We do our best to ensure that pre-stable features can't be used accidentally by an unsuspecting user. Such features usually require some sort of an explicit opt-in either in the code or in the project configuration.
+*   更新到版本 A（宣布更改）
+    *   查看有关即将发生的更改的警告
+    *   借助工具迁移代码
+*   更新到版本 B（发生更改）
+    *   完全没有问题
 
-Pre-stable features usually graduate to the stable status after some iterations.
+实际上，在编译期无法准确检测到某些更改，因此不会报告任何警告，但是至少会通过版本 A 的发行说明通知用户版本 B 中即将进行的更改。
 
 
-### Status of different components
+### 处理编译器错误
 
-To check the stability status of different components of Kotlin (Kotlin/JVM, JS, Native, various libraries, etc), please consult [this link](components-stability.md).
+编译器是复杂的软件，尽管开发人员尽了最大努力，但它们仍然存在 bug。导致编译器自身编译失败、或报告虚假错误、或生成明显编译失败的代码的 bug，虽然很烦人并且常常令人尴尬，但它们很容易修复，因为这些修复不构成不兼容的变更。其他 bug 可能会导致编译器生成不会编译失败的错误代码，例如：遗漏了源代码中的一些错误，或者只是生成了错误的指令。这些 bug 的修复是技术上不兼容的更改（某些代码过去可以正常编译，但现在编译失败），但是我们倾向于尽快修复它们，以防止不良代码模式在用户代码中传播。我们认为，这符合“舒适更新”的原则，因为较少的用户有机会遇到此问题。当然，这仅适用于在发行版本中出现后不久发现的 bug。
+
+
+## 决策制定
+
+[JetBrains](https://jetbrains.com)是 Kotlin 的原始创建者，它在社区的帮助下并根据 Kotlin 基金会来推动 kotlin 的发展。
+
+[首席语言设计师](/foundation/kotlin-foundation.md#lead-designer)（现为 Roman Elizarov）负责监督 Kotlin 编程语言的所有更改。首席设计师在与语言发展有关的所有事务中拥有最终决定权。 此外，对完全稳定的组件进行不兼容的更改必须完全由[Kotlin 基金会](/foundation/kotlin-foundation.md)指定的[语言委员会](/foundation/kotlin-foundation.md#language-committee)（目前由 Jeffrey van Gogh，William R. Cook 与 Roman Elizarov 组成）批准。
+
+语言委员会对将进行哪些不兼容的更改以及应采取什么确切的措施使用户感到满意做出最终决定。为此，它依赖[此处](/foundation/language-committee-guidelines.md)提供的一组准则。
+
+
+## 特性发布与增量发布
+
+类似 1.2、1.3 等版本的稳定版本通常被认为是对语言进行重大更改的特性版本。通常，在特性发布之间会发布增量发布，编号为 1.2.20、1.2.30 等。
+
+增量版本带来了工具方面的更新（通常包括特性），性能改进和错误修复。我们试图使这些版本彼此兼容，因此对编译器的更改主要是优化和添加/删除警告。稳定前特性可以随时被添加、删除或更改。
+
+特性发布通常会添加新特性，并且可能会删除或更改以前不推荐使用的特性。某项特性从稳定前到稳定版的过渡也包含在特性版本的发布中。
+
+
+### 早期预览版本
+
+在发布稳定版本之前，我们通常会发布许多称为 EAP（“Early Access Preview”）的早期预览版本，这些版本使我们能够更快地进行迭代并从社区中收集反馈。特性版本的早期预览版本通常会生成二进制文件，这些二进制文件随后将被稳定的编译器拒绝，以确保二进制文件中可能存在的错误只在预览期出现。最终发布的二进制文件通常没有此限制。
+
+
+### 稳定前特性
+
+根据上述反馈环原则，我们在语言的开放和发行版本中对设计进行迭代，其中某些特性具有稳定前状态之一并且可以更改。这些特性可以随时被添加、更改或删除，不会发出警告。我们尽量确保稳定前特性不会被用户意外使用。此类特性通常需要在代码或项目配置中进行某种类型的显式选择。
+
+稳定前特性通常会在经过几次迭代后逐渐达到稳定状态。
+
+
+### 不同组件的状态
+
+要查看 Kotlin 的不同组件（Kotlin/JVM、JS、Native、各种库等）的稳定性状态，请查阅[链接](components-stability.md)。
 
 
 ## Libraries
@@ -138,7 +138,7 @@ We provide the -language-version and -api-version flags that make a new version 
 
 Actively maintained code bases can benefit from getting bug fixes ASAP, without waiting for a full deprecation cycle to complete. Currently such project can enable the -progressive flag and get such fixes enabled even in incremental releases.
 
-All flags are available on the command line as well as [Gradle](../using-gradle.md#compiler-options) and [Maven](../using-maven.md#specifying-compiler-options).
+All flags are available on the command line as well as [Gradle](../using-gradle.md#编译器选项) and [Maven](../using-maven.md#指定编译器选项).
 
 
 ### Evolving the binary format

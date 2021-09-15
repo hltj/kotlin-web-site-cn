@@ -1,51 +1,51 @@
-[//]: # (title: Kotlin Foundation)
+[//]: # (title: Kotlin 基金会)
 
-The Kotlin Foundation was created by JetBrains and Google with the mission to protect, promote and advance the development of the Kotlin programming language. The Foundation secures Kotlin's development and distribution as Free Software, meaning that it is able to be freely copied, modified and redistributed, including modifications to the official versions.
+Kotlin 基金会由 JetBrains 与 Google 创立，其使命是保护、促进并推动 Kotlin 编程语言的发展。基金会确保 Kotlin 作为自由软件开发与发行，这意味着可以对其自由复制、修改以及重新分发，包括对对官方版本的修改。
 
-## Scope
+## 范围
 
-The main functions of the Kotlin Foundation are:
+Kotlin 基金会的主要职能是：
 
-*   Holding the trademarks associated with the project
-*   Appointing the Lead Language Designer
-*   Controlling incompatible changes to the language
+*   持有与项目相关的商标
+*   任命首席语言设计师
+*   控制对语言的不兼容更改
 
-**Development**. The code for the project is developed openly on GitHub primarily by the team employed at JetBrains, with contributions from Google and others. The Foundation has no developers on its payroll. The respective contributors hold the copyright for the code they author. The code is distributed under the [Apache License, Version 2.0](https://github.com/JetBrains/kotlin/tree/master/license).
+**开发**。项目的代码主要由受雇于 JetBrains 的团队在 GitHub 上公开开发，并得到了谷歌以及其他各方的贡献。基金会的工资单上没有开发人员。各个贡献者拥有他们所创作代码的版权。代码在 [Apache 授权许可 2.0 版](https://github.com/JetBrains/kotlin/tree/master/license)下发布。
 
-**Trademarks**.  The Kotlin trademark and associated marks, logos and domain names belong to the Kotlin Foundation.
-The Foundation permits the usage of the trademarks according to
-[the Kotlin Brand Usage Guidelines](http://kotlinlang.org/foundation/guidelines.html). All usages not
-permitted automatically, require explicit written permission from the Foundation.
+**商标**。Kotlin 商标以及相关标志、徽标与域名都属于 Kotlin 基金会。
+基金会允许根据<!--
+-->[《Kotlin 品牌使用指南》](/foundation/guidelines.md)使用商标。所有<!--
+-->不允许自动使用的用途都需要得到基金会的明确书面许可。
 
 <a name="lead-designer"></a>
-**Lead Language Designer** is in charge of all decisions regarding the development of the project and evolution of the language. The Foundation appoints the Lead Language Designer, but does not directly make decisions about the course of the project.
+**首席语言设计师**负责关于项目开发及语言演进的所有决策。基金会任命首席语言设计师，但不直接决定项目的进程。
 
 <a name="language-committee"></a>
-**Incompatible changes**. A special Language Committee appointed by the Foundation reviews the changes proposed by the Lead Language Designer and has the power to reject [_incompatible changes_](/docs/reference/evolution/kotlin-evolution.md#incompatible-changes) or require certain deprecation procedures to be carried out. The Language Committee has no power over compatible changes such as adding new features to the language. Compatible changes are made at the sole discretion of the Lead Language Designer. The Committee maintains a set of [guidelines](language-committee-guidelines.md) that are being consulted when making decisions. Meeting minutes of the Language Committee are available [online](https://docs.google.com/document/d/1ReH84Cw_ZhGOUM_MdMQbLjzB0edXIeaFuBUF5molsuI/preview).
+**不兼容的变更**。由基金会任命的一个特殊的语言委员会评审首席语言设计师提出的变更，并有权拒绝[_不兼容的变更_](/docs/reference/evolution/kotlin-evolution.md#不兼容的变更)或者要求执行某些弃用过程。语言委员会无权过问兼容的变更，例如为语言添加新功能。兼容的变更由首席语言设计师自行决定。委员会维持一套在做决定时所遵循得[准则](language-committee-guidelines.md)。语言委员会的会议纪要可[在线查看](https://docs.google.com/document/d/1ReH84Cw_ZhGOUM_MdMQbLjzB0edXIeaFuBUF5molsuI/preview)。
 
 
-## Structure
+## 结构
 
-The Kotlin Foundation is a nonprofit nonstock corporation registered in the state of Delaware, USA. The Foundation is governed by the Board of Directors that makes all decisions by voting. The Board appoints the Lead Language Designer and the members of the Language Committee.
+Kotlin 基金会是一家在美国特拉华州注册的非营利性非股份公司。基金会由董事会管理，董事会通过投票做出所有决定。董事会任命首席语言设计师以及语言委员会成员。
 
-The President and the Secretary are elected by the Board of Directors as well. The President acts as the chief officer of the Foundation and supervises its affairs and operations. The Secretary keeps record of all meetings of the Board and its committees, and keeps track of membership and notices to the members, directors and third parties.
+总裁与秘书也由董事会选举产生。总裁担任基金会的首席执行官，监督基金会的事务与运营。秘书记录董事会及其委员会的所有会议，并跟进会员、董事以及第三方的会员资格与通知。
 
-## Current personnel
+## 现任人员
 
-President: Maxim Shafirov (JetBrains)
+总裁：Maxim Shafirov（JetBrains）
 
-Secretary: Max Sills (Google)
+秘书：Max Sills（Google）
 
-Board of Directors:
-*   Maxim Shafirov (JetBrains)
-*   Roman Elizarov (JetBrains)
-*   William R. Cook (University of Texas at Austin)
-*   Grace Kloba (Google)
-*   Anwar Ghuloum (Google)
+董事会：
+*   Maxim Shafirov（JetBrains）
+*   Roman Elizarov（JetBrains）
+*   William R. Cook（德克萨斯大学奥斯汀分校）
+*   Grace Kloba（Google）
+*   Anwar Ghuloum（Google）
 
-Lead Language Designer: Roman Elizarov (JetBrains)
+首席语言设计师：Roman Elizarov（JetBrains）
 
-Language Committee: 
-* Roman Elizarov (JetBrains)
-* William R. Cook (University of Texas at Austin)
-* Jeffrey van Gogh (Google)
+语言委员会：
+* Roman Elizarov（JetBrains）
+* William R. Cook（德克萨斯大学奥斯汀分校）
+* Jeffrey van Gogh（Google）
