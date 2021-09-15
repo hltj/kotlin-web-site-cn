@@ -1,8 +1,8 @@
-[//]: # (title: Teaching Kotlin with EduTools plugin)
+[//]: # (title: 通过 EduTools 插件讲授 Kotlin)
 
-With the [EduTools plugin](https://plugins.jetbrains.com/plugin/10081-edutools), available both in 
-[Android Studio](https://developer.android.com/studio) and [IntelliJ IDEA](https://www.jetbrains.com/idea/), you can teach Kotlin through code practicing tasks.
-Take a look at the [Educator Start Guide](https://www.jetbrains.com/help/education/educator-start-guide.html?section=Kotlin)
-to learn how to create a simple Kotlin course that includes a set of programming tasks and integrated tests.
+使用 [Android Studio](https://developer.android.com/studio) 与 [IntelliJ IDEA](https://www.jetbrains.com/idea/) 中都可用的 [EduTools 插件](https://plugins.jetbrains.com/plugin/10081-edutools)，
+可以通过代码练习任务来讲授 Kotlin。
+查看[《教育者入门指南（英文）》](https://www.jetbrains.com/help/education/educator-start-guide.html?section=Kotlin)，
+了解如何创建一个简单的 Kotlin 课程，其中包括一组编程任务与综合测试。
 
-If you want to use the EduTools plugin to learn Kotlin, read [Learning Kotlin with EduTools plugin](edu-tools-learner.md).
+如果要使用 EduTools 插件学习 Kotlin，请阅读 [通过 EduTools 插件学习 Kotlin](edu-tools-learner.md)。
