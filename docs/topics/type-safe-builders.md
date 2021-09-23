@@ -25,14 +25,14 @@ fun result() =
             p  {+"this format can be used as an alternative markup to XML"}
 
             // 一个具有属性和文本内容的元素
-            a(href = "http://kotlinlang.org") {+"Kotlin"}
+            a(href = "https://kotlinlang.org") {+"Kotlin"}
 
             // 混合的内容
             p {
                 +"This is some"
                 b {+"mixed"}
                 +"text. For more see the"
-                a(href = "http://kotlinlang.org") {+"Kotlin"}
+                a(href = "https://kotlinlang.org") {+"Kotlin"}
                 +"project"
             }
             p {+"some text"}
@@ -47,7 +47,7 @@ fun result() =
 ```
 
 这是完全合法的 Kotlin 代码。
-你可以[在这里](https://play.kotlinlang.org/byExample/09_Kotlin_JS/06_HtmlBuilder)在线运行上文代码（修改它并在浏览器中运行）。
+[可以在这里在线运行上文代码（修改它并在浏览器中运行）](https://play.kotlinlang.org/byExample/09_Kotlin_JS/06_HtmlBuilder)。
 
 ## 实现原理
 

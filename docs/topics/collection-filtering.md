@@ -63,7 +63,7 @@ fun main() {
         val numbers = listOf(null, 1, "two", 3.0, "four")
         println("All String elements in upper case:")
         numbers.filterIsInstance<String>().forEach {
-            println(it.toUpperCase())
+            println(it.uppercase())
         }
     //sampleEnd
     }
@@ -113,7 +113,7 @@ fun main() {
 * 如果至少有一个元素匹配给定谓词，那么 [`any()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html) 返回 `true`。
 * 如果没有元素与给定谓词匹配，那么 [`none()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html) 返回 `true`。
 * 如果所有元素都匹配给定谓词，那么 [`all()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html) 返回 `true`。
-  请注意，在一个空集合上使用任何有效的谓词去调用 `all()` 都会返回 `true` 。这种行为在逻辑上被称为 [_vacuous truth_](https://en.wikipedia.org/wiki/Vacuous_truth)。
+  请注意，在一个空集合上使用任何有效的谓词去调用 `all()` 都会返回 `true` 。这种行为在逻辑上被称为 [vacuous truth](https://en.wikipedia.org/wiki/Vacuous_truth)。
 
 ```kotlin
 fun main() {

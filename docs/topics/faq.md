@@ -73,8 +73,7 @@ vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](ht
 ### 哪些 IDE 支持 Kotlin？
 
 所有主要的 Java IDE 都支持 Kotlin，包括 [IntelliJ IDEA](jvm-get-started.html)、
-[Android Studio](https://developer.android.com/kotlin/get-started)、[Eclipse](eclipse.html) 和
-[NetBeans](http://plugins.netbeans.org/plugin/68590/kotlin)。另外，有一个[命令行编译器](command-line.html)<!--
+[Android Studio](https://developer.android.com/kotlin/get-started) 与 [Eclipse](eclipse.html)。另外，有一个[命令行编译器](command-line.html)<!--
 -->可用，为编译和运行应用程序提供了直接的支持。
   
 ### 哪些构建工具支持 Kotlin？
@@ -94,9 +93,9 @@ JavaScript 的构建工具。
 
 ### Kotlin 面向哪些版本的 JVM？
 
-Kotlin 会让你选择用于执行的 JVM 版本。默认情况下，Kotlin/JVM 编译器会生成兼容 Java 6 的字节码。
+Kotlin 会让你选择用于执行的 JVM 版本。默认情况下，Kotlin/JVM 编译器会生成兼容 Java 8 的字节码。
 如果要利用 Java 新版本中提供的优化功能，可以将目标 Java
-版本显式指定为 8 到 15。 请注意，这种情况下生成的字节码可能无法在较低版本中运行。 
+版本显式指定为 9 到 16。 请注意，这种情况下生成的字节码可能无法在较低版本中运行。 
 
 ### Kotlin 难吗？
 
@@ -129,10 +128,14 @@ on the [Books](books.md) page. For more books, see the community-maintained list
 
 ### Kotlin 有没有在线课程？
 
-有一些 Kotlin 的课程，包括 Kevin Jones 的 [Pluralsight Kotlin Course](https://www.pluralsight.com/courses/kotlin-getting-started)、
-Hadi Hariri 的 [O’Reilly Course](https://shop.oreilly.com/product/0636920052982.do) 以及 Peter Sommerhoff 的 [Udemy Kotlin Course](http://petersommerhoff.com/dev/kotlin/kotlin-beginner-tutorial/)。
+You can learn all the Kotlin essentials while creating working applications with the [Kotlin Basics track](https://hyperskill.org/tracks/18) on JetBrains Academy.
 
-在 YouTube 和 Vimeo 上也有许多 [Kotlin 演讲](https://www.kotlincn.net/community/talks.html) 的录像。
+A few other courses you can take:
+* [Pluralsight Course: Getting Started with Kotlin](https://www.pluralsight.com/courses/kotlin-getting-started) by Kevin Jones
+* [O’Reilly Course: Introduction to Kotlin Programming](https://www.oreilly.com/library/view/introduction-to-kotlin/9781491964125/) by Hadi Hariri
+* [Udemy Course: 10 Kotlin Tutorials for Beginneres](https://petersommerhoff.com/dev/kotlin/kotlin-beginner-tutorial/) by Peter Sommerhoff
+
+You can also check out the other tutorials and content on our [YouTube channel](https://www.youtube.com/c/Kotlin).
 
 ### 有没有 Kotlin 社区？
 
@@ -160,7 +163,7 @@ Kotlin 也会在全球不同地方举行大会。你可以在
 ### 其他在线 Kotlin 资源呢？
 
 网站上有一堆[在线资源](https://kotlinlang.org/community/)，包括社区成员的 [Kotlin 文摘](https://kotlin.link)、
-[通讯](http://www.kotlinweekly.net)、[播客](https://talkingkotlin.com)等等。
+[通讯](http://kotlinweekly.net)、[播客](https://talkingkotlin.com)等等。
 
 ### 在哪里可以获得高清 Kotlin 徽标？
 

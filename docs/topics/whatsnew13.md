@@ -1,5 +1,7 @@
 [//]: # (title: Kotlin 1.3 的新特性)
 
+_Release date: 29 October 2018_
+
 ## 协程正式发布
 
 历经了漫长而充足的的测试，协程终于正式发布了！这意味着自 Kotlin 1.3 起，协程的语言<!--
@@ -133,7 +135,7 @@ fun String?.isNullOrEmpty(): Boolean {
 
 ## 将 `when` 主语捕获到变量中
 
-在 Kotlin 1.3 中，可以将 `when` 表达式主语捕获到变量中：
+在 Kotlin 1.3 中，可以将 `when` 表达式主语捕获到一个变量中：
 
 ```kotlin
 fun Request.getBody() =
@@ -144,7 +146,7 @@ fun Request.getBody() =
 ```
 
 虽然已经可以在 `when` 表达式前面提取这个变量，但是在 `when` 中的 `val` 使其作用域刚好限制在
-`when` 主体中，从而防止命名空间污染。关于 `when` 表达式的完整文档请参见[这里](control-flow.md#when-表达式)。
+`when` 主体中，从而防止命名空间污染。[关于 `when` 表达式的完整文档请参见这里](control-flow.md#when-表达式)。
 
 ## 接口中伴生对象的 @JvmStatic 与 @JvmField
 
@@ -283,7 +285,6 @@ fun main() {
 > Unsigned integers are in [Beta](components-stability.md).
 > Their implementation is almost stable, but migration steps may be required in the future.
 > We'll do our best to minimize any changes you will have to make.
-> See details in the [reference](basic-types.md#beta-status-of-unsigned-integers).
 >
 {type="warning"}
 
@@ -408,7 +409,6 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ### ifEmpty 与 ifBlank 函数
 

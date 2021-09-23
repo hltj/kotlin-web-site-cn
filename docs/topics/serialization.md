@@ -26,8 +26,9 @@ and have suffixes that reflect the serialization format. Examples:
 Platform-specific artifacts are handled automatically; you don't need to add them manually. Use the same dependencies in
 JVM, JS, Native, and multiplatform projects.
 
-Note that the `kotlinx.serialization` libraries use their own versioning structure, which doesn't match Kotlin's versioning. Check out the
-releases on [GitHub](https://github.com/Kotlin/kotlinx.serialization/releases) to find the latest versions.
+Note that the `kotlinx.serialization` libraries use their own versioning structure, which doesn't match Kotlin's versioning.
+Check out the releases on [GitHub](https://github.com/Kotlin/kotlinx.serialization/releases) to find the latest versions.
+
 ## Formats
 
 `kotlinx.serialization` includes libraries for various serialization formats:
@@ -54,14 +55,8 @@ Before starting, you’ll need to configure your build script so that you can us
 1. Apply the Kotlin serialization Gradle plugin `org.jetbrains.kotlin.plugin.serialization` (or `kotlin(“plugin.serialization”)`
 in the Kotlin Gradle DSL).
 
-    <tabs>
-
-    ```groovy
-    plugins {
-        id 'org.jetbrains.kotlin.jvm' version '%kotlinVersion%'
-        id 'org.jetbrains.kotlin.plugin.serialization' version '%kotlinVersion%'  
-    }
-    ```
+    <tabs group="build-script">
+    <tab title="Kotlin" group-key="kotlin">
 
     ```kotlin
     plugins {
@@ -70,17 +65,23 @@ in the Kotlin Gradle DSL).
     }
     ```
 
+    </tab>
+    <tab title="Groovy" group-key="groovy">
+
+    ```groovy
+    plugins {
+        id 'org.jetbrains.kotlin.jvm' version '%kotlinVersion%'
+        id 'org.jetbrains.kotlin.plugin.serialization' version '%kotlinVersion%'  
+    }
+    ```
+
+    </tab>
     </tabs>
 
 2. Add the JSON serialization library dependency:`org.jetbrains.kotlinx:kotlinx-serialization-json:%serializationVersion%`
 
-    <tabs>
-
-    ```groovy
-    dependencies {
-        implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:%serializationVersion%'
-    } 
-    ```
+    <tabs group="build-script">
+    <tab title="Kotlin" group-key="kotlin">
 
     ```kotlin
     dependencies {
@@ -88,9 +89,20 @@ in the Kotlin Gradle DSL).
     } 
     ```
 
+    </tab>
+    <tab title="Groovy" group-key="groovy">
+
+    ```groovy
+    dependencies {
+        implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:%serializationVersion%'
+    } 
+    ```
+
+    </tab>
     </tabs>
 
-Now you're ready to use the serialization API in your code.
+Now you're ready to use the serialization API in your code. The API is located in the the `kotlinx.serialization` package
+and its format-specific subpackages such as `kotlinx.serialization.json`.
 
 First, make a class serializable by annotating it with `@Serializable`.
 
@@ -101,7 +113,7 @@ data class Data(val a: Int, val b: String)
 
 You can now serialize an instance of this class by calling `Json.encodeToString()`.
 
-```kotlin
+```kotlin 
 Json.encodeToString(Data(42, "str"))
 ```
 

@@ -1,23 +1,13 @@
 [//]: # (title: 内联类)
 
-> Inline classes are in [Beta](components-stability.md). They are almost stable, but migration steps may be required in the future. 
-> We'll do our best to minimize any changes you will have to make.
-> We would appreciate your feedback on the inline classes feature in [YouTrack](https://youtrack.jetbrains.com/issue/KT-42434).
->
-{type="warning"}
-
 有时候，业务逻辑需要围绕某种类型创建包装器。然而，由于额外的堆内存分配问题，
 它会引入运行时的性能开销。此外，如果被包装的类型是原生类型，性能的损失是很糟糕的，
 因为原生类型通常在运行时就进行了大量优化，然而他们的包装器却没有得到任何特殊的处理。 
 
 为了解决这类问题，Kotlin 引入了一种被称为*内联类*的特殊类。
-Inline classes are a subset of value-based classes. They don't have an identity and can only hold values.
+Inline classes are a subset of [value-based classes](https://github.com/Kotlin/KEEP/blob/master/notes/value-classes.md). They don't have an identity and can only hold values.
 
-To declare an inline class, use an `inline` or `value` modifier before the name of the class:
-
-```kotlin
-inline class Password(val value: String)
-```
+To declare an inline class, use the `value` modifier before the name of the class:
 
 ```kotlin
 value class Password(private val s: String)
@@ -30,6 +20,10 @@ To declare an inline class for the JVM backend, use the `value` modifier along w
 @JvmInline
 value class Password(private val s: String)
 ```
+
+> The `inline` modifier for inline classes is deprecated.
+> 
+{type="warning"}
 
 内联类必须含有唯一的一个属性在主构造函数中初始化。在运行时，
 将使用这个唯一属性来表示内联类的实例（关于运行时的内部表达请参阅[下文](#表示方式)）：
@@ -70,10 +64,8 @@ fun main() {
 }
 ```
 
-There are some restrictions for inline class members:
-* Inline class properties cannot have [backing fields](properties.md#backing-fields). They can only have simple computable 
+Inline class properties cannot have [backing fields](properties.md#backing-fields). They can only have simple computable 
 properties (no `lateinit`/delegated properties).
-* Inline classes cannot have `var` properties or extension `var` properties.
 
 ## 继承
 
@@ -210,55 +202,3 @@ fun main() {
     acceptNameInlineClass(string) // 错误: 不能传递基础类型的实参替代函数中内联类类型的形参
 }
 ```
-
-## 启用内联类
- 
-When using inline classes, a warning will be reported, indicating that this feature has not been released as stable.
-To remove the warning you have to opt in to the usage of this feature by passing the compiler argument `-Xinline-classes`.
-
-### Gradle
-
-<tabs>
-<tab title="Groovy">
-
-```groovy
-kotlin {
-    sourceSets.all {
-        languageSettings.enableLanguageFeature('InlineClasses')
-    }
-}
-```
-
-</tab>
-<tab title="Kotlin">
-
-```kotlin
-kotlin {
-    sourceSets.all {
-        languageSettings.enableLanguageFeature("InlineClasses")
-    }
-}
-```
-
-</tab>
-</tabs>
-
-关于详细信息，请参见[编译器选项](gradle.md#编译器选项)。关于[多平台项目](mpp-intro.md)的设置，请参见[使用 Gradle 构建多平台项目](building-mpp-with-gradle.md#语言设置)章节。
-参见[语言设置](mpp-dsl-reference.md#language-settings)。
-
-### Maven
-
-```xml
-<configuration>
-    <args>
-        <arg>-Xinline-classes</arg> 
-    </args>
-</configuration>
-```
-
-关于详细信息，请参见[指定编译器选项](maven.md#指定编译器选项)。
-
-## 进一步讨论
-
-关于其他技术详细信息和讨论，
-请参见[内联类的语言提议](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-classes.md)

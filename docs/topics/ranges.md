@@ -5,7 +5,7 @@ Kotlin 可通过调用 `kotlin.ranges` 包中的 [`rangeTo()`](https://kotlinlan
 `!in` 函数。
 
 ```kotlin
-if (i in 1..4) {  // 等同于 1 <= i && i <= 4
+if (i in 1..4) { // 等同于 1 <= i && i <= 4
     print(i)
 }
 ```

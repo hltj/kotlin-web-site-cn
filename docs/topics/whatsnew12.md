@@ -1,5 +1,7 @@
 [//]: # (title: Kotlin 1.2 的新特性)
 
+_Release date: 28 November 2017_
+
 ## 目录
 
 * [多平台项目](#多平台项目实验性的)
@@ -32,7 +34,7 @@ expect fun hello(world: String): String
 
 fun greet() {
     // 该预期 API 的用法：
-    val greeting = hello("multi-platform world")
+    val greeting = hello("multiplatform world")
     println(greeting)
 }
 
@@ -52,7 +54,7 @@ actual fun hello(world: String): String =
 actual typealias URL = java.net.URL
 ```
 
-关于构建多平台项目的详细信息与步骤，请参见其[文档](multiplatform.md)。
+关于构建多平台项目的详细信息与步骤，请参见[多平台程序设计文档](multiplatform.md)。
 
 ## 其他语言特性
 

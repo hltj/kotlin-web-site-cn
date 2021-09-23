@@ -5,7 +5,7 @@
 
 1. 在 IntelliJ IDEA 中, 选择 **文件(File)** \| **新建(New)** \| **项目(Project)**。
 2. 在左侧面板中，选择 **Kotlin**。
-3. 输入项目名称，然后选择 **Multiplatform** 下的 **Library** 作为项目模板。
+3. 输入项目名称，然后在 **Multiplatform** 分组中选择 **Library** 作为项目模板。
 
     ![选择项目模板](mpp-project-1.png)
 
@@ -29,4 +29,11 @@
 
 9. 点击 **Finish**。
 
-新项目将打开。[探索项目中包含的内容](mpp-discover-project.md)。
+The new project opens. 
+
+## What's next?
+
+* [Understand the multiplatform project structure](mpp-discover-project.md). 
+* [Create and publish a multiplatform library – tutorial](multiplatform-library.md).
+* [Create your first KMM application for Android and iOS – tutorial](kmm-create-first-app.md).
+* [Create a full-stack web app with Kotlin Multiplatform – hands-on tutorial](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction).

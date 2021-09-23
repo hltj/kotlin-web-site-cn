@@ -1,7 +1,8 @@
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 ``` kotlin
 /*
- 彻底告别那些烦人的 NullPointerException——著名的十亿美金的错误
+ 彻底告别那些烦人的 NullPointerException——
+著名的十亿美金的错误
 */
 
 var output: String

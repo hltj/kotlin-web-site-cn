@@ -22,7 +22,7 @@ Kotlin/JS 提供了转换 Kotlin 代码、Kotlin 标准库的能力，并且兼�
     `kotlin-wrappers` 还为许多类似技术（例如
     `react-redux`、`react-router` 或 `styled-components`）提供支持。
     与 JavaScript 生态系统的互操作性还意味着可以使用第三方 React 组件与组件库。
-    * 使用 **社区维护的 Kotlin/JS 框架**，充分利用 Kotlin 相关概念、其表现力<!--
+    * 使用 **[Kotlin/JS 框架](#kotlin-js-框架)**，充分利用 Kotlin 相关概念、其表现力<!--
     -->与简洁性（例如 [kvision](https://kvision.io) 或 [fritz2](https://www.fritz2.dev/)）。
 
 * **使用 Kotlin/JS 编写服务器端与无服务器应用程序**
@@ -59,6 +59,59 @@ Kotlin/JS 提供了转换 Kotlin 代码、Kotlin 标准库的能力，并且兼�
 Kotlin/JS 还与最常见的模块系统兼容：UMD、CommonJS 与 AMD。能够[生产与使用模块](js-modules.md)<!--
 -->意味着能够以结构化的方式与 JavaScript 生态系统进行交互。
 
+## Kotlin/JS 框架
+
+Modern web development benefits significantly from frameworks that simplify building web applications.
+Here are examples of popular web frameworks for Kotlin/JS written by different authors:
+
+### KVision
+
+_KVision_ is an object-oriented web framework that makes it possible to write applications in Kotlin/JS with ready-to-use components
+that can be used as building blocks for your application’s user interface. You can use both reactive and imperative programming
+models to build your frontend, use connectors for Ktor, Spring Boot, and other frameworks to integrate it with your server-side
+applications, and share code using [Kotlin Multiplatform](multiplatform.md).
+
+Visit [https://kvision.io](https://kvision.io) for documentation, tutorials, and examples.
+
+For updates and discussions about the framework, join [#kvision](https://kotlinlang.slack.com/messages/kvision) and
+[#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) channels in the [Kotlin Slack](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up).
+
+### fritz2
+
+_fritz2_ is a standalone framework for building reactive web user interfaces. It provides its own type-safe DSL for building
+and rendering HTML elements, and it makes use of Kotlin’s coroutines and flows to express components and their data bindings.
+It provides state management, validation, routing, and more out of the box, and integrates with Kotlin Multiplatform projects.
+
+Visit [https://www.fritz2.dev](https://www.fritz2.dev) for documentation, tutorials, and examples.
+
+For updates and discussions about the framework, join the [#fritz2](https://kotlinlang.slack.com/messages/fritz2) and
+[#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) channels in the [Kotlin Slack](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up).
+
+### Doodle
+
+_Doodle_ is a vector-based UI framework for Kotlin/JS. Doodle applications use the browser’s graphics capabilities to draw
+user interfaces instead of relying on DOM, CSS, or Javascript. By using this approach, Doodle gives you precise control
+over the rendering of arbitrary UI elements, vector shapes, gradients, and custom visualizations.
+
+Visit [https://nacular.github.io/doodle/](https://nacular.github.io/doodle/) for documentation, tutorials, and examples.
+
+For updates and discussions about the framework, join [#doodle](https://kotlinlang.slack.com/messages/doodle) and
+[#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) channels in the [Kotlin Slack](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up).
+
+### Compose for Web
+
+_Compose for Web_ brings [Google’s Jetpack Compose UI toolkit](https://developer.android.com/jetpack/compose) to your browser.
+It allows you to build reactive web user interfaces using the concepts introduced by Jetpack Compose. It provides a DOM API
+to describe your website, as well as an experimental set of multiplatform layout primitives. Compose for Web also gives
+you the option to share parts of your UI code and logic across Android, desktop, and web.
+
+Compose for Web is in _Technology Preview_, which means it is ready for experiments but not yet ready for production use.
+
+You can find more information about Compose for Web on its [landing page](https://jb.gg/compose-web).
+
+Join the [#compose-web](https://kotlinlang.slack.com/archives/C01F2HV7868) channel on [Kotlin Slack](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)
+to discuss Compose for Web, or [#compose](https://kotlinlang.slack.com/archives/CJLTWPH7S) for general Compose discussions.
+
 ## Kotlin/JS 今天与明天
 
 **想进一步了解 Kotlin/JS 吗？**
@@ -91,14 +144,14 @@ Kotlin/JS 还与最常见的模块系统兼容：UMD、CommonJS 与 AMD。能够
 
 ## 新的 Kotlin/JS IR 编译器
 
-[新的 Kotlin/JS IR 编译器](js-ir-compiler.md)（当前稳定性：[Alpha](components-stability.md)）
+[新的 Kotlin/JS IR 编译器](js-ir-compiler.md)（当前稳定性：[Beta](components-stability.md)）
 相对于当前的默认编译器进行了许多改进。例如，
 通过消除死代码来减小生成的可执行文件的体积，并使与 JavaScript 生态系统及其工具的互操作更加流畅。
 通过从 Kotlin 代码生成 TypeScript 声明文件（d.ts），新的编译器使创建混合 TypeScript 与 Kotlin 代码的“混合”
 应用程序变得更加容易，并利用 Kotlin 多平台代码共享功能。
 
 如需了解有关新 Kotlin/JS IR 编译器中可用特性的更多信息，以及如何在项目中尝试使用它，请访问其
-[文档](js-ir-compiler.md)。
+[Kotlin/JS IR compiler documentation page](js-ir-compiler.md) and the [migration guide](js-ir-migration.md).
 
 ## 加入 Kotlin/JS 社区
 

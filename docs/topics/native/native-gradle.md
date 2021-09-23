@@ -23,32 +23,8 @@ Groovy 语言是 Gradle 最早支持的脚本语言，它利用了该语言的�
 First, create a project directory. Inside it, create `build.gradle` or `build.gradle.kts` 
 Gradle build file with the following contents:
 
-<tabs>
-
-```groovy
-plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
-}
-
-repositories {
-    mavenCentral()
-}
-
-kotlin {
-  macosX64('native') { // on macOS
-  // linuxX64('native') // on Linux
-  // mingwX64('native') // on Windows
-    binaries {
-      executable()
-    }
-  }
-}
-
-wrapper {
-  gradleVersion = '%gradleVersion%'
-  distributionType = 'BIN'
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 plugins {
@@ -75,13 +51,36 @@ tasks.withType<Wrapper> {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+plugins {
+    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
+}
+
+repositories {
+    mavenCentral()
+}
+
+kotlin {
+  macosX64('native') { // on macOS
+  // linuxX64('native') // on Linux
+  // mingwX64('native') // on Windows
+    binaries {
+      executable()
+    }
+  }
+}
+
+wrapper {
+  gradleVersion = '%gradleVersion%'
+  distributionType = 'BIN'
+}
+```
+
+</tab>
 </tabs>
-
-The prepared project sources can be directly downloaded from Github:
-
-* for macOS: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-groovy-macos.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-kotlin-macos.zip)
-* for Linux: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-groovy-linux.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-kotlin-linux.zip)
-* for Windows: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-groovy-windows.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-kotlin-windows.zip)
 
 Next, create an empty `settings.gradle` or `settings.gradle.kts` file in the project folder.
 

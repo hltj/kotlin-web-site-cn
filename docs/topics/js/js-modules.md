@@ -44,12 +44,8 @@ Webpack 提供了 `commonjs` 与 `commonjs2` 这两种不同的 CommonJS“风�
 
 要选择模块种类，请在 Gradle 构建脚本中设置 `moduleKind` 编译器选项。
 
-<tabs>
-
-```groovy
-compileKotlinJs.kotlinOptions.moduleKind = "commonjs"
-
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 tasks.named<KotlinJsCompile>("compileKotlinJs").configure {
@@ -57,6 +53,14 @@ tasks.named<KotlinJsCompile>("compileKotlinJs").configure {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+compileKotlinJs.kotlinOptions.moduleKind = "commonjs"
+```
+
+</tab>
 </tabs>
 
 可用值为：`umd`（默认）、`commonjs`、`amd`、`plain`。

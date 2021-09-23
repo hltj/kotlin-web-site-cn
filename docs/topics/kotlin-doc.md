@@ -23,7 +23,6 @@ Dokka 有 Gradle、Maven 和 Ant 的插件，因此你可以将文档生成集�
 
 以下是使用 KDoc 编写类文档的一个示例：
 
-
 ```kotlin
 /**
  * 一组*成员*。
@@ -43,7 +42,6 @@ class Group<T>(val name: String) {
 }
 ```
 
-
 ### 块标签
 
 KDoc 目前支持以下块标签（block tags）：
@@ -59,59 +57,59 @@ KDoc 目前支持以下块标签（block tags）：
 @param[name] 描述。
 ```
 
-### `@return`
+### @return
 
 用于函数的返回值。
 
-### `@constructor`
+### @constructor
 
 用于类的主构造函数。
 
-### `@receiver`
+### @receiver
 
 用于扩展函数的接收者。
 
-### `@property <名称>`
+### @property *名称>*
 
 用于类中具有指定名称的属性。这个标签可用于在<!--
 -->主构造函数中声明的属性，当然直接在属性定义的前面放置 doc 注释会很<!--
 -->别扭。
 
-### `@throws <类>`, `@exception <类>`
+### @throws *类*、 @exception *类*
 
 用于方法可能抛出的异常。因为 Kotlin 没有受检异常，所以<!--
 -->也没有期望所有可能的异常都写文档，但是当它会为类的用户提供有用的信息时，
 仍然可以使用这个标签。
 
-### `@sample <标识符>`
+### @sample *标识符*
 
 将具有指定限定的名称的函数的主体嵌入到当前元素的文档中，
 以显示如何使用该元素的示例。
 
-### `@see <标识符>`
+### @see *标识符*
 
 将到指定类或方法的链接添加到文档的**另请参见**块。
 
-### `@author`
+### @author
 
 指定要编写文档的元素的作者。
 
-### `@since`
+### @since
 
 指定要编写文档的元素引入时的软件版本。
 
-### `@suppress`
+### @suppress
 
 从生成的文档中排除元素。可用于不是模块的官方 API 的一部分<!--
 -->但还是必须在对外可见的元素。
 
 > KDoc 不支持 `@deprecated` 这个标签。作为替代，请使用 `@Deprecated` 注解。
-{:.note}
-
+>
+{type="note"}
 
 ## 内联标记
 
-对于内联标记，KDoc 使用常规 [Markdown](http://daringfireball.net/projects/markdown/syntax) 语法，扩展<!--
+对于内联标记，KDoc 使用常规 [Markdown](https://daringfireball.net/projects/markdown/syntax) 语法，扩展<!--
 -->了支持用于链接到代码中其他元素的简写语法。
 
 ### 链接到元素
@@ -143,7 +141,6 @@ KDoc 目前支持以下块标签（block tags）：
 -->工具将一个函数的所有重载的文档放在同一页面上，标识一个特定的重载函数<!--
 -->并不是链接生效所必需的。
 
-
 ## 模块和包文档
 
 作为一个整体的模块、以及该模块中的包的文档，由单独的 Markdown 文件提供，
@@ -151,11 +148,12 @@ KDoc 目前支持以下块标签（block tags）：
 -->将该文件的路径传递给 Dokka。
 
 在该文件内部，作为一个整体的模块和分开的软件包的文档由相应的一级标题引入
-。标题的文本对于模块必须是“Module `<模块名>`”，对于包必须是“Package `<限定的包名>`”。
+。标题的文本对于模块必须是 **Module `<模块名>`**，对于包必须是 **Package `<限定的包名>`**
+。
 
 以下是该文件的一个示例内容：
 
-```
+```text
 # Module kotlin-demo
 
 该模块显示 Dokka 语法的用法。
@@ -172,4 +170,3 @@ KDoc 目前支持以下块标签（block tags）：
 
 另一个包中有用的东西。
 ```
-

@@ -1,15 +1,15 @@
 [//]: # (title: 可见性修饰符)
 
-类、对象、接口、构造函数、方法、属性和它们的 setter 都可以有*可见性修饰符*。
+类、对象、接口、构造函数、方法与属性及其 setter 都可以有*可见性修饰符*。
 getter 总是与属性有着相同的可见性。
 
 在 Kotlin 中有这四个可见性修饰符：`private`、 `protected`、 `internal` 和 `public`。
 默认可见性是 `public`。
 
 在本页可以学到这些修饰符如何应用到不同类型的声明作用域。
-  
+
 ## 包
-  
+
 函数、属性和类、对象和接口可以直接在包内的顶层声明：
 
 ```kotlin
@@ -20,13 +20,13 @@ fun baz() { …… }
 class Bar { …… }
 ```
 
-*  如果你不指定任何可见性修饰符，默认为 `public`，这意味着你的声明<!--
--->将随处可见。
+* 如果你不使用任何可见性修饰符，默认为 `public`，这意味着你的声明<!--
+  -->将随处可见。
 * 如果你声明为 `private`，它只会在声明它的文件内可见。
 * 如果你声明为 `internal`，它会在相同[模块](#模块)内随处可见。
-* `protected` 不适用于顶层声明。
+* `protected` 修饰符不适用于顶层声明。
 
->要使用另一包中可见的顶层声明，仍需将其[导入](packages.md#导入)进来。
+>要使用另一包中可见的顶层声明，需要将其[导入](packages.md#导入)进来。
 >
 {type="note"}
 
@@ -44,12 +44,12 @@ public var bar: Int = 5 // 该属性随处可见
 internal val baz = 6    // 相同模块内可见
 ```
 
-## 类和接口
+## 类成员
 
 对于类内部声明的成员：
 
-* `private` 意味着只在这个类内部（包含其所有成员）可见；
-* `protected` 和 `private`一样但也在子类中可见。
+* `private` 意味着只该成员在这个类内部（包含其所有成员）可见；
+* `protected` 意味着该成员具有与 `private` 一样的可见性，但也在子类中可见。
 * `internal` 意味着能见到类声明的*本模块内*的任何客户端都可见其 `internal` 成员。
 * `public` 移位置能见到类声明的任何客户端都可见其 `public` 成员。
 
@@ -57,16 +57,16 @@ internal val baz = 6    // 相同模块内可见
 >
 {type="note"}
 
-如果你覆盖一个 `protected` 成员并且没有显式指定其可见性，该成员还会是 
-`protected` 可见性。
- 
+如果你覆盖一个 `protected` 或 `internal` 成员并且没有显式指定其可见性，该成员<!--
+-->还会具有与原始成员相同的可见性。
+
 例子:
 
 ```kotlin
 open class Outer {
     private val a = 1
     protected open val b = 2
-    internal val c = 3
+    internal open val c = 3
     val d = 4  // 默认 public
     
     protected class Nested {
@@ -80,6 +80,7 @@ class Subclass : Outer() {
     // Nested 和 e 可见
 
     override val b = 5   // “b”为 protected
+    override val c = 7   // 'c' is internal
 }
 
 class Unrelated(o: Outer) {
@@ -91,7 +92,7 @@ class Unrelated(o: Outer) {
 
 ### 构造函数
 
-要指定一个类的的主构造函数的可见性，使用以下语法：
+使用以下语法来指定一个类的的主构造函数的可见性：
 
 > You need to add an explicit `constructor` keyword.
 >
@@ -112,9 +113,10 @@ class C private constructor(a: Int) { …… }
 ## 模块
 
 可见性修饰符 `internal` 意味着该成员只在相同模块内可见。更具体地说，
-一个模块是编译在一起的一套 Kotlin 文件：
+一个模块是编译在一起的一套 Kotlin 文件，例如：
 
-  * 一个 IntelliJ IDEA 模块
-  * 一个 Maven 项目
-  * 一个 Gradle 源集（例外是 `test` 源集可以访问 `main` 的 internal 声明）
-  * 一次 `<kotlinc>` Ant 任务执行所编译的一套文件
+* 一个 IntelliJ IDEA 模块
+* 一个 Maven 项目
+* 一个 Gradle 源集（例外是 `test` 源集可以访问 `main` 的 internal 声明）
+* 一次 `<kotlinc>` Ant 任务执行所编译的一套文件
+

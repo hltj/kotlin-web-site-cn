@@ -1,6 +1,6 @@
 import AOS from 'aos';
 import $ from 'jquery';
-import Map from "../events/map/Map";
+import Map, {MapStore} from "../events/map/Map";
 
 import './community.scss';
 
@@ -114,6 +114,24 @@ ${point.city} (${point.country}), ${point.period}`,
       }))
 }
 
+function convertUserGroupsToPoints(userGroupPoints) {
+  return userGroupPoints
+      .flatMap((section) => section.groups)
+      .filter(point => point.position)
+      .map(point => ({
+        tags: [],
+        alt: point.name,
+        title: `<a target="_blank" href="${point.url}">${point.name}</a><br>
+${point.country}`,
+        city: {
+          position: {
+            lat: point.position.lat,
+            lng: point.position.lng,
+          }
+        }
+      }))
+}
+
 async function iniKotlinConfMap() {
   const $kotlinConf = $('#kotlinconf-global');
 
@@ -125,13 +143,25 @@ async function iniKotlinConfMap() {
 
     const kotlinConfPoints = await $.getJSON('/data/kotlinconf.json');
 
-    Map.create(tag, {
+    Map.create(tag, new MapStore({
       events: convertToPoints(kotlinConfPoints)
-    });
+    }));
+  }
+}
+
+async function iniUserGroupsMap() {
+  const mapTag = document.getElementById('user-groups-map');
+  if (mapTag) {
+    const userGroupPoints = await $.getJSON('/data/user-groups.json');
+
+    Map.create(mapTag, new MapStore({
+      events: convertUserGroupsToPoints(userGroupPoints)
+    }));
   }
 }
 
 $(function() {
   initAllSpeakKotlin();
   iniKotlinConfMap();
+  iniUserGroupsMap();
 })

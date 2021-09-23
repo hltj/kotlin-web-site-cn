@@ -19,13 +19,8 @@ Kotlin/JS Gradle 插件提供了与 Dukat 的集成。启用后，
 `npm` 依赖函数在包名称与版本之后采用第三个参数：`generateExternals`。
 这使得可以控制 Dukat 是否应为特定依赖项生成声明：
 
-<tabs>
-
-```groovy
-dependencies {
-    implementation(npm('decamelize', '4.0.0', true))
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 dependencies {
@@ -33,22 +28,32 @@ dependencies {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+dependencies {
+    implementation(npm('decamelize', '4.0.0', true))
+}
+```
+
+</tab>
 </tabs>
 
 如果希望使用的依赖项存储库不提供 TypeScript 定义，那么还可以使用<!--
 -->通过 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) 存储库提供的类型。在这种情况下，
 请确保同时为 `your-package` 与 `@types/your-package` 添加 `npm` 依赖项（`generateExternals = true`）。
 
-可以在 `gradle.properties` 文件中使用标志 `kotlin.js.generate.externals` 来同时为<!--
--->所有 npm 依赖项设置生成器的行为。像往常一样，单个显式设置优先于该常规标志。
+可以在 `gradle.properties` 文件中使用选项 `kotlin.js.generate.externals` 来同时为<!--
+-->所有 npm 依赖项设置生成器的行为。像往常一样，单个显式设置优先于该常规选项。
 
 ## 通过 Gradle 任务手动生成外部声明
 
 如果想完全控制 Dukat 生成的声明、想要应用手动调整、或者<!--
--->遇到自动生成的外部组件的麻烦，还可以通过触发 Gradle 任务 `generateExternals` 手动为所有
-npm 依赖项创建声明。这将在项目根目录中<!--
--->名为 `externals` 的目录中生成声明。在这里，可以查看生成的代码，并将想要使用的任何部分复制<!--
--->到源代码目录中。
+-->遇到自动生成的外部组件的麻烦，还可以通过触发 Gradle 任务 `generateExternals` (`jsGenerateExternals` with the multiplatform
+plugin) 手动为所有 npm 依赖项创建声明。这将在项目根目录中<!--
+-->名为 `externals` 的目录中生成声明。在这里，可以查看<!--
+-->生成的代码，并将想要使用的任何部分复制到源代码目录中。
 
 建议仅在源文件夹中手动提供外部声明，_或_ 在构建时为任何单个依赖项启用<!--
 -->外部声明的生成。两种办法都可以解决问题。

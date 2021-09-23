@@ -344,7 +344,7 @@ reference:
         - url: /docs/reference/compiler-plugins.html
           title: 编译器插件
         - url: /docs/reference/kapt.html
-          title: Kapt
+          title: kapt
         - url: /docs/reference/kotlin-doc.html
           title: Dokka
         - url: /docs/reference/kotlin-osgi.html
@@ -361,6 +361,8 @@ reference:
           title: Kotlin 1.3 的兼容性指南
         - url: /docs/reference/compatibility-guide-14.html
           title: Kotlin 1.4 的兼容性指南
+        - url: /docs/reference/compatibility-guide-15.html
+          title: Compatibility Guide for Kotlin 1.5
 
     - title: 常见问题
       description: 你想到的问题可能会在这里得到解答。

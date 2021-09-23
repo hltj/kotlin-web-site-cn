@@ -14,14 +14,14 @@ Kotlin/Native 的主要设计目标是让 Kotlin 可以为不希望或者不可�
 ## 目标平台
 
 Kotlin/Native 支持以下平台：
-* iOS（arm32、 arm64、 模拟器 x86_64）
-* macOS（x86_64）
-* watchOS (arm32、 arm64、 x86、 x86_64)
-* tvOS (arm64、 x86_64)
-* Android（arm32、arm64、 x86、 x86_64）
-* Windows（mingw x86_64、 x86）
-* Linux（x86_64、 arm32、 arm64、 MIPS、 MIPS 小端次序）
-* WebAssembly（wasm32）
+   * macOS
+   * iOS, tvOS, watchOS
+   * Linux
+   * Windows (MinGW)
+   * Android NDK
+
+[The full list of supported targets is available here](mpp-supported-platforms.md).
+
 
 ## 互操作
 
@@ -63,22 +63,22 @@ Kotlin code in one place and share it with all or several target platforms.
 Kotlin 新手？可以看看[ Kotlin 入门](getting-started.md)页。
 
 Recommended documentation: 
-- [Kotlin 移动端多平台文档](https://kotlinlang.org/docs/mobile/home.html)
+- [Kotlin 移动端多平台文档](kmm-getting-started.md)
 - [多平台文档](mpp-intro.md)
 - [C 语言互操作](native-c-interop.md)
 - [Swift/Objective-C 互操作](native-objc-interop.md)
 
 Recommended tutorials:
 * [Get started with Kotlin/Native](native-get-started.md)
-* [Create your first KMM application](https://kotlinlang.org/docs/mobile/create-first-app.html)
+* [Create your first KMM application](kmm-create-first-app.md)
 - [C 语言 Kotlin/Native 之间的类型映射](mapping-primitive-data-types-from-c.md)
 - [Kotlin/Native 开发动态库](native-dynamic-libraries.md)
 - [Kotlin/Native 开发 Apple 框架](apple-framework.md)
 
 ## 样例项目
 
-* [Kotlin 移动端多平台示例](https://kotlinlang.org/docs/mobile/samples.html)
-* [Kotlin/Native 源代码与示例](https://github.com/JetBrains/kotlin-native/tree/master/samples) 
+* [Kotlin 移动端多平台示例](kmm-samples.md)
+* [Kotlin/Native 源代码与示例](https://github.com/JetBrains/kotlin/tree/master/kotlin-native/samples) 
 * [KotlinConf app](https://github.com/JetBrains/kotlinconf-app) 
 * [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)
 * [Kotlin/Native 源代码与示例（.tgz）](https://download.jetbrains.com/kotlin/native/kotlin-native-samples-1.0.1.tar.gz)

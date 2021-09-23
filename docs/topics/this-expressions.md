@@ -8,7 +8,7 @@
 
 如果 `this` 没有限定符，它指的是最内层的包含它的作用域。要引用其他作用域中的 `this`，请使用 _标签限定符_：
 
-## 限定的 `this`
+## 限定的 this
 
 要访问来自外部作用域的 `this`（一个[类](classes.md) 或者[扩展函数](extensions.md)，
 或者带标签的[带有接收者的函数字面值](lambdas.md#带有接收者的函数字面值)）使用`this@label`，
@@ -28,7 +28,7 @@ class A { // 隐式标签 @A
                 val d = this // funLit 的接收者
             }
 
-val funLit2 = { s: String ->
+            val funLit2 = { s: String ->
                 // foo() 的接收者，因为它包含的 lambda 表达式
                 // 没有任何接收者
                 val d1 = this
@@ -38,7 +38,7 @@ val funLit2 = { s: String ->
 }
 ```
 
-## Implicit `this`
+## Implicit this
 
 当对 `this` 调用成员函数时，可以省略 `this.` 部分。
 但是如果有一个同名的非成员函数时，请谨慎使用，因为在某些情况下会调用同名的非成员：

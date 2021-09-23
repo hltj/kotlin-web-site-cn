@@ -49,5 +49,5 @@ OpenGL、 zlib 以及其他热门原生库<!--
 
 Kotlin/Native 版本库中提供了大量的示例<!--
 -->演示平台库的使用。
-详见[样例](https://github.com/JetBrains/kotlin-native/tree/master/samples)。
+详见[样例](https://github.com/JetBrains/kotlin/tree/master/kotlin-native/samples)。
 

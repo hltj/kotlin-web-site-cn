@@ -6,7 +6,7 @@
 
 Support for multiplatform programming is one of Kotlin’s key benefits. It reduces time spent writing and maintaining the
  same code for [different platforms](mpp-supported-platforms.md) while retaining the flexibility and benefits of native programming. 
- Learn more about [Kotlin Mutliplatform benefits](multiplatform.md).
+ Learn more about [Kotlin Multiplatform benefits](multiplatform.md).
 
 With Kotlin Multiplatform, share the code using the mechanisms Kotlin provides: 
  
@@ -18,8 +18,6 @@ business logic that applies to all platforms.
 *   [Share code among some platforms](mpp-share-on-platforms.md#share-code-on-similar-platforms) included in your project but not all. You can 
 reuse much of the code in similar platforms using a hierarchical structure. You can use [target shortcuts](mpp-share-on-platforms.md#use-target-shortcuts) 
 for common combinations of targets or [create the hierarchical structure manually](mpp-share-on-platforms.md#configure-the-hierarchical-structure-manually).
-    
-    ![Code shared for iOS targets](iosmain-hierarchy.png){width=400}
     
     ![Hierarchical structure](hierarchical-structure.png)
 

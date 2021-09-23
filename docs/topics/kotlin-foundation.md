@@ -21,7 +21,7 @@ Kotlin 基金会的主要职能是：
 **首席语言设计师**负责关于项目开发及语言演进的所有决策。基金会任命首席语言设计师，但不直接决定项目的进程。
 
 <a name="language-committee"></a>
-**不兼容的变更**。由基金会任命的一个特殊的语言委员会评审首席语言设计师提出的变更，并有权拒绝[_不兼容的变更_](kotlin-evolution.md#不兼容的变更)或者要求执行某些弃用过程。语言委员会无权过问兼容的变更，例如为语言添加新功能。兼容的变更由首席语言设计师自行决定。委员会维持一套在做决定时所遵循得[准则](language-committee-guidelines.md)。语言委员会的会议纪要可[在线查看](https://docs.google.com/document/d/1ReH84Cw_ZhGOUM_MdMQbLjzB0edXIeaFuBUF5molsuI/preview)。
+**不兼容的变更**。由基金会任命的一个特殊的语言委员会评审首席语言设计师提出的变更，并有权拒绝[不兼容的变更](kotlin-evolution.md#不兼容的变更)或者要求执行某些弃用过程。语言委员会无权过问兼容的变更，例如为语言添加新功能。兼容的变更由首席语言设计师自行决定。委员会维持一套在做决定时所遵循得[准则](language-committee-guidelines.md)。语言委员会的会议纪要可[在线查看](https://docs.google.com/document/d/1ReH84Cw_ZhGOUM_MdMQbLjzB0edXIeaFuBUF5molsuI/preview)。
 
 ## 结构
 
@@ -33,7 +33,7 @@ Kotlin 基金会是一家在美国特拉华州注册的非营利性非股份公�
 
 总裁：Maxim Shafirov（JetBrains）
 
-秘书：Max Sills（Google）
+秘书：David Winer（Google）
 
 董事会：
 *   Maxim Shafirov（JetBrains）

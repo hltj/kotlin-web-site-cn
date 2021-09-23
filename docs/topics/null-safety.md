@@ -6,20 +6,20 @@ Kotlin 的类型系统旨在消除来自代码空引用的危险，也称为[《
 
 许多编程语言（包括 Java）中最常见的陷阱之一，就是访问空引用的成员<!--
 -->会导致空引用异常。在 Java 中，这等同于 `NullPointerException` 
-或简称 `NPE`。
+或简称 *NPE*。
 
-Kotlin 的类型系统旨在从我们的代码中消除 `NullPointerException`。NPE 的可能的原因只可能是：
+Kotlin 中 NPE 的可能的原因只可能是：
 
 * 显式调用 `throw NullPointerException()`。
 * 使用了下文描述的 `!!` 操作符。
-* 有些数据在初始化时不一致，例如当：
+* 数据在初始化时不一致，例如当：
   * 传递一个在构造函数中出现的未初始化的 `this` 并用于其他地方（“泄漏 `this`”）。
   * [超类的构造函数调用一个开放成员](inheritance.md#派生类初始化顺序)，该成员在派生中类的实现<!--
   -->使用了未初始化的状态。
 * Java 互操作：
   * 企图访问[平台类型](java-interop.md#空安全与平台类型)的 `null` 引用的成员；
-  * 用于具有错误可空性的 Java 互操作的泛型类型，例如一段 Java 代码可能会向 Kotlin 的 `MutableList<String>` 中加入
-  `null`，这意味着应该使用 `MutableList<String?>` 来处理它。
+  * 用于 Java 互操作的泛型类型的可空性问题，例如一段 Java 代码可能会向 Kotlin 的 `MutableList<String>` 中加入
+  `null`，就需要一个 `MutableList<String?>` 才能处理。
   * 由外部 Java 代码引发的其他问题。
 
 在 Kotlin 中，类型系统区分一个引用可以容纳 `null` （可空引用）还是<!--
@@ -34,9 +34,9 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true"}
+{kotlin-runnable="true" validate="false"}
 
-如果要允许为空，可以声明一个变量为可空字符串，写作 `String?`：
+如果要允许为空，可以声明一个变量为可空字符串（写作 `String?`）：
 
 ```kotlin
 fun main() {
@@ -88,13 +88,13 @@ fun main() {
 ```
 {kotlin-runnable="true"}
 
-请注意，这只适用于 `b` 是不可变的情况（即在检测和使用之间没有修改过的局部变量
-，或者不可覆盖并且有幕后字段的 `val` 成员），因为否则可能会发生<!--
+请注意，这只适用于 `b` 是不可变的情况（即在检测与使用之间没有修改过的局部变量
+，或是有幕后字段且不可覆盖的 `val` 成员），因为否则可能会发生<!--
 -->在检测之后 `b` 又变为 `null` 的情况。
 
 ## 安全的调用
 
-你的第二个选择是安全调用操作符，写作 `?.`：
+Your second option for accessing a property on a nullable variable is using the safe call operator `?.`:
 
 ```kotlin
 fun main() {
@@ -110,8 +110,8 @@ fun main() {
 
 如果 `b` 非空，就返回 `b.length`，否则返回 `null`，这个表达式的类型是 `Int?`。
 
-安全调用在链式调用中很有用。例如，如果一个员工 Bob 可能会（或者不会）分配给一个部门，
-并且可能有另外一个员工是该部门的负责人，那么获取 Bob 所在部门负责人（如果有的话）的名字，
+安全调用在链式调用中很有用。例如，一个员工 Bob 可能会（或者不会）分配给一个部门。
+可能有另外一个员工是该部门的负责人。获取 Bob 所在部门负责人（如果有的话）的名字，
 写作：
 
 ```kotlin
@@ -151,18 +151,18 @@ person?.department?.head = managersPool.getManager()
 val l: Int = if (b != null) b.length else -1
 ```
 
-除了完整的 `if`-表达式，这还可以通过 Elvis 操作符表达，写作 `?:`：
+Instead of writing the complete `if` expression, you can also express this with the Elvis operator `?:`:
 
 ```kotlin
 val l = b?.length ?: -1
 ```
 
-如果 `?:` 左侧表达式不是 `null`，elvis 操作符就返回其左侧表达式，否则返回<!--
+如果 `?:` 左侧表达式不是 `null`，Elvis 操作符就返回其左侧表达式，否则返回<!--
 -->右侧表达式。
 请注意，当且仅当左侧为 `null` 时，才会对右侧表达式求值。
 
 因为 `throw` 和 `return` 在 Kotlin 中都是表达式，所以它们也可以用在
-elvis 操作符右侧。这可能会非常方便，例如，检测函数参数：
+elvis 操作符右侧。这可能会很方便，例如，检测函数参数：
 
 ```kotlin
 fun foo(node: Node): String? {
@@ -202,4 +202,3 @@ val aInt: Int? = a as? Int
 val nullableList: List<Int?> = listOf(1, 2, null, 4)
 val intList: List<Int> = nullableList.filterNotNull()
 ```
-

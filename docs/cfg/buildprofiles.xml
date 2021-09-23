@@ -10,7 +10,9 @@
         </browser-edits-url-override>
         <kotlin-latest-url>%kotlinLatestUrl%</kotlin-latest-url>
         <generate-only-default-anchors>true</generate-only-default-anchors>
-        <web-root>http://www.jetbrains.com/idea/</web-root>
+        <web-root>https://kotlinlang.org/docs/</web-root>
+        <og-image>https://kotlinlang.org/assets/images/open-graph/docs.png</og-image>
+        <og-twitter>@kotlin</og-twitter>
         <web-community-path>Kotlin Community:https://kotlinlang.org/community/</web-community-path>
         <download-page/>
         <relative-url-to-absolute-prefix>https://github.com/Kotlin/kotlinx.coroutines/blob/master/</relative-url-to-absolute-prefix>
@@ -20,19 +22,22 @@
         <config-disqus-show>true</config-disqus-show>
         <config-feedback-enabled>true</config-feedback-enabled>
         <config-feedback-widget>true</config-feedback-widget>
-        <config-feedback-support>http://kotl.in/issue</config-feedback-support>
+        <config-feedback-support>https://kotl.in/issue</config-feedback-support>
         <config-feedback-url>https://data.services.jetbrains.com/feedback</config-feedback-url>
         <config-webmaster>doc-feedback@kotlinlang.org</config-webmaster>
         <config-sideblocks>true</config-sideblocks>
-        <allow-indexable-eaps>true</allow-indexable-eaps>
+        <noindex-content-in-deprecated>true</noindex-content-in-deprecated>
+        <noindex-content-in-eap>false</noindex-content-in-eap>
+        <noindex-content-in-release>false</noindex-content-in-release>
         <config-search-scopes-provider>https://www.jetbrains.com/search/json/</config-search-scopes-provider>
             <custom-favicons>
         <![CDATA[
-<link rel="icon" href="https://kotlinlang.org/assets/images/favicon.ico" type="image/x-icon"/>
-<link rel="apple-touch-icon" sizes="57x57" href="https://kotlinlang.org/assets/images/apple-touch-icon.png"/>
-<link rel="apple-touch-icon" sizes="72x72" href="https://kotlinlang.org/assets/images/apple-touch-icon-72x72.png"/>
-<link rel="apple-touch-icon" sizes="114x114" href="https://kotlinlang.org/assets/images/apple-touch-icon-114x114.png"/>
-<link rel="apple-touch-icon" sizes="144x144" href="https://kotlinlang.org/assets/images/apple-touch-icon-144x144.png"/>
+<link rel="icon" href="https://kotlinlang.org/assets/images/favicon.svg?v2" type="image/svg+xml">
+<link rel="alternate icon" href="https://kotlinlang.org/assets/images/favicon.ico?v2" type="image/x-icon"/>
+<link rel="apple-touch-icon" sizes="57x57" href="https://kotlinlang.org/assets/images/apple-touch-icon.png?v2"/>
+<link rel="apple-touch-icon" sizes="72x72" href="https://kotlinlang.org/assets/images/apple-touch-icon-72x72.png?v2"/>
+<link rel="apple-touch-icon" sizes="114x114" href="https://kotlinlang.org/assets/images/apple-touch-icon-114x114.png?v2"/>
+<link rel="apple-touch-icon" sizes="144x144" href="https://kotlinlang.org/assets/images/apple-touch-icon-144x144.png?v2"/>
         ]]>
     </custom-favicons>
     </variables>

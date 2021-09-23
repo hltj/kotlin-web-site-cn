@@ -67,35 +67,8 @@ the missing directories will have to be created before any new files can be adde
 
 Use the following `build.gradle(.kts)` Gradle build file:
 
-<tabs>
-
-```groovy
-plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
-}
-
-repositories {
-    mavenCentral()
-}
-
-kotlin {
-  linuxX64("native") {  // on Linux
-  // macosX64("native") { // on macOS
-  // mingwX64("native") { //on Windows
-    binaries {
-      sharedLib {
-        baseName = "native" // on Linux and macOS
-        // baseName = "libnative" //on Windows
-      }
-    }
-  }
-}
-
-wrapper {
-  gradleVersion = "%gradleVersion%"
-  distributionType = "ALL"
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 plugins {
@@ -107,8 +80,9 @@ repositories {
 }
 
 kotlin {
-  linuxX64("native") { // on Linux
-  // macosX64("native") { // on macOS
+  linuxX64("native") { // on Linux 
+  // macosX64("native") { // on x86_64 macOS
+  // macosArm64("native") { // on Apple Silicon macOS
   // mingwX64("native") { // on Windows
     binaries {
       sharedLib {
@@ -125,13 +99,40 @@ tasks.wrapper {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+plugins {
+    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
+}
+
+repositories {
+    mavenCentral()
+}
+
+kotlin {
+  linuxX64("native") { // on Linux
+  // macosX64("native") { // on x86_64 macOS
+  // macosArm64("native") { // on Apple Silicon macOS
+  // mingwX64("native") { // on Windows
+    binaries {
+      sharedLib {
+        baseName = "native" // on Linux and macOS
+        // baseName = "libnative" // on Windows
+      }
+    }
+  }
+}
+
+wrapper {
+  gradleVersion = "%gradleVersion%"
+  distributionType = "ALL"
+}
+```
+
+</tab>
 </tabs>
-
-The prepared project sources can be directly downloaded from Github:
-
-* for macOS: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-shared-lib-groovy-macos.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-shared-lib-kotlin-macos.zip)
-* for Linux: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-shared-lib-groovy-linux.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-shared-lib-kotlin-linux.zip)
-* for Windows: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-shared-lib-groovy-windows.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-shared-lib-kotlin-windows.zip)
 
 Move the sources file into the `src/nativeMain/kotlin` folder under
 the project. This is the default path, for where sources are located, when
@@ -473,7 +474,7 @@ cl.exe main.c libnative.lib
 
 动态库是从现有程序使用 Kotlin 代码的主要方式。
 可以使用它们来共享代码到许多平台以及其他语言，包括 JVM、
-[Python](https://github.com/JetBrains/kotlin-native/blob/master/samples/python_extension/src/main/c/kotlin_bridge.c)、
+[Python](https://github.com/JetBrains/kotlin/blob/master/kotlin-native/samples/python_extension/src/main/c/kotlin_bridge.c)、
 iOS、Android 以及其他平台。
 
 Kotlin/Native 同样也可以与 Objective-C 以及 Swift 紧密集成。

@@ -1,11 +1,41 @@
 [//]: # (title: 对象表达式与对象声明)
 
-有时候需要创建一个对某个类做了轻微改动的类的对象，而不用为之显式声明新的子类。
-Kotlin 用*对象表达式*和*对象声明*处理这种情况。
+有时候需要创建一个对某个类做了轻微改动的类的对象，而不用为之显式声明<!--
+-->新的子类。 Kotlin 可以用*对象表达式*与*对象声明*处理这种情况。
 
 ## 对象表达式
 
-如需创建一个继承自某个（或某些）类型的匿名类的对象，可以这么写：
+_Object expressions_ create objects of anonymous classes, that is, classes that aren't explicitly declared with the `class`
+declaration. Such classes are useful for one-time use. You can define them from scratch, inherit from existing classes,
+or implement interfaces. Instances of anonymous classes are also called _anonymous objects_ because they are defined by
+an expression, not a name.
+
+### Creating anonymous objects from scratch
+
+Object expressions start with the `object` keyword.
+
+If you just need an object that doesn’t have any nontrivial supertypes, write its members in curly braces after `object`:
+
+```kotlin
+
+fun main() {
+//sampleStart
+    val helloWorld = object {
+        val hello = "Hello"
+        val world = "World"
+        // object expressions extend Any, so `override` is required on `toString()`
+        override fun toString() = "$hello $world"
+    }
+//sampleEnd
+    print(helloWorld)
+}
+```
+{kotlin-runnable="true"}
+
+### Inheriting anonymous objects from supertypes
+
+如需创建一个继承自某个（或某些）类型的匿名类的对象， specify this type after `object` and a
+colon (`:`). Then implement or override the members of this class as if you were [inheriting](inheritance.md) from it:
 
 ```kotlin
 window.addMouseListener(object : MouseAdapter() {
@@ -15,7 +45,7 @@ window.addMouseListener(object : MouseAdapter() {
 })
 ```
 
-如果超类型有一个构造函数，则必须传递适当的构造函数参数给它。
+如果超类型有一个构造函数，那么传递适当的构造函数参数给它。
 多个超类型可以由跟在冒号后面的逗号分隔的列表指定：
 
 ```kotlin
@@ -30,43 +60,60 @@ val ab: A = object : A(1), B {
 }
 ```
 
-如果只是需要“一个对象而已”，并不需要特殊超类型，那么可以这样写：
+### Using anonymous objects as return and value types
 
-```kotlin
-fun foo() {
-    val adHoc = object {
-        var x: Int = 0
-        var y: Int = 0
-    }
-    print(adHoc.x + adHoc.y)
-}
-```
-
-请注意，匿名对象可以用作只在本地和私有作用域中声明的类型。如果你使用匿名对象作为公有函数的<!--
--->返回类型或者用作公有属性的类型，那么该函数或属性的实际类型<!--
--->会是匿名对象声明的超类型，如果你并未声明任何超类型就会是 `Any`。在匿名对象<!--
--->中添加的成员将无法访问。
+When an anonymous object is used as a type of a local or [private](visibility-modifiers.md#packages) but not [inline](inline-functions.md)
+declaration (function or property), all its members are accessible via this function or property:
 
 ```kotlin
 class C {
-    // 私有函数，所以其返回类型是匿名对象类型
-    private fun foo() = object {
+    private fun getObject() = object {
         val x: String = "x"
     }
 
-    // 公有函数，所以其返回类型是 Any
-    fun publicFoo() = object {
-        val x: String = "x"
-    }
-
-    fun bar() {
-        val x1 = foo().x        // 没问题
-        val x2 = publicFoo().x  // 错误：未能解析的引用“x”
+    fun printX() {
+        println(getObject().x)
     }
 }
 ```
 
-对象表达式中的代码可以访问来自包含它的作用域的变量。
+If this function or property is public or private inline, its actual type is:
+* `Any` if the anonymous object doesn't have a declared supertype
+* The declared supertype of the anonymous object, if there is exactly one such type
+* The explicitly declared type if there is more than one declared supertype
+
+In all these cases, members added in the anonymous object are not accessible. Overridden members are accessible if they
+are declared in the actual type of the function or property:
+
+```kotlin
+interface A {
+    fun funFromA() {}
+}
+interface B
+
+class C {
+    // The return type is Any. x is not accessible
+    fun getObject() = object {
+        val x: String = "x"
+    }
+
+    // The return type is A; x is not accessible
+    fun getObjectA() = object: A {
+        override fun funFromA() {}
+        val x: String = "x"
+    }
+
+    // The return type is B; funFromA() and x are not accessible
+    fun getObjectB(): B = object: A, B { // explicit return type is required
+        override fun funFromA() {}
+        val x: String = "x"
+    }
+}
+```
+
+### Accessing variables from anonymous objects
+
+对象表达式中的代码可以访问来自包含它的作用域的变量：
 
 ```kotlin
 fun countClicks(window: JComponent) {
@@ -87,9 +134,10 @@ fun countClicks(window: JComponent) {
 ```
 
 ## 对象声明
+{id="object-declarations-overview"}
 
-[单例模式](http://en.wikipedia.org/wiki/Singleton_pattern)在一些场景中很有用，
-而 Kotlin（继 Scala 之后）使单例声明变得很容易：
+[单例](https://en.wikipedia.org/wiki/Singleton_pattern)模式在一些场景中很有用，
+而 Kotlin 使单例声明变得很容易：
 
 ```kotlin
 object DataProviderManager {
@@ -103,7 +151,8 @@ object DataProviderManager {
 ```
 
 这称为*对象声明*。并且它总是在 `object` 关键字后跟一个名称。
-就像变量声明一样，对象声明不是一个表达式，不能用在赋值语句的右边。
+就像变量声明一样，对象声明不是一个表达式，不能用在赋值语句<!--
+-->的右边。
 
 对象声明的初始化过程是线程安全的并且在首次访问时进行。
 
@@ -123,8 +172,8 @@ object DefaultListener : MouseAdapter() {
 }
 ```
 
-> 对象声明不能在局部作用域（即直接嵌套在函数内部），但是它们可以嵌套到其他<!-- 
-> -->对象声明或非内部类中。
+> 对象声明不能在局部作用域（即不能直接嵌套在函数内部），但是它们可以嵌套<!-- 
+> -->到其他对象声明或非内部类中。
 >
 {type="note"}
 
@@ -155,6 +204,8 @@ class MyClass {
 
 val x = MyClass.Companion
 ```
+
+Class members can access the private members of the corresponding companion object.
 
 其自身所用的类的名称（不是另一个名称的限定符）可用作对该类的伴生对象
 （无论是否具名）的引用：
@@ -201,4 +252,4 @@ val f: Factory<MyClass> = MyClass
 * 对象表达式是在使用他们的地方*立即*执行（及初始化）的。
 * 对象声明是在第一次被访问到时*延迟*初始化的。
 * 伴生对象的初始化是在相应的类被加载（解析）时，与 Java 静态初始化器的语义相匹配
-。
+  。

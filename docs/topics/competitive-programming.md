@@ -21,11 +21,11 @@
 
 我们来看一个具体的示例。
 
-[Codeforces](http://codeforces.com/) 
+[Codeforces](https://codeforces.com/) 
 第 555 轮第 3 次分赛已于 4 月 26 日举行，意味着它有适合任何开发者尝试的问题。
-可以打开[这个链接](http://codeforces.com/contest/1157)来阅读问题。
+可以打开[这个链接](https://codeforces.com/contest/1157)来阅读问题。
 这组问题中最简单的是<!--
--->[问题 A：可达数](http://codeforces.com/contest/1157/problem/A)。
+-->[问题 A：可达数](https://codeforces.com/contest/1157/problem/A)。
 它要求实现问题陈述中所描述的简单算法。
 
 我们会通过创建一个任意名称的 Kotlin 源文件来解这个问题。`A.kt` 就挺好。
@@ -115,7 +115,7 @@ private fun readInt() = readLn().toInt()
 对于更复杂的问题，Kotlin 丰富的集合函数式操作库就派上用场了，
 可以大幅减少模板代码，并将代码写成从上到下、从左到右的流式数据转换<!--
 -->流水线。例如<!--
--->[问题 B：长数](http://codeforces.com/contest/1157/problem/B)问题<!--
+-->[问题 B：长数](https://codeforces.com/contest/1157/problem/B)问题<!--
 -->用一个简单的贪心算法实现，可以采用这种风格编写而无需任何可变变量：
 
 ```kotlin

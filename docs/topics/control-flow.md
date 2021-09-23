@@ -76,7 +76,7 @@ when (x) {
 
 ```kotlin
 when (x) {
-    parseInt(s) -> print("s encodes x")
+    s.toInt() -> print("s encodes x")
     else -> print("s does not encode x")
 }
 ```
@@ -109,7 +109,7 @@ fun hasPrefix(x: Any) = when(x) {
 ```kotlin
 when {
     x.isOdd() -> print("x is odd")
-    x.isEven() -> print("y is even")
+    y.isEven() -> print("y is even")
     else -> print("x+y is odd")
 }
 ```
@@ -145,7 +145,7 @@ for (item: Int in ints) {
 
 如上所述，`for` 可以循环遍历任何提供了迭代器的对象。这意味着：
 
-* 有一个成员函数或者扩展函数 `iterator()`，并且 `iterator()` 的返回类型：
+* 有一个成员函数或者扩展函数 `iterator()` 返回 `Iterator<>`：
   * 有一个成员函数或者扩展函数 `next()`
   * 有一个成员函数或者扩展函数 `hasNext()` 返回 `Boolean`。
 
@@ -202,7 +202,7 @@ fun main() {
 `while` and `do-while` loops execute their body continuously while their condition is satisfied.
 The difference between them is the condition checking time:
 * `while` checks the condition and, if it's satisfied, executes the body and then returns to the condition check.
-* `do-while` executes the body and then checks the condition. If it's satisfies, the loop repeats. So, the body of `do-while`
+* `do-while` executes the body and then checks the condition. If it's satisfied, the loop repeats. So, the body of `do-while`
 executes at least once regardless of the condition. 
 
 ```kotlin

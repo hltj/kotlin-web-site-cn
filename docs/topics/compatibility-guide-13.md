@@ -1,6 +1,6 @@
 [//]: # (title: Compatibility guide for Kotlin 1.3)
 
-[*Keeping the Language Modern* and *Comfortable Updates*](kotlin-evolution.md) are among the fundamental principles in Kotlin Language Design. The former says that constructs which obstruct language evolution should be removed, and the latter says that this removal should be well-communicated beforehand to make code migration as smooth as possible.
+[Keeping the Language Modern* and *Comfortable Updates](kotlin-evolution.md) are among the fundamental principles in Kotlin Language Design. The former says that constructs which obstruct language evolution should be removed, and the latter says that this removal should be well-communicated beforehand to make code migration as smooth as possible.
 
 While most of the language changes were already announced through other channels, like update changelogs or compiler warnings, this document summarizes them all, providing a complete reference for migration from Kotlin 1.2 to Kotlin 1.3.
 
@@ -77,7 +77,7 @@ Compatibility of Kotlin code from the other languages perspective (e.g. from Jav
 > **Deprecation cycle**:
 >
 > - <1.3: the compiler could miss such assertions when type inference was involved, allowing potential `null` propagation during compilation against binaries (see Issue for details).
-> - \>=1.3: the compiler generates missed assertions. This can case code which was (erroneously) passing `null`s here fail faster.  
+> - \>=1.3: the compiler generates missed assertions. This can cause code which was (erroneously) passing `null`s here fail faster.  
  `-XXLanguage:-StrictJavaNullabilityAssertions` can be used to temporarily return to the pre-1.3 behavior. Support for this flag will be removed in the next major release.
 
 ### Unsound smartcasts on enum members

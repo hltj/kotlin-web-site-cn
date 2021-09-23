@@ -55,6 +55,38 @@ fun main() {
 -->取决于你的意图和项目中使用的一致性。下面我们将详细描述<!--
 -->各种作用域函数及其约定用法之间的区别。
 
+## 函数选择
+
+为了帮助你选择合适的作用域函数，我们提供了它们之间的主要区别表。
+
+|函数|对象引用|返回值|是否是扩展函数|
+|---|---|---|---|
+|`let`|`it`|Lambda 表达式结果|是|
+|`run`|`this`|Lambda 表达式结果|是|
+|`run`|-|Lambda 表达式结果|不是：调用无需上下文对象|
+|`with`|`this`|Lambda 表达式结果|不是：把上下文对象当做参数|
+|`apply`|`this`|上下文对象|是|
+|`also`|`it`|上下文对象|是|
+
+The detailed information about the differences is provided in the dedicated sections below.
+
+以下是根据预期目的选择作用域函数的简短指南：
+
+* 对一个非空（non-null）对象执行 lambda 表达式：`let`
+* 将表达式作为变量引入为局部作用域中：`let`
+* 对象配置：`apply`
+* 对象配置并且计算结果：`run`
+* 在需要表达式的地方运行语句：非扩展的 `run`
+* 附加效果：`also`
+* 一个对象的一组函数调用：`with`
+
+不同函数的使用场景存在重叠，你可以根据项目或团队中使用的特定约定<!--
+-->选择函数。
+
+尽管作用域函数是使代码更简洁的一种方法，但请避免过度使用它们：这会降低代码的<!--
+-->可读性并可能导致错误。避免嵌套作用域函数，同时链式调用它们时要小心：此时很容易<!--
+-->对当前上下文对象及 `this` 或 `it` 的值感到困惑。
+
 ## 区别
 
 由于作用域函数本质上都非常相似，因此了解它们之间的区别很重要。
@@ -133,6 +165,7 @@ fun main() {
     }
     
     val i = getRandomInt()
+    println(i)
 //sampleEnd
 }
 ```
@@ -157,6 +190,7 @@ fun main() {
     }
     
     val i = getRandomInt()
+    println(i)
 //sampleEnd
 }
 ```
@@ -334,7 +368,7 @@ fun main() {
     val modifiedFirstItem = numbers.first().let { firstItem ->
         println("The first item of the list is '$firstItem'")
         if (firstItem.length >= 5) firstItem else "!" + firstItem + "!"
-    }.toUpperCase()
+    }.uppercase()
     println("First item after modifications: '$modifiedFirstItem'")
 //sampleEnd
 }
@@ -481,36 +515,6 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-## 函数选择
-
-为了帮助你选择合适的作用域函数，我们提供了它们之间的主要区别表。
-
-|函数|对象引用|返回值|是否是扩展函数|
-|---|---|---|---|
-|`let`|`it`|Lambda 表达式结果|是|
-|`run`|`this`|Lambda 表达式结果|是|
-|`run`|-|Lambda 表达式结果|不是：调用无需上下文对象|
-|`with`|`this`|Lambda 表达式结果|不是：把上下文对象当做参数|
-|`apply`|`this`|上下文对象|是|
-|`also`|`it`|上下文对象|是|
-
-以下是根据预期目的选择作用域函数的简短指南：
-
-* 对一个非空（non-null）对象执行 lambda 表达式：`let`
-* 将表达式作为变量引入为局部作用域中：`let`
-* 对象配置：`apply`
-* 对象配置并且计算结果：`run`
-* 在需要表达式的地方运行语句：非扩展的 `run`
-* 附加效果：`also`
-* 一个对象的一组函数调用：`with`
-
-不同函数的使用场景存在重叠，你可以根据项目或团队中使用的特定约定<!--
--->选择函数。
-
-尽管作用域函数是使代码更简洁的一种方法，但请避免过度使用它们：这会降低代码的<!--
--->可读性并可能导致错误。避免嵌套作用域函数，同时链式调用它们时要小心：此时很容易<!--
--->对当前上下文对象及 `this` 或 `it` 的值感到困惑。
-
 ## takeIf 与 takeUnless
 
 除了作用域函数外，标准库还包含函数 `takeIf` 及 `takeUnless`。这俩函数<!--
@@ -542,8 +546,8 @@ fun main() {
 fun main() {
 //sampleStart
     val str = "Hello"
-    val caps = str.takeIf { it.isNotEmpty() }?.toUpperCase()
-   //val caps = str.takeIf { it.isNotEmpty() }.toUpperCase() // 编译错误
+    val caps = str.takeIf { it.isNotEmpty() }?.uppercase()
+   //val caps = str.takeIf { it.isNotEmpty() }.uppercase() // 编译错误
     println(caps)
 //sampleEnd
 }

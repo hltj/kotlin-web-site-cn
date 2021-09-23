@@ -34,7 +34,7 @@ import java.util.Calendar
 
 fun calendarDemo() {
     val calendar = Calendar.getInstance()
-    if (calendar.firstDayOfWeek == Calendar.SUNDAY) {  // 调用 getFirstDayOfWeek()
+    if (calendar.firstDayOfWeek == Calendar.SUNDAY) { // 调用 getFirstDayOfWeek()
         calendar.firstDayOfWeek = Calendar.MONDAY // 调用ll setFirstDayOfWeek()
     }
     if (!calendar.isLenient) { // 调用 isLenient()
@@ -116,47 +116,124 @@ Kotlin 类型。编译器支持多种可空性注解，包括：
 
   * [JetBrains](https://www.jetbrains.com/idea/help/nullable-and-notnull-annotations.html)
   （`org.jetbrains.annotations` 包中的  `@Nullable` 和 `@NotNull`）
-* Android（`com.android.annotations` 和 `android.support.annotations`)
-* JSR-305（`javax.annotation`，详见下文）
-* FindBugs（`edu.umd.cs.findbugs.annotations`）
-* Eclipse（`org.eclipse.jdt.annotation`）
-* Lombok（`lombok.NonNull`）
+  * [JSpecify](https://jspecify.dev/) (`org.jspecify.nullness`)
+  * Android（`com.android.annotations` 和 `android.support.annotations`)
+  * JSR-305（`javax.annotation`，详见下文）
+  * FindBugs（`edu.umd.cs.findbugs.annotations`）
+  * Eclipse（`org.eclipse.jdt.annotation`）
+  * Lombok（`lombok.NonNull`）
+  * RxJava 3 (`io.reactivex.rxjava3.annotations`)
 
-你可以在 [Kotlin 编译器源代码](https://github.com/JetBrains/kotlin/blob/master/core/compiler.common.jvm/src/org/jetbrains/kotlin/load/java/JvmAnnotationNames.kt)中找到完整的列表。
+You can specify whether the compiler reports a nullability mismatch based on the information from specific types of 
+nullability annotations. Use the compiler option `-Xnullability-annotations=@<package-name>:<report-level>`. 
+In the argument, specify the fully qualified nullability annotations package and one of these report levels:
+* `ignore` to ignore nullability mismatches
+* `warn` to report warnings
+* `strict` to report errors.
 
-### 注解类型参数
+See the full list of supported nullability annotations in the 
+[Kotlin compiler source code](https://github.com/JetBrains/kotlin/blob/master/core/compiler.common.jvm/src/org/jetbrains/kotlin/load/java/JvmAnnotationNames.kt).
 
-可以标注泛型类型的类型参数，以便同时为其提供可空性信息。
-例如，考虑这些 Java 声明的注解：
+### Annotating type arguments and type parameters
+
+You can annotate the type arguments and type parameters of generic types to provide nullability information for them as well. 
+
+> All examples in the section use JetBrains nullability annotations from the `org.jetbrains.annotations` package.
+>
+{type="note"}
+
+#### Type arguments
+
+考虑这些 Java 声明的注解：
 
 ```java
 @NotNull
 Set<@NotNull String> toSet(@NotNull Collection<@NotNull String> elements) { …… }
 ```
 
-在 Kotlin 中可见的是以下签名：
+在 Kotlin 中其结果是以下签名：
 
 ```kotlin
 fun toSet(elements: (Mutable)Collection<String>) : (Mutable)Set<String> { …… }
 ```
 
-请注意 `String` 类型参数上的 `@NotNull` 注解。如果没有的话，类型参数会是平台类型：
+When the `@NotNull` annotation is missing from a type argument, you get a platform type instead:
 
 ```kotlin
 fun toSet(elements: (Mutable)Collection<String!>) : (Mutable)Set<String!> { …… }
 ```
 
-标注类型参数适用于面向 Java 8 或更高版本环境，并且要求可空性注解支持
-`TYPE_USE` 目标（`org.jetbrains.annotations` 15 或以上版本支持）。
+Kotlin also takes into account nullability annotations on type arguments of base classes and interfaces. For example,
+there are two Java classes with the signatures provided below:
 
-> 由于当前的技术限制，IDE 无法正确识别<!--
-> -->用作依赖的已编译 Java 库中类型参数上的这些注解。
+```java
+public class Base<T> {}
+```
+
+```java
+public class Derived extends Base<@Nullable String> {}
+```
+
+In the Kotlin code, passing the instance of `Derived` where the `Base<String>` is assumed produces the warning.
+
+```kotlin
+fun takeBaseOfNotNullStrings(x: Base<String>) {}
+
+fun main() {
+    takeBaseOfNotNullStrings(Derived()) // warning: nullability mismatch
+}
+```
+
+The upper bound of `Derived` is set to `Base<String?>`, which is different from `Base<String>`.
+
+Learn more about [Java generics in Kotlin](https://kotlinlang.org/docs/java-interop.html#java-generics-in-kotlin).
+
+#### Type parameters
+
+By default, the nullability of plain type parameters in both Kotlin and Java is undefined. In Java, you can specify it 
+using nullability annotations. Let's annotate the type parameter of the `Base` class:
+
+```java
+public class Base<@NotNull T> {}
+```
+
+When inheriting from `Base`, Kotlin expects a non-nullable type argument or type parameter. 
+Thus, the following Kotlin code produces a warning:
+
+```kotlin
+class Derived<K> : Base<K> {} // warning: K has undefined nullability
+```
+
+You can fix it by specifying the upper bound `K : Any`.
+
+Kotlin also supports nullability annotations on the bounds of Java type parameters. Let's add bounds to `Base`:
+
+```java
+public class BaseWithBound<T extends @NotNull Number> {}
+```
+
+Kotlin translates this just as follows:
+
+```kotlin
+class BaseWithBound<T : Number> {}
+```
+
+So passing nullable type as a type argument or type parameter produces a warning.
+
+Annotating type arguments and type parameters works with the Java 8 target or higher. The feature requires that the 
+nullability annotations support the `TYPE_USE` target (`org.jetbrains.annotations` supports this in version 15 and above). 
+Pass the `-Xtype-enhancement-improvements-strict-mode` compiler option to report errors in Kotlin code that uses 
+nullability which deviates from the nullability annotations from Java.
+
+> Note: If a nullability annotation supports other targets that are applicable to a type in addition to the `TYPE_USE` target, then
+> `TYPE_USE` takes priority. For example, if `@Nullable` has both `TYPE_USE` and `METHOD` targets, the Java method
+> signature `@Nullable String[] f()` becomes `fun f(): Array<String?>!` in Kotlin.
 >
 {type="note"}
 
 ### JSR-305 支持
 
-已支持 [JSR-305](https://jcp.org/en/jsr/detail?id=305) 中定义的 [`@Nonnull`](https://aalmiray.github.io/jsr-305/apidocs/javax/annotation/Nonnull.html)
+已支持 [JSR-305](https://jcp.org/en/jsr/detail?id=305) 中定义的 [`@Nonnull`](https://www.javadoc.io/doc/com.google.code.findbugs/jsr305/latest/javax/annotation/Nonnull.html)
 注解来表示 Java 类型的可空性。
 
 如果 `@Nonnull(when = ...)` 值为 `When.ALWAYS`，那么该注解类型会被视为非空；`When.MAYBE` 与
@@ -166,13 +243,13 @@ fun toSet(elements: (Mutable)Collection<String!>) : (Mutable)Set<String!> { …�
 -->指定为编译依赖。Kotlin 编译器可以从库中读取 JSR-305 注解，并不需要该注解<!--
 -->出现在类路径中。
 
-也支持[自定义可空限定符（KEEP-79）](https://github.com/Kotlin/KEEP/blob/41091f1cc7045142181d8c89645059f4a15cc91a/proposals/jsr-305-custom-nullability-qualifiers.md)
+也支持[自定义可空限定符（KEEP-79）](https://github.com/Kotlin/KEEP/blob/master/proposals/jsr-305-custom-nullability-qualifiers.md)
 （见下文）。
 
 #### 类型限定符别称
 
 如果一个注解类型同时标注有
-[`@TypeQualifierNickname`](https://aalmiray.github.io/jsr-305/apidocs/javax/annotation/meta/TypeQualifierNickname.html)
+[`@TypeQualifierNickname`](https://www.javadoc.io/doc/com.google.code.findbugs/jsr305/latest/javax/annotation/meta/TypeQualifierNickname.html)
 与 JSR-305 `@Nonnull`（或者它的其他别称，如 `@CheckForNull`），那么该注解类型自身将用于
 检索精确的可空性，且具有与该可空性注解相同的含义：
 
@@ -200,7 +277,7 @@ interface A {
 
 #### 类型限定符默认值
 
-[`@TypeQualifierDefault`](https://aalmiray.github.io/jsr-305/apidocs/javax/annotation/meta/TypeQualifierDefault.html)
+[`@TypeQualifierDefault`](https://www.javadoc.io/doc/com.google.code.findbugs/jsr305/latest/javax/annotation/meta/TypeQualifierDefault.html)
 引入应用时在所标注元素的作用域内定义默认可空性的注解<!--
 -->。
 
@@ -315,9 +392,9 @@ public class Test {}
 其中 `strict`、 `warn` 与 `ignore` 值的含义与 `MigrationStatus` 中的相同，
 并且只有 `strict` 模式会影响注解声明中的类型在 Kotlin 中的呈现。
 
-> 注意：内置的 JSR-305 注解 [`@Nonnull`](https://aalmiray.github.io/jsr-305/apidocs/javax/annotation/Nonnull.html)、
-> [`@Nullable`](https://aalmiray.github.io/jsr-305/apidocs/javax/annotation/Nullable.html) 与
-> [`@CheckForNull`](https://aalmiray.github.io/jsr-305/apidocs/javax/annotation/CheckForNull.html) 总是启用并<!--
+> 注意：内置的 JSR-305 注解 [`@Nonnull`](https://www.javadoc.io/doc/com.google.code.findbugs/jsr305/latest/javax/annotation/Nonnull.html)、
+> [`@Nullable`](https://www.javadoc.io/doc/com.google.code.findbugs/jsr305/3.0.1/javax/annotation/Nullable.html) 与
+> [`@CheckForNull`](https://www.javadoc.io/doc/com.google.code.findbugs/jsr305/latest/javax/annotation/CheckForNull.html) 总是启用并<!--
 > -->影响所注解的声明在 Kotlin 中呈现，无论如何配置编译器的 `-Xjsr305` 标志。
 >
 {type="note"}
@@ -501,8 +578,6 @@ val array = intArrayOf(0, 1, 2, 3)
 javaObj.removeIndicesVarArg(*array)
 ```
 
-目前无法传递 `null` 给一个声明为可变参数的方法。
-
 ## 操作符
 
 由于 Java 无法标记用于运算符语法的方法，Kotlin 允许<!--
@@ -561,7 +636,7 @@ class Example : Cloneable {
 }
 ```
 
-不要忘记[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 的<!--
+不要忘记[《Effective Java》第三版](https://www.oracle.com/technetwork/java/effectivejava-136174.html) 的<!--
 -->第 13 条: *谨慎地改写clone*。
 
 ### finalize()
@@ -662,3 +737,10 @@ var myProperty: String
 ```
 
 Behind the scenes, this will create two functions `getMyProperty` and `setMyProperty`, both marked as `external`.
+
+## Using Lombok-generated declarations in Kotlin
+
+You can use Java's Lombok-generated declarations in Kotlin code.
+If you need to generate and use these declarations in the same mixed Java/Kotlin module,
+you can learn how to do this on the [Lombok compiler plugin's page](lombok.md).
+If you call such declarations from another module, then you don't need to use this plugin to compile that module.

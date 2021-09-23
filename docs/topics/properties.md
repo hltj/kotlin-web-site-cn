@@ -2,8 +2,7 @@
 
 ## 声明属性
 
-Kotlin 类中的属性既可以用关键字 `var` 声明为可变的，
-也可以用关键字 `val` 声明为只读的。
+Kotlin 类中的属性既可以用关键字 `var` 声明为可变的， 也可以用关键字 `val` 声明为只读的。
 
 ```kotlin
 class Address {
@@ -29,7 +28,7 @@ fun copyAddress(address: Address): Address {
 
 ## Getter 与 Setter
 
-声明一个属性的完整语法如下。
+声明一个属性的完整语法如下：
 
 ```kotlin
 var <propertyName>[: <PropertyType>] [= <property_initializer>]
@@ -37,12 +36,12 @@ var <propertyName>[: <PropertyType>] [= <property_initializer>]
     [<setter>]
 ```
 
-其初始器（initializer）、getter 和 setter 都是可选的。属性类型如果可以从初始器
-（或者从其 getter 返回值，如下文所示）中推断出来，也可以省略。
+其初始器（initializer）、getter 和 setter 都是可选的。属性类型如果可以从初始器，
+（或者从初始化器或其 getter 的返回值，如下文所示）中推断出来，也可以省略：
 
 ```kotlin
-var allByDefault: Int? // 错误：需要显式初始化器，隐含默认 getter 和 setter
 var initialized = 1 // 类型 Int、默认 getter 和 setter
+// var allByDefault // 错误：需要显式初始化器，隐含默认 getter 和 setter
 ```
 
 一个只读属性的语法和一个可变的属性的语法有两方面的不同：
@@ -57,11 +56,27 @@ val inferredType = 1 // 类型 Int 、默认 getter
 （这让可以实现计算出的属性）。以下是一个自定义 getter 的示例：
 
 ```kotlin
-val isEmpty: Boolean
-    get() = this.size == 0
+//sampleStart
+class Rectangle(val width: Int, val height: Int) {
+    val square: Int
+        get() = this.width * this.height
+}
+//sampleEnd
+fun main() {
+    val rectangle = Rectangle(3, 4)
+    println("Width=${rectangle.width}, height=${rectangle.height}, square=${rectangle.square}")
+}
+```
+{kotlin-runnable="true"}
+
+如果可以从 getter 推断出属性类型，则可以省略它：
+
+```kotlin
+val square get() = this.width * this.height
 ```
 
-如果定义了一个自定义的 setter，那么每次给属性赋值时都会调用它。一个自定义的 setter 如下所示：
+如果定义了一个自定义的 setter，那么每次给属性赋值时都会调用它, except its initialization.
+一个自定义的 setter 如下所示：
 
 ```kotlin
 var stringRepresentation: String
@@ -73,13 +88,7 @@ var stringRepresentation: String
 
 按照惯例，setter 参数的名称是 `value`，但是如果你喜欢你可以选择一个不同的名称。
 
-如果可以从 getter 推断出属性类型，则可以省略它：
-
-```kotlin
-val isEmpty get() = this.size == 0  // 具有类型 Boolean
-```
-
-如果你需要改变一个访问器的可见性或者对其注解，但是不需要改变默认的实现，
+如果你需要改变对一个访问器进行注解或者改变其可见性，但是不需要改变默认的实现，
 你可以定义访问器而不定义其实现:
 
 ```kotlin
@@ -99,7 +108,9 @@ var setterWithAnnotation: Any? = null
 ```kotlin
 var counter = 0 // 这个初始器直接为幕后字段赋值
     set(value) {
-        if (value >= 0) field = value
+        if (value >= 0)
+            field = value
+            // counter = value // ERROR StackOverflow: Using actual name 'counter' would make setter recursive
     }
 ```
 
@@ -108,7 +119,7 @@ var counter = 0 // 这个初始器直接为幕后字段赋值
 如果属性至少一个访问器使用默认实现，
 或者自定义访问器通过 `field` 引用幕后字段，将会为该属性生成一个幕后字段。
 
-例如，下面的情况下， 就没有幕后字段：
+例如，以下情况下就没有幕后字段：
 
 ```kotlin
 val isEmpty: Boolean
@@ -117,8 +128,8 @@ val isEmpty: Boolean
 
 ### 幕后属性
 
-如果你的需求不符合这套*隐式的幕后字段*方案，
-那么总可以使用*幕后属性（backing property）*：
+如果你的需求不符合这套*隐式的幕后字段*方案， 那么总可以使用
+*幕后属性（backing property）*：
 
 ```kotlin
 private var _table: Map<String, Int>? = null
@@ -131,8 +142,7 @@ public val table: Map<String, Int>
     }
 ```
 
-> 对于 JVM 平台：通过默认 getter 和 setter 访问私有属性会被优化<!--
-> -->以避免函数调用开销。
+> 对于 JVM 平台：通过默认 getter 和 setter 访问私有属性会被优化以避免函数调用开销。
 >
 {type="note"}
 
@@ -141,9 +151,9 @@ public val table: Map<String, Int>
 如果只读属性的值在编译期是已知的，那么可以使用 `const` 修饰符将其标记为*编译期常量*。
 这种属性需要满足以下要求：
 
-  * 位于顶层或者是 [`object` 声明](object-declarations.md#对象声明) 或 [*伴生对象*](object-declarations.md#伴生对象) 的一个成员
-  * 以 `String` 或原生类型值初始化
-  * 没有自定义 getter
+* 必须位于顶层或者是 [`object` 声明](object-declarations.md#对象声明概述) 或[伴生对象](object-declarations.md#伴生对象)的一个成员
+* 必须以 `String` 或原生类型值初始化
+* 不能有自定义 getter
 
 这些属性可以用在注解中：
 
@@ -176,17 +186,16 @@ public class MyTest {
 }
 ```
 
-该修饰符只能用于在类体中的属性（不是在主构造函数中声明的 `var` 属性，并且仅<!--
--->当该属性没有自定义 getter 或 setter 时），也用于顶层属性与<!--
--->局部变量。该属性或变量必须为非空类型，并且不能是原生类型。
+该修饰符只能用于在类体中的属性（不是在主构造函数中声明的 `var` 属性，
+并且仅当该属性没有自定义 getter 或 setter 时），也用于顶层属性与局部变量。
+该属性或变量必须为非空类型，并且不能是原生类型。
 
 在初始化前访问一个 `lateinit` 属性会抛出一个特定异常，该异常明确标识该属性<!--
 -->被访问及它没有初始化的事实。
 
 ### 检测一个 `lateinit var` 是否已初始化
 
-要检测一个 `lateinit var` 是否已经初始化过，请在[该属性的引用](reflection.md#属性引用)上使用
-`.isInitialized`：
+要检测一个 `lateinit var` 是否已经初始化过，请在[该属性的引用](reflection.md#属性引用)上使用 `.isInitialized`：
 
 ```kotlin
 if (foo::bar.isInitialized) {
@@ -202,10 +211,10 @@ if (foo::bar.isInitialized) {
 参见[覆盖属性](inheritance.md#覆盖属性)
 
 ## 委托属性
-  
-最常见的一类属性就是简单地从幕后字段中读取（以及可能的写入）。
-另一方面，使用自定义 getter 和 setter 可以实现属性的任何行为。
-介于两者之间，属性如何工作有一些常见的模式。一些例子：惰性值、
-通过键值从映射读取、访问数据库、访问时通知侦听器等等。
+
+最常见的一类属性就是简单地从幕后字段中读取（以及可能的写入）， 但是使用自定义 getter 和 setter
+可以实现属性的任何行为。
+介于最简单的第一类与多样的第二类之间，属性可做的事情<!--
+-->有一些常见的模式。一些示例：惰性值、 通过键值从映射（map）读取、访问数据库、访问时通知侦听器。
 
 这些常见行为可以通过使用[委托属性](delegated-properties.md)实现为库。

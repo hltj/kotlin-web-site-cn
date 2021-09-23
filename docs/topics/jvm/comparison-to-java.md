@@ -42,3 +42,7 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 * [数据类](data-classes.md)
 * [分离用于只读与可变集合的接口](collections-overview.md)
 * [协程](coroutines-overview.md)
+
+## What’s next?
+
+Learn how to perform [typical tasks with strings in Java and Kotlin](java-to-kotlin-idioms-strings.md).

@@ -6,21 +6,16 @@
 
 通过 *kotlin.version* 属性定义要使用的 Kotlin 版本：
 
-
-
 ```xml
 <properties>
     <kotlin.version>{{ site.data.releases.latest.version }}</kotlin.version>
 </properties>
 ```
 
-
-
 ## 依赖
 
-Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配置以下依赖关系：
-
-
+Kotlin 有一个广泛的标准库可用于应用程序。
+To use the standard library in your project, 在 pom 文件中配置以下依赖关系：
 
 ```xml
 <dependencies>
@@ -32,21 +27,22 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </dependencies>
 ```
 
-
-
-如果是面向 JDK 7 或 JDK 8，那么可以使用扩展版本的 Kotlin 标准库，
-其中包含为新版 JDK 所增 API 而加的额外的扩展函数。使用 `kotlin-stdlib-jdk7`
+如果是面向 JDK 7 或 JDK 8，那么可以使用扩展版本的 Kotlin 标准库。 其中包含<!--
+-->为新版 JDK 所增 API 而加的额外的扩展函数。使用 `kotlin-stdlib-jdk7`
 或 `kotlin-stdlib-jdk8` 取代 `kotlin-stdlib`，这取决于你的 JDK 版本（对于 Kotlin 1.1.x 用 `kotlin-stdlib-jre7` 与 `kotlin-stdlib-jre8`，因为相应的 `jdk` 构件在 1.2.0 才引入）。
 
-如果你的项目使用 [Kotlin 反射](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect.full/index.html) 或者测试设施，那么你还需要添加相应的依赖项。
+>For Kotlin versions older that  1.2, use `kotlin-stdlib-jre7` and `kotlin-stdlib-jre8`.
+>
+{type="note"}
+
+如果你的项目使用 [Kotlin 反射](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect.full/index.html)
+或者测试设施，那么你还需要添加相应的依赖项。
 其构件 ID 对于反射库是 `kotlin-reflect`，对于测试库是 `kotlin-test` 与 `kotlin-test-junit`
 。
 
 ## 编译只有 Kotlin 的源代码
 
 要编译源代码，请在 `<build>` 标签中指定源代码目录：
-
-
 
 ```xml
 <build>
@@ -55,11 +51,7 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </build>
 ```
 
-
-
 需要引用 Kotlin Maven 插件来编译源代码：
-
-
 
 ```xml
 <build>
@@ -89,15 +81,11 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </build>
 ```
 
-
-
 ## 同时编译 Kotlin 与 Java 源代码
 
 要编译混合代码应用程序，必须在 Java 编译器之前调用 Kotlin 编译器。
 按照 maven 的方式，这意味着应该使用以下方法在 `maven-compiler-plugin` 之前运行  `kotlin-maven-plugin`。
 确保 `pom.xml` 文件中的 `kotlin` 插件位于 `maven-compiler-plugin` 之前：
-
-
 
 ```xml
 <build>
@@ -159,9 +147,6 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
                     <goals>
                         <goal>testCompile</goal>
                     </goals>
-                    <configuration>
-                        <skip>${maven.test.skip}</skip>
-                    </configuration>
                 </execution>
             </executions>
         </plugin>
@@ -169,22 +154,16 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </build>
 ```
 
-
-
 ## 增量编译
 
 为了使构建更快，可以为 Maven 启用增量编译（从 Kotlin 1.1.2 起支持）。
 为了做到这一点，需要定义 `kotlin.compiler.incremental` 属性：
-
-
 
 ```xml
 <properties>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 </properties>
 ```
-
-
 
 或者，使用 `-Dkotlin.compiler.incremental=true` 选项运行构建。
 
@@ -196,8 +175,6 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 
 要创建一个仅包含模块代码的小型 Jar 文件，请在 Maven pom.xml 文件中的 `build->plugins` 下面包含以下内容，
 其中 `main.class` 定义为一个属性，并指向主 Kotlin 或 Java 类：
-
-
 
 ```xml
 <plugin>
@@ -215,14 +192,11 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </plugin>
 ```
 
-
-
 ## 独立的 Jar 文件
 
-要创建一个独立的（self-contained）Jar 文件，包含模块中的代码及其依赖项，请在 Maven pom.xml 文件中的 `build->plugins` 下面包含以下内容<!--
--->其中 `main.class` 定义为一个属性，并指向主 Kotlin 或 Java 类：
-
-
+要创建一个独立的（self-contained）Jar 文件，包含模块中的代码及其依赖项，请在 Maven pom.xml 文件中的
+`build->plugins` 下面包含以下内容其中 `main.class` 定义为一个属性，并指向<!--
+-->主 Kotlin 或 Java 类：
 
 ```xml
 <plugin>
@@ -249,8 +223,6 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </plugin>
 ```
 
-
-
 这个独立的 jar 文件可以直接传给 JRE 来运行应用程序：
 
 ``` bash
@@ -261,8 +233,6 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 可以将额外的编译器选项与参数指定为 Maven 插件节点的 `<configuration>` 元素下的标签
 ：
-
-
 
 ```xml
 <plugin>
@@ -280,10 +250,7 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 </plugin>
 ```
 
-
 许多选项还可以通过属性来配置：
-
-
 
 ```xml
 <project ……>
@@ -293,11 +260,9 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 </project>
 ```
 
-
-
 支持以下属性：
 
-### JVM 和 JS 的公共属性
+### JVM 与 JS 的公共属性
 
 | 名称 | 属性名 | 描述 | 可能的值 | 默认值 |
 |------|---------------|-------------|-----------------|--------------|
@@ -309,12 +274,11 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 | `pluginOptions` | | 编译器插件的选项  | | []
 | `args` | | 额外的编译器参数 | | []
 
-
 ### JVM 特有的属性
 
 | 名称 | 属性名 | 描述 | 可能的值 | 默认值 |
 |------|---------------|-------------|-----------------|--------------|
-| `jvmTarget` | `kotlin.compiler.jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"、 "1.8"、 "9"、 "10"、 "11"、 "12" 、 "13" 、 "14"、 "15" | "1.6" |
+| `jvmTarget` | `kotlin.compiler.jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"（已弃用）、 "1.8"、 "9"、 "10"、 "11"、 "12" 、 "13" 、 "14"、 "15"、 "16" | "%defaultJvmTargetVersion%" |
 | `jdkHome` | `kotlin.compiler.jdkHome` | Include a custom JDK from the specified location into the classpath instead of the default JAVA_HOME | | &nbsp; |
 
 ### JS 特有的属性
@@ -339,7 +303,3 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 ## OSGi
 
 对于 OSGi 支持，请参见 [Kotlin OSGi 页](kotlin-osgi.md)。
-
-## 示例
-
-一个示例 Maven 项目可以[从 Github 版本库直接下载](https://github.com/JetBrains/kotlin-examples/archive/master/maven.zip)

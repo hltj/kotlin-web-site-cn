@@ -1,12 +1,18 @@
 - company: Gradle
-  text: Gradle 正<a target="_blank" href="https://hltj.me/kotlin/2017/06/13/kotlin-meet-gradle.html">引入 Kotlin</a> 作为编写脚本的语言。
+  url: https://hltj.me/kotlin/2017/06/13/kotlin-meet-gradle.html
+  text: Gradle 正引入 Kotlin 作为编写脚本的语言
 - company: Corda
-  text: Corda 是一个开源分布式分类账号平台，由各大银行提供支持，<a target="_blank" href="https://www.corda.net/2017/01/10/kotlin/">完全由 Kotlin 构建</a>。
+  url: https://www.corda.net/2017/01/10/kotlin/
+  text: Corda 是一个开源分布式分类账号平台，由各大银行提供支持，完全由 Kotlin 构建。
 - company: Evernote
-  text: Evernote 最近 <a target="_blank" href="https://blog.evernote.com/tech/2017/01/26/android-state-library/">将 Kotlin 整合</a>到了他们的 Android 客户端
+  url: https://blog.evernote.com/tech/2017/01/26/android-state-library/
+  text: Evernote 最近将 Kotlin 集成到了他们的 Android 客户端
 - company: Coursera
-  text: Coursera Android 应用程序<a target="_blank" href="https://building.coursera.org/blog/2016/03/16/becoming-bilingual-coursera/">部分用 Kotlin 编写</a>
+  url: https://building.coursera.org/blog/2016/03/16/becoming-bilingual-coursera/
+  text: Coursera Android 应用部分用 Kotlin 编写
 - company: Spring
-  text: Spring <a target="_blank" href="https://hltj.me/kotlin/2017/05/23/kotlin-support-in-spring5.html">采用 Kotlin 的语言特性</a>来提供更简洁的 API
+  url: https://hltj.me/kotlin/2017/05/23/kotlin-support-in-spring5.html
+  text: Spring 采用 Kotlin 的语言特性来提供更简洁的 API
 - company: Atlassian
-  text: <a target="_blank" href="https://twitter.com/danlew42/status/809065097339564032">Trello Android</a> 应用程序中的所有新代码都用 Kotlin。
+  url: https://twitter.com/danlew42/status/809065097339564032
+  text: Trello Android 应用中的所有新代码都用 Kotlin。

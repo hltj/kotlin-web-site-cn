@@ -5,7 +5,7 @@
 用 Kotlin/Native 编译器生成一个库，请使用 `-produce library` 或者 `-p library` 标志。例如：
 
 ```bash
-$ kotlinc foo.kt -p library -o bar
+$ kotlinc-native foo.kt -p library -o bar
 ```
 
 这个命令会生成一个带有 `foo.kt` 编译后的内容的库 `bar.klib`。
@@ -13,7 +13,7 @@ $ kotlinc foo.kt -p library -o bar
 链接到一个库请使用 `-library ﹤库名﹥` or `-l ﹤库名﹥` 标志。例如：
 
 ```bash
-$ kotlinc qux.kt -l bar
+$ kotlinc-native qux.kt -l bar
 ```
 
 这个命令会由 `qux.kt` 与 `bar.klib` 生成 `program.kexe`
@@ -79,7 +79,7 @@ val String.kotlinized
 ```
 
 ```bash
-$ kotlinc kotlinizer.kt -p library -o kotlinizer
+$ kotlinc-native kotlinizer.kt -p library -o kotlinizer
 ```
 
 该库已在当前目录中创建：
@@ -120,7 +120,7 @@ fun main(args: Array<String>) {
 现在编译该程序链接到刚刚创建的库：
 
 ```bash
-$ kotlinc use.kt -l kotlinizer -o kohello
+$ kotlinc-native use.kt -l kotlinizer -o kohello
 ```
 
 并运行该程序：

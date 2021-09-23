@@ -70,8 +70,8 @@ val presizedSet = HashSet<Int>(32)
 
 ## 复制
 
-要创建与现有集合具有相同元素的集合，可以使用复制操作。
-标准库中的集合复制操作创建了具有相同元素引用的 __浅__ 复制集合。
+要创建与现有集合具有相同元素的集合，可以使用复制函数。
+标准库中的集合复制函数创建了具有相同元素引用的 __浅__ 复制集合。
 因此，对集合元素所做的更改会反映在其所有副本中。
 
 在特定时刻通过集合复制函数，例如[`toList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html)、
@@ -83,16 +83,17 @@ of a collection at a specific moment. 结果是创建了一个具有相同元素
 
 ```kotlin
 
+class Person(var name: String)
+
 fun main() {
 //sampleStart
-    val sourceList = mutableListOf(1, 2, 3)
-    val copyList = sourceList.toMutableList()
-    val readOnlyCopyList = sourceList.toList()
-    sourceList.add(4)
-    println("Copy size: ${copyList.size}")   
-    
-    //readOnlyCopyList.add(4)             // 编译异常
-    println("Read-only copy size: ${readOnlyCopyList.size}")
+    val alice = Person("Alice")
+    val sourceList = mutableListOf(alice, Person("Bob"))
+    val copyList = sourceList.toList()
+    sourceList.add(Person("Charles"))
+    alice.name = "Alicia"
+    println("First item's name is: ${sourceList[0].name} in source and ${copyList[0].name} in copy")
+    println("List size is: ${sourceList.size} in source and ${copyList.size} in copy")
 //sampleEnd
 }
 ```

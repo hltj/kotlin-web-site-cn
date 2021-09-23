@@ -74,7 +74,7 @@ fun main() {
     foo()
 }
 ```
-{kotlin-runnable="true"}
+{kotlin-runnable="true" validate="false"}
 
 但是如果 lambda 表达式传给的函数是内联的，该 return 也可以内联。因此可以这样：
 
@@ -96,7 +96,7 @@ fun main() {
 {kotlin-runnable="true"}
 
 这种返回（位于 lambda 表达式中，但退出包含它的函数）称为*非局部*返回。
-在循环中用这种结构，其内联函数通常包含：
+通常会在循环中用到这种结构，其内联函数通常包含：
 
 ```kotlin
 fun hasZeros(ints: List<Int>): Boolean {

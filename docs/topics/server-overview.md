@@ -20,8 +20,8 @@ Kotlin 非常适合开发服务器端应用程序，可以让你编写简明且�
 * [Spring](https://spring.io) 利用 Kotlin 的语言功能提供[更简洁的 API](https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0)，
   从版本 5.0 开始。[在线项目生成器](https://start.spring.io/#!language=kotlin)可以让你用 Kotlin 快速生成一个新项目。
 
- * [Vert.x](http://vertx.io) 是在 JVM 上构建响应式 Web 应用程序的框架， 
-为 Kotlin 提供了[专门支持](https://github.com/vert-x3/vertx-lang-kotlin)，包括[完整的文档](http://vertx.io/docs/vertx-core/kotlin/)。
+ * [Vert.x](https://vertx.io) 是在 JVM 上构建响应式 Web 应用程序的框架， 
+为 Kotlin 提供了[专门支持](https://github.com/vert-x3/vertx-lang-kotlin)，包括[完整的文档](https://vertx.io/docs/vertx-core/kotlin/)。
 
  * [Ktor](https://ktor.kotlincn.net) 是 JetBrains 为在 Kotlin 中创建 Web 应用程序而构建的框架，利用协程实现高可伸缩性，并提供易于使用且合乎惯用法的 API。
 
@@ -65,3 +65,5 @@ AWS Labs 提供了一个[示例项目](https://github.com/awslabs/serverless-pho
 [Kotlin 心印](koans.md)。
 * Micronaut 还提供了很多详细的[指南](https://guides.micronaut.io/tags/kotlin.html)，展示了如何使用 Kotlin 构建微服务。
 * http4k provides the [CLI](https://toolbox.http4k.org) to generate fully formed projects, and a [starter](https://start.http4k.org) repo to generate an entire CD pipeline using GitHub, Travis, and Heroku with a single bash command.
+* Want to migrate from Java to Kotlin? Learn how to perform [typical tasks with strings in Java and Kotlin](java-to-kotlin-idioms-strings.md).
+

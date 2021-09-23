@@ -1,11 +1,24 @@
 [//]: # (title: 操作符重载)
 
-在 Kotlin 中可以为类型提供预定义的一组操作符的自定义实现。这些操作符具有固定的<!--
--->符号表示（如 `+` 或 `*`）和固定的优先级。为了实现这样的操作符，需要为相应的类型（即二元操作符左侧的类型和一元操作符的参数类型）提供了一个固定名字的[成员函数](functions.md#成员函数)<!--
--->或[扩展函数](extensions.md)。
-重载操作符的函数需要用 `operator` 修饰符标记。
+在 Kotlin 中可以为类型提供预定义的一组操作符的自定义实现。这些操作符具有预定义的<!--
+-->符号表示（如 `+` 或 `*`）与优先级。为了实现这样的操作符，需要为相应的类型提供一个指定名称的[成员函数](functions.md#成员函数)<!--
+-->或[扩展函数](extensions.md)。这个类型会成为<!--
+-->二元操作符左侧的类型及一元操作符的参数类型。
 
-另外，描述为不同操作符规范操作符重载的约定。
+To overload an operator, mark the corresponding function with the `operator` modifier:
+
+```kotlin
+interface IndexedContainer {
+    operator fun get(index: Int)
+}
+```
+When [overriding](inheritance.md#overriding-methods) your operator overloads, you can omit `operator`:
+
+```kotlin
+class OrdersList: IndexedContainer {
+    override fun get(index: Int) { /*...*/ }   
+}
+```
 
 ## 一元操作
 
@@ -84,7 +97,7 @@ fun main() {
 | `a - b` | `a.minus(b)` |
 | `a * b` | `a.times(b)` |
 | `a / b` | `a.div(b)` |
-| `a % b` | `a.rem(b)`、 `a.mod(b)` （已弃用） |
+| `a % b` | `a.rem(b)` |
 | `a..b ` | `a.rangeTo(b)` |
 
 对于此表中的操作，编译器只是解析成*翻译为*列中的表达式。
@@ -99,7 +112,7 @@ data class Counter(val dayIndex: Int) {
 }
 ```
 
-### `in` 操作符
+### in 操作符
 
 | 表达式     | 翻译为        |
 | -----------|-------------- |
@@ -121,7 +134,7 @@ data class Counter(val dayIndex: Int) {
 
 方括号转换为调用带有适当数量参数的 `get` 和 `set`。
 
-### `invoke` 操作符
+### invoke 操作符
 
 | 表达式 | 翻译为        |
 |--------|---------------|
@@ -140,12 +153,12 @@ data class Counter(val dayIndex: Int) {
 | `a -= b` | `a.minusAssign(b)` |
 | `a *= b` | `a.timesAssign(b)` |
 | `a /= b` | `a.divAssign(b)` |
-| `a %= b` | `a.remAssign(b)`, `a.modAssign(b)`（已弃用） |
+| `a %= b` | `a.remAssign(b)` |
 
 对于赋值操作，例如 `a += b`，编译器执行以下步骤：
 
 * 如果右列的函数可用：
-  * 如果相应的二元函数（即 `plusAssign()` 对应于 `plus()`）也可用，那么报告错误（模糊）。
+  * 如果相应的二元函数（即 `plusAssign()` 对应于 `plus()`）也可用， `a` is a mutable variable, and the return type of `plus` is a subtype of the type of `a`, 那么报告错误（无法区分）。
   * 确保其返回类型是 `Unit`，否则报告错误。
   * 生成 `a.plusAssign(b)` 的代码。
 * 否则试着生成 `a = a + b` 的代码（这里包含类型检测：`a + b` 的类型必须是 `a` 的子类型）。
@@ -161,7 +174,8 @@ data class Counter(val dayIndex: Int) {
 | `a == b` | `a?.equals(b) ?: (b === null)` |
 | `a != b` | `!(a?.equals(b) ?: (b === null))` |
 
-这些操作符只使用函数 [`equals(other: Any?): Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/equals.html)，可以覆盖它来提供自定义的相等性检测实现。不会调用任何其他同名函数（如 `equals(other: Foo)`）。
+这些操作符只使用函数 [`equals(other: Any?): Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/equals.html)，
+可以覆盖它来提供自定义的相等性检测实现。不会调用任何其他同名函数（如 `equals(other: Foo)`）。
 
 > `===` 和 `!==`（同一性检测）不可重载，因此不存在对他们的约定。
 >

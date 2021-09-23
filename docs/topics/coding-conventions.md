@@ -78,7 +78,7 @@ Additional inspections that verify other issues described in the style guide (su
 ### 接口实现布局
 
 在实现一个接口时，实现成员的顺序应该与该接口的成员顺序相同（如果需要，
-还要插入用于实现的额外的私有方法）
+还要插入用于实现的额外的私有方法）。
 
 ### 重载布局
 
@@ -345,7 +345,7 @@ suspend
 inner
 enum / annotation / fun // 在 `fun interface` 中是修饰符
 companion
-inline
+inline/ value
 infix
 operator
 data
@@ -940,7 +940,7 @@ when(x) {
 For example, use this syntax with `if`:
 
 ```kotlin
-`if (x == null) ... else ...`
+if (x == null) ... else ...
 ```
 
 instead of this one with `when`:
@@ -985,18 +985,35 @@ for (i in 0 until n) { /*……*/ }  // 良好
 -->缩进时使用 `trimIndent`，而需要内部缩进时使用 `trimMargin`：
 
 ```kotlin
-assertEquals(
+fun main() {
+//sampleStart
+   println("""
+    Not
+    trimmed
+    text
     """
-    Foo
-    Bar
-    """.trimIndent(), 
-    value
-)
+   )
 
-val a = """if(a > 1) {
+   println("""
+    Trimmed
+    text
+    """.trimIndent()
+   )
+
+   println()
+
+   val a = """Trimmed to margin text:
+          |if(a > 1) {
           |    return a
           |}""".trimMargin()
+
+   println(a)
+//sampleEnd
+}
 ```
+{kotlin-runnable="true"}
+
+Learn the difference between [Java and Kotlin multiline strings](java-to-kotlin-idioms-strings.md#use-multiline-strings).
 
 ### 函数还是属性
 
@@ -1078,5 +1095,5 @@ Kotlin 提供了一系列用来在给定对象上下文中执行代码块的函�
  * 总是显式指定成员的可见性（以避免将声明意外暴露为公有 API ）
  * 总是显式指定函数返回类型以及属性类型（以避免当实现改变时<!--
    -->意外更改返回类型）
- * 为所有公有成员提供 KDoc 注释，不需要任何新文档的覆盖成员除外
+ * 为所有公有成员提供 [KDoc](kotlin-doc.md) 注释，不需要任何新文档的覆盖成员除外
    （以支持为该库生成文档）

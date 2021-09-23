@@ -15,13 +15,8 @@ Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理�
 另外，还可以在 Gradle 构建文件
 (`build.gradle` 或 `build.gradle.kts`) 中手动将 `org.jetbrains.kotlin.js` 插件应用于 Gradle 项目。
 
-<tabs>
-
-```groovy
-plugins {
-    id 'org.jetbrains.kotlin.js' version '%kotlinVersion%'
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 plugins {
@@ -29,6 +24,16 @@ plugins {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+plugins {
+    id 'org.jetbrains.kotlin.js' version '%kotlinVersion%'
+}
+```
+
+</tab>
 </tabs>
 
 Kotlin/JS Gradle 插件可让你在构建脚本的 `kotlin` 部分中管理项目的各个方面。
@@ -86,13 +91,8 @@ Kotlin/JS 插件会自动配置其任务与所选环境配合工作。
 就像其他任何的 Gradle 项目一样，Kotlin/JS 项目支持位于构建脚本的 `dependencies`
 部分的传统 Gradle [依赖声明](https://docs.gradle.org/current/userguide/declaring_dependencies.html)。
 
-<tabs>
-
-```groovy
-dependencies {
-    implementation 'org.example.myproject:1.1.0'
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 dependencies {
@@ -100,12 +100,34 @@ dependencies {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+dependencies {
+    implementation 'org.example.myproject:1.1.0'
+}
+```
+
+</tab>
 </tabs>
 
 Kotlin/JS Gradle 插件还支持构建脚本的 `kotlin` 部分中特定
 `sourceSets` 的依赖声明。
 
-<tabs>
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+kotlin {
+  sourceSets["main"].dependencies {
+    implementation("org.example.myproject", "1.1.0")
+  }
+}
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
 
 ```groovy
 kotlin {
@@ -119,14 +141,7 @@ kotlin {
 }
 ```
 
-```kotlin
-kotlin {
-  sourceSets["main"].dependencies {
-    implementation("org.example.myproject", "1.1.0")
-  }
-}
-```
-
+</tab>
 </tabs>
 
 请注意，在针对 JavaScript 时，并非所有适用于 Kotlin 编程语言的库都可用：
@@ -143,13 +158,8 @@ kotlin {
 如果你的项目包含用 Kotlin 编写的测试，那么还应该添加
 [kotlin.test](https://kotlinlang.org/api/latest/kotlin.test/) 依赖项：
 
-<tabs>
-
-```groovy
-dependencies {
-    testImplementation 'org.jetbrains.kotlin:kotlin-test-js'
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 dependencies {
@@ -157,6 +167,16 @@ dependencies {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+dependencies {
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-js'
+}
+```
+
+</tab>
 </tabs>
 
 ### npm 依赖
@@ -170,13 +190,8 @@ Kotlin/JS Gradle 插件使你可以在 Gradle 构建脚本中声明 npm 依赖�
 要声明 npm 依赖项，将其名称与版本传给依赖项声明内的 `npm()` 函数。
 还可以根据 [npm 的 semver 语法](https://docs.npmjs.com/misc/semver#versions)指定一个或多个版本范围。
 
-<tabs>
-
-```groovy
-dependencies {
-    implementation npm('react', '> 14.0.0 <=16.9.0')
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 dependencies {
@@ -184,6 +199,16 @@ dependencies {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+dependencies {
+    implementation npm('react', '> 14.0.0 <=16.9.0')
+}
+```
+
+</tab>
 </tabs>
 
 要在构建期间下载并安装声明的依赖项，该插件管理将自动安装
@@ -306,14 +331,25 @@ Kotlin/JS Gradle 插件会在构建时自动生成 Karma 配置文件，其中�
 -->名为 `karma.config.d` 的目录中。 此目录中的所有 `.js` 配置文件都将被拾取，
 并在构建时自动合并到生成的 `karma.conf.js` 中。
 
-所有 Karma 配置功能在 Karma [文档](http://karma-runner.github.io/5.0/config/configuration-file.html)中都有详细描述。
+所有 Karma 配置功能在 Karma [文档](https://karma-runner.github.io/5.0/config/configuration-file.html)中都有详细描述。
 
 ## Webpack 绑定
 
 对于浏览器目标，Kotlin/JS 插件使用众所周知的 [Webpack](https://webpack.js.org/) 模块捆绑器。
 
-Kotlin/JS Gradle 插件会在构建时自动生成一个标准的 webpack 配置文件，
-可以在 `build/js/packages/projectName/webpack.config.js` 中找到该文件。
+### webpack version 
+
+The Kotlin/JS plugin uses webpack %webpackMajorVersion%.
+
+If you have projects created with plugin versions earlier than 1.5.0,
+you can temporarily switch back to webpack %webpackPreviousMajorVersion% used in these versions by adding the following line
+to the project's `gradle.properties`:
+
+```properties
+kotlin.js.webpack.major.version=4
+```
+
+### webpack task
 
 最常见的 webpack 调整可以直接通过 Gradle 构建文件中的
 `kotlin.js.browser.webpackTask` 配置块进行：
@@ -332,6 +368,11 @@ webpackTask {
 还可以在 `commonWebpackConfig` 块中配置常用的 webpack 设置，
 以用于绑定、运行与测试任务。
 
+### webpack configuration file 
+
+Kotlin/JS Gradle 插件会在构建时自动生成一个标准的 webpack 配置文件。
+该文件在 `build/js/packages/projectName/webpack.config.js`。
+
 如果要进一步调整 webpack 配置，请将其他配置文件放在项目根目录中名为 `webpack.config.d` 的目录中。
 在构建项目时，所有 `.js` 配置文件都会自动被合并到
 `build/js/packages/projectName/webpack.config.js` 文件中。
@@ -347,6 +388,8 @@ config.module.rules.push({
 
 所有 webpack 配置功能在其
 [文档](https://webpack.js.org/concepts/configuration/) 中都有详细说明。
+
+### Building executables
 
 为了通过 webpack 构建可执行的 JavaScript 构件，Kotlin/JS 插件包含 `browserDevelopmentWebpack` 与
 `browserProductionWebpack` Gradle 任务。
@@ -375,7 +418,7 @@ Kotlin/JS Gradle 插件还支持 webpack 的 [CSS](https://webpack.js.org/loader
 -->用的设置可以直接从 `build.gradle(.kts)` 文件获得。
 
 要在项目中打开 CSS 支持，请在 `commonWbpackConfig`
-块的 Gradle 构建文件中设置 `cssSupport.enabled` 标志。使用向导创建新项目时，默认情况下也会启用此配置。
+块的 Gradle 构建文件中设置 `cssSupport.enabled` 选项。使用向导创建新项目时，默认情况下也会启用此配置。
 
 ```groovy
 browser {
@@ -439,21 +482,8 @@ registry "http://my.registry/api/npm/"
 -->为它的 `directory` 属性赋值。
 运行项目构建任务后，Gradle 会将输出的内容同项目资源一起保存在此位置。
 
-<tabs>
-
-```groovy
-kotlin {
-    js {
-        browser {
-            distribution {
-                directory = file("$projectDir/output/")
-            }
-        }
-        binaries.executable()
-        // ……
-    }
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 kotlin {
@@ -469,6 +499,24 @@ kotlin {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+kotlin {
+    js {
+        browser {
+            distribution {
+                directory = file("$projectDir/output/")
+            }
+        }
+        binaries.executable()
+        // ……
+    }
+}
+```
+
+</tab>
 </tabs>
 
 ## 模块名

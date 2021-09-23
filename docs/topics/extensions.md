@@ -1,11 +1,11 @@
 [//]: # (title: 扩展)
 
 Kotlin 能够对一个类扩展新功能<!--
--->而无需继承该类或者使用像装饰者这样的设计模式。
-这通过叫做 _扩展_ 的特殊声明完成。
+-->而无需继承该类或者使用像*装饰者*这样的设计模式。
+这通过叫做*扩展*的特殊声明完成。
 
 例如，你可以为一个你不能修改的、来自第三方库中的类编写一个新的函数。
-这个新增的函数就像那个原始类本来就有的函数一样，可以用普通的方法调用。
+这个新增的函数就像那个原始类本来就有的函数一样，可以用寻常方式调用。
 这种机制称为*扩展函数*。此外，也有*扩展属性*，
 允许你为一个已经存在的类添加新的属性。
 
@@ -41,12 +41,12 @@ fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
 ```
 
 为了在接收者类型表达式中使用泛型，需要在函数名前声明泛型参数。
-参见[泛型函数](generics.md)。
+For more information about generics, 参见[泛型函数](generics.md)。
 
 ## 扩展是*静态*解析的
 
-扩展不能真正的修改他们所扩展的类。通过定义一个扩展，你并没有在一个类中插入新成员，
-仅仅是可以通过该类型的变量用点表达式去调用这个新函数。
+扩展不能真正的修改他们所扩展的类。通过定义一个扩展，并没有在一个类中插入新成员，
+只不过是可以通过该类型的变量用点表达式去调用这个新函数。
 
 扩展函数是*静态*分发的，即他们不是根据接收者类型的虚方法。
 调用的扩展函数是由函数调用所在的表达式的类型来决定的，
@@ -56,16 +56,14 @@ fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
 fun main() {
 //sampleStart
     open class Shape
-    
     class Rectangle: Shape()
     
     fun Shape.getName() = "Shape"
-    
     fun Rectangle.getName() = "Rectangle"
     
     fun printClassName(s: Shape) {
         println(s.getName())
-    }    
+    }
     
     printClassName(Rectangle())
 //sampleEnd
@@ -106,7 +104,7 @@ fun main() {
         fun printFunctionType() { println("Class method") }
     }
     
-    fun Example.printFunctionType(i: Int) { println("Extension function") }
+    fun Example.printFunctionType(i: Int) { println("Extension function #$i") }
     
     Example().printFunctionType(1)
 //sampleEnd
@@ -119,7 +117,7 @@ fun main() {
 注意可以为可空的接收者类型定义扩展。这样的扩展可以在对象变量上调用，
 即使其值为 null，并且可以在函数体内检测 `this == null`。
 
-这样就可以在没有检测 null 的时候调用 Kotlin 中的toString()：检测发生在扩展函数的内部。
+这样，就可以在没有检测 null 的时候调用 Kotlin 中的toString()：检测发生在扩展函数的内部：
 
 ```kotlin
 fun Any?.toString(): String {
@@ -132,7 +130,7 @@ fun Any?.toString(): String {
 
 ## 扩展属性
 
-与函数类似，Kotlin 支持扩展属性：
+与扩展函数类似，Kotlin 支持扩展属性：
 
 ```kotlin
 val <T> List<T>.lastIndex: Int
@@ -176,7 +174,7 @@ fun main() {
 
 ```kotlin
 package org.example.declarations
- 
+
 fun List<String>.getLongestString() { /*……*/}
 ```
 
@@ -197,7 +195,7 @@ fun main() {
 
 ## 扩展声明为成员
 
-在一个类内部你可以为另一个类声明扩展。在这样的扩展内部，有多个*隐式接收者*——
+可以在一个类内部为另一个类声明扩展。在这样的扩展内部，有多个*隐式接收者*——
 其中的对象成员可以无需通过限定符访问。扩展声明所在的类的实例称为<!--
 -->*分发接收者*，扩展方法调用所在的接收者类型的实例称为*扩展接收者*。
 
@@ -207,23 +205,23 @@ class Host(val hostname: String) {
 }
 
 class Connection(val host: Host, val port: Int) {
-     fun printPort() { print(port) }
+    fun printPort() { print(port) }
 
-     fun Host.printConnectionString() {
+    fun Host.printConnectionString() {
          printHostname()   // 调用 Host.printHostname()
-         print(":")
+        print(":")
          printPort()   // 调用 Connection.printPort()
-     }
+    }
 
-     fun connect() {
+    fun connect() {
          /*……*/
          host.printConnectionString()   // 调用扩展函数
-     }
+    }
 }
 
 fun main() {
     Connection(Host("kotl.in"), 443).connect()
-    //Host("kotl.in").printConnectionString(443)  // 错误，该扩展函数在 Connection 外不可用
+    //Host("kotl.in").printConnectionString()  // 错误，该扩展函数在 Connection 外不可用
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
@@ -282,7 +280,8 @@ fun main() {
 
 ## 关于可见性的说明
 
-扩展的可见性与相同作用域内声明的[其他实体的可见性](visibility-modifiers.md)相同。例如：
+Extensions utilize the same [visibility modifiers](visibility-modifiers.md) as regular functions declared in the same scope would.
+For example:
 
 * 在文件顶层声明的扩展可以访问同一文件中的其他 `private` 顶层声明。
-* 如果扩展是在其接收者类型外部声明的，那么该扩展不能访问接收者的 `private` 成员。
+* 如果扩展是在其接收者类型外部声明的，那么它不能访问接收者的 `private` 或 `protected` 成员。

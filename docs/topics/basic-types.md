@@ -113,7 +113,7 @@ val bytes = 0b11010010_01101001_10010100_10010010
 
 On the JVM platform, numbers are stored as primitive types: `int`, `double`, and so on. 
 Exceptions are cases when you create a nullable number reference such as `Int?` or use generics.
-In these cases numbers are boxed in Java clases `Integer`, `Double`, and so on.
+In these cases numbers are boxed in Java classes `Integer`, `Double`, and so on.
 
 Note that nullable references to the same number can be different objects:
 
@@ -135,16 +135,19 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
+All nullable references to `a` are actually the same object because of the memory optimization that JVM applies to `Integer`s
+between `-128` and `127`. It doesn't apply to the `b` references, so they are different objects.
+
 另一方面，它们仍然相等:
 
 ```kotlin
 fun main() {
 //sampleStart
-    val a: Int = 10000
-    println(a == a) // 输出“true”
-    val boxedA: Int? = a
-    val anotherBoxedA: Int? = a
-    println(boxedA == anotherBoxedA) // 输出“true”
+    val b: Int = 10000
+    println(b == b) // 输出“true”
+    val boxedB: Int? = b
+    val anotherBoxedB: Int? = b
+    println(boxedB == anotherBoxedB) // 输出“true”
 //sampleEnd
 }
 ```
@@ -188,7 +191,7 @@ All number types support conversions to other types:
 * `toDouble(): Double`
 * `toChar(): Char`
 
-缺乏隐式类型转换很少会引起注意，因为类型会从上下文推断出来，
+In many cases, there is no need in explicit conversions, 因为类型会从上下文推断出来，
 而算术运算会有重载做适当转换，例如：
 
 ```kotlin
@@ -295,10 +298,6 @@ val x = (1 shl 2) and 0x000FF000
 
 ### 无符号整型
 
->无符号类型自 Kotlin 1.3 起才可用，并且目前处于 [Beta](components-stability.md) 版。详见[下文](#无符号整数的-beta-状态)
->
-{type="note"}
-
 In addition to [integer types](#integer-types), Kotlin provides the following types for unsigned integer numbers:
 
 * `UByte`: 无符号 8 比特整数，范围是 0 到 255
@@ -312,9 +311,12 @@ In addition to [integer types](#integer-types), Kotlin provides the following ty
 >
 {type="note"}
 
-无符号类型是使用尚未稳定特性（即[内联类](inline-classes.md)）实现的。
-
 #### Unsigned arrays and ranges 
+
+> Unsigned arrays and operations on them are in [Beta](components-stability.md). They can be changed incompatibly at any time.
+> Opt-in is required (see the details below).
+>
+{type="warning"}
 
 与原生类型相同，每个无符号类型都有表示相应类型数组的类型：
 
@@ -325,8 +327,14 @@ In addition to [integer types](#integer-types), Kotlin provides the following ty
 
 与有符号整型数组一样，它们提供了类似于 `Array` 类的 API 而没有装箱开销。
 
-此外，[区间与数列](ranges.md)也支持 `UInt` 与 `ULong`（通过这些类 `UIntRange`、
-`UIntProgression`、 `ULongRange`、 `ULongProgression`）
+When you use unsigned arrays, you'll get a warning that indicates that this feature is not stable yet.
+To remove the warning, opt in using the `@ExperimentalUnsignedTypes` annotation. 
+It's up to you to decide if your clients have to explicitly opt-in into usage of your API, but keep in mind that unsigned
+array are not a stable feature, so API which uses them can be broken by changes in the language.
+[Learn more about opt-in requirements](opt-in-requirements.md).
+
+[区间与数列](ranges.md)也支持 `UInt` 与 `ULong`（通过这些类 `UIntRange`、 `UIntProgression`、
+`ULongRange`、 `ULongProgression`）。 Together with the unsigned integer types, these classes are stable.
 
 #### 字面值
 
@@ -350,22 +358,6 @@ val a2 = 0xFFFF_FFFF_FFFFu // ULong：未提供预期类型，常量不适于 UI
 ```kotlin
 val a = 1UL // ULong，即使未提供预期类型并且常量适于 UInt
 ```
-
-#### 无符号整数的 beta 状态
-
-无符号类型的设计还是 [Beta](components-stability.md) 版，这意味着其兼容性仅是尽力而为，不能保证。
-
-使用无符号算术时，会报一个警告，提示该特性尚未稳定发布。
-如需消除警告，必须选择加入对无符号类型的使用：
-
-* 如需传播选择加入要求，请以 `@ExperimentalUnsignedTypes` 标注使用了无符号整型的声明。
-* 如需选择加入而不传播，要么使用 `@OptIn(ExperimentalUnsignedTypes::class)` 注解标注声明，
-要么将 `-Xopt-in=kotlin.ExperimentalUnsignedTypes` 传给编译器。
-
-你的客户是否必须选择使用你的 API 取决于你，不过请记住，
-无符号整型是一个非稳定特性，因此使用它们的 API 可能会因语言的变更而发生突然破坏。 
-
-See the [opt-in requirements](opt-in-requirements.md) for details on using APIs that require opt-in.
 
 #### 深入探讨
 
@@ -401,7 +393,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
->**On JVM**: nullable references to boolean objects are boxed similarly [numbers](#numbers-representation-on-the-jvm).
+>**On JVM**: nullable references to boolean objects are boxed similarly to [numbers](#numbers-representation-on-the-jvm).
 >
 {type="note"}
 
@@ -427,15 +419,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-If a value of character variable is a digit, 可以显式将其转换为 `Int` 数字：
-
-```kotlin
-fun decimalDigitValue(c: Char): Int {
-    if (c !in '0'..'9')
-        throw IllegalArgumentException("Out of range")
-    return c.toInt() - '0'.toInt() // 显式转换为数字
-}
-```
+If a value of character variable is a digit, you can explicitly convert it to an `Int` number using the [`digitToInt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/digit-to-int.html) function.
 
 >**On JVM**: Like [numbers](#numbers-representation-on-the-jvm), characters are boxed when a nullable reference is needed.
 >Identity is not preserved by the boxing operation.
@@ -472,7 +456,7 @@ All operations that transform strings return their results in a new `String` obj
 fun main() {
 //sampleStart
     val str = "abcd"
-    println(str.toUpperCase()) // Create and print a new String object
+    println(str.uppercase()) // Create and print a new String object
     println(str) // the original string remains the same
 //sampleEnd
 }
@@ -559,11 +543,11 @@ fun main() {
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 You can use templates both in raw and escaped strings.
-To insert the `$` character in a raw string (which doesn't support backslash escaping), use the following syntax:
+To insert the `$` character in a raw string (which doesn't support backslash escaping) before any symbol, which is allowed as a beginning of an [identifier](https://kotlinlang.org/docs/reference/grammar.html#identifiers), use the following syntax:
 
 ```kotlin
 val price = """
-${'$'}9.99
+${'$'}_9.99
 """
 ```
 

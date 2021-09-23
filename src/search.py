@@ -1,44 +1,14 @@
 import os
-from os import path
 from typing import Dict, List, Iterator
 
 from algoliasearch import algoliasearch
 from algoliasearch.index import Index
 from bs4 import BeautifulSoup, Tag
-from flask import current_app as app
 from googleapiclient.discovery import build, Resource
 from oauth2client.service_account import ServiceAccountCredentials
 
 from src.api import get_api_page
-
-dist_path = "./dist"
-root_folder = path.dirname(path.dirname(__file__))
-
-
-def get_pages(freezer):
-    frozen = freezer._generate_all_urls()
-
-    frozen_dict = dict()
-
-    for url, type in frozen:
-        frozen_dict[url] = type
-
-    paths = []
-
-    if os.path.isdir(dist_path):
-        for root, dirnames, filenames in os.walk(dist_path):
-            for filename in filenames:
-                prefix_path = root[len(dist_path):]
-                if not prefix_path: prefix_path = "/"
-
-                url = path.join(prefix_path, filename)
-
-                if filename == "index.html":
-                    paths.append((prefix_path, frozen_dict.get(prefix_path, None)))
-                else:
-                    paths.append((url, frozen_dict.get(url, None)))
-
-    return paths if len(paths) > 0 else frozen
+from src.dist import get_dist_page_xml, dist_path
 
 
 def initialize_analyticsreporting() -> Resource:
@@ -119,6 +89,10 @@ def get_page_path_from_url(url):
 def group_small_content_pats(content_parts, start_index=0):
     record_limit = 100 * 1024
     size = len(content_parts)
+
+    # ToDo: REMOVE RECURSION
+    if size > 950: content_parts = content_parts[0:950]
+
     for i in range(start_index, size):
         if len(content_parts[i]) < record_limit and i < size - 1:
             content_parts[i] = content_parts[i].rstrip()
@@ -190,16 +164,33 @@ def get_markdown_page_index_objects(content: Tag, url: str, page_path: str, titl
 
 
 def get_webhelp_page_index_objects(content: Tag, url: str, page_path: str, title: str, page_type: str,
-                                    page_views: int) -> List[Dict]:
+                                   page_views: int) -> List[Dict]:
     index_objects = []
 
-    article_title = content.select_one('h1').text
+    article_title_node = content.select_one('h1')
+    article_title = article_title_node.text
+    article_content = content
+
+    chapters = content.select('.chapter')
 
     if article_title:
-        chapters = content.select('.chapter')
+        if len(chapters) != 0:
+            article_content = []
+            next_node = article_title_node.next_sibling
+
+            while next_node and next_node != chapters[0]:
+                article_content.append(next_node)
+                next_node = next_node.next_sibling
+
+        for ind, page_part in enumerate(get_valuable_content(page_path, article_content)):
+            page_info = {'url': url, 'objectID': url + str(ind), 'content': page_part,
+                         'headings': article_title, 'mainTitle': article_title, 'pageTitle': article_title,
+                         'type': page_type,
+                         'pageViews': page_views}
+            index_objects.append(page_info)
 
         for chapter in chapters:
-            chapter_title_node = chapter.select_one('h2[data-toc]')
+            chapter_title_node = chapter.select_one('[data-toc]')
             if chapter_title_node:
                 chapter_title = chapter_title_node.extract().text
                 chapter_title_anchor = chapter_title_node.attrs["data-toc"].split('#')[1]
@@ -209,7 +200,8 @@ def get_webhelp_page_index_objects(content: Tag, url: str, page_path: str, title
 
                 for ind, page_part in enumerate(get_valuable_content(page_path, chapter_content)):
                     page_info = {'url': url_with_href, 'objectID': url_with_href + str(ind), 'content': page_part,
-                                 'headings': chapter_title, 'mainTitle': article_title, 'pageTitle': chapter_title, 'type': page_type,
+                                 'headings': chapter_title, 'mainTitle': article_title, 'pageTitle': chapter_title,
+                                 'type': page_type,
                                  'pageViews': page_views}
                     index_objects.append(page_info)
 
@@ -224,23 +216,7 @@ def get_wh_index():
     return None
 
 
-def get_page_content(url):
-    path_file = dist_path + url
-
-    if path.exists(path_file):
-        with open(path_file, 'r', encoding="UTF-8") as file:
-            return file.read()
-
-    client = app.test_client()
-    content = client.get(url, follow_redirects=True)
-
-    if content.status_code != 200:
-        raise Exception('Bad response during indexing')
-
-    return content.data
-
-
-def to_wh_index(version, item):
+def to_wh_index(item):
     page_title = item["pageTitle"] if "pageTitle" in item else item["headings"]
 
     wh_index = {
@@ -255,22 +231,21 @@ def to_wh_index(version, item):
         "parent": item["url"],
         "pageViews": item["pageViews"],
         "product": "help/kotlin-reference",
-        "version": version,
         "breadcrumbs": None,
     }
 
     return wh_index
 
 
-def build_search_indices(pages, version):
-    page_views_statistic = {} #get_page_views_statistic()
+def build_search_indices(pages):
+    page_views_statistic = get_page_views_statistic()
     index_objects = []
     wh_index_objects = []
 
     print("Start building index")
-    for url, endpoint in pages:
+    for url, type in pages:
+        if not (type and type.startswith('Page')): continue
         if url.endswith('/'): url += 'index.html'
-        if not url.endswith('.html'): continue
 
         title = ''
         content = ''
@@ -281,14 +256,16 @@ def build_search_indices(pages, version):
         if url in page_views_statistic:
             page_views = page_views_statistic[url]
 
-        if page_path.startswith('community'):
+        if type == 'Page_Community':
             page_type = 'Community'
-        elif page_path.startswith('docs/reference'):
+        elif type == 'Page_Reference':
             page_type = 'Reference'
-        elif page_path.startswith('docs/tutorials'):
+        elif type == 'Page_Tutorial':
             page_type = 'Tutorial'
 
-        if page_path.startswith("api/latest/"):
+        parsed = get_dist_page_xml(url)
+
+        if type.startswith('Page_API_'):
             page_info = get_api_page(True, page_path[4:], dist_path)
 
             for table in page_info['content']('table'):
@@ -315,12 +292,6 @@ def build_search_indices(pages, version):
             page_type = "Standard Library" if "jvm/stdlib" in url else "Kotlin Test"
             content = page_info['content'].find('article', {"role": "main"})
         else:
-            html_content = get_page_content(url)
-            parsed = BeautifulSoup(html_content, "html.parser")
-
-            if parsed.find("meta", {"http-equiv": "refresh"}):
-                continue
-
             body_title = parsed.select_one("body[data-search-title]")
 
             if body_title:
@@ -363,7 +334,10 @@ def build_search_indices(pages, version):
             )
 
             index_objects += page_indices
-            def wh(*args): return to_wh_index(version, *args)
+
+            def wh(*args):
+                return to_wh_index(*args)
+
             wh_index_objects += list(map(wh, page_indices.copy()))
         else:
             print('skip: ' + url + ' unknown page content in with title: ' + title)

@@ -41,6 +41,17 @@ Kotlin 社区创建的用于数据相关任务的类库生态系统正在迅速�
 以下是一些可能会有用的库：
 
 ### Kotlin 库
+* [Multik](https://github.com/Kotlin/multik): multidimensional arrays in Kotlin. The library provides Kotlin-idiomatic, 
+  type- and dimension-safe API for mathematical operations over multidimensional arrays. Multik offers swappable 
+  JVM and native computational engines, and a combination of the two for optimal performance.
+
+* [KotlinDL](https://github.com/jetbrains/kotlindl) is a high-level Deep Learning API written in Kotlin and inspired
+  by Keras. It offers simple APIs for training deep learning models from scratch, importing existing Keras models
+  for inference, and leveraging transfer learning for tweaking existing pre-trained models to your tasks.
+
+* [Kotlin for Apache Spark](https://github.com/JetBrains/kotlin-spark-api) adds a missing layer of compatibility between
+  Kotlin and Apache Spark. It allows Kotlin developers to use familiar language features such as data classes, and
+  lambda expressions as simple expressions in curly braces or method references.
 
 * [kotlin-statistics](https://github.com/thomasnield/kotlin-statistics) 是一个为<!--
 -->探索性统计与生产统计中提供扩展函数的库。它支持基本的数字列表/序列/数组函数（从 `sum` 到 `skewness`）、
@@ -49,7 +60,7 @@ Kotlin 社区创建的用于数据相关任务的类库生态系统正在迅速�
 
 * [kmath](https://github.com/mipt-npm/kmath) 是一个受 [NumPy](https://numpy.org/) 启发的库。
 这个库支持代数结构与运算、类数组结构、数学表达式、直方图、
-流运算、[commons-math](http://commons.apache.org/proper/commons-math/) 与
+流运算、[commons-math](https://commons.apache.org/proper/commons-math/) 与
 [koma](https://github.com/kyonifer/koma) 的包装等等。
 
 * [krangl](https://github.com/holgerbrandl/krangl) 是一个受 R 语言的 [dplyr](https://dplyr.tidyverse.org/)
@@ -60,7 +71,9 @@ Kotlin 社区创建的用于数据相关任务的类库生态系统正在迅速�
 Lets-Plot 是多平台的，不仅可以用于 JVM，还可以用于 JS 与 Python。
 
 * [kravis](https://github.com/holgerbrandl/kravis) 是另一个用于表格数据可视化的库，其灵感来自于
-Python 的 [ggplot](https://ggplot2.tidyverse.org/)。
+R 的 [ggplot](https://ggplot2.tidyverse.org/)。
+
+* [londogard-nlp-toolkit](https://github.com/londogard/londogard-nlp-toolkit/) is a library that provides utilities when working with natural language processing such as word/subword/sentence embeddings, word-frequencies, stopwords, stemming, and much more.
 
 ### Java 库
 
@@ -69,18 +82,20 @@ Python 的 [ggplot](https://ggplot2.tidyverse.org/)。
 
 * [DeepLearning4J](https://deeplearning4j.org/)——一个 Java 深度学习库
 
-* [ND4J](http://nd4j.org/)——用于 JVM 的高效矩阵数学库
+* [ND4J](https://github.com/deeplearning4j/nd4j)——用于 JVM 的高效矩阵数学库
 
 * [Dex](https://github.com/PatMartin/Dex)——一个基于 Java 的数据可视化工具
 
 * [Smile](https://github.com/haifengl/smile)——一个全面的机器学习、自然语言处理、
 线性代数、图、插值与可视化系统。除了 Java API，Smile 还提供了函数式的
-[Kotlin API](http://haifengl.github.io/api/kotlin/smile-kotlin/index.html) 以及 Scala 与 Clojure API。
+[Kotlin API](https://haifengl.github.io/api/kotlin/smile-kotlin/index.html) 以及 Scala 与 Clojure API。
   * [Smile-NLP-kt](https://github.com/londogard/smile-nlp-kt)——以 Kotlin 扩展函数与接口格式重写了 Smile 的自然<!--
   -->语言处理部分的 Scala 隐式内容。
 
-* [Apache Commons Math](http://commons.apache.org/proper/commons-math/)——一个 Java
+* [Apache Commons Math](https://commons.apache.org/proper/commons-math/)——一个 Java
 通用数学、统计与机器学习库
+
+* [NM Dev](https://nm.dev/) - a Java mathematical library that covers all of classical mathematics.
 
 * [OptaPlanner](https://www.optaplanner.org/)——一个用于优化规划问题的求解器实用程序
 

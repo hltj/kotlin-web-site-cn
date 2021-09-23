@@ -5,46 +5,30 @@ title: 为什么讲授 Kotlin
 
 # 为什么讲授 Kotlin
 
-### Android 的编程语言 ###
-使用用于 [Android 开发](https://www.kotlincn.net/docs/reference/android-overview.html)的首选语言来改进课程。自 2017 年以来，Kotlin 就开始支持移动开发工作流与相关工具。
+### Academically recognized ###
 
-> Kotlin 基本上正在成为 Android 的编程语言。
-> {:.kto-quote__text} 
-> Adam Porter, University of Maryland
-> {:.kto-quote__author}
-{:.kto-quote}
-
-Android 开发将越来越多的以 Kotlin 为首。[Google I/O 2019](https://android-developers.googleblog.com/2019/05/google-io-2019-empowering-developers-to-build-experiences-on-Android-Play.html)
-
-> 减少样板代码可以帮助我们快速识别学生们遗漏了哪些基本的 Android 概念。由某些基本语法/语言问题而引起问题的可能性较低，从而使学生可以专注于更基本的软件设计问题。
-> {:.kto-quote__text} 
-> Jacob Mass, University of Tartu
-> {:.kto-quote__author}
-{:.kto-quote}
-
-### 学术认可 ###
-2020 年《泰晤士报高等教育排名》中至少有 82 所大学使用 Kotlin 讲授移动应用开发、面向对象与函数式编程、软件工程模式、并行/并发编程、科学编程以及其他课程（资料来源：内部教学 Kotlin 研究）。
+25 of the top 100 universities in the Times Higher Education World University Rankings 2021 include Kotlin in their courses. We know of 190 universities that teach Kotlin, which is almost twice as many as there were in 2020.
 
 > 在从 Java 到 Kotlin 的众多课程中，我们正在考虑采用 Kotlin 优先的方法。
-> {:.kto-quote__text}
+> {:.kto-quote__text} 
 > Eamonn De Leastar, Waterford Institute of Technology
 > {:.kto-quote__author}
 {:.kto-quote}
 
-在 2020 年排名前 100 名的大学中有 22 所大学将 Kotlin 纳入课程。
-
+Kotlin is used to teach a variety of topics,  including object-oriented and functional programming, software engineering, introductory programming, mobile application development, concurrent programming, and scientific programming (Source: internal Teaching Kotlin Study).
 
 > 我与 Kotlin 一起讲授软件工程。我们还有一门单独的 Android 开发课程。所以我可以用一种学生可以在其他课程中使用的语言进行教学。
-> {:.kto-quote__text}
+> {:.kto-quote__text} 
 > Eugeniy Tyumentcev, Omsk State University
 > {:.kto-quote__author}
 {:.kto-quote}
 
-### 在行业中受欢迎 ###
-* 各种规模的知名企业与组织都在使用 Kotlin，其中包括：推特、Reddit、Pinterest、优步、Coursera、印象笔记、Slack 与 Trello 等等。
-* 自 2017 年以来，Kotlin 的职位发布增加了 1400％ 以上。来源：[Dice](https://insights.dice.com/2018/09/24/kotlin-jobs-meteoric-rise-android/).
-* Kotlin 是增长最快的编程语言之一，在 [Github Octoverse 2019](https://octoverse.github.com/) 中排名第四。
-* [PYPL](http://pypl.github.io/PYPL.html) 将 Kotlin 排名为第 12 种最受欢迎​​的编程语言，并在 2020 年呈上升趋势。
+### Language of the industry ###
+
+* Kotlin is used by top companies such as Google, Twitter, Reddit, Netflix, Uber, BMW, Coursera, Slack, and Trello, just to name a few.
+* Kotlin has consistently ranked among the top 4 most-loved programming languages since 2018, according to the [Stack Overflow Developer Surveys](https://insights.stackoverflow.com/survey/2019#most-loved-dreaded-and-wanted).
+* Kotlin is one of the fastest-growing programming languages, ranking  fourth in that category in [GitHub’s 2019 State of the Octoverse survey](https://octoverse.github.com/).
+* Kotlin has the fastest growing language community. ([SlashData's State of the Developer Nation 20th edition, Q1 2021](https://developer-economics.cdn.prismic.io/developer-economics/dbf9f36f-a31a-440a-9c22-c599cc235fa4_20th+edition+-+State+of+the+developer+Nation.pdf))
 
 > 学生们很高兴有机会在他们可能听说过的领域进行编程。
 > {:.kto-quote__text}
@@ -52,36 +36,30 @@ Android 开发将越来越多的以 Kotlin 为首。[Google I/O 2019](https://an
 > {:.kto-quote__author}
  {:.kto-quote}
 
-在 2019 年 [StackOverflow 开发者调查](https://insights.stackoverflow.com/survey/2019#most-loved-dreaded-and-wanted)中，最受欢迎的编程语言排名第四。
-
-> 学生们很高兴。他们可以快速地生产出有用的软件。
+> 学生们很高兴。他们可以快速产出有用的软件。
 > {:.kto-quote__text}
 > Károly Machalik, University of Pannonia
 > {:.kto-quote__author}
 {:.kto-quote}
 
-### 易于讲授的基本概念 ###
+### Multiplatform ###
 
-Kotlin 的工业知名度具有良好的教育基础。它是一种功能全面的语言，支持讲授各种计算机科学与软件工程主题，例如：算法问题解决、数据结构、机器学习、编译器、数据库等。
-Kotlin 以学生曾经的编程经验为基础，对于具有 Java 或 Python 背景的人来说很容易掌握。
+The first-choice language for Android development, Kotlin is also being adopted for teaching multiplatform development for mobile, web, server-side programming, data science, and other computer science topics.
 
-> 我认为我们的学生可以从广泛的编程语言中受益，并且从中获得更多的经验，对于他们来说，获得使用更现代的语言以及 Java 与 C++ 等更传统的语言的经验非常有价值。
+> Decrease in boilerplate helps us to quickly identify which fundamental Android concepts students are missing. The likelihood of issues arising due to some basic syntactic/language problems is lower, allowing students instead to focus on more fundamental software design matters.
 > {:.kto-quote__text}
-> Nick Efford, University of Leeds
+> Jacob Mass, University of Tartu
 > {:.kto-quote__author}
 {:.kto-quote}
 
-> 我欣赏 Kotlin 的传播、创新以及能够“保持主流”以软化学习曲线，支持关键概念的方式——简而言之，即清晰与干净。
-> {:.kto-quote__text}
-> Enrico Denti, University of Bologna
-> {:.kto-quote__author}
-{:.kto-quote}
 
-Kotlin 的学习曲线柔和，可以轻松迁移现有的课程资料。
+### Easy to learn ###
 
-> Kotlin 与 Java 一样易于使用，但是它具有与较难的语言（如 C++）几乎相同的理想语言特性。
+Kotlin has a soft learning curve and builds on the students' previous programming experience. It is simple to grasp for those with a Java or Python background.
+
+> Nearly all my students have picked up Kotlin quite easily and really loved it, as compared with Java. 
 > {:.kto-quote__text}
-> Nicola Capodieci, University of Modena and Reggio Emilia
+> Scott Stanchfield, Johns Hopkins University
 > {:.kto-quote__author}
 {:.kto-quote}
 
@@ -91,32 +69,17 @@ Kotlin 的学习曲线柔和，可以轻松迁移现有的课程资料。
 > {:.kto-quote__author}
 {:.kto-quote}
 
-### 学生的学习动机 ### 
-知道 Kotlin 是一种市场认可的技能，学生们对学习它的热情往往更高。对学生来说，另一个重要的动机是学习一种语言，使他们能够快速地从代码中看到结果。
-
-> 与 Java 相比，我几乎所有的学生都非常容易地学会了 Kotlin，并且非常喜欢它。
+> I appreciate Kotlin's diffusion, its innovation while being able to ‘stay in the mainstream’ to soften the learning curve, the way it supports key concepts – in short, its clarity and cleanness. 
 > {:.kto-quote__text}
-> Scott Stanchfield, Johns Hopkins University
+> Enrico Denti, University of Bologna
 > {:.kto-quote__author}
 {:.kto-quote}
 
-> 学生喜欢这种语言。例如，它不像 Java 那样冗长，并且比 OCaml 与 ML 具有更大的市场吸引力。
-> {:.kto-quote__text}
-> Fernando Magno Quintão Pereira, Federal University of Minas Gerais
-> {:.kto-quote__author}
-{:.kto-quote}
-
-88％ 的学生对学习 Kotlin 给予积极反馈。
-资料来源：内部教学 Kotlin 研究。
-
-> 学生对学习 Kotlin 的反馈非常非常积极。
-> {:.kto-quote__text}
-> Márton Braun, Budapest University of Technology and Economics
-> {:.kto-quote__author}
-{:.kto-quote}
+According to an internal Teaching Kotlin study, 88% of students give positive feedback about learning Kotlin.
 
 ### 互操作性 ###
-与 JVM 生态系统的无缝互操作性意味着 Kotlin 可以依赖众多现有的库。方便的 Java 到 Kotlin 转换器为将 Java 代码迁移到 Kotlin 提供了出色的支持，并在学生已经熟悉 Java 的情况下帮助他们快速学习语法。Java 程序也可以调用 Kotlin 代码而没有任何开销。Kotlin 也可以编译为 JavaScript，以便在浏览器或 Node.js 中运行，或编译为针对任何主要操作系统的原生二进制文件。
+
+与 JVM 生态系统的无缝互操作性意味着 Kotlin 可以依赖众多现有的库。 Java programs can also call Kotlin code without any overhead. Our helpful Java-to-Kotlin converter makes it easy to migrate existing course materials. It also helps students quickly learn the syntax if they are already familiar with Java.
 
 > Kotlin 更快地开发与理解正在发生的事情；向后兼容性接近 100％，可以轻松地在 Java 中显示与转换为 Kotlin，同时仍然利用 Java 中的每个可用库；学生们似乎很快就理解了它。
 > {:.kto-quote__text}
@@ -124,9 +87,12 @@ Kotlin 的学习曲线柔和，可以轻松迁移现有的课程资料。
 > {:.kto-quote__author}
 {:.kto-quote}
 
-+ [Java-to-Kotlin 转换器](https://try.kotlinlang.org/#/Kotlin%20Koans/Introduction/Java%20to%20Kotlin%20conversion/Task.kt)
-+ [Kotlin/JS](https://www.kotlincn.net/docs/reference/js-project-setup.html)
-+ [Kotlin/Native](https://www.kotlincn.net/docs/reference/native/concurrency.html)
+Kotlin can also be compiled to JavaScript to run in the browser or on Node.js, or into a standalone native binary targeting any major operating system.
+
++ [Java-to-Kotlin 转换器](https://kotlinlang.org/docs/mixing-java-kotlin-intellij.html#converting-an-existing-java-file-to-kotlin-with-j2k)
++ [Kotlin/JVM](https://kotlinlang.org/docs/jvm-get-started.html)
++ [Kotlin/JS](https://www.kotlincn.net/docs/js-get-started.html)
++ [Kotlin/Native](https://www.kotlincn.net/docs/native-get-started.html)
 
 > 在即将到来的入门编程课程中，我们选择 Kotlin 是因为我们想要一种针对 JVM 并与其生态系统无缝互操作的语言：这对我们的市场至关重要。
 > {:.kto-quote__text}
@@ -136,15 +102,13 @@ Kotlin 的学习曲线柔和，可以轻松迁移现有的课程资料。
 
 ### 支持多种范式 ###
 
-Kotlin 以一种优雅的方式结合了主要的编程范式，从而可以使用函数式、命令式、面向对象或过程式编程——所有这些都在同一语言中进行。在 Kotlin 对协程的支持下，并发与并行性的概念自然而然地出现了。
+Kotlin 以一种优雅的方式结合了全部主要编程范式，从而可以使用函数式、命令式、面向对象或过程式编程——所有这些都在同一语言中进行。在 Kotlin 对协程的支持下，并发与并行性的概念自然而然地出现了。
 
 > 你可以为初学者讲授过程编程，而无需描述类。因此，你的课程可以更加一致。
 > {:.kto-quote__text}
 > Alexey Mitsyuk, HSE university
 > {:.kto-quote__author}
 {:.kto-quote}
-
-Kotlin 支持函数式、命令式、面向对象与过程式编程
 
 > 实际上，我的 Kotlin 学生比 Java 学生更了解 OO 概念。
 > {:.kto-quote__text}
@@ -158,17 +122,23 @@ Kotlin 支持函数式、命令式、面向对象与过程式编程
 > {:.kto-quote__author}
 {:.kto-quote}
 
-### 支持编码安全 ###
-Kotlin 通过静态类型检查与自动内存管理来促进编写正确的程序。排除了对空指针的取消引用，并且没有显式指针或无法检测到的未初始化变量。
+### Modern, concise, and safe ###
 
-> 借此机会教一些新的、安全且实用的东西。
+Kotlin allows students to focus on expressing their ideas, as they don’t have to write as much boilerplate code. Less code written also means less code to test and debug. This language design makes Kotlin a highly productive language, and it also simplifies grading homework and understanding the students' code. According to an internal Teaching Kotlin survey, Kotlin’s concise and expressive syntax is its most beloved feature among educators.
+
+> Kotlin's compactness is my favorite feature. I’ve translated a few of my Java programming courseworks into Kotlin and noticed that code typically shrinks to 50% of its original size. As a teacher, I also get some benefit from being able to use less code when showing students how to do things. 
 > {:.kto-quote__text}
-> Gaute Berge, University of Oslo
+> Nick Efford, University of Leeds
 > {:.kto-quote__author}
 {:.kto-quote}
 
-类型安全与空安全是 Kotlin 讲师最喜欢的特性。
-资料来源：内部教学 Kotlin 研究。
+> Simple syntax. Less code to get more done. At the same time Kotlin has advanced topics such as coroutines.
+> {:.kto-quote__text}
+> Zaid Altahat, Northwestern University, University of Wisconsin–Parkside
+> {:.kto-quote__author}
+{:.kto-quote}
+
+Kotlin promotes writing correct programs with static type checking and automatic memory management. It rules out null-pointer dereferences and has no explicit pointers or undetectable uninitialized variables. Type safety and null safety are some of the most beloved features among Kotlin instructors, according to our internal Teaching Kotlin study.
 
 > Kotlin 的优点之一是强类型与可空性的良好组合。
 > {:.kto-quote__text}
@@ -182,27 +152,9 @@ Kotlin 通过静态类型检查与自动内存管理来促进编写正确的程�
 > {:.kto-quote__author}
 {:.kto-quote}
 
-### 现代简洁的语言设计 ###
-Kotlin 的简单语法使它对初学者很友好，同时，它提供了一些复杂的特性，这些特性是有雄心的学生永远不会放弃的。
+### Prepares students for careers ###
 
-Kotlin 使学生专注于表达自己的想法，并减少样板代码的编写。编写的代码越少，测试和调试的代码也就越少。这样的语言设计使 Kotlin 成为一种高效的语言，而且它还简化了批改作业与理解学生的代码。
-
-> 简单的语法。更少的代码可以完成更多工作。同时，Kotlin 还拥有诸如协程等高级主题。
-> {:.kto-quote__text}
-> Zaid Altahat, Northwestern University, University of Wisconsin–Parkside
-> {:.kto-quote__author}
-{:.kto-quote}
-
-教师喜欢 Kotlin 简洁明了的语法。资料来源：内部教学 Kotlin 研究。
-
-> Kotlin 的紧凑性是我最喜欢的特性。我已经将我的一些 Java 编程课程翻译成 Kotlin，并注意到代码通常会缩小到其原始大小的 50％。作为讲师，当向学生展示如何做事时，我可以从使用更少的代码中受益。
-> {:.kto-quote__text}
-> Nick Efford, University of Leeds
-> {:.kto-quote__author}
-{:.kto-quote}
-
-### 为学生就业做准备 ###
-讲授专业的软件工程实践可以改善学生的就业前景。课堂编码项目通常是功能齐全的 Android 应用程序，与抽象示例相比，实际作业对学生而言更具吸引力。
+Teaching professional software engineering practices improves students’ employment prospects. And knowing that Kotlin is a marketable skill, students tend to be more enthusiastic about studying it. 
 
 > 在选择教学语言时，应考虑就业前景以及该语言在简历中的使用方式。
 > {:.kto-quote__text}
@@ -210,18 +162,19 @@ Kotlin 使学生专注于表达自己的想法，并减少样板代码的编写�
 > {:.kto-quote__author}
 {:.kto-quote}
 
-自 2017 年以来，Kotlin 的职位发布增加了 1400％ 以上。资料来源：[Dice](https://insights.dice.com/2018/09/24/kotlin-jobs-meteoric-rise-android/)。
+Kotlin ranked fifth in the category of Most In-Demand Coding Languages Across the Globe from [Hired’s 2019 State of Software Engineers Report](http://pages.hired.email/rs/289-SIY-439/images/2019-State-of-SoftwareEngineers-Report.pdf?mkt_tok=eyJpIjoiTW1ReVl6RTNZVE15WWpNMSIsInQiOiJ5ajJ4N0xSQ3lRRmFscU84b1FzNGhZXC9IM2ZXbElCcHordUljaGY4Sk00RmtYMU1DVFJWSk1zRFExa3Q5NUlocE9LZVRRd2k3dUJzOVBLeFFQY2d1aWc2NnZydjNsVm1tYzNnUjlwN2xCZWxReEU3YmROTDNIcjA1cHRNaHRlS0EifQ%3D%3D).
 
-> 万事开头难，但与 C# 或 JavaScript 相比，学生们更喜欢它。
+Kotlin ranked third among programming languages that developers are planning on learning next, according to [HackerRank’s 2020 Developer Skills Report](https://research.hackerrank.com/developer-skills/2020).
+
+> Students like the language. It's less verbose than Java, for instance, and has more market appeal than OCaml and ML. 
 > {:.kto-quote__text}
-> Alex Queudot, ENTI – University of Barcelona
+> Fernando Magno Quintão Pereira, Federal University of Minas Gerais
 > {:.kto-quote__author}
 {:.kto-quote}
 
 ### 工具与学习资料 ###
-语言是该行业的顶级工具。IntelliJ IDEA 支持 Kotlin 作为一等公民，对教育者与学生免费。它提供了出色的生产力功能，例如：自动代码补全、代码检查、可视调试器等。
 
-教育相关的 EduTools 插件也可用于帮助学习或讲授 Kotlin 编程。教育者可以使用现有的交互式课程，也可以通过动手作业与练习编程任务来创建自定义课程。集成测试将自动检查任务并提供反馈。
+The top tools of the profession are packaged with the language.
 
 > JetBrains 为 Kotlin 配备了最好的可用工具，以简化开发。
 > {:.kto-quote__text}
@@ -230,9 +183,22 @@ Kotlin 使学生专注于表达自己的想法，并减少样板代码的编写�
 {:.kto-quote}
 
 * [免费的 IntelliJ IDEA 旗舰版许可证](https://www.jetbrains.com/community/education/#students)
-* [EduTools 插件](https://plugins.jetbrains.com/plugin/10081-edutools)
-* [文档](https://www.kotlincn.net/docs/reference/)
+
+IntelliJ IDEA supports Kotlin as a first-class citizen and is free for educators and students. It offers great productivity features, such as smart code completion, code inspections, a visual debugger, and more.
+
 * [演练](https://play.kotlinlang.org/)
+
+The playground provides an interactive way to learn the language, and it is also useful for trying out small code snippets in the browser without having to open an IDE to write and run code.
+
+* [EduTools plugin](https://plugins.jetbrains.com/plugin/10081-edutools)
+
+This plugin helps users learn and teach Kotlin programming. Educators can use existing interactive courses or create custom ones, with hands-on assignments and coding tasks to practice on. Integrated tests will automatically check the assignments and provide feedback.
+
+* [Code With Me](https://www.jetbrains.com/code-with-me/)
+ 
+ This is a new collaborative coding and pair programming service. It’s a great tool for remote learning and real-time collaboration on a project inside an IDE.
+
+* [Kotlin Basics track on JetBrains Academy](https://hyperskill.org/tracks/18)
 
 > 去吧！你会喜欢的。语言很成熟，IDE 支持很棒，文档很棒。
 > {:.kto-quote__text}
@@ -241,14 +207,13 @@ Kotlin 使学生专注于表达自己的想法，并减少样板代码的编写�
 {:.kto-quote}
 
 ### 开源社区 ###
-Kotlin 本质上是开源的，是一种可以在所有主要平台上运行的自由语言。Kotlin 得到了其多元化而热情的社区的支持与帮助，其中包括世界各地的 200 多个 Kotlin 用户群组、一个活跃的论坛、Slack、 Reddit，和 Stack Overflow 社区，以及许多其他资源。
 
-> 自由提供的实现非常重要。
-> {:.kto-quote__text}
-> Ryan Stansifer, Florida Institute of Technology
-> {:.kto-quote__author}
-{:.kto-quote}
+Kotlin 本质上是开源的，是一种可以在所有主要平台上运行的自由语言。Kotlin 得到了其多元化而热情的社区的支持与帮助。
 
-我们创建了一个专用的 Slack 频道，供 Kotlin 教育工作者分享经验、交流思想并互相支持。来（讲授）Kotlin！
-
-<a target="_blank" class="kto-button kto-button_size_m kto-button_mode_primary" href="https://surveys.jetbrains.com/s3/kotlinlang-slack-signup-educators">申请加入</a>
+* [200 Kotlin User Groups](https://kotlinlang.org/user-groups/user-group-list.html)
+* [Kotlinlang Slack workspace](https://surveys.jetbrains.com/s3/kotlin-slack-signup-educators), with a dedicated #education channel
+* [Kotlin YouTube channel](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw), which hosts regular [educational webinars](https://www.youtube.com/playlist?list=PLlFc5cFwUnmzT4cgLOGJYGnY6j0W2xoFA)
+* [Twitter](https://twitter.com/kotlin)
+* [Reddit](https://www.reddit.com/r/Kotlin/)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/kotlin)
+* [Forum](https://discuss.kotlinlang.org/)

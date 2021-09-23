@@ -68,36 +68,8 @@ the missing directories will have to be created before any new files can be adde
 
 Use the following `build.gradle(.kts)` Gradle build file:
 
-<tabs>
-
-```groovy
-plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
-}
-
-repositories {
-    mavenCentral()
-}
-
-kotlin {
-  linuxX64("native") {  // on Linux
-  // macosX64("native") { // on macOS
-  // mingwX64("native") { //on Windows
-    compilations.main.cinterops {
-      interop 
-    }
-    
-    binaries {
-      executable()
-    }
-  }
-}
-
-wrapper {
-  gradleVersion = "%gradleVersion%"
-  distributionType = "ALL"
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 plugins {
@@ -110,7 +82,8 @@ repositories {
 
 kotlin {
   linuxX64("native") { // on Linux
-  // macosX64("native") { // on macOS
+  // macosX64("native") { // on x86_64 macOS
+  // macosArm64("native") { // on Apple Silicon macOS
   // mingwX64("native") { // on Windows
     val main by compilations.getting
     val interop by main.cinterops.creating
@@ -127,13 +100,41 @@ tasks.wrapper {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+plugins {
+    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
+}
+
+repositories {
+    mavenCentral()
+}
+
+kotlin {
+  linuxX64("native") { // on Linux
+  // macosX64("native") { // on x86_64 macOS
+  // macosArm64("native") { // on Apple Silicon macOS
+  // mingwX64("native") { // on Windows
+    compilations.main.cinterops {
+      interop 
+    }
+    
+    binaries {
+      executable()
+    }
+  }
+}
+
+wrapper {
+  gradleVersion = "%gradleVersion%"
+  distributionType = "ALL"
+}
+```
+
+</tab>
 </tabs>
-
-The prepared project sources can be directly downloaded from Github:
-
-* for macOS: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-groovy-macos-c.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-kotlin-macos-c.zip)
-* for Linux: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-groovy-linux-c.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-kotlin-linux-c.zip)
-* for Windows: [Groovy](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-groovy-windows-c.zip), [Kotlin](https://github.com/kotlin/web-site-samples/archive/mpp-kn-app-kotlin-windows-c.zip)
 
 The project file configures the C interop as an additional step of the build.
 Let's move the `interop.def` file to the `src/nativeInterop/cinterop` directory.
@@ -168,7 +169,7 @@ int main(void)
  
   curl = curl_easy_init();
   if(curl) {
-    curl_easy_setopt(curl, CURLOPT_URL, "http://example.com");
+    curl_easy_setopt(curl, CURLOPT_URL, "https://example.com");
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
  
     res = curl_easy_perform(curl);
@@ -190,7 +191,7 @@ import kotlinx.cinterop.*
 fun main(args: Array<String>) {
     val curl = curl_easy_init()
     if (curl != null) {
-        curl_easy_setopt(curl, CURLOPT_URL, "http://example.com")
+        curl_easy_setopt(curl, CURLOPT_URL, "https://example.com")
         curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L)
         val res = curl_easy_perform(curl)
         if (res != CURLE_OK) {
@@ -218,13 +219,13 @@ fun main(args: Array<String>) {
 
 如果在编译期间没有错误，应该能看到程序执行的<!--
 -->结果，它应该输出<!--
--->网站 `http://example.com` 的内容
+-->网站 `https://example.com` 的内容
 
-![Output](output.png){width=700}
+![Output](curl-output.png){width=700}
 
 实际看到的输出的原因是因为调用 `curl_easy_perform` 将结果打印到标准输出。应该使用
 `curl_easy_setopt` 隐藏它。
 
-关于使用 `libcurl` 的更完整示例，[libcurl 在 Kotlin/Native 项目中的示例](https://github.com/JetBrains/kotlin-native/tree/master/samples/libcurl)展示了如何将代码抽象为 Kotlin
+关于使用 `libcurl` 的更完整示例，[libcurl 在 Kotlin/Native 项目中的示例](https://github.com/JetBrains/kotlin/tree/master/kotlin-native/samples/libcurl)展示了如何将代码抽象为 Kotlin
 类以及显示标题。它还演示了如何通过将它们组合到 shell 脚本或 Gradle 构建脚本中来使步骤更简洁一些。。
 

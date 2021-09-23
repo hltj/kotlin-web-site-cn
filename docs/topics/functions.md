@@ -1,6 +1,6 @@
 [//]: # (title: 函数)
 
-Kotlin 中的函数使用 `fun` 关键字声明：
+Kotlin 函数使用 `fun` 关键字声明：
 
 ```kotlin
 fun double(x: Int): Int {
@@ -10,7 +10,7 @@ fun double(x: Int): Int {
 
 ## 函数用法
 
-调用函数使用传统的方法：
+Functions are called using the standard approach:
 
 ```kotlin
 val result = double(2)
@@ -24,7 +24,7 @@ Stream().read() // 创建类 Stream 实例并调用 read()
 
 ### 参数
 
-函数参数使用 Pascal 表示法定义——*name*: *type*。参数用逗号隔开。
+函数参数使用 Pascal 表示法定义——*name*: *type*。参数用逗号隔开，
 每个参数必须有显式类型：
 
 ```kotlin
@@ -42,21 +42,21 @@ fun powerOf(
 
 ### 默认参数
 
-函数参数可以有默认值，当省略相应的参数时使用默认值。与其他语言相比，这可以减少<!--
+函数参数可以有默认值，当省略相应的参数时使用默认值。这可以减少<!--
 -->重载数量：
 
 ```kotlin
 fun read(
-    b: Array<Byte>, 
+    b: ByteArray,
     off: Int = 0,
     len: Int = b.size,
 ) { /*……*/ }
 ```
 
-A default value is defined using the `=` after the type.
+A default value is defined using `=` after the type.
 
 覆盖方法总是使用与基类型方法相同的默认参数值。
-当覆盖一个带有默认参数值的方法时，必须从签名中省略默认参数值：
+当覆盖一个有默认参数值的方法时，必须从签名中省略默认参数值：
 
 ```kotlin
 open class A {
@@ -73,7 +73,7 @@ class B : A() {
 
 ```kotlin
 fun foo(
-    bar: Int = 0, 
+    bar: Int = 0,
     baz: Int,
 ) { /*……*/ }
 
@@ -97,13 +97,13 @@ foo { println("hello") }        // 使用两个默认值 bar = 0 与 baz = 1
 
 ### 具名参数
 
-When calling a function, you can name one or more of its arguments. This may be helpful when a function has a large number of arguments, 
-and it's difficult to associate a value with an argument, especially if it's a boolean or `null` value.
+When calling a function, you can name one or more of its arguments. This can be helpful when a function has many
+arguments and it's difficult to associate a value with an argument, especially if it's a boolean or `null` value.
 
-When you use named arguments in a function call, you can freely change the order they are listed in, and if you want to 
-use their default values you can just leave them out altogether.
+When you use named arguments in a function call, you can freely change the order they are listed in, and if you want to
+use their default values, you can just leave these arguments out altogether.
 
-Consider the following function `reformat()` that has 4 arguments with default values.
+Consider the following function, `reformat()`, which has 4 arguments with default values.
 
 ```kotlin
 fun reformat(
@@ -127,19 +127,20 @@ reformat(
 )
 ```
 
-You can skip all arguments with default values:
+You can skip all the ones with default values:
 
 ```kotlin
 reformat("This is a long String!")
 ```
 
-You can skip some arguments with default values. However, after the first skipped argument, you must name all subsequent arguments:
+You are also able to skip specific arguments with default values, rather than omitting them all. However, after the first
+skipped argument, you must name all subsequent arguments:
 
 ```kotlin
 reformat("This is a short String!", upperCaseFirstLetter = false, wordSeparator = '_')
 ```
 
-You can pass a [variable number of arguments (`vararg`)](#variable-number-of-arguments-varargs) with names using the 
+You can pass a [variable number of arguments (`vararg`)](#variable-number-of-arguments-varargs) with names using the
 `spread` operator:
 
 ```kotlin
@@ -155,7 +156,7 @@ foo(strings = *arrayOf("a", "b", "c"))
 
 ### 返回 Unit 的函数
 
-如果一个函数不返回任何有用的值，它的返回类型是 `Unit`。`Unit` 是一种只有一个值——`Unit` 的类型。
+如果一个函数并不返回有用的值，其返回类型是 `Unit`。`Unit` 是一种只有一个值——`Unit` 的类型。
 这个值不需要显式返回：
 
 ```kotlin
@@ -191,7 +192,7 @@ fun double(x: Int) = x * 2
 ### 显式返回类型
 
 具有块代码体的函数必须始终显式指定返回类型，除非他们旨在返回 `Unit`，
-[在这种情况下它是可选的](#返回-unit-的函数)。
+[在这种情况下指定返回值类型是可选的](#返回-unit-的函数)。
 
 Kotlin 不推断具有块代码体的函数的返回类型，因为这样的函数在代码体中可能有复杂的控制流，
 并且返回类型对于读者（有时甚至对于编译器）是不明显的。
@@ -215,14 +216,14 @@ fun <T> asList(vararg ts: T): List<T> {
 val list = asList(1, 2, 3)
 ```
 
-在函数内部，类型 `T` 的 `vararg` 参数的可见方式是作为 `T` 数组，即上例中的 `ts`
+在函数内部，类型 `T` 的 `vararg` 参数的可见方式是作为 `T` 数组，如上例中的 `ts`
 变量具有类型 `Array <out T>`。
 
 只有一个参数可以标注为 `vararg`。如果 `vararg` 参数不是列表中的最后一个参数， 可以使用<!--
 -->具名参数语法传递其后的参数的值，或者，如果参数具有函数类型，则通过在括号外部<!--
 -->传一个 lambda。
 
-当调用 `vararg`-函数时，可以一个接一个地传参，例如 `asList(1, 2, 3)`。如果已经有一个数组<!--
+当调用 `vararg`-函数时，可以逐个传参，例如 `asList(1, 2, 3)`。如果已经有一个数组<!--
 -->并希望将其内容传给该函数，那么使用*伸展（spread）*操作符（在数组前面加 `*`）：
 
 ```kotlin
@@ -256,7 +257,8 @@ infix fun Int.shl(x: Int): Int { …… }
 > * `0 until n * 2` 等价于 `0 until (n * 2)`
 > * `xs union ys as Set<*>` 等价于 `xs union (ys as Set<*>)`
 >
-> 另一方面，中缀函数调用的优先级高于布尔操作符 `&&` 与 `||`、`is-` 与 `in-` 检测以及其他一些操作符。这些表达式也是等价的：
+> 另一方面，中缀函数调用的优先级高于布尔操作符 `&&` 与 `||`、`is-`
+> 与 `in-` 检测以及其他一些操作符。这些表达式也是等价的：
 > * `a && b xor c` 等价于 `a && (b xor c)`
 > * `a xor b in c` 等价于 `(a xor b) in c`
 >
@@ -280,7 +282,7 @@ class MyStringCollection {
 ## 函数作用域
 
 Kotlin 函数可以在文件顶层声明，这意味着你不需要像一些语言如
-Java、C# 或 Scala 那样需要创建一个类来保存一个函数。此外<!--
+Java、C# 与 Scala 那样需要创建一个类来保存一个函数。此外<!--
 -->除了顶层函数，Kotlin 中函数也可以声明在局部作用域、作为成员函数以及扩展函数。
 
 ### 局部函数
@@ -346,7 +348,7 @@ fun <T> singletonList(item: T): List<T> { /*……*/ }
 
 Kotlin 支持一种称为[尾递归](https://zh.wikipedia.org/wiki/%E5%B0%BE%E8%B0%83%E7%94%A8)的函数式编程风格。
 For some algorithms that would normally use loops you can use a recursive function instead without a risk of stack overflow.
-当一个函数用 `tailrec` 修饰符标记并满足所需的形式时，编译器会优化该递归，
+当一个函数用 `tailrec` 修饰符标记并满足所需的形式条件时，编译器会优化该递归，
 留下一个快速而高效的基于循环的版本：
 
 ```kotlin
@@ -375,7 +377,7 @@ private fun findFixPoint(): Double {
 
 要符合 `tailrec` 修饰符的条件的话，函数必须将其自身调用作为它执行的最后一个操作。在递归调用后有更多代码时，
 不能使用尾递归，并且不能用在 `try`/`catch`/`finally` 块中。
-目前在 Kotlin for JVM 与 Kotlin/Native 中支持尾递归。
+目前在 Kotlin for the JVM 与 Kotlin/Native 中支持尾递归。
 
 **See also**:
 * [内联函数](inline-functions.md)

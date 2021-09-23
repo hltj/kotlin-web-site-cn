@@ -6,18 +6,18 @@ title: 活动
 
 # 每个人都可参与的派对
 
-[Register Here](https://blog.jetbrains.com/kotlin/2020/11/server-side-with-kotlin-webinar-series/){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
+[Watch Now](https://www.youtube.com/playlist?list=PLlFc5cFwUnmx-dpq9nkdaVJX0GnrM1Mp1){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
 
 ## Server-side with Kotlin Webinar Series
 
 ![Server-side webinars]({{ url_for('asset', path='images/community/server-side-webinars.png') }})
  
-In the next few weeks, speakers from JetBrains, Google, and Confluent will cover essential topics of backend
- development: event stream management with Kafka, running applications in the cloud, and backends with Spring Boot. [For more information, and to register for the webinars, check out this blog post](https://blog.jetbrains.com/kotlin/2020/11/server-side-with-kotlin-webinar-series/)
+In December and January we hosted a series of webinars about server-side development with Kotlin. 
+[Subscribe to our newsletter](https://info.jetbrains.com/kotlin-communication-center-page.html) and stay tuned for more Kotlin webinars and events.
  
-[主办活动](https://surveys.jetbrains.com/s3/1eca96c71ee7){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
-
 ## Kotlin 之夜
+
+[Host event](https://surveys.jetbrains.com/s3/1eca96c71ee7){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
 
 ![Kotlin 之夜]({{ url_for('asset', path='images/community/kotlin-nights-banner.svg') }})
 
@@ -26,7 +26,7 @@ In the next few weeks, speakers from JetBrains, Google, and Confluent will cover
 * **37** 国家
  {:.community-numbers-right}
  
-Kotlin 之夜是一个包含 3~4 次关于 Kotlin 或相关技术的演讲集会。在 JetBrains 组织了一些活动：[Kotlin 旧金山之夜](https://blog.jetbrains.com/kotlin/2016/06/kotlin-night-recordings/)与 [Kotlin 伦敦之夜](https://blog.jetbrains.com/kotlin/2016/11/kotlin-night-in-london-recordings/)。
+Kotlin 之夜是一个包含 3~4 次关于 Kotlin 或相关技术的演讲集会。 在 JetBrains 组织了一些活动：[Kotlin 旧金山之夜](https://blog.jetbrains.com/kotlin/2016/06/kotlin-night-recordings/)与 [Kotlin 伦敦之夜](https://blog.jetbrains.com/kotlin/2016/11/kotlin-night-in-london-recordings/)。
 
 * [准则与支持](/community/kotlin-nights/guidelines.html)
 * [品牌宣传资料](/community/kotlin-nights/branding.html)

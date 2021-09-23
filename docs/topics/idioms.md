@@ -35,6 +35,8 @@ val positives = list.filter { x -> x > 0 }
 val positives = list.filter { it > 0 }
 ```
 
+Learn the difference between [Java and Kotlin filtering](java-to-kotlin-idioms-strings.md#create-a-string-from-collection-items).
+
 ### 检测元素是否存在于集合中
 
 ```kotlin
@@ -48,6 +50,8 @@ if ("jane@example.com" !in emailsList) { …… }
 ```kotlin
 println("Name $name")
 ```
+
+Learn the difference between [Java and Kotlin string concatenation](java-to-kotlin-idioms-strings.md#concatenate-strings).
 
 ### 类型判断
 
@@ -349,3 +353,6 @@ fun calcTaxes(): BigDecimal = TODO("Waiting for feedback from accounting")
 
 IntelliJ IDEA 的 kotlin 插件理解 `TODO()` 的语言，并且会自动在 TODO 工具窗口中添加代码指示。 
 
+## What’s next?
+
+Learn how to perform [typical tasks with strings in Java and Kotlin](java-to-kotlin-idioms-strings.md).

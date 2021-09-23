@@ -1,5 +1,11 @@
 [//]: # (title: 基本语法)
 
+This is a collection of basic syntax elements with examples. At the end of every section, you'll find a link to
+a detailed description of the related topic.
+
+You can also learn all the Kotlin essentials with the free [Kotlin Basics track](https://hyperskill.org/tracks/18)
+on JetBrains Academy.
+
 ## 包的定义与导入
 
 包的声明应处于源文件顶部。
@@ -50,7 +56,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-`println` prints its arguments and adds a line break, so that the next thing you print appears and the next line.
+`println` prints its arguments and adds a line break, so that the next thing you print appears on the next line.
 
 ```kotlin
 fun main() {
@@ -214,7 +220,7 @@ mark it as `open`.
 ```kotlin
 open class Shape
 
-class Rectangle(var height: Double, var length: Double): Shape {
+class Rectangle(var height: Double, var length: Double): Shape() {
     var perimeter = (height + length) * 2 
 }
 ```
@@ -236,7 +242,7 @@ Kotlin 中的块注释可以嵌套。
 
 ```kotlin
 /* 注释从这里开始
-/* 包含嵌套的注释 */     
+/* 包含嵌套的注释 *&#8288;/     
 并且在这里结束。 */
 ```
 
@@ -477,7 +483,7 @@ fun main() {
     fruits
       .filter { it.startsWith("a") }
       .sortedBy { it }
-      .map { it.toUpperCase() }
+      .map { it.uppercase() }
       .forEach { println(it) }
 //sampleEnd
 }

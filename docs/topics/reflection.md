@@ -17,20 +17,25 @@ library for applications that do not use reflection features.
 To use reflection in a Gradle or Maven project, add the dependency on `kotlin-reflect`:
 * In Gradle:
 
-    <tabs>
+    <tabs group="build-script">
+    <tab title="Kotlin" group-key="kotlin">
+
+    ```kotlin
+    dependencies {
+        implementation("org.jetbrains.kotlin:kotlin-reflect:%kotlinVersion%")
+    }
+    ```
+
+    </tab>
+    <tab title="Groovy" group-key="groovy">
     
     ```groovy
     dependencies {
         implementation "org.jetbrains.kotlin:kotlin-reflect:%kotlinVersion%"
     }
     ```
-    
-    ```kotlin
-    dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-reflect:%kotlinVersion%")
-    }
-    ```
-    
+
+    </tab>
     </tabs>
 
 * In Maven:
@@ -205,7 +210,8 @@ fun main() {
     ::y.set(2)
     println(y)
 }
-```       
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 属性引用可以用在预期具有单个泛型参数的函数的地方：
 
@@ -349,7 +355,7 @@ fun main() {
 
 ### 绑定的构造函数引用
 
-[*内部*类](nested-classes.md#内部类)的构造函数的绑定的可调用引用可<!--
+[内部类](nested-classes.md#内部类)的构造函数的绑定的可调用引用可<!--
 -->通过提供外部类的实例来获得：
 
 ```kotlin

@@ -55,13 +55,25 @@ Depending on your project and purposes, you can add dependencies between [a Kotl
     
     kotlin {
         cocoapods {
-            // Configure fields required by CocoaPods.
-            summary = "Some description for a Kotlin/Native module"
-            homepage = "Link to a Kotlin/Native module homepage"
-    
-            // You can change the name of the produced framework.
-            // By default, it is the name of the Gradle project.
-            frameworkName = "my_framework"
+
+            framework {
+                // Configure fields required by CocoaPods.
+                summary = "Some description for a Kotlin/Native module"
+                homepage = "Link to a Kotlin/Native module homepage"
+                // Framework name configuration. Use this property instead of deprecated 'frameworkName'
+                baseName = "MyFramework"
+                // (Optional) Dynamic framework support
+                isStatic = false
+                // (Optional) Dependency export
+                export(project(":anotherKMMModule"))
+                transitiveExport = true
+                // (Optional) Bitcode embedding
+                embedBitcode(BITCODE)
+            }
+            
+            // Maps custom Xcode configuration to NativeBuildType
+            xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] = NativeBuildType.DEBUG
+            xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] = NativeBuildType.RELEASE
         }
     }
     ```
@@ -82,7 +94,7 @@ the build process of an Xcode project.
 ## Add dependencies on Pod libraries
 
 To add dependencies between a Kotlin project and a Pod library, you should [complete the initial configuration](#install-the-cocoapods-dependency-manager-and-plugin).
-This allows you to add dependencies on the following types of Pod libraries: 
+This allows you to add dependencies on the following types of Pod libraries:
  * [A Pod library from the CocoaPods repository](#add-a-dependency-on-a-pod-library-from-the-cocoapods-repository) 
  * [A Pod library stored locally](#add-a-dependency-on-a-pod-library-stored-locally)
  * [A Pod library from a Git repository](#add-a-dependency-on-a-pod-library-from-the-git-repository)
@@ -142,7 +154,7 @@ To use these dependencies from the Kotlin code, import the packages `cocoapods.<
 import cocoapods.AFNetworking.*
 ```
 
-You can find a sample project [here](https://github.com/Kotlin/kotlin-with-cocoapods-sample).
+You can find a sample project [here](https://github.com/Kotlin/kmm-with-cocoapods-sample).
 
 ### Add a dependency on a Pod library stored locally
 
@@ -202,7 +214,7 @@ import cocoapods.subspec_dependency.*
 import cocoapods.AFNetworking.*
 ```
 
-You can find a sample project [here](https://github.com/Kotlin/kotlin-with-cocoapods-sample).
+You can find a sample project [here](https://github.com/Kotlin/kmm-with-cocoapods-sample).
 
 ### Add a dependency on a Pod library from the Git repository
 
@@ -269,7 +281,7 @@ In the configuration block specify the path to the git repository: use the `git(
 > ```ruby
 > target 'ios-app' do
 >     # ... other pod depedencies ...
->    pod 'JSONModel', :path => '../cocoapods/kotlin-with-cocoapods-sample/kotlin-library/build/cocoapods/externalSources/git/JSONModel'
+>    pod 'JSONModel', :path => '../cocoapods/kmm-with-cocoapods-sample/kotlin-library/build/cocoapods/externalSources/git/JSONModel'
 > end
 > ```
 >
@@ -283,7 +295,7 @@ import cocoapods.JSONModel.*
 import cocoapods.CocoaLumberjack.*
 ```
 
-You can find a sample project [here](https://github.com/Kotlin/kotlin-with-cocoapods-sample).
+You can find a sample project [here](https://github.com/Kotlin/kmm-with-cocoapods-sample).
 
 ### Add a dependency on a Pod library from an archive
 
@@ -313,7 +325,7 @@ In the configuration block specify the path to the archive: use the `url()` func
             ios.deploymentTarget = "13.5"
 
             pod("pod_dependency") {
-                source = url("https://github.com/Kotlin/kotlin-with-cocoapods-sample/raw/cocoapods-zip/cocoapodSourcesZip.zip", flatten = true)
+                source = url("https://github.com/Kotlin/kmm-with-cocoapods-sample/raw/cocoapods-zip/cocoapodSourcesZip.zip", flatten = true)
             }
         }
     }
@@ -327,7 +339,7 @@ In the configuration block specify the path to the archive: use the `url()` func
 > ```ruby
 > target 'ios-app' do
 >     # ... other pod depedencies ...
->    pod 'podspecWithFilesExample', :path => '../cocoapods/kotlin-with-cocoapods-sample/pod_dependency'
+>    pod 'podspecWithFilesExample', :path => '../cocoapods/kmm-with-cocoapods-sample/pod_dependency'
 > end
 > ```
 >
@@ -339,7 +351,7 @@ To use these dependencies from the Kotlin code, import the packages `cocoapods.<
 import cocoapods.pod_dependency.*
 ```
 
-You can find a sample project [here](https://github.com/Kotlin/kotlin-with-cocoapods-sample).
+You can find a sample project [here](https://github.com/Kotlin/kmm-with-cocoapods-sample).
 
 ### Add a dependency on a Pod library from a custom Podspec repository
 
@@ -388,7 +400,7 @@ You can add dependencies on a Pod library from a custom Podspec repository with 
 > ```ruby
 > target 'ios-app' do
 >     # ... other pod depedencies ...
->    pod 'podspecWithFilesExample', :path => '../cocoapods/kotlin-with-cocoapods-sample/pod_dependency'
+>    pod 'podspecWithFilesExample', :path => '../cocoapods/kmm-with-cocoapods-sample/pod_dependency'
 > end
 > ```
 >
@@ -400,7 +412,7 @@ To use these dependencies from the Kotlin code, import the packages `cocoapods.<
 import cocoapods.example.*
 ```
 
-You can find a sample project [here](https://github.com/Kotlin/kotlin-with-cocoapods-sample).
+You can find a sample project [here](https://github.com/Kotlin/kmm-with-cocoapods-sample).
 
 ### Add a dependency on a Pod library with custom cinterop options
 
@@ -528,7 +540,7 @@ If you want to import your Kotlin project in an Xcode project, you’ll need to 
 
 If you don't make these changes to the Podfile, the `podInstall` task will fail and the CocoaPods plugin will show an error message in the log.
 
-Check out the `withXcproject` branch of the [sample project](https://github.com/Kotlin/kotlin-with-cocoapods-sample), which contains an example of Xcode integration with an existing Xcode project named `kotlin-cocoapods-xcproj`.
+Check out the `withXcproject` branch of the [sample project](https://github.com/Kotlin/kmm-with-cocoapods-sample), which contains an example of Xcode integration with an existing Xcode project named `kotlin-cocoapods-xcproj`.
 
 ## Use a Kotlin Gradle project as a CocoaPods dependency
 
@@ -641,4 +653,4 @@ of your Kotlin project.
     
 6. Re-import the project.
 
-You can find a sample project [here](https://github.com/Kotlin/multitarget-xcode-with-kotlin-cocoapods-sample).
+You can find a sample project [here](https://github.com/Kotlin/kmm-with-cocoapods-multitarget-xcode-sample).

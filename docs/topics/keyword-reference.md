@@ -81,6 +81,7 @@
    - 声明[属性的 setter](properties.md#getters-与-setters)
    - 用作[注解使用处目标](annotations.md#注解使用处目标)
  * `setparam` 用作[注解使用处目标](annotations.md#注解使用处目标)
+ * `value` with the `class` keyword declares an [inline class](inline-classes.md)
  * `where` 指定[泛型类型参数的约束](generics.md#上界)
  
 ## 修饰符关键字

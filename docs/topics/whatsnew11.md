@@ -1,5 +1,7 @@
 [//]: # (title: Kotlin 1.1 的新特性)
 
+_Release date: 15 February 2016_
+
 ## 目录
 
 * [协程](#协程实验性的)
@@ -21,7 +23,7 @@ Kotlin 1.1 的关键新特性是*协程*，它带来了 `future`/`await`、 `yie
 而不是语言的一部分，所以你不必绑定任何特定的编程范式或并发库。
 
 协程实际上是一个轻量级的线程，可以挂起并稍后恢复。
-协程通过[*挂起函数*](coroutines-basics.md#extract-function-refactoring)支持：对这样的函数的<!--
+协程通过[挂起函数](coroutines-basics.md#extract-function-refactoring)支持：对这样的函数的<!--
 -->调用可能会挂起协程，并启动一个新的协程，我们通常使用匿名挂起函数（即挂起 lambda 表达式）。
 
 我们来看看在外部库 [kotlinx.coroutines](https://github.com/kotlin/kotlinx.coroutines) 中实现的 `async`/`await`：
@@ -55,7 +57,6 @@ launch(UI) {
 import kotlin.coroutines.experimental.*
 
 fun main(args: Array<String>) {
-//sampleStart
     val seq = buildSequence {
       for (i in 1..5) {
           // 产生一个 i 的平方
@@ -66,15 +67,13 @@ fun main(args: Array<String>) {
     }
 
     // 输出该序列
-  println(seq.toList())
-//sampleEnd
+    println(seq.toList())
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 运行上面的代码以查看结果。随意编辑它并再次运行！
 
-更多信息请参见[协程文档](coroutines-overview.md)及[教程](coroutines-basic-jvm.md)。
+更多信息请参见[协程文档](coroutines-overview.md)及[教程](https://play.kotlinlang.org/hands-on/Introduction%20to%20Coroutines%20and%20Channels/)。
 
 请注意，协程目前还是一个**实验性的特性**，这意味着 Kotlin 团队不承诺<!--
 -->在最终的 1.1 版本时保持该功能的向后兼容性。
@@ -118,7 +117,7 @@ fun main(args: Array<String>) {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-更详细信息请参阅其[文档](type-aliases.md)与 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/type-aliases.md)。
+更详细信息请参见[类型别名文档](type-aliases.md)与 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/type-aliases.md)。
 
 ### 已绑定的可调用引用
 
@@ -169,7 +168,7 @@ fun main(args: Array<String>) {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-更详细信息请参阅其[文档](sealed-classes.md)或者<!--
+更详细信息请参阅[密封类文档](sealed-classes.md)或者<!--
 -->[密封类](https://github.com/Kotlin/KEEP/blob/master/proposals/sealed-class-inheritance.md)及<!--
 -->[数据类](https://github.com/Kotlin/KEEP/blob/master/proposals/data-class-inheritance.md)的 KEEP。
 
@@ -194,7 +193,7 @@ fun main(args: Array<String>) {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-更详细信息请参阅其[文档](destructuring-declarations.md)与 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/destructuring-in-parameters.md)。
+更详细信息请参阅[解构声明文档](destructuring-declarations.md)与 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/destructuring-in-parameters.md)。
 
 ### 下划线用于未使用的参数
 
@@ -288,7 +287,7 @@ fun main(args: Array<String>) {
 
 你也可以将整个属性标记为 `inline`——这样修饰符应用于两个访问器。
 
-更详细信息请参阅其[文档](inline-functions.md#inline-properties)与 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-properties.md)。
+更详细信息请参阅[内联函数文档](inline-functions.md#inline-properties)与 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-properties.md)。
 
 ### 局部委托属性
 
@@ -346,7 +345,7 @@ class MyUI {
 `provideDelegate` 方法在创建 `MyUI` 实例期间将会为每个属性调用，并且可以立即执行<!--
 -->必要的验证。
 
-更详细信息请参阅其[文档](delegated-properties.md)。
+更详细信息请参阅[属性委托文档](delegated-properties.md)。
 
 ### 泛型枚举值访问
 
@@ -389,7 +388,7 @@ table {
 -->会在传给 `td` 的 lambda 表达式中可用。你可以通过定义标记有 `@DslMarker` 元注解的注解<!--
 -->并将其应用于标记类的基类。
 
-更详细信息请参阅其[文档](type-safe-builders.md)与 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/scope-control-for-implicit-receivers.md)。
+更详细信息请参阅[类型安全的构建器文档](type-safe-builders.md)与 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/scope-control-for-implicit-receivers.md)。
 
 ### rem 操作符
 

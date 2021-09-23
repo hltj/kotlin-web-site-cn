@@ -148,6 +148,6 @@ JavaScript 目标进行编译时才有效，并且还允许导出不是特定于
 
 * `kotlin.ByteArray`、 `-.ShortArray`、 `-.IntArray`、 `-.FloatArray` 以及 `-.DoubleArray` 会相应地映射为
   JavaScript 中的 `Int8Array`、 `Int16Array`、 `Int32Array`、 `Float32Array` 以及 `Float64Array`。
-* `kotlin.BooleanArray` 会映射为 JavaScript 中具有 `$type$ == "BooleanArray"` 属性的 `Int8Array`
-* `kotlin.CharArray` 会映射为 JavaScript 中具有 `$type$ == "CharArray"` 属性的 `UInt16Array`
+* `kotlin.BooleanArray` 会映射为 JavaScript 中具有 `$type$ == "BooleanArray"` 属性的 `Int8Array`。
+* `kotlin.CharArray` 会映射为 JavaScript 中具有 `$type$ == "CharArray"` 属性的 `UInt16Array`。
 * `kotlin.LongArray` 会映射为 JavaScript 中具有 `$type$ == "LongArray"` 属性的 `kotlin.Long` 的数组。

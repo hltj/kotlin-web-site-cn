@@ -1,5 +1,7 @@
 [//]: # (title: What's new in Kotlin 1.4.20)
 
+_[Release date: 23 November 2020](releases.md#release-details)_
+
 Kotlin 1.4.20 offers a number of new experimental features and provides fixes and improvements for
 existing features, including those added in 1.4.0.
 
@@ -248,7 +250,7 @@ In addition to local Pods and Pods from the CocoaPods repository, you can add de
 * A library with custom cinterop options.
 
 Learn more about [adding CocoaPods dependencies](native-cocoapods.md#add-dependencies-on-pod-libraries) in Kotlin projects.
-Find examples in the [Kotlin with CocoaPods sample](https://github.com/Kotlin/kotlin-with-cocoapods-sample).
+Find examples in the [KMM with CocoaPods sample](https://github.com/Kotlin/kmm-with-cocoapods-sample).
 
 #### Updated integration with Xcode
 

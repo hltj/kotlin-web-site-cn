@@ -472,9 +472,10 @@ fun writeToFile() {
 
 // Java
 try {
-  demo.Example.writeToFile();
-} catch (IOException e) { // 错误：writeToFile() 未在 throws 列表中声明 IOException
-  // ……
+    demo.Example.writeToFile();
+} catch (IOException e) { 
+    // 错误：writeToFile() 未在 throws 列表中声明 IOException
+    // ……
 }
 ```
 
@@ -518,7 +519,7 @@ Box<Derived> boxDerived(Derived value) { …… }
 Base unboxBase(Box<Base> box) { …… }
 ```
 
-问题是，在 Kotlin 中可以这样写 `unboxBase(boxDerived("s"))`，但是在 Java 中是行不通的，
+问题是，在 Kotlin 中可以这样写 `unboxBase(boxDerived(Derived()))`，但是在 Java 中是行不通的，
 因为在 Java 中类 `Box` 在其泛型参数 `T` 上是*不型变的*，于是 `Box<Derived>` 并不是 `Box<Base>` 的子类。
 要使其在 Java 中工作，必须按以下这样定义 `unboxBase`：
 
@@ -580,4 +581,3 @@ fun emptyList(): List<Nothing> = listOf()
 // 会翻译成
 // List emptyList() { …… }
 ```
-

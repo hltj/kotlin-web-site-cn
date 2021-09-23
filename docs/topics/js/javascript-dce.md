@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin/JS 无用代码消除)
 
-Kotlin/JS Gradle 插件包含一个[_无用代码消除_](https://zh.wikipedia.org/wiki/%E6%AD%BB%E7%A2%BC%E5%88%AA%E9%99%A4)（_DCE_）工具。
+Kotlin/JS Gradle 插件包含一个[无用代码消除](https://zh.wikipedia.org/wiki/%E6%AD%BB%E7%A2%BC%E5%88%AA%E9%99%A4)（_DCE_）工具。
 无用代码消除通常也称为 _<span title="tree shaking">摇树</span>_。
 通过删除未使用的属性、函数和类，它减小了大小或生成的 JavaScript 代码。
 

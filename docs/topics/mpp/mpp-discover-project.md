@@ -14,17 +14,12 @@
 
 也可以手动应用它。
 
-> `kotlin-multiplatform` 插件适用于 Gradle 6.0 或更高版本。 
+> `kotlin-multiplatform` 插件适用于 Gradle %minGradleVersion% 或更高版本。 
 >
 {type="note"}
 
-<tabs>
-
-```groovy
-plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 plugins {
@@ -32,6 +27,16 @@ plugins {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+plugins {
+    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
+}
+```
+
+</tab>
 </tabs>
 
 `kotlin-multiplatform` 插件可配置项目以创建可在多个平台上工作的应用程序或库，
@@ -76,20 +81,8 @@ kotlin {
 
 源集被添加到顶层 `kotlin` 块的 `sourceSets` 块中。
 
-<tabs>
-
-```groovy
-kotlin {
-    sourceSets {
-        commonMain { /* ... */} 
-        commonTest { /* ... */}
-        jvmMain { /* ... */}
-        jvmTest { /* ... */ }
-        jsMain { /* ... */}
-        jsTest { /* ... */}    
-    }
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 kotlin {
@@ -104,6 +97,23 @@ kotlin {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+kotlin {
+    sourceSets {
+        commonMain { /* ... */} 
+        commonTest { /* ... */}
+        jvmMain { /* ... */}
+        jvmTest { /* ... */ }
+        jsMain { /* ... */}
+        jsTest { /* ... */}    
+    }
+}
+```
+
+</tab>
 </tabs>
 
 源集形成一个层次结构，用于共享公共代码。

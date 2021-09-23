@@ -11,7 +11,16 @@ Please read below about how to apply the *kapt* plugin to your Gradle/Maven buil
 
 Apply the `kotlin-kapt` Gradle plugin:
 
-<tabs>
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+plugins {
+    kotlin("kapt") version "%kotlinVersion%" }
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
 
 ```groovy
 plugins {
@@ -19,12 +28,7 @@ plugins {
 }
 ```
 
-```kotlin
-plugins {
-    kotlin("kapt") version "%kotlinVersion%"
-}
-```
-
+</tab>
 </tabs>
 
 Alternatively, you can use the `apply plugin` syntax:
@@ -35,13 +39,9 @@ apply plugin: 'kotlin-kapt'
 
 Then add the respective dependencies using the `kapt` configuration in your `dependencies` block:
 
-<tabs>
 
-```groovy
-dependencies {
-    kapt 'groupId:artifactId:version'
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 dependencies {
@@ -49,6 +49,16 @@ dependencies {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+dependencies {
+    kapt 'groupId:artifactId:version'
+}
+```
+
+</tab>
 </tabs>
 
 If you previously used the [Android support](https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html#annotationProcessor_config)
@@ -85,7 +95,9 @@ kapt {
 }
 ```
 
-## Running kapt tasks in parallel (since 1.2.60)
+## Improving the speed of builds that use kapt
+
+### Running kapt tasks in parallel
 
 To improve the speed of builds that use kapt, you can enable the [Gradle worker API](https://guides.gradle.org/using-the-worker-api/)
 for kapt tasks. Using the worker API lets Gradle run independent annotation processing tasks from a single project in parallel,
@@ -98,7 +110,39 @@ To use the Gradle worker API for parallel execution of kapt tasks, add this line
 kapt.use.worker.api=true
 ```
 
-## Compile avoidance for kapt (since 1.3.20)
+When you use the [custom JDK home](gradle.md#set-custom-jdk-home) feature in the Kotlin Gradle plugin,
+kapt task workers use only [process isolation mode](https://docs.gradle.org/current/userguide/worker_api.html#changing_the_isolation_mode).
+Note that the `kapt.workers.isolation` property is ignored.
+
+### Caching for annotation processors' classloaders
+
+> Caching for annotation processors' classloaders in kapt is [Experimental](components-stability.md).
+> It may be dropped or changed at any time. Use it only for evaluation purposes.
+> We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-28901).
+>
+{type="warning"}
+
+Caching for annotation processors' classloaders helps kapt perform faster if you run many Gradle tasks consecutively.
+
+To enable this feature, use the following properties in your `gradle.properties` file:
+
+```properties
+# positive value will enable caching
+# use the same value as the number of modules that use kapt
+kapt.classloaders.cache.size=5
+
+# disable for caching to work
+kapt.include.compile.classpath=false
+```
+
+If you run into any problems with caching for annotation processors, disable caching for them:
+
+```properties
+# specify annotation processors' full names to disable caching for them
+kapt.classloaders.cache.disableForProcessors=[annotation processors full names]
+```
+
+## Compile avoidance for kapt
 
 To improve the times of incremental builds with kapt, it can use the Gradle [compile avoidance](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_compile_avoidance).
 With compile avoidance enabled, Gradle can skip annotation processing when rebuilding a project. Particularly, annotation
@@ -121,7 +165,7 @@ kapt.include.compile.classpath=false
 
 ## Incremental annotation processing
 
-Kapt supports incremental annotation processing that is enabled by default. 
+kapt supports incremental annotation processing that is enabled by default. 
 Currently, annotation processing can be incremental only if all annotation processors being used are incremental. 
 
 To disable incremental annotation processing, add this line to your `gradle.properties` file:
@@ -135,7 +179,7 @@ to be enabled as well.
  
 ## Java compiler options
 
-Kapt uses Java compiler to run annotation processors.  
+kapt uses Java compiler to run annotation processors.  
 Here is how you can pass arbitrary options to javac:
 
 ```groovy
@@ -151,8 +195,8 @@ kapt {
 ## Non-existent type correction
 
 Some annotation processors (such as `AutoFactory`) rely on precise types in declaration signatures.
-By default, Kapt replaces every unknown type (including types for the generated classes) to `NonExistentClass`,
-but you can change this behavior. Add the additional flag to the `build.gradle` file to enable error type inferring in stubs:
+By default, kapt replaces every unknown type (including types for the generated classes) to `NonExistentClass`,
+but you can change this behavior. Add the option to the `build.gradle` file to enable error type inferring in stubs:
 
 ```groovy
 kapt {
@@ -187,15 +231,13 @@ Add an execution of the `kapt` goal from kotlin-maven-plugin before `compile`:
 </execution>
 ```
 
-You can find a complete sample project showing the use of Kotlin, Maven and Dagger in the
-[Kotlin examples repository](https://github.com/JetBrains/kotlin-examples/tree/master/maven/dagger-maven-example).
- 
+
 Please note that kapt is still not supported for IntelliJ IDEA’s own build system. Launch the build from the “Maven Projects”
 toolbar whenever you want to re-run the annotation processing.
 
 ## Using in CLI
 
-Kapt compiler plugin is available in the binary distribution of the Kotlin compiler.
+kapt compiler plugin is available in the binary distribution of the Kotlin compiler.
 
 You can attach the plugin by providing the path to its JAR file using the `Xplugin` kotlinc option:
 
@@ -237,13 +279,10 @@ An example:
 
 ## Generating Kotlin sources
 
-Kapt can generate Kotlin sources. Just write the generated Kotlin source files to the directory specified by `processingEnv.options["kapt.kotlin.generated"]`,
+kapt can generate Kotlin sources. Just write the generated Kotlin source files to the directory specified by `processingEnv.options["kapt.kotlin.generated"]`,
 and these files will be compiled together with the main sources.
 
-You can find the complete sample in the [kotlin-examples](https://github.com/JetBrains/kotlin-examples/tree/master/gradle/kotlin-code-generation)
-Github repository.
-
-Note that Kapt does not support multiple rounds for the generated Kotlin files.
+Note that kapt does not support multiple rounds for the generated Kotlin files.
 
 ## AP/Javac options encoding
 
@@ -266,3 +305,18 @@ fun encodeList(options: Map<String, String>): String {
 }
 ```
 
+## Keeping Java compiler's annotation processors
+
+By default, kapt runs all annotation processors and disables annotation processing by javac.
+However, you may need some of javac's annotation processors working (for example, [Lombok](https://projectlombok.org/)).
+
+In the Gradle build file, use the option `keepJavacAnnotationProcessors`:
+
+```groovy
+kapt {
+    keepJavacAnnotationProcessors = true
+}
+```
+
+If you use Maven, you need to specify concrete plugin settings.
+See this [example of settings for the Lombok compiler plugin](lombok.md#using-with-kapt).

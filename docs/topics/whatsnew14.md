@@ -1,5 +1,7 @@
 [//]: # (title: Kotlin 1.4.0 的新特性)
 
+_[Release date: 17 August 2020](releases.md#release-details)_
+
 在 Kotlin 1.4.0 中，我们对其所有组件进行了大量改进，其中[重点是质量与性能](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/)。
 以下是 Kotlin  1.4.0 中最重要的变更列表。
 
@@ -36,7 +38,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.4"}
 
-Learn more about [Kotlin functional interfaces and SAM conversions](fun-interfaces.md).
+[Learn more about Kotlin functional interfaces and SAM conversions](fun-interfaces.md).
 
 ### 面向库作者的显式 API 模式
 
@@ -61,21 +63,8 @@ Explicit API mode analyzes only the production sources of a module.
 
 To compile your module in the explicit API mode, add the following lines to your Gradle build script:
 
-<tabs>
-
-```groovy
-kotlin {    
-    // for strict mode
-    explicitApi() 
-    // or
-    explicitApi = 'strict'
-    
-    // for warning mode
-    explicitApiWarning()
-    // or
-    explicitApi = 'warning'
-}
-```
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 kotlin {    
@@ -91,6 +80,24 @@ kotlin {
 }
 ```
 
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+kotlin {    
+    // for strict mode
+    explicitApi() 
+    // or
+    explicitApi = 'strict'
+    
+    // for warning mode
+    explicitApiWarning()
+    // or
+    explicitApi = 'warning'
+}
+```
+
+</tab>
 </tabs>
 
 When using the command-line compiler, switch to explicit API mode by adding  the `-Xexplicit-api` compiler option
@@ -100,7 +107,7 @@ with the value `strict` or `warning`.
 -Xexplicit-api={strict|warning}
 ```
 
-For more details about the explicit API mode, see the [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/explicit-api-mode.md). 
+[Find more details about the explicit API mode in the KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/explicit-api-mode.md). 
 
 ### 混用具名与位置参数
 
@@ -570,7 +577,7 @@ In 1.4.0, we've added a new mode for generating default methods: `-Xjvm-default=
 interfaces to `default` Java methods. For compatibility with the code that uses the interfaces compiled without `default`, 
 we also added `all-compatibility` mode. 
 
-For more information about default methods in the Java interop, see the [documentation](java-to-kotlin-interop.md#default-methods-in-interfaces) and 
+For more information about default methods in the Java interop, see the [interoperability documentation](java-to-kotlin-interop.md#default-methods-in-interfaces) and 
 [this blog post](https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-m3-generating-default-methods-in-interfaces/). 
 
 ### 统一用于空检测的异常类型
@@ -629,10 +636,10 @@ On the JS platform, Kotlin 1.4.0 provides the following improvements:
 
 The `kotlin.js` Gradle plugin comes with an adjusted Gradle DSL, which provides a number of new configuration options and is more closely aligned to the DSL used by the `kotlin-multiplatform` plugin. Some of the most impactful changes include:
 
-- Explicit toggles for the creation of executable files via `binaries.executable()`. Read more about the executing Kotlin/JS and its environment [here](js-project-setup.md#execution-environments).
-- Configuration of webpack's CSS and style loaders from within the Gradle configuration via `cssSupport`. Read more about using them [here](js-project-setup.md#css).
-- Improved management for npm dependencies, with mandatory version numbers or [semver](https://docs.npmjs.com/misc/semver#versions) version ranges, as well as support for _development_, _peer_, and _optional_ npm dependencies using `devNpm`, `optionalNpm` and `peerNpm`. Read more about dependency management for npm packages directly from Gradle [here](js-project-setup.md#npm-dependencies).
-- Stronger integrations for [Dukat](https://github.com/Kotlin/dukat), the generator for Kotlin external declarations. External declarations can now be generated at build time, or can be manually generated via a Gradle task. Read more about how to use the integration [here](js-external-declarations-with-dukat.md).
+- Explicit toggles for the creation of executable files via `binaries.executable()`. Read more about the [executing Kotlin/JS and its environment here](js-project-setup.md#execution-environments).
+- Configuration of webpack's CSS and style loaders from within the Gradle configuration via `cssSupport`. Read more about [using CSS and style loaders here](js-project-setup.md#css).
+- Improved management for npm dependencies, with mandatory version numbers or [semver](https://docs.npmjs.com/misc/semver#versions) version ranges, as well as support for _development_, _peer_, and _optional_ npm dependencies using `devNpm`, `optionalNpm` and `peerNpm`. [Read more about dependency management for npm packages directly from Gradle here](js-project-setup.md#npm-dependencies).
+- Stronger integrations for [Dukat](https://github.com/Kotlin/dukat), the generator for Kotlin external declarations. External declarations can now be generated at build time, or can be manually generated via a Gradle task. [Read more about how to use the integration here](js-external-declarations-with-dukat.md).
 
 ### 新的 JS IR 后端
 
@@ -651,11 +658,11 @@ kotlin {
 }
 ```
 
-For more detailed information about how to configure the Kotlin/JS IR compiler backend, check out the [documentation](js-ir-compiler.md).
+For more detailed information about how to configure the new backend, check out the [Kotlin/JS IR compiler documentation](js-ir-compiler.md).
 
 With the new [@JsExport](js-to-kotlin-interop.md#jsexport-annotation) annotation and the ability to **[generate TypeScript definitions](js-ir-compiler.md#preview-generation-of-typescript-declaration-files-d-ts) from Kotlin code**, the Kotlin/JS IR compiler backend improves JavaScript & TypeScript interoperability. This also makes it easier to integrate Kotlin/JS code with existing tooling, to create **hybrid applications** and leverage code-sharing functionality in multiplatform projects.
 
-Learn more about the available features in the Kotlin/JS IR compiler backend in the [documentation](js-ir-compiler.md).
+[Learn more about the available features in the Kotlin/JS IR compiler backend](js-ir-compiler.md).
 
 ## Kotlin/Native
 
@@ -693,7 +700,7 @@ queryData(id: 17) { result, error in
 }
 ```
 
-For more information about using suspending functions in Swift and Objective-C, see the [documentation](native-objc-interop.md).
+[Learn more about using suspending functions in Swift and Objective-C](native-objc-interop.md).
 
 ### 默认支持 Objective-C 泛型
 
@@ -711,7 +718,7 @@ kotlin {
 }
 ```
 
-Please note that all specifics and limitations listed in the [documentation](native-objc-interop.md#generics) are still valid.
+Please note that all specifics and limitations listed in the [documentation on interoperability with Objective-C](native-objc-interop.md#generics) are still valid.
 
 ### Objective-C/Swift 互操作中的异常处理
 
@@ -743,7 +750,7 @@ kotlin {
 }
 ```
 
-For more information about crash report symbolication, see the [documentation](native-ios-symbolication.md).
+[Learn more about crash report symbolication](native-ios-symbolication.md).
 
 ### 性能改进
 
@@ -787,7 +794,7 @@ Depending on your needs, you can add dependencies between:
 Complete the initial configuration, and when you add a new dependency to `cocoapods`, just re-import the project in IntelliJ IDEA. 
 The new dependency will be added automatically. No additional steps are required.
 
-Learn [how to add dependencies](native-cocoapods.md).
+[Learn how to add dependencies](native-cocoapods.md).
 
 ## Kotlin 多平台
 
@@ -850,7 +857,30 @@ by connecting the source sets with the `dependsOn` relation.
 
 ![Hierarchical structure](hierarchical-structure.png)
 
-<tabs>
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+kotlin{
+    sourceSets {
+        val desktopMain by creating {
+            dependsOn(commonMain)
+        }
+        val linuxX64Main by getting {
+            dependsOn(desktopMain)
+        }
+        val mingwX64Main by getting {
+            dependsOn(desktopMain)
+        }
+        val macosX64Main by getting {
+            dependsOn(desktopMain)
+        }
+    }
+}
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
 
 ```groovy
 kotlin {
@@ -872,25 +902,7 @@ kotlin {
 
 ```
 
-```kotlin
-kotlin{
-    sourceSets {
-        val desktopMain by creating {
-            dependsOn(commonMain)
-        }
-        val linuxX64Main by getting {
-            dependsOn(desktopMain)
-        }
-        val mingwX64Main by getting {
-            dependsOn(desktopMain)
-        }
-        val macosX64Main by getting {
-            dependsOn(desktopMain)
-        }
-    }
-}
-```
-
+</tab>
 </tabs>
 
 Thanks to the hierarchical project structure, libraries can also provide common APIs for a subset of targets. Learn more
@@ -904,14 +916,30 @@ native targets. This can help you share more native code without being limited b
 No additional steps are required – everything is done automatically. IntelliJ IDEA will help you detect common declarations 
 that you can use in the shared code.
 
-Learn more about [usage of platform-dependent libraries](mpp-share-on-platforms.md#use-native-libraries-in-the-hierarchical-structure).
+[Learn more about usage of platform-dependent libraries](mpp-share-on-platforms.md#use-native-libraries-in-the-hierarchical-structure).
 
 ### 只需指定一次依赖项
 
 From now on, instead of specifying dependencies on different variants of the same library in shared and platform-specific 
 source sets where it is used, you should specify a dependency only once in the shared source set.
 
-<tabs>
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+kotlin {
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
+            }
+        }
+    }
+}
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
 
 ```groovy
 kotlin {
@@ -925,19 +953,7 @@ kotlin {
 }
 ```
 
-```kotlin
-kotlin {
-    sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
-            }
-        }
-    }
-}
-
-```
-
+</tab>
 </tabs>
 
 Don’t use kotlinx library artifact names with suffixes specifying the platform, such as  `-common`, `-native`, or similar, 
@@ -951,7 +967,7 @@ addressed later.
 If you need a dependency only for a specific platform, you can still use platform-specific variants of standard and kotlinx 
 libraries with such suffixes as `-jvm` or` -js`, for example `kotlinx-coroutines-core-jvm`. 
 
-Learn more about [configuring dependencies](gradle.md#configuring-dependencies).
+[Learn more about configuring dependencies](gradle.md#configuring-dependencies).
 
 ## Gradle 项目改进
 
@@ -974,7 +990,7 @@ For platform-specific source sets, the corresponding platform-specific variant o
 library is added to the rest. The Kotlin Gradle plugin will select the appropriate JVM standard library depending on 
 the `kotlinOptions.jvmTarget` [compiler option](gradle.md#compiler-options) of your Gradle build script.
 
-Learn how to [change the default behavior](gradle.md#dependency-on-the-standard-library).
+[Learn how to change the default behavior](gradle.md#dependency-on-the-standard-library).
 
 ### Kotlin 项目的最低 Gradle 版本
 
@@ -1337,7 +1353,7 @@ In 1.4.0, we have added new features to improve your experience with delegated p
 Aside from the new API, we've made some optimizations that reduce the resulting bytecode size. These optimizations are
 described in [this blog post](https://blog.jetbrains.com/kotlin/2019/12/what-to-expect-in-kotlin-1-4-and-beyond/#delegated-properties). 
 
-For more information about delegated properties, see the [documentation](delegated-properties.md).
+[Learn more about delegated properties](delegated-properties.md).
 
 ### 由 KType 转换为 Java Type
 
@@ -1503,7 +1519,7 @@ to help you decide which suggestions to accept and which to ignore.
 ![Migration inspections](migration-inspection-wn.png)
 
 Kotlin 1.4.0 is a [feature release](kotlin-evolution.md#feature-releases-and-incremental-releases) and therefore can 
-bring incompatible changes to the language. Find the detailed list of such changes in the [**Compatibility Guide for Kotlin 1.4**](compatibility-guide-14.md).
+bring incompatible changes to the language. Find the detailed list of such changes in the [Compatibility Guide for Kotlin 1.4](compatibility-guide-14.md).
 
 <!-- ### 迁移多平台项目
 

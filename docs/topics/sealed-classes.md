@@ -1,62 +1,53 @@
 [//]: # (title: 密封类)
 
-_Sealed_ classes represent restricted class hierarchies that provide more control over inheritance.
-All subclasses of a sealed class are known at compile time. No other subclasses may appear after
+_Sealed_ classes and interfaces represent restricted class hierarchies that provide more control over inheritance.
+All direct subclasses of a sealed class are known at compile time. No other subclasses may appear after
 a module with the sealed class is compiled. For example, third-party clients can't extend your sealed class in their code.
 Thus, each instance of a sealed class has a type from a limited set that is known when this class is compiled.
 
-In some sense, sealed classes are similar to [`enum` classes](enum-classes.md): the set of values
+The same works for sealed interfaces and their implementations: once a module with a sealed interface is compiled,
+no new implementations can appear.
+
+In some sense, sealed classes are similar to [`enum`](enum-classes.md) classes: the set of values
 for an enum type is also restricted, but each enum constant exists only as a _single instance_, whereas a subclass
 of a sealed class can have _multiple_ instances, each with its own state.
 
-To declare a sealed class, put the `sealed` modifier before its name.
+As an example, consider a library's API. It's likely to contain error classes to let the library users handle errors 
+that it can throw. If the hierarchy of such error classes includes interfaces or abstract classes visible in the public API,
+then nothing prevents implementing or extending them in the client code. However, the library doesn't know about errors
+declared outside it, so it can't treat them consistently with its own classes. With a sealed hierarchy of error classes,
+library authors can be sure that they know all possible error types and no other ones can appear later.
+
+To declare a sealed class or interface, put the `sealed` modifier before its name:
 
 ```kotlin
-sealed class Expr
-data class Const(val number: Double) : Expr()
-data class Sum(val e1: Expr, val e2: Expr) : Expr()
-object NotANumber : Expr()
+sealed interface Error
+
+sealed class IOError(): Error
+
+class FileReadError(val f: File): IOError()
+class DatabaseError(val source: DataSource): IOError()
+
+object RuntimeError : Error
 ```
 
 一个密封类是自身[抽象的](classes.md#抽象类)，它不能直接实例化并可以有抽象（`abstract`）成员。
 
-密封类不允许有非-`private` 构造函数（其构造函数默认为 `private`）。
-
-## Sealed interfaces
-
-> Sealed interfaces are [Experimental](components-stability.md). They may be dropped or changed at any time.
-> Opt-in is required (see the details [below](#try-sealed-interfaces-and-package-wide-hierarchies-of-sealed-classes)), and you should use them only for evaluation purposes.  We would appreciate your feedback on them in [YouTrack](https://youtrack.jetbrains.com/issue/KT-42433).
->
-{type="warning"}
-
-Interfaces can be declared `sealed` as well as classes. The `sealed` modifier works on interfaces the same way:
-all implementations of a sealed interface are known at compile time. Once a module with a sealed interface is compiled,
-no new implementations can appear.
+Constructors of sealed classes can have one of two [visibilities](visibility-modifiers.md): `protected` (by default) or
+`private`:
 
 ```kotlin
-sealed interface Expr
-
-sealed class MathExpr(): Expr
-
-data class Const(val number: Double) : MathExpr()
-data class Sum(val e1: Expr, val e2: Expr) : MathExpr()
-object NotANumber : Expr
+sealed class IOError {
+    constructor() { /*...*/ } // protected by default
+    private constructor(description: String): this() { /*...*/ } // private is OK
+    // public constructor(code: Int): this() {} // Error: public and internal are not allowed
+}
 ```
 
 ## Location of direct subclasses
 
-All direct subclasses of a sealed class must be declared in the same file as this class itself. Classes that extend
-direct subclasses of a sealed class (indirect inheritors) can be placed anywhere, not necessarily in the same file.
-
-### Additional location: the same package
-
-> Package-wide hierarchies of sealed classes are [Experimental](components-stability.md). They may be dropped or changed at any time.
-> Opt-in is required (see the details [below](#try-sealed-interfaces-and-package-wide-hierarchies-of-sealed-classes)), and you should use them only for evaluation purposes.  We would appreciate your feedback on them in [YouTrack](https://youtrack.jetbrains.com/issue/KT-42433).
->
-{type="warning"}
-
 Direct subclasses of sealed classes and interfaces must be declared in the same package. They may be top-level or nested
-inside any number of other named classes, named interfaces, or named objects. Subclasses can have any [visibility](visibility-modifiers.html)
+inside any number of other named classes, named interfaces, or named objects. Subclasses can have any [visibility](visibility-modifiers.md)
 as long as they are compatible with normal inheritance rules in Kotlin.
 
 Subclasses of sealed classes must have a proper qualified name. They can't be local nor anonymous objects.
@@ -65,30 +56,45 @@ Subclasses of sealed classes must have a proper qualified name. They can't be lo
 >
 {type="note"}
 
+These restrictions don't apply to indirect subclasses. If a direct subclass of a sealed class is not marked as sealed,
+it can be extended in any ways that its modifiers allow:
+
+```kotlin
+sealed interface Error // has implementations only in same package and module
+
+sealed class IOError(): Error // extended only in same package and module
+open class CustomError(): Error // can be extended wherever it's visible
+```
+
+### Inheritance in multiplatform projects
+
+There is one more inheritance restriction in [multiplatform projects](mpp-intro.md): direct subclasses of sealed classes must
+reside in the same source set. It applies to sealed classes without the [`expect` and `actual` modifiers](mpp-connect-to-apis.md).
+
+If a sealed class is declared as `expect` in a common source set and have `actual` implementations in platform source sets,
+both `expect` and `actual` versions can have subclasses in their source sets. Moreover, if you use a [hierarchical structure](mpp-share-on-platforms.md#share-code-on-similar-platforms),
+you can create subclasses in any source set between the `expect` and `actual` declarations. 
+
+[Learn more about the hierarchical structure of multiplatform projects](mpp-share-on-platforms.md#share-code-on-similar-platforms). 
+
 ## Sealed classes and when expression
 
-使用密封类的关键好处在于使用 [`when` 表达式](control-flow.md#when-表达式) 的时候，如果能够<!--
--->验证语句覆盖了所有情况，就不需要为该语句再添加一个 `else` 子句了。 
+使用密封类的关键好处在于使用 [`when` 表达式](control-flow.md#when-表达式)<!--
+-->的时候。
+如果能够验证语句覆盖了所有情况，就不需要为该语句再添加一个 `else` 子句了。 
 当然，这只有当你用 `when` 作为表达式（使用结果）而不是作为语句时才有用。
 
 ```kotlin
-fun eval(expr: Expr): Double = when(expr) {
-    is Const -> expr.number
-    is Sum -> eval(expr.e1) + eval(expr.e2)
-    NotANumber -> Double.NaN
-    // 不再需要 `else` 子句，因为我们已经覆盖了所有的情况
+fun log(e: Error) = when(e) {
+    is FileReadError -> { println("Error while reading file ${e.file}") }
+    is DatabaseError -> { println("Error while reading from database ${e.source}") }
+    RuntimeError ->  { println("Runtime error") }
+    // 不再需要 `else` 子句，因为已经覆盖了所有的情况
 }
 ```
 
-## Try sealed interfaces and package-wide hierarchies of sealed classes
-
-[Sealed interfaces](#sealed-interfaces) and [package-wide hierarchies](#additional-location-the-same-package) are [Experimental](components-stability.md).
-To be able to use them in your code, switch to the language version `1.5`:
-
-* In Gradle, add the [compiler option](gradle.md#attributes-common-for-jvm-and-js) `languageVersion` with the value `1.5`.
-
-  ```groovy
-  kotlinOptions.languageVersion = "1.5"
-  ```
-  
-* In the command-line compiler, add the option `-language-version 1.5`.
+> `when` expressions on [`expect`](mpp-connect-to-apis.md) sealed classes in the common code of multiplatform projects still 
+> require an `else` branch. This happens because subclasses of `actual` platform implementations aren't known in the 
+> common code.
+>
+{type="note"}

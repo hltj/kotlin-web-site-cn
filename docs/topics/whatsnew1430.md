@@ -1,9 +1,11 @@
 [//]: # (title: What's new in Kotlin 1.4.30)
 
+_[Release date: 3 February 2021](releases.md#release-details)_
+
 Kotlin 1.4.30 offers preview versions of new language features, promotes the new IR backend of the Kotlin/JVM compiler to
 Beta, and ships various performance and functional improvements.
 
-You can also learn about new features in [this blog post](http://blog.jetbrains.com/kotlin/2021/01/kotlin-1-4-30-released/).
+You can also learn about new features in [this blog post](https://blog.jetbrains.com/kotlin/2021/01/kotlin-1-4-30-released/).
 
 ## Language features
 
@@ -95,7 +97,7 @@ To try the preview version of sealed interfaces, add the compiler option `-langu
 version, you’ll be able to use the `sealed` modifier on interfaces. We’d be very grateful if you would share your feedback
 with us using this [YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-42433).
 
-[Learn more about sealed interfaces](sealed-classes.md#sealed-interfaces).
+[Learn more about sealed interfaces](sealed-classes.md).
 
 ### Package-wide sealed class hierarchies
 
@@ -113,7 +115,7 @@ The subclasses of a sealed class must have a name that is properly qualified –
 To try package-wide hierarchies of sealed classes, add the compiler option `-language-version 1.5`. We’d be very grateful
 if you would share your feedback with us using this [YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-42433).
 
-[Learn more about package-wide hierarchies of sealed classes](sealed-classes.md#additional-location-the-same-package).
+[Learn more about package-wide hierarchies of sealed classes](sealed-classes.md#location-of-direct-subclasses).
 
 ### Improved inline classes
 
@@ -197,20 +199,25 @@ new backend and share your feedback in our [issue tracker](https://kotl.in/issue
 To enable the new JVM IR backend, add the following lines to the project’s configuration file:
 * In Gradle:
 
-  <tabs>
-  
-  ```groovy
-  tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile) {
-    kotlinOptions.useIR = true
-  }
-  ```
-  
+  <tabs group="build-script">
+  <tab title="Kotlin" group-key="kotlin">
+
   ```kotlin
   tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile::class) {
     kotlinOptions.useIR = true
   }
   ```
   
+  </tab>
+  <tab title="Groovy" group-key="groovy">
+  
+  ```groovy
+  tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile) {
+    kotlinOptions.useIR = true
+  }
+  ```
+
+  </tab>
   </tabs>
 
 * In Maven:

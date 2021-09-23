@@ -2,7 +2,7 @@
 
 ## is 与 !is 操作符
 
-如需在运行时检测对象是否符合给定类型，可以使用 `is` 操作符或其否定形式 `!is`：
+使用 `is` 操作符或其否定形式 `!is` 在运行时检测对象是否符合给定类型：
 
 ```kotlin
 if (obj is String) {
@@ -19,7 +19,7 @@ if (obj !is String) { // 与 !(obj is String) 相同
 ## 智能转换
 
 大多数场景都不需要在 Kotlin 中使用显式转换操作符，因为编译器跟踪<!--
--->不可变值的 `is`-检测以及[显式转换](#不安全的转换操作符)，并在需要时自动插入（安全的）转换：
+-->不可变值的 `is`-检测以及[显式转换](#不安全的转换操作符)，并在必要时自动插入（安全的）转换：
 
 ```kotlin
 fun demo(x: Any) {
@@ -37,19 +37,19 @@ if (x !is String) return
 print(x.length) // x 自动转换为字符串
 ```
 
-或者在 `&&` 和 `||` 的右侧：
+或者在 `&&` 或 `||` 的右侧：
 
 ```kotlin
-// `||` 右侧的 x 自动转换为字符串
+// `||` 右侧的 x 自动转换为 String
 if (x !is String || x.length == 0) return
 
-// `&&` 右侧的 x 自动转换为字符串
+// `&&` 右侧的 x 自动转换为 String
 if (x is String && x.length > 0) {
-    print(x.length) // x 自动转换为字符串
+    print(x.length) // x 自动转换为 String
 }
 ```
 
-这些 _智能转换_ 用于 [`when` 表达式](control-flow.md#when-表达式)
+智能转换用于 [`when` 表达式](control-flow.md#when-表达式)
 和 [`while` 循环 ](control-flow.md#while-循环) 也一样：
 
 ```kotlin
@@ -61,10 +61,10 @@ when (x) {
 ```
 
 请注意，当编译器能保证变量在检测和使用之间不可改变时，智能转换才有效。
-更具体地，智能转换能否适用根据以下规则：
+更具体地，智能转换适用于以下情形：
 
 * `val` 局部变量——总是可以，[局部委托属性除外](delegated-properties.md)。
-* `val` 属性——如果属性是 private 或 internal，或者该检测在声明属性的同一[模块](visibility-modifiers.md#模块)中执行。智能转换不适用于 open 的属性或者具有自定义 getter 的属性。
+* `val` 属性——如果属性是 private 或 internal，或者该检测在声明属性的同一[模块](visibility-modifiers.md#模块)中执行。智能转换不能用于 open 的属性或者具有自定义 getter 的属性。
 * `var` 局部变量——如果变量在检测和使用之间没有修改、没有在会修改它的 lambda 中捕获、并且不是局部委托属性。
 * `var` 属性——决不可能（因为该变量可以随时被其他代码修改）。
 
@@ -102,7 +102,7 @@ Kotlin 在编译时确保涉及[泛型](generics.md)操作的类型安全性，
 `List<Foo>` 会被擦除为 `List<*>`。通常，在运行时无法检测一个实例是否属于带有某个类型参数的泛型类型<!--
 -->。
 
-为此，编译器会禁止由于类型擦除而无法执行的 `is` 检测，例如
+因此，编译器会禁止由于类型擦除而无法执行的 `is` 检测，例如
 `ints is List<Int>` 或者 `list is T`（类型参数）。当然，你可以对一个实例检测[星投影的类型](generics.md#星投影)：
 
 ```kotlin
@@ -138,10 +138,13 @@ inline fun <reified A, reified B> Pair<*, *>.asPairOf(): Pair<A, B>? {
 
 val somePair: Pair<Any?, Any?> = "items" to listOf(1, 2, 3)
 
+
 val stringToSomething = somePair.asPairOf<String, Any>()
 val stringToInt = somePair.asPairOf<String, Int>()
 val stringToList = somePair.asPairOf<String, List<*>>()
-val stringToStringList = somePair.asPairOf<String, List<String>>() // 破坏类型安全！
+val stringToStringList = somePair.asPairOf<String, List<String>>() // Compiles but breaks type safety!
+// Expand the sample for more details
+
 //sampleEnd
 
 fun main() {
@@ -149,6 +152,7 @@ fun main() {
     println("stringToInt = " + stringToInt)
     println("stringToList = " + stringToList)
     println("stringToStringList = " + stringToStringList)
+    //println(stringToStringList?.second?.forEach() {it.length}) // This will throw ClassCastException as list items are not String
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
@@ -162,11 +166,11 @@ fun main() {
 即便如此，有时候我们有高级的程序逻辑来暗示类型安全。例如：
 
 ```kotlin
-fun readDictionary(file: File): Map<String, *> = file.inputStream().use { 
-    TODO("Read a mapping of strings to arbitrary elements.")
+fun readDictionary(file: File): Map<String, *> = file.inputStream().use {
+   TODO("Read a mapping of strings to arbitrary elements.")
 }
 
-// 我们已将存有一些 `Int` 的映射保存到该文件
+// 我们已将存有一些 `Int` 的映射保存到这个文件
 val intsFile = File("ints.dictionary")
 
 // Warning: Unchecked cast: `Map<String, *>` to `Map<String, Int>`
@@ -176,13 +180,13 @@ val intsDictionary: Map<String, Int> = readDictionary(intsFile) as Map<String, I
 最后一行的类型转换会出现一个警告。编译器无法在运行时完全检测该类型转换，并且<!--
 -->不能保证映射中的值是“Int”。
 
-为避免未受检类型转换，可以重新设计程序结构：在上例中，可以使用具有类型安全实现的不同接口
+为避免未受检类型转换，可以重新设计程序结构。在上例中，可以使用具有类型安全实现的不同接口
 `DictionaryReader<T>` 与 `DictionaryWriter<T>`。
-可以引入合理的抽象，将未受检的类型转换从调用代码移动到实现细节中。
+可以引入合理的抽象，将未受检的类型转换从调用处移动到实现细节中。
 正确使用[泛型型变](generics.md#型变)也有帮助。
- 
+
 对于泛型函数，使用[具体化的类型参数](inline-functions.md#具体化的类型参数)可以使<!-- 
--->诸如 `arg as T` 这样的类型转换受检，除非 `arg` 对应类型的*自身*类型参数已被擦除。
+-->形如 `arg as T` 这样的类型转换受检，除非 `arg` 对应类型的*自身*类型参数已被擦除。
 
 可以通过在产生警告的语句或声明上用注解 `@Suppress("UNCHECKED_CAST")`
 [标注](annotations.md)来禁止未受检类型转换警告：

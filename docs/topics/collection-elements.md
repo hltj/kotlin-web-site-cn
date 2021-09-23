@@ -106,7 +106,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-或者，如果别名更适合你的情况，那么可以使用别名：
+如果别名的名称更适合，那么可以使用别名：
 
 * 使用 [`find()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html) 代替 `firstOrNull()`
 * 使用 [`findLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html) 代替 `lastOrNull()`
@@ -122,6 +122,29 @@ fun main() {
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+## Retrieve with selector
+
+If you need to map the collection before retrieving the element, there is a function [`firstNotNullOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-not-null-of.html).
+It combines 2 actions:
+- Maps the collection with the selector function
+- Returns the first non-null value in the result
+
+`firstNotNullOf()` throws the `NoSuchElementException` if the resulting collection doesn't have a non-null element. 
+Use the counterpart [`firstNotNullOfOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-not-null-of-or-null.html) 
+to return null in this case.
+
+```kotlin
+fun main() {
+//sampleStart
+    val list = listOf<Any>(0, "true", false)
+    // Converts each element to string and returns the first one that has required length
+    val longEnough = list.firstNotNullOf { item -> item.toString().takeIf { it.length >= 4 } }
+    println(longEnough)
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.5"}
 
 ## 随机取元素
 

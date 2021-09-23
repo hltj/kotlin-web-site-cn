@@ -1,6 +1,6 @@
 [//]: # (title: 泛型：in、out、where)
 
-与 Java 类似，Kotlin 中的类也可以有类型参数：
+Kotlin 中的类可以有类型参数，与 Java 类似：
 
 ```kotlin
 class Box<T>(t: T) {
@@ -8,7 +8,7 @@ class Box<T>(t: T) {
 }
 ```
 
-一般来说，创建这样类的实例需要提供类型参数：
+创建这样类的实例只需提供类型参数即可：
 
 ```kotlin
 val box: Box<Int> = Box<Int>(1)
@@ -24,12 +24,14 @@ val box = Box(1) // 1 具有类型 Int，所以编译器推算出它是 Box<Int>
 ## 型变
 
 Java 类型系统中最棘手的部分之一是通配符类型（参见 [Java Generics FAQ](http://www.angelikalanger.com/GenericsFAQ/JavaGenericsFAQ.html)）。
-而 Kotlin 中没有。 相反，它有两个其他的东西：声明处型变（declaration-site variance）与类型投影（type projections）。
+而 Kotlin 中没有。 相反，Kotlin 有声明处型变（declaration-site variance）与类型投影（type projections）。
 
-首先，让我们思考为什么 Java 需要那些神秘的通配符。在 [《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 解释了该问题——第 31 条：*利用有限制通配符来提升 API 的灵活性*。
+我们来思考下为什么 Java 需要这些神秘的通配符。在
+[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 很好地解释了该问题——
+第 31 条：*利用有限制通配符来提升 API 的灵活性*。
 首先，Java 中的泛型是*不型变的*，这意味着 `List<String>` 并*不是* `List<Object>` 的子类型。
-为什么这样？ 如果 `List` 不是*不型变的*，它就没<!--
--->比 Java 的数组好到哪去，因为如下代码会通过编译然后导致运行时异常：
+如果 `List` 不是*不型变的*，它就没比 Java 的数组好到哪去，因为如下代码会<!--
+-->通过编译但是导致运行时异常：
 
 ```java
 // Java
@@ -39,9 +41,9 @@ objs.add(1); // 将一个整数放入一个字符串列表
 String s = strs.get(0); // ！！！ ClassCastException：无法将整数转换为字符串
 ```
 
-因此，Java 禁止这样的事情以保证运行时的安全。但这样会有一些影响。例如，考虑 `Collection` 接口中的 `addAll()`
-方法。该方法的签名应该是什么？直觉上，
-需要这样添加：
+Java 禁止这样的事情以保证运行时的安全。但这样会有一些影响。例如，
+考虑 `Collection` 接口中的 `addAll()` 方法。该方法的签名应该是什么？直觉上，
+需要这样写：
 
 ```java
 // Java
@@ -50,7 +52,7 @@ interface Collection<E> …… {
 }
 ```
 
-但随后，就无法做到以下简单的事情（这是完全安全）：
+但随后，就无法做到以下这样（完全安全的）的事：
 
 ```java
 // Java
@@ -61,7 +63,8 @@ void copyAll(Collection<Object> to, Collection<String> from) {
 }
 ```
 
-（在 Java 中，我们艰难地学到了这个教训，参见[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html)，第 28 条：*列表优先于数组*）
+（在 Java 中，你很可能艰难地学到了这个教训，参见[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html)，
+第 28 条：*列表优先于数组*）
 
 这就是为什么 `addAll()` 的实际签名是以下这样：
 
@@ -73,13 +76,13 @@ interface Collection<E> …… {
 ```
 
 *通配符类型参数* `? extends E` 表示此方法接受 `E`
-*或者 `E` 的 一些子类型*对象的集合，而不只是 `E` 自身。 这意味着我们可以安全地从其中
+*或者 `E` 的一个子类型*对象的集合，而不只是 `E` 自身。 这意味着我们可以安全地从其中
 （该集合中的元素是 E 的子类的实例）*读取* `E`，但*不能写入*，
 因为我们不知道什么对象符合那个未知的 `E` 的子类型。
-反过来，该限制可以让`Collection<String>`表示为`Collection<? extends Object>`的子类型。
+反过来，该限制可以得到想要的行为：`Collection<String>` 表示为 `Collection<? extends Object>` 的子类型。
 简而言之，带 *extends* 限定（*上界*）的通配符类型使得类型是*协变的（covariant）*。
 
-理解为什么这个技巧能够工作的关键相当简单：如果只能从集合中获取元素，
+理解为什么这能够工作的关键相当简单：如果只能从集合中获取元素，
 那么使用 `String` 的集合， 并且从其中读取 `Object` 也没问题 。反过来，如果只能向集合中
 _放入_ 元素 ， 就可以用 `Object` 集合并向其中放入 `String`：在 Java 中有
 `List<? super String>` 是 `List<Object>` 的一个*超类*。
@@ -88,7 +91,7 @@ _放入_ 元素 ， 就可以用 `Object` 集合并向其中放入 `String`：�
 （例如，你可以调用 `add(String)` 或者 `set(int, String)`），如果调用函数返回 `List<T>` 中的 `T`，
 你得到的并非一个 `String` 而是一个 `Object`。
 
-Joshua Bloch 称那些你只能从中*读取*的对象为*生产者*，并称那些你只能*写入*的对象为*消费者*。他建议：
+Joshua Bloch 称那些你只能*从中读取*的对象为*生产者*，并称那些只能*向其写入*的对象为*消费者*。他建议：
 
 > “为了灵活性最大化，在表示生产者或消费者的输入参数上使用通配符类型”，
 > 并提出了以下助记符：
@@ -97,7 +100,7 @@ Joshua Bloch 称那些你只能从中*读取*的对象为*生产者*，并称那
 >
 
 > 如果你使用一个生产者对象，如 `List<? extends Foo>`，在该对象上不允许调用 `add()` 或 `set()`，
-> 但这并不意味着该对象是*不可变的*：例如，没有什么阻止你调用 `clear()`
+> 但这并不意味着它是*不可变的*：例如，没有什么阻止你调用 `clear()`
 > 从列表中删除所有元素，因为 `clear()` 根本无需任何参数。
 >
 > 通配符（或其他类型的型变）保证的唯一的事情是*类型安全*。不可变性完全是另一回事。
@@ -111,7 +114,7 @@ Joshua Bloch 称那些你只能从中*读取*的对象为*生产者*，并称那
 ```java
 // Java
 interface Source<T> {
-  T nextT();
+    T nextT();
 }
 ```
 
@@ -126,7 +129,7 @@ void demo(Source<String> strs) {
 }
 ```
 
-为了修正这一点，我们必须声明对象的类型为 `Source<? extends Object>`，这是毫无意义的，
+为了修正这一点，我们必须声明对象的类型为 `Source<? extends Object>`。这么做毫无意义，
 因为我们可以像以前一样在该对象上调用所有相同的方法，所以更复杂的类型并没有带来价值。
 但编译器并不知道。
 
@@ -156,8 +159,8 @@ fun demo(strs: Source<String>) {
 所以它提供了*声明处型变*。
 这与 Java 的*使用处型变*相反，其类型用途通配符使得类型协变。
 
-另外除了 `out`，Kotlin 又补充了一个型变注解：`in`。它使得一个类型参数*逆变*：
-只可以消费而不可以生产。逆变类型的一个很好的例子是 `Comparable`：
+另外除了 `out`，Kotlin 又补充了一个型变注解：`in`。它使得一个类型参数*逆变*，即<!--
+-->只可以消费而不可以生产。逆变类型的一个很好的例子是 `Comparable`：
 
 ```kotlin
 interface Comparable<in T> {
@@ -172,22 +175,22 @@ fun demo(x: Comparable<Number>) {
 ```
 
 _in_ 和 _out_ 两词看起来是自解释的（因为它们已经在 C# 中成功使用很长时间了），
-因此上面提到的助记符不是真正需要的，并且可以将其改写为更高的目标：
+因此上面提到的助记符不是真正需要的。可以将其改写为更高级的抽象：
 
-**[存在性（The Existential）](https://zh.wikipedia.org/wiki/%E5%AD%98%E5%9C%A8%E4%B8%BB%E4%B9%89) 转换：消费者 in, 生产者 out\!** :-)
+**[存在性（The Existential）](https://zh.wikipedia.org/wiki/%E5%AD%98%E5%9C%A8%E4%B8%BB%E4%B9%89) 变换：消费者 in, 生产者 out\!** :-)
 
 ## 类型投影
 
 ### 使用处型变：类型投影
 
-将类型参数 T 声明为 `out` 非常方便，并且能避免使用处子类型化的麻烦，
+将类型参数 `T` 声明为 `out` 非常简单，并且能避免使用处子类型化的麻烦，
 但是有些类实际上*不能*限制为只返回 `T`！
 一个很好的例子是 `Array`：
 
 ```kotlin
 class Array<T>(val size: Int) {
-    fun get(index: Int): T { …… }
-    fun set(index: Int, value: T) { …… }
+    operator fun get(index: Int): T { …… }
+    operator fun set(index: Int, value: T) { …… }
 }
 ```
 
@@ -210,11 +213,11 @@ copy(ints, any)
 //   ^ 其类型为 Array<Int> 但此处期望 Array<Any>
 ```
 
-这里我们遇到同样熟悉的问题：`Array <T>` 在 `T` 上是*不型变的*，因此 `Array <Int>` 和 `Array <Any>` 都不是<!--
--->另一个的子类型。为什么？ 再次重复，因为 copy *可能*有非预期行为，例如它可能尝试写一个 `String` 到 `from`，
-并且如果我们实际上传递一个 `Int` 的数组，一段时间后将会抛出一个 `ClassCastException` 异常。
+这里我们遇到同样熟悉的问题：`Array <T>` 在 `T` 上是*不型变的*，因此 `Array <Int>` 与 `Array <Any>` 都不是<!--
+-->另一个的子类型。为什么？ 再次重复，因为 `copy` *可能*有非预期行为，例如它可能尝试写一个 `String` 到 `from`，
+并且如果我们实际上传递一个 `Int` 的数组，以后会抛 `ClassCastException` 异常。
 
-To prohibit the `copy` function from _writing_ to `from`, do the following:
+To prohibit the `copy` function from _writing_ to `from`, you can do the following:
 
 ```kotlin
 fun copy(from: Array<out Any>, to: Array<Any>) { …… }
@@ -222,7 +225,7 @@ fun copy(from: Array<out Any>, to: Array<Any>) { …… }
 
 这就是*类型投影*：意味着 `from` 不仅仅是一个数组，而是一个受限制的（*投影的*）数组。
 只可以调用返回类型为类型参数 `T` 的方法，如上，这意味着只能调用 `get()`。
-这就是*使用处型变*的用法，并且是对应于 Java 的 `Array<? extends Object>`、 但使用更简单些的方式。
+这就是*使用处型变*的用法，并且是对应于 Java 的 `Array<? extends Object>`、 但更简单。
 
 你也可以使用 `in` 投影一个类型：
 
@@ -237,19 +240,19 @@ fun fill(dest: Array<in String>, value: String) { …… }
 
 有时你想说，你对类型参数一无所知，但仍然希望以安全的方式使用它。
 这里的安全方式是定义泛型类型的这种投影，该泛型类型的每个具体实例化<!--
--->将是该投影的子类型。
+-->都会是该投影的子类型。
 
 Kotlin 为此提供了所谓的*星投影*语法：
 
  - 对于 `Foo <out T : TUpper>`，其中 `T` 是一个具有上界 `TUpper` 的协变类型参数，`Foo <*>`
- 等价于 `Foo <out TUpper>`。 这意味着当 `T` 未知时，你可以安全地从 `Foo <*>` *读取* `TUpper` 的值。
- - 对于 `Foo <in T>`，其中 `T` 是一个逆变类型参数，`Foo <*>` 等价于 `Foo <in Nothing>`。 这意味着当 `T` 未知时，
+ 等价于 `Foo <out TUpper>`。 意味着当 `T` 未知时，你可以安全地从 `Foo <*>` *读取* `TUpper` 的值。
+ - 对于 `Foo <in T>`，其中 `T` 是一个逆变类型参数，`Foo <*>` 等价于 `Foo <in Nothing>`。 意味着当 `T` 未知时，
  没有什么可以以安全的方式*写入* `Foo <*>`。
  - 对于 `Foo <T : TUpper>`，其中 `T` 是一个具有上界 `TUpper` 的不型变类型参数，`Foo<*>` 对于读取值时等价<!--
  -->于 `Foo<out TUpper>` 而对于写值时等价于`Foo<in Nothing>`。
 
 如果泛型类型具有多个类型参数，则每个类型参数都可以单独投影。
-例如，如果类型被声明为 `interface Function <in T, out U>`，可以想象以下星投影：
+例如，如果类型被声明为 `interface Function <in T, out U>`，可以使用以下星投影：
 
 * `Function<*, String>` 表示 `Function<in Nothing, String>`。
 * `Function<Int, *>` 表示 `Function<Int, out Any?>`。
@@ -268,7 +271,7 @@ fun <T> singletonList(item: T): List<T> {
     // ……
 }
 
-fun <T> T.basicToString(): String {  // 扩展函数
+fun <T> T.basicToString(): String { // 扩展函数
     // ……
 }
 ```
@@ -291,13 +294,13 @@ val l = singletonList(1)
 
 ### 上界
 
-最常见的约束类型是与 Java 的 `extends` 关键字对应的 *上界*：
+最常见的约束类型是*上界*，与 Java 的 `extends` 关键字对应：
 
 ```kotlin
 fun <T : Comparable<T>> sort(list: List<T>) {  …… }
 ```
 
-冒号之后指定的类型是*上界*：只有 `Comparable<T>` 的子类型可以替代 `T`。 例如：
+冒号之后指定的类型是*上界*，表明只有 `Comparable<T>` 的子类型可以替代 `T`。 例如：
 
 ```kotlin
 sort(listOf(1, 2, 3)) // OK。Int 是 Comparable<Int> 的子类型
@@ -320,7 +323,7 @@ fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
 
 ## 类型擦除
 
-Kotlin 为泛型声明用法执行的类型安全检测仅在编译期进行。
+Kotlin 为泛型声明用法执行的类型安全检测在编译期进行。
 运行时泛型类型的实例不保留关于其类型实参的任何信息。
 其类型信息称为被*擦除*。例如，`Foo<Bar>` 与 `Foo<Baz?>` 的实例都会被擦除为
 `Foo<*>`。
@@ -332,7 +335,7 @@ Kotlin 为泛型声明用法执行的类型安全检测仅在编译期进行。
 当高级程序逻辑隐含了类型转换的类型安全而无法直接通过编译器推断时，
 可以使用这种[非受检类型转换](typecasts.md#非受检类型转换)。编译器会对非受检类型转换发出警告，并且在<!--
 -->运行时只对非泛型部分检测（相当于 `foo as List<*>`）。
- 
+
 泛型函数调用的类型参数也同样只在编译期检测。在函数体内部，
 类型参数不能用于类型检测，并且类型转换为类型参数（`foo as T`）也是非受检的。然而，
 内联函数的[具体化的类型参数](inline-functions.md#具体化的类型参数)会由<!--
