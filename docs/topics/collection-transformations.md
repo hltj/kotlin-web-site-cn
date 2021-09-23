@@ -144,7 +144,7 @@ fun main() {
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 为了使用集合元素作为值来构建 Map，有一个函数 [`associateBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-by.html)。
-它需要一个函数，该函数根据元素的值返回键。如果两个元素相等，则仅最后一个保留在
+它需要一个函数，该函数根据元素的值返回键。如果两个元素的键相等，则仅最后一个保留在
 Map 中。
 
 还可以使用值转换函数来调用 `associateBy()`。

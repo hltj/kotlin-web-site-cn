@@ -175,6 +175,17 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
+If you already have a progression, you can iterate it in reverse order with the `reversed` function:
+
+```kotlin
+fun main() {
+//sampleStart
+    for (i in (1..4).reversed()) print(i)
+//sampleEnd
+}
+```
+{kotlin-runnable="true"}
+
 数列实现 `Iterable<N>`，其中 `N` 分别是 `Int`、`Long` 或 `Char`，因此可以在各种<!--
 -->[集合函数](collection-operations.md)（如 `map`、`filter` 与其他）中使用它们。
 

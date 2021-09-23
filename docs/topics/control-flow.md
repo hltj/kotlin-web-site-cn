@@ -45,7 +45,7 @@ Its simple form looks like this.
 when (x) {
     1 -> print("x == 1")
     2 -> print("x == 2")
-    else -> { // 注意这个块
+    else -> {
         print("x is neither 1 nor 2")
     }
 }
@@ -62,6 +62,18 @@ when (x) {
 如果 `when` 作为一个表达式使用，则必须有 `else` 分支，
 除非编译器能够检测出所有的可能情况都已经覆盖了，
 例如，对于 [枚举（`enum`）类](enum-classes.md)条目与[密封（`sealed`）类](sealed-classes.md)子类型］。
+
+```kotlin
+enum class Bit {
+  ZERO, ONE
+}
+
+val numericValue = when (getRandomBit()) {
+    Bit.ZERO -> 0
+    Bit.ONE -> 1
+    // the 'else' clause is not required because all cases are covered
+}
+```
 
 To define a common behavior for multiple cases, combine their conditions in a single line with a comma: 
 

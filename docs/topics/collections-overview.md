@@ -48,8 +48,10 @@ fun main() {
 //sampleStart
     val numbers = mutableListOf("one", "two", "three", "four")
     numbers.add("five")   // 这是可以的
+    println(numbers)
     //numbers = mutableListOf("six", "seven")      // 编译错误
 //sampleEnd
+
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}

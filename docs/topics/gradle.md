@@ -767,7 +767,7 @@ Use the following code to set a toolchain. Replace the placeholder `<MAJOR_JDK_V
 
 ```kotlin
 kotlin {
-    toolchain {
+    jvmToolchain {
         (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(<MAJOR_JDK_VERSION>)) // "8" 
     }
 }
