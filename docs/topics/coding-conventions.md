@@ -136,8 +136,8 @@ class MyTestCase {
 ### 属性名
 
 常量名称（标有 `const` 的属性，或者保存不可变数据的没有自定义 `get` 函数<!--
--->的顶层/对象 `val` 属性）应该使用大写、下划线分隔的名称 ([screaming snake case](https://en.wikipedia.org/wiki/Snake_case))
-names:
+-->的顶层/对象 `val` 属性）应该使用大写、下划线分隔的 ([screaming snake case](https://en.wikipedia.org/wiki/Snake_case))
+名称：
 
 ```kotlin
 const val MAX_COUNT = 8

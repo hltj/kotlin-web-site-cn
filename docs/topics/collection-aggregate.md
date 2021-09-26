@@ -72,7 +72,6 @@ fun main() {
 -->第一步的累积值，而 `reduce()` 的第一步则将第一个和第二个元素作为第一步的操作参数。
 
 ```kotlin
-
 fun main() {
 //sampleStart
     val numbers = listOf(5, 2, 10, 4)
