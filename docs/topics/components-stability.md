@@ -38,35 +38,35 @@ We make sure to document precisely which subcomponents are not stable. We also d
 
 ## Current stability of Kotlin components
 
-|**Component**|**Status**|**Status since version**|**Comment**|
+|**组件**|**状态**|**状态起始版本**|**备注**|
 | --- | --- | --- | --- |
 Kotlin/JVM|Stable|1.0| |
-kotlin-stdlib (JVM)|Stable|1.0| |
-Coroutines|Stable|1.3| |
-kotlin-reflect (JVM)|Beta|1.0| |
-Kotlin/JS (Classic back-end)|Stable|1.3| |
-Kotlin/JVM (IR-based)|Stable|1.5| |
-Kotlin/JS (IR-based)|Beta|1.5| |
-Kotlin/Native Runtime|Beta|1.3| |
-KLib binaries|Alpha|1.4| |
-Multiplatform Projects|Alpha|1.3| |
-Kotlin/Native interop with C and Objective C|Beta|1.3| |
-CocoaPods integration|Beta|1.3| |
-KMM plugin for Android Studio|Experimental|0.1|Versioned separately from the language
-expect/actual language feature|Beta|1.2| |
-KDoc syntax|Stable|1.0| |
+kotlin-stdlib（JVM）|已稳定|1.0| |
+协程|已稳定|1.3| |
+kotlin-reflect（JVM）|Beta|1.0| |
+Kotlin/JS（旧版后端）|已稳定|1.3| |
+Kotlin/JVM（基于 IR）|已稳定|1.5| |
+Kotlin/JS（基于 IR）|Beta|1.5| |
+Kotlin/Native 运行时|Beta|1.3| |
+KLib 二进制|Alpha|1.4| |
+多平台项目|Alpha|1.3| |
+Kotlin/Native 与 C 语言及 Objective C 互操作|Beta|1.3| |
+CocoaPods 集成|Beta|1.3| |
+用于 Android Studio 的 KMM 插件|实验性的|0.1|与语言版本独立
+expect/actual 语言特性|Beta|1.2| |
+KDoc 语法|已稳定|1.0| |
 Dokka|Alpha|0.1| |
-Scripting syntax and semantics|Alpha|1.2|
-Scripting embedding and extension API|Beta|1.5
-Scripting IDE support|Experimental|1.2
-CLI scripting|Alpha|1.2
-Compiler Plugin API|Experimental|1.0| |
-Serialization Compiler Plugin|Stable|1.4| |
-Serialization Core Library|Stable|1.0.0|Versioned separately from the language
-Inline classes|Stable|1.5| |
-Unsigned arithmetics|Stable|1.5| |
-Contracts in stdlib|Stable|1.3| |
-User-defined contracts|Experimental|1.3| |
-**All other experimental components, by default**|Experimental|N/A| |
+脚本语法与语义|Alpha|1.2|
+脚本嵌入与扩展 API|Beta|1.5
+脚本 IDE 支持|实验性的|1.2
+CLI 脚本|Alpha|1.2
+编译器插件 API|实验性的|1.0| |
+序列化编译器插件|已稳定|1.4| |
+序列化核心库|已稳定|1.0.0|与语言版本独立
+内联类|已稳定|1.5| |
+无符号算术|已稳定|1.5| |
+stdlib 中的契约|已稳定|1.3| |
+用户自定义契约|实验性的|1.3| |
+**默认情况下，所有其他实验性特性**|实验性的|N/A| |
 
 *[The pre-1.4 version of this page is available here](components-stability-pre-1.4.md).*

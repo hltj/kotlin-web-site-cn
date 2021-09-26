@@ -15,21 +15,21 @@ Source and binary compatibility may have different modes for the same component,
 
 The provisions of the [Kotlin evolution policy](kotlin-evolution.md) fully apply only to components that have reached Full Stability (FS). From that point on incompatible changes have to be approved by the Language Committee.
 
-|**Component**|**Status Entered at version**|**Mode for Sources**|**Mode for Binaries**|
+|**组件**|**状态其实版本**|**对于源代码**|**对于二进制**|
 | --- | --- | --- | --- |
 Kotlin/JVM|1.0|FS|FS|
-kotlin-stdlib (JVM)|1.0|FS|FS
-KDoc syntax|1.0|FS|N/A
-Coroutines|1.3|FS|FS
-kotlin-reflect (JVM)|1.0|SIR|SIR
+kotlin-stdlib（JVM）|1.0|FS|FS
+KDoc 语法|1.0|FS|N/A
+协程|1.3|FS|FS
+kotlin-reflect（JVM）|1.0|SIR|SIR
 Kotlin/JS|1.1|AIR|MF
 Kotlin/Native|1.3|AIR|MF
-Kotlin Scripts (*.kts)|1.2|AIR|MF
+Kotlin 脚本（*.kts）|1.2|AIR|MF
 dokka|0.1|MF|N/A
-Kotlin Scripting APIs|1.2|MF|MF
-Compiler Plugin API|1.0|MF|MF
-Serialization|1.3|MF|MF
-Multiplatform Projects|1.2|MF|MF
-Inline classes|1.3|MF|MF
-Unsigned arithmetics|1.3|MF|MF
-**All other experimental features, by default**|N/A|**MF**|**MF**
+Kotlin 脚本 API|1.2|MF|MF
+编译器插件 API|1.0|MF|MF
+序列化|1.3|MF|MF
+多平台项目|1.2|MF|MF
+内联类|1.3|MF|MF
+无符号算术|1.3|MF|MF
+**默认情况下，所有其他实验性特性**|N/A|**MF**|**MF**
