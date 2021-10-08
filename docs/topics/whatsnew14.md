@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.4.0 的新特性)
 
-_[Release date: 17 August 2020](releases.md#release-details)_
+_[发布日期：2020-08-17](releases.md#release-details)_
 
 在 Kotlin 1.4.0 中，我们对其所有组件进行了大量改进，其中[重点是质量与性能](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/)。
 以下是 Kotlin  1.4.0 中最重要的变更列表。

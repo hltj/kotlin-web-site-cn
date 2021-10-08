@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.3 的新特性)
 
-_Release date: 29 October 2018_
+_发布日期：2018-10-29_
 
 ## 协程正式发布
 
