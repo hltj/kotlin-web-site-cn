@@ -1,4 +1,4 @@
-[//]: # (title: 委托属性)
+[//]: # (title: 属性委托)
 
 With some common kinds of properties, even though you can implement them manually every time you need them,
 it is more helpful to implement them once, add them to a library, and reuse them later. For example:

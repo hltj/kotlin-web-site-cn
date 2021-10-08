@@ -1,4 +1,4 @@
-[//]: # (title: What's new in Kotlin 1.5.0)
+[//]: # (title: Kotlin 1.5.0 的新特性)
 
 _[发布日期：2021-05-05](releases.md#release-details)_
 

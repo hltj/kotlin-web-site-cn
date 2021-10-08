@@ -1,4 +1,4 @@
-[//]: # (title: What's new in Kotlin plugin 2021.1)
+[//]: # (title: Kotlin 插件 2021.1 的新特性)
 
 This release aims to increase productivity and improve the development experience. Version 2021.1 of the Kotlin plugin introduces the following major updates:
 * [Performance improvements](#performance-improvements)

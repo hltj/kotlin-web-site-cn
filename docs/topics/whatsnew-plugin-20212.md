@@ -1,4 +1,4 @@
-[//]: # (title: What's new in Kotlin plugin 2021.2)
+[//]: # (title: Kotlin 插件 2021.2 的新特性)
 
 Enjoy improved performance, a better coroutines debugging experience, WSL 2 and Run Targets support, and more improvements for Kotlin in [IntelliJ IDEA 2021.2](https://www.jetbrains.com/idea/download/):
 

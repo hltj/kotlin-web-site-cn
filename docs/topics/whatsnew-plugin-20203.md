@@ -1,4 +1,4 @@
-[//]: # (title: What's new in Kotlin plugin 2020.3)
+[//]: # (title: Kotlin 插件 2020.3 的新特性)
 
 This plugin release introduces the following features:
 * [New types of inline refactorings](#new-types-of-inline-refactorings)

@@ -1,4 +1,4 @@
-[//]: # (title: What's new in Kotlin for KMM)
+[//]: # (title: Kotlin 用于 KMM 的新特性)
 
 KMM is part of the larger Kotlin ecosystem and leverages Kotlin features and improvements for a better mobile developer experience. 
 [Every Kotlin release](releases.md#release-details) brings features and improvements that are helpful for mobile developers like you. 

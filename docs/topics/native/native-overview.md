@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin Native)
+[//]: # (title: Kotlin 原生)
 
 Kotlin/Native 是一种将 Kotlin 代码编译为无需虚拟机就可运行的原生二进制文件的技术。
 它是一个基于 [LLVM](https://llvm.org/) 的 Kotlin 编译器后端以及 Kotlin 标准库的原生实现<!--

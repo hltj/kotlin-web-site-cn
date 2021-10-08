@@ -1,4 +1,4 @@
-[//]: # (title: What's new in Kotlin 1.4.20)
+[//]: # (title: Kotlin 1.4.20 的新特性)
 
 _[发布日期：2020-11-23](releases.md#release-details)_
 

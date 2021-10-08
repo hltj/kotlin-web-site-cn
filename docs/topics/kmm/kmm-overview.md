@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin Multiplatform Mobile)
+[//]: # (title: Kotlin 多平台移动端)
 
 > Multiplatform Mobile projects are in [Alpha](components-stability.md). Language features and tooling may change in future Kotlin versions.
 >
@@ -8,14 +8,14 @@ Kotlin Multiplatform Mobile (_KMM_) is an SDK designed to simplify creating cros
 With the help of KMM, you can share common code between iOS and Android apps and write platform-specific code only where it’s necessary.
 For example, to implement a native UI or when working with platform-specific APIs.
 
-## Get started with Kotlin Multiplatform Mobile
+## Kotlin 多平台移动端入门
 
 [Get started with KMM](kmm-getting-started.md) if you're already familiar with the Kotlin language and want to try out Kotlin Multiplatform Mobile (KMM).
 If you're new to Kotlin, [get started with these tutorials](getting-started.md).
 
 If you want to introduce KMM to your team, look through [our recommendations](kmm-introduce-your-team.md).
 
-## Supported platforms
+## 所支持平台
 
 KMM supports the following mobile targets:
 
@@ -29,21 +29,21 @@ which supports other platforms inlcuding JavaScript, Linux, WebAssembly, and [mo
 
 See [supported platforms for Kotlin multiplatform programming](mpp-supported-platforms.md).
 
-## Sample projects
+## 样例项目
 
 [Check our list of KMM sample projects](kmm-samples.md) for inspiration.
 
-## Videos
+## 视频
 
 Learn KMM with [Kotlin Multiplatform Multiverse](https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C) videos on YouTube.
 
-## Community
+## 社区
 
 * **Kotlin Slack**: Get an [invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) and join the [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) channel.
 * **StackOverflow**: Subscribe to the [“kotlin-multiplatform” tag](https://stackoverflow.com/questions/tagged/kotlin-multiplatform).
 * **Kotlin issue tracker**: [Report a new issue](https://youtrack.jetbrains.com/newIssue?project=KT).
 
-## Security
+## 安全
 
 We do our best to make sure our software is free of security vulnerabilities.
 To reduce the risk of introducing a vulnerability, you can follow [Kotlin security recommendations](security.md).

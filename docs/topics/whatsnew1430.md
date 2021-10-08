@@ -1,4 +1,4 @@
-[//]: # (title: What's new in Kotlin 1.4.30)
+[//]: # (title: Kotlin 1.4.30 的新特性)
 
 _[发布日期：2021-02-03](releases.md#release-details)_
 

@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin docs)
+[//]: # (title: Kotlin 文档)
 
 <microformat>
     <p>Latest stable release: <strong>%kotlinVersion%</strong></p>
@@ -9,7 +9,7 @@
 <tr>
 <td width="50%">
 
-**Get started with Kotlin**
+**Kotlin 入门**
 
 You can get started with Kotlin using an online editor. If you already have an IDE or you are ready to install one, here are also some ways to begin using Kotlin on your local machine.
 
@@ -22,7 +22,7 @@ You can get started with Kotlin using an online editor. If you already have an I
 </td>
 <td>
 
-**What's new in Kotlin**
+**Kotlin 的新特性**
 
 Discover what features are available in the newest Kotlin release. You can try out upcoming features in the [preview 
 versions](eap.md) before they are released.
@@ -40,7 +40,7 @@ versions](eap.md) before they are released.
 <tr>
 <td>
 
-**Basics &amp; concepts**
+**基础与概念**
 
 Acquaint yourself with some of the concepts and the basics of Kotlin. 
 
@@ -56,7 +56,7 @@ Acquaint yourself with some of the concepts and the basics of Kotlin.
 
 <td>
 
-**Ways to learn**
+**学习方式**
 
 Find a way to learn Kotlin that works for you. There are lots of learning materials available from our team and other authors.
 
@@ -76,7 +76,7 @@ Find a way to learn Kotlin that works for you. There are lots of learning materi
 <tr>
 <td>
 
-**Kotlin YouTube Channel**
+**Kotlin YouTube 频道**
 
 Our [YouTube channel](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw) is packed with resources for learning Kotlin! [Subscribe](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw?sub_confirmation=1) to stay updated for shows, the latest news, and live events!
 
@@ -94,7 +94,7 @@ Our [YouTube channel](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw) 
 </td>
 <td>
 
-**Stay in touch and contribute**
+**保持联系及贡献力量**
 
 If you are interested in what's going with Kotlin, join us on social media, and get involved.
 
