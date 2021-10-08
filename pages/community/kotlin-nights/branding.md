@@ -8,7 +8,7 @@ title: 品牌宣传资料
 
 JetBrains 为 Kotlin 之夜活动提供品牌宣传资料。JetBrains 团队将为促销活动准备数字资料，并运送包含贴纸与T恤的商品包。来看看有什么能让 Kotlin 之夜变得有趣！
 
-[下载全部](https://drive.google.com/drive/u/0/folders/1mAD6S0WBER11_ADPAqHoP1M1rcN9Wx5L){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
+[下载全部](https://drive.google.com/drive/folders/1wTJ-PiO6VvbY6XdACGLsWZ_N8KHI0Nvr){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
 
 ## 社交媒体
 

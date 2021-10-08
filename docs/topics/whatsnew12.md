@@ -238,7 +238,7 @@ Kotlin 以前将 `try` 块中的赋值语句用于块后的智能转换，这可
 -->数组工厂函数：
 
 ```kotlin
-foo(items = *intArrayOf(1))
+foo(items = *arrayOf(1))
 ```
 
 在这种情况下有一项防止性能下降的优化可以消除冗余的数组创建。

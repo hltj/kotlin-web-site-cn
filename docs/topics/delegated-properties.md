@@ -1,7 +1,7 @@
 [//]: # (title: 委托属性)
 
-There are certain common kinds of properties, that, though you can implement them manually every time you need them, 
-it would be helpful to implement them once and add to a library. Examples include:
+With some common kinds of properties, even though you can implement them manually every time you need them,
+it is more helpful to implement them once, add them to a library, and reuse them later. For example:
 
 * 延迟属性（*lazy* properties）: 其值只在首次访问时计算。
 * 可观察属性（*observable* properties）: 监听器会收到有关此属性变更的通知。
@@ -17,7 +17,7 @@ class Example {
 
 语法是： `val/var <属性名>: <类型> by <表达式>`。在 `by` 后面的表达式是该 _委托_，
 因为属性对应的 `get()`（与 `set()`）会被委托给它的 `getValue()` 与 `setValue()` 方法。
-属性的委托不必实现任何的接口，但是需要提供一个 `getValue()` 函数（与 `setValue()`——对于 `var` 属性）。
+属性的委托不必实现接口，但是需要提供一个 `getValue()` 函数（对于 `var` 属性还有 `setValue()`）。
 
 例如:
 
@@ -35,8 +35,8 @@ class Delegate {
 }
 ```
 
-当从委托到一个 `Delegate` 实例的 `p` 读取时，将调用 `Delegate` 中的 `getValue()` 函数，
-所以它第一个参数是读出 `p` 的对象、第二个参数保存了对 `p` 自身的描述
+当从委托到一个 `Delegate` 实例的 `p` 读取时，将调用 `Delegate` 中的 `getValue()` 函数。
+它的第一个参数是读出 `p` 的对象、第二个参数保存了对 `p` 自身的描述
 （例如可以取它的名称)。
 
 ```kotlin
@@ -49,7 +49,7 @@ println(e.p)
 ```
 Example@33a17727, thank you for delegating ‘p’ to me!
 ```
- 
+
 类似地，当我们给 `p` 赋值时，将调用 `setValue()` 函数。前两个参数相同，
 第三个参数保存将要被赋予的值：
 
@@ -65,7 +65,7 @@ NEW has been assigned to ‘p’ in Example@33a17727.
 
 委托对象的要求规范可以在[下文](#属性委托要求)找到。
 
-请注意，可以在函数或代码块中声明一个委托属性，因此它不一定是类的成员。
+可以在函数或代码块中声明一个委托属性；它不一定是类的成员。
 你可以在下文找到[其示例](#局部委托属性)。
 
 ## 标准委托
@@ -74,8 +74,8 @@ Kotlin 标准库为几种有用的委托提供了工厂方法。
 
 ### 延迟属性 Lazy properties
 
-[`lazy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/lazy.html) 是接受一个 lambda 并返回一个 `Lazy <T>` 实例的函数，返回的实例可以作为实现延迟属性的委托：
-第一次调用 `get()` 会执行已传递给 `lazy()` 的 lambda 表达式并记录结果，
+[`lazy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/lazy.html) 是接受一个 lambda 并返回一个 `Lazy <T>` 实例的函数，返回的实例可以作为实现延迟属性的委托。
+第一次调用 `get()` 会执行已传递给 `lazy()` 的 lambda 表达式并记录结果。
 后续调用 `get()` 只是返回记录的结果。
 
 ```kotlin
@@ -91,12 +91,12 @@ fun main() {
 ```
 {kotlin-runnable="true"}
 
-默认情况下，对于 lazy 属性的求值是*同步锁的（synchronized）*：该值只在一个线程中计算，并且所有线程<!--
--->会看到相同的值。如果初始化委托的同步锁不是必需的，这样多个线程<!--
--->可以同时执行，那么将 `LazyThreadSafetyMode.PUBLICATION` 作为参数传递给 `lazy()` 函数。
+默认情况下，对于 lazy 属性的求值是*同步锁的（synchronized）*：该值只在一个线程中计算，但所有线程<!--
+-->都会看到相同的值。如果初始化委托的同步锁不是必需的，这样可以让多个线程<!--
+-->同时执行，那么将 `LazyThreadSafetyMode.PUBLICATION` 作为参数传给 `lazy()`。
 
-而如果你确定初始化将总是发生在与属性使用位于相同的线程，
-那么可以使用 `LazyThreadSafetyMode.NONE` 模式：它不会有任何线程安全的保证以及相关的开销。
+如果你确定初始化将总是发生在与属性使用位于相同的线程，
+那么可以使用 `LazyThreadSafetyMode.NONE` 模式。它不会有任何线程安全的保证以及相关的开销。
 
 ### 可观察属性 Observable properties
 
@@ -135,7 +135,7 @@ fun main() {
 - 同一个类的成员或扩展属性
 - 另一个类的成员或扩展属性
 
-为将一个属性委托给另一个属性，应在委托名称中使用恰当的 `::` 限定符，例如，`this::delegate` 或
+为将一个属性委托给另一个属性，应在委托名称中使用 `::` 限定符，例如，`this::delegate` 或
 `MyClass::delegate`。
 
 ```kotlin
@@ -173,7 +173,7 @@ fun main() {
 ## 将属性储存在映射中
 
 一个常见的用例是在一个映射（map）里存储属性的值。
-这经常出现在像解析 JSON 或者做其他“动态”事情的应用中。
+这经常出现在像解析 JSON 或者执行其他“动态”任务的应用中。
 在这种情况下，你可以使用映射实例自身作为委托来实现委托属性。
 
 ```kotlin
@@ -192,7 +192,7 @@ val user = User(mapOf(
 ))
 ```
 
-委托属性会从这个映射中取值（通过字符串键——属性的名称）：
+Delegated properties take values from this map through string keys, which are associated with the names of properties:
 
 ```kotlin
 class User(val map: Map<String, Any?>) {
@@ -242,13 +242,11 @@ fun example(computeFoo: () -> Foo) {
 
 ## 属性委托要求
 
-Here are requirements for delegating properties. 
-
 对于一个*只读*属性（即 `val` 声明的），委托必须提供一个操作符函数 `getValue()`，该函数具有以下参数：
 
 * `thisRef` 必须与*属性所有者*类型（对于扩展属性必须是被扩展的类型）相同或者是其超类型。
 * `property`  必须是类型 `KProperty<*>` 或其超类型。
- 
+
 `getValue()` 必须返回与属性相同的类型（或其子类型）。
 
 ```kotlin
@@ -295,9 +293,9 @@ class ResourceDelegate(private var resource: Resource = Resource()) {
 当你需要委托属性到原本未提供的这些函数的对象时后者会更便利。
 两函数都需要用 `operator` 关键字来进行标记。
 
-You can create delegates as anonymous objects without creating new classes using the interfaces `ReadOnlyProperty` and `ReadWriteProperty` from the Kotlin standard library. 
-They provide the required methods: `getValue()` is declared in `ReadOnlyProperty`; `ReadWriteProperty` 
-extends it and adds `setValue()`. Thus, you can pass a `ReadWriteProperty` whenever a `ReadOnlyProperty` is expected.
+You can create delegates as anonymous objects without creating new classes, by using the interfaces `ReadOnlyProperty` and `ReadWriteProperty` from the Kotlin standard library.
+They provide the required methods: `getValue()` is declared in `ReadOnlyProperty`; `ReadWriteProperty`
+extends it and adds `setValue()`. This means you can pass a `ReadWriteProperty` whenever a `ReadOnlyProperty` is expected.
 
 ```kotlin
 fun resourceDelegate(): ReadWriteProperty<Any?, Int> =
@@ -315,7 +313,7 @@ var readWrite: Int by resourceDelegate()
 
 ### 翻译规则
 
-在每个委托属性的实现的背后，Kotlin 编译器都会生成辅助属性并委托给它。
+本质上说，Kotlin 编译器会为每个委托属性生成辅助属性并委托给它。
 例如，对于属性 `prop`，生成隐藏属性 `prop$delegate`，而访问器的代码只是<!--
 -->简单地委托给这个附加属性：
 
@@ -334,7 +332,7 @@ class C {
 ```
 
 Kotlin 编译器在参数中提供了关于 `prop` 的所有必要信息：第一个参数 `this` 引用<!--
--->到外部类 `C` 的实例而 `this::prop` 是 `KProperty` 类型的反射对象，该对象描述 `prop` 自身。
+-->到外部类 `C` 的实例，而 `this::prop` 是 `KProperty` 类型的反射对象，该对象描述 `prop` 自身。
 
 ### 提供委托
 
@@ -344,7 +342,7 @@ Kotlin 编译器在参数中提供了关于 `prop` 的所有必要信息：第�
 
 One of the possible use cases of `provideDelegate` is to check the consistency of the property upon its initialization.
 
-例如，如果要在绑定之前检测属性名称，可以这样写：
+例如，如需在绑定之前检测属性名称，可以这样写：
 
 ```kotlin
 class ResourceDelegate<T> : ReadOnlyProperty<MyUI, T> {
@@ -372,7 +370,7 @@ class MyUI {
 }
 ```
 
-`provideDelegate` 的参数与 `getValue` 相同：
+`provideDelegate` 的参数与 `getValue` 的相同：
 
 * `thisRef` 必须与 _属性所有者_ 类型（对于扩展属性必须是被扩展的类型）相同或者是它的超类型；
 * `property` 必须是类型 `KProperty<*>` 或其超类型。

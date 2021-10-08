@@ -355,4 +355,5 @@ IntelliJ IDEA 的 kotlin 插件理解 `TODO()` 的语言，并且会自动在 TO
 
 ## What’s next?
 
-Learn how to perform [typical tasks with strings in Java and Kotlin](java-to-kotlin-idioms-strings.md).
+* Solve [Advent of Code puzzles](advent-of-code.md) using the idiomatic Kotlin style
+* Learn how to perform [typical tasks with strings in Java and Kotlin](java-to-kotlin-idioms-strings.md)

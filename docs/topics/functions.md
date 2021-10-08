@@ -231,6 +231,14 @@ val a = arrayOf(1, 2, 3)
 val list = asList(-1, 0, *a, 4)
 ```
 
+If you want to pass a [primitive type array](https://kotlinlang.org/docs/basic-types.html#primitive-type-arrays)
+into `vararg`, you need to convert it to a regular (typed) array using the `toTypedArray()` function:
+
+```kotlin
+val a = intArrayOf(1, 2, 3) // IntArray is a primitive type array
+val list = asList(-1, 0, *a.toTypedArray(), 4)
+```
+
 ### 中缀表示法
 
 标有 `infix` 关键字的函数也可以使用中缀表示法（忽略该调用的点与圆括号）调用。
@@ -265,7 +273,8 @@ infix fun Int.shl(x: Int): Int { …… }
 {type="note"}
 
 请注意，中缀函数总是要求指定接收者与参数。当<!--
--->使用中缀表示法在当前接收者上调用方法时，需要显式使用 `this`。这是确保非模糊解析所必需的。
+-->使用中缀表示法在当前接收者上调用方法时，需要显式使用 `this`。这是确保<!--
+-->非模糊解析所必需的。
 
 ```kotlin
 class MyStringCollection {

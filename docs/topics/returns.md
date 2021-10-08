@@ -2,9 +2,9 @@
 
 Kotlin 有三种结构化跳转表达式：
 
-* `return` 默认从最直接包围它的函数或者[匿名函数](lambdas.md#匿名函数)返回
-* `break` 终止最直接包围它的循环
-* `continue` 继续下一次最直接包围它的循环
+* `return` 默认从最直接包围它的函数或者[匿名函数](lambdas.md#匿名函数)返回。
+* `break` 终止最直接包围它的循环。
+* `continue` 继续下一次最直接包围它的循环。
 
 所有这些表达式都可以用作更大表达式的一部分：
 
@@ -41,9 +41,10 @@ loop@ for (i in 1..100) {
 
 ## 返回到标签
 
-Kotlin 有函数字面量、局部函数和对象表达式，函数可以嵌套。
+Kotlin 中函数可以使用函数字面量、局部函数与对象表达式实现嵌套。
 标签限定的 `return` 允许我们从外层函数返回。
-最重要的一个用途就是从 lambda 表达式中返回。回想一下我们这么写的时候：
+最重要的一个用途就是从 lambda 表达式中返回。回想一下我们这么写的时候，
+这个 `return` 表达式从最直接包围它的函数——`foo` 中返回：
 
 ```kotlin
 //sampleStart
@@ -62,7 +63,6 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-这个 `return` 表达式从最直接包围它的函数——`foo` 中返回。
 注意，这种非局部的返回只支持传给[内联函数](inline-functions.md)的 lambda 表达式。
 如需从 lambda 表达式中返回，可给它加标签并用以限定 `return`。
 
@@ -83,8 +83,8 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-现在，它只会从 lambda 表达式中返回。通常情况下使用*隐式标签*更方便。
-该标签与接受该 lambda 的函数同名。
+现在，它只会从 lambda 表达式中返回。通常情况下使用*隐式标签*更方便，因为该标签<!--
+-->与接受该 lambda 的函数同名。
 
 ```kotlin
 //sampleStart
@@ -124,6 +124,7 @@ fun main() {
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 请注意，前文三个示例中使用的局部返回类似于在常规循环中使用 `continue`。
+
 并没有 `break` 的直接等价形式，不过可以通过增加另一层嵌套 lambda 表达式并从其中非局部返回来模拟：
 
 ```kotlin

@@ -6,7 +6,7 @@ title: 准则
 
 ## Kotlin 之夜准则
 
-* 请使用提供的[品牌宣传资料](https://drive.google.com/drive/u/0/folders/1mAD6S0WBER11_ADPAqHoP1M1rcN9Wx5L)。所有活动与资料都采用相同的风格，将有助于保持 Kotlin 之夜的一致体验。
+* 请使用提供的[品牌宣传资料](https://drive.google.com/drive/folders/1wTJ-PiO6VvbY6XdACGLsWZ_N8KHI0Nvr)。所有活动与资料都采用相同的风格，将有助于保持 Kotlin 之夜的一致体验。
 * Kotlin 之夜应该是免费的活动。可以收取最低的费用来弥补开支，但是这仍然是一项非盈利性活动。
 * 该活动应公开宣布，并开放给所有人参加，不得有任何歧视。
 * 如果在活动结束后在线发布会谈的内容，那么这些内容必须是免费的，并且所有人都可以访问，不需要任何注册或注册程序。
