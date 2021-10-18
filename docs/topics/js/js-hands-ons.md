@@ -1,4 +1,4 @@
-[//]: # (title: Hands-on labs for Kotlin/JS)
+[//]: # (title: Kotlin/JS 动手实验室)
 
 Hands-on labs are long-form tutorials that help you get to know a technology by guiding you through 
 a self-contained project related to a specific topic. 

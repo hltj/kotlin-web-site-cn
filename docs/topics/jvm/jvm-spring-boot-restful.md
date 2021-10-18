@@ -1,4 +1,4 @@
-[//]: # (title: Create a RESTful web service with a database using Spring Boot – tutorial)
+[//]: # (title: 使用 Spring Boot 创建用到数据库的 RESTful web 服务——教程)
 
 This tutorial walks you through the process of creating a simple application with Spring Boot and adding a database
 to store the information.

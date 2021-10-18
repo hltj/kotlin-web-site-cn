@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin 中调用 Java)
+[//]: # (title: 在 Kotlin 中调用 Java)
 
 Kotlin 在设计时就考虑了 Java 互操作性。可以从 Kotlin 中自然地调用现存的 Java 代码，
 并且在 Java 代码中也可以很顺利地调用 Kotlin 代码。

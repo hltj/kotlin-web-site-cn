@@ -1,4 +1,4 @@
-[//]: # (title: Introduce your team to KMM)
+[//]: # (title: 向团队介绍)
 
 These recommendations will help you introduce your team to KMM:
 

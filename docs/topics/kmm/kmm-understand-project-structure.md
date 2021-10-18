@@ -1,4 +1,4 @@
-[//]: # (title: Understand the KMM project structure)
+[//]: # (title: 理解 KMM 项目结构)
 
 The purpose of the Kotlin Multiplatform Mobile (_KMM_) technology is unifying the development of applications with common 
 logic for Android and iOS platforms. To make this possible, KMM uses a mobile-specific structure of

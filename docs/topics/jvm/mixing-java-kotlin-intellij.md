@@ -1,4 +1,4 @@
-[//]: # (title: 在工程中混用 Java 与 Kotlin - 教程)
+[//]: # (title: 在项目中混用 Java 与 Kotlin——教程)
 
 Kotlin provides the first-class interoperability with Java, and modern IDEs make it even better.
 In this tutorial, you'll learn how to use both Kotlin and Java sources in the same project in 

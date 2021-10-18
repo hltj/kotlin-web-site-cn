@@ -1,4 +1,4 @@
-[//]: # (title: Use Ktor for networking)
+[//]: # (title: 使用 Ktor 联网)
 
 Conventionally, modern applications with client-server architecture use the HTTP protocol for transferring data between the server and the client. If your mobile app has a server to exchange data with, an HTTP client is an essential part of this app that enables its interaction with the server.
 

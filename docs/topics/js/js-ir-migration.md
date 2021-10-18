@@ -1,4 +1,4 @@
-[//]: # (title: Migrating Kotlin/JS projects to the IR compiler)
+[//]: # (title: 将 Kotlin/JS 项目迁移到 IR 编译器)
 
 > The Kotlin/JS IR compiler is in [Beta](components-stability.md). It is almost stable, but migration steps may be required
 > in the future. We'll do our best to minimize any changes you have to make.

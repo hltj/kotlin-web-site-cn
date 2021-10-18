@@ -1,4 +1,4 @@
-[//]: # (title: Run Kotlin/JS)
+[//]: # (title: 运行 Kotlin/JS)
 
 Since Kotlin/JS projects are managed with the Kotlin/JS Gradle plugin, you can run your project using the
 appropriate tasks. If you're starting with a blank project, ensure that you have some sample code to execute.

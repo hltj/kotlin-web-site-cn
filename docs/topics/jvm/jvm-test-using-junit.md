@@ -1,4 +1,4 @@
-[//]: # (title: Test code using JUnit in JVM – tutorial)
+[//]: # (title: 在 JVM 平台中用 JUnit 测试代码——教程)
 
 This tutorial will show you how to write a simple unit test and run it with the Gradle build tool.
 

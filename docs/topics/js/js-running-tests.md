@@ -1,4 +1,4 @@
-[//]: # (title: Run tests in Kotlin/JS)
+[//]: # (title: 在 Kotlin/JS 平台中运行测试)
 
 The Kotlin/JS Gradle plugin lets you run tests through a variety of test runners that can be specified via the Gradle
 configuration. In order to make test annotations and functionality available for the JavaScript target, add the correct

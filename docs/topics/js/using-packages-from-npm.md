@@ -1,4 +1,4 @@
-[//]: # (title: Use dependencies from npm)
+[//]: # (title: 使用来自 npm 的依赖)
 
 In Kotlin/JS projects, all dependencies can be managed through the Gradle plugin. This includes Kotlin/Multiplatform
 libraries such as `kotlinx.coroutines`, `kotlinx.serialization`, or `ktor-client`.

@@ -1,4 +1,4 @@
-[//]: # (title: Set up an environment for KMM development)
+[//]: # (title: 搭建用于 KMM 开发的环境)
 
 Before you begin [creating your first application](kmm-create-first-app.md) to work on both iOS and Android, start by setting up an environment for Kotlin Multiplatform Mobile (KMM) development:
 

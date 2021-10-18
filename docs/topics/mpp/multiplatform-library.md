@@ -1,4 +1,4 @@
-[//]: # (title: Create and publish a multiplatform library – tutorial)
+[//]: # (title: 创建并发布多平台库——教程)
 
 In this tutorial, you will learn how to create a multiplatform library for JVM, JS, and Native platforms, write common tests for all platforms, and publish the library to a local Maven repository.
 

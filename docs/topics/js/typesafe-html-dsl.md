@@ -1,4 +1,4 @@
-[//]: # (title: Typesafe HTML DSL)
+[//]: # (title: 类型安全的 HTML DSL)
 
 The [kotlinx.html library](https://www.github.com/kotlin/kotlinx.html) provides the ability to generate DOM elements using
 statically typed HTML builders (and besides JavaScript, it is even available on the JVM target!) To use the library,

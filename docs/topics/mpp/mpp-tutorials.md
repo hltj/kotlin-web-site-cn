@@ -1,4 +1,4 @@
-[//]: # (title: Tutorials for Kotlin Multiplatform)
+[//]: # (title: Kotlin 多平台教程)
 
 A number of tutorials are available to help you get acquainted with [Kotlin Multiplatform](mpp-intro.md). These tutorials come in two varieties:
 

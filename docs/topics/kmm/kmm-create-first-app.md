@@ -1,4 +1,4 @@
-[//]: # (title: Create your first multiplatform application – tutorial)
+[//]: # (title: 创建第一个多平台应用——教程)
 
 Here you will learn how to create and run your first KMM application.
 

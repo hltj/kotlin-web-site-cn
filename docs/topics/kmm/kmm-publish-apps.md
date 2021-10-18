@@ -1,4 +1,4 @@
-[//]: # (title: Publish KMM apps)
+[//]: # (title: 发布 KMM 应用)
 
 Once your mobile apps are ready for release, it’s time to deliver them to the users by publishing them in app stores.
 Multiple stores are available for each platform. However, in this article we’ll focus on the official ones:

@@ -1,4 +1,4 @@
-[//]: # (title: Connect to platform-specific APIs)
+[//]: # (title: 接入平台相关 API)
 
 If you’re developing mobile applications for different platforms with Kotlin Multiplatform Mobile and need to access 
 platform-specific APIs that implement required functionality (for example, generating a UUID), 

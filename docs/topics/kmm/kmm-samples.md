@@ -1,4 +1,4 @@
-[//]: # (title: Samples)
+[//]: # (title: 样例)
 
 This is a curated list of Kotlin Multiplatform Mobile (KMM) samples.
 

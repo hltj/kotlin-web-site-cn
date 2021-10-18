@@ -1,4 +1,4 @@
-[//]: # (title: Browser and DOM API)
+[//]: # (title: 浏览器与 DOM API)
 
 The Kotlin/JS standard library lets you access browser-specific functionality using the `kotlinx.browser` package,
 which includes typical top-level objects such as `document` and `window`. The standard library provides typesafe wrappers

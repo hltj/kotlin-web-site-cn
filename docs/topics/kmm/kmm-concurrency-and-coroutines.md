@@ -1,4 +1,4 @@
-[//]: # (title: Concurrency and coroutines)
+[//]: # (title: 并发与协程)
 
 When working with mobile platforms, you may need to write multithreaded code that runs in parallel. For this, 
 you can use the [standard](#coroutines) `kotlinx.coroutines` library or its [multithreaded version](#multithreaded-coroutines) 

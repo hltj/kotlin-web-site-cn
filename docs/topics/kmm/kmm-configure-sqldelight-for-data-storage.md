@@ -1,4 +1,4 @@
-[//]: # (title: Configure SQLDelight for data storage)
+[//]: # (title: 配置用于存储的 SQLDelight)
 
 In the world of mobile development, databases are often used for local data storage on client devices. One of the options
 for working with databases in Kotlin Mobile Multiplatform (*KMM*) projects is the

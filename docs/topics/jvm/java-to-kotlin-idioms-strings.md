@@ -1,4 +1,4 @@
-[//]: # (title: Migrating from Java to Kotlin: Strings)
+[//]: # (title: 从 Java 迁移到 Kotlin：字符串)
 
 This guide contains examples of how to perform typical tasks with strings in Java and Kotlin.
 It will help you migrate from Java to Kotlin and write your code in the authentic Kotlin way.

@@ -1,4 +1,4 @@
-[//]: # (title: Debug Kotlin/JS code)
+[//]: # (title: 调试 Kotlin/JS 代码)
 
 JavaScript [source maps](https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) provide mappings between
 the minified code produced by bundlers or minifiers and the actual source code a developer works with. This way, the source

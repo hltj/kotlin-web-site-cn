@@ -1,4 +1,4 @@
-[//]: # (title: Development server and continuous compilation)
+[//]: # (title: 开发服务器与持续编译)
 
 Instead of manually compiling and executing a Kotlin/JS project every time you want to see the changes you made,
 you can use the _continuous compilation_ mode. Instead of using the regular `run` command, invoke the Gradle wrapper
