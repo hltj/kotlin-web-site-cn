@@ -1,4 +1,4 @@
-[//]: # (title: Tips for improving Kotlin/Native compilation times)
+[//]: # (title: 改进 Kotlin/Native 编译时间的技巧)
 
 
 The Kotlin/Native compiler is constantly receiving updates that improve its performance. With the latest Kotlin/Native

@@ -1,4 +1,4 @@
-[//]: # (title: 与 C 语言互操作)
+[//]: # (title: 与 C 语言互操作性)
 
 Kotlin/Native follows the general tradition of Kotlin to provide excellent
 existing platform software interoperability. In the case of a native platform,

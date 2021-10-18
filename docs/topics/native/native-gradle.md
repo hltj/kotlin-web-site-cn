@@ -1,4 +1,4 @@
-[//]: # (title: Get started with Kotlin/Native using Gradle)
+[//]: # (title: Kotlin/Native 入门——使用 Gradle)
 
 [Gradle](https://gradle.org) 是一个在 Java、Android 与其他生态系统工程中非常常用的构建系统。
 它是 Kotlin/Native 与 Multiplatform 的默认构建系统。

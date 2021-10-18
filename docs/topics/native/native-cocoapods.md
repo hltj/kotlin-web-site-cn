@@ -1,4 +1,4 @@
-[//]: # (title: CocoaPods integration)
+[//]: # (title: CocoaPods 集成)
 
 Kotlin/Native provides integration with the [CocoaPods dependency manager](https://cocoapods.org/). 
 You can add dependencies on Pod libraries as well as use a multiplatform project with 

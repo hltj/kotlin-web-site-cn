@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin/Native 开发 Apple framework – 教程)
+[//]: # (title: Kotlin/Native 开发 Apple framework——教程)
 
 Kotlin/Native 提供与 Objective-C/Swift 的双向互操作性。 
 Objective-C framework 与库可以在 Kotlin 代码中使用。

@@ -1,4 +1,4 @@
-[//]: # (title: Get started with Kotlin/Native using the command-line compiler)
+[//]: # (title: Kotlin/Native 入门——使用命令行编译器)
 
 ## 获取编译器
 

@@ -1,4 +1,4 @@
-[//]: # (title: Get started with Kotlin/Native in IntelliJ IDEA)
+[//]: # (title: Kotlin/Native 入门——在 IntelliJ IDEA 中)
 
 This tutorial demonstrates how to use IntelliJ IDEA for creating a Kotlin/Native application.
 

@@ -1,4 +1,4 @@
-[//]: # (title: 与 Swift/Objective-C 互操作)
+[//]: # (title: 与 Swift/Objective-C 互操作性)
 
 This document covers some details of Kotlin/Native interoperability with
 Swift/Objective-C.
