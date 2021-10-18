@@ -23,7 +23,7 @@ Kotlin 1.1 的关键新特性是*协程*，它带来了 `future`/`await`、 `yie
 而不是语言的一部分，所以你不必绑定任何特定的编程范式或并发库。
 
 协程实际上是一个轻量级的线程，可以挂起并稍后恢复。
-协程通过[挂起函数](coroutines-basics.md#extract-function-refactoring)支持：对这样的函数的<!--
+协程通过*[挂起函数](coroutines-basics.md#extract-function-refactoring)*支持：对这样的函数的<!--
 -->调用可能会挂起协程，并启动一个新的协程，我们通常使用匿名挂起函数（即挂起 lambda 表达式）。
 
 我们来看看在外部库 [kotlinx.coroutines](https://github.com/kotlin/kotlinx.coroutines) 中实现的 `async`/`await`：

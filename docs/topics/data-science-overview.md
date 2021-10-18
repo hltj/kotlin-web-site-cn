@@ -107,5 +107,7 @@ R 的 [ggplot](https://ggplot2.tidyverse.org/)。
 
 * [Weka](https://www.cs.waikato.ac.nz/ml/index.html)——一组用于数据挖掘任务的机器学习算法
 
+* [Tablesaw](https://github.com/jtablesaw/tablesaw) - a Java dataframe. It includes a visualization library based on Plot.ly
+
 如果这个列表还不能满足需求，可以在 Thomas Nield 的
 **[Kotlin 数据科学资源](https://github.com/thomasnield/kotlin-data-science-resources)**摘要中找到更多选项。

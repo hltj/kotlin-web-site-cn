@@ -20,7 +20,7 @@ Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理�
 
 ```kotlin
 plugins {
-     kotlin("js") version "'%kotlinVersion%"
+     kotlin("js") version "%kotlinVersion%"
 }
 ```
 

@@ -20,7 +20,7 @@ Kotlin 标准库提供了一种机制，用于要求并明确同意使用 API �
 
 ## 选择使用 API
 
-如果库作者将一个库的 API 声明标记为[要求选择加入](#require-opt-in-for-api)
+如果库作者将一个库的 API 声明标记为*[要求选择加入](#require-opt-in-for-api)*，
 你应该明确同意在代码中使用它。
 有多种方式可以选择加入使用此类 API，所有方法均不受技术限制。
 你可以自由选择最适合自己的方式。
@@ -28,7 +28,7 @@ Kotlin 标准库提供了一种机制，用于要求并明确同意使用 API �
 ### 传播选择加入
 
 在使用供第三方（库）使用的 API 时，你也可以把其选择加入的要求传播到自己的 API。
-为此，请在你的 API 主体声明中添加注解 [要求选择加入的注解](#create-opt-in-requirement-annotations)。
+为此，请在你的 API 主体声明中标注*[要求选择加入的注解](#create-opt-in-requirement-annotations)*。
 这可以让你使用要求选择加入的 API 元素。
 
 ```kotlin

@@ -144,7 +144,6 @@ Kotlin/JS 的两个后端之间缺乏这种兼容性，这意味着使用新的 
 与默认后端相比，IR 编译器后端也存在一些差异。在尝试新的后端时，
 最好注意这些可能的缺陷。
 
-- 当前，IR 后端 **无法为 Kotlin 代码生成源映射**。可以[在 YouTrack](https://youtrack.jetbrains.com/issue/KT-39447) 上跟踪进度。
 - 一些 **依赖默认后端特定特性的库**，例如 `kotlin-wrappers`，可能会显示一些问题。可以[在 YouTrack](https://youtrack.jetbrains.com/issue/KT-40525) 上跟踪调查与进度。
 - 默认情况下，IR 后端根本 **不会使 Kotlin 声明可用于 JavaScript**。要使 Kotlin 声明对 JavaScript 可见，**必须使用** [`@JsExport`](js-to-kotlin-interop.md#jsexport-annotation) 对其进行注解。
 
