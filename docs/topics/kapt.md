@@ -1,4 +1,4 @@
-[//]: # (title: Using kapt)
+[//]: # (title: 使用 kapt)
 
 Annotation processors (see [JSR 269](https://jcp.org/en/jsr/detail?id=269)) are supported in Kotlin with the *kapt* compiler plugin.
 

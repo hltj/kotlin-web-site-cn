@@ -1,4 +1,4 @@
-[//]: # (title: Lombok compiler plugin)
+[//]: # (title: Lombok 编译器插件)
 
 > The Lombok compiler plugin is [Experimental](components-stability.md).
 > It may be dropped or changed at any time. Use it only for evaluation purposes.

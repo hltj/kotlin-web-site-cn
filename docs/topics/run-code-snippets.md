@@ -1,4 +1,4 @@
-[//]: # (title: Run code snippets – tutorial)
+[//]: # (title: 运行代码片段——教程)
 
 There may be times when you need to quickly write and execute code outside of a project or application. 
 This may be useful, for example, when learning Kotlin or evaluating expressions.

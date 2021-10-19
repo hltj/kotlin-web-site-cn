@@ -1,4 +1,4 @@
-[//]: # (title: No-arg compiler plugin)
+[//]: # (title: No-arg 编译器插件)
 
 The *no-arg* compiler plugin generates an additional zero-argument constructor for classes with a specific annotation. 
 

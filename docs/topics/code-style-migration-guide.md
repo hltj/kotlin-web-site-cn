@@ -1,4 +1,4 @@
-[//]: # (title: Migrate to Kotlin code style)
+[//]: # (title: 迁移到 Kotlin 代码风格)
 
 ## Kotlin 编码规范与 IntelliJ IDEA 格式化程序
 

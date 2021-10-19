@@ -1,4 +1,4 @@
-[//]: # (title: Java annotation processing to KSP reference)
+[//]: # (title: Java 注解处理对应到 KSP 参考)
 
 ## Program elements
 
@@ -239,4 +239,4 @@ How functionalities of Java annotation processing API can be carried out by KSP.
 | isSameType | ksType.equals |
 | isSubsignature | functionTypeA == functionTypeB // functionTypeA == functionTypeB.starProjection() |
 | isSubtype | ksType.isAssignableFrom |
-| unboxedType | // Not needed. |
+| unboxedType | // Not needed. |

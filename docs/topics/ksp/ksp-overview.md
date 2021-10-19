@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin Symbol Processing API)
+[//]: # (title: Kotlin 符号处理 API)
 
 Kotlin Symbol Processing (_KSP_) is an API that you can use to develop
 lightweight compiler plugins. KSP provides a simplified compiler plugin

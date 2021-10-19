@@ -1,4 +1,4 @@
-[//]: # (title: KSP quickstart)
+[//]: # (title: KSP 快速入门)
 
 Get a [sample processor](https://github.com/google/ksp/releases/download/1.5.30-1.0.0-beta09/playground.zip) to check out.
 

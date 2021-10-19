@@ -1,4 +1,4 @@
-[//]: # (title: 以 Eclipse IDE 入门)
+[//]: # (title: Eclipse IDE)
 
 [Eclipse IDE](https://www.eclipse.org/downloads/) is a widely known IDE that offers various packages for development in
 different languages and for different platforms. You can use is for writing Kotlin code. On this page, you will learn

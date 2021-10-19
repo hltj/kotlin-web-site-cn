@@ -1,4 +1,4 @@
-[//]: # (title: Why KSP)
+[//]: # (title: 为什么选用 KSP)
 
 Compiler plugins are powerful metaprogramming tools that can greatly enhance
 how you write code. Compiler plugins call compilers directly as libraries to

@@ -1,4 +1,4 @@
-[//]: # (title: KSP examples)
+[//]: # (title: KSP 示例)
 
 Get all member functions that are declared directly within a class:
 
@@ -44,4 +44,4 @@ fun KSFile.suppressedNames(): List<String> {
     }
     return ignoredNames
 }
-```
+```

@@ -1,4 +1,4 @@
-[//]: # (title: SAM-with-receiver compiler plugin)
+[//]: # (title: 带有接收者的 SAM 编译器插件)
 
 The *sam-with-receiver* compiler plugin makes the first parameter of the annotated Java "single abstract method" (SAM)
 interface method a receiver in Kotlin. This conversion only works when the SAM interface is passed as a Kotlin lambda,

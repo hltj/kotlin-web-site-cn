@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin command-line compiler)
+[//]: # (title: Kotlin 命令行编译器)
 
 Every Kotlin release ships with a standalone version of the compiler. You can download the latest version (`kotlin-compiler-%kotlinVersion%.zip`)
 from [GitHub Releases](%kotlinLatestUrl%).

@@ -1,4 +1,4 @@
-[//]: # (title: Incremental processing)
+[//]: # (title: 增量处理)
 
 Incremental processing is a processing technique that avoids re-processing of sources as much as possible.
 The primary goal of incremental processing is to reduce the turn-around time of a typical change-compile-test cycle.

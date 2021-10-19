@@ -1,4 +1,4 @@
-[//]: # (title: All-open compiler plugin)
+[//]: # (title: 全开放编译器插件)
 
 Kotlin has classes and their members `final` by default, which makes it inconvenient to use frameworks and libraries such
 as Spring AOP that require classes to be `open`. The *all-open* compiler plugin adapts Kotlin to the requirements of those
