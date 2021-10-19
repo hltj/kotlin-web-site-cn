@@ -1,26 +1,21 @@
-[//]: # (title: Using Maven)
+[//]: # (title: Maven)
 
 ## Plugin and versions
 
-The *kotlin-maven-plugin* compiles Kotlin sources and modules. Currently only Maven v3 is supported.
+The *kotlin-maven-plugin* compiles Kotlin sources and modules. Currently, only Maven v3 is supported.
 
 Define the version of Kotlin you want to use via a *kotlin.version* property:
 
-
-
 ```xml
 <properties>
-    <kotlin.version>{{ site.data.releases.latest.version }}</kotlin.version>
+    <kotlin.version>%kotlinVersion%</kotlin.version>
 </properties>
 ```
 
-
-
 ## Dependencies
 
-Kotlin has an extensive standard library that can be used in your applications. Configure the following dependency in the pom file:
-
-
+Kotlin has an extensive standard library that can be used in your applications.
+To use the standard library in your project, add the following dependency in the pom file:
 
 ```xml
 <dependencies>
@@ -32,21 +27,22 @@ Kotlin has an extensive standard library that can be used in your applications. 
 </dependencies>
 ```
 
-
-
-If you're targeting JDK 7 or JDK 8, you can use extended versions of the Kotlin standard library which contain
+If you're targeting JDK 7 or JDK 8, you can use extended versions of the Kotlin standard library. They contain
 additional extension functions for APIs added in new JDK versions. Instead of `kotlin-stdlib`, use `kotlin-stdlib-jdk7`
-or `kotlin-stdlib-jdk8`, depending on your JDK version (for Kotlin 1.1.x use `kotlin-stdlib-jre7` and `kotlin-stdlib-jre8` as the `jdk` counterparts were introduced in 1.2.0).
+or `kotlin-stdlib-jdk8`, depending on your JDK version. 
 
-If your project uses [Kotlin reflection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect.full/index.html) or testing facilities, you need to add the corresponding dependencies as well.
+>For Kotlin versions older that  1.2, use `kotlin-stdlib-jre7` and `kotlin-stdlib-jre8`.
+>
+{type="note"} 
+
+If your project uses [Kotlin reflection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect.full/index.html)
+or testing facilities, you need to add the corresponding dependencies as well.
 The artifact IDs are `kotlin-reflect` for the reflection library, and `kotlin-test` and `kotlin-test-junit`
 for the testing libraries.
 
 ## Compile Kotlin-only source code
 
-To compile source code, specify the source directories in the <build> tag:
-
-
+To compile source code, specify the source directories in the `<build>` tag:
 
 ```xml
 <build>
@@ -55,11 +51,7 @@ To compile source code, specify the source directories in the <build> tag:
 </build>
 ```
 
-
-
 The Kotlin Maven Plugin needs to be referenced to compile the sources:
-
-
 
 ```xml
 <build>
@@ -89,15 +81,11 @@ The Kotlin Maven Plugin needs to be referenced to compile the sources:
 </build>
 ```
 
-
-
 ## Compile Kotlin and Java sources
 
-To compile mixed code applications Kotlin compiler should be invoked before Java compiler.
-In maven terms that means that `kotlin-maven-plugin` should run before `maven-compiler-plugin` using the following method.
-Make sure that the `kotlin` plugin comes before the `maven-compiler-plugin` in your `pom.xml` file:
-
-
+To compile projects that include Kotlin and Java source code, invoke the Kotlin compiler before the Java compiler.
+In maven terms that means that `kotlin-maven-plugin` should be run before `maven-compiler-plugin` using the following method,
+making sure that the `kotlin` plugin comes before the `maven-compiler-plugin` in your `pom.xml` file:
 
 ```xml
 <build>
@@ -159,9 +147,6 @@ Make sure that the `kotlin` plugin comes before the `maven-compiler-plugin` in y
                     <goals>
                         <goal>testCompile</goal>
                     </goals>
-                    <configuration>
-                        <skip>${maven.test.skip}</skip>
-                    </configuration>
                 </execution>
             </executions>
         </plugin>
@@ -169,22 +154,16 @@ Make sure that the `kotlin` plugin comes before the `maven-compiler-plugin` in y
 </build>
 ```
 
-
-
 ## Incremental compilation
 
-To make your builds faster, you can enable incremental compilation for Maven (supported since Kotlin 1.1.2).
-In order to do that, define the `kotlin.compiler.incremental` property:
-
-
+To make your builds faster, you can enable incremental compilation for Maven by defining the
+`kotlin.compiler.incremental` property:
 
 ```xml
 <properties>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 </properties>
 ```
-
-
 
 Alternatively, run your build with the `-Dkotlin.compiler.incremental=true` option.
 
@@ -194,10 +173,8 @@ See the description of [Kotlin annotation processing tool](kapt.md) (`kapt`).
 
 ## Jar file
 
-To create a small Jar file containing just the code from your module, include the following under `build->plugins` in your Maven pom.xml file,
-where `main.class` is defined as a property and points to the main Kotlin or Java class:
-
-
+To create a small Jar file containing just the code from your module, include the following under `build->plugins`
+in your Maven pom.xml file, where `main.class` is defined as a property and points to the main Kotlin or Java class:
 
 ```xml
 <plugin>
@@ -215,14 +192,11 @@ where `main.class` is defined as a property and points to the main Kotlin or Jav
 </plugin>
 ```
 
-
-
 ## Self-contained Jar file
 
-To create a self-contained Jar file containing the code from your module along with dependencies, include the following under `build->plugins` in your Maven pom.xml file,
-where `main.class` is defined as a property and points to the main Kotlin or Java class:
-
-
+To create a self-contained Jar file containing the code from your module along with dependencies, include the following
+under `build->plugins` in your Maven pom.xml file, where `main.class` is defined as a property and points to
+the main Kotlin or Java class:
 
 ```xml
 <plugin>
@@ -249,8 +223,6 @@ where `main.class` is defined as a property and points to the main Kotlin or Jav
 </plugin>
 ```
 
-
-
 This self-contained jar file can be passed directly to a JRE to run your application:
 
 ``` bash
@@ -261,8 +233,6 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 Additional options and arguments for the compiler can be specified as tags under the `<configuration>` element of the
 Maven plugin node:
-
-
 
 ```xml
 <plugin>
@@ -280,10 +250,7 @@ Maven plugin node:
 </plugin>
 ```
 
-
 Many of the options can also be configured through properties:
-
-
 
 ```xml
 <project ...>
@@ -293,8 +260,6 @@ Many of the options can also be configured through properties:
 </project>
 ```
 
-
-
 The following attributes are supported:
 
 ### Attributes common for JVM and JS
@@ -302,20 +267,19 @@ The following attributes are supported:
 | Name | Property name | Description | Possible values |Default value |
 |------|---------------|-------------|-----------------|--------------|
 | `nowarn` | | Generate no warnings | true, false | false |
-| `languageVersion` | `kotlin.compiler.languageVersion` | Provide source compatibility with the specified version of Kotlin | "1.2 (DEPRECATED)", "1.3", "1.4", "1.5 (EXPERIMENTAL)" |
-| `apiVersion` | `kotlin.compiler.apiVersion` | Allow using declarations only from the specified version of bundled libraries | "1.2 (DEPRECATED)", "1.3", "1.4", "1.5 (EXPERIMENTAL)" |
+| `languageVersion` | kotlin.compiler.languageVersion | Provide source compatibility with the specified version of Kotlin | "1.2" (DEPRECATED), "1.3", "1.4", "1.5" (EXPERIMENTAL) | 
+| `apiVersion` | kotlin.compiler.apiVersion | Allow using declarations only from the specified version of bundled libraries | "1.2" (DEPRECATED), "1.3", "1.4", "1.5" (EXPERIMENTAL) | 
 | `sourceDirs` | | The directories containing the source files to compile | | The project source roots
-| `compilerPlugins` | | Enabled [compiler plugins](compiler-plugins.md)  | | []
+| `compilerPlugins` | | Enabled compiler plugins  | | []
 | `pluginOptions` | | Options for compiler plugins  | | []
 | `args` | | Additional compiler arguments | | []
-
 
 ### Attributes specific for JVM
 
 | Name | Property name | Description | Possible values |Default value |
 |------|---------------|-------------|-----------------|--------------|
 | `jvmTarget` | `kotlin.compiler.jvmTarget` | Target version of the generated JVM bytecode | "1.6", "1.8", "9", "10", "11", "12", "13", "14", "15" | "1.6" |
-| `jdkHome` | `kotlin.compiler.jdkHome` | Include a custom JDK from the specified location into the classpath instead of the default JAVA_HOME | | |
+| `jdkHome` | `kotlin.compiler.jdkHome` |  	Include a custom JDK from the specified location into the classpath instead of the default JAVA_HOME | | |
 
 ### Attributes specific for JS
 
@@ -342,4 +306,4 @@ For OSGi support see the [Kotlin OSGi page](kotlin-osgi.md).
 
 ## Examples
 
-An example Maven project can be [downloaded directly from the GitHub repository](https://github.com/JetBrains/kotlin-examples/archive/master/maven.zip)
+An example Maven project can be [downloaded from the GitHub repository](https://github.com/JetBrains/kotlin-examples/archive/master/maven.zip)
