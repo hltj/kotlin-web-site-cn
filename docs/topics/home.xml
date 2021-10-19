@@ -6,56 +6,56 @@
        title="Kotlin Docs"
        id="home">
     <section-starting-page>
-        <title>Kotlin docs</title>
+        <title>Kotlin 文档</title>
         <description>
-            Latest stable version: %kotlinVersion%
+            最新稳定版：%kotlinVersion%
         </description>
         <tip-group>
             <a href="getting-started.md"
-               description="Create your first Kotlin project for a platform of your choice in an IDE: IntelliJ IDEA or Android Studio" type="start">Get started with Kotlin</a>
-            <a href="https://play.kotlinlang.org/" description="Write, edit, run, and share Kotlin code right in the browser" type="install">Try Kotlin online</a>
+               description="Create your first Kotlin project for a platform of your choice in an IDE: IntelliJ IDEA or Android Studio" type="start">Kotlin 入门</a>
+            <a href="https://play.kotlinlang.org/" description="Write, edit, run, and share Kotlin code right in the browser" type="install">在线试用 Kotlin</a>
         </tip-group>
         <main-group>
-            <title>First steps</title>
-            <a href="basic-syntax.md" description="A quick tour of Kotlin syntax: keywords, operators, program structure">Basic syntax</a>
-            <a href="https://play.kotlinlang.org/byExample/overview" description="Simple annotated examples for the Kotlin syntax">Kotlin by example</a>
-            <a href="koans.md" description="Programming exercises to get you familiar with Kotlin">Koans</a>
-            <a href="command-line.md" description="Download and install the Kotlin compiler" type="install">Command-line compiler</a>
+            <title>第一步</title>
+            <a href="basic-syntax.md" description="A quick tour of Kotlin syntax: keywords, operators, program structure">基础语法</a>
+            <a href="https://play.kotlinlang.org/byExample/overview" description="Simple annotated examples for the Kotlin syntax">例学 Kotlin</a>
+            <a href="koans.md" description="Programming exercises to get you familiar with Kotlin">心印</a>
+            <a href="command-line.md" description="Download and install the Kotlin compiler" type="install">命令行编译器</a>
         </main-group>
         <highlighted-group>
-            <title>Featured topics</title>
-            <a href="https://kotlinlang.org/api/latest/jvm/stdlib/" description="Living essentials for everyday work with Kotlin: IO, files, threading, collections, and much more">Standard library API reference</a>
-            <a href="coding-conventions.md" description="Recommendations on the code organization, formatting, and naming">Coding conventions</a>
-            <a href="basic-types.md" description="Kotlin type system: numbers, strings, arrays, and other built-in types">Basic types</a>
-            <a href="control-flow.md" description="Conditions and loops: if, when, for, while">Control flow</a>
-            <a href="null-safety.md" description="Nullable and non-null types, elvis operator, safe calls and casts ">Null safety</a>
-            <a href="coroutines-overview.md" description="Concurrency: coroutines, flows, channels">Coroutines</a>
+            <title>精选主题</title>
+            <a href="https://kotlinlang.org/api/latest/jvm/stdlib/" description="Living essentials for everyday work with Kotlin: IO, files, threading, collections, and much more">标准库 API 参考</a>
+            <a href="coding-conventions.md" description="Recommendations on the code organization, formatting, and naming">编码规范</a>
+            <a href="basic-types.md" description="Kotlin type system: numbers, strings, arrays, and other built-in types">基本类型</a>
+            <a href="control-flow.md" description="Conditions and loops: if, when, for, while">控制流程</a>
+            <a href="null-safety.md" description="Nullable and non-null types, elvis operator, safe calls and casts ">空安全</a>
+            <a href="coroutines-overview.md" description="Concurrency: coroutines, flows, channels">协程</a>
         </highlighted-group>
         <custom-groups>
             <group type="cards" display="wide">
-                <title>What's new</title>
-                <a href="whatsnew1530.md" description="Latest features: sealed whens, suspend functions as supertypes, and more">What's New in Kotlin 1.5.30</a>
-                <a href="roadmap.md" description="Future plans on Kotlin development">Kotlin public roadmap</a>
+                <title>新特性</title>
+                <a href="whatsnew1530.md" description="Latest features: sealed whens, suspend functions as supertypes, and more">Kotlin 1.5.30 的新特性</a>
+                <a href="roadmap.md" description="Future plans on Kotlin development">Kotlin 公共路线图</a>
             </group>
             <group type="cards">
-                <title>Kotlin Multiplatform Mobile (KMM)</title>
-                <a href="kmm-getting-started.md" description="A simple mobile cross-platform application">Get started with KMM in Android Studio</a>
-                <a href="kmm-plugin-releases.md" description="Features of the KMM plugin">KMM plugin releases for Android Studio</a>
-                <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C" description="Videos about KMM on Kotlin YouTube channel">Kotlin Multiplatform Multiverse</a>
+                <title>Kotlin 多平台移动端（KMM）</title>
+                <a href="kmm-getting-started.md" description="A simple mobile cross-platform application">Android Studio 中 KMM 入门</a>
+                <a href="kmm-plugin-releases.md" description="Features of the KMM plugin">用于 Android Studio 的 KMM 插件版本发布</a>
+                <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C" description="Videos about KMM on Kotlin YouTube channel">Kotlin 多平台 Multiverse</a>
             </group>
             <group type="links" display="normal">
                 <link-collection>
-                    <title>Learn Kotlin</title>
-                    <a href="https://play.kotlinlang.org/byExample/overview" description="Simple annotated examples for the Kotlin syntax">Kotlin by example</a>
-                    <a href="koans.md" description="Programming exercises to get you familiar with Kotlin">Koans</a>
-                    <a href="https://hyperskill.org/tracks/18" description="Kotlin Basics track on JetBrains Academy">JetBrains Academy</a>
+                    <title>学习 Kotlin</title>
+                    <a href="https://play.kotlinlang.org/byExample/overview" description="Simple annotated examples for the Kotlin syntax">例学 Kotlin</a>
+                    <a href="koans.md" description="Programming exercises to get you familiar with Kotlin">心印</a>
+                    <a href="https://hyperskill.org/tracks/18" description="Kotlin Basics track on JetBrains Academy">JetBrains 学院</a>
                     <a href="advent-of-code.md" description="Code puzzles in idiomatic Kotlin">Advent of Code</a>
-                    <a href="https://play.kotlinlang.org/hands-on/overview" description="Complete long-form tutorials to fully grasp a technology">Hands-on tutorials</a>
-                    <a href="edu-tools-learner.md" description="An IDE plugin for learning and teaching programming languages">EduTools in IntelliJ IDEA</a>
-                    <a href="books.md" description="The books that we’ve reviewed and recommend for learning Kotlin">Books</a>
+                    <a href="https://play.kotlinlang.org/hands-on/overview" description="Complete long-form tutorials to fully grasp a technology">动手教程</a>
+                    <a href="edu-tools-learner.md" description="An IDE plugin for learning and teaching programming languages">IntelliJ IDEA 中的 EduTools</a>
+                    <a href="books.md" description="The books that we’ve reviewed and recommend for learning Kotlin">图书</a>
                 </link-collection>
                 <link-collection>
-                    <title>Watch Kotlin videos on YouTube</title>
+                    <title>在 YouTube 上观看 Kotlin 视频</title>
                     <a href="https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw" description="Official Kotlin YouTube channel">Kotlin YouTube channel</a>
                     <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmxOJL0GSSZ1Vot4KL2Vwe7x" description="Tutorials on using Kotlin with Spring">Kotlin in Spring Framework</a>
                     <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmx-dpq9nkdaVJX0GnrM1Mp1" description="Webinars on using Kotlin for server-side development">Webinars with experts</a>
@@ -67,13 +67,13 @@
                     <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmztiekWaNlCcjfxvNQbXViP" description="Talks from the Kotlin Online Event 2020">Kotlin Online Event 2020</a>
                 </link-collection>
                 <link-collection>
-                    <title>Stay in touch and contribute</title>
-                    <a href="contribute.md" description="The ways in which you can help the development of Kotlin">Contribute to Kotlin</a>
-                    <a href="eap.md" description="Preview versions for trying out features before their official releases">Participate in Early Access Program</a>
-                    <a href="https://surveys.jetbrains.com/s3/kotlin-slack-sign-up" description="Official public Kotlin Slack">Join Kotlin Slack</a>
-                    <a href="https://twitter.com/kotlin" description="Official Kotlin Twitter">Follow Kotlin on Twitter</a>
-                    <a href="https://www.reddit.com/r/Kotlin/" description="Kotlin on Reddit">Chat on Reddit</a>
-                    <a href="https://stackoverflow.com/questions/tagged/kotlin" description="Kotlin on Stack Overflow">Participate in Stack Overflow discussions</a>
+                    <title>保持联系并贡献力量</title>
+                    <a href="contribute.md" description="The ways in which you can help the development of Kotlin">为 Kotlin 贡献力量</a>
+                    <a href="eap.md" description="Preview versions for trying out features before their official releases">参与抢先体验计划（EAP，Early Access Program）</a>
+                    <a href="https://surveys.jetbrains.com/s3/kotlin-slack-sign-up" description="Official public Kotlin Slack">加入 Kotlin Slack</a>
+                    <a href="https://twitter.com/kotlin" description="Official Kotlin Twitter">Twitter 上关注 Kotlin</a>
+                    <a href="https://www.reddit.com/r/Kotlin/" description="Kotlin on Reddit">在 Reddit 上探讨</a>
+                    <a href="https://stackoverflow.com/questions/tagged/kotlin" description="Kotlin on Stack Overflow">参与 Stack Overflow 的讨论</a>
                 </link-collection>
             </group>
         </custom-groups>
