@@ -9,7 +9,7 @@
 Kotlin 的文档生成工具称为 [Dokka](https://github.com/Kotlin/dokka)。其使用说明请参见
 [Dokka README](https://github.com/Kotlin/dokka/blob/master/README.md)。
 
-Dokka 有 Gradle、Maven 和 Ant 的插件，因此你可以将文档生成集成到你的构建过程中。
+Dokka 有 Gradle、Maven 与 Ant 的插件，因此你可以将文档生成集成到你的构建过程中。
 
 ## KDoc 语法
 
@@ -46,7 +46,7 @@ class Group<T>(val name: String) {
 
 KDoc 目前支持以下块标签（block tags）：
 
-### `@param <名称>`
+### @param *名称*
 
 用于函数的值参数或者类、属性或函数的类型参数。
 为了更好地将参数名称与描述分开，如果你愿意，可以将参数的名称括在<!--
@@ -69,7 +69,7 @@ KDoc 目前支持以下块标签（block tags）：
 
 用于扩展函数的接收者。
 
-### @property *名称>*
+### @property *名称*
 
 用于类中具有指定名称的属性。这个标签可用于在<!--
 -->主构造函数中声明的属性，当然直接在属性定义的前面放置 doc 注释会很<!--

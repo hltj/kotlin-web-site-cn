@@ -1,4 +1,4 @@
-[//]: # (title: 使用 Gradle)
+[//]: # (title: Gradle)
 
 In order to build a Kotlin project with Gradle, you should [apply the Kotlin Gradle plugin to your project](#plugin-and-versions)
 and [configure the dependencies](#configuring-dependencies).
@@ -14,7 +14,7 @@ The Kotlin Gradle plugin and the `kotlin-multiplatform` plugin %kotlinVersion% r
 
 ```kotlin
 plugins {
-    kotlin("<...>") version "%kotlinVersion%"
+  kotlin("<...>") version "%kotlinVersion%"
 }
 ```
 
@@ -23,7 +23,7 @@ plugins {
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.＜……＞' version '%kotlinVersion%'
+  id 'org.jetbrains.kotlin.＜……＞' version '%kotlinVersion%'
 }
 ```
 
@@ -46,7 +46,7 @@ require the `kotlin-multiplatform` plugin. [Learn more about the plugin](mpp-dis
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "%kotlinVersion%"
+  kotlin("multiplatform") version "%kotlinVersion%"
 }
 ```
 
@@ -55,7 +55,7 @@ plugins {
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
+  id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
 }
 ```
 
@@ -795,7 +795,7 @@ You can set a toolchain via the `java` extension, and Kotlin compilation tasks w
 ```kotlin
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(<MAJOR_JDK_VERSION>)) // "8" 
+      languageVersion.set(JavaLanguageVersion.of(<MAJOR_JDK_VERSION>)) // "8" 
     }
 }
 ```
@@ -832,10 +832,10 @@ Provider<JavaLauncher> customLauncher = service.launcherFor {
     it.languageVersion.set(JavaLanguageVersion.of(<MAJOR_JDK_VERSION>)) // "8"
 }
 project.tasks
-        .matching { it instanceof UsesKotlinJavaToolchain && it.name == 'compileKotlin' }
-        .configureEach {
-            it.kotlinJavaToolchain.toolchain.use(customLauncher)
-        }
+    .matching { it instanceof UsesKotlinJavaToolchain && it.name == 'compileKotlin' }
+    .configureEach {
+        it.kotlinJavaToolchain.toolchain.use(customLauncher)
+    }
 ```
 
 </tab>

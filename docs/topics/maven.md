@@ -1,4 +1,4 @@
-[//]: # (title: 使用 Maven)
+[//]: # (title: Maven)
 
 ## 插件与版本
 
