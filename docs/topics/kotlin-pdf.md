@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin documentation as PDF)
+[//]: # (title: Kotlin 文档 PDF 版)
 
 Here you can download a PDF version of Kotlin documentation that includes everything except tutorials and API reference.
 

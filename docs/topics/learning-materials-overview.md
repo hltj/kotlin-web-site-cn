@@ -1,4 +1,4 @@
-[//]: # (title: Learning materials overview)
+[//]: # (title: 学习资料概述)
 
 You can use the following materials and resources for learning Kotlin:
 * [Basic syntax](basic-syntax.md) – get a quick overview of the Kotlin syntax.

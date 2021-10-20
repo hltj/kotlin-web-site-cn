@@ -1,4 +1,4 @@
-[//]: # (title: Participate in the Kotlin Early Access Preview)
+[//]: # (title: 参与 Kotlin 早期访问计划)
 
 You can participate in the Kotlin Early Access Preview (EAP) to try out the latest Kotlin features before they are released.
 

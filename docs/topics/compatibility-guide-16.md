@@ -1,4 +1,4 @@
-[//]: # (title: Compatibility guide for Kotlin 1.6)
+[//]: # (title: Kotlin 1.6 的兼容性指南)
 
 > This page describes changes that will happen in the upcoming version 1.6.0. It isn't released yet. You can try
 > its preview version [1.6.0-RC](eap.md#build-details).

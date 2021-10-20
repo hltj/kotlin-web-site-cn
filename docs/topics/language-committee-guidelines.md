@@ -1,4 +1,4 @@
-[//]: # (title: Language Committee guidelines)
+[//]: # (title: 语言委员会准则)
 
 The Kotlin Language Committee has to approve every [incompatible change](kotlin-evolution.md#incompatible-changes) before it lands in a stable version. The committee determines whether the change is appropriate and motivated enough to be introduced and what deprecation procedures have to be carried out to ensure comfortable migration for end users.
 

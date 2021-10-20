@@ -1,4 +1,4 @@
-[//]: # (title: Stability of Kotlin components \(pre 1.4\))
+[//]: # (title: Kotlin 各组件的稳定性（1.4 之前）)
 
 There can be different modes of stability depending of how quickly a component is evolving:
 <a name="moving-fast"></a>

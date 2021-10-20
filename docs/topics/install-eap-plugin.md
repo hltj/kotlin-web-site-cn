@@ -1,4 +1,4 @@
-[//]: # (title: Install the EAP Plugin for IntelliJ IDEA or Android Studio)
+[//]: # (title: 为 IntelliJ IDEA 或 Android Studio 安装 EAP 插件)
 
 <microformat>
     <p>Latest Kotlin EAP release: <strong>%kotlinEapVersion%</strong></p>

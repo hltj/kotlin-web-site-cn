@@ -1,4 +1,4 @@
-[//]: # (title: Compatibility modes)
+[//]: # (title: 兼容模式)
 
 When a big team is migrating onto a new version, it may appear in a "inconsistent state" at some point, when some developers have already updated, and others haven't. To prevent the former from writing and committing code that others may not be able to compile, we provide the following command line switches (also available in the IDE and [Gradle](gradle.md#compiler-options)/[Maven](maven.md#specifying-compiler-options)):   
 

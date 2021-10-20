@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin Foundation FAQ)
+[//]: # (title: Kotlin 基金会 FAQ)
 
 ### How can I contribute or provide feedback to Kotlin?
 

@@ -1,4 +1,4 @@
-[//]: # (title: Advent of Code puzzles in idiomatic Kotlin)
+[//]: # (title: 用地道 Kotlin 代码求解 Advent of Code 谜题)
 
 [Advent of Code](https://adventofcode.com/) is an annual December event, where holiday-themed puzzles are published
 every day from December 1 to December 25. With the permission of [Eric Wastl](http://was.tl/), creator of Advent of Code,
