@@ -11,7 +11,7 @@ output = null   // 编译错误
 // Kotlin 可以保护你避免对可空类型进行误操作
 
 val name: String? = null    // 可空类型
-println(name.length())      // 编译错误
+println(name.length)        // 编译错误
 
 // 并且如果类型检测正确，编译器会为你做自动类型转换
 

@@ -7,7 +7,7 @@
 {type="warning"}
 
 > 1.3.70 中引入了 `@RequireOptIn` 与 `@OptIn` 注解以取代先前使用的 `@Experimental` 与 `@UseExperimental`；
-> 同时 `-opt-in` 编译器选项也取代了 `-Xuse-experimental`。
+> 同时 `-Xopt-in` 编译器选项也取代了 `-Xuse-experimental`。
 >
 {type="note"}
 
@@ -139,8 +139,8 @@ fun displayDate() {
 ### 模块范围的选择加入
 
 如果你不想在使用要求选择加入 API 的每个地方都添加注解，则可以为整个模块选择加入这些 API。
-要选择在模块中使用 API，请使用参数 `-opt-in` 进行编译，
-使用 `-opt-in = org.mylibrary.OptInAnnotation` 指定该 API 使用的要求选择加入注解的标准名称。
+要选择在模块中使用 API，请使用参数 `-Xopt-in` 进行编译，
+使用 `-Xopt-in = org.mylibrary.OptInAnnotation` 指定该 API 使用的要求选择加入注解的标准名称。
 使用此参数进行编译的效果与模块中每个声明都有注解 `@OptIn(OptInAnnotation::class)` 的效果相同。
 
 如果使用 Gradle 构建模块，可以添加如下参数：
@@ -150,7 +150,7 @@ fun displayDate() {
 
 ```kotlin
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions.freeCompilerArgs += "-opt-in=org.mylibrary.OptInAnnotation"
+    kotlinOptions.freeCompilerArgs += "-Xopt-in=org.mylibrary.OptInAnnotation"
 }
 ```
 
@@ -160,7 +160,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 ```groovy
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
-        freeCompilerArgs += "-opt-in=org.mylibrary.OptInAnnotation"
+        freeCompilerArgs += "-Xopt-in=org.mylibrary.OptInAnnotation"
     }
 }
 ```
@@ -209,7 +209,7 @@ sourceSets {
             <executions>...</executions>
             <configuration>
                 <args>
-                    <arg>-opt-in=org.mylibrary.OptInAnnotation</arg>                    
+                    <arg>-Xopt-in=org.mylibrary.OptInAnnotation</arg>                    
                 </args>
             </configuration>
         </plugin>
@@ -302,8 +302,8 @@ annotation class ExperimentalDateTime
 为了让使用注解 `@OptIn` 和 `@RequiresOptIn` 的用户了解其实验状态，
 编译器会在编译代码时发出警告：
 
-```This class can only be used with the compiler argument '-opt-in=kotlin.RequiresOptIn'```
+```This class can only be used with the compiler argument '-Xopt-in=kotlin.RequiresOptIn'```
 
-如需移除警告，请添加编译器参数 `-opt-in=kotlin.RequiresOptIn`。
+如需移除警告，请添加编译器参数 `-Xopt-in=kotlin.RequiresOptIn`。
 
 Learn more about recent changes to opt-in requirements in [this KEEP](https://github.com/Kotlin/KEEP/blob/d7287626dd4c40c6c89877e266044b83fca38bcd/proposals/opt-in.md).
