@@ -2,10 +2,10 @@
 
 With Kotlin Multiplatform, you can share the code using the mechanisms Kotlin provides: 
  
-*   [Share code among all platforms used in your project](#share-code-on-all-platforms). Use it for sharing the common 
+*   [Share code among all platforms used in your project](#对所有平台共享代码). Use it for sharing the common 
 business logic that applies to all platforms.     
 *   [Share code among some platforms](#share-code-on-similar-platforms) included in your project but not all. You can 
-reuse much of the code in similar platforms using a hierarchical structure. You can use [target shortcuts](#use-target-shortcuts) 
+reuse much of the code in similar platforms using a hierarchical structure. You can use [target shortcuts](#使用目标快捷方式) 
 for common combinations of targets or [create the hierarchical structure manually](#configure-the-hierarchical-structure-manually).
  
 If you need to access platform-specific APIs from the shared code, use the Kotlin mechanism of [expected and actual 
@@ -46,10 +46,10 @@ kotlin.mpp.enableGranularSourceSetsMetadata=true
 
 There are two ways you can create the hierarchical structure:
 
-* [Use target shortcuts](#use-target-shortcuts) to easily create the hierarchy structure for common combinations of native targets.
+* [Use target shortcuts](#使用目标快捷方式) to easily create the hierarchy structure for common combinations of native targets.
 * [Configure the hierarchical structure manually](#configure-the-hierarchical-structure-manually).
 
-Learn more about [sharing code in libraries](#share-code-in-libraries) and [using Native libraries in the hierarchical structure](#use-native-libraries-in-the-hierarchical-structure).
+Learn more about [sharing code in libraries](#share-code-in-libraries) and [using Native libraries in the hierarchical structure](#在层次结构中使用原生库).
 
 > Due to a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), you won't be able to use IDE features, such as code completion and highlighting, for the shared native source set 
 > in a multiplatform project with hierarchical structure support if your project depends on:

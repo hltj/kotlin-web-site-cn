@@ -18,7 +18,7 @@ There are several ways to set the compiler options and their values (_compiler a
 - In IntelliJ IDEA, write in the compiler arguments in the __Additional command-line parameters__ text box in 
 __Settings | Build, Execution, Deployment | Compilers | Kotlin Compiler__
 - If you're using Gradle, specify the compiler arguments in the `kotlinOptions` property of the Kotlin compilation task.
-For details, see [Gradle](gradle.md#compiler-options).
+For details, see [Gradle](gradle.md#编译器选项).
 - If you're using Maven, specify the compiler arguments in the `<configuration>` element of the Maven plugin node. 
 For details, see [Maven](maven.md#specifying-compiler-options).
 - If you run a command-line compiler, add the compiler arguments directly to the utility call or write them into an [argfile](#argfile).
@@ -265,7 +265,7 @@ Produce an application for running unit tests from the project.
 
 ### -generate-worker-test-runner (-trw)
 
-Produce an application for running unit tests in a [worker thread](native-concurrency.md#workers).
+Produce an application for running unit tests in a [worker thread](native-concurrency.md#worker).
 
 ### -generate-no-exit-test-runner (-trn)
 

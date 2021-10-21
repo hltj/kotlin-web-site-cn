@@ -85,7 +85,7 @@ O(N) 复杂度进行算法检测，其中 N 是这种子图中元素的数量。
 没有外部引用的对象子图可以使用 `DetachedObjectGraph<T>`
 断开到 `COpaquePointer` 值的连接，该值可以存储在 `void*` 数据中，因此断开连接的对象子图<!--
   -->可以存储在 C 语言数据结构中，并且之后还能在任意线程或 worker 中通过 `DetachedObjectGraph<T>.attach()`
-加回。如果 worker 机制不足以完成特定任务，那么可以将对象子图分离与[原始共享内存](#raw-shared-memory)相结合，能够在<!--
+加回。如果 worker 机制不足以完成特定任务，那么可以将对象子图分离与[原始共享内存](#原始共享内存)相结合，能够在<!--
   -->并发线程之间进行旁路对象传输。 Note, that object detachment
 may require explicit leaving function holding object references and then performing cyclic garbage collection.
 For example, code like:

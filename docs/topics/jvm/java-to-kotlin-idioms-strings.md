@@ -67,7 +67,7 @@ fun main() {
 {kotlin-runnable="true" id="build-string-kotlin"}
 
 Under the hood, the `buildString` uses the same `StringBuilder` class as in Java, and you access it via an implicit `this`
-inside the [lambda](lambdas.md#function-literals-with-receiver).
+inside the [lambda](lambdas.md#带有接收者的函数字面值).
 
 Learn more about [lambda coding conventions](coding-conventions.md#lambdas).
 

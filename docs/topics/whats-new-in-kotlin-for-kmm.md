@@ -47,7 +47,7 @@ Here you can find a short summary of the features Kotlin provides for developing
   [Learn more about support for XCFrameworks](mpp-build-native-binaries.md#build-xcframeworks).
 
 * **New default publishing setup for Android artifacts.**
-  Kotlin 1.5.30 brings new default publishing setup for Android artefacts. You can [publish your multiplatform library for the Android target](mpp-publish-lib.md#publish-an-android-library) by specifying [Android variant](https://developer.android.com/studio/build/build-variants) names in the build script.
+  Kotlin 1.5.30 brings new default publishing setup for Android artefacts. You can [publish your multiplatform library for the Android target](mpp-publish-lib.md#发布-android-库) by specifying [Android variant](https://developer.android.com/studio/build/build-variants) names in the build script.
   The Kotlin Gradle plugin will generate publications automatically.
 
   [Learn more about new default publishing setup for Android artifacts](whatsnew1530.md#new-default-publishing-setup-for-android-artifacts).

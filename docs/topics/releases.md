@@ -13,7 +13,7 @@ For 1.3.70, we had 2 bug fix releases – 1.3.71 and 1.3.72.
 For each incremental and feature release, we also ship several preview (_EAP_) versions for you to try 
 new features before they are released. See [Early Access Preview](eap.md) for details.
 
-Learn more about [types of Kotlin releases and their compatiblity](kotlin-evolution.md#feature-releases-and-incremental-releases). 
+Learn more about [types of Kotlin releases and their compatiblity](kotlin-evolution.md#特性发布与增量发布). 
 
 ## 更新到新版本
 

@@ -825,7 +825,7 @@ limited to one target and can’t be reused by any other platform, or in a commo
 which is shared across all the platforms in the project. In the common source set, you could only call a platform-specific 
 API by using an [`expect` declaration that needs platform-specific `actual` implementations](mpp-connect-to-apis.md).
 
-This made it easy to [share code on all platforms](mpp-share-on-platforms.md#share-code-on-all-platforms), but it was
+This made it easy to [share code on all platforms](mpp-share-on-platforms.md#对所有平台共享代码), but it was
 not so easy to [share between only some of the targets](mpp-share-on-platforms.md#share-code-on-similar-platforms), 
 especially similar ones that could potentially reuse a lot of the common logic and third-party APIs.
 
@@ -842,7 +842,7 @@ code that could still directly call any of the APIs that are common to both the 
 Now you can do this with the [hierarchical project structure support](mpp-share-on-platforms.md#share-code-on-similar-platforms), which infers and adapts the API and language features 
 available in each source set based on which targets consume them.
 
-For common combinations of targets, you can create a hierarchical structure with [target shortcuts](mpp-share-on-platforms.md#use-target-shortcuts).
+For common combinations of targets, you can create a hierarchical structure with [target shortcuts](mpp-share-on-platforms.md#使用目标快捷方式).
 
 For example, create two iOS targets and the shared source set shown above with the `ios()` shortcut:
 
@@ -916,7 +916,7 @@ native targets. This can help you share more native code without being limited b
 No additional steps are required – everything is done automatically. IntelliJ IDEA will help you detect common declarations 
 that you can use in the shared code.
 
-[Learn more about usage of platform-dependent libraries](mpp-share-on-platforms.md#use-native-libraries-in-the-hierarchical-structure).
+[Learn more about usage of platform-dependent libraries](mpp-share-on-platforms.md#在层次结构中使用原生库).
 
 ### 只需指定一次依赖项
 
@@ -988,7 +988,7 @@ since they have the same versioning.
 
 For platform-specific source sets, the corresponding platform-specific variant of the library is used, while a common standard 
 library is added to the rest. The Kotlin Gradle plugin will select the appropriate JVM standard library depending on 
-the `kotlinOptions.jvmTarget` [compiler option](gradle.md#compiler-options) of your Gradle build script.
+the `kotlinOptions.jvmTarget` [compiler option](gradle.md#编译器选项) of your Gradle build script.
 
 [Learn how to change the default behavior](gradle.md#dependency-on-the-standard-library).
 
@@ -1518,7 +1518,7 @@ to help you decide which suggestions to accept and which to ignore.
 
 ![Migration inspections](migration-inspection-wn.png)
 
-Kotlin 1.4.0 is a [feature release](kotlin-evolution.md#feature-releases-and-incremental-releases) and therefore can 
+Kotlin 1.4.0 is a [feature release](kotlin-evolution.md#特性发布与增量发布) and therefore can 
 bring incompatible changes to the language. Find the detailed list of such changes in the **[Compatibility Guide for Kotlin 1.4](compatibility-guide-14.md)**.
 
 <!-- ### 迁移多平台项目

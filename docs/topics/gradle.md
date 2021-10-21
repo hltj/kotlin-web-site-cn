@@ -35,7 +35,7 @@ plugins {
 ## Targeting multiple platforms
 
 Projects targeting [multiple platforms](mpp-supported-platforms.md), called [multiplatform projects](mpp-intro.md),
-require the `kotlin-multiplatform` plugin. [Learn more about the plugin](mpp-discover-project.md#multiplatform-plugin).
+require the `kotlin-multiplatform` plugin. [Learn more about the plugin](mpp-discover-project.md#多平台插件).
 
 >The `kotlin-multiplatform` plugin works with Gradle %minGradleVersion% or later.
 >
@@ -277,7 +277,7 @@ of the standard library used is the same as the version of the Kotlin Gradle plu
 
 For platform-specific source sets, the corresponding platform-specific variant of the library is used, while a common standard
 library is added to the rest. The Kotlin Gradle plugin will select the appropriate JVM standard library depending on
-the `kotlinOptions.jvmTarget` [compiler option](#compiler-options) of your Gradle build script.
+the `kotlinOptions.jvmTarget` [compiler option](#编译器选项) of your Gradle build script.
 
 If you declare a standard library dependency explicitly (for example, if you need a different version), the Kotlin Gradle
 plugin won't override it or add a second standard library.
@@ -747,7 +747,7 @@ Using this feature, you can:
 * Compile and test code with a not-yet-released language version.
 
 With toolchains support, Gradle can autodetect local JDKs and install missing JDKs that Gradle requires for the build.
-Now Gradle itself can run on any JDK and still reuse the [remote build cache feature](#gradle-build-cache-support)
+Now Gradle itself can run on any JDK and still reuse the [remote build cache feature](#gradle-构建缓存支持)
 for tasks that depend on a major JDK version.
 
 The Kotlin Gradle plugin supports Java toolchains for Kotlin/JVM compilation tasks. JS and Native tasks don't use toolchains.

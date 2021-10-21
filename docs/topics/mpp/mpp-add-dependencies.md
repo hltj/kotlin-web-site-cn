@@ -1,7 +1,7 @@
 [//]: # (title: 添加依赖项)
 
 To add a dependency on a library, set a dependency of the required [type](gradle.md#dependency-types) (for example, `implementation`) in the 
-[`dependencies`](mpp-dsl-reference.md#dependencies) block in your [Gradle](gradle.md) build script.
+[`dependencies`](mpp-dsl-reference.md#依赖项) block in your [Gradle](gradle.md) build script.
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -45,7 +45,7 @@ of the standard library is the same as the version of the `kotlin-multiplatform`
 
 For platform-specific source sets, the corresponding platform-specific variant of the library is used, while a common standard 
 library is added to the rest. The Kotlin Gradle plugin will select the appropriate JVM standard library depending on 
-the `kotlinOptions.jvmTarget` [compiler option](gradle.md#compiler-options) of your Gradle build script
+the `kotlinOptions.jvmTarget` [compiler option](gradle.md#编译器选项) of your Gradle build script
 
 Learn how to [change the default behavior](gradle.md#dependency-on-the-standard-library).
 

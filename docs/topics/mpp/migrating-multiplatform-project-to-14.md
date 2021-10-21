@@ -72,7 +72,7 @@ kotlin {
 ln -s iosMain iosArm64Main && ln -s iosMain iosX64Main
 ```
 
-Instead of doing this, you can create a hierarchical structure with [target shortcuts](mpp-share-on-platforms.md#use-target-shortcuts) 
+Instead of doing this, you can create a hierarchical structure with [target shortcuts](mpp-share-on-platforms.md#使用目标快捷方式) 
 available for typical multi-target scenarios, or you can manually declare and connect the source sets. 
 For example, you can create two iOS targets and a shared source set with the `ios()` shortcut:
 

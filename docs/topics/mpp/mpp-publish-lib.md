@@ -27,7 +27,7 @@ Complete the [tutorial on creating and publishing a multiplatform library](multi
 ## Structure of publications
 
 When used with `maven-publish`, the Kotlin plugin automatically creates publications for each target that can be built on the current host, except for the Android target, 
-which needs an [additional step to configure publishing](#publish-an-android-library).
+which needs an [additional step to configure publishing](#发布-android-库).
 
 Publications of a multiplatform library include an additional _root_ publication `kotlinMultiplatform` that stands for the 
 whole library and is automatically resolved to the appropriate platform-specific artifacts when added as a dependency to the common source set. 

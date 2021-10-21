@@ -322,7 +322,7 @@ interface A {
 ```
 
 > 本例中的类型只在启用了严格模式时出现；否则仍是平台类型。
-> 参见 [`@UnderMigration` 注解](#undermigration-注解自)与[编译器配置](#编译器配置)两节。
+> 参见 [`@UnderMigration` 注解](#undermigration-注解)与[编译器配置](#编译器配置)两节。
 >
 {type="note"}
 

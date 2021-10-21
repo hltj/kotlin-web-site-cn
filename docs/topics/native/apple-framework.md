@@ -15,7 +15,7 @@ Kotlin 模块同样可以在 Swift/Objective-C 代码中使用。
 - [创建一个 Kotlin 库](#创建一个-kotlin-库)并将它编译为 framework
 - 检查生成的 [Objective-C 与 Swift API](#生成framework-头) 代码
 - 在 [Objective-C](#在-objective-c-中使用代码) 与 [Swift](#在-swift-中使用代码) 中使用 framework
-- 为 [macOS](#xcode-与-macos-目标平台) 与 [iOS](#xcode-与-ios-目标平台) [配置 Xcode](#xcode-and-framework-dependencies) 以使用 framework
+- 为 [macOS](#xcode-用于-macos-目标平台) 与 [iOS](#xcode-用于-ios-目标平台) [配置 Xcode](#xcode-and-framework-dependencies) 以使用 framework
    
 ## 创建一个 Kotlin 库
 
@@ -59,13 +59,13 @@ scale well for big projects that have hundreds of files and libraries.
 It is therefore better to use the Kotlin/Native compiler with a build system, as it
 helps to download and cache the Kotlin/Native compiler binaries and libraries with
 transitive dependencies and run the compiler and tests.
-Kotlin/Native can use the [Gradle](https://gradle.org) build system through the [kotlin-multiplatform](mpp-discover-project.md#multiplatform-plugin) plugin.
+Kotlin/Native can use the [Gradle](https://gradle.org) build system through the [kotlin-multiplatform](mpp-discover-project.md#多平台插件) plugin.
 
 We covered the basics of setting up an IDE compatible project with Gradle in the
 [A Basic Kotlin/Native Application](native-gradle.md)
 tutorial. Please check it out if you are looking for detailed first steps
 and instructions on how to start a new Kotlin/Native project and open it in IntelliJ IDEA.
-In this tutorial, we'll look at the advanced C interop related usages of Kotlin/Native and [multiplatform](mpp-discover-project.md#multiplatform-plugin) builds with Gradle.
+In this tutorial, we'll look at the advanced C interop related usages of Kotlin/Native and [multiplatform](mpp-discover-project.md#多平台插件) builds with Gradle.
 
 First, create a project folder. All the paths in this tutorial will be relative to this folder. Sometimes
 the missing directories will have to be created before any new files can be added.
@@ -132,7 +132,7 @@ wrapper {
 </tabs>
 
 将源文件移动到工程下的
-`src/nativeMain/kotlin` 文件夹。当使用 [kotlin-多平台](mpp-discover-project.md#multiplatform-plugin)<!--
+`src/nativeMain/kotlin` 文件夹。当使用 [kotlin-多平台](mpp-discover-project.md#多平台插件)<!--
 -->插件的时候这是定位文件的默认路径。
 使用插件。使用以下代码块来配置项目<!--
 -->生成动态或共享库： 

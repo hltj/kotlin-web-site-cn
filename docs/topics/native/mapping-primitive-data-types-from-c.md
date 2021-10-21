@@ -2,7 +2,7 @@
 
 在本教程中会学习到如何将 C 的数据类型在 Kotlin/Native 中可见，反之亦然。将会：
 - 看到什么是 [C 语言中的数据类型](#c-语言中的类型)
-- 创建一个[小型 C 库](#一个-c-库示例)来使这些类型向外暴露
+- 创建一个[小型 C 库](#c-库示例)来使这些类型向外暴露
 - [在 C 库中查看生成的 Kotlin API](#在-c-库中查看生成的-kotlin-api)
 - 找到如何将 [Kotlin 中的原始类型](#kotlin-中的原始类型)映射到 C 的方法
 
@@ -88,13 +88,13 @@ scale well for big projects that have hundreds of files and libraries.
 It is then better to use the Kotlin/Native compiler with a build system, as it
 helps to download and cache the Kotlin/Native compiler binaries and libraries with
 transitive dependencies and run the compiler and tests.
-Kotlin/Native can use the [Gradle](https://gradle.org) build system through the [kotlin-multiplatform](mpp-discover-project.md#multiplatform-plugin) plugin.
+Kotlin/Native can use the [Gradle](https://gradle.org) build system through the [kotlin-multiplatform](mpp-discover-project.md#多平台插件) plugin.
 
 We covered the basics of setting up an IDE compatible project with Gradle in the
 [A Basic Kotlin/Native Application](native-gradle.md)
 tutorial. Please check it out if you are looking for detailed first steps
 and instructions on how to start a new Kotlin/Native project and open it in IntelliJ IDEA.
-In this tutorial, we'll look at the advanced C interop related usages of Kotlin/Native and [multiplatform](mpp-discover-project.md#multiplatform-plugin) builds with Gradle.
+In this tutorial, we'll look at the advanced C interop related usages of Kotlin/Native and [multiplatform](mpp-discover-project.md#多平台插件) builds with Gradle.
 
 First, create a project folder. All the paths in this tutorial will be relative to this folder. Sometimes
 the missing directories will have to be created before any new files can be added.
@@ -175,7 +175,7 @@ Gradle recommends using conventions instead of configurations,
 for example, the source files are expected to be in the `src/nativeMain/kotlin` folder.
 By default, all the symbols from C are imported to the `interop` package,
 you may want to import the whole package in our `.kt` files.
-Check out the [kotlin-multiplatform](mpp-discover-project.md#multiplatform-plugin)
+Check out the [kotlin-multiplatform](mpp-discover-project.md#多平台插件)
 plugin documentation to learn about all the different ways you could configure it.
 
 使用以下内容来创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件<!--

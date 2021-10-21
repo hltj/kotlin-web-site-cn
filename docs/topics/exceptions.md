@@ -43,9 +43,9 @@ val a: Int? = try { input.toInt() } catch (e: NumberFormatException) { null }
 -->最后一个表达式或者是（所有）`catch` 块中的最后一个表达式。
 `finally` 块中的内容不会影响表达式的结果。
 
-## 受检的异常
+## 受检异常
 
-Kotlin 没有受检的异常。这其中有很多原因，但我们会提供一个简单的示例  that illustrates why it is the case。
+Kotlin 没有受检异常。这其中有很多原因，但我们会提供一个简单的示例  that illustrates why it is the case。
 
 以下是 JDK 中 `StringBuilder` 类实现的一个示例接口：
 
@@ -79,7 +79,7 @@ And here are some additional thoughts on the matter:
 * [《受检异常的烦恼》（The Trouble with Checked Exceptions）](https://www.artima.com/intv/handcuffs.html)（Anders Hejlsberg）
 
 If you want to alert callers about possible exceptions when calling Kotlin code from Java, Swift, or Objective-C,
-you can use the `@Throws` annotation. Read more about using this annotation [for Java](java-to-kotlin-interop.md#checked-exceptions)
+you can use the `@Throws` annotation. Read more about using this annotation [for Java](java-to-kotlin-interop.md#受检异常)
 and [for Swift and Objective-C](native-objc-interop.md#errors-and-exceptions).
 
 ## Nothing 类型

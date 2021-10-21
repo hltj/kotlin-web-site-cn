@@ -19,7 +19,7 @@ You can configure how artifacts are produced in:
 * [一个目标的编译项](#为一个目标配置编译项) since one target can have multiple compilations.
 * [具体编译项](#配置一个编译项).
 
-See the [list of compilation parameters](mpp-dsl-reference.md#compilation-parameters) and [compiler options](gradle.md#compiler-options) 
+See the [list of compilation parameters](mpp-dsl-reference.md#compilation-parameters) and [compiler options](gradle.md#编译器选项) 
 available for all or specific targets.
 
 ## 配置所有编译项
@@ -355,7 +355,7 @@ compiled into the same target binary form, such as JVM class files.
 * `jvmMain` can contain platform-specific implementations for the [expected declarations](mpp-connect-to-apis.md) 
 of `commonMain`.
 * The resources of `commonMain` are always processed and copied along with the resources of `jvmMain`.
-* The [language settings](mpp-dsl-reference.md#language-settings) of `jvmMain` and `commonMain` should be consistent.
+* The [language settings](mpp-dsl-reference.md#语言设置) of `jvmMain` and `commonMain` should be consistent.
 
 Language settings are checked for consistency in the following ways:
 * `jvmMain` should set a `languageVersion` that is greater than or equal to that of `commonMain`.

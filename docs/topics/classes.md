@@ -195,7 +195,7 @@ val customer = Customer("Joe Smith")
 * [嵌套类与内部类](nested-classes.md)
 * [对象声明](object-declarations.md)
 
-## Inheritance
+## 继承
 
 Classes can be derived from each other and form inheritance hierarchies.
 [Learn more about inheritance in Kotlin](inheritance.md).

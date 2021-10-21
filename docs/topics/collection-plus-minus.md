@@ -25,7 +25,7 @@ fun main() {
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 关于 map 的 `plus` 和 `minus` 操作符的详细信息，请参见 [Map 相关操作](map-operations.md)。
-也为集合定义了[广义赋值操作符](operator-overloading.md#assignments) [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html)
+也为集合定义了[广义赋值操作符](operator-overloading.md#广义赋值) [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html)
 （`+=`）与 [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`)。
 然而，对于只读集合，它们实际上使用 `plus` 或者 `minus` 操作符并尝试将结果赋值给同一变量。
 因此，它们仅在由 `var` 声明的只读集合中可用。

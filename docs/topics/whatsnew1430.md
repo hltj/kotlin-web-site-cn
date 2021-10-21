@@ -187,7 +187,7 @@ Learn more about the mangling algorithm in [KEEP](https://github.com/Kotlin/KEEP
 
 ### JVM IR compiler backend reaches Beta
 
-The [IR-based compiler backend](whatsnew14.md#unified-backends-and-extensibility) for Kotlin/JVM, which was presented in
+The [IR-based compiler backend](whatsnew14.md#统一的后端与可扩展性) for Kotlin/JVM, which was presented in
 1.4.0 in [Alpha](components-stability.md), has reached Beta. This is the last pre-stable level before the IR backend
 becomes the default for the Kotlin/JVM compiler.
 

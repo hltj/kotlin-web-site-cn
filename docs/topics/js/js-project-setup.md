@@ -47,7 +47,7 @@ kotlin {
 在 `kotlin` 部分中，你可以管理以下方面：
 
 * [选择执行环境](#执行环境): 浏览器或 Node.js
-* [管理依赖](#依赖): Maven 和 npm
+* [管理依赖](#依赖项): Maven 和 npm
 * [配置 run 任务](#run-任务)
 * [配置 test 任务](#test-任务)
 * 为浏览器项目配置 [webpack 绑定](#webpack-绑定)与 [CSS 支持](#css)
@@ -55,7 +55,7 @@ kotlin {
 * [项目的 `package.json` 文件](#package-json-定制)
 
 
-## 执行环境
+## 执行环境`
 
 Kotlin/JS 项目可以针对两个不同的执行环境：
 
@@ -86,7 +86,7 @@ Kotlin/JS 插件会自动配置其任务与所选环境配合工作。
 这项操作包括下载与安装运行和测试应用程序所需的环境与依赖项。
 这让开发者无需额外配置就可以构建、运行和测试简单项目。
 
-## 依赖
+## 依赖项
 
 就像其他任何的 Gradle 项目一样，Kotlin/JS 项目支持位于构建脚本的 `dependencies`
 部分的传统 Gradle [依赖声明](https://docs.gradle.org/current/userguide/declaring_dependencies.html)。

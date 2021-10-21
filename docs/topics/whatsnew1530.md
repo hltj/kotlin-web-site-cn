@@ -32,7 +32,7 @@ and type inference:
 >
 {type="warning"}
 
-An _exhaustive_ [`when`](control-flow.md#when-expression) statement contains branches for all possible types or values of its subject or for some types plus an `else` branch. In other words, it covers all possible cases.
+An _exhaustive_ [`when`](control-flow.md#when-表达式) statement contains branches for all possible types or values of its subject or for some types plus an `else` branch. In other words, it covers all possible cases.
 
 We’re planning to prohibit non-exhaustive `when` statements soon to make the behavior consistent with `when` expressions. To ensure smooth migration, you can configure the compiler to report warnings about non-exhaustive `when` statements with a sealed class or a Boolean. Such warnings will appear by default in Kotlin 1.6 and will become errors later.
 
@@ -154,7 +154,7 @@ The feature has the following restrictions:
 >
 {type="warning"}
 
-The author of a library can mark an experimental API as [requiring opt-in](opt-in-requirements.md#create-opt-in-requirement-annotations) to inform users about its experimental state. The compiler raises a warning or error when the API is used and requires [explicit consent](opt-in-requirements.md#opt-in-to-using-api) to suppress it.
+The author of a library can mark an experimental API as [requiring opt-in](opt-in-requirements.md#创建选择加入要求的注解) to inform users about its experimental state. The compiler raises a warning or error when the API is used and requires [explicit consent](opt-in-requirements.md#opt-in-to-using-api) to suppress it.
 
 In Kotlin 1.5.30, the compiler treats any declaration that has an experimental type in the signature as experimental. Namely, it requires opt-in even for implicit usages of an experimental API. For example, if the function’s return type is marked as an experimental API element, a usage of the function requires you to opt-in even if the declaration is not marked as requiring an opt-in explicitly.
 
@@ -321,7 +321,7 @@ We’ve also introduced new targets that make Kotlin code run natively on Apple 
 
 They are available on both Intel-based and Apple silicon hosts. All existing targets are available on Apple silicon hosts as well.
 
-Note that in 1.5.30 we provide only basic support for Apple silicon targets in the `kotlin-multiplatform` Gradle plugin. Particularly, the new simulator targets aren’t included in the [`ios`, `tvos`, and `watchos` target shortcuts](mpp-share-on-platforms.md#use-target-shortcuts). Learn how to [use Apple silicon targets with the target shortcuts](mpp-share-on-platforms.md#target-shortcuts-and-arm64-apple-silicon-simulators).
+Note that in 1.5.30 we provide only basic support for Apple silicon targets in the `kotlin-multiplatform` Gradle plugin. Particularly, the new simulator targets aren’t included in the [`ios`, `tvos`, and `watchos` target shortcuts](mpp-share-on-platforms.md#使用目标快捷方式). Learn how to [use Apple silicon targets with the target shortcuts](mpp-share-on-platforms.md#target-shortcuts-and-arm64-apple-silicon-simulators).
 We will keep working to improve the user experience with the new targets.
 
 ### Improved Kotlin DSL for the CocoaPods Gradle plugin
@@ -433,7 +433,7 @@ Please share your thoughts and concerns about the transition to the LLD linker i
 
 ### Ability to use custom `cinterop` libraries in shared native code
 
-Kotlin Multiplatform gives you an [option](mpp-share-on-platforms.md#use-native-libraries-in-the-hierarchical-structure) to use platform-dependent interop libraries in shared source sets. Before 1.5.30, this worked only with [platform libraries](native-platform-libs.md) shipped with Kotlin/Native distribution. Starting from 1.5.30, you can use it with your custom `cinterop` libraries. To enable this feature, add the `kotlin.mpp.enableCInteropCommonization=true` property in your `gradle.properties`:
+Kotlin Multiplatform gives you an [option](mpp-share-on-platforms.md#在层次结构中使用原生库) to use platform-dependent interop libraries in shared source sets. Before 1.5.30, this worked only with [platform libraries](native-platform-libs.md) shipped with Kotlin/Native distribution. Starting from 1.5.30, you can use it with your custom `cinterop` libraries. To enable this feature, add the `kotlin.mpp.enableCInteropCommonization=true` property in your `gradle.properties`:
 
 ```properties
 kotlin.mpp.enableGranularSourceSetsMetadata=true
@@ -531,7 +531,7 @@ Learn more about XCFrameworks in [this WWDC video](https://developer.apple.com/v
 
 ### New default publishing setup for Android artifacts
 
-Using the `maven-publish` Gradle plugin, you can [publish your multiplatform library for the Android target](mpp-publish-lib.md#publish-an-android-library) by specifying [Android variant](https://developer.android.com/studio/build/build-variants) names in the build script. The Kotlin Gradle plugin will generate publications automatically.
+Using the `maven-publish` Gradle plugin, you can [publish your multiplatform library for the Android target](mpp-publish-lib.md#发布-android-库) by specifying [Android variant](https://developer.android.com/studio/build/build-variants) names in the build script. The Kotlin Gradle plugin will generate publications automatically.
 
 Before 1.5.30, the generated publication [metadata](https://docs.gradle.org/current/userguide/publishing_gradle_module_metadata.html) included the build type attributes for every published Android variant, making it compatible only with the same build type used by the library consumer. Kotlin 1.5.30 introduces a new default publishing setup:
 * If all Android variants that the project publishes have the same build type attribute, then the published variants won't have the build type attribute and will be compatible with any build type.
@@ -547,7 +547,7 @@ Two major improvements are coming to Kotlin/JS with 1.5.30:
 
 ### JS IR compiler backend reaches Beta
 
-The [IR-based compiler backend](whatsnew14.md#unified-backends-and-extensibility) for Kotlin/JS, which was introduced in 1.4.0 in [Alpha](components-stability.md), has reached Beta.
+The [IR-based compiler backend](whatsnew14.md#统一的后端与可扩展性) for Kotlin/JS, which was introduced in 1.4.0 in [Alpha](components-stability.md), has reached Beta.
 
 Previously, we published the [migration guide for the JS IR backend](js-ir-migration.md) to help you migrate your projects to the new backend. Now we would like to present the [Kotlin/JS Inspection Pack](https://plugins.jetbrains.com/plugin/17183-kotlin-js-inspection-pack/) IDE plugin, which displays the required changes directly in IntelliJ IDEA.
 
@@ -570,7 +570,7 @@ Using this feature, you can:
 * Run compilations, tests, and executables using JDKs and JREs that are different from the Gradle ones.
 * Compile and test code with an unreleased language version.
 
-With toolchains support, Gradle can autodetect local JDKs and install missing JDKs that Gradle requires for the build. Now Gradle itself can run on any JDK and still reuse the [build cache feature](gradle.md#gradle-build-cache-support).
+With toolchains support, Gradle can autodetect local JDKs and install missing JDKs that Gradle requires for the build. Now Gradle itself can run on any JDK and still reuse the [build cache feature](gradle.md#gradle-构建缓存支持).
 
 The Kotlin Gradle plugin supports Java toolchains for Kotlin/JVM compilation tasks.
 A Java toolchain:
@@ -629,7 +629,7 @@ For Gradle versions from 6.1 to 6.6, [use the `UsesKotlinJavaToolchain` interfac
 
 ### Ability to specify JDK home with UsesKotlinJavaToolchain interface
 
-All Kotlin tasks that support setting the JDK via [`kotlinOptions`](gradle.md#compiler-options) now implement the `UsesKotlinJavaToolchain` interface. To set the JDK home, put a path to your JDK and replace the `<JDK_VERSION>` placeholder:
+All Kotlin tasks that support setting the JDK via [`kotlinOptions`](gradle.md#编译器选项) now implement the `UsesKotlinJavaToolchain` interface. To set the JDK home, put a path to your JDK and replace the `<JDK_VERSION>` placeholder:
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">

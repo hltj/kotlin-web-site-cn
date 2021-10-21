@@ -49,8 +49,8 @@
  * `try` [开始一个异常处理块](exceptions.md)。
  * `typealias` 声明一个[类型别名](type-aliases.md)。
  * `typeof` 保留以供未来使用。
- * `val` 声明一个只读[属性](properties.md)或[局部变量](basic-syntax.md#defining-variables)。
- * `var` 声明一个可变[属性](properties.md)或[局部变量](basic-syntax.md#defining-variables)。
+ * `val` 声明一个只读[属性](properties.md)或[局部变量](basic-syntax.md#变量)。
+ * `var` 声明一个可变[属性](properties.md)或[局部变量](basic-syntax.md#变量)。
  * `when` 开始一个 [when 表达式](control-flow.md#when-表达式)（执行其中一个给定分支）。
  * `while` 开始一个 [while 循环](control-flow.md#while-循环)（前置条件的循环）。
 
@@ -70,7 +70,7 @@
  * `file` 用作[注解使用处目标](annotations.md#注解使用处目标)。
  * `finally` 开始一个[当 try 块退出时总会执行的块](exceptions.md)。
  * `get`
-   - 声明[属性的 getter](properties.md#getters-与-setters)。
+   - 声明[属性的 getter](properties.md#getter-与-setter)。
    - 用作[注解使用处目标](annotations.md#注解使用处目标)。
  * `import` [将另一个包中的声明导入当前文件](packages.md)。
  * `init` 开始一个[初始化块](classes.md#构造函数)。
@@ -78,7 +78,7 @@
  * `property` 用作[注解使用处目标](annotations.md#注解使用处目标)。
  * `receiver`用作[注解使用处目标](annotations.md#注解使用处目标)。
  * `set`
-   - 声明[属性的 setter](properties.md#getters-与-setters)。
+   - 声明[属性的 setter](properties.md#getter-与-setter)。
    - 用作[注解使用处目标](annotations.md#注解使用处目标)。
  * `setparam` 用作[注解使用处目标](annotations.md#注解使用处目标)。
  * `value` with the `class` keyword declares an [inline class](inline-classes.md)。

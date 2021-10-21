@@ -68,7 +68,7 @@ browser {
 }
 ```
 
-Learn more about [configuring webpack bundling](js-project-setup.md#webpack-bundling).
+Learn more about [configuring webpack bundling](js-project-setup.md#webpack-绑定).
 
 #### package.json customization from Gradle
 

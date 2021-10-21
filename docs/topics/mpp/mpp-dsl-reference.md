@@ -331,7 +331,7 @@ To provide an interop with a library, add an entry to `cinterops` and define its
 |`compilerOpts`|Options to pass to the compiler by the cinterop tool.|
 |`includeDirs`|Directories to look for headers.|
 
-Learn more how to [configure interop with native languages](mpp-configure-compilations.md#configure-interop-with-native-languages).
+Learn more how to [configure interop with native languages](mpp-configure-compilations.md#配置与原生语言的互操作).
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -407,7 +407,7 @@ Two functions help you configure [build variants](https://developer.android.com/
 
 |**Name**|**Description**| 
 | --- | --- |
-|`publishLibraryVariants()`|Specifies build variants to publish. Learn more about [publishing Android libraries](mpp-publish-lib.md#publish-an-android-library).|
+|`publishLibraryVariants()`|Specifies build variants to publish. Learn more about [publishing Android libraries](mpp-publish-lib.md#发布-android-库).|
 |`publishAllLibraryVariants()`|Publishes all build variants.|
 
 ```kotlin
@@ -674,7 +674,7 @@ A compilation has the following parameters:
 |`defaultSourceSet`|The compilation’s default source set.|
 |`kotlinSourceSets`|Source sets participating in the compilation.|
 |`allKotlinSourceSets`|Source sets participating in the compilation and their connections via `dependsOn()`.|
-|`kotlinOptions`|Compiler options applied to the compilation. For the list of available options, see [Compiler options](gradle.md#compiler-options).|
+|`kotlinOptions`|Compiler options applied to the compilation. For the list of available options, see [Compiler options](gradle.md#编译器选项).|
 |`compileKotlinTask`|Gradle task for compiling Kotlin sources.|
 |`compileKotlinTaskName`|Name of `compileKotlinTask`.|
 |`compileAllTaskName`|Name of the Gradle task for compiling all sources of a compilation.|

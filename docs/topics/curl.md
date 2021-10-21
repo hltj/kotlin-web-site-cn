@@ -11,7 +11,7 @@ Kotlin/Native 提供了操作 C 语言标准库的能力，这样就开放了存
 
 * [创建 Kotlin 绑定器](#生成绑定)
 * [使用生成的 Kotlin API](#使用生成的-kotlin-api)
-* [在应用程序中连接库](#在应用程序中连接库)
+* [在应用程序中连接库](#编译并链接库)
 
 ## 生成绑定
 
@@ -55,13 +55,13 @@ scale well for big projects that have hundreds of files and libraries.
 It is then better to use the Kotlin/Native compiler with a build system, as it
 helps to download and cache the Kotlin/Native compiler binaries and libraries with
 transitive dependencies and run the compiler and tests.
-Kotlin/Native can use the [Gradle](https://gradle.org) build system through the [kotlin-multiplatform](mpp-discover-project.md#multiplatform-plugin) plugin.
+Kotlin/Native can use the [Gradle](https://gradle.org) build system through the [kotlin-multiplatform](mpp-discover-project.md#多平台插件) plugin.
 
 We covered the basics of setting up an IDE compatible project with Gradle in the
 [A Basic Kotlin/Native Application](native-gradle.md)
 tutorial. Please check it out if you are looking for detailed first steps
 and instructions on how to start a new Kotlin/Native project and open it in IntelliJ IDEA.
-In this tutorial, we'll look at the advanced C interop related usages of Kotlin/Native and [multiplatform](mpp-discover-project.md#multiplatform-plugin)builds with Gradle.
+In this tutorial, we'll look at the advanced C interop related usages of Kotlin/Native and [multiplatform](mpp-discover-project.md#多平台插件)builds with Gradle.
 
 First, create a project folder. All the paths in this tutorial will be relative to this folder. Sometimes
 the missing directories will have to be created before any new files can be added.
@@ -141,7 +141,7 @@ Let's move the `interop.def` file to the `src/nativeInterop/cinterop` directory.
 Gradle recommends using conventions instead of configurations,
 for example, the source files are expected to be in the `src/nativeMain/kotlin` folder.
 By default, all the symbols from C are imported to the `interop` package,
-you may want to import the whole package in our `.kt` files. Check out the [kotlin-multiplatform](mpp-discover-project.md#multiplatform-plugin)
+you may want to import the whole package in our `.kt` files. Check out the [kotlin-multiplatform](mpp-discover-project.md#多平台插件)
 plugin documentation to learn about all the different ways you could configure it.
 
 ### 在 Windows 上 curl
@@ -207,7 +207,7 @@ fun main(args: Array<String>) {
 
 注意，出于本教程的目的，对逐行进行了直译。显然，可以用更地道的 Kotlin 方式来编写这个例子。
 
-## 编译与链接库
+## 编译并链接库
 
 下一步是编译该应用程序。[基本 Kotlin/Native 应用程序](native-command-line-compiler.md)这篇教程涵盖了使用命令行编译 Kotlin/Native 应用程序的基础知识。
 在本案例中唯一不同的地方是 `cinterop` 生成的部分隐式包含在构建中：

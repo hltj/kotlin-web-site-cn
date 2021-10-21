@@ -44,7 +44,7 @@ kotlin {
 }
 ```
 
-You can drop the lambda if there is no need for [additional configuration](mpp-dsl-reference.md#native-targets):
+You can drop the lambda if there is no need for [additional configuration](mpp-dsl-reference.md#native-目标):
 
 ```kotlin
 binaries {
@@ -121,7 +121,7 @@ produces the files `foo.exe` and `bar.exe`. You can also use the name prefix to 
  
 ## 访问二进制文件
 
-You can access binaries to [configure them](mpp-dsl-reference.md#native-targets) or get their properties (for example, the path to an output file). 
+You can access binaries to [configure them](mpp-dsl-reference.md#native-目标) or get their properties (for example, the path to an output file). 
 
 You can get a binary by its unique name. This name is based on the name prefix (if it is specified), build type, and 
 binary kind following the pattern: `<optional-name-prefix><build-type><binary-kind>`, for example, `releaseFramework` or 
@@ -390,7 +390,7 @@ kotlin {
 ## Build XCFrameworks
 
 All Kotlin Multiplatform projects can use XCFrameworks as an output to gather logic for all the target platforms and architectures in a single bundle.
-Unlike [universal (fat) frameworks](#build-universal-frameworks), you don't need to remove all unnecessary architectures before publishing the application to the App Store.
+Unlike [universal (fat) frameworks](#构建-universal-frameworks), you don't need to remove all unnecessary architectures before publishing the application to the App Store.
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
