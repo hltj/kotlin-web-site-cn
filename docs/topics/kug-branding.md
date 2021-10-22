@@ -1,4 +1,4 @@
-[//]: # (title: KUG branding)
+[//]: # (title: KUG 品牌)
 
 We provide Kotlin user groups with a logo that is specifically designed to be recognizable and convey a reference to Kotlin.
 

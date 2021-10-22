@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin logo)
+[//]: # (title: Kotlin 徽标)
 
 Our logo consists of a mark and a typeface. The full-color version is the main one and should be used in the vast majority of cases.
 

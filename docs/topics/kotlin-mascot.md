@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin mascot)
+[//]: # (title: Kotlin 吉祥物)
 
 Meet the official Kotlin mascot. Their pronouns are they/them.
 
