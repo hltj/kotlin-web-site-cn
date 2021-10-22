@@ -55,7 +55,7 @@ Assume that you need to implement a type-safe builder in Kotlin.
 首先，定义想要构建的模型。在本例中我们需要建模 HTML 标签。
 用一些类就可以轻易完成。
 例如，`HTML` 是一个描述 `<html>` 标签的类，它定义了像 `<head>` 和 `<body>` 这样的子标签。
-（参见[下文](#cfull-definition-of-the-com-example-html-package)它的声明。）
+（参见[下文](#com-example-html-包的完整定义)它的声明。）
 
 现在，让我们回想下为什么可以在代码中这样写：
 

@@ -39,7 +39,7 @@ fun getTypeof() = "typeof"
 
 要告诉 Kotlin 某个声明是用纯 JavaScript 编写的，你应该用 `external` 修饰符来标记它。
 当编译器看到这样的声明时，它假定相应类、函数或<!--
--->属性的实现是由外部提供的（由开发人员或者通过 [npm 依赖项](js-project-setup.md#npm-dependencies)），
+-->属性的实现是由外部提供的（由开发人员或者通过 [npm 依赖项](js-project-setup.md#npm-依赖)），
 因此不会尝试从声明中生成任何 JavaScript 代码。 这也是为什么 `external` 声明<!--
 -->不能具有主体的原因。例如：
 
@@ -75,7 +75,7 @@ MyClass.sharedMember = function() { /* 实现 */ };
 MyClass.prototype.ownMember = function() { /* 实现 */ };
 ```
 
-Kotlin 中没有这样的语法。然而，在 Kotlin 中我们有[伴生（`companion`）对象](object-declarations.md#companion-objects)。
+Kotlin 中没有这样的语法。然而，在 Kotlin 中我们有[伴生（`companion`）对象](object-declarations.md#伴生对象)。
 Kotlin 以特殊的方式处理 `external` 类的伴生对象：替代期待一个对象的是，
 它假定伴生对象的成员就是该类自身的成员。可以这样描述来自上例中的 `MyClass`
 ：

@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.4.30 的新特性)
 
-_[发布日期：2021-02-03](releases.md#release-details)_
+_[发布日期：2021-02-03](releases.md#版本发布详情)_
 
 Kotlin 1.4.30 offers preview versions of new language features, promotes the new IR backend of the Kotlin/JVM compiler to
 Beta, and ships various performance and functional improvements.

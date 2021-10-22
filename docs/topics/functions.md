@@ -81,7 +81,7 @@ foo(baz = 1) // 使用默认值 bar = 0
 ```
 
 如果在默认参数之后的最后一个参数是 [lambda 表达式](lambdas.md#lambda-表达式语法)，那么它<!--
--->既可以作为具名参数在括号内传入，也可以在[括号外](lambdas.md#passing-trailing-lambdas)传入：
+-->既可以作为具名参数在括号内传入，也可以在[括号外](lambdas.md#传递末尾的-lambda-表达式)传入：
 
 ```kotlin
 fun foo(
@@ -140,7 +140,7 @@ skipped argument, you must name all subsequent arguments:
 reformat("This is a short String!", upperCaseFirstLetter = false, wordSeparator = '_')
 ```
 
-You can pass a [variable number of arguments (`vararg`)](#variable-number-of-arguments-varargs) with names using the
+You can pass a [variable number of arguments (`vararg`)](#可变数量的参数varargs) with names using the
 `spread` operator:
 
 ```kotlin

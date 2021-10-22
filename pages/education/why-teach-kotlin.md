@@ -89,7 +89,7 @@ According to an internal Teaching Kotlin study, 88% of students give positive fe
 
 Kotlin can also be compiled to JavaScript to run in the browser or on Node.js, or into a standalone native binary targeting any major operating system.
 
-+ [Java-to-Kotlin 转换器](https://kotlinlang.org/docs/mixing-java-kotlin-intellij.html#converting-an-existing-java-file-to-kotlin-with-j2k)
++ [Java-to-Kotlin 转换器](https://kotlinlang.org/docs/mixing-java-kotlin-intellij.html#使用-j2k-将现有-java-文件转换为-kotlin-文件)
 + [Kotlin/JVM](https://kotlinlang.org/docs/jvm-get-started.html)
 + [Kotlin/JS](https://www.kotlincn.net/docs/js-get-started.html)
 + [Kotlin/Native](https://www.kotlincn.net/docs/native-get-started.html)

@@ -62,7 +62,7 @@ val ab: A = object : A(1), B {
 
 ### Using anonymous objects as return and value types
 
-When an anonymous object is used as a type of a local or [private](visibility-modifiers.md#packages) but not [inline](inline-functions.md)
+When an anonymous object is used as a type of a local or [private](visibility-modifiers.md#包) but not [inline](inline-functions.md)
 declaration (function or property), all its members are accessible via this function or property:
 
 ```kotlin

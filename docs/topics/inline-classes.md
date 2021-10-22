@@ -64,7 +64,7 @@ fun main() {
 }
 ```
 
-Inline class properties cannot have [backing fields](properties.md#backing-fields). They can only have simple computable 
+Inline class properties cannot have [backing fields](properties.md#幕后字段). They can only have simple computable 
 properties (no `lateinit`/delegated properties).
 
 ## 继承

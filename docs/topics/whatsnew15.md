@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.5.0 的新特性)
 
-_[发布日期：2021-05-05](releases.md#release-details)_
+_[发布日期：2021-05-05](releases.md#版本发布详情)_
 
 Kotlin 1.5.0 introduces new language features, stable IR-based JVM compiler backend, performance improvements,
 and evolutionary changes such as stabilizing experimental features and deprecating outdated ones.
@@ -115,7 +115,7 @@ Kotlin/JVM has received a number of improvements, both internal and user-facing.
 
 ### Stable JVM IR backend
 
-The [IR-based backend](whatsnew14.md#new-jvm-ir-backend) for the Kotlin/JVM compiler is now [Stable](components-stability.md)
+The [IR-based backend](whatsnew14.md#新的-jvm-ir-后端) for the Kotlin/JVM compiler is now [Stable](components-stability.md)
 and enabled by default.
 
 Starting from [Kotlin 1.4.0](whatsnew14.md), early versions of the IR-based backend were available for preview, and it has
@@ -164,15 +164,15 @@ The default target version for Kotlin/JVM compilations is now `1.8`. The `1.6` t
 
 If you need a build for JVM 1.6, you can still switch to this target. Learn how:
 
-* [in Gradle](gradle.md#attributes-specific-to-jvm)
-* [in Maven](maven.md#attributes-specific-to-jvm)
+* [in Gradle](gradle.md#jvm-特有的属性)
+* [in Maven](maven.md#jvm-特有的属性)
 * [in the command-line compiler](compiler-reference.md#jvm-target-version)
 
 ### SAM adapters via invokedynamic
 
 Kotlin 1.5.0 now uses dynamic invocations (`invokedynamic`) for compiling SAM (Single Abstract Method) conversions:
-* Over any expression if the SAM type is a [Java interface](java-interop.md#sam-conversions)
-* Over lambda if the SAM type is a [Kotlin functional interface](fun-interfaces.md#sam-conversions)
+* Over any expression if the SAM type is a [Java interface](java-interop.md#sam-转换)
+* Over lambda if the SAM type is a [Kotlin functional interface](fun-interfaces.md#sam-转换)
 
 The new implementation uses [`LambdaMetafactory.metafactory()`](https://docs.oracle.com/javase/8/docs/api/java/lang/invoke/LambdaMetafactory.html#metafactory-java.lang.invoke.MethodHandles.Lookup-java.lang.String-java.lang.invoke.MethodType-java.lang.invoke.MethodType-java.lang.invoke.MethodHandle-java.lang.invoke.MethodType-)
 and auxiliary wrapper classes are no longer generated during compilation. This decreases the size of the application’s JAR,
@@ -180,7 +180,7 @@ which improves the JVM startup performance.
 
 To roll back to the old implementation scheme based on anonymous class generation, add the compiler option `-Xsam-conversions=class`.
 
-Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#specifying-compiler-options), and the [command-line compiler](compiler-reference.md#compiler-options).
+Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and the [command-line compiler](compiler-reference.md#compiler-options).
 
 ### Lambdas via invokedynamic
 
@@ -202,7 +202,7 @@ lambda compilation:
 To try this feature, add the `-Xlambdas=indy` compiler option. We’d be grateful if you could share your feedback on it using
 this [YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-45375).
 
-Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#specifying-compiler-options), and [command-line compiler](compiler-reference.md#compiler-options).
+Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and [command-line compiler](compiler-reference.md#compiler-options).
 
 ### Deprecation of @JvmDefault and old Xjvm-default modes
 
@@ -214,11 +214,11 @@ which switch on default method generation for the whole project.
 
 In Kotlin 1.5.0, we are deprecating `@JvmDefault` and the old Xjvm-default modes: `-Xjvm-default=enable` and `-Xjvm-default=compatibility`.
 
-[Learn more about default methods in the Java interop](java-to-kotlin-interop.md#default-methods-in-interfaces).
+[Learn more about default methods in the Java interop](java-to-kotlin-interop.md#接口中的默认方法).
 
 ### Improvements to handling nullability annotations
 
-Kotlin supports handling type nullability information from Java with [nullability annotations](java-interop.md#nullability-annotations).
+Kotlin supports handling type nullability information from Java with [nullability annotations](java-interop.md#可空性注解).
 Kotlin 1.5.0 introduces a number of improvements for the feature:
 
 * It reads nullability annotations on type arguments in compiled Java libraries that are used as dependencies.
@@ -235,7 +235,7 @@ Kotlin 1.5.0 introduces a number of improvements for the feature:
 For these newly supported cases, using the wrong type nullability when calling Java from Kotlin produces warnings.
 Use the `-Xtype-enhancement-improvements-strict-mode` compiler option to enable strict mode for these cases (with error reporting).
 
-[Learn more about null-safety and platform types](java-interop.md#null-safety-and-platform-types).
+[Learn more about null-safety and platform types](java-interop.md#空安全与平台类型).
 
 ## Kotlin/Native
 
@@ -307,7 +307,7 @@ Many well-known frameworks and libraries are already available for the IR backen
 [doodle](https://github.com/nacular/doodle), and others. If you’re using them in your project, you can already build it
 with the IR backend and see the benefits it brings.
 
-If you’re writing your own library, [compile it in the 'both' mode](js-ir-compiler.md#authoring-libraries-for-the-ir-compiler-with-backwards-compatibility)
+If you’re writing your own library, [compile it in the 'both' mode](js-ir-compiler.md#为-ir-编译器创作具有向后兼容性的库)
 so that your clients can also use it with the new compiler.
 
 
@@ -745,10 +745,10 @@ Along with Kotlin 1.5.0, we are releasing new versions of the kotlinx libraries:
 
 `kotlinx.coroutines` [1.5.0-RC](https://github.com/Kotlin/kotlinx.coroutines/releases/tag/1.5.0-RC) is here with:
 * [New channels API](channels.md)
-* Stable [reactive integrations](async-programming.md#reactive-extensions)
+* Stable [reactive integrations](async-programming.md#反应式扩展)
 * And more
 
-Starting with Kotlin 1.5.0, [experimental coroutines](whatsnew14.md#exclusion-of-the-deprecated-experimental-coroutines)
+Starting with Kotlin 1.5.0, [experimental coroutines](whatsnew14.md#排除弃用的实验性协程)
 are disabled and the `-Xcoroutines=experimental` flag is no longer supported.
 
 Learn more in the [changelog](https://github.com/Kotlin/kotlinx.coroutines/releases/tag/1.5.0-RC) and the
@@ -784,7 +784,7 @@ Learn more in the [changelog](https://github.com/Kotlin/kotlinx-datetime/release
 IntelliJ IDEA and Android Studio will suggest updating the Kotlin plugin to 1.5.0 once it is available.
 
 To migrate existing projects to Kotlin 1.5.0, just change the Kotlin version to `1.5.0` and re-import your Gradle or Maven
-project. [Learn how to update to Kotlin 1.5.0](releases.md#update-to-a-new-release).
+project. [Learn how to update to Kotlin 1.5.0](releases.md#更新到新版本).
 
 To start a new project with Kotlin 1.5.0, update the Kotlin plugin and run the Project Wizard from **File** \| **New** \|
 **Project**.

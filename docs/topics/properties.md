@@ -151,7 +151,7 @@ public val table: Map<String, Int>
 如果只读属性的值在编译期是已知的，那么可以使用 `const` 修饰符将其标记为*编译期常量*。
 这种属性需要满足以下要求：
 
-* 必须位于顶层或者是 [`object` 声明](object-declarations.md#对象声明概述) 或*[伴生对象](object-declarations.md#伴生对象)*的一个成员
+* 必须位于顶层或者是 [`object` 声明](object-declarations.md#object-declarations-overview) 或*[伴生对象](object-declarations.md#伴生对象)*的一个成员
 * 必须以 `String` 或原生类型值初始化
 * 不能有自定义 getter
 

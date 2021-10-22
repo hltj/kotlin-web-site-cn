@@ -77,7 +77,7 @@ noArg {
 </plugin>
 ```
 
-## JPA support
+## JPA 支持
 
 As with the `kotlin-spring` plugin wrapped on top of `all-open`, `kotlin-jpa` is wrapped on top of `no-arg`. The plugin specifies 
 [`@Entity`](https://docs.oracle.com/javaee/7/api/javax/persistence/Entity.html), [`@Embeddable`](https://docs.oracle.com/javaee/7/api/javax/persistence/Embeddable.html),
@@ -112,7 +112,7 @@ In Maven, enable the `jpa` plugin:
 </compilerPlugins>
 ```
 
-## Command-line compiler
+## 命令行编译器
 
 Add the plugin JAR file to the compiler plugin classpath and specify annotations or presets:
 

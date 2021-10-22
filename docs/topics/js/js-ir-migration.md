@@ -29,7 +29,7 @@ or filling out [this form](https://surveys.jetbrains.com/s3/ir-be-migration-issu
 `Props`, can cause a `ClassCastException`. Such exceptions appear because the compiler attempts to work with instances of
 these classes as if they were Kotlin objects, when they actually come from JS.
 
-**Solution**: convert all classes and interfaces that derive from pure JS classes to [external interfaces](js-interop.md#external-interfaces):
+**Solution**: convert all classes and interfaces that derive from pure JS classes to [external interfaces](js-interop.md#external-接口):
 
 ```kotlin
 // Replace this
@@ -202,7 +202,7 @@ val jsonApp = kotlin.js.json(Pair("name", "App1")) as AppProps
 **Issue**: the compiler doesn't produce executable `.js` files. 
 
 This may happen because the default compiler produces JavaScript executables by default while the IR compiler needs an
-explicit instruction to do this. Learn more in the [Kotlin/JS project setup instruction](js-project-setup.md#execution-environments).
+explicit instruction to do this. Learn more in the [Kotlin/JS project setup instruction](js-project-setup.md#执行环境).
 
 **Solution**: add the line `binaries.executable()` to the project's `build.gradle(.kts)`.
 

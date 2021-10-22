@@ -1,6 +1,6 @@
 [//]: # (title: Gradle)
 
-In order to build a Kotlin project with Gradle, you should [apply the Kotlin Gradle plugin to your project](#plugin-and-versions)
+In order to build a Kotlin project with Gradle, you should [apply the Kotlin Gradle plugin to your project](#插件与版本)
 and [configure the dependencies](#configuring-dependencies).
 
 ## 插件与版本
@@ -270,7 +270,7 @@ Choose the dependency type based on your requirements.
     </tr>
 </table>
 
-### Dependency on the standard library
+### 对标准库的依赖
 
 A dependency on the standard library (`stdlib`) is added automatically to each source set. The version
 of the standard library used is the same as the version of the Kotlin Gradle plugin.
@@ -567,7 +567,7 @@ the build outputs for reuse in future builds.
 （运行构建带上参数 `-Dkotlin.caching.enabled=false`）。
 
 如果使用 [kapt](kapt.md)，请注意默认情况下不会缓存注解处理任务。不过，可以<!--
--->[手动为它们启用缓存](kapt.md#gradle-构建缓存支持自-1220-起)。
+-->[手动为它们启用缓存](kapt.md#gradle-构建缓存支持)。
 
 ## Gradle configuration cache support
 
@@ -688,7 +688,7 @@ Gradle 任务的完整选项列表如下：
 | `target` | 生成指定 ECMA 版本的 JS 文件 | "v5" | "v5" |
 | `typedArrays` | 将原生数组转换为 JS 带类型数组 |  | true |
 
-### Attributes specific to JVM
+### JVM 特有的属性
 
 | 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
@@ -753,8 +753,8 @@ for tasks that depend on a major JDK version.
 The Kotlin Gradle plugin supports Java toolchains for Kotlin/JVM compilation tasks. JS and Native tasks don't use toolchains.
 The Kotlin compiler always uses the JDK the Gradle daemon is running on.
 A Java toolchain:
-* Sets the [`jdkHome` option](#attributes-specific-to-jvm) available for JVM targets.
-* Sets the [`kotlinOptions.jvmTarget`](#attributes-specific-to-jvm) to the toolchain's JDK version
+* Sets the [`jdkHome` option](#jvm-特有的属性) available for JVM targets.
+* Sets the [`kotlinOptions.jvmTarget`](#jvm-特有的属性) to the toolchain's JDK version
   if the user doesn't set the `jvmTarget` option explicitly.
   If the user doesn't configure the toolchain, the `jvmTarget` field will use the default value.
   Learn more about [JVM target compatibility](#check-for-jvm-target-compatibility).

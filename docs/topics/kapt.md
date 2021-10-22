@@ -82,7 +82,7 @@ kapt {
 }
 ```
 
-## Gradle build cache support
+## Gradle 构建缓存支持
 
 The kapt annotation processing tasks are [cached in Gradle](https://guides.gradle.org/using-build-cache/) by default.
 However,  annotation processors run arbitrary code that may not necessarily transform the task inputs into the outputs,
@@ -175,7 +175,7 @@ To disable incremental annotation processing, add this line to your `gradle.prop
 kapt.incremental.apt=false
 ```
 
-Note that incremental annotation processing requires [incremental compilation](gradle.md#incremental-compilation)
+Note that incremental annotation processing requires [incremental compilation](gradle.md#增量编译)
 to be enabled as well.
  
 ## Java compiler options

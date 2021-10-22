@@ -105,7 +105,7 @@
  * `inner` 允许在[嵌套类](nested-classes.md)中引用外部类实例。
  * `internal` 将一个声明标记为[在当前模块中可见](visibility-modifiers.md)。
  * `lateinit` 允许[在构造函数之外初始化非空属性](properties.md#延迟初始化属性与变量)。
- * `noinline` 关闭[传给内联函数的 lambda 表达式的内联](inline-functions.md#禁用内联)。
+ * `noinline` 关闭[传给内联函数的 lambda 表达式的内联](inline-functions.md#noinline)。
  * `open` 允许[一个类子类化或覆盖成员](classes.md#继承)。
  * `operator` 将一个函数标记为[重载一个操作符或者实现一个约定](operator-overloading.md)。
  * `out` 将类型参数标记为[协变](generics.md#声明处型变)。

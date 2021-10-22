@@ -45,15 +45,15 @@ plugins {
 | _\<目标名称\>_ |声明项目的特定目标，所有可用的目标名称已陈列在[目标](#目标)部分中.|
 |`targets` |项目的所有目标。|
 |`presets` |所有预定义的目标。使用这个同时[配置多个预定义目标](mpp-supported-platforms.md)。|
-|`sourceSets` |配置预定义和声明自定义项目的[源集](#source-sets)。|
+|`sourceSets` |配置预定义和声明自定义项目的[源集](#源集)。|
 
 ## 目标
 
 _目标_ 是构建的一部分，负责构建编译、测试、以及针对某个<!--
 -->[已支持平台](mpp-supported-platforms.md)打包软件。
 
-Each target can have one or more [compilations](#compilations). In addition to default compilations for
-test and production purposes, you can [create custom compilations](mpp-configure-compilations.md#create-a-custom-compilation).
+Each target can have one or more [compilations](#编译项). In addition to default compilations for
+test and production purposes, you can [create custom compilations](mpp-configure-compilations.md#创建自定义编译项).
 
 多平台项目的目标<!--
 -->在 `kotlin` 块中的相应代码块中描述，例如：`jvm`、`android` 以及 `iosArm64`。
@@ -105,7 +105,7 @@ kotlin {
 * 可用于所有目标的[公共目标配置](#公共目标配置)。
 * 目标特定的配置项。
 
-Each target can have one or more [compilations](#compilations).
+Each target can have one or more [compilations](#编译项).
 
 ### 公共目标配置
 
@@ -113,7 +113,7 @@ In any target block, you can use the following declarations:
 
 |**Name**|**Description**| 
 | --- | --- |
-|`attributes`|Attributes used for [disambiguating targets](mpp-set-up-targets.md#distinguish-several-targets-for-one-platform) for a single platform.|
+|`attributes`|Attributes used for [disambiguating targets](mpp-set-up-targets.md#区分一个平台的多个目标) for a single platform.|
 |`preset`|The preset that the target has been created from, if any.|
 |`platformType`|Designates the Kotlin platform of this target. Avaiable values: `jvm`, `androidJvm`, `js`, `native`, `common`.|
 |`artifactsTaskName`|The name of the task that builds the resulting artifacts of this target.|
@@ -418,7 +418,7 @@ kotlin {
 }
 ```
 
-Learn more about [compilation for Android](mpp-configure-compilations.md#compilation-for-android).
+Learn more about [compilation for Android](mpp-configure-compilations.md#android-编译项).
 
 >The `android` configuration inside `kotlin` doesn’t replace the build configuration of any Android project.
 Learn more about writing build scripts for Android projects in [Android developer documentation](https://developer.android.com/studio/build).
@@ -440,7 +440,7 @@ Available predefined source sets are the following:
 
 |**Name**|**Description**| 
 | --- | --- |
-|`commonMain`| Code and resources shared between all platforms. Available in all multiplatform projects. Used in all main [compilations](#compilations) of a project.|
+|`commonMain`| Code and resources shared between all platforms. Available in all multiplatform projects. Used in all main [compilations](#编译项) of a project.|
 |`commonTest`| Test code and resources shared between all platforms. Available in all multiplatform projects. Used in all test compilations of a project.|
 |_\<targetName\>\<compilationName\>_|Target-specific sources for a compilation. _\<targetName\>_ is the name of a predefined target and _\<compilationName\>_ is the name of a compilation for this target. Examples: `jsTest`, `jvmMain`.|
 
@@ -471,7 +471,7 @@ kotlin {
 </tab>
 </tabs>
 
-Learn more about [source sets](mpp-discover-project.md#source-sets).
+Learn more about [source sets](mpp-discover-project.md#源集).
 
 ### 自定义源集
 
@@ -505,7 +505,7 @@ kotlin {
 </tabs>
 
 Note that a newly created source set isn’t connected to other ones. To use it in the project’s compilations,
-[connect it with other source sets](mpp-share-on-platforms.md#configure-the-hierarchical-structure-manually).
+[connect it with other source sets](mpp-share-on-platforms.md#手动配置层次结构).
 
 ### 源集参数
 
@@ -515,7 +515,7 @@ Configurations of source sets are stored inside the corresponding blocks of `sou
 | --- | --- |
 |`kotlin.srcDir`|Location of Kotlin source files inside the source set directory.|
 |`resources.srcDir`|Location of resources inside the source set directory.|
-|`dependsOn`|[Connection with another source set.](mpp-share-on-platforms.md#configure-the-hierarchical-structure-manually)|
+|`dependsOn`|[Connection with another source set.](mpp-share-on-platforms.md#手动配置层次结构)|
 |`dependencies`|[依赖项](#依赖项) of the source set.|
 |`languageSettings`|[语言设置](mpp-dsl-reference.md#语言设置) applied to the source set.|
 
@@ -614,7 +614,7 @@ In addition to predefined compilations, you can create your own custom compilati
 To create a custom compilation, add a new item into the `compilations` collection.
 If using Kotlin Gradle DSL, mark custom compilations `by creating`.
 
-Learn more about creating a [custom compilation](mpp-configure-compilations.md#create-a-custom-compilation).
+Learn more about creating a [custom compilation](mpp-configure-compilations.md#创建自定义编译项).
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -838,7 +838,7 @@ The `languageSettings` block of a source set defines certain aspects of project 
 |`apiVersion`|Allows using declarations only from the specified version of Kotlin bundled libraries.|
 |`enableLanguageFeature`|Enables the specified language feature. The available values correspond to the language features that are currently experimental or have been introduced as such at some point.|
 |`useExperimentalAnnotation`|Allows using the specified [opt-in annotation](opt-in-requirements.md).|
-|`progressiveMode`|Enables the [progressive mode](whatsnew13.md#progressive-mode).|
+|`progressiveMode`|Enables the [progressive mode](whatsnew13.md#渐进模式).|
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">

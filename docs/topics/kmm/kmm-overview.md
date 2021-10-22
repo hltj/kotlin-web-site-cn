@@ -25,7 +25,7 @@ KMM supports the following mobile targets:
 * Apple watchOS on ARM64 (Apple Watch Series 4 and newer), ARM32 (earlier models) platforms, and desktop simulators on both Intel-based and Apple Silicon platforms
 
 KMM is built on top of the [Kotlin Multiplatform](multiplatform.md) technology,
-which supports other platforms inlcuding JavaScript, Linux, WebAssembly, and [more](mpp-dsl-reference.md#targets).
+which supports other platforms inlcuding JavaScript, Linux, WebAssembly, and [more](mpp-dsl-reference.md#目标).
 
 See [supported platforms for Kotlin multiplatform programming](mpp-supported-platforms.md).
 

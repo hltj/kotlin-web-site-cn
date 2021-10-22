@@ -12,7 +12,7 @@ You’ll need to restart Android Studio to complete the plugin installation.
 
 You can check the KMM plugin version and update the plugin manually in **Preferences** | **Plugins**.
 
-You need a compatible version of Kotlin for the KMM plugin to work correctly. You can find compatible versions in the [release details](#release-details).
+You need a compatible version of Kotlin for the KMM plugin to work correctly. You can find compatible versions in the [release details](#版本发布详情).
 You can check your Kotlin version and update it in **Preferences** | **Plugins** or in **Tools** | **Kotlin** | **Configure Plugin Updates**.
 
 >If you do not have a compatible version of Kotlin installed, the KMM plugin will be disabled. You will need to update your Kotlin 
@@ -20,7 +20,7 @@ You can check your Kotlin version and update it in **Preferences** | **Plugins**
 >
 {type="note"}
 
-## Release details
+## 版本发布详情
 
 The following table lists the details of the latest KMM plugin releases: 
 
@@ -58,7 +58,7 @@ Released: August 2, 2021
 </td>
 <td>
 
-* [Kotlin 1.5.10](releases.md#release-details)
+* [Kotlin 1.5.10](releases.md#版本发布详情)
 
 </td>
 </tr>
@@ -78,7 +78,7 @@ Released: June 10, 2021
 </td>
 <td>
 
-* [Kotlin 1.5.10](releases.md#release-details)
+* [Kotlin 1.5.10](releases.md#版本发布详情)
 
 </td>
 </tr>
@@ -97,7 +97,7 @@ Released: May 25, 2021
 </td>
 <td>
 
-* [Kotlin 1.5.10](releases.md#release-details)
+* [Kotlin 1.5.10](releases.md#版本发布详情)
 
 </td>
 </tr>
@@ -118,7 +118,7 @@ Use this version of the plugin with Android Studio 4.2 or Android Studio 2020.3.
 </td>
 <td>
 
-* [Kotlin 1.5.0](releases.md#release-details)
+* [Kotlin 1.5.0](releases.md#版本发布详情)
 
 </td>
 </tr>
@@ -141,7 +141,7 @@ Released: April 5, 2021
 </td>
 <td>
 
-* [Kotlin 1.4.30](releases.md#release-details)
+* [Kotlin 1.4.30](releases.md#版本发布详情)
 
 </td>
 </tr>
@@ -163,7 +163,7 @@ Released: March 3, 2021
 </td>
 <td>
 
-* [Kotlin 1.4.30](releases.md#release-details)
+* [Kotlin 1.4.30](releases.md#版本发布详情)
 
 </td>
 </tr>
@@ -184,7 +184,7 @@ Use this version of the plugin with Android Studio 4.2.
 </td>
 <td>
 
-* [Kotlin 1.4.30](releases.md#release-details)
+* [Kotlin 1.4.30](releases.md#版本发布详情)
 
 </td>
 </tr>
@@ -210,7 +210,7 @@ Released: November 23, 2020
 </td>
 <td>
 
-* [Kotlin 1.4.20](releases.md#release-details)
+* [Kotlin 1.4.20](releases.md#版本发布详情)
 
 </td>
 </tr>
@@ -230,8 +230,8 @@ Released: October 2, 2020
 </td>
 <td>
 
-* [Kotlin 1.4.10](releases.md#release-details)
-* [Kotlin 1.4.20](releases.md#release-details)
+* [Kotlin 1.4.10](releases.md#版本发布详情)
+* [Kotlin 1.4.20](releases.md#版本发布详情)
 
 </td>
 </tr>
@@ -251,8 +251,8 @@ Released: September 29, 2020
 </td>
 <td>
 
-* [Kotlin 1.4.10](releases.md#release-details)
-* [Kotlin 1.4.20](releases.md#release-details)
+* [Kotlin 1.4.10](releases.md#版本发布详情)
+* [Kotlin 1.4.20](releases.md#版本发布详情)
 
 </td>
 </tr>
@@ -272,8 +272,8 @@ Released: September 10, 2020
 </td>
 <td>
 
-* [Kotlin 1.4.10](releases.md#release-details)
-* [Kotlin 1.4.20](releases.md#release-details)
+* [Kotlin 1.4.10](releases.md#版本发布详情)
+* [Kotlin 1.4.20](releases.md#版本发布详情)
 
 </td>
 </tr>
@@ -292,8 +292,8 @@ Released: August 31, 2020
 </td>
 <td>
 
-* [Kotlin 1.4.0](releases.md#release-details)
-* [Kotlin 1.4.10](releases.md#release-details)
+* [Kotlin 1.4.0](releases.md#版本发布详情)
+* [Kotlin 1.4.10](releases.md#版本发布详情)
 
 </td>
 </tr>

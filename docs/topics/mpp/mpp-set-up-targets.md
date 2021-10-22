@@ -3,7 +3,7 @@
 You can add targets when [creating a project with the Project Wizard](mpp-create-lib.md). If you need to add a target 
 later, you can do this manually using target presets for [supported platforms](mpp-supported-platforms.md).
 
-Learn more about [additional settings for targets](mpp-dsl-reference.md#common-target-configuration).
+Learn more about [additional settings for targets](mpp-dsl-reference.md#公共目标配置).
 
 ```kotlin
 kotlin {
@@ -16,7 +16,7 @@ kotlin {
 ```
 
 Each target can have one or more [compilations](mpp-configure-compilations.md). In addition to default compilations for
-test and production purposes, you can [create custom compilations](mpp-configure-compilations.md#create-a-custom-compilation).
+test and production purposes, you can [create custom compilations](mpp-configure-compilations.md#创建自定义编译项).
 
 ## 区分一个平台的多个目标
 

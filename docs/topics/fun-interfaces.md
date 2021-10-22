@@ -14,7 +14,7 @@ fun interface KRunnable {
 ## SAM 转换
 
 对于函数式接口，可以通过
-[lambda 表达式](lambdas.md#lambda-expressions-and-anonymous-functions)实现 SAM 转换，从而使代码更简洁、更有可读性。
+[lambda 表达式](lambdas.md#lambda-表达式与匿名函数)实现 SAM 转换，从而使代码更简洁、更有可读性。
 
 使用 lambda 表达式可以替代手动创建实现函数式接口的类。
 通过 SAM 转换， Kotlin can convert any lambda expression whose signature matches
@@ -61,7 +61,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.4"}
 
-你也可以使用 [Java 接口上的 SAM 转换](java-interop.md#sam-conversions)。
+你也可以使用 [Java 接口上的 SAM 转换](java-interop.md#sam-转换)。
 
 ## 函数式接口与类型别名比较
 

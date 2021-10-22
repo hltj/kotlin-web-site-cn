@@ -20,7 +20,7 @@ Kotlin 标准库提供了一种机制，用于要求并明确同意使用 API �
 
 ## 选择使用 API
 
-如果库作者将一个库的 API 声明标记为*[要求选择加入](#require-opt-in-for-api)*，
+如果库作者将一个库的 API 声明标记为*[要求选择加入](#api-要求选择加入)*，
 你应该明确同意在代码中使用它。
 有多种方式可以选择加入使用此类 API，所有方法均不受技术限制。
 你可以自由选择最适合自己的方式。
@@ -219,7 +219,7 @@ sourceSets {
 
 要在模块级别选择加入多个 API，请为每个要求选择加入的 API 添加以上描述的参数之一。
 
-## 要求选择加入 API
+## API 要求选择加入
 
 ### 创建选择加入要求的注解
 
@@ -294,7 +294,7 @@ Note that for some language elements, an opt-in requirement annotation is not ap
 annotation class ExperimentalDateTime
 ```
 
-## 选择加入要求的实验状态
+## 选择加入要求的实验性状态
 
 选择加入要求的机制目前是[实验性的](components-stability.md)。
 这意味着在将来的版本中，可能会以不兼容的方式进行更改。

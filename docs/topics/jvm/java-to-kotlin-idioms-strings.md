@@ -30,7 +30,7 @@ fun main() {
 {kotlin-runnable="true" id="concatenate-strings-kotlin"}
 
 You can interpolate the value of a complicated expression by surrounding it with curly braces, like in `${name.length}`.
-See [string templates](basic-types.md#string-templates) for more information.
+See [string templates](basic-types.md#字符串模板) for more information.
 
 ## Build a string
 
@@ -69,7 +69,7 @@ fun main() {
 Under the hood, the `buildString` uses the same `StringBuilder` class as in Java, and you access it via an implicit `this`
 inside the [lambda](lambdas.md#带有接收者的函数字面值).
 
-Learn more about [lambda coding conventions](coding-conventions.md#lambdas).
+Learn more about [lambda coding conventions](coding-conventions.md#lambda-表达式).
 
 ## Create a string from collection items
 
@@ -106,7 +106,7 @@ fun main() {
 ```
 {kotlin-runnable="true"  id="create-string-from-collection-kotlin"}
 
-Learn more about [joinToString()](collection-transformations.md#string-representation) usage.
+Learn more about [joinToString()](collection-transformations.md#字符串内插) usage.
 
 ## Set default value if the string is blank
 
@@ -196,7 +196,7 @@ System.out.println("Anonymized input: '" + replacementResult + "'");
 
 In Kotlin, you use the [Regex](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/) class
 that simplifies working with regular expressions.
-Additionally, use [raw strings](basic-types.md#string-literals) to simplify a regex pattern
+Additionally, use [raw strings](basic-types.md#字符串字面值) to simplify a regex pattern
 by reducing the count of backslashes:
 
 ```kotlin
@@ -358,6 +358,6 @@ Learn more about [multiline strings](coding-conventions.md#strings).
 
 * Look through other [Kotlin idioms](idioms.md).
 * Learn how to convert existing Java code to Kotlin with
-  [Java to Kotlin converter](mixing-java-kotlin-intellij.md#converting-an-existing-java-file-to-kotlin-with-j2k).
+  [Java to Kotlin converter](mixing-java-kotlin-intellij.md#使用-j2k-将现有-java-文件转换为-kotlin-文件).
 
 If you have a favorite idiom, contribute it by sending a pull request.

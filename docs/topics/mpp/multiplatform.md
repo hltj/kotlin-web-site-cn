@@ -29,7 +29,7 @@ business logic that applies to all platforms.
      
     ![Code shared for all platforms](flat-structure.png)
     
-* [Share code among some platforms](mpp-share-on-platforms.md#share-code-on-similar-platforms) included in your project but not all. Do this 
+* [Share code among some platforms](mpp-share-on-platforms.md#对相似平台共享代码) included in your project but not all. Do this 
 when you can reuse much of the code in similar platforms.  
     
     ![Hierarchical structure](hierarchical-structure.png)

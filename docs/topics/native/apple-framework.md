@@ -13,9 +13,9 @@ Kotlin 模块同样可以在 Swift/Objective-C 代码中使用。
 
 在本教程中将：
 - [创建一个 Kotlin 库](#创建一个-kotlin-库)并将它编译为 framework
-- 检查生成的 [Objective-C 与 Swift API](#生成framework-头) 代码
+- 检查生成的 [Objective-C 与 Swift API](#生成的-framework-头文件) 代码
 - 在 [Objective-C](#在-objective-c-中使用代码) 与 [Swift](#在-swift-中使用代码) 中使用 framework
-- 为 [macOS](#xcode-用于-macos-目标平台) 与 [iOS](#xcode-用于-ios-目标平台) [配置 Xcode](#xcode-and-framework-dependencies) 以使用 framework
+- 为 [macOS](#xcode-用于-macos-目标平台) 与 [iOS](#xcode-用于-ios-目标平台) [配置 Xcode](#xcode-与-framework-依赖) 以使用 framework
    
 ## 创建一个 Kotlin 库
 
@@ -226,7 +226,7 @@ Kotlin 类在 Objective-C 中拥有一个 `KotlinBase` 基类，该类在这里�
 |Map|Dictionary|NSDictionary|
 |MutableMap|NSMutableDictionary|NSMutableDictionary|
 
-### Kotlin Numbers 与 NSNumber
+### Kotlin 数值与 NSNumber
 
 下一步，`<Framework>/Headers/Demo.h` 包含了 Kotlin/Native 数字类型与 `NSNumber`
 之间的映射。在 Objective-C 中拥有一个基类名为 `DemoNumber`，
@@ -330,7 +330,7 @@ __attribute__((swift_name("LibKt")))
 可以看到 Kotlin `String` 与 Objective-C `NSString *` 是透明映射的。
 类似地，Kotlin 的 `Unit` 类型被映射到 `void`。我们看到原始类型<!--
 -->直接映射。不可空的原始类型透明地映射。
-可空的原始类型被映射到 `Kotlin<TYPE>*` 类型，如[上](#kotlin-numbers-and-nsnumber)表所示。
+可空的原始类型被映射到 `Kotlin<TYPE>*` 类型，如[上](#kotlin-数值与-nsnumber)表所示。
 包括高阶函数 `acceptFunF` 与 `supplyFun`，
 都接收一个 Objective-C 块。
 

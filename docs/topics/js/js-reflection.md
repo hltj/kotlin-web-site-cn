@@ -2,7 +2,7 @@
 
 Kotlin/JS provides a limited support for the Kotlin [reflection API](reflection.md). The only supported parts of the API
 are:
-* [class references](reflection.md#class-references) (`::class`).
+* [class references](reflection.md#类引用) (`::class`).
 * [`KType`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-type/) and [`typeof()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/type-of.html) function.
 
 ## Class references
@@ -28,7 +28,7 @@ and [isInstance()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-
 {type="warning"}
 
 The [`typeof()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/type-of.html) function constructs an instance of [`KType`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-type/)
-for a given type. To use `typeOf()` in your code, [opt in](opt-in-requirements.md#opt-in-to-using-api) to the experimental
+for a given type. To use `typeOf()` in your code, [opt in](opt-in-requirements.md#选择使用-api) to the experimental
 API of the standard library, for example, add `@OptIn(ExperimentalStdlibApi::class)` to your code.
 
 The `KType` API is fully supported in Kotlin/JS except for Java-specific parts.

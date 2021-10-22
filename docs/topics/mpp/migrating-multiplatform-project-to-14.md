@@ -20,7 +20,7 @@ Thus, once you update to such a version, you can remove `enableFeaturePreview("G
 If you use libraries published with metadata, you only have to specify dependencies on them only once in the shared source set, 
 as opposed to specifying dependencies on different variants of the same library in the shared and platform-specific source sets prior to 1.4.0. 
 
-Starting from 1.4.0, you also no longer need to declare a dependency on `stdlib` in each source set manually – it [will now be added by default](mpp-add-dependencies.md#dependency-on-the-standard-library). The version of the automatically added standard library will be the same as the version of the Kotlin Gradle plugin, since they have the same versioning.
+Starting from 1.4.0, you also no longer need to declare a dependency on `stdlib` in each source set manually – it [will now be added by default](mpp-add-dependencies.md#对标准库的依赖). The version of the automatically added standard library will be the same as the version of the Kotlin Gradle plugin, since they have the same versioning.
 
 With these features, you can make your Gradle build file much more concise and easy to read:
 
@@ -45,7 +45,7 @@ Instead, use the library root artifact name, which in the example above is `kotl
 
 ### 尝试分层项目结构
 
-With [the new hierarchical project structure support](mpp-share-on-platforms.md#share-code-on-similar-platforms), 
+With [the new hierarchical project structure support](mpp-share-on-platforms.md#对相似平台共享代码), 
 you can share code among several targets in a multiplatform project. 
 You can use platform-dependent libraries, such as `Foundation`, `UIKit`, and `posix` in source sets shared among several native targets. 
 This can help you share more native code without being limited by platform-specific dependencies.

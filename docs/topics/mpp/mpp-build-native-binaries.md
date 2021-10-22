@@ -117,7 +117,7 @@ binaries {
 </tabs>
 
 The first argument sets a name prefix, which is the default name for the binary file. For example, for Windows the code 
-produces the files `foo.exe` and `bar.exe`. You can also use the name prefix to [access the binary in the build script](#access-binaries).
+produces the files `foo.exe` and `bar.exe`. You can also use the name prefix to [access the binary in the build script](#访问二进制文件).
  
 ## 访问二进制文件
 

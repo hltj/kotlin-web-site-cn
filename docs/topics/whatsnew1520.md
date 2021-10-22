@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.5.20 的新特性)
 
-_[发布日期：2021-06-24](releases.md#release-details)_
+_[发布日期：2021-06-24](releases.md#版本发布详情)_
 
 Kotlin 1.5.20 has fixes for issues discovered in the new features of 1.5.0, and it also includes various tooling improvements.
 
@@ -26,11 +26,11 @@ for string concatenation.
 To switch back to concatenation via [`StringBuilder.append()`](https://docs.oracle.com/javase/9/docs/api/java/lang/StringBuilder.html#append-java.lang.String-)
 used in previous versions, add the compiler option `-Xstring-concat=inline`.
 
-Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#specifying-compiler-options), and the [command-line compiler](compiler-reference.md#compiler-options).
+Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and the [command-line compiler](compiler-reference.md#compiler-options).
 
 ### Support for JSpecify nullness annotations
 
-The Kotlin compiler can read various types of [nullability annotations](java-interop.md#nullability-annotations) to pass
+The Kotlin compiler can read various types of [nullability annotations](java-interop.md#可空性注解) to pass
 nullability information from Java to Kotlin. Version 1.5.20 introduces support for the [JSpecify project](https://jspecify.dev/),
 which includes the standard unified set of Java nullness annotations.
 
@@ -64,7 +64,7 @@ Use the `-Xjspecify-annotations=strict` and `-Xtype-enhancement-improvements-str
 strict mode (with error reporting) when working with JSpecify.
 Please note that the JSpecify project is under active development. Its API and implementation can change significantly at any time.
 
-[Learn more about null-safety and platform types](java-interop.md#null-safety-and-platform-types).
+[Learn more about null-safety and platform types](java-interop.md#空安全与平台类型).
 
 ### Support for calling Java’s Lombok-generated methods within modules that have Kotlin and Java code
 

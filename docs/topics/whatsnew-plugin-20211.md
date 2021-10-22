@@ -26,7 +26,7 @@ Here are some major refinements:
 
 ## Evaluation of custom getters during debugging
 
-This release expands the capabilities of the debugger. One of the most notable features is the ability to display Kotlin properties without a [backing field](properties.md#backing-fields) in the **Variables** view.
+This release expands the capabilities of the debugger. One of the most notable features is the ability to display Kotlin properties without a [backing field](properties.md#幕后字段) in the **Variables** view.
 
 Previously, during a debug session, you could only see the properties without a custom getter and those with a backing field. Properties with a custom getter didn't appear because they are represented as regular methods on the JVM. Starting with version 2021.1 of the Kotlin plugin, you can see all such properties and evaluate them on demand by clicking on `get() near the property name.
 

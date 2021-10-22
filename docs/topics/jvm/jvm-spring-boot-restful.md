@@ -71,7 +71,7 @@ fun main(args: Array<String>) {
 
 Note that the Kotlin application file differs from a Java application file:
 * While Spring Boot looks for a public static `main()` method, the Kotlin application uses a
-[top-level function](functions.md#function-scope) defined outside `DemoApplication` class.
+[top-level function](functions.md#函数作用域) defined outside `DemoApplication` class.
 * The `DemoApplication` class is not declared as `open`, since the [kotlin-spring](all-open-plugin.md#spring-support)
 plugin does that automatically.
 

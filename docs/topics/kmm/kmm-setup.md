@@ -11,7 +11,7 @@ Before you begin [creating your first application](kmm-create-first-app.md) to w
 3. If you need to write iOS-specific code and run an iOS application, install [Xcode](https://apps.apple.com/us/app/xcode/id497799835)
     –  version 11.3 or higher.                                                                                                                                                                                                                                                                                                                          
     Most of the time, Xcode will work in the background. You will use it to add Swift or Objective-C code to your iOS application.
-4. Make sure that you have a [compatible Kotlin plugin](kmm-plugin-releases.md#release-details) installed.  
+4. Make sure that you have a [compatible Kotlin plugin](kmm-plugin-releases.md#版本发布详情) installed.  
     In Android Studio, select **Tools** | **Kotlin** | **Configure Kotlin Plugin Updates** and check the current Kotlin 
     plugin version. If needed, update to the latest version in the **Stable** update channel.
 5. Install the *Kotlin Multiplatform Mobile* plugin.  

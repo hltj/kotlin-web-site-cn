@@ -276,7 +276,7 @@ ints.filter {
 }
 ```
 
-这一约定连同[在圆括号外传递 lambda 表达式](#passing-trailing-lambdas)一起支持 
+这一约定连同[在圆括号外传递 lambda 表达式](#传递末尾的-lambda-表达式)一起支持 
 [LINQ-风格](https://docs.microsoft.com/en-us/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 的代码：
 
 ```kotlin

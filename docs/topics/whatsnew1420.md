@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.4.20 的新特性)
 
-_[发布日期：2020-11-23](releases.md#release-details)_
+_[发布日期：2020-11-23](releases.md#版本发布详情)_
 
 Kotlin 1.4.20 offers a number of new experimental features and provides fixes and improvements for
 existing features, including those added in 1.4.0.
@@ -168,7 +168,7 @@ There are two tolerance policies for this mode:
 
 To allow compilation with errors, add the `-Xerror-tolerance-policy=` compiler option with one of the values listed above.
 
-Learn more about [ignoring compilation errors](js-ir-compiler.md#ignoring-compilation-errors) with Kotlin/JS IR compiler.
+Learn more about [ignoring compilation errors](js-ir-compiler.md#忽略编译错误) with Kotlin/JS IR compiler.
 
 ## Kotlin/Native
 
@@ -199,7 +199,7 @@ If you want to disable the escape analysis phase, use the `-Xdisable-phases=Esca
 ### Performance improvements and bug fixes
 
 Kotlin/Native receives performance improvements and bug fixes in various components, including the ones added
-in 1.4.0, for example, the [code sharing mechanism](mpp-share-on-platforms.md#share-code-on-similar-platforms). 
+in 1.4.0, for example, the [code sharing mechanism](mpp-share-on-platforms.md#对相似平台共享代码). 
 
 ### Opt-in wrapping of Objective-C exceptions
 
@@ -280,7 +280,7 @@ Learn more about [publishing a multiplatform library](mpp-publish-lib.md).
 
 #### Compatibility with earlier versions
 
-This change of structure breaks the compatibility between projects with [hierarchical project structure](mpp-share-on-platforms.md#share-code-on-similar-platforms).
+This change of structure breaks the compatibility between projects with [hierarchical project structure](mpp-share-on-platforms.md#对相似平台共享代码).
 If a multiplatform project and a library it depends on both have the hierarchical project structure, then you need to update
 them to Kotlin 1.4.20 or higher simultaneously. Libraries published with Kotlin 1.4.20 are not available for using from
 project published with earlier versions.

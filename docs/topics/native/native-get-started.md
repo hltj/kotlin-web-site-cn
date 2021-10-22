@@ -53,11 +53,11 @@ IntelliJ IDEA opens the **Run** tab and shows the output:
    ```
 
 3. Eliminate the whitespaces and count the letters:
-   * Check that the provided name is not `null` with the [safe call operator `?.`](null-safety.md#safe-calls).
+   * Check that the provided name is not `null` with the [safe call operator `?.`](null-safety.md#安全的调用).
    * Use the [`replace()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/replace.html) function to remove the empty spaces in the name.
    * Use the scope function [`let`](scope-functions.md#let) to run the function within the object context. 
-   * Use a [string template](basic-types.md#string-templates) to insert your name length into the string by adding a dollar sign `$` and enclosing it in curly braces – `${it.length}`.
-     `it` is the default name of a [lambda parameter](coding-conventions.md#lambda-parameters).
+   * Use a [string template](basic-types.md#字符串模板) to insert your name length into the string by adding a dollar sign `$` and enclosing it in curly braces – `${it.length}`.
+     `it` is the default name of a [lambda parameter](coding-conventions.md#lambda-表达式参数).
 
    ```kotlin
    fun main() {
@@ -71,7 +71,7 @@ IntelliJ IDEA opens the **Run** tab and shows the output:
    }
    ```
 
-4. Report a null value using the [`error()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/error.html) function after the [Elvis operator `?:`](null-safety.md#elvis-operator).
+4. Report a null value using the [`error()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/error.html) function after the [Elvis operator `?:`](null-safety.md#elvis-操作符).
 
    ```kotlin
    fun main() {
@@ -97,7 +97,7 @@ IntelliJ IDEA opens the **Run** tab and shows the output:
 
 1. Open the file `main.kt` in `src/<your_app_name>Main/kotlin`.
 
-2. Declare the new [extension function](extensions.md#extension-functions) `countDistinctCharacters()` for `String`:
+2. Declare the new [extension function](extensions.md#扩展函数) `countDistinctCharacters()` for `String`:
 
    * Convert the name to lowercase using the [`lowercase()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/lowercase.html) function.
    * Convert the input string to a list of characters using the [`toList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-list.html) function.

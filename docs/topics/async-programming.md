@@ -8,8 +8,8 @@
 
 * [线程](#线程)
 * [回调](#回调)
-* [Futures、 Promises 及其他](#futures-promises-及其他)
-* [响应式扩展](#响应式扩展)
+* [Future、 Promise 及其他](#future-promise-及其他)
+* [反应式扩展](#反应式扩展)
 * [协程](#协程)
 
 在解释协程的含义之前，让我们简要回顾一些其他解决方案。
@@ -64,9 +64,9 @@ fun preparePostAsync(callback: (Token) -> Unit) {
 -->导致出现难以理解的代码。该模式通常被称为标题圣诞树（大括号代表树的分支）。
 * 错误处理很复杂。嵌套模型使错误处理和传播变得更加复杂。
 
-回调在诸如 JavaScript 之类的事件循环体系结构中非常常见，但即使在那里，通常人们已经转而使用其他方法，例如 promises 或响应式扩展。
+回调在诸如 JavaScript 之类的事件循环体系结构中非常常见，但即使在那里，通常人们已经转而使用其他方法，例如 promises 或反应式扩展。
 
-## Futures、 Promises 及其他
+## Future、 Promise 及其他
 
 futures 或 promises 背后的想法（这也可能会根据语言/平台而有不同的术语），是当我们发起调用的时候，我们承诺<!--
 -->在某些时候它将返回一个名为 Promise 的可被操作的对象。
@@ -97,10 +97,10 @@ fun preparePostAsync(): Promise<Token> {
 * 具体的返回值类型。返回类型远离我们需要的实际数据，而是返回一个必须被内省的新类型“Promise”。
 * 异常处理会很复杂。错误的传播和链接并不总是直截了当的。
 
-## 响应式扩展
+## 反应式扩展
 
-[Erik Meijer](https://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)) 将响应式扩展（Rx）引入了 C#. 虽然它在 .NET 平台上是毫无疑义的，
-但是在 Netflix 将它移植到 Java 并取名为 RxJava 之前绝对不是主流。从那时起，响应式被移植到各种平台，包括 JavaScript（RxJS）。
+[Erik Meijer](https://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)) 将反应式扩展（Rx）引入了 C#. 虽然它在 .NET 平台上是毫无疑义的，
+但是在 Netflix 将它移植到 Java 并取名为 RxJava 之前绝对不是主流。从那时起，反应式被移植到各种平台，包括 JavaScript（RxJS）。
 
 Rx 背后的想法是走向所谓的“可观察流”，我们现在将数据视为流（无限量的数据），并且可以观察到这些流。 实际上，Rx 很简单，
 [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern) 带有一系列扩展，允许我们对数据进行操作。

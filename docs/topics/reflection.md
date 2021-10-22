@@ -2,7 +2,7 @@
 
 *反射*是这样的一组语言和库功能，它允许在运行时自省你的程序的结构。
 Kotlin 让语言中的函数和属性做为一等公民、并对其自省（即在运行时获悉<!--
--->一个名称或者一个属性或函数的类型）与简单地使用函数式或响应式风格紧密相关。
+-->一个名称或者一个属性或函数的类型）与简单地使用函数式或反应式风格紧密相关。
 
 > Kotlin/JS provides the limited support for reflection features. [Learn more about reflection in Kotlin/JS](js-reflection.md).
 >

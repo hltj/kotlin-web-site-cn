@@ -22,7 +22,7 @@ it automatically updates the Kotlin plugin to the new version. You can check the
 \| **Configure Kotlin Plugin Updates**.
 
 If you have projects created with earlier Kotlin versions, change the Kotlin version in your projects and update kotlinx
-libraries if necessary – check the [recommended versions](#release-details).
+libraries if necessary – check the [recommended versions](#版本发布详情).
 
 If you are migrating to the new feature release, Kotlin plugin's migration tools will help you with the migration.
 
@@ -360,7 +360,7 @@ You can also use [preview versions of Kotlin](eap.md#build-details).
                 <li><a href="https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/" target="_blank">Release blog post</a></li>
                 <li><a href="whatsnew14.md" target="_blank">What's new in Kotlin 1.4.0</a></li>
                 <li><a href="compatibility-guide-14.md" target="_blank">Compatibility Guide</a></li>
-                <li><a href="whatsnew14.md#migrating-to-kotlin-1-4-0" target="_blank">Migrating to Kotlin 1.4.0</a></li>
+                <li><a href="whatsnew14.md#迁移到-kotlin-1-4-0" target="_blank">Migrating to Kotlin 1.4.0</a></li>
             </ul>
         </td>
         <td>

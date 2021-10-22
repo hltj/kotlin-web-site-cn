@@ -6,12 +6,12 @@ for example, for production and test purposes.
 For each target, default compilations include:
 
 * `main` and `test` compilations for JVM, JS, and Native targets.
-* A [compilation](#compilation-for-android) per [Android build variant](https://developer.android.com/studio/build/build-variants), for Android targets.
+* A [compilation](#android-编译项) per [Android build variant](https://developer.android.com/studio/build/build-variants), for Android targets.
 
 ![Compilations](compilations.png)
 
 If you need to compile something other than production code and unit tests, for example, integration or performance tests, 
-you can [create a custom compilation](#create-a-custom-compilation).
+you can [create a custom compilation](#创建自定义编译项).
 
 You can configure how artifacts are produced in:
 
@@ -19,7 +19,7 @@ You can configure how artifacts are produced in:
 * [一个目标的编译项](#为一个目标配置编译项) since one target can have multiple compilations.
 * [具体编译项](#配置一个编译项).
 
-See the [list of compilation parameters](mpp-dsl-reference.md#compilation-parameters) and [compiler options](gradle.md#编译器选项) 
+See the [list of compilation parameters](mpp-dsl-reference.md#编译项参数) and [compiler options](gradle.md#编译器选项) 
 available for all or specific targets.
 
 ## 配置所有编译项
@@ -342,7 +342,7 @@ dependencies {
 
 ## 源集层次结构的编译项 
 
-Kotlin can build a [source set hierarchy](mpp-share-on-platforms.md#share-code-on-similar-platforms) with the `dependsOn` relation.
+Kotlin can build a [source set hierarchy](mpp-share-on-platforms.md#对相似平台共享代码) with the `dependsOn` relation.
 
 ![Source set hierarchy](jvm-js-main.png){width=400}
 

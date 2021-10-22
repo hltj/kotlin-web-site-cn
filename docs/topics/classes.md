@@ -97,7 +97,7 @@ class Person(
 class Customer public @Inject constructor(name: String) { /*……*/ }
 ```
 
-Learn more about [visibility modifiers](visibility-modifiers.md#constructors).
+Learn more about [visibility modifiers](visibility-modifiers.md#构造函数).
 
 ### 次构造函数
 

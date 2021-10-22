@@ -287,7 +287,7 @@ fun main(args: Array<String>) {
 
 你也可以将整个属性标记为 `inline`——这样修饰符应用于两个访问器。
 
-更详细信息请参阅[内联函数文档](inline-functions.md#inline-properties)与 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-properties.md)。
+更详细信息请参阅[内联函数文档](inline-functions.md#内联属性)与 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-properties.md)。
 
 ### 局部委托属性
 

@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.5.30 的新特性)
 
-_[发布日期：2021-08-24](releases.md#release-details)_
+_[发布日期：2021-08-24](releases.md#版本发布详情)_
 
 Kotlin 1.5.30 offers language updates including previews of future changes, various improvements in platform support and tooling, and new standard library functions.
 
@@ -63,7 +63,7 @@ fun main() {
 }
 ```
 
-To enable this feature in Kotlin 1.5.30, use language version `1.6`. You can also change the warnings to errors by enabling [progressive mode](whatsnew13.md#progressive-mode).
+To enable this feature in Kotlin 1.5.30, use language version `1.6`. You can also change the warnings to errors by enabling [progressive mode](whatsnew13.md#渐进模式).
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -149,12 +149,12 @@ The feature has the following restrictions:
 ### Requiring opt-in on implicit usages of experimental APIs
 
 > The opt-in requirement mechanism is [Experimental](components-stability.md).
-> It may change at any time. [See how to opt-in](opt-in-requirements.md#experimental-status-of-the-opt-in-requirements).
+> It may change at any time. [See how to opt-in](opt-in-requirements.md#选择加入要求的实验性状态).
 > Use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
 >
 {type="warning"}
 
-The author of a library can mark an experimental API as [requiring opt-in](opt-in-requirements.md#创建选择加入要求的注解) to inform users about its experimental state. The compiler raises a warning or error when the API is used and requires [explicit consent](opt-in-requirements.md#opt-in-to-using-api) to suppress it.
+The author of a library can mark an experimental API as [requiring opt-in](opt-in-requirements.md#创建选择加入要求的注解) to inform users about its experimental state. The compiler raises a warning or error when the API is used and requires [explicit consent](opt-in-requirements.md#选择使用-api) to suppress it.
 
 In Kotlin 1.5.30, the compiler treats any declaration that has an experimental type in the signature as experimental. Namely, it requires opt-in even for implicit usages of an experimental API. For example, if the function’s return type is marked as an experimental API element, a usage of the function requires you to opt-in even if the declaration is not marked as requiring an opt-in explicitly.
 
@@ -185,7 +185,7 @@ Learn more about [opt-in requirements](opt-in-requirements.md).
 ### Changes to using opt-in requirement annotations with different targets
 
 > The opt-in requirement mechanism is [Experimental](components-stability.md).
-> It may change at any time. [See how to opt-in](opt-in-requirements.md#experimental-status-of-the-opt-in-requirements).
+> It may change at any time. [See how to opt-in](opt-in-requirements.md#选择加入要求的实验性状态).
 > Use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
 >
 {type="warning"}
@@ -287,14 +287,14 @@ Learn more about instantiation of annotation classes in [this KEEP](https://gith
 
 ### Improved nullability annotation support configuration
 
-The Kotlin compiler can read various types of [nullability annotations](java-interop.md#nullability-annotations) to get nullability information from Java. This information allows it to report nullability mismatches in Kotlin when calling Java code.
+The Kotlin compiler can read various types of [nullability annotations](java-interop.md#可空性注解) to get nullability information from Java. This information allows it to report nullability mismatches in Kotlin when calling Java code.
 
 In Kotlin 1.5.30, you can specify whether the compiler reports a nullability mismatch based on the information from specific types of nullability annotations. Just use the compiler option `-Xnullability-annotations=@<package-name>:<report-level>`. In the argument, specify the fully qualified nullability annotations package and one of these report levels:
 * `ignore` to ignore nullability mismatches
 * `warn` to report warnings
 * `strict` to report errors.
 
-See the [full list of supported nullability annotations](java-interop.md#nullability-annotations) along with their fully qualified package names.
+See the [full list of supported nullability annotations](java-interop.md#可空性注解) along with their fully qualified package names.
 
 Here is an example showing how to enable error reporting for the newly supported [RxJava](https://github.com/ReactiveX/RxJava) 3 nullability annotations: `-Xnullability-annotations=@io.reactivex.rxjava3.annotations:strict`. Note that all such nullability mismatches are warnings by default.
 
@@ -383,7 +383,7 @@ This parameter will not appear in the podspec file. When Xcode runs the Gradle b
 >
 {type="warning"}
 
-We added [support for calling Kotlin’s suspending functions from Objective-C and Swift in 1.4.0](whatsnew14.md#support-for-kotlin-s-suspending-functions-in-swift-and-objective-c), and now we’re improving it to keep up with a new Swift 5.5 feature – [concurrency with `async` and `await` modifiers](https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md).
+We added [support for calling Kotlin’s suspending functions from Objective-C and Swift in 1.4.0](whatsnew14.md#在-swift-与-objective-c-中支持-kotlin-的挂起函数), and now we’re improving it to keep up with a new Swift 5.5 feature – [concurrency with `async` and `await` modifiers](https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md).
 
 The Kotlin/Native compiler now emits the `_Nullable_result` attribute in the generated Objective-C headers for suspending functions with nullable return types. This makes it possible to call them from Swift as `async` functions with the proper nullability.
 
@@ -574,12 +574,12 @@ With toolchains support, Gradle can autodetect local JDKs and install missing JD
 
 The Kotlin Gradle plugin supports Java toolchains for Kotlin/JVM compilation tasks.
 A Java toolchain:
-* Sets the [`jdkHome` option](gradle.md#attributes-specific-to-jvm) available for JVM targets.
+* Sets the [`jdkHome` option](gradle.md#jvm-特有的属性) available for JVM targets.
   > [The ability to set the `jdkHome` option directly has been deprecated](https://youtrack.jetbrains.com/issue/KT-46541).
   >
   {type="warning"}
 
-* Sets the [`kotlinOptions.jvmTarget`](gradle.md#attributes-specific-to-jvm) to the toolchain's JDK version if the user didn’t set the `jvmTarget` option explicitly.
+* Sets the [`kotlinOptions.jvmTarget`](gradle.md#jvm-特有的属性) to the toolchain's JDK version if the user didn’t set the `jvmTarget` option explicitly.
   If the toolchain is not configured, the `jvmTarget` field uses the default value. Learn more about [JVM target compatibility](gradle.md#check-for-jvm-target-compatibility).
 
 * Affects which JDK [`kapt` workers](kapt.md#running-kapt-tasks-in-parallel) are running on.

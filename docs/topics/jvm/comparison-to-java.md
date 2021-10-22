@@ -17,8 +17,8 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 * 不是类的[原生类型](basic-types.md)。字节码会尽可能试用原生类型，但不是<!--
   -->显式可用的。
 * [静态成员](classes.md) 以 [伴生对象](object-declarations.md#伴生对象)、
-  [顶层函数](functions.md)、 [扩展函数](extensions.md#extension-functions) 或者 [@JvmStatic](java-to-kotlin-interop.md#static-methods) 取代。
-* [通配符类型](generics.md) 以 [声明处型变](generics.md#declaration-site-variance) 与
+  [顶层函数](functions.md)、 [扩展函数](extensions.md#扩展函数) 或者 [@JvmStatic](java-to-kotlin-interop.md#静态方法) 取代。
+* [通配符类型](generics.md) 以 [声明处型变](generics.md#声明处型变) 与
   [类型投影](generics.md#类型投影) 取代。
 * [三目操作符 `a ? b : c`](control-flow.md#if-表达式) —— 以 [if 表达式](control-flow.md#if-表达式)取代。
 

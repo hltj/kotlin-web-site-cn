@@ -12,7 +12,7 @@ Kotlin/Native 也可以与 Apple 技术紧密集成。
  - [将 Kotlin 代码编译为动态库](#创建-kotlin-库)
  - [生成 C 的头文件](#生成头文件)
  - [在 C 中调用 Kotlin 动态库](#使用-c-中生成的头文件)
- - 将示例代码编译并运行于 [Linux 与 Mac](#将示例编译并运行于-linux-以及-macos-上)
+ - 将示例代码编译并运行于 [Linux 与 Mac](#将示例编译并运行于-linux-以及-macos)
    以及 [Windows](#将示例编译并运行于-windows)
   
 ## 创建 Kotlin 库

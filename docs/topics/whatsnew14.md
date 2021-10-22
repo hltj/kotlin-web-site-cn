@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.4.0 的新特性)
 
-_[发布日期：2020-08-17](releases.md#release-details)_
+_[发布日期：2020-08-17](releases.md#版本发布详情)_
 
 在 Kotlin 1.4.0 中，我们对其所有组件进行了大量改进，其中[重点是质量与性能](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/)。
 以下是 Kotlin  1.4.0 中最重要的变更列表。
@@ -19,7 +19,7 @@ Kotlin 1.4.0 中有各种不同的语言特性与改进。包括：
 ### Kotlin 接口的 SAM 转换
 
 Before Kotlin 1.4.0, you could apply SAM (Single Abstract Method) conversions only [when working with Java methods and Java
-interfaces from Kotlin](java-interop.md#sam-conversions). From now on, you can use SAM conversions for Kotlin interfaces as well.
+interfaces from Kotlin](java-interop.md#sam-转换). From now on, you can use SAM conversions for Kotlin interfaces as well.
 To do so, mark a Kotlin interface explicitly as functional with the `fun` modifier.
 
 SAM conversion applies if you pass a lambda as an argument when an interface with only one single abstract method is expected
@@ -111,7 +111,7 @@ with the value `strict` or `warning`.
 
 ### 混用具名与位置参数
 
-In Kotlin 1.3, when you called a function with [named arguments](functions.md#named-arguments), you had to place all the
+In Kotlin 1.3, when you called a function with [named arguments](functions.md#具名参数), you had to place all the
 arguments without names (positional arguments) before the first named argument. For example, you could call `f(1, y = 2)`, 
 but you couldn't call `f(x = 1, 2)`.
 
@@ -245,7 +245,7 @@ fun test() {
 
 In Kotlin 1.3, you could not use unqualified `break` and `continue` inside `when` expressions included in loops. The reason was that these keywords were reserved for possible [fall-through behavior](https://en.wikipedia.org/wiki/Switch_statement#Fallthrough) in `when` expressions. 
 
-That’s why if you wanted to use `break` and `continue` inside `when` expressions in loops, you had to [label](returns.md#break-and-continue-labels) them, which became rather cumbersome.
+That’s why if you wanted to use `break` and `continue` inside `when` expressions in loops, you had to [label](returns.md#break-与-continue-标签) them, which became rather cumbersome.
 
 ```kotlin
 fun test(xs: List<Int>) {
@@ -577,7 +577,7 @@ In 1.4.0, we've added a new mode for generating default methods: `-Xjvm-default=
 interfaces to `default` Java methods. For compatibility with the code that uses the interfaces compiled without `default`, 
 we also added `all-compatibility` mode. 
 
-For more information about default methods in the Java interop, see the [interoperability documentation](java-to-kotlin-interop.md#default-methods-in-interfaces) and 
+For more information about default methods in the Java interop, see the [interoperability documentation](java-to-kotlin-interop.md#接口中的默认方法) and 
 [this blog post](https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-m3-generating-default-methods-in-interfaces/). 
 
 ### 统一用于空检测的异常类型
@@ -638,7 +638,7 @@ The `kotlin.js` Gradle plugin comes with an adjusted Gradle DSL, which provides 
 
 - Explicit toggles for the creation of executable files via `binaries.executable()`. Read more about the [executing Kotlin/JS and its environment here](js-project-setup.md#execution-environments).
 - Configuration of webpack's CSS and style loaders from within the Gradle configuration via `cssSupport`. Read more about [using CSS and style loaders here](js-project-setup.md#css).
-- Improved management for npm dependencies, with mandatory version numbers or [semver](https://docs.npmjs.com/misc/semver#versions) version ranges, as well as support for _development_, _peer_, and _optional_ npm dependencies using `devNpm`, `optionalNpm` and `peerNpm`. [Read more about dependency management for npm packages directly from Gradle here](js-project-setup.md#npm-dependencies).
+- Improved management for npm dependencies, with mandatory version numbers or [semver](https://docs.npmjs.com/misc/semver#versions) version ranges, as well as support for _development_, _peer_, and _optional_ npm dependencies using `devNpm`, `optionalNpm` and `peerNpm`. [Read more about dependency management for npm packages directly from Gradle here](js-project-setup.md#npm-依赖).
 - Stronger integrations for [Dukat](https://github.com/Kotlin/dukat), the generator for Kotlin external declarations. External declarations can now be generated at build time, or can be manually generated via a Gradle task. [Read more about how to use the integration here](js-external-declarations-with-dukat.md).
 
 ### 新的 JS IR 后端
@@ -660,7 +660,7 @@ kotlin {
 
 For more detailed information about how to configure the new backend, check out the [Kotlin/JS IR compiler documentation](js-ir-compiler.md).
 
-With the new [@JsExport](js-to-kotlin-interop.md#jsexport-annotation) annotation and the ability to **[generate TypeScript definitions](js-ir-compiler.md#preview-generation-of-typescript-declaration-files-d-ts) from Kotlin code**, the Kotlin/JS IR compiler backend improves JavaScript & TypeScript interoperability. This also makes it easier to integrate Kotlin/JS code with existing tooling, to create **hybrid applications** and leverage code-sharing functionality in multiplatform projects.
+With the new [@JsExport](js-to-kotlin-interop.md#jsexport-注解) annotation and the ability to **[generate TypeScript definitions](js-ir-compiler.md#预览-typescript-声明文件d-ts的生成) from Kotlin code**, the Kotlin/JS IR compiler backend improves JavaScript & TypeScript interoperability. This also makes it easier to integrate Kotlin/JS code with existing tooling, to create **hybrid applications** and leverage code-sharing functionality in multiplatform projects.
 
 [Learn more about the available features in the Kotlin/JS IR compiler backend](js-ir-compiler.md).
 
@@ -826,7 +826,7 @@ which is shared across all the platforms in the project. In the common source se
 API by using an [`expect` declaration that needs platform-specific `actual` implementations](mpp-connect-to-apis.md).
 
 This made it easy to [share code on all platforms](mpp-share-on-platforms.md#对所有平台共享代码), but it was
-not so easy to [share between only some of the targets](mpp-share-on-platforms.md#share-code-on-similar-platforms), 
+not so easy to [share between only some of the targets](mpp-share-on-platforms.md#对相似平台共享代码), 
 especially similar ones that could potentially reuse a lot of the common logic and third-party APIs.
 
 For example, in a typical multiplatform project targeting iOS, there are two iOS-related targets: one for iOS ARM64 devices, 
@@ -839,7 +839,7 @@ code that could still directly call any of the APIs that are common to both the 
 
 ![Code shared for iOS targets](iosmain-hierarchy.png){width=300}
 
-Now you can do this with the [hierarchical project structure support](mpp-share-on-platforms.md#share-code-on-similar-platforms), which infers and adapts the API and language features 
+Now you can do this with the [hierarchical project structure support](mpp-share-on-platforms.md#对相似平台共享代码), which infers and adapts the API and language features 
 available in each source set based on which targets consume them.
 
 For common combinations of targets, you can create a hierarchical structure with [target shortcuts](mpp-share-on-platforms.md#使用目标快捷方式).
@@ -852,7 +852,7 @@ kotlin {
 }
 ```
 
-For other combinations of targets, <!--TODO: [create a hierarchy manually](mpp-share-on-platforms.md#configure-the-hierarchical-structure-manually) -->
+For other combinations of targets, <!--TODO: [create a hierarchy manually](mpp-share-on-platforms.md#手动配置层次结构) -->
 by connecting the source sets with the `dependsOn` relation.
 
 ![Hierarchical structure](hierarchical-structure.png)
@@ -906,7 +906,7 @@ kotlin {
 </tabs>
 
 Thanks to the hierarchical project structure, libraries can also provide common APIs for a subset of targets. Learn more
-about [sharing code in libraries](mpp-share-on-platforms.md#share-code-in-libraries).
+about [sharing code in libraries](mpp-share-on-platforms.md#在库中共享代码).
 
 ### 在分层结构中利用原生库
 
@@ -990,7 +990,7 @@ For platform-specific source sets, the corresponding platform-specific variant o
 library is added to the rest. The Kotlin Gradle plugin will select the appropriate JVM standard library depending on 
 the `kotlinOptions.jvmTarget` [compiler option](gradle.md#编译器选项) of your Gradle build script.
 
-[Learn how to change the default behavior](gradle.md#dependency-on-the-standard-library).
+[Learn how to change the default behavior](gradle.md#对标准库的依赖).
 
 ### Kotlin 项目的最低 Gradle 版本
 

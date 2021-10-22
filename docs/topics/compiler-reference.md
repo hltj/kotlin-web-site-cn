@@ -1,7 +1,7 @@
 [//]: # (title: Kotlin 编译器选项)
 
 Each release of Kotlin includes compilers for the supported targets: 
-JVM, JavaScript, and native binaries for [supported platforms](native-overview.md#target-platforms).
+JVM, JavaScript, and native binaries for [supported platforms](native-overview.md#目标平台).
 
 These compilers are used by the IDE when you click the __Compile__ or __Run__ button for your Kotlin project.  
 
@@ -20,7 +20,7 @@ __Settings | Build, Execution, Deployment | Compilers | Kotlin Compiler__
 - If you're using Gradle, specify the compiler arguments in the `kotlinOptions` property of the Kotlin compilation task.
 For details, see [Gradle](gradle.md#编译器选项).
 - If you're using Maven, specify the compiler arguments in the `<configuration>` element of the Maven plugin node. 
-For details, see [Maven](maven.md#specifying-compiler-options).
+For details, see [Maven](maven.md#指定编译器选项).
 - If you run a command-line compiler, add the compiler arguments directly to the utility call or write them into an [argfile](#argfile).
 
 For example: 
@@ -90,7 +90,7 @@ Allow using declarations only from the specified version of Kotlin bundled libra
 
 ### -progressive
 
-Enable the [progressive mode](whatsnew13.md#progressive-mode) for the compiler.
+Enable the [progressive mode](whatsnew13.md#渐进模式) for the compiler.
 
 In the progressive mode, deprecations and bug fixes for unstable code take effect immediately,
 instead of going through a graceful migration cycle.
@@ -246,7 +246,7 @@ Add the specified prefix to paths in the source map.
 
 ## Kotlin/Native compiler options
 
-Kotlin/Native compiler compiles Kotlin source files into native binaries for the [supported platforms](native-overview.md#target-platforms). 
+Kotlin/Native compiler compiles Kotlin source files into native binaries for the [supported platforms](native-overview.md#目标平台). 
 The command-line tool for Kotlin/Native compilation is `kotlinc-native`.
 
 In addition to the [common options](#common-options), Kotlin/Native compiler has the options listed below.
@@ -351,7 +351,7 @@ Specify output file kind:
 
 ### -repo _path_ (-r _path_)
 
-Library search path. For more information, see [Library search sequence](native-libraries.md#library-search-sequence).
+Library search path. For more information, see [Library search sequence](native-libraries.md#库搜索顺序).
 
 ### -target _target_
 

@@ -28,7 +28,7 @@ target {
 }
 ```
 
-For a detailed description of the available functionality, check out the Kotlin/JS reference on [configuring the test task](js-project-setup.md#test-task). 
+For a detailed description of the available functionality, check out the Kotlin/JS reference on [configuring the test task](js-project-setup.md#test-任务). 
 
 Please note that by default, no browsers are bundled with the plugin. This means that you'll have to ensure they're
 available on the target system.

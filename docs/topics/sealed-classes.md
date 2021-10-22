@@ -72,10 +72,10 @@ There is one more inheritance restriction in [multiplatform projects](mpp-intro.
 reside in the same source set. It applies to sealed classes without the [`expect` and `actual` modifiers](mpp-connect-to-apis.md).
 
 If a sealed class is declared as `expect` in a common source set and have `actual` implementations in platform source sets,
-both `expect` and `actual` versions can have subclasses in their source sets. Moreover, if you use a [hierarchical structure](mpp-share-on-platforms.md#share-code-on-similar-platforms),
+both `expect` and `actual` versions can have subclasses in their source sets. Moreover, if you use a [hierarchical structure](mpp-share-on-platforms.md#对相似平台共享代码),
 you can create subclasses in any source set between the `expect` and `actual` declarations. 
 
-[Learn more about the hierarchical structure of multiplatform projects](mpp-share-on-platforms.md#share-code-on-similar-platforms). 
+[Learn more about the hierarchical structure of multiplatform projects](mpp-share-on-platforms.md#对相似平台共享代码). 
 
 ## Sealed classes and when expression
 

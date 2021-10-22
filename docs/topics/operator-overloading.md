@@ -12,7 +12,7 @@ interface IndexedContainer {
     operator fun get(index: Int)
 }
 ```
-When [overriding](inheritance.md#overriding-methods) your operator overloads, you can omit `operator`:
+When [overriding](inheritance.md#覆盖方法) your operator overloads, you can omit `operator`:
 
 ```kotlin
 class OrdersList: IndexedContainer {

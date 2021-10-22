@@ -1,9 +1,9 @@
 [//]: # (title: Kotlin 用于 KMM 的新特性)
 
 KMM is part of the larger Kotlin ecosystem and leverages Kotlin features and improvements for a better mobile developer experience. 
-[Every Kotlin release](releases.md#release-details) brings features and improvements that are helpful for mobile developers like you. 
+[Every Kotlin release](releases.md#版本发布详情) brings features and improvements that are helpful for mobile developers like you. 
 
-Android Studio will recommend an automatic update to a new Kotlin release. You can also [update manually](releases.md#update-to-a-new-release).
+Android Studio will recommend an automatic update to a new Kotlin release. You can also [update manually](releases.md#更新到新版本).
 
 Here you can find a short summary of the features Kotlin provides for developing multiplatform mobile applications.
 

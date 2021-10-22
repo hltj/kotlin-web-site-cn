@@ -47,7 +47,7 @@ For platform-specific source sets, the corresponding platform-specific variant o
 library is added to the rest. The Kotlin Gradle plugin will select the appropriate JVM standard library depending on 
 the `kotlinOptions.jvmTarget` [compiler option](gradle.md#编译器选项) of your Gradle build script
 
-Learn how to [change the default behavior](gradle.md#dependency-on-the-standard-library).
+Learn how to [change the default behavior](gradle.md#对标准库的依赖).
 
 ## 设置对测试库的依赖
 

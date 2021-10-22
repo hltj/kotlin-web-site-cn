@@ -65,7 +65,7 @@ import org.test.Message as testMessage // testMessage 代表“org.test.Message�
 关键字 `import` 并不仅限于导入类；也可用它来导入其他声明：
 
   * 顶层函数及属性
-  * 在[对象声明](object-declarations.md#对象声明概述)中声明的函数和属性
+  * 在[对象声明](object-declarations.md#object-declarations-overview)中声明的函数和属性
   * [枚举常量](enum-classes.md)
 
 ## 顶层声明的可见性
