@@ -106,7 +106,7 @@ fun main() {
 ```
 {kotlin-runnable="true"  id="create-string-from-collection-kotlin"}
 
-Learn more about [joinToString()](collection-transformations.md#字符串内插) usage.
+Learn more about [joinToString()](collection-transformations.md#字符串表示) usage.
 
 ## Set default value if the string is blank
 

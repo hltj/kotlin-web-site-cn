@@ -121,7 +121,7 @@ Kotlin/JS IR 编译器能够从 Kotlin 代码生成 TypeScript 定义。在混�
 JavaScript 工具与 IDE 可以使用这些定义来提供自动补全功能、支持静态分析器，
 并使在 JavaScript 与 TypeScript 项目中更容易包含 Kotlin 代码。
 
-在产生可执行文件（`binaries.executable()`）的项目中，标有 [`@JsExport`](js-to-kotlin-interop.md#jsexport-annotation)
+在产生可执行文件（`binaries.executable()`）的项目中，标有 [`@JsExport`](js-to-kotlin-interop.md#jsexport-注解)
 的顶级声明将生成一个 `.d.ts` 文件，
 其中包含导出的 Kotlin 声明的 TypeScript 定义。
 可以在 `build/js/packages/<package_name>/kotlin` 中找到这些声明以及相应的<!--
@@ -145,7 +145,7 @@ Kotlin/JS 的两个后端之间缺乏这种兼容性，这意味着使用新的 
 最好注意这些可能的缺陷。
 
 - 一些 **依赖默认后端特定特性的库**，例如 `kotlin-wrappers`，可能会显示一些问题。可以[在 YouTrack](https://youtrack.jetbrains.com/issue/KT-40525) 上跟踪调查与进度。
-- 默认情况下，IR 后端根本 **不会使 Kotlin 声明可用于 JavaScript**。要使 Kotlin 声明对 JavaScript 可见，**必须使用** [`@JsExport`](js-to-kotlin-interop.md#jsexport-annotation) 对其进行注解。
+- 默认情况下，IR 后端根本 **不会使 Kotlin 声明可用于 JavaScript**。要使 Kotlin 声明对 JavaScript 可见，**必须使用** [`@JsExport`](js-to-kotlin-interop.md#jsexport-注解) 对其进行注解。
 
 ## Migrating existing projects to the IR compiler
 
