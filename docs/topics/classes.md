@@ -1,6 +1,6 @@
 [//]: # (title: 类)
 
-Kotlin 中使用关键字 *class*{:.keyword} 声明类
+Kotlin 中使用关键字 `class` 声明类
 
 ```kotlin
 class Person { /*……*/ }
