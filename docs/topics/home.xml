@@ -69,9 +69,9 @@
                 <link-collection>
                     <title>保持联系并贡献力量</title>
                     <a href="contribute.md" description="The ways in which you can help the development of Kotlin">为 Kotlin 贡献力量</a>
-                    <a href="eap.md" description="Preview versions for trying out features before their official releases">参与抢先体验计划（EAP，Early Access Program）</a>
+                    <a href="eap.md" description="Preview versions for trying out features before their official releases">参与抢先体验计划（EAP）</a>
                     <a href="https://surveys.jetbrains.com/s3/kotlin-slack-sign-up" description="Official public Kotlin Slack">加入 Kotlin Slack</a>
-                    <a href="https://twitter.com/kotlin" description="Official Kotlin Twitter">Twitter 上关注 Kotlin</a>
+                    <a href="https://twitter.com/kotlin" description="Official Kotlin Twitter">在 Twitter 上关注 Kotlin</a>
                     <a href="https://www.reddit.com/r/Kotlin/" description="Kotlin on Reddit">在 Reddit 上探讨</a>
                     <a href="https://stackoverflow.com/questions/tagged/kotlin" description="Kotlin on Stack Overflow">参与 Stack Overflow 的讨论</a>
                 </link-collection>
