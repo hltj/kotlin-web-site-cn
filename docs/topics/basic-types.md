@@ -15,10 +15,10 @@ Kotlin 提供了一组表示数字的内置类型。
 
 | 类型	 | 大小（比特数）| 最小值 | 最大值 |
 |--------|---------------|--------|------- |
-| Byte	 | 8             |-128    |127     |
-| Short	 | 16            |-32768  |32767   |
-| Int	 | 32            |-2,147,483,648 (-2<sup>31</sup>)| 2,147,483,647 (2<sup>31</sup> - 1)|
-| Long	 | 64            |-9,223,372,036,854,775,808 (-2<sup>63</sup>)|9,223,372,036,854,775,807 (2<sup>63</sup> - 1)|
+| `Byte`	 | 8             |-128    |127     |
+| `Short`	 | 16            |-32768  |32767   |
+| `Int`	 | 32            |-2,147,483,648 (-2<sup>31</sup>)| 2,147,483,647 (2<sup>31</sup> - 1)|
+| `Long`	 | 64            |-9,223,372,036,854,775,808 (-2<sup>63</sup>)|9,223,372,036,854,775,807 (2<sup>63</sup> - 1)|
 
 所有以未超出 `Int` 最大值的整型值初始化的变量<!--
 -->都会推断为 `Int` 类型。如果初始值超过了其最大值，那么推断为 `Long` 类型。
@@ -40,8 +40,8 @@ val oneByte: Byte = 1
  
 | 类型	 | 大小（比特数）| 有效数字比特数 | 指数比特数 | 十进制位数 |
 |--------|---------------|--------------- |------------|------------|
-| Float	 | 32            |24              |8           |6-7         |
-| Double | 64            |53              |11          |15-16       |    
+| `Float`	 | 32            |24              |8           |6-7         |
+| `Double` | 64            |53              |11          |15-16       |    
   
 You can initialize `Double` and `Float` variables  with numbers having a fractional part.
 It's separated from the integer part by a period (`.`)
@@ -191,7 +191,7 @@ All number types support conversions to other types:
 * `toDouble(): Double`
 * `toChar(): Char`
 
-In many cases, there is no need in explicit conversions, 因为类型会从上下文推断出来，
+In many cases, there is no need for explicit conversions, 因为类型会从上下文推断出来，
 而算术运算会有重载做适当转换，例如：
 
 ```kotlin
@@ -330,7 +330,7 @@ In addition to [integer types](#integer-types), Kotlin provides the following ty
 When you use unsigned arrays, you'll get a warning that indicates that this feature is not stable yet.
 To remove the warning, opt in using the `@ExperimentalUnsignedTypes` annotation. 
 It's up to you to decide if your clients have to explicitly opt-in into usage of your API, but keep in mind that unsigned
-array are not a stable feature, so API which uses them can be broken by changes in the language.
+array are not a stable feature, so an API which uses them can be broken by changes in the language.
 [Learn more about opt-in requirements](opt-in-requirements.md).
 
 [区间与数列](ranges.md)也支持 `UInt` 与 `ULong`（通过这些类 `UIntRange`、 `UIntProgression`、
