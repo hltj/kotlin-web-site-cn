@@ -72,7 +72,7 @@ and more, between Android and iOS.
 
 See [KMM features, case studies and examples](https://kotlinlang.org/lp/mobile/)
 
-### 客户端——服务端
+### 客户端——服务器端
 
 代码共享可以带来收益的另一个场景是互联应用，其中的逻辑可以<!--
 -->在服务器与运行在浏览器中的客户端中复用。Kotlin 多平台也覆盖了<!--

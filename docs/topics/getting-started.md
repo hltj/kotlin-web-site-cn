@@ -1,30 +1,30 @@
 [//]: # (title: Kotlin 入门)
 
-[Kotlin](https://kotlinlang.org) is a modern but already mature programming language aimed to make developers happier.
-It’s concise, safe, interoperable with Java and other languages, and provides many ways to reuse code between multiple platforms for productive programming.
+[Kotlin](https://kotlinlang.org) 是一门现代但已成熟的编程语言，旨在让开发人员更幸福快乐。
+它简洁、安全、可与 Java 及其他语言互操作，并提供了多种方式在多个平台间复用代码，以实现高效编程。
 
-Pick it up to start building powerful applications!
+选择它来构建强大的应用程序吧！
 
-## Learn Kotlin fundamentals
+## 学习 Kotlin 基础知识
 
-* If you're already familiar with one or more programming languages and want to learn Kotlin, start with these [Kotlin learning materials](learning-materials-overview.md).
-* If Kotlin is your first programming language, we recommend starting with the [Atomic Kotlin book](https://www.atomickotlin.com/atomickotlin/)
-or signing up for the free [Kotlin Basics track](https://hyperskill.org/tracks/18) on JetBrains Academy.
+* 如果你已熟悉一门或多门编程语言并想学习 Kotlin，请从这些 [Kotlin 学习资料](learning-materials-overview.md)开始。
+* 如果 Kotlin 是你的第一门编程语言，我们建议从[《Atomic Kotlin》这本书](https://www.atomickotlin.com/atomickotlin/)开始，
+或者在 JetBrains 学院报名免费的[Kotlin 基础课程](https://hyperskill.org/tracks/18)。
 
-## Create your powerful application with Kotlin
+## 使用 Kotlin 创建强大的应用程序
  
 <tabs>
 
-<tab title="Backend app">
+<tab title="后端应用">
 
-Here is how you can take the first steps in developing Kotlin server-side applications.
+以下是开发 Kotlin 服务器端应用程序的第一步。
 
-1. **Install the [latest version of IntelliJ IDEA](https://www.jetbrains.com/idea/download/index.html).**
+1. **安装 [IntelliJ IDEA 最新版](https://www.jetbrains.com/idea/download/index.html)。**
 
-2. **Create your first backend application:**
+2. **创建第一个后端应用程序：**
    
-   * To start from scratch, [create a basic JVM application with the IntelliJ IDEA project wizard](jvm-get-started.md).
-   * If you prefer more robust examples, choose one of the frameworks below and create a project:
+   * 从头开始，[使用 IntelliJ IDEA 项目向导创建一个基本的 JVM 应用程序](jvm-get-started.md)。
+   * 如果倾向于更健壮的示例，请选择以下框架之一来创建一个项目：
 
    <table width="100%" >
    <tr>
@@ -33,46 +33,46 @@ Here is how you can take the first steps in developing Kotlin server-side applic
    </tr>
    <tr>
    <td width="50%">
-     A mature family of frameworks with an established ecosystem that is used by millions of developers worldwide.
+     一套成熟的框架族，拥有全球数百万开发人员都在用的成熟生态系统。
    <br/>
    <ul>
-      <li><a href="jvm-spring-boot-restful.md">Create a RESTful web service with Spring Boot</a>.</li>
-      <li><a href="https://spring.io/guides/tutorials/spring-boot-kotlin/">Build web applications with Spring Boot and Kotlin</a>.</li>
-      <li><a href="https://spring.io/guides/tutorials/spring-webflux-kotlin-rsocket/">Use Spring Boot with Kotlin and RSocket</a>.</li>
+      <li><a href="jvm-spring-boot-restful.md">使用 Spring Boot 创建 RESTful web 服务</a>。</li>
+      <li><a href="https://spring.io/guides/tutorials/spring-boot-kotlin/">使用 Spring Boot 与 Kotlin 构建 web 应用程序</a>。</li>
+      <li><a href="https://spring.io/guides/tutorials/spring-webflux-kotlin-rsocket/">Spring Boot 与 Kotlin 及 RSocket 合用</a>。</li>
    </ul>
    </td>
    <td width="50%">
-      A lightweight framework for those who value freedom in making architectural decisions.
+      适用于架构决策时看重自由度的开发者的轻量级框架。
    <ul>
-      <li><a href="https://ktor.io/docs/creating-http-apis.html">Create HTTP APIs with Ktor</a>.</li>
-      <li><a href="https://ktor.io/docs/creating-web-socket-chat.html">Create a WebSocket chat with Ktor</a>.</li>
-      <li><a href="https://ktor.io/docs/creating-interactive-website.html">Create an interactive website with Ktor</a>.</li>
-      <li><a href="https://ktor.io/docs/heroku.html">Publish server-side Kotlin applications: Ktor on Heroku</a>.</li>
+      <li><a href="https://ktor.io/docs/creating-http-apis.html">使用 Ktor 创建 HTTP API</a>。</li>
+      <li><a href="https://ktor.io/docs/creating-web-socket-chat.html">使用 Ktor 创建 WebSocket 聊天</a>。</li>
+      <li><a href="https://ktor.io/docs/creating-interactive-website.html">使用 Ktor 创建交互式网站</a>。</li>
+      <li><a href="https://ktor.io/docs/heroku.html">发布服务器端 Kotlin 应用程序：Ktor on Heroku</a>。</li>
    </ul>
    
    </td>
    </tr>
    </table>
 
-3. **Use Kotlin and third-party libraries in your application**. Learn more about [adding library and tool dependencies to your project](gradle.md#configuring-dependencies).
-   * The [Kotlin standard library](https://kotlinlang.org/api/latest/jvm/stdlib/) offers a lot of useful things such as [collections](collections-overview.md) or [coroutines](coroutines-guide.md).
-   * Take a look at the following [third-party frameworks, libs and tools for Kotlin](https://blog.jetbrains.com/kotlin/2020/11/server-side-development-with-kotlin-frameworks-and-libraries/).
+3. **在应用程序中使用 Kotlin 库与第三方库**。 了解关于[向项目中添加库与工具依赖项](gradle.md#configuring-dependencies)的更多信息。
+   * [Kotlin 标准库](https://kotlinlang.org/api/latest/jvm/stdlib/)提供了许多实用的内容，例如[集合](collections-overview.md)与[协程](coroutines-guide.md)。
+   * 看看这些[用于 Kotlin 的第三方框架、库与工具](https://blog.jetbrains.com/kotlin/2020/11/server-side-development-with-kotlin-frameworks-and-libraries/)。
 
-4. **Learn more about Kotlin for server-side:**
-   * [How to write your first unit test](jvm-test-using-junit.md).
-   * [How to mix Kotlin and Java code in your application](mixing-java-kotlin-intellij.md).
+4. **了解关于 Kotlin 用于服务器端开发的更多信息：**
+   * [如何编写第一个单元测试](jvm-test-using-junit.md)。
+   * [如何在应用程序中混用 Kotlin 与 Java 代码](mixing-java-kotlin-intellij.md)。
 
-5. **Join the Kotlin server-side community:**
-   * ![Slack](slack.svg){width=25}{type="joined"} Slack: [get an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) and join the [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA), [#server](https://kotlinlang.slack.com/archives/C0B8RC352), [#spring](https://kotlinlang.slack.com/archives/C0B8ZTWE4), or [#ktor](https://kotlinlang.slack.com/archives/C0A974TJ9) channels.
-   * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow: subscribe to the [“kotlin”](https://stackoverflow.com/questions/tagged/kotlin), ["spring-kotlin"](https://stackoverflow.com/questions/tagged/spring-kotlin), or ["ktor"](https://stackoverflow.com/questions/tagged/ktor) tags.
+5. **加入 Kotlin 服务器端社区：**
+   * ![Slack](slack.svg){width=25}{type="joined"} Slack：[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)并加入 [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA)、 [#server](https://kotlinlang.slack.com/archives/C0B8RC352)、 [#spring](https://kotlinlang.slack.com/archives/C0B8ZTWE4) 或 [#ktor](https://kotlinlang.slack.com/archives/C0A974TJ9) 频道。
+   * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅[“kotlin”](https://stackoverflow.com/questions/tagged/kotlin)、[“spring-kotlin”](https://stackoverflow.com/questions/tagged/spring-kotlin)或[“ktor”](https://stackoverflow.com/questions/tagged/ktor)标签。
 
-6. **Follow Kotlin** on ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin), ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/), and ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw), and don't miss any important ecosystem updates.
+6. **关注 Kotlin**： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/)、 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
 
-If you've encountered any difficulties or problems, report an issue to our [issue tracker](https://youtrack.jetbrains.com/issues/KT).
+如果遇到任何困难和问题，请在我们的[问题跟踪系统](https://youtrack.jetbrains.com/issues/KT)提报。
 
 </tab>
 
-<tab title="Cross-platform mobile app">
+<tab title="跨平台移动端应用">
 
 Here you'll learn how to develop and improve your cross-platform mobile application using [Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/lp/mobile/).
 
@@ -106,22 +106,22 @@ Here you'll learn how to develop and improve your cross-platform mobile applicat
 
 5. **Join the Kotlin Multiplatform community:**
 
-   * ![Slack](slack.svg){width=25}{type="joined"} Slack: [get an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) and join the [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) and [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) channels.
-   * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow: Subscribe to the [“kotlin-multiplatform” tag](https://stackoverflow.com/questions/tagged/kotlin-multiplatform).
+   * ![Slack](slack.svg){width=25}{type="joined"} Slack：[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)并加入 [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) 与 [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) 频道。
+   * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅[“kotlin-multiplatform” 标签](https://stackoverflow.com/questions/tagged/kotlin-multiplatform)。
 
-6. **Follow Kotlin** on ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin), ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/), and ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw), and don't miss any important ecosystem updates.
+6. **关注 Kotlin**： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/)、 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
 
-If you've encountered any difficulties or problems, report an issue to our [issue tracker](https://youtrack.jetbrains.com/issues/KT).
+如果遇到任何困难和问题，请在我们的[问题跟踪系统](https://youtrack.jetbrains.com/issues/KT)提报。
 
 </tab>
 
-<tab title="Frontend web app">
+<tab title="前端 web 应用">
 
 Kotlin provides an ability to transpile your Kotlin code, the Kotlin standard library, and any compatible dependencies to JavaScript.
 
 Here you'll learn how to develop and improve your frontend web application using [Kotlin/JS](js-overview.md).
 
-1. **Install the [latest version of IntelliJ IDEA](https://www.jetbrains.com/idea/download/index.html).**
+1. **安装[IntelliJ IDEA 最新版](https://www.jetbrains.com/idea/download/index.html)。**
 
 2. **Create your first frontend web application:**
 
@@ -150,16 +150,16 @@ Here you'll learn how to develop and improve your frontend web application using
 
 5. **Join the Kotlin frontend web community:**
 
-   * ![Slack](slack.svg){width=25}{type="joined"} Slack: [get an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) and join the [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) and [#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) channels.
-   * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow: subscribe to the [“kotlin-js” tag](https://stackoverflow.com/questions/tagged/kotlin-js).
+   * ![Slack](slack.svg){width=25}{type="joined"} Slack：[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)并加入 [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) 与 [#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) 频道。
+   * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅[“kotlin-js” 标签](https://stackoverflow.com/questions/tagged/kotlin-js)。
 
-6. **Follow Kotlin** on ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin), ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/), and ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw), and don't miss any important ecosystem updates.
+6. **关注 Kotlin**： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/)、 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
 
-If you've encountered any difficulties or problems, report an issue to our [issue tracker](https://youtrack.jetbrains.com/issues/KT).
+如果遇到任何困难和问题，请在我们的[问题跟踪系统](https://youtrack.jetbrains.com/issues/KT)提报。
 
 </tab>
 
-<tab title="Android app">
+<tab title="Android 应用">
 
 * If you want to start using Kotlin for Android development, read [Google’s recommendation for getting started with Kotlin on Android](https://developer.android.com/kotlin/get-started).
 
@@ -169,13 +169,13 @@ Follow Kotlin on ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](http
 
 </tab>
 
-<tab title="Multiplatform library">
+<tab title="多平台库">
 
 Support for multiplatform programming is one of Kotlin’s key benefits. It reduces time spent writing and maintaining the same code for different platforms while retaining the flexibility and benefits of native programming.
 
 Here you'll learn how to develop and publish a multiplatform library:
 
-1. **Install the [latest version of IntelliJ IDEA](https://www.jetbrains.com/idea/download/index.html).**
+1. **安装[IntelliJ IDEA 最新版](https://www.jetbrains.com/idea/download/index.html)。**
 
 2. **Create a multiplaform library:**
 
@@ -204,17 +204,17 @@ Here you'll learn how to develop and publish a multiplatform library:
 
 5. **Join the Kotlin Multiplatform community:**
 
-   * ![Slack](slack.svg){width=25}{type="joined"} Slack: [get an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) and join the [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) and [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) channels.
-   * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow: Subscribe to the [“kotlin-multiplatform” tag](https://stackoverflow.com/questions/tagged/kotlin-multiplatform).
+   * ![Slack](slack.svg){width=25}{type="joined"} Slack：[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)并加入 [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) 与 [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) 频道。
+   * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅 [“kotlin-multiplatform” 标签](https://stackoverflow.com/questions/tagged/kotlin-multiplatform)。
 
-6. **Follow Kotlin** on ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin), ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/), and ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw), and don't miss any important ecosystem updates.
+6. **关注 Kotlin**： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/)、 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
 
-If you've encountered any difficulties or problems, report an issue to our [issue tracker](https://youtrack.jetbrains.com/issues/KT).
+如果遇到任何困难和问题，请在我们的[问题跟踪系统](https://youtrack.jetbrains.com/issues/KT)提报。
 
 </tab>
 
 </tabs>
 
-## Is anything missing?
+## 还缺少什么？
 
-If anything is missing or seems confusing on this page, please [share your feedback](https://surveys.hotjar.com/d82e82b0-00d9-44a7-b793-0611bf6189df).
+如果本页有任何遗漏或令人困惑之处，请[提交反馈](https://surveys.hotjar.com/d82e82b0-00d9-44a7-b793-0611bf6189df)。

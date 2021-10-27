@@ -1,6 +1,6 @@
 [//]: # (title: 协程)
 
-Asynchronous or non-blocking programming is an important part of the development landscape.创建服务端应用、
+Asynchronous or non-blocking programming is an important part of the development landscape.创建服务器端应用、
 桌面应用或者移动端应用时，都很重要的一点是， 提供的体验不仅是从用户角度看着流畅，
 而且还能在需要时伸缩（scalable，可扩充/缩减规模）。
 
