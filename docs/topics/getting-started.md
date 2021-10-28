@@ -74,37 +74,37 @@
 
 <tab title="跨平台移动端应用">
 
-Here you'll learn how to develop and improve your cross-platform mobile application using [Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/lp/mobile/).
+在此可以学到如何使用 [Kotlin 多平台移动端（KMM）](https://kotlinlang.org/lp/mobile/)开发及改进跨平台移动端应用程序。
 
-1. **[Set up your environment for cross-platform development](kmm-setup.md).**
+1. **[搭建用于跨平台开发的环境](kmm-setup.md).**
 
-2. **Create your first KMM application:**
+2. **创建第一个 KMM 应用程序：**
 
-   * To start from scratch, [create a basic KMM application with the project wizard](kmm-create-first-app.md).
-   * If you have an existing Android application and want to make it cross-platform, complete the [Make your Android application work on iOS](kmm-integrate-in-existing-app.md) tutorial.
-   * If you prefer real-life examples, clone and play with an existing project, for example the networking and data storage project from the [hands-on tutorial](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/01_Introduction) or any [KMM sample](kmm-samples.md).
+   * 从头开始，[使用项目向导创建一个基本的 KMM 应用程序](kmm-create-first-app.md)。
+   * 如果有既有的 Android 应用程序并想让它跨平台，那么请完成[让 Android 应用程序也能用于 iOS](kmm-integrate-in-existing-app.md) 教程。
+   * 如果更倾向于现实生活的示例，那么请克隆并使用既有项目，例如[动手实践教程](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/01_Introduction)中的网络与数据存储项目或者任意 [KMM 样例](kmm-samples.md)。
 
-3. **Use a wide set of multiplatform libraries** to implement the required business logic only once in the shared module. Learn more about [adding dependencies](kmm-add-dependencies.md).
+3. **使用一整套多平台库** 在共享模块中只实现一次所需的业务逻辑。 了解关于[添加依赖项](kmm-add-dependencies.md)的更多信息。
    
-   |Library|Details|
+   |库|详情|
    |-------|-------| 
-   | Ktor |  [Docs](https://ktor.io/docs/client.html).| 
-   | Serialization |  [Docs](serialization.md) and [sample](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/04_Creating_a_data_model).|
-   | Coroutines |  [Docs](kmm-concurrency-overview.md) and [sample](kmm-concurrency-and-coroutines.md).|
-   | DateTime | [Docs](https://github.com/Kotlin/kotlinx-datetime#readme).|
-   | SQLDelight | Third-party library. [Docs](https://cashapp.github.io/sqldelight/) and [sample](kmm-configure-sqldelight-for-data-storage.md ).|
+   | Ktor |  [文档](https://ktor.io/docs/client.html)。| 
+   | Serialization |  [文档](serialization.md)及[样例](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/04_Creating_a_data_model)。|
+   | Coroutines |  [文档](kmm-concurrency-overview.md)及[样例](kmm-concurrency-and-coroutines.md)。|
+   | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)。|
+   | SQLDelight | 第三方库。 [文档](https://cashapp.github.io/sqldelight/)及[样例](kmm-configure-sqldelight-for-data-storage.md )。|
    
-   > You can also find a multiplatform library in the [community-driven list](https://libs.kmp.icerock.dev/).
+   > 还可以在[社区驱动列表](https://libs.kmp.icerock.dev/)中找到多平台库。
    > 
    {type="tip"}
 
-4. **Learn more about KMM:**
-   * Learn more about [Kotlin Multiplatform](mpp-intro.md).
-   * Look through [KMM samples on GitHub](kmm-samples.md).
-   * [Create and publish a multiplatform library](mpp-create-lib.md).
-   * Learn how KMM is used at [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23), [VWWare](https://kotlinlang.org/lp/mobile/case-studies/vmware/), [Yandex](https://kotlinlang.org/lp/mobile/case-studies/yandex/), and [many other companies](https://kotlinlang.org/lp/mobile/case-studies/).
+4. **了解关于 KMM 的更多信息：**
+   * 了解关于 [Kotlin 多平台](mpp-intro.md)的更多信息。
+   * 浏览 [GitHub 上的 KMM 样例](kmm-samples.md)。
+   * [创建并发布多平台库](mpp-create-lib.md)。
+   * 了解 [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)、 [VWWare](https://kotlinlang.org/lp/mobile/case-studies/vmware/)、 [Yandex](https://kotlinlang.org/lp/mobile/case-studies/yandex/) 以及[许多其他公司](https://kotlinlang.org/lp/mobile/case-studies/)如何使用 KMM。
 
-5. **Join the Kotlin Multiplatform community:**
+5. **加入 Kotlin 多平台社区：**
 
    * ![Slack](slack.svg){width=25}{type="joined"} Slack：[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)并加入 [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) 与 [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) 频道。
    * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅[“kotlin-multiplatform” 标签](https://stackoverflow.com/questions/tagged/kotlin-multiplatform)。
@@ -123,14 +123,14 @@ Here you'll learn how to develop and improve your frontend web application using
 
 1. **安装[IntelliJ IDEA 最新版](https://www.jetbrains.com/idea/download/index.html)。**
 
-2. **Create your first frontend web application:**
+2. **创建第一个前端 web 应用程序：**
 
    * To start from scratch, [create a basic browser application with the IntelliJ IDEA project wizard](js-project-setup.md).
    * If you prefer more robust examples, complete the [Building Web Applications with React and Kotlin/JS](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction) hands-on tutorial. It includes a sample project that can serve as a good starting point for your own projects, and contains useful snippets and templates.
 
-3. **Use libraries in your application.** Learn more about [adding dependencies](js-project-setup.md#依赖项).  
+3. **在应用程序中使用库。** Learn more about [adding dependencies](js-project-setup.md#依赖项).  
     
-   |Library | Details |
+   |库 | 详情 |
    |--------|---------|
    |[stdlib](https://kotlinlang.org/api/latest/jvm/stdlib/) | The Kotlin standard library included in all projects by default. |
    |[kotlinx.browser](browser-api-dom.md)| The Kotlin library for accessing browser-specific functionality, including typical top-level objects such as document and window. |
@@ -142,13 +142,13 @@ Here you'll learn how to develop and improve your frontend web application using
    |Compose for Web, a part of [Compose Multiplatform](https://www.jetbrains.com/lp/compose-mpp/) | The JetBrains framework that brings [Google's Jetpack Compose UI toolkit](https://developer.android.com/jetpack/compose) to the browser (currently with [Alpha](components-stability.md) stability).|
    |[kotlin-wrappers](https://github.com/JetBrains/kotlin-wrappers) | Provide convenient abstractions and deep integrations for one of the most popular JavaScript frameworks. Kotlin wrappers also provide support for a number of adjacent technologies like `react-redux`, `react-router`, or `styled-components`. |
 
-4. **Learn more about Kotlin for frontend web development:**
+4. **了解关于 Kotlin 用于前端 web 开发的更多信息：**
 
    * The [new Kotlin/JS IR compiler](js-ir-compiler.md) (currently with [Beta](components-stability.md) stability).
    * [Using dependencies from npm](using-packages-from-npm.md).
    * [Using Kotlin code from JavaScript](js-to-kotlin-interop.md).
 
-5. **Join the Kotlin frontend web community:**
+5. **加入 Kotlin 前端 web 社区：**
 
    * ![Slack](slack.svg){width=25}{type="joined"} Slack：[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)并加入 [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) 与 [#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) 频道。
    * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅[“kotlin-js” 标签](https://stackoverflow.com/questions/tagged/kotlin-js)。
@@ -177,15 +177,15 @@ Here you'll learn how to develop and publish a multiplatform library:
 
 1. **安装[IntelliJ IDEA 最新版](https://www.jetbrains.com/idea/download/index.html)。**
 
-2. **Create a multiplaform library:**
+2. **创建多平台库：**
 
    * To start from scratch, [create a basic project](mpp-create-lib.md).
    * If you prefer more robust examples, complete the [Create and publish a multiplatform library](multiplatform-library.md) tutorial. It shows how to create a multiplatform library for JVM, JS, and Native platforms, test it and publish to a local Maven repository.
    * Build a full stack web application using [this hands-on](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction).
 
-3. **Use libraries in your application.** Learn more about [adding dependencies on libraries](mpp-add-dependencies.md).
+3. **在应用程序中使用库。** Learn more about [adding dependencies on libraries](mpp-add-dependencies.md).
 
-   |Library|Details|
+   |库|详情|
    |-------|-------|
    | Ktor |  [Docs](https://ktor.io/docs/) and [sample](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/03_A_Simple_API_Server).| 
    | Serialization |  [Docs](serialization.md) and [sample](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction).|
@@ -196,13 +196,13 @@ Here you'll learn how to develop and publish a multiplatform library:
    >
    {type="tip"}
 
-4. **Learn more about Kotlin Multiplatform programming:**
+4. **了解关于 Kotlin 多平台程序设计的更多信息：**
 
    * [Introduction to Kotlin Multiplatform](mpp-intro.md).
    * [Kotlin Multiplatform supported platforms](mpp-supported-platforms.md).
    * [Kotlin Multiplatform programming benefits](multiplatform.md).
 
-5. **Join the Kotlin Multiplatform community:**
+5. **加入 Kotlin 多平台社区：**
 
    * ![Slack](slack.svg){width=25}{type="joined"} Slack：[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)并加入 [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) 与 [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) 频道。
    * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅 [“kotlin-multiplatform” 标签](https://stackoverflow.com/questions/tagged/kotlin-multiplatform)。
