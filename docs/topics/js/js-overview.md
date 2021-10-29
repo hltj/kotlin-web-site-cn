@@ -131,7 +131,7 @@ to discuss Compose for Web, or [#compose](https://kotlinlang.slack.com/archives/
 pick a [hands-on](#hands-on-labs-for-kotlin-js) lab to work through or check out the list of [Kotlin/JS sample projects](#sample-projects-for-kotlin-js)
 for inspiration. They contain useful snippets and patterns and can serve as nice jump-off points for your own projects.
 
-## Kotlin/JS 实践实验室
+## Kotlin/JS 动手实践实验室
 
 * [Building Web Applications with React and Kotlin/JS](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction)
 guides you through the process of building a simple web application using the React framework, shows how a type-safe Kotlin

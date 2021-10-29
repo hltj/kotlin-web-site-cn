@@ -47,7 +47,7 @@ Kotlin 存根。可以在这个条目中添加多个文件，用新行上的 `\`
 的配置的更多信息，请查看[互操作文档](native-c-interop.md)
 
 一旦准备好定义文件，就可以<!--
--->创建工程文件并在 IDE 中打开这个工程。
+-->创建项目文件并在 IDE 中打开这个项目。
 
 While it is possible to use the command line, either directly or
 by combining it with a script file (such as `.sh` or `.bat` file), this approach doesn't

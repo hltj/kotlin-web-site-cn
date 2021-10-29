@@ -77,7 +77,7 @@ void doubles(float a, double b) { }
 ```
 
 `interop.def` 文件足以编译和运行应用程序或在 IDE 中打开它。
-现在是时候创建工程文件，且在
+现在是时候创建项目文件，且在
 [IntelliJ IDEA](https://jetbrains.com/idea) 中打开并运行它。 
 
 ## 探查为 C 库生成的 Kotlin API
@@ -194,8 +194,8 @@ fun main() {
 ```
 
 现在已经准备好<!--
--->[在 IntelliJ IDEA 中打开这个工程](native-get-started.md)<!--
--->并且看看如何修正这个示例工程。当做完这些之后，
+-->[在 IntelliJ IDEA 中打开这个项目](native-get-started.md)<!--
+-->并且看看如何修正这个示例项目。当做完这些之后，
 检查 C 的原始类型是如何映射到 Kotlin/Native 的。
 
 ## Kotlin 中的原始类型

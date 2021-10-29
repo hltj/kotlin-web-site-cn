@@ -154,8 +154,8 @@ binaries {
 -->所有声明的前缀。
 
 现在可以<!--
--->[在 IntelliJ IDEA 中打开这个工程](native-get-started.md)<!--
--->并且可以看到如何修正这个示例工程。在我们这样做的时候，
+-->[在 IntelliJ IDEA 中打开这个项目](native-get-started.md)<!--
+-->并且可以看到如何修正这个示例项目。在我们这样做的时候，
 我们将会研究 C 函数如何映射为 Kotlin/Native 声明。
 
 运行这个 `linkNative` Gradle 任务来在 IDE 中构建该库。
@@ -272,7 +272,7 @@ As you can see from these definitions, the Kotlin object `Object` is mapped into
 `libnative_KNativePtr` 定义在 `void*` 之上。
 
 C 语言中没有支持命名空间，所以 Kotlin/Native 编译器生成了<!--
--->长名称，以避免与现有原生工程中的其他符号发生任何可能的冲突。
+-->长名称，以避免与现有原生项目中的其他符号发生任何可能的冲突。
 
 定义的很大一部分位于 `libnative_api.h` 文件。
 它包含了我们的 Kotlin/Native 库世界的定义：

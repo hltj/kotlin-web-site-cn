@@ -25,8 +25,8 @@ Kotlin 1.3 继续改进与完善原生平台。详情请参见 [Kotlin/Native �
   * 对于不同的已支持平台，现在有大量的[预设的平台配置](mpp-supported-platforms.md)。
   * 更改了[依赖配置]((mpp-add-dependencies.md))；
     现在为每个源根分别指定依赖项。
-  * 源集（source set）现在可以在任意平台子集之间共享
-  （例如，在一个目标平台为 JS、Android 与 iOS 的模块中，可以有一个只在 Android 与 iOS 之间共享的源集）。
+  * 源代码集（source set）现在可以在任意平台子集之间共享
+  （例如，在一个目标平台为 JS、Android 与 iOS 的模块中，可以有一个只在 Android 与 iOS 之间共享的源代码集）。
   * 现在支持[发布多平台库](mpp-publish-lib.md)了。
 
 更多相关信息，请参考[多平台程序设计文档](multiplatform.md)。

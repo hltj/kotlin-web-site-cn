@@ -117,6 +117,6 @@ class C private constructor(a: Int) { …… }
 
 * 一个 IntelliJ IDEA 模块
 * 一个 Maven 项目
-* 一个 Gradle 源集（例外是 `test` 源集可以访问 `main` 的 internal 声明）
+* 一个 Gradle 源代码集（例外是 `test` 源代码集可以访问 `main` 的 internal 声明）
 * 一次 `<kotlinc>` Ant 任务执行所编译的一套文件
 

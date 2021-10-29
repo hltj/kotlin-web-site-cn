@@ -78,8 +78,8 @@ val presizedSet = HashSet<Int>(32)
 [`toMutableList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-list.html)、
 [`toSet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-set.html) 等等。create a snapshot
 of a collection at a specific moment. 结果是创建了一个具有相同元素的新集合
-如果在源集合中添加或删除元素，则不会影响副本。副本也可以<!--
--->独立于源集合进行更改。
+如果在源代码集合中添加或删除元素，则不会影响副本。副本也可以<!--
+-->独立于源代码集合进行更改。
 
 ```kotlin
 

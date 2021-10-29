@@ -131,7 +131,7 @@ wrapper {
 </tab>
 </tabs>
 
-将源文件移动到工程下的
+将源文件移动到项目下的
 `src/nativeMain/kotlin` 文件夹。当使用 [kotlin-多平台](mpp-discover-project.md#多平台插件)<!--
 -->插件的时候这是定位文件的默认路径。
 使用插件。使用以下代码块来配置项目<!--
@@ -431,7 +431,7 @@ Swift 同样隐藏了 `NSNumber*` 的装箱。我们可以传一个 Swift 闭包
 
 ## Xcode 与 Framework 依赖
 
-需要配置一个 Xcode 工程来使用我们的 framework。这个配置依赖于<!--
+需要配置一个 Xcode 项目来使用我们的 framework。这个配置依赖于<!--
 -->目标平台。
 
 ### Xcode 用于 macOS 目标平台

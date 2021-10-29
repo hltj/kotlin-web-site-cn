@@ -45,8 +45,8 @@ void union_by_pointer(MyUnion* u) {}
 ``` 
 
 该 `interop.def` 文件足够用来编译并运行应用程序，或在 IDE 中打开它。
-现在创建工程文件，并在
-[IntelliJ IDEA](https://jetbrains.com/idea) 中打开该工程，然后运行它。 
+现在创建项目文件，并在
+[IntelliJ IDEA](https://jetbrains.com/idea) 中打开该项目，然后运行它。 
 
 ## 探查为 C 库生成的 Kotlin API
 
@@ -163,8 +163,8 @@ fun main() {
 ```
 
 现在已经准备好<!--
--->[在 IntelliJ IDEA 中打开这个工程](native-get-started.md)<!--
--->并且看看如何修正这个示例工程。当做了这些之后，
+-->[在 IntelliJ IDEA 中打开这个项目](native-get-started.md)<!--
+-->并且看看如何修正这个示例项目。当做了这些之后，
 会看到 C 的原始类型已经被映射到了 Kotlin/Native。
 
 ## Kotlin 中的原始类型

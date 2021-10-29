@@ -44,8 +44,8 @@ MyFun supply_fun() {
 ``` 
 
 该 `interop.def` 文件足够用来编译并运行应用程序，或在 IDE 中打开它。
-现在是时候创建工程文件，并在
-[IntelliJ IDEA](https://jetbrains.com/idea) 中打开这个工程，然后运行它。 
+现在是时候创建项目文件，并在
+[IntelliJ IDEA](https://jetbrains.com/idea) 中打开这个项目，然后运行它。 
 
 ## 探查为 C 库生成的 Kotlin API
 
@@ -162,8 +162,8 @@ fun main() {
 ```
 
 现在已经准备好<!--
--->[在 IntelliJ IDEA 中打开这个工程](native-get-started.md)<!--
--->并且看看如何修正这个示例工程。当做了这些之后，
+-->[在 IntelliJ IDEA 中打开这个项目](native-get-started.md)<!--
+-->并且看看如何修正这个示例项目。当做了这些之后，
 观察到 C 函数是如何映射到 Kotlin/Native 声明的。
 
 ## Kotlin 中的 C 函数指针

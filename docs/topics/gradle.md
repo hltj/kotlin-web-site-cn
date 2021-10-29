@@ -588,11 +588,11 @@ start using it.
 使用 Kotlin 编译任务的 `kotlinOptions` 属性来指定附加的编译选项。
 
 当面向 JVM 时，对于生产代码这些任务称为 `compileKotlin` 而对于<!--
--->测试代码称为 `compileTestKotlin`。对于自定义源文件集（source set）这些任务命名遵循 `compile＜Name＞Kotlin` 模式。
+-->测试代码称为 `compileTestKotlin`。对于自定义源代码集（source set）这些任务命名遵循 `compile＜Name＞Kotlin` 模式。
 
 Android 项目中的任务名称包含[构建变体](https://developer.android.com/studio/build/build-variants.html) 名称，并遵循 `compile<BuildVariant>Kotlin` 的模式，例如 `compileDebugKotlin` 或 `compileReleaseUnitTestKotlin`。
 
-当面向 JavaScript 时，任务 `compileKotlinJs` 用于生产代码，而 `compileTestKotlinJs` 用于测试代码，以及对于自定义源文件集称为 `compile＜Name＞KotlinJs`。
+当面向 JavaScript 时，任务 `compileKotlinJs` 用于生产代码，而 `compileTestKotlinJs` 用于测试代码，以及对于自定义源代码集称为 `compile＜Name＞KotlinJs`。
 
 要配置单个任务，请使用其名称。示例：
 

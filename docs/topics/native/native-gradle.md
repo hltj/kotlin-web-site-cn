@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin/Native 入门——使用 Gradle)
 
-[Gradle](https://gradle.org) 是一个在 Java、Android 与其他生态系统工程中非常常用的构建系统。
+[Gradle](https://gradle.org) 是一个在 Java、Android 与其他生态系统项目中非常常用的构建系统。
 它是 Kotlin/Native 与 Multiplatform 的默认构建系统。
 
 尽管包括 [IntelliJ IDEA](https://www.jetbrains.com/idea) 在内的大多数 IDE 都可以生成相应的 Gradle 文件， 

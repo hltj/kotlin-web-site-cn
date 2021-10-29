@@ -7,7 +7,7 @@ see [Getting started with IntellJ IDEA](jvm-get-started.md).
 
 ## 将 Java 源代码添加到现有 Kotlin 项目中
 
-将Java类添加到 Kotlin 工程中非常简单。 你需要做的就是在项目内的目录或包中创建一个新的 Java 文件
+将 Java 类添加到 Kotlin 项目中非常简单。 你需要做的就是在项目内的目录或包中创建一个新的 Java 文件
 （__Alt + Insert__/__Cmd + N__）。
 
 <img src="new-java-class.png" alt="Add new Java class" width="400"/>
@@ -55,11 +55,11 @@ println(customer.placeOrder())
 
 <img src="new-kotlin-file.png" alt="Add new Kotlin file class" width="600"/>
 
-如果这是你第一次将 Kotlin 文件添加到此工程中，IntelliJ IDEA 会提示你添加所需的Kotlin运行时。
-对于 Java 工程，将 Kotlin 运行时配置为 __Kotlin Java 模块__。
+如果这是你第一次将 Kotlin 文件添加到此项目中，IntelliJ IDEA 会提示你添加所需的Kotlin运行时。
+对于 Java 项目，将 Kotlin 运行时配置为 __Kotlin Java 模块__。
 
-下一步是决定要配置哪些模块（如果工程有多个模块）以及是否想要
-将运行时库添加到工程中或使用当前 Kotlin 插件提供的那些库。
+下一步是决定要配置哪些模块（如果项目有多个模块）以及是否想要
+将运行时库添加到项目中或使用当前 Kotlin 插件提供的那些库。
 
 <img src="bundling-kotlin-option.png" alt="Bundling Kotlin runtime" width="600"/>
 

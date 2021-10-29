@@ -219,7 +219,7 @@ kotlin {
 
 The main and test source sets described above are default. The Kotlin Multiplatform plugin generates them
 automatically upon target creation. In your project, you can add more source sets for specific purposes.
-For more information, see [Multiplatform DSL reference](mpp-dsl-reference.md#自定义源集).
+For more information, see [Multiplatform DSL reference](mpp-dsl-reference.md#自定义源代码集).
 
 ### Android library
 

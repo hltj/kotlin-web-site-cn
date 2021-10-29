@@ -45,7 +45,7 @@ plugins {
 | _\<目标名称\>_ |声明项目的特定目标，所有可用的目标名称已陈列在[目标](#目标)部分中.|
 |`targets` |项目的所有目标。|
 |`presets` |所有预定义的目标。使用这个同时[配置多个预定义目标](mpp-supported-platforms.md)。|
-|`sourceSets` |配置预定义和声明自定义项目的[源集](#源集)。|
+|`sourceSets` |配置预定义和声明自定义项目的[源代码集](#源代码集)。|
 
 ## 目标
 
@@ -425,15 +425,15 @@ Learn more about writing build scripts for Android projects in [Android develope
 >
 {type="note"}
 
-## 源集
+## 源代码集
 
 The `sourceSets` block describes source sets of the project. A source set contains Kotlin source files that participate
 in compilations together, along with their resources, dependencies, and language settings. 
 
-A multiplatform project contains [predefined](#预定义源集) source sets for its targets;
-developers can also create [custom](#自定义源集) source sets for their needs.
+A multiplatform project contains [predefined](#预定义源代码集) source sets for its targets;
+developers can also create [custom](#自定义源代码集) source sets for their needs.
 
-### 预定义源集
+### 预定义源代码集
 
 Predefined source sets are set up automatically upon creation of a multiplatform project.
 Available predefined source sets are the following:
@@ -471,9 +471,9 @@ kotlin {
 </tab>
 </tabs>
 
-Learn more about [source sets](mpp-discover-project.md#源集).
+Learn more about [source sets](mpp-discover-project.md#源代码集).
 
-### 自定义源集
+### 自定义源代码集
 
 Custom source sets are created by the project developers manually.
 To create a custom source set, add a section with its name inside the `sourceSets` section.
@@ -507,7 +507,7 @@ kotlin {
 Note that a newly created source set isn’t connected to other ones. To use it in the project’s compilations,
 [connect it with other source sets](mpp-share-on-platforms.md#手动配置层次结构).
 
-### 源集参数
+### 源代码集参数
 
 Configurations of source sets are stored inside the corresponding blocks of `sourceSets`. A source set has the following parameters:
 
@@ -800,7 +800,7 @@ kotlin {
 </tab>
 </tabs>
 
-Additionally, source sets can depend on each other and form a hierarchy. In this case, the [dependsOn()](#源集参数) relation is used.
+Additionally, source sets can depend on each other and form a hierarchy. In this case, the [dependsOn()](#源代码集参数) relation is used.
 
 Source set dependencies can also be declared in the top-level `dependencies` block of the build script.
 In this case, their declarations follow the pattern `<sourceSetName><DependencyKind>`, for example, `commonMainApi`.
