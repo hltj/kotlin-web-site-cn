@@ -74,7 +74,7 @@
 
 <tab title="跨平台移动端应用">
 
-在此可以学到如何使用 [Kotlin 多平台移动端（KMM）](https://kotlinlang.org/lp/mobile/)开发及改进跨平台移动端应用程序。
+在此可以了解到如何使用 [Kotlin 多平台移动端（KMM）](https://kotlinlang.org/lp/mobile/)开发及改进跨平台移动端应用程序。
 
 1. **[搭建用于跨平台开发的环境](kmm-setup.md).**
 
@@ -162,46 +162,46 @@ Here you'll learn how to develop and improve your frontend web application using
 
 <tab title="Android 应用">
 
-* If you want to start using Kotlin for Android development, read [Google’s recommendation for getting started with Kotlin on Android](https://developer.android.com/kotlin/get-started).
+* 如果希望开始使用 Kotlin 用于 Android 开发，请阅读 [谷歌对 Android 上 Kotlin 入门的建议](https://developer.android.com/kotlin/get-started)。
 
-* If you're new to Android and want to learn to create applications with Kotlin, check out [this Udacity course](https://www.udacity.com/course/developing-android-apps-with-kotlin--ud9012).
+* 如果是 Android 新手并且想学习使用 Kotlin 创建应用程序，请查看[这门 Udacity 课程](https://www.udacity.com/course/developing-android-apps-with-kotlin--ud9012)。
 
-Follow Kotlin on ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin), ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/), and ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw), and don't miss any important ecosystem updates.
+关注 Kotlin： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/) 与 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
 
 </tab>
 
 <tab title="多平台库">
 
-Support for multiplatform programming is one of Kotlin’s key benefits. It reduces time spent writing and maintaining the same code for different platforms while retaining the flexibility and benefits of native programming.
+支持多平台程序设计是 Kotlin 的主要优势之一。 它减少了为不同平台编写与维护相同代码所花的时间，同时保留了原生编程的灵活性与优势。
 
-Here you'll learn how to develop and publish a multiplatform library:
+在此可以了解到如何开发并发布多平台库：
 
 1. **安装[IntelliJ IDEA 最新版](https://www.jetbrains.com/idea/download/index.html)。**
 
 2. **创建多平台库：**
 
-   * To start from scratch, [create a basic project](mpp-create-lib.md).
-   * If you prefer more robust examples, complete the [Create and publish a multiplatform library](multiplatform-library.md) tutorial. It shows how to create a multiplatform library for JVM, JS, and Native platforms, test it and publish to a local Maven repository.
-   * Build a full stack web application using [this hands-on](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction).
+   * 从头开始，[创建一个基本项目](mpp-create-lib.md)。
+   * 如果倾向于更健壮的示例，那么请完成[创建并发布多平台库](multiplatform-library.md)教程。 它展示了如何为 JVM、 JS 与原生平台创建多平台库，对其进行测试并发布到本地 Maven 仓库。
+   * 使用[这一动手实践](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)构建一个全栈 web 应用程序。
 
-3. **在应用程序中使用库。** Learn more about [adding dependencies on libraries](mpp-add-dependencies.md).
+3. **在应用程序中使用库。** 了解关于[添加对库的依赖](mpp-add-dependencies.md)的更多内容。
 
    |库|详情|
    |-------|-------|
-   | Ktor |  [Docs](https://ktor.io/docs/) and [sample](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/03_A_Simple_API_Server).| 
-   | Serialization |  [Docs](serialization.md) and [sample](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction).|
-   | Coroutines |  [Docs](coroutines-overview.md).|
-   | DateTime | [Docs](https://github.com/Kotlin/kotlinx-datetime#readme).|
-   
-   > You can also find a multiplatform library in the [community-driven list](https://libs.kmp.icerock.dev/).
+   | Ktor |  [文档](https://ktor.io/docs/)与[样例](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/03_A_Simple_API_Server)。| 
+   | Serialization |  [文档](serialization.md)与[样例](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)。|
+   | Coroutines |  [文档](coroutines-overview.md)。|
+   | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)。|
+
+   > 还可以在[社区驱动列表](https://libs.kmp.icerock.dev/)中找到多平台库。
    >
    {type="tip"}
 
 4. **了解关于 Kotlin 多平台程序设计的更多信息：**
 
-   * [Introduction to Kotlin Multiplatform](mpp-intro.md).
-   * [Kotlin Multiplatform supported platforms](mpp-supported-platforms.md).
-   * [Kotlin Multiplatform programming benefits](multiplatform.md).
+   * [Kotlin 多平台介绍](mpp-intro.md)。
+   * [Kotlin 多平台所支持平台](mpp-supported-platforms.md)。
+   * [Kotlin 多平台程序设计优势](multiplatform.md)。
 
 5. **加入 Kotlin 多平台社区：**
 
