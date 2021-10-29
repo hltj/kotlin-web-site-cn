@@ -127,21 +127,33 @@ to discuss Compose for Web, or [#compose](https://kotlinlang.slack.com/archives/
 
 如果不熟悉 Kotlin，那么第一步最好是熟悉该语言的[基本语法](basic-syntax.md)。
 
-要开始将 Kotlin 用于 JavaScript，请参考[搭建 Kotlin/JS 项目](js-project-setup.md)，或者从下一部分中选择<!--
--->动手实验进行操作。
+如需开始将 Kotlin 用于 JavaScript，请参考[搭建 Kotlin/JS 项目](js-project-setup.md)。 You can also
+pick a [hands-on](#hands-on-labs-for-kotlin-js) lab to work through or check out the list of [Kotlin/JS sample projects](#sample-projects-for-kotlin-js)
+for inspiration. They contain useful snippets and patterns and can serve as nice jump-off points for your own projects.
 
 ## Kotlin/JS 实践实验室
 
-动手实验室是一种长形式的教程，通过一个与特定主题相关的独立<!--
--->项目来帮助了解一种技术。
+* [Building Web Applications with React and Kotlin/JS](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction)
+guides you through the process of building a simple web application using the React framework, shows how a type-safe Kotlin
+DSL for HTML makes it easy to build reactive DOM elements, and illustrates how to use third-party React components and
+obtain information from APIs, all while writing the whole application logic in pure Kotlin/JS.
 
-它们包括示例项目，这些示例项目可用作自己的项目的起点，并包含有用的代码片段与模式。
+* [Building a Full Stack Web App with Kotlin Multiplatform](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)
+teaches the concepts behind building an application that targets Kotlin/JVM and Kotlin/JS by building a client-server
+application that makes use of shared code, serialization, and other multiplatform paradigms. It also provides a brief
+introduction to working with Ktor both as a server- and client-side framework.
 
-对于 Kotlin/JS，当前有以下实践实验：
+## Sample projects for Kotlin/JS
 
-* [使用 React 与 Kotlin/JS 构建 Web 应用程序](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction)将指导完成使用 React 框架构建简单 Web 应用程序的过程，展示用于 HTML 的类型安全的 Kotlin DSL 如何使构建反应式 DOM 元素更加方便，并说明了如何使用第三方 React 组件，以及如何从 API 获取信息，同时使用纯 Kotlin/JS 编写整个应用程序逻辑。
-
-* [使用 Kotlin 多平台构建全栈 Web 应用](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)通过构建使用公共代码、序列化与其他多平台范式的客户端服务器应用程序，讲授了构建针对 Kotlin/JVM 与 Kotlin/JS 的应用程序的概念。它还简要介绍了如何将 Ktor 作为服务器与客户端框架使用。
+* [Full-stack Spring collaborative to-do list](https://github.com/Kotlin/full-stack-spring-collaborative-todo-list-sample)
+shows how to create a to-do list for collaborative work using `kotlin-multiplatform` with JS and JVM targets, Spring
+for the backend, Kotlin/JS with React for the frontend, and RSocket.
+* [Kotlin/JS and React Redux to-do list](https://github.com/Kotlin/react-redux-js-ir-todo-list-sample) implements
+the React Redux to-do list using JS libraries (`react`, `react-dom`, `react-router`, `redux`, and `react-redux`)
+from npm and Webpack to bundle, minify, and run the project.
+* [Full-stack demo application](https://github.com/Kotlin/full-stack-web-jetbrains-night-sample) guides you through
+the process of building an app with a feed containing user-generated posts and comments. All data is stubbed by
+the fakeJSON and JSON Placeholder services.
 
 ## 新的 Kotlin/JS IR 编译器
 
