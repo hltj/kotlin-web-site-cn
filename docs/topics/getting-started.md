@@ -117,37 +117,37 @@
 
 <tab title="前端 web 应用">
 
-Kotlin provides an ability to transpile your Kotlin code, the Kotlin standard library, and any compatible dependencies to JavaScript.
+Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项转换为 JavaScript。
 
-Here you'll learn how to develop and improve your frontend web application using [Kotlin/JS](js-overview.md).
+在此可以了解到如何使用 [Kotlin/JS](js-overview.md) 开发及改进前端 web 应用程序。
 
 1. **安装[IntelliJ IDEA 最新版](https://www.jetbrains.com/idea/download/index.html)。**
 
 2. **创建第一个前端 web 应用程序：**
 
-   * To start from scratch, [create a basic browser application with the IntelliJ IDEA project wizard](js-project-setup.md).
-   * If you prefer more robust examples, complete the [Building Web Applications with React and Kotlin/JS](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction) hands-on tutorial. It includes a sample project that can serve as a good starting point for your own projects, and contains useful snippets and templates.
-   * Check out the list of [Kotlin/JS samples](js-samples.md) for more ideas on how to use Kotlin/JS.
+   * 从头开始，[使用 IntelliJ IDEA 项目向导创建一个基本的浏览器应用程序](js-project-setup.md)。
+   * 如果倾向于更健壮的示例，那么请完成[使用 React 与 Kotlin/JS 构建 web 应用程序](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction)动手实践教程。 它有一个可以作为你自己项目良好起点的样例项目，其中包含有用的片段和模板。
+   * 查看 [Kotlin/JS 样例](js-samples.md)列表，了解关于如何使用 Kotlin/JS 的更多看法。
 
-3. **在应用程序中使用库。** Learn more about [adding dependencies](js-project-setup.md#依赖项).  
+3. **在应用程序中使用库。** 了解[添加依赖项](js-project-setup.md#依赖项)的更多信息。  
     
    |库 | 详情 |
    |--------|---------|
-   |[stdlib](https://kotlinlang.org/api/latest/jvm/stdlib/) | The Kotlin standard library included in all projects by default. |
-   |[kotlinx.browser](browser-api-dom.md)| The Kotlin library for accessing browser-specific functionality, including typical top-level objects such as document and window. |
-   |[kotlinx.html](typesafe-html-dsl.md) | The Kotlin library for generating DOM elements using statically-typed HTML builders.|
-   |[Ktor](https://ktor.io/) | The Kotlin multiplatform library for networking. |
-   |[KVision](https://kvision.io/) | A third-party object-oriented web framework for Kotlin/JS.|
-   |[fritz2](https://www.fritz2.dev/)| A third-party lightweight, high-performance, independent library for building reactive web apps in Kotlin that are heavily dependent on coroutines and flows.|
-   |[Doodle](https://nacular.github.io/doodle/) | A third-party vector-based UI framework that uses browser's capabilities to draw user interfaces.|
-   |Compose for Web, a part of [Compose Multiplatform](https://www.jetbrains.com/lp/compose-mpp/) | The JetBrains framework that brings [Google's Jetpack Compose UI toolkit](https://developer.android.com/jetpack/compose) to the browser (currently with [Alpha](components-stability.md) stability).|
-   |[kotlin-wrappers](https://github.com/JetBrains/kotlin-wrappers) | Provide convenient abstractions and deep integrations for one of the most popular JavaScript frameworks. Kotlin wrappers also provide support for a number of adjacent technologies like `react-redux`, `react-router`, or `styled-components`. |
+   |[stdlib](https://kotlinlang.org/api/latest/jvm/stdlib/) | 默认所有项目都包含了的 Kotlin 标准库。 |
+   |[kotlinx.browser](browser-api-dom.md)| 用于访问浏览器相关功能的 Kotlin 库，包括典型的顶层对象，如 document 与 window。 |
+   |[kotlinx.html](typesafe-html-dsl.md) | 使用静态类型的 HTML 构建器生成 DOM 元素的 Kotlin 库。|
+   |[Ktor](https://ktor.io/) | 用于联网的 Kotlin 多平台库。 |
+   |[KVision](https://kvision.io/) | 用于 Kotlin/JS 的一个第三方面向对象 web 框架。|
+   |[fritz2](https://www.fritz2.dev/)| 一个轻量级、高性能、独立的第三方库，用于在 Kotlin 中构建高度依赖协程与流的反应式 web 应用。|
+   |[Doodle](https://nacular.github.io/doodle/) | 一个基于矢量的第三方 UI 框架，使用浏览器的功能来绘制用户界面。|
+   |Compose for Web，[Compose Multiplatform](https://www.jetbrains.com/lp/compose-mpp/) 的一部分 | 将 [谷歌的 Jetpack Compose UI 工具包](https://developer.android.com/jetpack/compose)带到浏览器的 JetBrains 框架（目前处于 [Alpha](components-stability.md) 状态）。|
+   |[kotlin-wrappers](https://github.com/JetBrains/kotlin-wrappers) | 为最流行的 JavaScript 框架之一提供方便的抽象与深度集成。 Kotlin wrappers 还为许多类似技术提供支持，例如 `react-redux`、 `react-router` 或者 `styled-components`。 |
 
 4. **了解关于 Kotlin 用于前端 web 开发的更多信息：**
 
-   * The [new Kotlin/JS IR compiler](js-ir-compiler.md) (currently with [Beta](components-stability.md) stability).
-   * [Using dependencies from npm](using-packages-from-npm.md).
-   * [Using Kotlin code from JavaScript](js-to-kotlin-interop.md).
+   * [新版 Kotlin/JS IR 编译器](js-ir-compiler.md)（目前处于 [Beta](components-stability.md) 状态）。
+   * [使用来自 npm 的依赖项](using-packages-from-npm.md)。
+   * [在 JavaScript 中使用 Kotlin 代码](js-to-kotlin-interop.md)。
 
 5. **加入 Kotlin 前端 web 社区：**
 
