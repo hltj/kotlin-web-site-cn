@@ -15,7 +15,7 @@
 -->所有平台的各个地方。
 * 借助 Kotlin 多平台库，可以在公共代码以及平台相关代码中复用多平台逻辑。
 公共代码可以依赖一组涵盖日常任务的库，例如 [HTTP](https://ktor.io/clients/http-client/multiplatform.html)、 [序列化（serialization）](https://github.com/Kotlin/kotlinx.serialization)与<!--
-* -->[管理协程（coroutines）](https://github.com/Kotlin/kotlinx.coroutines)。
+-->[管理协程（coroutines）](https://github.com/Kotlin/kotlinx.coroutines)。
 * 如需与平台互操作，请使用平台相关的 Kotlin 版本。**平台相关的 Kotlin 版本** 
 （Kotlin/JVM、 Kotlin/JS、 Kotlin/Native）包含对 Kotlin 语言的扩展以及平台相关的库与工具。 
 * 通过这些平台可以访问**平台原生代码**（JVM、 JS 与 Native）并利用所有原生<!--
