@@ -128,7 +128,7 @@ to discuss Compose for Web, or [#compose](https://kotlinlang.slack.com/archives/
 如果不熟悉 Kotlin，那么第一步最好是熟悉该语言的[基本语法](basic-syntax.md)。
 
 如需开始将 Kotlin 用于 JavaScript，请参考[搭建 Kotlin/JS 项目](js-project-setup.md)。 You can also
-pick a [hands-on](#hands-on-labs-for-kotlin-js) lab to work through or check out the list of [Kotlin/JS sample projects](#sample-projects-for-kotlin-js)
+pick a [hands-on](#kotlin-js-动手实践实验室) lab to work through or check out the list of [Kotlin/JS sample projects](#kotlin-js-样例项目)
 for inspiration. They contain useful snippets and patterns and can serve as nice jump-off points for your own projects.
 
 ## Kotlin/JS 动手实践实验室
@@ -143,7 +143,7 @@ teaches the concepts behind building an application that targets Kotlin/JVM and 
 application that makes use of shared code, serialization, and other multiplatform paradigms. It also provides a brief
 introduction to working with Ktor both as a server- and client-side framework.
 
-## Sample projects for Kotlin/JS
+## Kotlin/JS 样例项目
 
 * [Full-stack Spring collaborative to-do list](https://github.com/Kotlin/full-stack-spring-collaborative-todo-list-sample)
 shows how to create a to-do list for collaborative work using `kotlin-multiplatform` with JS and JVM targets, Spring
