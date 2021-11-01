@@ -21,32 +21,32 @@
 * 通过这些平台可以访问**平台原生代码**（JVM、 JS 与 Native）并利用所有原生<!--
 -->功能。
 
-With Kotlin Multiplatform, spend less time on writing and maintaining the same code for [different platforms](mpp-supported-platforms.md)
- – just share it using the mechanisms Kotlin provides:
+使用 Kotlin 多平台，花更少的时间为[不同平台](mpp-supported-platforms.md)编写并维护相同的代码
+——只需使用 Kotlin 提供的机制进行共享即可：
 
-* [Share code among all platforms used in your project](mpp-share-on-platforms.md#对所有平台共享代码). Use it for sharing the common 
-business logic that applies to all platforms. 
+* [在项目中用到的所有平台之间共享代码](mpp-share-on-platforms.md#对所有平台共享代码)。 用以共享适用于<!--
+-->所有平台的公共业务逻辑。
      
-    ![Code shared for all platforms](flat-structure.png)
+    ![所有平台共享的代码](flat-structure.png)
     
-* [Share code among some platforms](mpp-share-on-platforms.md#对相似平台共享代码) included in your project but not all. Do this 
-when you can reuse much of the code in similar platforms.  
+* 在项目中包含的[某些平台（而不是所有平台）间共享代码](mpp-share-on-platforms.md#对相似平台共享代码)。 当<!--
+* -->可以对类似的平台共享大量代码时请这么用。 
     
-    ![Hierarchical structure](hierarchical-structure.png)
+    ![分层结构](hierarchical-structure.png)
 
-    ![Code shared for iOS targets](iosmain-hierarchy.png){width=400}
+    ![为 iOS 目标共享代码](iosmain-hierarchy.png){width=400}
 
-If you need to access platform-specific APIs from the shared code, use the Kotlin mechanism of [expected and actual 
-declarations](mpp-connect-to-apis.md).
+如果需要从共享代码中访问平台相关的 API，请使用 Kotlin 的<!--
+-->[预期声明与实际声明](mpp-connect-to-apis.md)机制。
 
-With this mechanism, a common source set defines an _expected declaration_, and platform source sets must provide the 
-_actual declaration_ that corresponds to the expected declaration. This works for most Kotlin declarations, such as 
-functions, classes, interfaces, enumerations, properties, and annotations.
+使用这一机制，公共源代码集定义一个*预期（expect）声明*，平台源代码集必须提供<!--
+-->与该预期声明对应的*实际（actual）声明*。 这适用于大多数 Kotlin 声明，例如<!-- 
+-->函数、 类、 接口、 枚举、 属性以及注解。
 
 ![Expect and actual declarations](expect-actual.png){width=700}
 
 ```kotlin
-//Common
+//公共
 expect fun randomUUID(): String
 ```
 
