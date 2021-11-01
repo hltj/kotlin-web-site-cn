@@ -4,22 +4,22 @@
 >
 {type="note"}
 
-Support for multiplatform programming is one of Kotlin’s key benefits. It reduces time spent writing and maintaining the
- same code for [different platforms](mpp-supported-platforms.md) while retaining the flexibility and benefits of native programming. 
+支持多平台程序设计是 Kotlin 的主要优势之一。 它减少了为[不同平台](mpp-supported-platforms.md)<!--
+-->编写与维护相同代码所花的时间，同时保留了原生编程的灵活性与优势。 
 
-This is how Kotlin Multiplatform works.
+以下是 Kotlin 多平台的工作原理。
 
-![Kotlin Multiplatform](kotlin-multiplatform.png){width=500}
+![Kotlin 多平台](kotlin-multiplatform.png){width=500}
 
-*   **Common Kotlin** includes the language, core libraries, and basic tools. Code written in common Kotlin works 
-everywhere on all platforms.
-*   With Kotlin Multiplatform libraries, you can reuse the multiplatform logic in common and platform-specific code. 
-Common code can rely on a set of libraries that cover everyday tasks such as [HTTP](https://ktor.io/clients/http-client/multiplatform.html), [serialization](https://github.com/Kotlin/kotlinx.serialization), and [managing 
-coroutines](https://github.com/Kotlin/kotlinx.coroutines).
-*   To interop with platforms, use platform-specific versions of Kotlin. **Platform-specific versions of Kotlin** 
-(Kotlin/JVM, Kotlin/JS, Kotlin/Native) include extensions to the Kotlin language, and platform-specific libraries and tools. 
-*   Through these platforms you can access the **platform native code** (JVM, JS, and Native) and leverage all native
- capabilities.
+* **公共 Kotlin** 包括语言、核心库与基本工具。 用公共 Kotlin 编写的代码适用于<!-- 
+-->所有平台的各个地方。
+* 借助 Kotlin 多平台库，可以在公共代码以及平台相关代码中复用多平台逻辑。
+公共代码可以依赖一组涵盖日常任务的库，例如 [HTTP](https://ktor.io/clients/http-client/multiplatform.html)、 [序列化（serialization）](https://github.com/Kotlin/kotlinx.serialization)与<!--
+* -->[管理协程（coroutines）](https://github.com/Kotlin/kotlinx.coroutines)。
+* 如需与平台互操作，请使用平台相关的 Kotlin 版本。**平台相关的 Kotlin 版本** 
+（Kotlin/JVM、 Kotlin/JS、 Kotlin/Native）包含对 Kotlin 语言的扩展以及平台相关的库与工具。 
+* 通过这些平台可以访问**平台原生代码**（JVM、 JS 与 Native）并利用所有原生<!--
+-->功能。
 
 With Kotlin Multiplatform, spend less time on writing and maintaining the same code for [different platforms](mpp-supported-platforms.md)
  – just share it using the mechanisms Kotlin provides:
