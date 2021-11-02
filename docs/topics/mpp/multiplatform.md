@@ -108,6 +108,6 @@ Android and iOS). It also shows how to write tests which will be executed on all
   
 ## 样例项目
 
-- [[Kotlin 多平台移动端（KMM）样例](kmm-samples.md)
+- [Kotlin 多平台移动端（KMM）样例](kmm-samples.md)
 - [KotlinConf app](https://github.com/JetBrains/kotlinconf-app) 
 - [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)
