@@ -30,7 +30,7 @@
     ![所有平台共享的代码](flat-structure.png)
     
 * 在项目中包含的[某些平台（而不是所有平台）间共享代码](mpp-share-on-platforms.md#对相似平台共享代码)。 当<!--
-* -->可以对类似的平台共享大量代码时请这么用。 
+-->可以对类似的平台共享大量代码时请这么用。 
     
     ![分层结构](hierarchical-structure.png)
 
