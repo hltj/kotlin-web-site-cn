@@ -12,7 +12,7 @@ such as concurrency and actors.
 
 ## 如何开始
 
-Kotlin 新手？可以看看[入门](getting-started.md)页。
+刚接触 Kotlin？可以看看[入门](getting-started.md)页。
 
 ### 文档
 

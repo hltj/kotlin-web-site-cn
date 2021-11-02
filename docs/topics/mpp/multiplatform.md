@@ -66,11 +66,11 @@ actual fun randomUUID(): String = NSUUID().UUIDString()
 
 ### Android——iOS
 
-移动平台之间共享代码是 Kotlin 多平台的主要使用场景之一。 With Kotlin Multiplatform Mobile (KMM),
-you can build multiplatform mobile applications sharing code, such as business logic, connectivity, 
-and more, between Android and iOS.
+移动平台之间共享代码是 Kotlin 多平台的主要使用场景之一。 借助 Kotlin 多平台移动端（KMM，Kotlin Multiplatform Mobile），
+可以构建在 Android 与 iOS 之间共享代码的多平台移动端应用程序，
+例如可共享业务逻辑、连接性等。
 
-See [KMM features, case studies and examples](https://kotlinlang.org/lp/mobile/)
+参见 [KMM 特性、案例研究与示例](https://kotlinlang.org/lp/mobile/)
 
 ### 客户端——服务器端
 
@@ -82,14 +82,14 @@ See [KMM features, case studies and examples](https://kotlinlang.org/lp/mobile/)
 
 ## 接下来做什么？
 
-New to Kotlin? Visit [Getting started with Kotlin](getting-started.md).
+刚接触 Kotlin？可以看看 [Kotlin 入门](getting-started.md)页。
 
 ### 文档
 
-* [Get started with Kotlin Multiplatform Mobile (KMM)](kmm-getting-started.md)
-* [Create a multiplatform project](mpp-create-lib.md)
-* [Share code on multiple platforms](mpp-share-on-platforms.md)
-* [Connect to platform-specific APIs](mpp-connect-to-apis.md)
+* [Kotlin 多平台移动端（KMM）入门](kmm-getting-started.md)
+* [创建多平台项目](mpp-create-lib.md)
+* [在多个平台上共享代码](mpp-share-on-platforms.md)
+* [接入平台相关 API](mpp-connect-to-apis.md)
 
 ### 教程
 
@@ -108,6 +108,6 @@ Android and iOS). It also shows how to write tests which will be executed on all
   
 ## 样例项目
 
-- [Kotlin Multiplatform Mobile (KMM) samples](kmm-samples.md)
+- [[Kotlin 多平台移动端（KMM）样例](kmm-samples.md)
 - [KotlinConf app](https://github.com/JetBrains/kotlinconf-app) 
 - [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)

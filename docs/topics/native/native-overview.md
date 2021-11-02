@@ -60,7 +60,7 @@ Kotlin code in one place and share it with all or several target platforms.
 
 ### Tutorials and documentation
 
-Kotlin 新手？可以看看[ Kotlin 入门](getting-started.md)页。
+刚接触 Kotlin？可以看看 [Kotlin 入门](getting-started.md)页。
 
 Recommended documentation: 
 - [Kotlin 移动端多平台文档](kmm-getting-started.md)
