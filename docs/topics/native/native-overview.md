@@ -15,12 +15,12 @@ Kotlin/Native 的主要设计目标是让 Kotlin 可以为不希望或者不可�
 
 Kotlin/Native 支持以下平台：
    * macOS
-   * iOS, tvOS, watchOS
+   * iOS、 tvOS、 watchOS
    * Linux
-   * Windows (MinGW)
+   * Windows（MinGW）
    * Android NDK
 
-[The full list of supported targets is available here](mpp-supported-platforms.md).
+[可在这里获取所支持目标的完整列表](mpp-supported-platforms.md)。
 
 
 ## 互操作
@@ -51,26 +51,26 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 ## 在多个平台之间共享代码
 
 [多平台项目](multiplatform.md)允许在多个平台之间共享公共的 Kotlin 代码，包括：Android、iOS、JVM、JavaScript 与原生。
-Multiplatform libraries provide required APIs for the common Kotlin code and help develop shared parts of a project in
-Kotlin code in one place and share it with all or several target platforms.
+多平台库为公共 Kotlin 代码提供了所需的 API，并且有助于在一处用 Kotlin 代码开发项目的共享部分，
+并将其与所有或多个目标平台共享。
 
 可以使用 [Kotlin 移动端多平台（KMM）](https://kotlinlang.org/lp/mobile/)通过 Android 与 iOS 之间共享代码创建多平台移动应用程序。
 
-## How to start
+## 如何开始
 
-### Tutorials and documentation
+### 教程与文档
 
 刚接触 Kotlin？可以看看 [Kotlin 入门](getting-started.md)页。
 
-Recommended documentation: 
+推荐文档：
 - [Kotlin 移动端多平台文档](kmm-getting-started.md)
 - [多平台文档](mpp-intro.md)
 - [C 语言互操作](native-c-interop.md)
 - [Swift/Objective-C 互操作](native-objc-interop.md)
 
-Recommended tutorials:
-* [Get started with Kotlin/Native](native-get-started.md)
-* [Create your first KMM application](kmm-create-first-app.md)
+推荐教程：
+* [Kotlin/Native 入门](native-get-started.md)
+* [创建第一个 KMM 应用程序](kmm-create-first-app.md)
 - [C 语言 Kotlin/Native 之间的类型映射](mapping-primitive-data-types-from-c.md)
 - [Kotlin/Native 开发动态库](native-dynamic-libraries.md)
 - [Kotlin/Native 开发 Apple 框架](apple-framework.md)
@@ -79,8 +79,8 @@ Recommended tutorials:
 
 * [Kotlin 移动端多平台示例](kmm-samples.md)
 * [Kotlin/Native 源代码与示例](https://github.com/JetBrains/kotlin/tree/master/kotlin-native/samples) 
-* [KotlinConf app](https://github.com/JetBrains/kotlinconf-app) 
-* [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)
+* [KotlinConf 应用](https://github.com/JetBrains/kotlinconf-app) 
+* [KotlinConf Spinner 应用](https://github.com/jetbrains/kotlinconf-spinner)
 * [Kotlin/Native 源代码与示例（.tgz）](https://download.jetbrains.com/kotlin/native/kotlin-native-samples-1.0.1.tar.gz)
 * [Kotlin/Native 源代码与示例（.zip）](https://download.jetbrains.com/kotlin/native/kotlin-native-samples-1.0.1.zip)
 
