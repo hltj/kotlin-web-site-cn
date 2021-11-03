@@ -8,7 +8,7 @@ Kotlin/JS 提供了转换 Kotlin 代码、Kotlin 标准库的能力，并且兼�
 这包括基本特性，例如控制应用程序的捆绑，直接从 npm 添加 JavaScript 依赖项等等。要获得<!--
 -->可用选项的概述，请查看[搭建 Kotlin/JS 项目](js-project-setup.md)文档。
 
-## Use cases for Kotlin/JS
+## Kotlin/JS 的使用场景
 
 有很多可以使用 Kotlin/JS 的方法。为了给出一些启发，这里列出了可以使用 Kotlin/JS
 的场景的一个不完全的清单。

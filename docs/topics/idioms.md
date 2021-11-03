@@ -2,7 +2,7 @@
 
 一些在 Kotlin 中广泛使用的语法习惯，如果你有更喜欢的语法习惯或者风格，建一个 pull request 贡献给我们吧！
 
-### 创建 DTOs（POJOs/POCOs）
+### 创建 DTO（POJO/POCO）
 
 ```kotlin
 data class Customer(val name: String, val email: String)
@@ -10,7 +10,7 @@ data class Customer(val name: String, val email: String)
 
 会为 `Customer` 类提供以下功能：
 
-* 所有属性的 getters （对于 `var` 定义的还有 setters）
+* 所有属性的 getter （对于 `var` 定义的还有 setter）
 * `equals()`
 * `hashCode()`
 * `toString()`
@@ -35,7 +35,7 @@ val positives = list.filter { x -> x > 0 }
 val positives = list.filter { it > 0 }
 ```
 
-Learn the difference between [Java and Kotlin filtering](java-to-kotlin-idioms-strings.md#create-a-string-from-collection-items).
+了解 [Java 与 Kotlin 过滤](java-to-kotlin-idioms-strings.md#create-a-string-from-collection-items)的区别。
 
 ### 检测元素是否存在于集合中
 
@@ -51,7 +51,7 @@ if ("jane@example.com" !in emailsList) { …… }
 println("Name $name")
 ```
 
-Learn the difference between [Java and Kotlin string concatenation](java-to-kotlin-idioms-strings.md#concatenate-strings).
+了解 [Java 与 Kotlin 字符串连接](java-to-kotlin-idioms-strings.md#concatenate-strings)的区别。
 
 ### 类型判断
 
@@ -74,7 +74,7 @@ val list = listOf("a", "b", "c")
 val map = mapOf("a" to 1, "b" to 2, "c" to 3)
 ```
 
-## Access a map entry
+## 访问 map 条目
 
 ```kotlin
 println(map["key"])
@@ -89,7 +89,7 @@ for ((k, v) in map) {
 }
 ```
 
-`k` and `v` can be any convenient names, such as `name` and `age`.
+`k` 与 `v` 可以是任何适宜的名称，例如 `name` 与 `age`。
 
 ### 区间迭代
 
@@ -125,7 +125,7 @@ object Resource {
 }
 ```
 
-## Instantiate an abstract class
+## 实例化一个抽象类
 
 ```kotlin
 abstract class MyAbstractClass {
@@ -136,17 +136,17 @@ abstract class MyAbstractClass {
 fun main() {
     val myObject = object : MyAbstractClass() {
         override fun doSomething() {
-            // ...
+            // ……
         }
 
-        override fun sleep() { // ...
+        override fun sleep() { // ……
         }
     }
     myObject.doSomething()
 }
 ```
 
-## If-not-null 缩写
+## if-not-null 缩写
 
 ```kotlin
 val files = File("Test").listFiles()
@@ -154,7 +154,7 @@ val files = File("Test").listFiles()
 println(files?.size) // size is printed if files is not null
 ```
 
-## If-not-null-else 缩写
+## if-not-null-else 缩写
 
 ```kotlin
 val files = File("Test").listFiles()
@@ -236,7 +236,7 @@ fun foo(param: Int) {
 }
 ```
 
-### 返回类型为 Unit 的方法的 Builder 风格用法
+### 返回类型为 Unit 的方法的构建器风格用法
 
 ```kotlin
 fun arrayOfMinusOnes(size: Int): IntArray {
@@ -353,7 +353,7 @@ fun calcTaxes(): BigDecimal = TODO("Waiting for feedback from accounting")
 
 IntelliJ IDEA 的 kotlin 插件理解 `TODO()` 的语言，并且会自动在 TODO 工具窗口中添加代码指示。 
 
-## What’s next?
+## 下一步做什么？
 
-* Solve [Advent of Code puzzles](advent-of-code.md) using the idiomatic Kotlin style
-* Learn how to perform [typical tasks with strings in Java and Kotlin](java-to-kotlin-idioms-strings.md)
+* 使用地道 Kotlin 风格求解 [Advent of Code 谜题](advent-of-code.md)
+* 了解[在 Java 与 Kotlin 中如何处理字符串的典型任务](java-to-kotlin-idioms-strings.md)

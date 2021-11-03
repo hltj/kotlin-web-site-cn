@@ -17,7 +17,7 @@ Kotlin 非常适合开发服务器端应用程序，可以让你编写简明且�
 
 ## 使用 Kotlin 进行服务器端开发的框架
 
-* [Spring](https://spring.io) 利用 Kotlin 的语言功能提供[更简洁的 API](https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0)，
+* [Spring](https://spring.io) 利用 Kotlin 的语言功能提供[更简洁的 API](https://hltj.me/kotlin/2017/05/23/kotlin-support-in-spring5.html)，
   从版本 5.0 开始。[在线项目生成器](https://start.spring.io/#!language=kotlin)可以让你用 Kotlin 快速生成一个新项目。
 
  * [Vert.x](https://vertx.io) 是在 JVM 上构建反应式 Web 应用程序的框架， 
@@ -30,7 +30,7 @@ Kotlin 非常适合开发服务器端应用程序，可以让你编写简明且�
 
  * [Micronaut](https://micronaut.io/) 是基于 JVM 的现代全栈框架，用于构建模块化、易于测试的微服务与无服务器应用程序。它带有许多内置的便捷功能。
 
- * [http4k](https://http4k.org/) is the functional toolkit with a tiny footprint for Kotlin HTTP applications, written in pure Kotlin. The library is based on the "Your Server as a Function" paper from Twitter and represents modeling both HTTP Servers and Clients as simple Kotlin functions that can be composed together.
+ * [http4k](https://http4k.org/)是一个纯 Kotlin 编写、占用空间很小的用于 Kotlin HTTP 应用程序的函数式工具包。 该库基于 Twitter 的论文《你的服务器即函数》（Your Server as a Function），并将 HTTP 服务器与客户端都建模为可以组合起来的简单 Kotlin 函数。
 
  * [Javalin](https://javalin.io) 是用于 Kotlin 与 Java 的非常轻量级的 Web 框架，支持 WebSockets、HTTP2 与异步请求。
 
@@ -64,6 +64,6 @@ AWS Labs 提供了一个[示例项目](https://github.com/awslabs/serverless-pho
 * 关于更深入的介绍，请查看本站的 Kotlin 文档及
 [Kotlin 心印](koans.md)。
 * Micronaut 还提供了很多详细的[指南](https://guides.micronaut.io/tags/kotlin.html)，展示了如何使用 Kotlin 构建微服务。
-* http4k provides the [CLI](https://toolbox.http4k.org) to generate fully formed projects, and a [starter](https://start.http4k.org) repo to generate an entire CD pipeline using GitHub, Travis, and Heroku with a single bash command.
-* Want to migrate from Java to Kotlin? Learn how to perform [typical tasks with strings in Java and Kotlin](java-to-kotlin-idioms-strings.md).
+* http4k 提供了生成完整项目的 [CLI](https://toolbox.http4k.org)（译注：命令行界面），以及通过单条 bash 命令使用 GitHub、Travis 与 Heroku 生成整套 CD（译注：持续交付）流水线的 [starter](https://start.http4k.org) 仓库。
+* 想要从 Java 迁移到 Kotlin 吗？了解下[在 Java 与 Kotlin 中如何处理字符串的典型任务](java-to-kotlin-idioms-strings.md)。
 

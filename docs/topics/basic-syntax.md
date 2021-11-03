@@ -1,10 +1,10 @@
 [//]: # (title: 基本语法)
 
-This is a collection of basic syntax elements with examples. At the end of every section, you'll find a link to
-a detailed description of the related topic.
+这是一组基本语法元素及示例。在每段的末尾都有<!--
+-->一个指向相关主题详述的链接。
 
-You can also learn all the Kotlin essentials with the free [Kotlin Basics track](https://hyperskill.org/tracks/18)
-on JetBrains Academy.
+也可以通过 JetBrains 学院上的免费 [Kotlin 基础课程](https://hyperskill.org/tracks/18)学习所有
+Kotlin 要领。
 
 ## 包的定义与导入
 
@@ -33,7 +33,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-Another form of `main` accepts a variable number of `String` arguments. 
+`main` 的另一种形式接受可变数量的 `String` 参数。 
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -42,9 +42,9 @@ fun main(args: Array<String>) {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-## Print to the standard output
+## 输出打到标准输出
 
-`print` prints its argument to the standard output.
+`print` 将其参数打到标准输出。
 
 ```kotlin
 fun main() {
@@ -56,7 +56,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-`println` prints its arguments and adds a line break, so that the next thing you print appears on the next line.
+`println` 输出其参数并添加换行符，以便接下来输出的内容出现在下一行。
 
 ```kotlin
 fun main() {
@@ -86,7 +86,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-A function body can be an expression. Its return type is inferred.
+函数体可以是表达式。其返回类型可以推断出来。
 
 ```kotlin
 //sampleStart
@@ -161,7 +161,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-You can declare variables at the top level.
+可以在顶层声明变量。
 
 ```kotlin
 //sampleStart
@@ -182,16 +182,16 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-See also [Properties](properties.md).
+参见[属性](properties.md)。
 
 ## 创建类与实例
 
-To define a class, use the `class` keyword.
+使用 `class` 关键字定义类。
 ```kotlin
 class Shape
 ```
 
-Properties of a class can be listed in its declaration or body. 
+类的属性可以在其声明或主体中列出。 
 
 ```kotlin
 class Rectangle(var height: Double, var length: Double) {
@@ -199,7 +199,7 @@ class Rectangle(var height: Double, var length: Double) {
 }
 ```
 
-The default constructor with parameters listed in the class declaration is available automatically. 
+具有类声明中所列参数的默认构造函数会自动可用。 
 
 ```kotlin
 class Rectangle(var height: Double, var length: Double) {
@@ -214,8 +214,8 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-Inheritance between classes is declared by a colon (`:`). Classes are final by default; to make a class inheritable, 
-mark it as `open`.
+类之间继承由冒号（`:`）声明。默认情况下类都是 final 的；如需让一个类可继承， 
+请将其标记为 `open`。
 
 ```kotlin
 open class Shape
@@ -225,7 +225,7 @@ class Rectangle(var height: Double, var length: Double): Shape() {
 }
 ```
 
-See [classes](classes.md) and [objects and instances](object-declarations.md).
+参见[类](classes.md)以及[对象与实例](object-declarations.md)。
 
 ## 注释
 
@@ -494,7 +494,7 @@ fun main() {
 
 ## 空值与空检测
 
-A reference must be explicitly marked as nullable when `null` value is possible. Nullable type names have `?` at the end.
+当可能用 `null` 值时，必须将引用显式标记为可空。可空类型名称以问号（`?`）结尾。
 
 如果 `str` 的内容不是数字返回 `null`：
 
