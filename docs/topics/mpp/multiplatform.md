@@ -93,21 +93,21 @@ actual fun randomUUID(): String = NSUUID().UUIDString()
 
 ### 教程
 
-* [Create your first KMM application](kmm-create-first-app.md) shows how to create a mobile application that works on Android and iOS with the help of the [KMM plugin for Android Studio](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile).
-Create, run, and test your first multiplatform mobile application.
+* [创建第一个 KMM 应用程序](kmm-create-first-app.md)展示了如何借助[用于 Android Studio 的 KMM 插件](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile)来创建可用于 Android 与 iOS 的移动端应用程序。
+创建、运行并测试第一个多平台移动端应用程序。
 
-* [Creating a multiplatform Kotlin library](multiplatform-library.md) teaches how to create a multiplatform 
-library available for JVM, JS, and Native and which can be used from any other common code (for example, shared with 
-Android and iOS). It also shows how to write tests which will be executed on all platforms and use an efficient implementation
- provided by a specific platform.
+* [创建多平台 Kotlin 库](multiplatform-library.md)讲授了如何创建一个<!-- 
+-->可用于 JVM、 JS 以及原生平台的多平台库，可以在任何其他公共代码中使用该库（例如，与 
+Android 及 iOS 共享）。 还展示了如何编写会在所有平台上执行的测试，并使用<!--
+-->特定平台提供的高效实现。
  
-* [Building a full stack web app with Kotlin Multiplatform](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction) 
-  teaches the concepts behind building an application that targets Kotlin/JVM and Kotlin/JS by building a client-server 
-  application that makes use of shared code, serialization, and other multiplatform paradigms. It also provides a brief
-  introduction to working with Ktor both as a server- and client-side framework.
+* [使用 Kotlin 多平台构建全栈 web 应用](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)<!--
+-->通过构建一个利用共享代码、序列化以及其他多平台范式的客户端——服务器应用程序，
+来讲授构建面向 Kotlin/JVM 与 Kotlin/JS 的应用程序背后的概念。还简要<!--
+-->介绍了如何使用 Ktor 作为服务器端与客户端框架。
   
 ## 样例项目
 
 - [Kotlin 多平台移动端（KMM）样例](kmm-samples.md)
-- [KotlinConf app](https://github.com/JetBrains/kotlinconf-app) 
-- [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)
+- [KotlinConf 应用](https://github.com/JetBrains/kotlinconf-app) 
+- [KotlinConf Spinner 应用](https://github.com/jetbrains/kotlinconf-spinner)
