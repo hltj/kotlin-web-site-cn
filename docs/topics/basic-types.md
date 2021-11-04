@@ -8,7 +8,7 @@
 
 ## 数字
 
-### Integer types
+### 整数类型
 
 Kotlin 提供了一组表示数字的内置类型。
 对于整数，有四种不同大小的类型，因此值的范围也不同。
@@ -31,7 +31,7 @@ val oneLong = 1L // Long
 val oneByte: Byte = 1
 ```
 
-### Floating-point types
+### 浮点类型
 
 对于实数，Kotlin 提供了浮点类型 `Float` 与 `Double` 类型。
 根据 [IEEE 754 标准](https://zh.wikipedia.org/wiki/IEEE_754)，
@@ -43,13 +43,13 @@ val oneByte: Byte = 1
 | `Float`	 | 32            |24              |8           |6-7         |
 | `Double` | 64            |53              |11          |15-16       |    
   
-You can initialize `Double` and `Float` variables  with numbers having a fractional part.
-It's separated from the integer part by a period (`.`)
+可以使用带小数部分的数字初始化 `Double` 与 `Float` 变量。
+小数部分与整数部分之间用句点（`.`）分隔
 对于以小数初始化的变量，编译器会推断为 `Double` 类型。
 
 ```kotlin
 val pi = 3.14 // Double
-// val one: Double = 1 // Error: type mismatch
+// val one: Double = 1 // 错误：类型不匹配
 val oneDouble = 1.0 // Double
 ```
 
@@ -109,7 +109,7 @@ val hexBytes = 0xFF_EC_DE_5E
 val bytes = 0b11010010_01101001_10010100_10010010
 ```
 
-### Numbers representation on the JVM
+### JVM 平台的数字表示
 
 On the JVM platform, numbers are stored as primitive types: `int`, `double`, and so on. 
 Exceptions are cases when you create a nullable number reference such as `Int?` or use generics.
@@ -181,7 +181,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-All number types support conversions to other types:
+所有数字类型都支持转换为其他类型：
 
 * `toByte(): Byte`
 * `toShort(): Short`
@@ -191,7 +191,7 @@ All number types support conversions to other types:
 * `toDouble(): Double`
 * `toChar(): Char`
 
-In many cases, there is no need for explicit conversions, 因为类型会从上下文推断出来，
+很多情况都不需要显式类型转换，因为类型会从上下文推断出来，
 而算术运算会有重载做适当转换，例如：
 
 ```kotlin
@@ -200,7 +200,7 @@ val l = 1L + 3 // Long + Int => Long
 
 ### 运算
 
-Kotlin支持数字运算的标准集：`+`、 `-`、 `*`、 `/`、 `%`。它们被定义<!--
+Kotlin支持数字运算的标准集：`+`、 `-`、 `*`、 `/`、 `%`。它们已定义<!--
 -->为相应的类成员。
 
 ```kotlin
@@ -215,7 +215,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-You can also override these operators for custom classes. See [Operator overloading](operator-overloading.md) for details.
+还可以为自定义类覆盖这些操作符。详情请参见[操作符重载](operator-overloading.md)。
 
 #### 整数除法
 
@@ -311,7 +311,7 @@ In addition to [integer types](#integer-types), Kotlin provides the following ty
 >
 {type="note"}
 
-#### Unsigned arrays and ranges 
+#### 无符号数组与区间
 
 > Unsigned arrays and operations on them are in [Beta](components-stability.md). They can be changed incompatibly at any time.
 > Opt-in is required (see the details below).
@@ -393,7 +393,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
->**On JVM**: nullable references to boolean objects are boxed similarly to [numbers](#numbers-representation-on-the-jvm).
+>**On JVM**: nullable references to boolean objects are boxed similarly to [numbers](#jvm-平台的数字表示).
 >
 {type="note"}
 
@@ -421,7 +421,7 @@ fun main() {
 
 If a value of character variable is a digit, you can explicitly convert it to an `Int` number using the [`digitToInt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/digit-to-int.html) function.
 
->**On JVM**: Like [numbers](#numbers-representation-on-the-jvm), characters are boxed when a nullable reference is needed.
+>**On JVM**: Like [numbers](#jvm-平台的数字表示), characters are boxed when a nullable reference is needed.
 >Identity is not preserved by the boxing operation.
 >
 {type="note"}

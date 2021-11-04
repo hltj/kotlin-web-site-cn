@@ -662,7 +662,7 @@ Gradle 任务的完整选项列表如下：
 |------|-------------|-----------------|--------------|
 | `allWarningsAsErrors` | 任何警告都报告为错误 |  | false |
 | `suppressWarnings` | 不生成警告 |  | false |
-| `verbose` | 启用详细日志输出。 Works only when the [Gradle debug log level enabled](https://docs.gradle.org/current/userguide/logging.html) |  | false |
+| `verbose` | 启用详细日志输出。 仅在[已启用 Gradle debug 日志](https://docs.gradle.org/current/userguide/logging.html)时才有效 |  | false |
 | `freeCompilerArgs` | 附加编译器参数的列表 |  | [] |
 
 ### JVM 与 JS 的公共属性

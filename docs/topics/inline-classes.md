@@ -94,7 +94,7 @@ fun main() {
 
 在生成的代码中，Kotlin 编译器为每个内联类保留一个包装器。内联类的实例可以在<!--
 -->运行时表示为包装器或者基础类型。这就类似于 `Int`
-可以[表示](basic-types.md#numbers-representation-on-the-jvm)为原生类型 `int` 或者包装器 `Integer`。
+可以[表示](basic-types.md#jvm-平台的数字表示)为原生类型 `int` 或者包装器 `Integer`。
 
 为了生成性能最优的代码，Kotlin 编译更倾向于使用基础类型而不是包装器。
 然而，有时候使用包装器是必要的。一般来说，只要将内联类用作另一种类型，
