@@ -64,6 +64,9 @@ subnav:
         - url: /education/why-teach-kotlin.html
           title: 为什么讲授 Kotlin
 
+        - url: /education/courses.html
+          title: List of Courses
+
 # Reference navigation
 # ====================
 reference:
