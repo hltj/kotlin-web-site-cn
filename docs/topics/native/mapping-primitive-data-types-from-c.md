@@ -1,10 +1,10 @@
-[//]: # (title: 映射来自 C 语言的原始数据类型——教程)
+[//]: # (title: 映射来自 C 语言的原生数据类型——教程)
 
 在本教程中会学习到如何将 C 的数据类型在 Kotlin/Native 中可见，反之亦然。将会：
 - 看到什么是 [C 语言中的数据类型](#c-语言中的类型)
 - 创建一个[小型 C 库](#c-库示例)来使这些类型向外暴露
 - [探查为 C 库生成的 Kotlin API](#探查为-c-库生成的-kotlin-api)
-- 找到如何将 [Kotlin 中的原始类型](#kotlin-中的原始类型)映射到 C 的方法
+- 找到如何将 [Kotlin 中的原生类型](#kotlin-中的原生类型)映射到 C 的方法
 
 ## C 语言中的类型
 
@@ -179,7 +179,7 @@ Check out the [kotlin-multiplatform](mpp-discover-project.md#多平台插件)
 plugin documentation to learn about all the different ways you could configure it.
 
 使用以下内容来创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件<!--
--->来查看 C 的原始类型声明是如何在 Kotlin 中可见的：
+-->来查看 C 的原生类型声明是如何在 Kotlin 中可见的：
 
 ```kotlin
 import interop.*
@@ -196,9 +196,9 @@ fun main() {
 现在已经准备好<!--
 -->[在 IntelliJ IDEA 中打开这个项目](native-get-started.md)<!--
 -->并且看看如何修正这个示例项目。当做完这些之后，
-检查 C 的原始类型是如何映射到 Kotlin/Native 的。
+检查 C 的原生类型是如何映射到 Kotlin/Native 的。
 
-## Kotlin 中的原始类型
+## Kotlin 中的原生类型
 
 在 IntelliJ IDEA 的 __Go to | Declaration__
 或编译器错误的帮助下会看到为 C 函数生成的 API：

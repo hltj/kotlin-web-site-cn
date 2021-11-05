@@ -328,9 +328,9 @@ __attribute__((swift_name("LibKt")))
 ```
 
 可以看到 Kotlin `String` 与 Objective-C `NSString *` 是透明映射的。
-类似地，Kotlin 的 `Unit` 类型被映射到 `void`。我们看到原始类型<!--
--->直接映射。不可空的原始类型透明地映射。
-可空的原始类型被映射到 `Kotlin<TYPE>*` 类型，如[上](#kotlin-数值与-nsnumber)表所示。
+类似地，Kotlin 的 `Unit` 类型被映射到 `void`。我们看到原生类型<!--
+-->直接映射。不可空的原生类型透明地映射。
+可空的原生类型被映射到 `Kotlin<TYPE>*` 类型，如[上](#kotlin-数值与-nsnumber)表所示。
 包括高阶函数 `acceptFunF` 与 `supplyFun`，
 都接收一个 Objective-C 块。
 

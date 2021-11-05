@@ -1,7 +1,7 @@
 [//]: # (title: 映射来自 C 语言的结构与联合类型——教程)
 
 这是本系列的第二篇教程。本系列的第一篇教程是<!--
--->[映射来自 C 语言的原始数据类型](mapping-primitive-data-types-from-c.md)。
+-->[映射来自 C 语言的原生数据类型](mapping-primitive-data-types-from-c.md)。
 系列其余教程包括[映射来自 C 语言的函数指针](mapping-function-pointers-from-c.md)与<!--
 -->[映射来自 C 语言的字符串](mapping-strings-from-c.md)。
 
@@ -165,9 +165,9 @@ fun main() {
 现在已经准备好<!--
 -->[在 IntelliJ IDEA 中打开这个项目](native-get-started.md)<!--
 -->并且看看如何修正这个示例项目。当做了这些之后，
-会看到 C 的原始类型已经被映射到了 Kotlin/Native。
+会看到 C 的原生类型已经被映射到了 Kotlin/Native。
 
-## Kotlin 中的原始类型
+## Kotlin 中的原生类型
 
 通过 IntelliJ IDEA 的__Go to | Declaration__ 或<!--
 -->编译器错误的帮助，会看到如下的为 C  函数、`struct` 以及 `union` 生成的 API：
@@ -396,7 +396,7 @@ fun main() {
 ## 接下来
 
 在以下几篇相关的教程中继续浏览 C 语言的类型以及它们在 Kotlin/Native 中的表示：
-- [映射来自 C 语言的原始数据类型](mapping-primitive-data-types-from-c.md)
+- [映射来自 C 语言的原生数据类型](mapping-primitive-data-types-from-c.md)
 - [映射来自 C 语言的函数指针](mapping-function-pointers-from-c.md)
 - [映射来自 C 语言的字符串](mapping-strings-from-c.md)
 

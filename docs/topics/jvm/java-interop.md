@@ -450,7 +450,7 @@ Java 的装箱原始类型映射到可空的 Kotlin 类型：
 | `java.lang.Double`      | `kotlin.Double?`  |
 | `java.lang.Boolean`     | `kotlin.Boolean?` |
 
-请注意，用作类型参数的装箱原始类型映射到平台类型：
+请注意，用作类型参数的装箱原生类型映射到平台类型：
 例如，`List<java.lang.Integer>` 在 Kotlin 中会成为 `List<Int!>`。
 
 集合类型在 Kotlin 中可以是只读的或可变的，因此 Java 集合类型作如下映射：

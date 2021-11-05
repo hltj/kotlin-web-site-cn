@@ -450,7 +450,7 @@ tutorials:
         - url: /docs/tutorials/native/intro-to-kotlin-native.html
           title: 在 Kotlin/Native 中创建 HTTP 客户端
         - url: /docs/tutorials/native/mapping-primitive-data-types-from-c.html
-          title: 映射来自 C 语言的原始数据类型
+          title: 映射来自 C 语言的原生数据类型
         - url: /docs/tutorials/native/mapping-struct-union-types-from-c.html
           title: 映射来自 C 语言的结构与联合类型
         - url: /docs/tutorials/native/mapping-function-pointers-from-c.html

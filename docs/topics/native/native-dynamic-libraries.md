@@ -243,8 +243,8 @@ Kotlin 在已创建的 `libnative_api.h` 文件中为<!--
 |`libnative_KDouble`    |  `double`            |
 |`libnative_KNativePtr` |  `void*`             |
 
-这个定义部分展示了如何将 Kotlin 的原始类型映射为 C 的原始类型。
-在这篇[从 C 语言中映射原始类型](mapping-primitive-data-types-from-c.md)教程中描述了反向映射。
+这个定义部分展示了如何将 Kotlin 的原生类型映射为 C 的原生类型。
+在这篇[从 C 语言中映射原生类型](mapping-primitive-data-types-from-c.md)教程中描述了反向映射。
 
 `libnative_api.h` 文件的下一个部分包含了在该库中<!--
 -->使用的类型的定义：
