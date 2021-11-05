@@ -111,11 +111,11 @@ val bytes = 0b11010010_01101001_10010100_10010010
 
 ### JVM 平台的数字表示
 
-On the JVM platform, numbers are stored as primitive types: `int`, `double`, and so on. 
-Exceptions are cases when you create a nullable number reference such as `Int?` or use generics.
-In these cases numbers are boxed in Java classes `Integer`, `Double`, and so on.
+在 JVM 平台数字存储为基本类型 `int`、 `double` 等。 
+例外情况是当创建可空数字引用如 `Int?` 或者使用泛型时。
+在这些场景中，数字会装箱为 Java 类 `Integer`、 `Double` 等。
 
-Note that nullable references to the same number can be different objects:
+请注意，对相同数字的可为空引用可能是不同的对象：
 
 ```kotlin
 fun main() {
@@ -135,8 +135,8 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-All nullable references to `a` are actually the same object because of the memory optimization that JVM applies to `Integer`s
-between `-128` and `127`. It doesn't apply to the `b` references, so they are different objects.
+由于 JVM 对 `-128` 到 `127` 的整数（`Integer`）应用了内存优化，因此，`a`
+的所有可空引用实际上都是同一对象。但是没有对 `b` 应用内存优化，所以它们是不同对象。
 
 另一方面，它们仍然相等:
 
@@ -167,7 +167,7 @@ print(b == a) // 惊！这将输出“false”鉴于 Long 的 equals() 会检测
 
 所以会悄无声息地失去相等性，更别说同一性了。
 
-因此较小的类型***不能**隐式转换*为较大的类型。
+因此较小的类型*__不能__ 隐式转换*为较大的类型。
 这意味着把 `Byte` 型值赋给一个 `Int` 变量必须显式转换。
 
 ```kotlin
@@ -258,9 +258,9 @@ fun main() {
 
 #### 位运算
 
-Kotlin provides a set of _bitwise operations_ on integer numbers. They operate on the binary level directly with 
-bits of the numbers' representation.
-Bitwise operations are represented by functions that can be called in infix form. They can be applied only to `Int` and `Long`.
+Kotlin 对整数提供了一组*位运算*。它们直接使用数字的比特表示在<!--
+-->二进制级别进行操作。
+位运算有可以通过中缀形式调用的函数表示。只能应用于 `Int` 与 `Long`。
 
 ```kotlin
 val x = (1 shl 2) and 0x000FF000
@@ -298,7 +298,7 @@ val x = (1 shl 2) and 0x000FF000
 
 ### 无符号整型
 
-In addition to [integer types](#integer-types), Kotlin provides the following types for unsigned integer numbers:
+除了[整数类型](#整数类型)，对于无符号整数，Kotlin 还提供了以下类型：
 
 * `UByte`: 无符号 8 比特整数，范围是 0 到 255
 * `UShort`: 无符号 16 比特整数，范围是 0 到 65535
