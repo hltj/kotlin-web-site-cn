@@ -672,7 +672,7 @@ In 1.4.0, Kotlin/Native got a significant number of new features and improvement
 * [默认支持 Objective-C 泛型](#默认支持-objective-c-泛型)
 * [Objective-C/Swift 互操作中的异常处理](#objective-cswift-互操作中的异常处理)
 * [默认在苹果目标平台生成 release 版 .dSYM](#默认在苹果目标平台生成-release-版-dsym)
-* [性能改进](#性能改进)
+* [性能提升](#性能提升)
 * [简化了 CocoaPods 依赖项的管理](#简化了-cocoapods-依赖项的管理)
 
 ### 在 Swift 与 Objective-C 中支持 kotlin 的挂起函数
@@ -752,7 +752,7 @@ kotlin {
 
 [Learn more about crash report symbolication](native-ios-symbolication.md).
 
-### 性能改进
+### 性能提升
 
 Kotlin/Native has received a number of performance improvements that speed up both the development process and execution.
 Here are some examples:
@@ -1523,5 +1523,5 @@ bring incompatible changes to the language. Find the detailed list of such chang
 
 <!-- ### 迁移多平台项目
 
-To help you start using the new features of [Kotlin multiplatform](#kotlin-multiplatform) in existing projects, we
+To help you start using the new features of [Kotlin multiplatform](#kotlin-多平台) in existing projects, we
 publish the TODO: [migration guide for multiplatform projects](migrating-multiplatform-project-to-14.md). -->

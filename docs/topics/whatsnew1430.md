@@ -7,22 +7,22 @@ Beta, and ships various performance and functional improvements.
 
 You can also learn about new features in [this blog post](https://blog.jetbrains.com/kotlin/2021/01/kotlin-1-4-30-released/).
 
-## Language features
+## 语言特性
 
-Kotlin 1.5.0 is going to deliver new language features – JVM records support, sealed interfaces, and Stable inline classes.
+Kotlin 1.5.0 is going to deliver new language features – JVM 记录类型支持, sealed interfaces, and Stable inline classes.
 In Kotlin 1.4.30, you can try these features and improvements in preview mode. We’d be very grateful if you share your
 feedback with us in the corresponding YouTrack tickets, as that will allow us to address it before the release of 1.5.0.
 
-* [JVM records support](#jvm-records-support)
-* [Sealed interfaces](#sealed-interfaces) and [sealed class improvements](#package-wide-sealed-class-hierarchies)
-* [Improved inline classes](#improved-inline-classes)
+* [JVM 记录类型支持](#jvm-记录类型支持)
+* [密封接口](#密封接口)以及[密封类改进](#包范围的密封类层次结构)
+* [改进的内联类](#改进的内联类)
 
 To enable these language features and improvements in preview mode, you need to opt in by adding specific compiler options.
 See the sections below for details.
 
 Learn more about the new features preview in [this blog post](https://blog.jetbrains.com/kotlin/2021/01/new-language-features-preview-in-kotlin-1-4-30).
 
-### JVM records support
+### JVM 记录类型支持
 
 > The JVM records feature is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use it only for evaluation purposes.  We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-42430).
@@ -45,14 +45,14 @@ data class User(val name: String, val age: Int)
 
 To try the preview version of JVM records, add the compiler options `-Xjvm-enable-preview` and `-language-version 1.5`.
 
-We’re continuing to work on JVM records support and we’d be very grateful if you would share your feedback with us using
+We’re continuing to work on JVM 记录类型支持 and we’d be very grateful if you would share your feedback with us using
 this [YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-42430).
 
 Learn more about implementation, restrictions, and the syntax in [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/jvm-records.md).
 
-### Sealed interfaces
+### 密封接口
 
-> Sealed interfaces are [Experimental](components-stability.md). They may be dropped or changed at any time.
+> 密封接口 are [Experimental](components-stability.md). They may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use them only for evaluation purposes.  We would appreciate your feedback on them in [YouTrack](https://youtrack.jetbrains.com/issue/KT-42433).
 >
 {type="warning"}
@@ -99,7 +99,7 @@ with us using this [YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-424
 
 [Learn more about sealed interfaces](sealed-classes.md).
 
-### Package-wide sealed class hierarchies
+### 包范围的密封类层次结构
 
 > Package-wide hierarchies of sealed classes are [Experimental](components-stability.md). They may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use them only for evaluation purposes.  We would appreciate your feedback on them in [YouTrack](https://youtrack.jetbrains.com/issue/KT-42433).
@@ -117,7 +117,7 @@ if you would share your feedback with us using this [YouTrack ticket](https://yo
 
 [Learn more about package-wide hierarchies of sealed classes](sealed-classes.md#location-of-direct-subclasses).
 
-### Improved inline classes
+### 改进的内联类
 
 > Inline value classes are in [Beta](components-stability.md). They are almost stable, but migration steps may be required
 > in the future. We'll do our best to minimize any changes you have to make. We would appreciate your feedback on the inline classes feature in [YouTrack](https://youtrack.jetbrains.com/issue/KT-42434).
@@ -185,7 +185,7 @@ Learn more about the mangling algorithm in [KEEP](https://github.com/Kotlin/KEEP
 
 ## Kotlin/JVM
 
-### JVM IR compiler backend reaches Beta
+### JVM IR 编译器后端达到 Beta 版
 
 The [IR-based compiler backend](whatsnew14.md#统一的后端与可扩展性) for Kotlin/JVM, which was presented in
 1.4.0 in [Alpha](components-stability.md), has reached Beta. This is the last pre-stable level before the IR backend
@@ -234,26 +234,26 @@ Learn more about the changes that the JVM IR backend brings in [this blog post](
 
 ## Kotlin/Native
 
-### Performance improvements
+### 性能提升
 
 Kotlin/Native has received a variety of performance improvements in 1.4.30, which has resulted in faster compilation times.
 For example, the time required to rebuild the framework in the [KMM Networking and Data Storage sample](https://github.com/kotlin-hands-on/kmm-networking-and-data-storage/tree/final)
 has decreased from 9.5 seconds (in 1.4.10) to 4.5 seconds (in 1.4.30).
 
-### Apple watchOS 64-bit simulator target
+### Apple watchOS 64-位模拟器目标
 
 The x86 simulator target has been deprecated for watchOS since version 7.0. To keep up with the latest watchOS versions,
 Kotlin/Native has the new target `watchosX64` for running the simulator on 64-bit architecture.
 
-### Support for Xcode 12.2 libraries
+### 对 Xcode 12.2 库的支持
 
 We have added support for the new libraries delivered with Xcode 12.2. You can now use them from Kotlin code.
 
 ## Kotlin/JS
 
-### Lazy initialization of top-level properties
+### 顶层属性的延迟初始化
 
-> Lazy initialization of top-level properties is [Experimental](components-stability.md). It may be dropped or changed at any time.
+> 顶层属性的延迟初始化 is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-44320).
 >
 {type="warning"}
@@ -269,9 +269,9 @@ channel in the official [Kotlin Slack](https://kotlinlang.slack.com) (get an inv
 To use the lazy initialization, add the `-Xir-property-lazy-initialization` compiler option when compiling the code with
 the JS IR compiler.
 
-## Gradle project improvements
+## Gradle 项目改进
 
-### Support the Gradle configuration cache
+### 支持 Gradle 配置缓存
 
 Starting with 1.4.30, the Kotlin Gradle plugin supports the [configuration cache](https://docs.gradle.org/current/userguide/configuration_cache.html)
 feature. It speeds up the build process: once you run the command, Gradle executes the configuration phase and calculates
@@ -280,9 +280,9 @@ the task graph. Gradle caches the result and reuses it for subsequent builds.
 To start using this feature, you can [use the Gradle command](https://docs.gradle.org/current/userguide/configuration_cache.html#config_cache:usage)
 or [set up the IntelliJ based IDE]( https://docs.gradle.org/current/userguide/configuration_cache.html#config_cache:ide:intellij).
 
-## Standard library
+## 标准库
 
-### Locale-agnostic API for upper/lowercasing text
+### 用于大小写文本的区域设置无关 API
 
 > The locale-agnostic API feature is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Use it only for evaluation purposes.
@@ -329,7 +329,7 @@ Kotlin 1.4.30 provides the following alternatives:
 
 See the full list of changes to the text processing functions in [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/stdlib/locale-agnostic-string-conversions.md).
 
-### Clear Char-to-code and Char-to-digit conversions
+### 明确字符到码值与字符到数位的转换
 
 > The unambiguous API for the `Char` conversion feature is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Use it only for evaluation purposes.
@@ -371,14 +371,14 @@ To avoid this confusion we've decided to separate `Char` conversions into two fo
 
 See more details in [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/stdlib/char-int-conversions.md).
 
-## Serialization updates
+## 序列化更新
 
 Along with Kotlin 1.4.30, we are releasing `kotlinx.serialization` [1.1.0-RC](https://github.com/Kotlin/kotlinx.serialization/releases/tag/v1.1.0-RC), which includes some new features:
 
-* Inline classes serialization support
-* Unsigned primitive type serialization support
+* 内联类序列化支持
+* 无符号原生类型的序列化支持
 
-### Inline classes serialization support
+### 内联类序列化支持
 
 Starting with Kotlin 1.4.30, you can make inline classes [serializable](serialization.md):
 
@@ -395,7 +395,7 @@ The serialization framework does not box serializable inline classes when they a
 
 Learn more in the `kotlinx.serialization` [docs](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/inline-classes.md#serializable-inline-classes).
 
-### Unsigned primitive type serialization support
+### 无符号原生类型的序列化支持
 
 Starting from 1.4.30, you can use standard JSON serializers of [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
 for unsigned primitive types: `UInt`, `ULong`, `UByte`, and `UShort`:

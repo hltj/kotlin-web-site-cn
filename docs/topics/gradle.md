@@ -696,7 +696,7 @@ Gradle 任务的完整选项列表如下：
 | `jdkHome` | 将来自指定位置的自定义 JDK 而不是默认的 JAVA_HOME 包含到类路径中。 Direct setting is deprecated sinсe 1.5.30, use [other ways to set this option](#set-custom-jdk-home).  |  |  |
 | `jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"（已弃用）、 "1.8"、 "9"、 "10"、 "11"、 "12"、 "13"、 "14"、 "15"、 "16" | "%defaultJvmTargetVersion%" |
 | `noJdk` | 不要自动在类路径中包含 Java 运行时 |  | false |
-| `useOldBackend` | Use the [old JVM backend](whatsnew15.md#stable-jvm-ir-backend) |  | false |
+| `useOldBackend` | Use the [old JVM backend](whatsnew15.md#稳定版-jvm-ir-后端) |  | false |
 
 #### Check for JVM target compatibility
 

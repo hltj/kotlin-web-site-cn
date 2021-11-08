@@ -36,7 +36,7 @@ Released: July 27, 2021
 </td>
 <td>
 
-* Performance improvements
+* 性能提升
 * Better debugging experience
 * Remote development support
 
@@ -56,7 +56,7 @@ Released: April 7, 2021
 </td>
 <td>
 
-* Performance improvements
+* 性能提升
 * Evaluation of custom getters during debugging
 * Improved Change Signature refactoring
 * Code completion for type arguments

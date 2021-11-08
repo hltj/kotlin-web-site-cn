@@ -1,7 +1,7 @@
 [//]: # (title: Kotlin 插件 2021.1 的新特性)
 
 This release aims to increase productivity and improve the development experience. Version 2021.1 of the Kotlin plugin introduces the following major updates:
-* [Performance improvements](#performance-improvements)
+* [性能提升](#性能提升)
 * [Evaluation of custom getters during debugging](#evaluation-of-custom-getters-during-debugging)
 * [Improved Change Signature refactoring](#improved-change-signature-refactoring)
 * [Code completion for type arguments](#code-completion-for-type-arguments)
@@ -10,7 +10,7 @@ This release aims to increase productivity and improve the development experienc
 
 You can also learn about new features in [this blog post](https://blog.jetbrains.com/kotlin/2021/04/kotlin-plugin-2021-1-released/).
 
-## Performance improvements
+## 性能提升
 
 With 2021.1, the Kotlin plugin has received a number of performance improvements that speed up the development process.
 

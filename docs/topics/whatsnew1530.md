@@ -14,7 +14,7 @@ You can also find a short overview of the changes in the [release blog post](htt
 
 <video href="rNbb3A9IdOo" title="Kotlin 1.5.30"/>
 
-## Language features
+## 语言特性
 
 Kotlin 1.5.30 is presenting previews of future language changes and bringing improvements to the opt-in requirement mechanism
 and type inference:
@@ -424,7 +424,7 @@ However, the latest stable version of LLD doesn’t support direct linkage again
 
 Please share your thoughts and concerns about the transition to the LLD linker in [this YouTrack issue](https://youtrack.jetbrains.com/issue/KT-47605).
 
-## Kotlin Multiplatform
+## Kotlin 多平台
 
 1.5.30 brings the following notable updates to Kotlin Multiplatform:
 * [Ability to use custom `cinterop` libraries in shared native code](#ability-to-use-custom-cinterop-libraries-in-shared-native-code)
@@ -747,7 +747,7 @@ In Kotlin 1.5.30, there’s a new logic for the Kotlin daemon’s JVM arguments.
 
 For more information about the Kotlin daemon, see [the Kotlin daemon and using it with Gradle](gradle.md#kotlin-daemon-and-using-it-with-gradle).
 
-## Standard library
+## 标准库
 
 Kotlin 1.5.30 is bringing improvements to the standard library’s `Duration` and `Regex` APIs:
 * [Changing `Duration.toString()` output](#changing-duration-tostring-output)

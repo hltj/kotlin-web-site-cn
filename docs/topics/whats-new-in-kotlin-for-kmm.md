@@ -115,21 +115,21 @@ Learn more about [what's new in Kotlin 1.4.30](whatsnew1430.md).
 
 [Kotlin 1.4.20](whatsnew1420.md) introduces a number of features, improvements, and bug fixes that are helpful for KMM:
 
-* **CocoaPods plugin improvements**:
+* **CocoaPods 插件改进 **:
     * Rebuilding dependencies only when necessary.
     * Ability to add dependencies on libraries from a custom spec repository, Git repository, or archive, as well as on libraries with custom cinterop options.  
-      Learn more about [adding CocoaPods dependencies](kmm-add-dependencies.md#with-cocoapods) and [these improvements](whatsnew1420.md#cocoapods-plugin-improvements).
+      Learn more about [adding CocoaPods dependencies](kmm-add-dependencies.md#with-cocoapods) and [these improvements](whatsnew1420.md#cocoapods-插件改进 ).
      
 * Support for **libraries delivered in Xcode 12**.
 
 * **Escape analysis for Kotlin/Native**. A prototype of a new mechanism that gives a 10% iOS runtime performance improvement by allocating certain objects on the stack instead of the heap. 
 
-* **Opt-in wrapping of Objective-C exceptions** in runtime to avoid crashes. Learn [how to opt in](whatsnew1420.md#opt-in-wrapping-of-objective-c-exceptions).
+* **选择加入 Objective-C 异常的包装** in runtime to avoid crashes. Learn [how to opt in](whatsnew1420.md#opt-in-wrapping-of-objective-c-exceptions).
 
-* **Updated structure of multiplatform library publications**. The library _root_ publication, which stands for the whole library, 
+* **更新了多平台库发布的结构**. The library _root_ publication, which stands for the whole library, 
 now includes metadata artifacts. These were published separately in earlier Kotlin versions.  
 For compatibility, both multiplatform library authors and users must update to Kotlin 1.4.20. Learn more about [publishing a multiplatform library](mpp-publish-lib.md).
 
-* **Deprecation of the Kotlin Android Extensions plugin**. The `Parcelable` implementation generator has been moved to a separate [`kotlin-parcelize` plugin](whatsnew1420.md#new-plugin-for-parcelable-implementation-generator).
+* **Deprecation of the Kotlin Android Extensions plugin**. The `Parcelable` implementation generator has been moved to a separate [`kotlin-parcelize` plugin](whatsnew1420.md#parcelable-实现生成器的新插件).
 
 Learn more about [what's new in Kotlin 1.4.20](https://kotlinlang.org/docs/whatsnew1420.html).

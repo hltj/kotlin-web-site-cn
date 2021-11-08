@@ -2,13 +2,13 @@
 
 Enjoy improved performance, a better coroutines debugging experience, WSL 2 and Run Targets support, and more improvements for Kotlin in [IntelliJ IDEA 2021.2](https://www.jetbrains.com/idea/download/):
 
-* [Performance improvements](#performance-improvements)
+* [性能提升](#性能提升)
 * [Better debugging experience](#better-debugging-experience)
 * [Remote development support](#remote-development-support)
 * [Kotlin plugin in the IntelliJ IDEA repository](#kotlin-plugin-in-the-intellij-idea-repository)
 * [Other IDE improvements](#other-ide-improvements)
 
-## Performance improvements
+## 性能提升
 
 IntelliJ IDEA 2021.2 brings some major performance improvements for Kotlin:
 

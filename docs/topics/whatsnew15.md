@@ -7,17 +7,17 @@ and evolutionary changes such as stabilizing experimental features and deprecati
 
 You can also find an overview of the changes in the [release blog post](https://blog.jetbrains.com/kotlin/2021/04/kotlin-1-5-0-released/).
 
-## Language features
+## 语言特性
 
 Kotlin 1.5.0 brings stable versions of the new language features presented for [preview in 1.4.30](whatsnew1430.md#language-features):
-* [JVM records support](#jvm-records-support)
-* [Sealed interfaces](#sealed-interfaces) and [sealed class improvements](#package-wide-sealed-class-hierarchies)
-* [Inline classes](#inline-classes)
+* [JVM 记录类型支持](#jvm-记录类型支持)
+* [密封接口](#密封接口) and [密封类改进](#包范围的密封类层次结构)
+* [内联类](#内联类)
 
 Detailed descriptions of these features are available in [this blog post](https://blog.jetbrains.com/kotlin/2021/02/new-language-features-preview-in-kotlin-1-4-30/)
 and the corresponding pages of Kotlin documentation.
 
-### JVM records support
+### JVM 记录类型支持
 
 Java is evolving fast, and to make sure Kotlin remains interoperable with it, we’ve introduced support for one of its latest
 features – [record classes](https://openjdk.java.net/jeps/395).
@@ -35,7 +35,7 @@ data class User(val name: String, val age: Int)
 
 <video href="iyEWXyuuseU" title="Support for JVM Records in Kotlin 1.5.0"/>
 
-### Sealed interfaces
+### 密封接口
 
 Kotlin interfaces can now have the `sealed` modifier, which works on interfaces in the same way it works on classes: all
 implementations of a sealed interface are known at compile time.
@@ -66,7 +66,7 @@ class FilledRectangle: Polygon, Fillable
 
 <video href="d_Mor21W_60" title="Sealed Interfaces and Sealed Classes Improvements"/>
 
-### Package-wide sealed class hierarchies
+### 包范围的密封类层次结构
 
 Sealed classes can now have subclasses in all files of the same compilation unit
 and the same package. Previously, all subclasses had to appear in the same file.
@@ -77,7 +77,7 @@ The subclasses of a sealed class must have a name that is properly qualified –
 
 [Learn more about sealed class hierarchies](sealed-classes.md#location-of-direct-subclasses).
 
-### Inline classes
+### 内联类
 
 Inline classes are a subset of [value-based](https://github.com/Kotlin/KEEP/blob/master/notes/value-classes.md) classes
 that only hold values. You can use them as wrappers for a value of a certain type without the additional overhead that
@@ -106,14 +106,14 @@ The `inline` modifier is now deprecated with a warning.
 
 Kotlin/JVM has received a number of improvements, both internal and user-facing. Here are the most notable among them:
 
-* [Stable JVM IR backend](#stable-jvm-ir-backend)
-* [New default JVM target: 1.8](#new-default-jvm-target-1-8)
-* [SAM adapters via invokedynamic](#sam-adapters-via-invokedynamic)
-* [Lambdas via invokedynamic](#lambdas-via-invokedynamic)
-* [Deprecation of @JvmDefault and old Xjvm-default modes](#deprecation-of-jvmdefault-and-old-xjvm-default-modes)
-* [Improvements to handling nullability annotations](#improvements-to-handling-nullability-annotations)
+* [稳定版 JVM IR 后端](#稳定版-jvm-ir-后端)
+* [新的默认 JVM 目标：1.8](#新的默认-jvm-目标-1-8)
+* [采用 invokedynamic 的 SAM 适配器](#采用-invokedynamic-的-sam-适配器)
+* [采用 invokedynamic 的 lambda 表达式](#采用-invokedynamic-的-lambda-表达式)
+* [@JvmDefault 与旧版 Xjvm-default 模式的弃用](#jvmdefault-与-旧版-xjvm-default-模式的弃用)
+* [处理可空性注解的改进](#处理可空性注解的改进)
 
-### Stable JVM IR backend
+### 稳定版 JVM IR 后端
 
 The [IR-based backend](whatsnew14.md#新的-jvm-ir-后端) for the Kotlin/JVM compiler is now [Stable](components-stability.md)
 and enabled by default.
@@ -158,7 +158,7 @@ If you need to use the old backend in Kotlin 1.5.0, you can add the following li
  </configuration>
  ```
 
-### New default JVM target: 1.8
+### 新的默认 JVM 目标：1.8
 
 The default target version for Kotlin/JVM compilations is now `1.8`. The `1.6` target is deprecated.
 
@@ -168,7 +168,7 @@ If you need a build for JVM 1.6, you can still switch to this target. Learn how:
 * [in Maven](maven.md#jvm-特有的属性)
 * [in the command-line compiler](compiler-reference.md#jvm-target-version)
 
-### SAM adapters via invokedynamic
+### 采用 invokedynamic 的 SAM 适配器
 
 Kotlin 1.5.0 now uses dynamic invocations (`invokedynamic`) for compiling SAM (Single Abstract Method) conversions:
 * Over any expression if the SAM type is a [Java interface](java-interop.md#sam-转换)
@@ -182,7 +182,7 @@ To roll back to the old implementation scheme based on anonymous class generatio
 
 Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and the [command-line compiler](compiler-reference.md#compiler-options).
 
-### Lambdas via invokedynamic
+### 采用 invokedynamic 的 lambda 表达式
 
 > Compiling plain Kotlin lambdas into invokedynamic is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see details below), and you should use it only for evaluation purposes. We would appreciate hearing your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-45375).
@@ -204,7 +204,7 @@ this [YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-45375).
 
 Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and [command-line compiler](compiler-reference.md#compiler-options).
 
-### Deprecation of @JvmDefault and old Xjvm-default modes
+### @JvmDefault 与旧版 Xjvm-default 模式的弃用
 
 Prior to Kotlin 1.4.0, there was the `@JvmDefault` annotation along with `-Xjvm-default=enable` and `-Xjvm-default=compatibility`
 modes. They served to create the JVM default method for any particular non-abstract member in the Kotlin interface.
@@ -216,7 +216,7 @@ In Kotlin 1.5.0, we are deprecating `@JvmDefault` and the old Xjvm-default modes
 
 [Learn more about default methods in the Java interop](java-to-kotlin-interop.md#接口中的默认方法).
 
-### Improvements to handling nullability annotations
+### 处理可空性注解的改进
 
 Kotlin supports handling type nullability information from Java with [nullability annotations](java-interop.md#可空性注解).
 Kotlin 1.5.0 introduces a number of improvements for the feature:
@@ -240,10 +240,10 @@ Use the `-Xtype-enhancement-improvements-strict-mode` compiler option to enable 
 ## Kotlin/Native
 
 Kotlin/Native is now more performant and stable. The notable changes are:
-* [Performance improvements](#performance-improvements)
-* [Deactivation of the memory leak checker](#deactivation-of-the-memory-leak-checker)
+* [性能提升](#性能提升)
+* [停用内存泄漏检测器](#停用内存泄漏检测器)
 
-### Performance improvements
+### 性能提升
 
 In 1.5.0, Kotlin/Native is receiving a set of performance improvements that speed up both compilation and execution.
 
@@ -261,7 +261,7 @@ Other improvements speed up the execution of Kotlin/Native code:
 * Trivial property accessors are inlined.
 * `trimIndent()` on string literals is evaluated during the compilation.
 
-### Deactivation of the memory leak checker
+### 停用内存泄漏检测器
 
 The built-in Kotlin/Native memory leak checker has been disabled by default.
 
@@ -282,17 +282,17 @@ Note that enabling the checker for the application runtime is not recommended.
 Kotlin/JS is receiving evolutionary changes in 1.5.0. We’re continuing our work on moving the [JS IR compiler backend](js-ir-compiler.md)
 towards stable and shipping other updates:
 
-* [Upgrade of webpack to version 5](#upgrade-to-webpack-5)
-* [Frameworks and libraries for the IR compiler](#frameworks-and-libraries-for-the-ir-compiler)
+* [将 webpack 升级到版本 5](#升级到-webpack-5)
+* [用于 IR 编译器的框架与库](#用于-ir-编译器的框架与库)
 
-### Upgrade to webpack 5
+### 升级到 webpack 5
 
 The Kotlin/JS Gradle plugin now uses webpack 5 for browser targets instead of webpack 4. This is a major webpack upgrade
 that brings incompatible changes. If you’re using a custom webpack configuration, be sure to check the [webpack 5 release notes](https://webpack.js.org/blog/2020-10-10-webpack-5-release/).
 
 [Learn more about bundling Kotlin/JS projects with webpack](js-project-setup.md#webpack-绑定).
 
-### Frameworks and libraries for the IR compiler
+### 用于 IR 编译器的框架与库
 
 > The Kotlin/JS IR compiler is in [Alpha](components-stability.md). It may change incompatibly and require manual migration
 >in the future. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
@@ -311,21 +311,21 @@ If you’re writing your own library, [compile it in the 'both' mode](js-ir-comp
 so that your clients can also use it with the new compiler.
 
 
-## Kotlin Multiplatform
+## Kotlin 多平台
 
 In Kotlin 1.5.0, [choosing a testing dependency for each platform has been simplified](#simplified-test-dependencies-usage-in-multiplatform-projects)
 and it is now done automatically by the Gradle plugin.
 
 A new [API for getting a char category is now available in multiplatform projects](#new-api-for-getting-a-char-category-now-available-in-multiplatform-code).
 
-## Standard library
+## 标准库
 
 The standard library has received a range of changes and improvements, from stabilizing experimental parts to adding new features:
 
-* [Stable unsigned integer types](#stable-unsigned-integer-types)
-* [Stable locale-agnostic API for uppercase/lowercase text](#stable-locale-agnostic-api-for-upper-lowercasing-text)
-* [Stable Char-to-integer conversion API](#stable-char-to-integer-conversion-api)
-* [Stable Path API](#stable-path-api)
+* [稳定版无符号整数类型](#稳定版无符号整数类型)
+* [稳定版用于大小写文本的区域设置无关 API](#稳定版用于大小写文本的区域设置无关-api)
+* [稳定版字符到整数转换 API](#稳定版字符到整数转换-api)
+* [稳定版 Path API](#稳定版-path-api)
 * [Floored division and the mod operator](#floored-division-and-the-mod-operator)
 * [Duration API changes](#duration-api-changes)
 * [New API for getting a char category now available in multiplatform code](#new-api-for-getting-a-char-category-now-available-in-multiplatform-code)
@@ -336,14 +336,14 @@ You can learn more about the standard library changes in [this blog post](https:
 
 <video href="MyTkiT2I6-8" title="New Standard Library Features"/>
 
-### Stable unsigned integer types
+### 稳定版无符号整数类型
 
 The `UInt`, `ULong`, `UByte`, `UShort` unsigned integer types are now [Stable](components-stability.md). The same goes
 for operations on these types, ranges, and progressions of them. Unsigned arrays and operations on them remain in Beta.
 
 [Learn more about unsigned integer types](basic-types.md#无符号整型).
 
-### Stable locale-agnostic API for upper/lowercasing text
+### 稳定版用于大小写文本的区域设置无关 API
 
 This release brings a new locale-agnostic API for uppercase/lowercase text conversion. It provides an alternative to the
 `toLowerCase()`, `toUpperCase()`, `capitalize()`, and `decapitalize()` API functions, which are locale-sensitive.
@@ -377,7 +377,7 @@ The old API functions are marked as deprecated and will be removed in a future r
 
 See the full list of changes to the text processing functions in [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/stdlib/locale-agnostic-case-conversions.md).
 
-### Stable char-to-integer conversion API
+### 稳定版字符到整数转换 API
 
 Starting from Kotlin 1.5.0, new char-to-code and char-to-digit conversion functions are [Stable](components-stability.md).
 These functions replace the current API functions, which were often confused with the similar string-to-Int conversion.
@@ -412,7 +412,7 @@ numeric type, like `Char.toInt()`, are now deprecated.
 
 [Learn more about the char-to-integer conversion API in KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/stdlib/char-int-conversions.md).
 
-### Stable Path API
+### 稳定版 Path API
 
 The [experimental Path API](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io.path/java.nio.file.-path/) with extensions
 for `java.nio.file.Path` is now [Stable](components-stability.md).

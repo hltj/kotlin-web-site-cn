@@ -237,7 +237,7 @@ perspective
 > - 1.6.0: raise this warning to an error
 > - \>= 1.7.0: introduce changes to the language grammar, so that `suspend` before `{` is parsed as a keyword
 
-## Standard library
+## 标准库
 
 ### Remove brittle `contains` optimization in minus/removeAll/retainAll
 

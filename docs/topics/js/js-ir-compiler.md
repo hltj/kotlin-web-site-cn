@@ -71,9 +71,9 @@ kotlin {
 }
 ```
 
-## Lazy initialization of top-level properties
+## 顶层属性的延迟初始化
 
-> Lazy initialization of top-level properties is [Experimental](components-stability.md). It may be dropped or changed at any time.
+> 顶层属性的延迟初始化 is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-44320).
 >
 {type="warning"}

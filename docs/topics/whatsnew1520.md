@@ -230,7 +230,7 @@ more efficiently.
 You no longer need to use the `kotlin.parallel.tasks.in.project` property. This property has been deprecated and will be
 removed in the next major release.
 
-## Standard library
+## 标准库
 
 Kotlin 1.5.20 changes the platform-specific implementations of several functions for working with characters and as a
 result brings unification across platforms:
