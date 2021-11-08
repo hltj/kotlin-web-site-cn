@@ -124,7 +124,7 @@ Learn more about [what's new in Kotlin 1.4.30](whatsnew1430.md).
 
 * **Escape analysis for Kotlin/Native**. A prototype of a new mechanism that gives a 10% iOS runtime performance improvement by allocating certain objects on the stack instead of the heap. 
 
-* **选择加入 Objective-C 异常的包装** in runtime to avoid crashes. Learn [how to opt in](whatsnew1420.md#opt-in-wrapping-of-objective-c-exceptions).
+* **选择加入 Objective-C 异常的包装** in runtime to avoid crashes. Learn [how to opt in](whatsnew1420.md#选择加入-objective-c-异常的包装).
 
 * **更新了多平台库发布的结构**. The library _root_ publication, which stands for the whole library, 
 now includes metadata artifacts. These were published separately in earlier Kotlin versions.  

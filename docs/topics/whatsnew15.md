@@ -9,7 +9,7 @@ You can also find an overview of the changes in the [release blog post](https://
 
 ## 语言特性
 
-Kotlin 1.5.0 brings stable versions of the new language features presented for [preview in 1.4.30](whatsnew1430.md#language-features):
+Kotlin 1.5.0 brings stable versions of the new language features presented for [preview in 1.4.30](whatsnew1430.md#语言特性):
 * [JVM 记录类型支持](#jvm-记录类型支持)
 * [密封接口](#密封接口) and [密封类改进](#包范围的密封类层次结构)
 * [内联类](#内联类)
@@ -110,7 +110,7 @@ Kotlin/JVM has received a number of improvements, both internal and user-facing.
 * [新的默认 JVM 目标：1.8](#新的默认-jvm-目标-1-8)
 * [采用 invokedynamic 的 SAM 适配器](#采用-invokedynamic-的-sam-适配器)
 * [采用 invokedynamic 的 lambda 表达式](#采用-invokedynamic-的-lambda-表达式)
-* [@JvmDefault 与旧版 Xjvm-default 模式的弃用](#jvmdefault-与-旧版-xjvm-default-模式的弃用)
+* [@JvmDefault 与旧版 Xjvm-default 模式的弃用](#jvmdefault-与旧版-xjvm-default-模式的弃用)
 * [处理可空性注解的改进](#处理可空性注解的改进)
 
 ### 稳定版 JVM IR 后端
@@ -426,7 +426,7 @@ val subDir = baseDir / "subdirectory"
 val kotlinFiles: List<Path> = Path("/home/user").listDirectoryEntries("*.kt")
 ```
 
-[Learn more about the Path API](whatsnew1420.md#extensions-for-java-nio-file-path).
+[Learn more about the Path API](whatsnew1420.md#java-nio-file-path-的扩展).
 
 ### Floored division and the mod operator
 

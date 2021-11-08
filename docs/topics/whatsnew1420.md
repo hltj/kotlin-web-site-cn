@@ -176,7 +176,7 @@ Kotlin/Native's priorities in 1.4.20 are performance and polishing existing feat
   
 - [逃逸分析](#逃逸分析)
 - [性能提升与错误修复](#性能提升与错误修复)
-- [选择加入 Objective-C 异常的包装](#选择加入-objective-c-异常的包装 )
+- [选择加入 Objective-C 异常的包装](#选择加入-objective-c-异常的包装)
 - [CocoaPods 插件改进 ](#cocoapods-插件改进 )
 - [对 Xcode 12 库的支持](#对-xcode-12-库的支持)
 
