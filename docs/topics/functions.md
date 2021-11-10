@@ -385,7 +385,7 @@ private fun findFixPoint(): Double {
 ```
 
 要符合 `tailrec` 修饰符的条件的话，函数必须将其自身调用作为它执行的最后一个操作。在递归调用后有更多代码时，
-不能使用尾递归，并且不能用在 `try`/`catch`/`finally` 块中。
+不能使用尾递归，不能用在 `try`/`catch`/`finally` 块中，也不能用于 open 的函数。
 目前在 Kotlin for the JVM 与 Kotlin/Native 中支持尾递归。
 
 **See also**:

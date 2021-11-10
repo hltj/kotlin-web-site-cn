@@ -19,7 +19,7 @@
 
 * **快速流转**：让“变更-测试-调试”周期非常快。
 * **新版编译器**：重写 Kotlin 编译器，针对速度、并行性与统一性进行优化。晚些还会研究插件化。
-* **快速流畅的 IDE**：改善 Kotlin IDE 的稳定性与性能。
+* **快速流畅的 IDE**：改善 Kotlin 插件的稳定性与性能。
 * **Kotlin 用于 JVM 服务器端开发**：在整个 Kotlin 生态系统中扩展对服务器端使用场景的支持。
 * **Kotlin 多平台移动端**：改善在移动平台上共享代码的用户体验与特性集。
 
@@ -157,7 +157,7 @@ Visit the [roadmap board in our issue tracker YouTrack](https://youtrack.jetbrai
         <td>
             <ul>
                 <li><a href="https://youtrack.jetbrains.com/issue/KTIJ-20044" target="_blank">🆕 Make update of compiler/platform versions faster</a></li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KTIJ-20045" target="_blank">🆕 Improve MPP support</a></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KTIJ-20045" target="_blank">🆕 Improve Multiplatform support</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KTIJ-20046" target="_blank">🆕 Stabilize Eclipse plugin</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KTIJ-18195" target="_blank">Prototype the IDE plugin with the new compiler frontend</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KTIJ-18174" target="_blank">Improve IDE performance</a></li>
@@ -292,7 +292,7 @@ We've **added** the following items to the roadmap:
 * 🆕 Multiplatform: [Improve DSL for managing Kotlin/Native binary output](https://youtrack.jetbrains.com/issue/KT-49524)
 * 🆕 Multiplatform: [Improve stability and robustness of the multiplatform toolchain](https://youtrack.jetbrains.com/issue/KT-49525)
 * 🆕 IDE: [Make update of compiler/platform versions faster](https://youtrack.jetbrains.com/issue/KTIJ-20044)
-* 🆕 IDE: [Improve MPP support](https://youtrack.jetbrains.com/issue/KTIJ-20045)
+* 🆕 IDE: [Improve Multiplatform support](https://youtrack.jetbrains.com/issue/KTIJ-20045)
 * 🆕 IDE: [Stabilize Eclipse plugin](https://youtrack.jetbrains.com/issue/KTIJ-20046)
 * 🆕 Build tools: [Provide better experience with Kotlin Daemon](https://youtrack.jetbrains.com/issue/KT-49532)
 * 🆕 Build tools: [Make kapt work out of the box with latest JDKs](https://youtrack.jetbrains.com/issue/KT-49533)
