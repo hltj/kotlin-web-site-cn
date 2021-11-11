@@ -221,7 +221,7 @@ kapt.include.compile.classpath=false
 
 Learn more about [kapt](kapt.md).
 
-### 弃用 of the kotlin.parallel.tasks.in.project 构建属性
+### 弃用 kotlin.parallel.tasks.in.project 构建属性
 
 With this release, Kotlin parallel compilation is controlled by the [Gradle parallel execution flag `--parallel`](https://docs.gradle.org/current/userguide/performance.html#parallel_execution).
 Using this flag, Gradle executes tasks concurrently, increasing the speed of compiling tasks and utilizing the resources
