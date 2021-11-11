@@ -12,11 +12,11 @@ and this video:
 ## Kotlin/JVM
 
 Kotlin 1.5.20 is receiving the following updates on the JVM platform: 
-* [String concatenation via invokedynamic](#string-concatenation-via-invokedynamic)
-* [Support for JSpecify nullness annotations](#support-for-jspecify-nullness-annotations)
-* [Support for calling Java’s Lombok-generated methods within modules that have Kotlin and Java code](#support-for-calling-java-s-lombok-generated-methods-within-modules-that-have-kotlin-and-java-code)
+* [通过 invokedynamic 字符串连接](#通过-invokedynamic-字符串连接)
+* [JSpecify 可空性注解的支持](#jspecify-可空性注解的支持)
+* [支持在 Kotlin 与 Java 代码都有的模块中调用 Java 的 Lombok 所生成代码](#支持在-kotlin-与-java-代码都有的模块中调用-java-的-lombok-所生成代码)
 
-### String concatenation via invokedynamic
+### 通过 invokedynamic 字符串连接
 
 Kotlin 1.5.20 compiles string concatenations into [dynamic invocations](https://docs.oracle.com/javase/7/docs/technotes/guides/vm/multiple-language-support.html#invokedynamic)
 (`invokedynamic`) on JVM 9+ targets, thereby keeping up with modern Java versions.
@@ -28,7 +28,7 @@ used in previous versions, add the compiler option `-Xstring-concat=inline`.
 
 Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and the [command-line compiler](compiler-reference.md#compiler-options).
 
-### Support for JSpecify nullness annotations
+### JSpecify 可空性注解的支持
 
 The Kotlin compiler can read various types of [nullability annotations](java-interop.md#可空性注解) to pass
 nullability information from Java to Kotlin. Version 1.5.20 introduces support for the [JSpecify project](https://jspecify.dev/),
@@ -66,7 +66,7 @@ Please note that the JSpecify project is under active development. Its API and i
 
 [Learn more about null-safety and platform types](java-interop.md#空安全与平台类型).
 
-### Support for calling Java’s Lombok-generated methods within modules that have Kotlin and Java code
+### 支持在 Kotlin 与 Java 代码都有的模块中调用 Java 的 Lombok 所生成代码
 
 > The Lombok compiler plugin is [Experimental](components-stability.md).
 > It may be dropped or changed at any time. Use it only for evaluation purposes.
@@ -96,11 +96,11 @@ for [`@Builder` in YouTrack](https://youtrack.jetbrains.com/issue/KT-46959).
 
 Kotlin/Native 1.5.20 offers a preview of the new feature and the tooling improvements:
 
-* [Opt-in export of KDoc comments to generated Objective-C headers](#opt-in-export-of-kdoc-comments-to-generated-objective-c-headers)
-* [Compiler bug fixes](#compiler-bug-fixes)
-* [Improved performance of Array.copyInto() inside one array](#improved-performance-of-array-copyinto-inside-one-array)
+* [将 KDoc 注释导出到所生成的 Objective-C 头文件的选择加入项 ](#将-kdoc-注释导出到所生成的-objective-c-头文件的选择加入项 )
+* [编译器 bug 修复](#编译器-bug-修复)
+* [提高了同一数组内 Array.copyInto() 的性能](#提高了同一数组内-array-copyinto-的性能)
 
-### Opt-in export of KDoc comments to generated Objective-C headers
+### 将 KDoc 注释导出到所生成的 Objective-C 头文件的选择加入项 
 
 > The ability to export KDoc comments to generated Objective-C headers is [Experimental](components-stability.md).
 > It may be dropped or changed at any time.
@@ -164,7 +164,7 @@ kotlin {
 
 We’d be very grateful if you would share your feedback with us using this [YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-38600).
 
-### Compiler bug fixes
+### 编译器 bug 修复
 
 The Kotlin/Native compiler has received multiple bug fixes in 1.5.20. You can find the complete list in the [changelog](https://github.com/JetBrains/kotlin/releases/tag/v1.5.20).
 
@@ -174,7 +174,7 @@ values during compilation. Now such values are preserved. Application developers
 will break. However, libraries compiled with 1.5.20 are incompatible with earlier compiler versions.
 See [this YouTrack issue](https://youtrack.jetbrains.com/issue/KT-33175) for details.
 
-### Improved performance of Array.copyInto() inside one array
+### 提高了同一数组内 Array.copyInto() 的性能
 
 We’ve improved the way `Array.copyInto()` works when its source and destination are the same array. Now such operations
 finish up to 20 times faster (depending on the number of objects being copied) due to memory management optimizations
@@ -185,21 +185,21 @@ for this use case.
 With 1.5.20, we’re publishing a guide that will help you migrate your projects to the new [IR-based backend](js-ir-compiler.md)
 for Kotlin/JS.
 
-### Migration guide for the JS IR backend
+### JS IR 后端迁移指南
 
-The new [migration guide for the JS IR backend](js-ir-migration.md) identifies issues you may encounter during migration
+The new [JS IR 后端迁移指南](js-ir-migration.md) identifies issues you may encounter during migration
 and provides solutions for them. If you find any issues that aren’t covered in the guide, please report them to our [issue tracker](http://kotl.in/issue).
 
 ## Gradle
 
 Kotlin 1.5.20 introduces the following features that can improve the Gradle experience:
 
-* [Caching for annotation processors classloaders in kapt](#caching-for-annotation-processors-classloaders-in-kapt)
-* [Deprecation of the `kotlin.parallel.tasks.in.project` build property](#deprecation-of-the-kotlin-parallel-tasks-in-project-build-property)
+* [在 kapt 中缓存注解处理器的类加载器](#在-kapt-中缓存注解处理器的类加载器)
+* [弃用 `kotlin.parallel.tasks.in.project` 构建属性](#弃用-kotlin-parallel-tasks-in-project-构建属性)
 
-### Caching for annotation processors' classloaders in kapt
+### 在 kapt 中缓存注解处理器的类加载器
 
-> Caching for annotation processors' classloaders in kapt is [Experimental](components-stability.md).
+> 在 kapt 中缓存注解处理器的类加载器 is [Experimental](components-stability.md).
 > It may be dropped or changed at any time. Use it only for evaluation purposes.
 > We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-28901).
 >
@@ -221,7 +221,7 @@ kapt.include.compile.classpath=false
 
 Learn more about [kapt](kapt.md).
 
-### Deprecation of the kotlin.parallel.tasks.in.project build property
+### 弃用 of the kotlin.parallel.tasks.in.project 构建属性
 
 With this release, Kotlin parallel compilation is controlled by the [Gradle parallel execution flag `--parallel`](https://docs.gradle.org/current/userguide/performance.html#parallel_execution).
 Using this flag, Gradle executes tasks concurrently, increasing the speed of compiling tasks and utilizing the resources
@@ -234,10 +234,10 @@ removed in the next major release.
 
 Kotlin 1.5.20 changes the platform-specific implementations of several functions for working with characters and as a
 result brings unification across platforms:
-* [Support for all Unicode digits in Char.digitToInt() for Kotlin/Native and Kotlin/JS](#support-for-all-unicode-digits-in-char-digittoint-in-kotlin-native-and-kotlin-js).
-* [Unification of Char.isLowerCase()/isUpperCase() implementations across platforms](#unification-of-char-islowercase-isuppercase-implementations-across-platforms).
+* [Kotlin/Native 与 Kotlin/JS 的 Char.digitToInt() 支持所有 Unicode 数字](#kotlin-native-与-kotlin-js-的-char-digittoint-支持所有-unicode-数字)。
+* [跨平台统一 Char.isLowerCase()/isUpperCase() 的实现](#跨平台统一-char-islowercase-isuppercase-的实现)。
 
-### Support for all Unicode digits in Char.digitToInt() in Kotlin/Native and Kotlin/JS
+### Kotlin/Native 与 Kotlin/JS 的 Char.digitToInt() 支持所有 Unicode 数字
 
 [`Char.digitToInt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/digit-to-int.html) returns the numeric
 value of the decimal digit that the character represents. Before 1.5.20, the function supported all Unicode digit characters
@@ -257,7 +257,7 @@ fun main() {
 {kotlin-runnable="true" kotlin-min-compiler-version="1.5"}
 
 
-### Unification of Char.isLowerCase()/isUpperCase() implementations across platforms
+### 跨平台统一 Char.isLowerCase()/isUpperCase() 的实现
 
 The functions [`Char.isUpperCase()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/is-upper-case.html) and
 [`Char.isLowerCase()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/is-lower-case.html) return a boolean value

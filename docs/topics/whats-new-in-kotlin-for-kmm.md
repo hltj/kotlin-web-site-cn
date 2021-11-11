@@ -62,7 +62,7 @@ Here you can find a short summary of the features Kotlin provides for developing
 
   This feature is experimental. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-38600).
 
-  Learn more about [exporting KDoc comments to generated Objective-C headers and how to opt in to this feature](whatsnew1520.md#opt-in-export-of-kdoc-comments-to-generated-objective-c-headers).
+  Learn more about [exporting KDoc comments to generated Objective-C headers and how to opt in to this feature](whatsnew1520.md#将-kdoc-注释导出到所生成的-objective-c-头文件的选择加入项 ).
 
 * **New framework-packing task for Kotlin/Native**.
   The [Kotlin Multiplatform Gradle plugin](mpp-dsl-reference.md) now includes the `embedAndSignAppleFrameworkForXcode` task, which can be used from Xcode to connect KMM modules to the iOS part of your project.
@@ -88,7 +88,7 @@ Learn more about [what's new in Kotlin 1.5.20](whatsnew1520.md).
 
 * **New API for getting a char’s Unicode category.** A variety of new character-related functions are available on all platforms and in the common code. They include several functions for checking whether a char is a letter or a digit, like `Char.isLetterOrDigit()`, as well as
   functions for checking the case of a char, like  `Char.isUpperCase()`. The property `Char.category` and the enum class `CharCategory` are available, as well.  
-  Learn more about this [new API](whatsnew15.md#new-api-for-getting-a-char-category-now-available-in-multiplatform-code).
+  Learn more about this [new API](whatsnew15.md#用于获取字符类别的新版-api-现已对多平台代码可用).
 
 * **Improved Kotlin/Native performance and stability**. Kotlin/Native is receiving a set of performance improvements that speed up
   both compilation and execution.  

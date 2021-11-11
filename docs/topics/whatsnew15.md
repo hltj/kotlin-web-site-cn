@@ -11,7 +11,7 @@ You can also find an overview of the changes in the [release blog post](https://
 
 Kotlin 1.5.0 brings stable versions of the new language features presented for [preview in 1.4.30](whatsnew1430.md#语言特性):
 * [JVM 记录类型支持](#jvm-记录类型支持)
-* [密封接口](#密封接口) and [密封类改进](#包范围的密封类层次结构)
+* [密封接口](#密封接口)以及[密封类改进](#包范围的密封类层次结构)
 * [内联类](#内联类)
 
 Detailed descriptions of these features are available in [this blog post](https://blog.jetbrains.com/kotlin/2021/02/new-language-features-preview-in-kotlin-1-4-30/)
@@ -313,10 +313,10 @@ so that your clients can also use it with the new compiler.
 
 ## Kotlin 多平台
 
-In Kotlin 1.5.0, [choosing a testing dependency for each platform has been simplified](#simplified-test-dependencies-usage-in-multiplatform-projects)
+In Kotlin 1.5.0, [choosing a testing dependency for each platform has been simplified](#简化多平台项目中的测试依赖项用法)
 and it is now done automatically by the Gradle plugin.
 
-A new [API for getting a char category is now available in multiplatform projects](#new-api-for-getting-a-char-category-now-available-in-multiplatform-code).
+A new [API for getting a char category is now available in multiplatform projects](#用于获取字符类别的新版-api-现已对多平台代码可用).
 
 ## 标准库
 
@@ -326,11 +326,11 @@ The standard library has received a range of changes and improvements, from stab
 * [稳定版用于大小写文本的区域设置无关 API](#稳定版用于大小写文本的区域设置无关-api)
 * [稳定版字符到整数转换 API](#稳定版字符到整数转换-api)
 * [稳定版 Path API](#稳定版-path-api)
-* [Floored division and the mod operator](#floored-division-and-the-mod-operator)
-* [Duration API changes](#duration-api-changes)
-* [New API for getting a char category now available in multiplatform code](#new-api-for-getting-a-char-category-now-available-in-multiplatform-code)
-* [New collections function firstNotNullOf()](#new-collections-function-firstnotnullof)
-* [Strict version of String?.toBoolean()](#strict-version-of-string-toboolean)
+* [趋负无穷截尾的除余运算](#趋负无穷截尾的除余运算)
+* [Duration API 变更](#duration-api-变更)
+* [用于获取字符类别的新版 API 现已对多平台代码可用](#用于获取字符类别的新版-api-现已对多平台代码可用)
+* [新的集合函数 firstNotNullOf()](#新的集合函数-firstnotnullof)
+* [String?.toBoolean() 的严格版本](#string-toboolean-的严格版本)
 
 You can learn more about the standard library changes in [this blog post](https://blog.jetbrains.com/kotlin/2021/04/kotlin-1-5-0-rc-released).
 
@@ -353,7 +353,7 @@ Kotlin 1.5.0 provides the following fully [Stable](components-stability.md) alte
 
 * For `String` functions:
 
-  |**Earlier versions**|**1.5.0 alternative**|
+  |**早期版本**|**1.5.0 的另一选择**|
   | --- | --- |
   |`String.toUpperCase()`|`String.uppercase()`|
   |`String.toLowerCase()`|`String.lowercase()`|
@@ -362,7 +362,7 @@ Kotlin 1.5.0 provides the following fully [Stable](components-stability.md) alte
 
 * For `Char` functions:
 
-  |**Earlier versions**|**1.5.0 alternative**|
+  |**早期版本**|**1.5.0 的另一选择**|
   | --- | --- |
   |`Char.toUpperCase()`|`Char.uppercaseChar(): Char`<br/>`Char.uppercase(): String`|
   |`Char.toLowerCase()`|`Char.lowercaseChar(): Char`<br/>`Char.lowercase(): String`|
@@ -428,7 +428,7 @@ val kotlinFiles: List<Path> = Path("/home/user").listDirectoryEntries("*.kt")
 
 [Learn more about the Path API](whatsnew1420.md#java-nio-file-path-的扩展).
 
-### Floored division and the mod operator
+### 趋负无穷截尾的除余运算
 
 New operations for modular arithmetics have been added to the standard library:
 * `floorDiv()` returns the result of [floored division](https://en.wikipedia.org/wiki/Floor_and_ceiling_functions). It is available for integer types.
@@ -454,7 +454,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.5"}
 
-### Duration API changes
+### Duration API 变更
 
 > The Duration API is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Use it only for evaluation purposes. We would appreciate hearing your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
@@ -485,7 +485,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.5"}
 
-### New API for getting a char category now available in multiplatform code
+### 用于获取字符类别的新版 API 现已对多平台代码可用
 
 Kotlin 1.5.0 introduces the new API for getting a character’s category according to Unicode in multiplatform projects.
 Several functions are now available in all the platforms and in the common code.
@@ -534,7 +534,7 @@ a char's general category according to Unicode, are now also available in multip
 
 [Learn more about characters](https://kotlinlang.org/docs/basic-types.html#characters).
 
-### New collections function firstNotNullOf()
+### 新的集合函数 firstNotNullOf()
 
 The new [`firstNotNullOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-not-null-of.html) and [`firstNotNullOfOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-not-null-of-or-null.html)
 functions combine [`mapNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html)
@@ -553,7 +553,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.5"}
 
-### Strict version of String?.toBoolean()
+### String?.toBoolean() 的严格版本
 
 Two new functions introduce case-sensitive strict versions of the existing [String?.toBoolean()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-boolean.html):
 * [`String.toBooleanStrict()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-boolean-strict.html) throws an exception for all inputs except the literals `true` and `false`.
@@ -570,17 +570,17 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.5"}
 
-## kotlin-test library
+## kotlin-test 库
 The [kotlin-test](https://kotlinlang.org/api/latest/kotlin.test/) library introduces some new features:
-* [Simplified test dependencies usage in multiplatform projects](#simplified-test-dependencies-usage-in-multiplatform-projects)
-* [Automatic selection of a testing framework for Kotlin/JVM source sets](#automatic-selection-of-a-testing-framework-for-kotlin-jvm-source-sets)
-* [Assertion function updates](#assertion-function-updates)
+* [简化多平台项目中的测试依赖项用法](#简化多平台项目中的测试依赖项用法)
+* [Kotlin/JVM 源代码集测试框架的自动选择](#kotlin-jvm-源代码集测试框架的自动选择)
+* [断言函数更新](#断言函数更新)
 
-### Simplified test dependencies usage in multiplatform projects
+### 简化多平台项目中的测试依赖项用法
 
 Now you can use the `kotlin-test` dependency to add dependencies for testing in the `commonTest` source set, and the 
 Gradle plugin will infer the corresponding platform dependencies for each test source set:
-* `kotlin-test-junit` for JVM source sets, see [automatic choice of a testing framework for Kotlin/JVM source sets](#automatic-selection-of-a-testing-framework-for-kotlin-jvm-source-sets)
+* `kotlin-test-junit` for JVM source sets, see [automatic choice of a testing framework for Kotlin/JVM source sets](#kotlin-jvm-源代码集测试框架的自动选择)
 * `kotlin-test-js` for Kotlin/JS source sets
 * `kotlin-test-common` and `kotlin-test-annotations-common` for common source sets
 * No extra artifact for Kotlin/Native source sets
@@ -591,7 +591,7 @@ An existing kotlin-test setup with explicit dependencies will continue to work b
 
 Learn more about [setting dependencies on test libraries](gradle.md#set-dependencies-on-test-libraries).
 
-### Automatic selection of a testing framework for Kotlin/JVM source sets
+### Kotlin/JVM 源代码集测试框架的自动选择
 
 The Gradle plugin now chooses and adds a dependency on a testing framework automatically. All you need to do is add
 the dependency `kotlin-test` in the common source set.
@@ -654,13 +654,13 @@ to the project’s `gradle.properties`.
 
 Learn more about [setting dependencies on test libraries](gradle.md#set-dependencies-on-test-libraries).
 
-###  Assertion function updates
+### 断言函数更新
 
 This release brings new assertion functions and improves the existing ones.
 
 The `kotlin-test` library now has the following features:
 
-* **Checking the type of a value**
+* **检测值的类型**
 
   You can use the new `assertIs<T>` and `assertIsNot<T>` to check the type of a value:
 
@@ -676,7 +676,7 @@ The `kotlin-test` library now has the following features:
 
   Because of type erasure, this assert function only checks whether the `value` is of the `List` type in the following example and doesn't check whether it's a list of the particular `String` element type:  `assertIs<List<String>>(value)`.
 
-* **Comparing the container content for arrays, sequences, and arbitrary iterables**
+* **比较数组、序列以及任意可迭代容器的内容**
 
   There is a new set of overloaded `assertContentEquals()` functions for comparing content for different collections that don’t implement [structural equality](equality.md#结构相等):
 
@@ -689,7 +689,7 @@ The `kotlin-test` library now has the following features:
   }
   ```
 
-* **New overloads to `assertEquals()` and `assertNotEquals()` for `Double` and `Float` numbers**
+* **`Double` and `Float` 数值的 `assertEquals()` 与 `assertNotEquals()` 的新的重载**
 
   There are new overloads for the `assertEquals()` function that make it possible to compare two `Double` or `Float` numbers with absolute precision. The precision value is specified as the third parameter of the function:
 
@@ -705,7 +705,7 @@ The `kotlin-test` library now has the following features:
   }
   ```
 
-* **New functions for checking the content of collections and elements**
+* **用于检测集合与元素内容的新函数**
 
   You can now check whether the collection or element contains something with the `assertContains()` function.
   You can use it with Kotlin collections and elements that have the `contains()` operator, such as `IntRange`, `String`, and others:
@@ -720,7 +720,7 @@ The `kotlin-test` library now has the following features:
   }
   ```
 
-* **`assertTrue()`, `assertFalse()`, `expect()` functions are now inline**
+* **`assertTrue()`、 `assertFalse()`、 `expect()` 现在是内联函数**
 
   From now on, you can use these as inline functions, so it's possible to call [suspend functions](composing-suspending-functions.md) inside a lambda expression:
 
@@ -734,14 +734,14 @@ The `kotlin-test` library now has the following features:
   }
   ```
 
-## kotlinx libraries
+## kotlinx 库
 
 Along with Kotlin 1.5.0, we are releasing new versions of the kotlinx libraries:
 * `kotlinx.coroutines` [1.5.0-RC](#coroutines-1-5-0-rc)
 * `kotlinx.serialization` [1.2.1](#serialization-1-2-1)
 * `kotlinx-datetime` [0.2.0](#datetime-0-2-0)
 
-### Coroutines 1.5.0-RC
+### coroutines 1.5.0-RC
 
 `kotlinx.coroutines` [1.5.0-RC](https://github.com/Kotlin/kotlinx.coroutines/releases/tag/1.5.0-RC) is here with:
 * [New channels API](channels.md)
@@ -756,7 +756,7 @@ Learn more in the [changelog](https://github.com/Kotlin/kotlinx.coroutines/relea
 
 <video href="EVLnWOcR0is" title="kotlinx.coroutines 1.5.0"/>
 
-### Serialization 1.2.1
+### serialization 1.2.1
 
 `kotlinx.serialization` [1.2.1](https://github.com/Kotlin/kotlinx.serialization/releases/tag/v1.2.1) is here with:
 * Improvements to JSON serialization performance
@@ -779,7 +779,7 @@ Learn more in the [changelog](https://github.com/Kotlin/kotlinx.serialization/re
 Learn more in the [changelog](https://github.com/Kotlin/kotlinx-datetime/releases/tag/v0.2.0) and the
 [`kotlinx-datetime` 0.2.0 release blog post](https://blog.jetbrains.com/kotlin/2021/05/kotlinx-datetime-0-2-0-is-out/).
 
-## Migrating to Kotlin 1.5.0
+## 迁移到 Kotlin 1.5.0
 
 IntelliJ IDEA and Android Studio will suggest updating the Kotlin plugin to 1.5.0 once it is available.
 

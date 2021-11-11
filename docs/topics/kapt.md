@@ -123,7 +123,7 @@ Note that the `kapt.workers.isolation` property is ignored.
 
 ### Caching for annotation processors' classloaders
 
-> Caching for annotation processors' classloaders in kapt is [Experimental](components-stability.md).
+> 在 kapt 中缓存注解处理器的类加载器 is [Experimental](components-stability.md).
 > It may be dropped or changed at any time. Use it only for evaluation purposes.
 > We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-28901).
 >
