@@ -70,7 +70,11 @@ fun main() {
 
 ![Collection interfaces hierarchy](collections-diagram.png){width="500"}
 
-让我们来看看接口及其实现。
+让我们来看看接口及其实现。 To learn about `Collection`, read the section below. 
+To learn about `List`, `Set`, and `Map`, you can either read the corresponding sections or watch a video 
+by Sebastian Aigner, Kotlin Developer Advocate:
+
+<video href="F8jj7e-_jFA" title="Kotlin Collections Overview"/>
 
 ### Collection
 

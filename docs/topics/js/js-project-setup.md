@@ -417,7 +417,7 @@ Kotlin/JS Gradle 插件还支持 webpack 的 [CSS](https://webpack.js.org/loader
 [Webpack 配置文件](#webpack-绑定)来更改所有选项，但是最常<!--
 -->用的设置可以直接从 `build.gradle(.kts)` 文件获得。
 
-要在项目中打开 CSS 支持，请在 `commonWbpackConfig`
+要在项目中打开 CSS 支持，请在 `commonWebpackConfig`
 块的 Gradle 构建文件中设置 `cssSupport.enabled` 选项。使用向导创建新项目时，默认情况下也会启用此配置。
 
 ```groovy
