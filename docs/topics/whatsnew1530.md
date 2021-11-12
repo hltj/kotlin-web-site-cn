@@ -18,14 +18,14 @@ You can also find a short overview of the changes in the [release blog post](htt
 
 Kotlin 1.5.30 is presenting previews of future language changes and bringing improvements to the opt-in requirement mechanism
 and type inference:
-* [Exhaustive when statements for sealed and Boolean subjects](#exhaustive-when-statements-for-sealed-and-boolean-subjects)
-* [Suspending functions as supertypes](#suspending-functions-as-supertypes)
-* [Requiring opt-in on implicit usages of experimental APIs](#requiring-opt-in-on-implicit-usages-of-experimental-apis)
-* [Changes to using opt-in requirement annotations with different targets](#changes-to-using-opt-in-requirement-annotations-with-different-targets)
-* [Improvements to type inference for recursive generic types](#improvements-to-type-inference-for-recursive-generic-types)
-* [Eliminating builder inference restrictions](#eliminating-builder-inference-restrictions)
+* [对于密封类与布尔值主语穷尽 when 语句](#对于密封类与布尔值主语穷尽-when-语句)
+* [挂起函数作为超类型](#挂起函数作为超类型)
+* [对隐式用到实验性 API 要求选择加入](#对隐式用到实验性-api-要求选择加入)
+* [对使用选择加入要求的注解不同目标的变更](#对使用选择加入要求的注解不同目标的变更)
+* [递归泛型类型的类型推断改进](#递归泛型类型的类型推断改进)
+* [消除构建器推断限制](#消除构建器推断限制)
 
-### Exhaustive when statements for sealed and Boolean subjects
+### 对于密封类与布尔值主语穷尽 when 语句
 
 > Support for sealed (exhaustive) when statements is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-12380).
@@ -96,7 +96,7 @@ kotlin {
 </tab>
 </tabs>
 
-### Suspending functions as supertypes
+### 挂起函数作为超类型
 
 > Support for suspending functions as supertypes is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-18707).
@@ -146,7 +146,7 @@ The feature has the following restrictions:
 * You can’t mix an ordinary functional type and a `suspend` functional type as supertype. This is because of the implementation details of `suspend` functional types in the JVM backend. They are represented in it as ordinary functional types with a marker interface. Because of the marker interface, there is no way to tell which of the superinterfaces are suspended and which are ordinary.
 * You can't use multiple `suspend` functional supertypes. If there are type checks, you also can’t use multiple ordinary functional supertypes.
 
-### Requiring opt-in on implicit usages of experimental APIs
+### 对隐式用到实验性 API 要求选择加入
 
 > The opt-in requirement mechanism is [Experimental](components-stability.md).
 > It may change at any time. [See how to opt-in](opt-in-requirements.md#选择加入要求的实验性状态).
@@ -182,7 +182,7 @@ fun getDate(): Date {
 
 Learn more about [opt-in requirements](opt-in-requirements.md).
 
-### Changes to using opt-in requirement annotations with different targets
+### 对使用选择加入要求的注解不同目标的变更
 
 > The opt-in requirement mechanism is [Experimental](components-stability.md).
 > It may change at any time. [See how to opt-in](opt-in-requirements.md#选择加入要求的实验性状态).
@@ -198,7 +198,7 @@ Kotlin 1.5.30 presents new rules for using and declaring opt-in requirement anno
 
 Learn more about [opt-in requirements](opt-in-requirements.md).
 
-### Improvements to type inference for recursive generic types
+### 递归泛型类型的类型推断改进
 
 In Kotlin and Java, you can define a recursive generic type, which references itself in its type parameters. In Kotlin 1.5.30, the Kotlin compiler can infer a type argument based only on upper bounds of the corresponding type parameter if it is a recursive generic. This makes it possible to create various patterns with recursive generic types that are often used in Java to make builder APIs.
 
@@ -221,7 +221,7 @@ val containerB = PostgreSQLContainer(DockerImageName.parse("postgres:13-alpine")
 
 You can enable the improvements by passing the `-Xself-upper-bound-inference` or the `-language-version 1.6` compiler options. See other examples of newly supported use cases in [this YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-40804).
 
-### Eliminating builder inference restrictions
+### 消除构建器推断限制
 
 Builder inference is a special kind of type inference that allows you to infer the type arguments of a call based on type information from other calls inside its lambda argument. This can be useful when calling generic builder functions such as [`buildList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/build-list.html) or [`sequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/sequence.html): `buildList { add("string") }`.
 
@@ -254,14 +254,14 @@ Also, you can enable this feature with the `-language-version 1.6` compiler opti
 ## Kotlin/JVM
 
 With Kotlin 1.5.30, Kotlin/JVM receives the following features:
-* [Instantiation of annotation classes](#instantiation-of-annotation-classes)
-* [Improved nullability annotation support configuration](#improved-nullability-annotation-support-configuration)
+* [注解类的实例化](#注解类的实例化)
+* [改进了对可空性注解配置的支持](#改进了对可空性注解配置的支持)
 
 See the [Gradle](#gradle) section for Kotlin Gradle plugin updates on the JVM platform.
 
-### Instantiation of annotation classes
+### 注解类的实例化
 
-> Instantiation of annotation classes is [Experimental](components-stability.md). It may be dropped or changed at any time.
+> 注解类的实例化 is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-45395).
 >
 {type="warning"}
@@ -285,7 +285,7 @@ Use the `-language-version 1.6` compiler option to enable this feature. Note tha
 
 Learn more about instantiation of annotation classes in [this KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/annotation-instantiation.md)
 
-### Improved nullability annotation support configuration
+### 改进了对可空性注解配置的支持
 
 The Kotlin compiler can read various types of [nullability annotations](java-interop.md#可空性注解) to get nullability information from Java. This information allows it to report nullability mismatches in Kotlin when calling Java code.
 

@@ -1,4 +1,4 @@
-[//]: # (title: Create an app using C Interop and libcurl – tutorial)
+[//]: # (title: 创建使用 C 语言互操作与 libcurl 的应用——教程)
 
 This tutorial demonstrates how to use IntelliJ IDEA to create a command-line application. You'll learn how to create
 a simple HTTP client that can run natively on specified platforms using Kotlin/Native and the `libcurl` library.
@@ -16,7 +16,7 @@ The output will be an executable command-line app that you can run on macOS and 
 To get started, install the latest version of [IntelliJ IDEA](https://www.jetbrains.com/idea/download/index.html).
 The tutorial is suitable for both IntelliJ IDEA Community Edition and IntelliJ IDEA Ultimate.
 
-## Create a Kotlin/Native project
+## 创建一个 Kotlin/Native 项目
 
 1. In IntelliJ IDEA, select **File | New | Project**.
 2. In the panel on the left, select **Kotlin | Native Application**.
@@ -92,7 +92,7 @@ kotlin {
   imported to the `interop` package. You may want to import the whole package in `.kt` files. Learn more about
   [how to configure](mpp-discover-project.md#multiplatform-plugin) it.
 
-## Create a definition file
+## 创建一个定义文件
 
 When writing native applications, you often need access to certain functionalities that are not included in the [Kotlin
 standard library](https://kotlinlang.org/api/latest/jvm/stdlib/), such as making HTTP requests, reading and writing from
@@ -150,7 +150,7 @@ information on all the options available to `cinterop`, see [the Interop section
 >
 {type="note"}
 
-## Add interoperability to the build process
+## 将互操作添加到构建过程
 
 To use header files, make sure they are generated as a part of the build process. For this, add the following
 entry to the `build.gradle(.kts)` file:
@@ -208,7 +208,7 @@ libcurl {
 
 See the [Interoperability with C](native-c-interop.md) section for more details on the available options.
 
-## Write the application code
+## 编写应用程序代码
 
 Now you have the library and the corresponding Kotlin stubs and can use them from your application. For this tutorial,
 convert the [simple.c](https://curl.haxx.se/libcurl/c/simple.html) example to Kotlin.
@@ -239,7 +239,7 @@ the same as the C version. All the calls you'd expect in the `libcurl` library a
 > This is a line-by-line literal translation. You could also write this in a more Kotlin idiomatic way.
 >
 
-## Compile and run the application
+## 编译与运行应用程序
 
 1. Compile the application. To do that, run the following command in the terminal:
 
@@ -262,7 +262,7 @@ hide this using `curl_easy_setopt`.
 >
 {type="note"}
 
-## What’s next?
+## 下一步做什么？
 
 For a complete example of using the `libcurl`, see the [libcurl sample of the Kotlin/Native project](https://github.com/JetBrains/kotlin/tree/master/kotlin-native/samples/libcurl)
 that shows how to abstract the code into Kotlin classes as well as display headers. It also demonstrates how to make
