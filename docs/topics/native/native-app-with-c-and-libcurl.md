@@ -9,7 +9,7 @@ The output will be an executable command-line app that you can run on macOS and 
 > a `.bat` file), this approach doesn't scale well for big projects with hundreds of files and libraries. In this case, it is
 > better to use the Kotlin/Native compiler with a build system, as it helps download and cache the Kotlin/Native
 > compiler binaries and libraries with transitive dependencies and run the compiler and tests. Kotlin/Native can use the
-> [Gradle](gradle.md) build system through the [`kotlin-multiplatform`](mpp-discover-project.md#multiplatform-plugin)
+> [Gradle](gradle.md) build system through the [`kotlin-multiplatform`](mpp-discover-project.md#多平台插件)
 > Plugin.
 >
 
@@ -85,12 +85,12 @@ kotlin {
 </tabs>
 
 * Targets are defined using `macOSX64`, `linuxX64`, and `mingwX64` for macOS, Linux, and Windows. For a complete
-  list of supported platforms, see the [Kotlin Native overview](native-overview.md#target-platforms).
+  list of supported platforms, see the [Kotlin Native overview](native-overview.md#目标平台).
 * The entry itself defines a series of properties to indicate how the binary is generated and the entry
   point of the applications. These can be left as default values.
 * C interoperability is configured as an additional step in the build. By default, all the symbols from C are
   imported to the `interop` package. You may want to import the whole package in `.kt` files. Learn more about
-  [how to configure](mpp-discover-project.md#multiplatform-plugin) it.
+  [how to configure](mpp-discover-project.md#多平台插件) it.
 
 ## 创建一个定义文件
 
