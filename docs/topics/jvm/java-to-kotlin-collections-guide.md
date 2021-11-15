@@ -613,7 +613,7 @@ fun main() {
 ```
 {kotlin-runnable="true" id="filter-by-type-kotlin"}
 
-### 测试谓词
+### 检验谓词
 
 There are some tasks like checking if all, none, or any elements satisfy a condition. 
 In Java, you can make all these checks via the [Stream API](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/package-summary.html) 
@@ -648,7 +648,7 @@ fun main() {
 ```
 {kotlin-runnable="true" id="test-predicates-kotlin"}
 
-Learn more about [test predicates](collection-filtering.md#测试谓词).
+Learn more about [test predicates](collection-filtering.md#检验谓词).
 
 ## 集合转换操作
 
