@@ -35,7 +35,7 @@ Kotlin 支持以下平台并且为每个平台提供了目标预设。请参见�
     </tr>
     <tr>
         <td>Android NDK</td>
-        <td><code>androidNativeArm32</code>、 <code>androidNativeArm64</code></td>
+        <td><code>androidNativeArm32</code>、 <code>androidNativeArm64</code>、 <code>androidNativeX86</code>、 <code>androidNativeX64</code></td>
         <td>
             <p>64 位目标需要 Linux 或 macOS 主机。</p>
             <p>可以在任何所支持的主机上构建 32 位目标。</p>

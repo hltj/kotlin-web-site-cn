@@ -176,6 +176,8 @@ val emails = …… // 可能会是空集合
 val mainEmail = emails.firstOrNull() ?: ""
 ```
 
+Learn the difference between [Java and Kotlin first item getting](java-to-kotlin-collections-guide.md#get-the-first-and-the-last-items-of-a-possibly-empty-collection).
+
 ## if not null 执行代码
 
 ```kotlin
