@@ -285,7 +285,7 @@ const Teach = (props) => {
                 </li>
                 <li className="teach-list__item">
                   <a
-                    href="https://kotlinlang.org/docs/mixing-java-kotlin-intellij.html#converting-an-existing-java-file-to-kotlin-with-j2k"
+                    href="https://kotlinlang.org/docs/mixing-java-kotlin-intellij.html#使用-j2k-将现有-java-文件转换为-kotlin-文件"
                     target="_blank">
                       <span className="rs-link">
                         Java-to-Kotlin converter

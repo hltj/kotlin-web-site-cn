@@ -303,7 +303,7 @@ Here is an example showing how to enable error reporting for the newly supported
 Kotlin/Native has received various changes and improvements:
 * [Apple silicon 支持](#apple-silicon-支持)
 * [改进了用于 CocoaPods Gradle 插件的 Kotlin DSL](#改进了用于-cocoapods-gradle-插件的-kotlin-dsl)
-* [与 Swift 5.5 async/await 的实验性互操作](#与swift-5-5-async-await-的实验性互操作)
+* [与 Swift 5.5 async/await 的实验性互操作](#与-swift-5-5-async-await-的实验性互操作)
 * [改进了对象与伴生对象的 Swift/Objective-C 映射](#改进了对象与伴生对象的-swift-objective-c-映射)
 * [对于 MinGW 目标弃用了链接到 DLL 而未导入库的用法](#对于-mingw-目标弃用了链接到-dll-而未导入库的用法)
 

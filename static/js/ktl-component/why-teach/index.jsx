@@ -218,7 +218,7 @@ export const WhyTeach = ({path}) => {
                   <ul className="ktl-text-2">
                     <li className="ktl-offset-bottom-s">
                       <a
-                        href="https://kotlinlang.org/docs/mixing-java-kotlin-intellij.html#converting-an-existing-java-file-to-kotlin-with-j2k"
+                        href="https://kotlinlang.org/docs/mixing-java-kotlin-intellij.html#使用-j2k-将现有-java-文件转换为-kotlin-文件"
                         target="_blank" className="ktl-text-2 ktl-link">
                         <span className="rs-link">Java-to-Kotlin converter</span>
                         <span>&nbsp;↗</span>

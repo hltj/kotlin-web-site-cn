@@ -29,7 +29,7 @@ Here you can find a short summary of the features Kotlin provides for developing
 * **与 Swift 5.5 async/await 的实验性互操作。**
   The Kotlin/Native compiler now emits the `_Nullable_result` attribute in the generated Objective-C headers for suspending functions with nullable return types. This makes it possible to call them from Swift as `async` functions with the proper nullability.
 
-  [Learn more about experimental interoperability with Swift 5.5 async/await](whatsnew1530.md#与swift-5-5-async-await-的实验性互操作).
+  [Learn more about experimental interoperability with Swift 5.5 async/await](whatsnew1530.md#与-swift-5-5-async-await-的实验性互操作).
 
 * **改进了对象与伴生对象的 Swift/Objective-C 映射。**
   Getting objects and companion objects can now be done in a way that is more intuitive for native iOS developers.
@@ -50,7 +50,7 @@ Here you can find a short summary of the features Kotlin provides for developing
   Kotlin 1.5.30 brings new default publishing setup for Android artefacts. You can [publish your multiplatform library for the Android target](mpp-publish-lib.md#发布-android-库) by specifying [Android variant](https://developer.android.com/studio/build/build-variants) names in the build script.
   The Kotlin Gradle plugin will generate publications automatically.
 
-  [Learn more about new default publishing setup for Android artifacts](whatsnew1530.md#new-default-publishing-setup-for-android-artifacts).
+  [Learn more about new default publishing setup for Android artifacts](whatsnew1530.md#android-构件的新版默认发布设置).
 
 ## Kotlin 1.5.20 for KMM
 

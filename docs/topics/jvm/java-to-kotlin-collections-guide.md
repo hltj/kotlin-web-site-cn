@@ -25,12 +25,12 @@ In Kotlin, there are many operations on collections that look absolutely the sam
 | 描述 | 共有操作 | 更多 Kotlin 替代方式 |
 |-------------|-----------|---------------------|
 | Add an element or elements | `add()`, `addAll()` | Use the [`plusAssign`(`+=`) operator](collection-plus-minus.md): `collection += element`, `collection += anotherCollection`. |
-| Check if a collection contains an element or elements | `contains()`, `containsAll()` | Use the [`in` keyword](collection-elements.md#check-element-existence) to call `contains()` in the operator form: `element in collection`. |
+| Check if a collection contains an element or elements | `contains()`, `containsAll()` | Use the [`in` keyword](collection-elements.md#检测元素存在与否) to call `contains()` in the operator form: `element in collection`. |
 | Check if a collection is empty | `isEmpty()` | Use [`isNotEmpty()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/is-not-empty.html) to check if a collection is not empty. |
 | Remove by a condition | `removeIf()` | |
 | Leave only selected elements | `retainAll()` | |
 | Remove all elements from a collection | `clear()` | |
-| Get a stream from a collection | `stream()` | Kotlin has its own way for stream processing – [sequences](#sequences), and methods like [`map()`](collection-filtering.md), [`filter()`](#filter-elements). |
+| Get a stream from a collection | `stream()` | Kotlin has its own way for stream processing – [sequences](#序列), and methods like [`map()`](collection-filtering.md), [`filter()`](#过滤元素). |
 | Get an iterator from a collection | `iterator()` | |
 
 ### 对 map 的操作
@@ -40,7 +40,7 @@ In Kotlin, there are many operations on collections that look absolutely the sam
 | Add an element or elements | `put()`, `putAll()`, `putIfAbsent()`| In Kotlin, the assignment `map[key] = value` behaves the same as `put(key, value)`. Also, you may use the [`plusAssign`(`+=`) operator](collection-plus-minus.md): `map += Pair(key, value)` or `map += anotherMap`. |
 | Replace an element or elements | `put()`, `replace()`, `replaceAll()` | Use the indexing operator `map[key] = value` instead of `put()` and `replace()`. |
 | Get an element | `get()` | Use the indexing operator to get an element: `map[index]`. |
-| Check if a map contains an element or elements | `containsKey()`, `containsValue()` | Use the [`in` keyword](collection-elements.md#check-element-existence) to call `contains()` in the operator form: `element in map`. |
+| Check if a map contains an element or elements | `containsKey()`, `containsValue()` | Use the [`in` keyword](collection-elements.md#检测元素存在与否) to call `contains()` in the operator form: `element in map`. |
 | Check if a map is empty |  `isEmpty()` | Use [`isNotEmpty()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/is-not-empty.html) to check if a map is not empty. |
 | Remove an element | `remove(key)`, `remove(key, value)` | Use the [`minusAssign`(`-=`) operator](collection-plus-minus.md): `map -= key`. |
 | Remove all elements from a map | `clear()` | |
@@ -63,18 +63,18 @@ In Kotlin, there are many operations on collections that look absolutely the sam
 | 描述 | Java | Kotlin |
 |-------------|------|--------|
 | Get a collection's size | `size()` | `count()`, `size` |
-| Get flat access to nested collection elements | `collectionOfCollections.forEach(flatCollection::addAll)` or `collectionOfCollections.stream().flatMap().collect()` | [`flatten()`](collection-transformations.md#flatten) or [`flatMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flat-map.html) |
+| Get flat access to nested collection elements | `collectionOfCollections.forEach(flatCollection::addAll)` or `collectionOfCollections.stream().flatMap().collect()` | [`flatten()`](collection-transformations.md#展平) or [`flatMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flat-map.html) |
 | Apply the given function to every element | `stream().map().collect()` | [`map()`](collection-filtering.md) |
-| Apply the provided operation to the collection elements sequentially and return the accumulated result | `stream().reduce()` | [`reduce()`, `fold()`](collection-aggregate.md#fold-and-reduce) |
+| Apply the provided operation to the collection elements sequentially and return the accumulated result | `stream().reduce()` | [`reduce()`, `fold()`](collection-aggregate.md#fold-与-reduce) |
 | Group elements by a classifier and count them | `stream().collect(Collectors.groupingBy(classifier, counting()))` | [`eachCount()`](collection-grouping.md) |
 | Filter by a condition | `stream().filter().collect()` | [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html) |
 | Check whether collection elements satisfy a condition | `stream().noneMatch()`, `stream().anyMatch()`, `stream().allMatch()` | [`none()`, `any()`, `all()`](collection-filtering.md) |
-| Sort elements | `stream().sorted().collect()` | [`sorted()`](collection-ordering.md#natural-order) |
-| Take first N elements | `stream().limit(N).collect()` | [`take(N)`](collection-parts.md#take-and-drop) |
-| Take elements with a predicate | `stream().takeWhile().collect()` | [`takeWhile()`](collection-parts.md#take-and-drop) |
-| Skip first N elements | `stream().skip(N).collect()` | [`drop(N)`](collection-parts.md#take-and-drop) |
-| Skip elements with a predicate | `stream().dropWhile().collect()` | [`dropWhile()`](collection-parts.md#take-and-drop) |
-| Build maps from the collection elements and certain values associated with them | `stream().collect(toMap(keyMapper, valueMapper))` | [`associate()`](collection-transformations.md#associate) |
+| Sort elements | `stream().sorted().collect()` | [`sorted()`](collection-ordering.md#自然顺序) |
+| Take first N elements | `stream().limit(N).collect()` | [`take(N)`](collection-parts.md#take-与-drop) |
+| Take elements with a predicate | `stream().takeWhile().collect()` | [`takeWhile()`](collection-parts.md#take-与-drop) |
+| Skip first N elements | `stream().skip(N).collect()` | [`drop(N)`](collection-parts.md#take-与-drop) |
+| Skip elements with a predicate | `stream().dropWhile().collect()` | [`dropWhile()`](collection-parts.md#take-与-drop) |
+| Build maps from the collection elements and certain values associated with them | `stream().collect(toMap(keyMapper, valueMapper))` | [`associate()`](collection-transformations.md#关联) |
 
 To perform all the operations listed above on maps, get an `entrySet` of a map firstly.
 
@@ -92,7 +92,7 @@ To perform all the operations listed above on maps, get an `entrySet` of a map f
 
 * [`zip()`, `unzip()`](collection-transformations.md) – transform a collection.
 * [`aggregate()`](collection-grouping.md) – group by some condition.
-* [`takeLast()`, `takeLastWhile()`, `dropLast()`, `dropLastWhile()`](collection-parts.md#take-and-drop) – take or drop elements by a predicate.
+* [`takeLast()`, `takeLastWhile()`, `dropLast()`, `dropLastWhile()`](collection-parts.md#take-与-drop) – take or drop elements by a predicate.
 * [`slice()`, `chunked()`, `windowed()`](collection-parts.md) – retrieve collection parts.
 * [Plus (`+`) and minus (`-`) operators](collection-plus-minus.md) – add or remove elements.
 
@@ -148,7 +148,7 @@ val immutableNumbers = listOf("one", "two")
 ```
 {id="mutability-kotlin"}
 
-Read more about immutability in the [Kotlin coding conventions](coding-conventions.md#immutability).
+Read more about immutability in the [Kotlin coding conventions](coding-conventions.md#不可变性).
 
 ## 协变性
 
@@ -174,7 +174,7 @@ public void main() {
 ```
 {id="covariance-java"}
 
-In Kotlin, the read-only collection types are [covariant](generics.md#variance). This means that, if a `Rectangle` class inherits from the `Shape` class, 
+In Kotlin, the read-only collection types are [covariant](generics.md#型变). This means that, if a `Rectangle` class inherits from the `Shape` class, 
 you can use the type `List<Rectangle>` anywhere the `List<Shape>` type is required. 
 In other words, the collection types have the same subtyping relationship as the element types. Maps are covariant on the value type, but not on the key type.
 In turn, mutable collections aren't covariant; otherwise, this would lead to runtime failures.
@@ -196,11 +196,11 @@ fun main() {
 ```
 {kotlin-runnable="true" id="covariance-kotlin"}
 
-Read more details about [collection types](collections-overview.md#collection-types).
+Read more details about [collection types](collections-overview.md#集合类型).
 
 ## 区间与数列
 
-In Kotlin, you can create intervals using [ranges](ranges.md#range). For example, `Version(1, 11)..Version(1, 30)` stays for all the versions from `1.11` to `1.30`.
+In Kotlin, you can create intervals using [ranges](ranges.md#区间). For example, `Version(1, 11)..Version(1, 30)` stays for all the versions from `1.11` to `1.30`.
 You can check that your version is in the range using the `in` operator: `Version(0, 9) in versionRange`.
 
 In Java, you need to manually check if a `Version` fits both bounds:
@@ -356,7 +356,7 @@ fun main() {
 {kotlin-runnable="true" id="sequences-kotlin"}
 
 Sequences may reduce the number of steps that are needed to perform some filtering operation. 
-See the [sequence processing example](sequences.md#sequence-processing-example) that shows the difference between `Iterable` and `Sequence`.
+See the [sequence processing example](sequences.md#序列处理示例) that shows the difference between `Iterable` and `Sequence`.
 
 ## 从列表中删除元素
 
@@ -455,7 +455,7 @@ if (deque.size() > 0) {
 In Kotlin, there are special
 functions [`firstOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html)
 and [`lastOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html). 
-Using the [`Elvis operator`](null-safety.md#elvis-operator), you can perform further actions right away depending on the
+Using the [`Elvis operator`](null-safety.md#elvis-操作符), you can perform further actions right away depending on the
 result of a function. For example, `firstOrNull()`:
 
 ```kotlin
@@ -572,7 +572,7 @@ fun main() {
 ```
 {kotlin-runnable="true" id="filter-elements-kotlin"}
 
-Learn more about [filtering maps](map-operations.md#filter).
+Learn more about [filtering maps](map-operations.md#过滤).
 
 ### 按类型过滤元素
 
@@ -596,7 +596,7 @@ public void objectIsInstance() {
 {id="filter-by-type-java"}
 
 In Kotlin, you just call [`filterIsInstance<NEEDED_TYPE>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-is-instance.html) on your collection, 
-and type cast is done by [Smart casts](typecasts.md#smart-casts):
+and type cast is done by [Smart casts](typecasts.md#智能转换):
 
 ```kotlin
 // Kotlin
@@ -648,11 +648,11 @@ fun main() {
 ```
 {kotlin-runnable="true" id="test-predicates-kotlin"}
 
-Learn more about [test predicates](collection-filtering.md#test-predicates).
+Learn more about [test predicates](collection-filtering.md#测试谓词).
 
 ## 集合转换操作
 
-### 元素拉合
+### 元素合拢
 
 In Java, you can make pairs from elements with the same positions in two collections iterating simultaneously over them:
 
@@ -675,7 +675,7 @@ If you want to do something more complex than just printing couples of elements 
 you can use [Records](https://blogs.oracle.com/javamagazine/post/records-come-to-java). 
 In the example above, the record would be `record AnimalDescription(String animal, String color) {}`.
 
-In Kotlin, use the [`zip()`](collection-transformations.md#zip) function to do the same:
+In Kotlin, use the [`zip()`](collection-transformations.md#合拢) function to do the same:
 
 ```kotlin
 fun main() {
@@ -714,7 +714,7 @@ public void associate() {
 ```
 {id="associate-elements-java"}
 
-In Kotlin, use the [`associate()`](collection-transformations.md#associate) function:
+In Kotlin, use the [`associate()`](collection-transformations.md#关联) function:
 
 ```kotlin
 fun main() {
@@ -731,7 +731,7 @@ fun main() {
 
 * Visit [Kotlin Koans](koans.md) – complete exercises to learn the Kotlin syntax. Each exercise is created as a failing unit test and your job is to make it pass.
 * Look through other [Kotlin idioms](idioms.md).
-* Learn how to convert existing Java code to Kotlin with [Java to Kotlin converter](mixing-java-kotlin-intellij.md#converting-an-existing-java-file-to-kotlin-with-j2k).
+* Learn how to convert existing Java code to Kotlin with [Java to Kotlin converter](mixing-java-kotlin-intellij.md#使用-j2k-将现有-java-文件转换为-kotlin-文件).
 * Discover [collections in Kotlin](collections-overview.md).
 
 If you have a favorite idiom, contribute it by sending a pull request.

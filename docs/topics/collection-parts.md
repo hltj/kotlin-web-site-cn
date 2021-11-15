@@ -4,7 +4,7 @@ Kotlin 标准库包含用于取集合的一部分的扩展函数。
 这些函数提供了多种方法来选择结果集合的元素：显式列出其位置、
 指定结果大小等。 
 
-## Slice
+## slice
 
 [`slice()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html) 返回具有给定索引的集合元素列表。
 索引既可以是作为[区间](ranges.md)传入的也可以是作为整数值的集合传入的。 
@@ -22,7 +22,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-## Take 与 drop
+## take 与 drop
 
 要从头开始获取指定数量的元素，请使用 [`take()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take.html) 函数。
 要从尾开始获取指定数量的元素，请使用 [`takeLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take-last.html)。
