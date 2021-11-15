@@ -120,7 +120,7 @@ Enter your name in the text box and accept the greetings from your application!
 
 ![Web page with a button](js-output-4.png){width=600}
 
-## What's next?
+## 下一步做什么？
 
 Once you have created your first application, you can go to Kotlin hands-on labs and complete long-form Kotlin/JS tutorials
 or check out the list of Kotlin/JS sample projects for inspiration. Both types of resources contain useful snippets and

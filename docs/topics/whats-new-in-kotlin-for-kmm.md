@@ -11,11 +11,11 @@ Here you can find a short summary of the features Kotlin provides for developing
 
 [Kotlin 1.5.30](whatsnew1530.md) introduces a number of improvements and features that are helpful for KMM:
 
-* **Apple silicon support.**
+* **Apple silicon 支持。**
   Kotlin 1.5.30 introduces native support for [Apple silicon](https://support.apple.com/en-us/HT211814).
   Now the Kotlin/Native compiler and tooling can run on Apple silicon hardware without [Rosetta translation environment](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment)
 
-  Learn more about [Apple silicon support](whatsnew1530.md#apple-silicon-support).
+  Learn more about [Apple silicon 支持](whatsnew1530.md#apple-silicon-支持).
 
 * **Improved Kotlin DSL for CocoaPods Gradle plugin.** Kotlin 1.5.30 introduces the improved CocoaPods Gradle plugin DSL.
   In addition to the name of the framework, you can now specify other parameters in the pod configuration: 
@@ -24,29 +24,29 @@ Here you can find a short summary of the features Kotlin provides for developing
   * Bitcode embedding
   * Custom names for Xcode configuration
 
-  [Learn more about CocoaPods Gradle plugin improvements](whatsnew1530.md#improved-kotlin-dsl-for-the-cocoapods-gradle-plugin).
+  [Learn more about CocoaPods Gradle plugin improvements](whatsnew1530.md#改进了用于-cocoapods-gradle-插件的-kotlin-dsl).
 
-* **Experimental interoperability with Swift 5.5 async/await.**
+* **与 Swift 5.5 async/await 的实验性互操作。**
   The Kotlin/Native compiler now emits the `_Nullable_result` attribute in the generated Objective-C headers for suspending functions with nullable return types. This makes it possible to call them from Swift as `async` functions with the proper nullability.
 
-  [Learn more about experimental interoperability with Swift 5.5 async/await](whatsnew1530.md#experimental-interoperability-with-swift-5-5-async-await).
+  [Learn more about experimental interoperability with Swift 5.5 async/await](whatsnew1530.md#与swift-5-5-async-await-的实验性互操作).
 
-* **Improved Swift/Objective-C mapping for objects and companion objects.**
+* **改进了对象与伴生对象的 Swift/Objective-C 映射。**
   Getting objects and companion objects can now be done in a way that is more intuitive for native iOS developers.
 
-  [Learn more about mapping for objects and companion objects](whatsnew1530.md#improved-swift-objective-c-mapping-for-objects-and-companion-objects).
+  [Learn more about mapping for objects and companion objects](whatsnew1530.md#改进了对象与伴生对象的-swift-objective-c-映射).
 
 * **Sharing custom `cinterop` libraries between platforms.**
   Starting from Kotlin 1.5.30, you can use custom cinterop libraries in shared native code.
 
-  [Learn more about sharing custom `cinterop` libraries between platforms](whatsnew1530.md#ability-to-use-custom-cinterop-libraries-in-shared-native-code).
+  [Learn more about sharing custom `cinterop` libraries between platforms](whatsnew1530.md#能在共享的原生代码中使用自定义-cinterop-库).
 
-* **Support for XCFrameworks.**
+* **对 XCFrameworks 的支持。**
   Now all Kotlin Multiplatform projects can use XCFrameworks.
 
   [Learn more about support for XCFrameworks](mpp-build-native-binaries.md#build-xcframeworks).
 
-* **New default publishing setup for Android artifacts.**
+* **Android 构件的新版默认发布设置。**
   Kotlin 1.5.30 brings new default publishing setup for Android artefacts. You can [publish your multiplatform library for the Android target](mpp-publish-lib.md#发布-android-库) by specifying [Android variant](https://developer.android.com/studio/build/build-variants) names in the build script.
   The Kotlin Gradle plugin will generate publications automatically.
 

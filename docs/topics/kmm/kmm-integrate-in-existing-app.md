@@ -379,7 +379,7 @@ You've shared the business logic of your application, but you can also decide to
 For example, the `ViewModel` class code is almost the same for [Android](https://github.com/Kotlin/kmm-integration-sample/blob/final/app/src/main/java/com/jetbrains/simplelogin/androidapp/ui/login/LoginViewModel.kt) and [iOS applications](https://github.com/Kotlin/kmm-integration-sample/blob/final/SimpleLoginIOS/SimpleLoginIOS/ContentView.swift#L91), and you can share it if your mobile applications
 should have the same presentation layer.
 
-## What's next?
+## 下一步做什么？
 
 * [Use Ktor for networking](kmm-use-ktor-for-networking.md)
 * [Add dependencies on libraries](kmm-add-dependencies.md)

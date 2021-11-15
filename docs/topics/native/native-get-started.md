@@ -134,7 +134,7 @@ IntelliJ IDEA opens the **Run** tab and shows the output:
 
    ![Application output](native-output-3.png)
 
-## What's next?
+## 下一步做什么？
 
 Once you have created your first application, you can go to Kotlin hands-on labs and complete long-form tutorials on Kotlin/Native. 
 

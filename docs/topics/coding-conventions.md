@@ -1013,7 +1013,7 @@ fun main() {
 ```
 {kotlin-runnable="true"}
 
-Learn the difference between [Java and Kotlin multiline strings](java-to-kotlin-idioms-strings.md#use-multiline-strings).
+了解 [Java 与 Kotlin 多行字符串](java-to-kotlin-idioms-strings.md#使用多行字符串)的区别。
 
 ### 函数还是属性
 

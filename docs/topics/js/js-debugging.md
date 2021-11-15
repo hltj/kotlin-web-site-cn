@@ -86,7 +86,7 @@ To debug a Kotlin/JS application targeting Node.js:
    your project's directory.
 3. Debug it in Node.js as described in the [Node.js Debugging Guide](https://nodejs.org/en/docs/guides/debugging-getting-started/#jetbrains-webstorm-2017-1-and-other-jetbrains-ides).
 
-## What's next?
+## 下一步做什么？
 
 Now that you know how to start debug sessions with your Kotlin/JS project, learn to make efficient use of the debugging tools:
 

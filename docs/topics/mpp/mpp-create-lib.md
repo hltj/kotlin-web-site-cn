@@ -31,7 +31,7 @@
 
 The new project opens. 
 
-## What's next?
+## 下一步做什么？
 
 * [Understand the multiplatform project structure](mpp-discover-project.md). 
 * [Create and publish a multiplatform library – tutorial](multiplatform-library.md).

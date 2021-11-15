@@ -35,7 +35,7 @@ val positives = list.filter { x -> x > 0 }
 val positives = list.filter { it > 0 }
 ```
 
-了解 [Java 与 Kotlin 过滤](java-to-kotlin-idioms-strings.md#create-a-string-from-collection-items)的区别。
+了解 [Java 与 Kotlin 过滤](java-to-kotlin-idioms-strings.md#由集合内元素创建字符串)的区别。
 
 ### 检测元素是否存在于集合中
 
@@ -51,7 +51,7 @@ if ("jane@example.com" !in emailsList) { …… }
 println("Name $name")
 ```
 
-了解 [Java 与 Kotlin 字符串连接](java-to-kotlin-idioms-strings.md#concatenate-strings)的区别。
+了解 [Java 与 Kotlin 字符串连接](java-to-kotlin-idioms-strings.md#字符串连接)的区别。
 
 ### 类型判断
 
@@ -151,7 +151,7 @@ fun main() {
 ```kotlin
 val files = File("Test").listFiles()
 
-println(files?.size) // size is printed if files is not null
+println(files?.size) // 如果 files 不是 null，那么输出其大小（size）
 ```
 
 ## if-not-null-else 缩写
@@ -159,7 +159,7 @@ println(files?.size) // size is printed if files is not null
 ```kotlin
 val files = File("Test").listFiles()
 
-println(files?.size ?: "empty") // if files is null, this prints "empty"
+println(files?.size ?: "empty") // 如果 files 为 null，那么输出“empty”
 ```
 
 ## if null 执行一个语句
@@ -176,7 +176,7 @@ val emails = …… // 可能会是空集合
 val mainEmail = emails.firstOrNull() ?: ""
 ```
 
-Learn the difference between [Java and Kotlin first item getting](java-to-kotlin-collections-guide.md#get-the-first-and-the-last-items-of-a-possibly-empty-collection).
+了解 [Java 与 Kotlin 获取第一元素](java-to-kotlin-collections-guide.md#获取可能会空的集合的首末元素)的差别。
 
 ## if not null 执行代码
 

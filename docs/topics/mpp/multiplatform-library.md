@@ -383,7 +383,7 @@ In this tutorial, you:
 * Wrote common tests that are executed on all platforms.
 * Published your library to the local Maven repository.
 
-## What’s next?
+## 下一步做什么？
 
 * Learn more about [publishing multiplatform libraries](mpp-publish-lib.md).
 * Learn more about [Kotlin Multiplatform](mpp-intro.md).

@@ -108,7 +108,7 @@ or watch the video:
 
 <video width="560" height="315" href="vj3J9MuF1mI" title="Manipulating lists using windowed, scan, firstNotNullOfOrNull: Solving Advent of Code Puzzles"/>
 
-## What’s next?
+## 下一步做什么？
 
 * Complete more tasks with [Kotlin Koans](koans.md) 
 * Create working applications with the free [Kotlin Basics track](https://hyperskill.org/tracks/18/)

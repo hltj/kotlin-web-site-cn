@@ -301,13 +301,13 @@ Here is an example showing how to enable error reporting for the newly supported
 ## Kotlin/Native
 
 Kotlin/Native has received various changes and improvements:
-* [Apple silicon support](#apple-silicon-support)
-* [Improved Kotlin DSL for the CocoaPods Gradle plugin](#improved-kotlin-dsl-for-the-cocoapods-gradle-plugin)
-* [Experimental interoperability with Swift 5.5 async/await](#experimental-interoperability-with-swift-5-5-async-await)
-* [Improved Swift/Objective-C mapping for objects and companion objects](#improved-swift-objective-c-mapping-for-objects-and-companion-objects)
-* [Deprecation of linkage against DLLs without import libraries for MinGW targets](#deprecation-of-linkage-against-dlls-without-import-libraries-for-mingw-targets)
+* [Apple silicon 支持](#apple-silicon-支持)
+* [改进了用于 CocoaPods Gradle 插件的 Kotlin DSL](#改进了用于-cocoapods-gradle-插件的-kotlin-dsl)
+* [与 Swift 5.5 async/await 的实验性互操作](#与swift-5-5-async-await-的实验性互操作)
+* [改进了对象与伴生对象的 Swift/Objective-C 映射](#改进了对象与伴生对象的-swift-objective-c-映射)
+* [对于 MinGW 目标弃用了链接到 DLL 而未导入库的用法](#对于-mingw-目标弃用了链接到-dll-而未导入库的用法)
 
-### Apple silicon support
+### Apple silicon 支持
 
 Kotlin 1.5.30 introduces native support for [Apple silicon](https://support.apple.com/en-us/HT211814).
 
@@ -324,9 +324,9 @@ They are available on both Intel-based and Apple silicon hosts. All existing tar
 Note that in 1.5.30 we provide only basic support for Apple silicon targets in the `kotlin-multiplatform` Gradle plugin. Particularly, the new simulator targets aren’t included in the [`ios`, `tvos`, and `watchos` target shortcuts](mpp-share-on-platforms.md#使用目标快捷方式). Learn how to [use Apple silicon targets with the target shortcuts](mpp-share-on-platforms.md#target-shortcuts-and-arm64-apple-silicon-simulators).
 We will keep working to improve the user experience with the new targets.
 
-### Improved Kotlin DSL for the CocoaPods Gradle plugin
+### 改进了用于 CocoaPods Gradle 插件的 Kotlin DSL
 
-#### New parameters for Kotlin/Native frameworks
+#### 用于 Kotlin/Native frameworks 的新的参数
 
 Kotlin 1.5.30 introduces the improved CocoaPods Gradle plugin DSL for Kotlin/Native frameworks. In addition to the name of the framework, you can specify other parameters in the pod configuration:
 * Specify the dynamic or static version of the framework
@@ -356,7 +356,7 @@ cocoapods {
 }
 ```
 
-#### Support custom names for Xcode configuration
+#### 支持 Xcode 配置的自定义名称
 
 The Kotlin CocoaPods Gradle plugin supports custom names in the Xcode build configuration. It will also help you if you’re using special names for the build configuration in Xcode, for example `Staging`.
 
@@ -376,7 +376,7 @@ This parameter will not appear in the podspec file. When Xcode runs the Gradle b
 >
 {type="note"}
 
-### Experimental interoperability with Swift 5.5 async/await
+### 与 Swift 5.5 async/await 的实验性互操作
 
 > Concurrency interoperability with Swift async/await is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > You should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-47610).
@@ -389,7 +389,7 @@ The Kotlin/Native compiler now emits the `_Nullable_result` attribute in the gen
 
 Note that this feature is experimental and can be affected in the future by changes in both Kotlin and Swift. For now, we’re offering a preview of this feature that has certain limitations, and we are eager to hear what you think. Learn more about its current state and leave your feedback in [this YouTrack issue](https://youtrack.jetbrains.com/issue/KT-47610).
 
-### Improved Swift/Objective-C mapping for objects and companion objects
+### 改进了对象与伴生对象的 Swift/Objective-C 映射
 
 Getting objects and companion objects can now be done in a way that is more intuitive for native iOS developers. For example, if you have the following objects in Kotlin:
 
@@ -416,7 +416,7 @@ MyClass.Companion.shared
 
 Learn more about [Swift/Objective-C interoperability](native-objc-interop.md).
 
-### Deprecation of linkage against DLLs without import libraries for MinGW targets
+### 对于 MinGW 目标弃用了链接到 DLL 而未导入库的用法
 
 [LLD](https://lld.llvm.org/) is a linker from the LLVM project, which we plan to start using in Kotlin/Native for MinGW targets because of its benefits over the default ld.bfd – primarily its better performance.
 
@@ -427,11 +427,11 @@ Please share your thoughts and concerns about the transition to the LLD linker i
 ## Kotlin 多平台
 
 1.5.30 brings the following notable updates to Kotlin Multiplatform:
-* [Ability to use custom `cinterop` libraries in shared native code](#ability-to-use-custom-cinterop-libraries-in-shared-native-code)
-* [Support for XCFrameworks](#support-for-xcframeworks)
-* [New default publishing setup for Android artifacts](#new-default-publishing-setup-for-android-artifacts)
+* [能在共享的原生代码中使用自定义 `cinterop` 库](#能在共享的原生代码中使用自定义-cinterop-库)
+* [对 XCFrameworks 的支持](#对-xcframeworks-的支持)
+* [Android 构件的新版默认发布设置](#android-构件的新版默认发布设置)
 
-### Ability to use custom `cinterop` libraries in shared native code
+### 能在共享的原生代码中使用自定义 `cinterop` 库
 
 Kotlin Multiplatform gives you an [option](mpp-share-on-platforms.md#在层次结构中使用原生库) to use platform-dependent interop libraries in shared source sets. Before 1.5.30, this worked only with [platform libraries](native-platform-libs.md) shipped with Kotlin/Native distribution. Starting from 1.5.30, you can use it with your custom `cinterop` libraries. To enable this feature, add the `kotlin.mpp.enableCInteropCommonization=true` property in your `gradle.properties`:
 
@@ -441,7 +441,7 @@ kotlin.native.enableDependencyPropagation=false
 kotlin.mpp.enableCInteropCommonization=true
 ```
 
-### Support for XCFrameworks
+### 对 XCFrameworks 的支持
 
 All Kotlin Multiplatform projects can now have XCFrameworks as an output format. Apple introduced XCFrameworks as a replacement for universal (fat) frameworks. With the help of XCFrameworks you:
 * Can gather logic for all the target platforms and architectures in a single bundle.
@@ -529,7 +529,7 @@ When you declare XCFrameworks, these new Gradle tasks will be registered:
 
 Learn more about XCFrameworks in [this WWDC video](https://developer.apple.com/videos/play/wwdc2019/416/).
 
-### New default publishing setup for Android artifacts
+### Android 构件的新版默认发布设置
 
 Using the `maven-publish` Gradle plugin, you can [publish your multiplatform library for the Android target](mpp-publish-lib.md#发布-android-库) by specifying [Android variant](https://developer.android.com/studio/build/build-variants) names in the build script. The Kotlin Gradle plugin will generate publications automatically.
 

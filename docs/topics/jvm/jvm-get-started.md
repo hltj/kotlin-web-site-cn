@@ -60,7 +60,7 @@ Enter your name and accept the greetings from your application!
 
 恭喜！ 你现在运行了第一个 Kotlin 应用程序。
 
-## What's next?
+## 下一步做什么？
 
 Once you’ve created this application, you can start to dive deeper into Kotlin syntax:
 

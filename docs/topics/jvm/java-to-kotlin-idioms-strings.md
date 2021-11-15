@@ -3,7 +3,7 @@
 This guide contains examples of how to perform typical tasks with strings in Java and Kotlin.
 It will help you migrate from Java to Kotlin and write your code in the authentic Kotlin way.
 
-## Concatenate strings
+## 字符串连接
 
 In Java, you can do this in the following way:
 
@@ -32,7 +32,7 @@ fun main() {
 You can interpolate the value of a complicated expression by surrounding it with curly braces, like in `${name.length}`.
 See [string templates](basic-types.md#字符串模板) for more information.
 
-## Build a string
+## 构建字符串
 
 In Java, you can use the [StringBuilder](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/StringBuilder.html):
 
@@ -71,7 +71,7 @@ inside the [lambda](lambdas.md#带有接收者的函数字面值).
 
 Learn more about [lambda coding conventions](coding-conventions.md#lambda-表达式).
 
-## Create a string from collection items
+## 由集合内元素创建字符串
 
 In Java, you use the [Stream API](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/package-summary.html) 
 to filter, map, and then collect the items:
@@ -108,7 +108,7 @@ fun main() {
 
 Learn more about [joinToString()](collection-transformations.md#字符串表示) usage.
 
-## Set default value if the string is blank
+## 如果字符串为空白就设置默认值
 
 In Java, you can use the [ternary operator](https://en.wikipedia.org/wiki/%3F:):
 
@@ -146,7 +146,7 @@ fun getName(): String =
 ```
 {kotlin-runnable="true" id="set-default-value-if-blank-kotlin"}
 
-## Replace characters at the beginning and end of a string
+## 替换字符串首尾处的（多个）字符
 
 In Java, you can use 
 the [replaceFirst()](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#replaceFirst(java.lang.String,java.lang.String)) 
@@ -177,7 +177,7 @@ fun main() {
 ```
 {kotlin-runnable="true" id="replace-characters-kotlin"}
 
-## Replace occurrences
+## 正则替换
 
 In Java, you can use the [Pattern](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/regex/Pattern.html)
 and the [Matcher](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/regex/Matcher.html) classes,
@@ -213,7 +213,7 @@ fun main() {
 ```
 {kotlin-runnable="true" id="replace-occurrences-kotlin"}
 
-## Split a string
+## 字符串拆分
 
 In Java, to split a string with the period character (`.`), you need to use shielding (`\\`).
 This happens because the [split()](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#split(java.lang.String))
@@ -240,7 +240,7 @@ fun main() {
 
 If you need to split with a regular expression, use the overloaded `split()` version that accepts the `Regex` as a parameter.
 
-## Take a substring
+## 取子串
 
 In Java, you can use the [substring()](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#substring(int)) function,
 which accepts an inclusive beginning index of a character to start taking the substring from.
@@ -283,7 +283,7 @@ fun main() {
 ```
 {kotlin-runnable="true" id="take-substring-after-last-kotlin"}
 
-## Use multiline strings
+## 使用多行字符串
 
 Before Java 15, there were several ways to create a multiline string. For example, using
 the [join()](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...))
@@ -354,7 +354,7 @@ fun main() {
 
 Learn more about [multiline strings](coding-conventions.md#strings).
 
-## What’s next?
+## 下一步做什么？
 
 * Look through other [Kotlin idioms](idioms.md).
 * Learn how to convert existing Java code to Kotlin with
