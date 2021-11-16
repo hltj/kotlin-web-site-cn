@@ -1,12 +1,12 @@
 [//]: # (title: Kotlin 插件 2020.3 的新特性)
 
 This plugin release introduces the following features:
-* [New types of inline refactorings](#new-types-of-inline-refactorings)
-* [Structural search and replace](#structural-search-and-replace)
-* [EditorConfig support](#editorconfig-support)
-* [Project templates for Jetpack Compose for Desktop](#project-templates-for-jetpack-compose-for-desktop)
+* [内联重构的新类型](#内联重构的新类型)
+* [结构化搜索替换](#结构化搜索替换)
+* [EditorConfig 支持](#editorconfig-支持)
+* [Jetpack Compose for Desktop 的项目模板](#jetpack-compose-for-desktop-的项目模板)
 
-## New types of inline refactorings
+## 内联重构的新类型
 
 Cross-language conversion is possible starting with version 2020.3 of the Kotlin plugin. You can now use the inline refactoring actions for Kotlin elements defined in Java.
 
@@ -14,17 +14,17 @@ The Kotlin plugin can inline code from libraries with attached sources. That mea
 
 Also, this release brings refactoring improvements for lambda expressions. Now the IDE analyzes their syntax more thoroughly and formats them correctly.
 
-## Structural search and replace
+## 结构化搜索替换
 
-[Structural search and replace (SSR)](https://www.jetbrains.com/help/idea/structural-search-and-replace.html) actions are now available for Kotlin. The SSR feature allows you to find and replace code patterns, taking the syntax and semantics of the source code into account.
+[结构化搜索替换（SSR，Structural search and replace）](https://www.jetbrains.com/help/idea/structural-search-and-replace.html) actions are now available for Kotlin. The SSR feature allows you to find and replace code patterns, taking the syntax and semantics of the source code into account.
 
 To start using the feature, open the **Structural Search** dialog for your `.kt` file and select one of the [templates](https://www.jetbrains.com/help/idea/search-templates.html) or create your own.
 
-## EditorConfig support
+## EditorConfig 支持
 
 From 2020.3, the Kotlin API has the full support of [.editorconfig](https://editorconfig.org/) files for [managing code style on a directory level](https://www.jetbrains.com/help/idea/configuring-code-style.html#editorconfig). 
 
-## Project templates for Jetpack Compose for Desktop
+## Jetpack Compose for Desktop 的项目模板
 
 The new experimental Jetpack Compose for Desktop templates are now available in the Kotlin Project Wizard. You can create a project using the following templates:
 * **Desktop** –  a Compose project targeting the desktop JVM platform: Windows, Linux, or macOS.

@@ -78,10 +78,10 @@ Released: December 1, 2020
 </td>
 <td>
 
-* New types of inline refactorings
-* Structural search and replace
-* EditorConfig support
-* Project templates for Jetpack Compose for Desktop
+* 内联重构的新类型
+* 结构化搜索替换
+* EditorConfig 支持
+* Jetpack Compose for Desktop 的项目模板
 
 Learn more in:
 * [What's new in Kotlin plugin 2020.3](whatsnew-plugin-20203.md)

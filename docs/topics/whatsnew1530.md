@@ -542,16 +542,16 @@ To opt-out and keep the build type attributes for all variants, you can set this
 ## Kotlin/JS
 
 Two major improvements are coming to Kotlin/JS with 1.5.30:
-* [JS IR compiler backend reaches Beta](#js-ir-compiler-backend-reaches-beta)
-* [Better debugging experience for applications with the Kotlin/JS IR backend](#better-debugging-experience-for-applications-with-the-kotlin-js-ir-backend)
+* [JS IR 编译器后端达到 Beta 版](#js-ir-编译器后端达到-beta-版)
+* [为使用 Kotlin/JS IR 后端的应用程序提供更好的调试体验 ](#为使用-kotlin-js-ir-后端的应用程序提供更好的调试体验 )
 
-### JS IR compiler backend reaches Beta
+### JS IR 编译器后端达到 Beta 版
 
 The [IR-based compiler backend](whatsnew14.md#统一的后端与可扩展性) for Kotlin/JS, which was introduced in 1.4.0 in [Alpha](components-stability.md), has reached Beta.
 
 Previously, we published the [migration guide for the JS IR backend](js-ir-migration.md) to help you migrate your projects to the new backend. Now we would like to present the [Kotlin/JS Inspection Pack](https://plugins.jetbrains.com/plugin/17183-kotlin-js-inspection-pack/) IDE plugin, which displays the required changes directly in IntelliJ IDEA.
 
-### Better debugging experience for applications with the Kotlin/JS IR backend
+### 为使用 Kotlin/JS IR 后端的应用程序提供更好的调试体验 
 
 Kotlin 1.5.30 brings JavaScript source map generation for the Kotlin/JS IR backend. This will improve the Kotlin/JS debugging experience when the IR backend is enabled, with full debugging support that includes breakpoints, stepping, and readable stack traces with proper source references.
 
@@ -560,10 +560,10 @@ Learn how to [debug Kotlin/JS in the browser or IntelliJ IDEA Ultimate](js-debug
 ## Gradle
 
 As a part of our mission to [improve the Kotlin Gradle plugin user experience](https://youtrack.jetbrains.com/issue/KT-45778), we’ve implemented the following features:
-* [Support for Java toolchains](#support-for-java-toolchains), which includes an [ability to specify a JDK home with the `UsesKotlinJavaToolchain` interface for older Gradle versions](#ability-to-specify-jdk-home-with-useskotlinjavatoolchain-interface)
-* [An easier way to explicitly specify the Kotlin daemon’s JVM arguments](#easier-way-to-explicitly-specify-kotlin-daemon-jvm-arguments)
+* [支持 Java toolchains](#支持-java-toolchains), which includes an [ability to specify a JDK home with the `UsesKotlinJavaToolchain` interface for older Gradle versions](#能够使用-useskotlinjavatoolchain-接口指定-jdk-home)
+* [显式指定 Kotlin 守护进程 JVM 参数的更简单方式](#显式指定-kotlin-守护进程-jvm-参数的更简单方式)
 
-### Support for Java toolchains
+### 支持 Java toolchains
 
 Gradle 6.7 introduced the ["Java toolchains support"](https://docs.gradle.org/current/userguide/toolchains.html) feature.
 Using this feature, you can:
@@ -625,9 +625,9 @@ java {
 
 For information about setting any JDK version for `KotlinCompile` tasks, look through the docs about [setting the JDK version with the Task DSL](gradle.md#setting-jdk-version-with-the-task-dsl).
 
-For Gradle versions from 6.1 to 6.6, [use the `UsesKotlinJavaToolchain` interface to set the JDK home](#ability-to-specify-jdk-home-with-useskotlinjavatoolchain-interface).
+For Gradle versions from 6.1 to 6.6, [use the `UsesKotlinJavaToolchain` interface to set the JDK home](#能够使用-useskotlinjavatoolchain-接口指定-jdk-home).
 
-### Ability to specify JDK home with UsesKotlinJavaToolchain interface
+### 能够使用 UsesKotlinJavaToolchain 接口指定 JDK home
 
 All Kotlin tasks that support setting the JDK via [`kotlinOptions`](gradle.md#编译器选项) now implement the `UsesKotlinJavaToolchain` interface. To set the JDK home, put a path to your JDK and replace the `<JDK_VERSION>` placeholder:
 
@@ -663,11 +663,11 @@ project.tasks
 </tab>
 </tabs>
 
-Use the `UsesKotlinJavaToolchain` interface for Gradle versions from 6.1 to 6.6. Starting from Gradle 6.7, use the [Java toolchains](#support-for-java-toolchains) instead.
+Use the `UsesKotlinJavaToolchain` interface for Gradle versions from 6.1 to 6.6. Starting from Gradle 6.7, use the [Java toolchains](#支持-java-toolchains) instead.
 
 When using this feature, note that [kapt task workers](kapt.md#running-kapt-tasks-in-parallel) will only use [process isolation mode](https://docs.gradle.org/current/userguide/worker_api.html#changing_the_isolation_mode), and the `kapt.workers.isolation` property will be ignored.
 
-### Easier way to explicitly specify Kotlin daemon JVM arguments
+### 显式指定 Kotlin 守护进程 JVM 参数的更简单方式
 
 In Kotlin 1.5.30, there’s a new logic for the Kotlin daemon’s JVM arguments. Each of the options in the following list overrides the ones that came before it:
 
@@ -750,12 +750,12 @@ For more information about the Kotlin daemon, see [the Kotlin daemon and using i
 ## 标准库
 
 Kotlin 1.5.30 is bringing improvements to the standard library’s `Duration` and `Regex` APIs:
-* [Changing `Duration.toString()` output](#changing-duration-tostring-output)
-* [Parsing Duration from String](#parsing-duration-from-string)
-* [Matching with Regex at a particular position](#matching-with-regex-at-a-particular-position)
-* [Splitting Regex to a sequence](#splitting-regex-to-a-sequence)
+* [变更 `Duration.toString()` 输出](#变更-duration-tostring-输出)
+* [由 String 解析 Duration](#由-string-解析-duration)
+* [在特定位置匹配 Regex](#在特定位置匹配-regex)
+* [按 Regex 拆分为序列](#按-regex-拆分为序列)
 
-### Changing Duration.toString() output
+### 变更 Duration.toString() 输出
 
 > The Duration API is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Use it only for evaluation purposes. We would appreciate hearing your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
@@ -786,7 +786,7 @@ If you want to express duration in a single unit, use the overloaded `Duration.t
 >
 {type="note"}
 
-### Parsing Duration from String
+### 由 String 解析 Duration
 
 > The Duration API is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Use it only for evaluation purposes. We would appreciate hearing your feedback on it in [this issue](https://github.com/Kotlin/KEEP/issues/190).
@@ -843,7 +843,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.5" validate="false"}
 
-### Matching with Regex at a particular position
+### 在特定位置匹配 Regex
 
 > `Regex.matchAt()` and `Regex.matchesAt()` functions are [Experimental](components-stability.md). They may be dropped or changed at any time.
 > Use them only for evaluation purposes. We would appreciate hearing your feedback on them in [YouTrack](https://youtrack.jetbrains.com/issue/KT-34021).
@@ -881,7 +881,7 @@ fun main(){
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.5" validate="false"}
 
-### Splitting Regex to a sequence
+### 按 Regex 拆分为序列
 
 > `Regex.splitToSequence()` and `CharSequence.splitToSequence(Regex)` functions are [Experimental](components-stability.md). They may be dropped or changed at any time.
 > Use them only for evaluation purposes. We would appreciate hearing your feedback on them in [YouTrack](https://youtrack.jetbrains.com/issue/KT-23351).
@@ -911,7 +911,7 @@ A similar function was also added to `CharSequence`:
 ```
 {kotlin-runnable="false"}
 
-## Serialization 1.3.0-RC
+## serialization 1.3.0-RC
 
 `kotlinx.serialization` [1.3.0-RC](https://github.com/Kotlin/kotlinx.serialization/releases/tag/v1.3.0-RC) is here with 
 new JSON serialization capabilities:
