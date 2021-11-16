@@ -65,7 +65,7 @@ Visit the [roadmap board in our issue tracker YouTrack](https://youtrack.jetbrai
         <td><strong>编译器核心</strong></td>
         <td>
             <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-49508" target="_blank">🆕 Stabilize the Compiler Plugin API</a></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-49508" target="_blank">🆕 Stabilize the K2 Compiler Plugin API</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-49510" target="_blank">🆕 Investigate JS backend for the K2 compiler</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-46756" target="_blank">Release the K2/JVM compiler in Alpha</a></li>
                 <li><a href="https://youtrack.jetbrains.com/issue/KT-42286" target="_blank">Maintain the current compiler</a></li>
@@ -279,7 +279,7 @@ We've **added** the following items to the roadmap:
 * 🆕 Language: [Design and implement solution for toString on objects](https://youtrack.jetbrains.com/issue/KT-4107)
 * 🆕 Language: [Provide modern and performant replacement for Enum.values()](https://youtrack.jetbrains.com/issue/KT-48872)
 * 🆕 Language: [Allow implementation by delegation to inlined value of inline class](https://youtrack.jetbrains.com/issue/KT-27435)
-* 🆕 Compiler core: [Stabilize the Compiler Plugin API](https://youtrack.jetbrains.com/issue/KT-49508)
+* 🆕 Compiler core: [Stabilize the K2 Compiler Plugin API](https://youtrack.jetbrains.com/issue/KT-49508)
 * 🆕 Compiler core: [Investigate JS backend for the K2 compiler](https://youtrack.jetbrains.com/issue/KT-49510)
 * 🆕 Kotlin/JVM: [Release `kotlinx-metadata-jvm` as Stable](https://youtrack.jetbrains.com/issue/KT-49513)
 * 🆕 Kotlin/JVM: [Fix issues related to inline classes on the JVM](https://youtrack.jetbrains.com/issue/KT-49514)
