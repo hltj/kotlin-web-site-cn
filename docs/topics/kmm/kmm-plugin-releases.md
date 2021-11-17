@@ -48,7 +48,7 @@ Released: 16 November, 2021
 
 * [New KMM library project wizard](https://youtrack.jetbrains.com/issue/KTIJ-19367).
 * Support for the new type of KMM library distribution: [XCFramework](https://kotlinlang.org/docs/mpp-build-native-binaries.html#build-xcframeworks).
-* Enabled [HMPP](mpp-share-on-platforms.md#configure-the-hierarchical-structure-manually) for new KMM projects.
+* Enabled [HMPP](mpp-share-on-platforms.md#手动配置层次结构) for new KMM projects.
 * Support for [explicit iOS targets declaration](https://youtrack.jetbrains.com/issue/KT-46861).
 * [Enabled KMM plugin wizards on non-Mac machines](https://youtrack.jetbrains.com/issue/KT-48614).
 * [Support for subfolders in the KMM module wizard](https://youtrack.jetbrains.com/issue/KT-47923).
@@ -61,7 +61,7 @@ Released: 16 November, 2021
 </td>
 <td>
 
-* [Kotlin 1.6.0](releases.md#release-details)
+* [Kotlin 1.6.0](releases.md#版本发布详情)
 
 </td>
 </tr>

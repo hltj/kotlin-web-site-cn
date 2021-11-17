@@ -180,7 +180,7 @@ which improves the JVM startup performance.
 
 To roll back to the old implementation scheme based on anonymous class generation, add the compiler option `-Xsam-conversions=class`.
 
-Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and the [command-line compiler](compiler-reference.md#compiler-options).
+Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and the [command-line compiler](compiler-reference.md#编译器选项).
 
 ### 采用 invokedynamic 的 lambda 表达式
 
@@ -202,7 +202,7 @@ lambda compilation:
 To try this feature, add the `-Xlambdas=indy` compiler option. We’d be grateful if you could share your feedback on it using
 this [YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-45375).
 
-Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and [command-line compiler](compiler-reference.md#compiler-options).
+Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and [command-line compiler](compiler-reference.md#编译器选项).
 
 ### @JvmDefault 与旧版 Xjvm-default 模式的弃用
 

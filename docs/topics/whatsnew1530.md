@@ -543,7 +543,7 @@ To opt-out and keep the build type attributes for all variants, you can set this
 
 Two major improvements are coming to Kotlin/JS with 1.5.30:
 * [JS IR 编译器后端达到 Beta 版](#js-ir-编译器后端达到-beta-版)
-* [为使用 Kotlin/JS IR 后端的应用程序提供更好的调试体验 ](#为使用-kotlin-js-ir-后端的应用程序提供更好的调试体验 )
+* [为使用 Kotlin/JS IR 后端的应用程序提供更好的调试体验](#为使用-kotlin-js-ir-后端的应用程序提供更好的调试体验)
 
 ### JS IR 编译器后端达到 Beta 版
 
@@ -551,7 +551,7 @@ The [IR-based compiler backend](whatsnew14.md#统一的后端与可扩展性) fo
 
 Previously, we published the [migration guide for the JS IR backend](js-ir-migration.md) to help you migrate your projects to the new backend. Now we would like to present the [Kotlin/JS Inspection Pack](https://plugins.jetbrains.com/plugin/17183-kotlin-js-inspection-pack/) IDE plugin, which displays the required changes directly in IntelliJ IDEA.
 
-### 为使用 Kotlin/JS IR 后端的应用程序提供更好的调试体验 
+### 为使用 Kotlin/JS IR 后端的应用程序提供更好的调试体验
 
 Kotlin 1.5.30 brings JavaScript source map generation for the Kotlin/JS IR backend. This will improve the Kotlin/JS debugging experience when the IR backend is enabled, with full debugging support that includes breakpoints, stepping, and readable stack traces with proper source references.
 

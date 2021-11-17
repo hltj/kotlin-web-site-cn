@@ -9,7 +9,7 @@ You can also run Kotlin compilers manually from the command line as described
 in the [Working with command-line compiler](command-line.md) tutorial. 
 
 
-## Compiler options
+## 编译器选项
 
 Kotlin compilers have a number of options for tailoring the compiling process.
 Compiler options for different targets are listed on this page together with a description of each one.

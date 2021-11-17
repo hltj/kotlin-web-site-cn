@@ -26,7 +26,7 @@ for string concatenation.
 To switch back to concatenation via [`StringBuilder.append()`](https://docs.oracle.com/javase/9/docs/api/java/lang/StringBuilder.html#append-java.lang.String-)
 used in previous versions, add the compiler option `-Xstring-concat=inline`.
 
-Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and the [command-line compiler](compiler-reference.md#compiler-options).
+Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and the [command-line compiler](compiler-reference.md#编译器选项).
 
 ### JSpecify 可空性注解的支持
 

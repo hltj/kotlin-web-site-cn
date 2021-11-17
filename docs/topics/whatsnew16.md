@@ -1,6 +1,6 @@
-[//]: # (title: What's new in Kotlin 1.6.0)
+[//]: # (title: Kotlin 1.6.0 的新特性)
 
-_[Release date: 16 November 2021](releases.md#release-details)_
+_[发布日期：2021-11-16](releases.md#版本发布详情)_
 
 Kotlin 1.6.0 introduces new language features, optimizations and improvements to existing features, and a lot of improvements to the Kotlin standard library.
 
@@ -21,7 +21,7 @@ It also includes various type inference improvements and support for annotations
 
 ### Stable exhaustive when statements for enum, sealed, and Boolean subjects
 
-An _exhaustive_ [`when`](control-flow.md#when-expression) statement contains branches for all possible types or values of 
+An _exhaustive_ [`when`](control-flow.md#when-表达式) statement contains branches for all possible types or values of 
 its subject, or for some types plus an `else` branch. It covers all possible cases, making your code safer.
 
 We will soon prohibit non-exhaustive `when` statements to make the behavior consistent with `when` expressions. 
@@ -60,7 +60,7 @@ See [this YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-47709) for a 
 ### Stable suspending functions as supertypes
 
 Kotlin 1.6.0 makes implementation of suspending functional types [Stable](components-stability.md). 
-A preview was available [in 1.5.30](whatsnew1530.md#suspending-functions-as-supertypes).
+A preview was available [in 1.5.30](whatsnew1530.md#挂起函数作为超类型).
 
 The feature can be useful when designing APIs that use Kotlin coroutines and accept suspending functional types. 
 You can now streamline your code by enclosing the desired behavior in a separate class that implements a suspending functional type.
@@ -100,7 +100,7 @@ fun test(regular: () -> Unit) {
 
 ### Stable instantiation of annotation classes
 
-Kotlin 1.5.30 [introduced](whatsnew1530.md#instantiation-of-annotation-classes) experimental support for instantiation of annotation classes on the JVM platform.
+Kotlin 1.5.30 [introduced](whatsnew1530.md#注解类的实例化) experimental support for instantiation of annotation classes on the JVM platform.
 With 1.6.0, the feature is available by default both for Kotlin/JVM and Kotlin/JS.
 
 Learn more about instantiation of annotation classes in [this KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/annotation-instantiation.md).
@@ -132,7 +132,7 @@ val containerB = PostgreSQLContainer(DockerImageName.parse("postgres:13-alpine")
 Builder inference is a type inference flavor which is useful when calling generic builder functions. It can infer the type arguments of a call with the help of type information from calls inside its lambda argument.
 
 We're making multiple changes that are bringing us closer to fully stable builder inference. Starting with 1.6.0:
-* You can make calls returning an instance of a not yet inferred type inside a builder lambda without specifying the `-Xunrestricted-builder-inference` compiler option [introduced in 1.5.30](whatsnew1530.md#eliminating-builder-inference-restrictions).
+* You can make calls returning an instance of a not yet inferred type inside a builder lambda without specifying the `-Xunrestricted-builder-inference` compiler option [introduced in 1.5.30](whatsnew1530.md#消除构建器推断限制).
 * With `-Xenable-builder-inference`, you can write your own builders without applying the [`@BuilderInference`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-builder-inference/) annotation.
 
     > Note that clients of these builders will need to specify the same `-Xenable-builder-inference` compiler option.
@@ -275,7 +275,7 @@ We've reworked the LLVM dependency that Kotlin/Native uses under the hood. This 
 
 In addition to the LLVM update, Kotlin/Native now uses the [LLD](https://lld.llvm.org/) linker (a linker from the LLVM project) for MingGW targets.
 It provides various benefits over the previously used ld.bfd linker, and will allow us to improve runtime performance of produced binaries and support compiler caches for MinGW targets.
-Note that LLD [requires import libraries for DLL linkage](whatsnew1530.md#deprecation-of-linkage-against-dlls-without-import-libraries-for-mingw-targets).
+Note that LLD [requires import libraries for DLL linkage](whatsnew1530.md#对于-mingw-目标弃用了链接到-dll-而未导入库的用法).
 Learn more in [this Stack Overflow thread](https://stackoverflow.com/questions/3573475/how-does-the-import-library-work-details/3573527/#3573527).
 
 ### Performance improvements
@@ -284,7 +284,7 @@ Kotlin/Native 1.6.0 delivers the following performance improvements:
 
 * Compilation time: compiler caches are enabled by default for `linuxX64` and `iosArm64` targets.
 This speeds up most compilations in debug mode (except the first one). Measurements showed about a 200% speed increase on our test projects.
-The compiler caches have been available for these targets since Kotlin 1.5.0 with [additional Gradle properties](whatsnew15.md#performance-improvements); you can remove them now. 
+The compiler caches have been available for these targets since Kotlin 1.5.0 with [additional Gradle properties](whatsnew15.md#性能提升); you can remove them now. 
 * Runtime: iterating over arrays with `for` loops is now up to 12% faster thanks to optimizations in the produced LLVM code.
 
 ### Unified compiler plugin ABI with JVM and JS IR backends
@@ -414,7 +414,7 @@ This class was used for writing compiler plugins. In the following releases, we'
 We removed the `kotlin.useFallbackCompilerSearch` build option and the `noReflect` and `includeRuntime` compiler options.
 The `useIR` compiler option has been hidden and will be removed in upcoming releases.
 
-Learn more about the [currently supported compiler options](gradle.md#compiler-options) in the Kotlin Gradle plugin.
+Learn more about the [currently supported compiler options](gradle.md#编译器选项) in the Kotlin Gradle plugin.
 
 ## Standard library
 
@@ -678,12 +678,12 @@ Learn more about Kover on its [GitHub repository](https://github.com/Kotlin/kotl
 IntelliJ IDEA and Android Studio will suggest updating the Kotlin plugin to 1.6.0 once it is available.
 
 To migrate existing projects to Kotlin 1.6.0, change the Kotlin version to `1.6.0` and reimport your Gradle or Maven
-project. [Learn how to update to Kotlin 1.6.0](releases.md#update-to-a-new-release).
+project. [Learn how to update to Kotlin 1.6.0](releases.md#更新到新版本).
 
 To start a new project with Kotlin 1.6.0, update the Kotlin plugin and run the Project Wizard from **File** \| **New** \|
 **Project**.
 
 The new command-line compiler is available for download on the [GitHub release page](https://github.com/JetBrains/kotlin/releases/tag/v1.6.0).
 
-Kotlin 1.6.0 is a [feature release](kotlin-evolution.md#feature-releases-and-incremental-releases) and can, therefore, bring changes that are incompatible with your code written for earlier versions of the language.
+Kotlin 1.6.0 is a [feature release](kotlin-evolution.md#特性发布与增量发布) and can, therefore, bring changes that are incompatible with your code written for earlier versions of the language.
 Find the detailed list of such changes in the [Compatibility Guide for Kotlin 1.6](compatibility-guide-16.md).
