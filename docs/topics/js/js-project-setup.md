@@ -84,7 +84,10 @@ Kotlin 内部的库文件，该文件可以从其他项目中使用，而不能�
 
 Kotlin/JS 插件会自动配置其任务与所选环境配合工作。
 这项操作包括下载与安装运行和测试应用程序所需的环境与依赖项。
-这让开发者无需额外配置就可以构建、运行和测试简单项目。
+这让开发者无需额外配置就可以构建、运行和测试简单项目。 For projects targeting
+Node.js, there are also an option to use an existing Node.js installation. Learn how to [use pre-installed Node.js](#use-pre-installed-node-js).
+
+
 
 ## 依赖项
 
@@ -211,8 +214,9 @@ dependencies {
 </tab>
 </tabs>
 
-要在构建期间下载并安装声明的依赖项，该插件管理将自动安装
-[Yarn](https://classic.yarnpkg.com/zh-Hans/) 包管理器。
+The plugin uses the [Yarn](https://classic.yarnpkg.com/zh-Hans/) package manager to download and install NPM dependencies.
+It works out of the box without additional configuration, but you can tune it to specific needs.
+Learn how to [configure Yarn in Kotlin/JS Gradle plugin](#yarn).
 
 除了常规的依赖之外，还有三种依赖类型可以从 Gradle DSL 中使用。
 要了解更多关于哪种类型的依赖最适合使用的信息，请查看 npm 链接的官方文档：
@@ -460,7 +464,49 @@ testTask {
 每个列表定义一个模式，比如 [include](https://webpack.js.org/configuration/module/#ruleinclude) 与
 [exclude](https://webpack.js.org/configuration/module/#ruleexclude) 模式。
 
+## Node.js
+
+For Kotlin/JS projects targeting Node.js, the plugin automatically downloads and installs the Node.js environment on the
+host. You can also use an existing Node.js instance if you have it.
+
+### Use pre-installed Node.js
+
+If Node.js is already installed on the host where you build Kotlin/JS projects, you can configure the Kotlin/JS Gradle
+plugin to use it instead of installing its own Node.js instance.
+
+To use the pre-installed Node.js instance, add the following lines to your `build.gradle(.kts)`:
+
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin::class.java> {
+    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().download = false
+    // or true for default behavior
+}
+ 
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin) {
+    rootProject.extensions.getByType(org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension).download = false
+}
+```
+
+</tab>
+</tabs>
+
+
 ## Yarn
+
+To download and install your declared dependencies at build time, the plugin manages its own instance of the
+[Yarn](https://yarnpkg.com/lang/en/) package manager. It works out of the box without additional configuration, but you
+can tune it or use Yarn already installed on your host.
+
+### Additional Yarn features: .yarnrc
 
 要配置其他 Yarn 特性，请将 `.yarnrc` 文件放在项目的根目录中。
 在构建时，它会被自动拾取。
@@ -473,6 +519,37 @@ registry "http://my.registry/api/npm/"
 ```
 
 要了解有关 `.yarnrc` 的更多信息，请访问 [Yarn 官方文档](https://classic.yarnpkg.com/en/docs/yarnrc/)。
+
+### Use pre-installed Yarn
+
+If Yarn is already installed on the host where you build Kotlin/JS projects, you can configure the Kotlin/JS Gradle
+plugin to use it instead of installing its own Yarn instance.
+
+To use the pre-installed Yarn instance, add the following lines to your `build.gradle(.kts)`:
+
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin::class.java> {
+    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension>().download = false
+    // or true for default behavior
+}
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin) {
+    rootProject.extensions.getByType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension).download = false
+}
+ 
+```
+
+</tab>
+</tabs>
+
 
 ## 分发目标目录
 

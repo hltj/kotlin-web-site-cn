@@ -31,6 +31,24 @@ val numbersMap = mapOf("key1" to 1, "key2" to 2, "key3" to 3, "key4" to 1)
 val numbersMap = mutableMapOf<String, String>().apply { this["one"] = "1"; this["two"] = "2" }
 ```
 
+## Create with collection builder functions
+
+Another way of creating a collection is to call a builder function –
+[`buildList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/build-list.html), [`buildSet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/build-set.html),
+or [`buildMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/build-map.html). They create a new,
+mutable collection of the corresponding type, populate it using [write operations](collection-write.md),
+and return a read-only collection with the same elements:
+
+```kotlin
+val map = buildMap { // this is MutableMap<String, Int>, types of key and value are inferred from the `put()` calls below
+    put("a", 1)
+    put("b", 0)
+    put("c", 4)
+}
+
+println(map) // {a=1, b=0, c=4}
+```
+
 ## 空集合
 
 还有用于创建没有任何元素的集合的函数：[`emptyList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/empty-list.html)、
@@ -48,7 +66,6 @@ val empty = emptyList<String>()
 -->根据索引定义元素的值。
 
 ```kotlin
-
 fun main() {
 //sampleStart
     val doubled = List(3, { it * 2 })  // 如果你想操作这个集合，应使用 MutableList
@@ -82,9 +99,7 @@ of a collection at a specific moment. 结果是创建了一个具有相同元素
 -->独立于源代码集合进行更改。
 
 ```kotlin
-
 class Person(var name: String)
-
 fun main() {
 //sampleStart
     val alice = Person("Alice")
@@ -102,7 +117,6 @@ fun main() {
 这些函数还可用于将集合转换为其他类型，例如根据 List 构建 Set，反之亦然。
 
 ```kotlin
-
 fun main() {
 //sampleStart
     val sourceList = mutableListOf(1, 2, 3)    
@@ -119,7 +133,6 @@ fun main() {
 因此，当通过引用更改集合实例时，更改将反映在其所有引用中。
 
 ```kotlin
-
 fun main() {
 //sampleStart
     val sourceList = mutableListOf(1, 2, 3)
@@ -134,7 +147,6 @@ fun main() {
 集合的初始化可用于限制其可变性。例如，如果构建了一个 `MutableList` 的 `List` 引用，当你试图通过此引用修改集合的时候，编译器会抛出错误。
 
 ```kotlin
-
 fun main() {
 //sampleStart 
     val sourceList = mutableListOf(1, 2, 3)
@@ -144,7 +156,6 @@ fun main() {
     println(referenceList) // 显示 sourceList 当前状态
 //sampleEnd
 }
-
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
@@ -154,7 +165,6 @@ fun main() {
 -->列表会创建与过滤器匹配的新元素列表：
 
 ```kotlin
-
 fun main() {
 //sampleStart 
     val numbers = listOf("one", "two", "three", "four")  
@@ -168,7 +178,6 @@ fun main() {
 [映射](collection-transformations.md#映射)生成转换结果列表：
 
 ```kotlin
-
 fun main() {
 //sampleStart 
     val numbers = setOf(1, 2, 3)
@@ -182,7 +191,6 @@ fun main() {
 [关联](collection-transformations.md#关联)生成 Map:
 
 ```kotlin
-
 fun main() {
 //sampleStart
     val numbers = listOf("one", "two", "three", "four")

@@ -72,7 +72,7 @@ Kotlin 支持以下平台并且为每个平台提供了目标预设。请参见�
     <tr>
         <td>Windows</td>
         <td><code>mingwX64</code>, <code>mingwX86</code></td>
-        <td>需要 Windows 主机。</td>
+        <td></td>
     </tr>
     <tr>
         <td>WebAssembly</td>

@@ -47,7 +47,7 @@ println(e.p)
 输出结果：
 
 ```
-Example@33a17727, thank you for delegating ‘p’ to me!
+Example@33a17727, thank you for delegating 'p' to me!
 ```
 
 类似地，当我们给 `p` 赋值时，将调用 `setValue()` 函数。前两个参数相同，
@@ -60,7 +60,7 @@ e.p = "NEW"
 输出结果：
  
 ```
-NEW has been assigned to ‘p’ in Example@33a17727.
+NEW has been assigned to 'p' in Example@33a17727.
 ```
 
 委托对象的要求规范可以在[下文](#属性委托要求)找到。
@@ -311,7 +311,7 @@ val readOnly: Int by resourceDelegate()  // ReadWriteProperty as val
 var readWrite: Int by resourceDelegate()
 ```
 
-### 翻译规则
+### Translation rules for delegated properties
 
 本质上说，Kotlin 编译器会为每个委托属性生成辅助属性并委托给它。
 例如，对于属性 `prop`，生成隐藏属性 `prop$delegate`，而访问器的代码只是<!--
@@ -333,6 +333,39 @@ class C {
 
 Kotlin 编译器在参数中提供了关于 `prop` 的所有必要信息：第一个参数 `this` 引用<!--
 -->到外部类 `C` 的实例，而 `this::prop` 是 `KProperty` 类型的反射对象，该对象描述 `prop` 自身。
+
+### Translation rules when delegating to another property
+
+When delegating to another property, the Kotlin compiler generates immediate access to the referenced property.
+This means that the compiler doesn't generate the field `prop$delegate`. This optimization helps save memory.
+
+Take the following code, for example:
+
+```kotlin
+class C<Type> {
+    private var impl: Type = ...
+    var prop: Type by ::impl
+}
+```
+
+Property accessors of the `prop` variable invoke the `impl` variable directly, skipping the delegated property's `getValue`and `setValue` operators, 
+and thus the `KProperty` reference object is not needed.
+
+For the code above, the compiler generates the following code:
+
+```kotlin
+class C<Type> {
+    private var impl: Type = ...
+
+    var prop: Type
+        get() = impl
+        set(value) {
+            impl = value
+        }
+    
+    fun getProp$delegate(): Type = impl // This method is needed only for reflection
+}
+```
 
 ### 提供委托
 
@@ -399,7 +432,7 @@ fun <T> MyUI.bindResource(
 
 在生成的代码中，会调用 `provideDelegate` 方法来初始化辅助的 `prop$delegate` 属性。
 比较对于属性声明 `val prop: Type by MyDelegate()` 生成的代码与<!-- 
--->[上面](#翻译规则)（当 `provideDelegate` 方法不存在时）生成的代码：
+-->[上面](#translation-rules-for-delegated-properties)（当 `provideDelegate` 方法不存在时）生成的代码：
 
 ```kotlin
 class C {

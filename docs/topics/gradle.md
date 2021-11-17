@@ -669,8 +669,8 @@ Gradle 任务的完整选项列表如下：
 
 | Name | Description | Possible values |Default value |
 |------|-------------|-----------------|--------------|
-| `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.3"（已弃用）、 "1.4"、 "1.5"、 "1.6"（实验性） |  |
-| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.3"（已弃用）、 "1.4"、 "1.5"、 "1.6"（实验性） |  |
+| `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.3"（已弃用）、 "1.4"（已弃用）、  "1.5"、 "1.6"、 "1.7"（实验性） |  |
+| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"（实验性） |  |
 
 ### JS 特有的属性
 
@@ -694,7 +694,7 @@ Gradle 任务的完整选项列表如下：
 |------|-------------|-----------------|--------------|
 | `javaParameters` | 为方法参数生成 Java 1.8 反射的元数据 |  | false |
 | `jdkHome` | 将来自指定位置的自定义 JDK 而不是默认的 JAVA_HOME 包含到类路径中。 Direct setting is deprecated sinсe 1.5.30, use [other ways to set this option](#set-custom-jdk-home).  |  |  |
-| `jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"（已弃用）、 "1.8"、 "9"、 "10"、 "11"、 "12"、 "13"、 "14"、 "15"、 "16" | "%defaultJvmTargetVersion%" |
+| `jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"（已弃用）、 "1.8"、 "9"、 "10"、 "11"、 "12"、 "13"、 "14"、 "15"、 "16"、 "17" | "%defaultJvmTargetVersion%" |
 | `noJdk` | 不要自动在类路径中包含 Java 运行时 |  | false |
 | `useOldBackend` | Use the [old JVM backend](whatsnew15.md#稳定版-jvm-ir-后端) |  | false |
 
@@ -816,11 +816,9 @@ val service = project.extensions.getByType<JavaToolchainService>()
 val customLauncher = service.launcherFor {
     it.languageVersion.set(JavaLanguageVersion.of(<MAJOR_JDK_VERSION>)) // "8"
 }
-project.tasks
-    .matching { it is UsesKotlinJavaToolchain && it.name == "compileKotlin" }
-    .configureEach {
-        it.kotlinJavaToolchain.toolchain.use(customLauncher)
-    }
+project.tasks.withType<UsesKotlinJavaToolchain>().configureEach {
+    kotlinJavaToolchain.toolchain.use(customLauncher)
+}
 ```
 
 </tab>
@@ -831,11 +829,9 @@ JavaToolchainService service = project.getExtensions().getByType(JavaToolchainSe
 Provider<JavaLauncher> customLauncher = service.launcherFor {
     it.languageVersion.set(JavaLanguageVersion.of(<MAJOR_JDK_VERSION>)) // "8"
 }
-project.tasks
-    .matching { it instanceof UsesKotlinJavaToolchain && it.name == 'compileKotlin' }
-    .configureEach {
-        it.kotlinJavaToolchain.toolchain.use(customLauncher)
-    }
+tasks.withType(UsesKotlinJavaToolchain::class).configureEach { task ->
+    task.kotlinJavaToolchain.toolchain.use(customLauncher)
+}
 ```
 
 </tab>
@@ -844,14 +840,12 @@ project.tasks
 Or you can specify the path to your local JDK and replace the placeholder `<LOCAL_JDK_VERSION>` with this JDK version:
 
 ```kotlin
-project.tasks
-    .matching { it is UsesKotlinJavaToolchain && it.name == "compileKotlin" }
-    .configureEach {
-        it.kotlinJavaToolchain.jdk.use(
-            "/path/to/local/jdk", // Put a path to your JDK
-            JavaVersion.<LOCAL_JDK_VERSION> // For example, JavaVersion.17
-        )
-    }
+tasks.withType<UsesKotlinJavaToolchain>().configureEach {
+    kotlinJavaToolchain.jdk.use(
+        "/path/to/local/jdk", // Put a path to your JDK
+        JavaVersion.<LOCAL_JDK_VERSION> // For example, JavaVersion.17
+    )
+}
 ```
 
 ## 生成文档
@@ -935,10 +929,8 @@ Each of the options in the following list overrides the ones that came before it
   <tab title="Kotlin" group-key="kotlin">
 
   ```kotlin
-  tasks
-      .matching { it.name == "compileKotlin" && it is CompileUsingKotlinDaemon }
-      .configureEach { 
-          (this as CompileUsingKotlinDaemon).kotlinDaemonJvmArguments.set(listOf("-Xmx486m", "-Xms256m", "-XX:+UseParallelGC"))
+  tasks.withType<CompileUsingKotlinDaemon>().configureEach {
+      kotlinDaemonJvmArguments.set(listOf("-Xmx486m", "-Xms256m", "-XX:+UseParallelGC"))
       }
   ```
 
@@ -946,11 +938,9 @@ Each of the options in the following list overrides the ones that came before it
   <tab title="Groovy" group-key="groovy">
 
   ```groovy
-  tasks
-      .matching { it.name == "compileKotlin" && it instanceof CompileUsingKotlinDaemon }
-      .configureEach {
-          kotlinDaemonJvmArguments.set(["-Xmx1g", "-Xms512m"])
-      }
+  tasks.withType(CompileUsingKotlinDaemon::class).configureEach { task ->
+      task.kotlinDaemonJvmArguments.set(["-Xmx1g", "-Xms512m"])
+   }
   ```
 
   </tab>

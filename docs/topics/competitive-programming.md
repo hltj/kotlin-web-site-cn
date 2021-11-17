@@ -72,26 +72,17 @@ fun f(x: Int): Int {
 
 ```kotlin
 fun main() {
-    var n = readLine()!!.toInt() // 读取输入的整数
+    var n = readln().toInt() // 读取输入的整数
     val reached = HashSet<Int>() // 可变的哈希 set
     while (reached.add(n)) n = f(n) // 迭代函数 f
     println(reached.size) // 输出答案
 }
 ```
 
-请注意在
-[readLine()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/read-line.html)
-函数调用之后使用了 Kotlin 的[空断言操作符](null-safety.md#-操作符) `!!`。
-Kotlin 的 `readLine()` 函数定义成了返回<!--
--->[可空类型](null-safety.md#可空类型与非空类型)
-`String?`，并且会在输入结束时返回 `null`，这样明确迫使开发人员处理<!--
--->输入缺失的情况。
- 
-在竞技程序设计中无需处理输入格式错误的情况。 
-竞技程序设计中的输入格式向来都是精确指定的，并且实际输入不能偏离<!-- 
--->问题陈述中的输入规范。这基本上就是空断言操作符 `!!` 的行为—— 
-它断言输入的字符串存在，如不存在则抛出异常。同样，如果输入不是整数，那么 
-[String.toInt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int.html) 
+在竞技程序设计中无需处理输入格式错误的情况。 竞技程序设计中的输入格式<!--
+-->向来都是精确指定的，并且实际输入不能偏离问题陈述中的输入规范<!--
+-->。 That's why we're using Kotlin's `readln()` function. 它断言输入的字符串存在，
+如不存在则抛出异常。 同样，如果输入不是整数，那么 [String.toInt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int.html)
 函数会抛出异常。
 
 所有在线竞技程序设计活动都允许使用预编写代码，因此可以定义自己的<!--
@@ -100,8 +91,8 @@ Kotlin 的 `readLine()` 函数定义成了返回<!--
 -->以下辅助函数来读取竞技程序设计中的输入：
 
 ```kotlin
-private fun readLn() = readLine()!!
-private fun readInt() = readLn().toInt()
+private fun readInt() = readln().toInt()
+private fun readStr() = readln().toString()
 // 用于在解题中会用到的其他类型的类似声明等
 ```
 
@@ -121,9 +112,9 @@ private fun readInt() = readLn().toInt()
 ```kotlin
 fun main() {
     // 读取输入
-    val n = readLine()!!.toInt()
-    val s = readLine()!!
-    val fl = readLine()!!.split(" ").map { it.toInt() }
+    val n = readln().toInt()
+    val s = readln()
+    val fl = readln().split(" ").map { it.toInt() }
     // 定义局部函数 f
     fun f(c: Char) = '0' + fl[c - '1']
     // 贪婪查找第一个与最后一个索引
@@ -151,9 +142,8 @@ fun main() {
 可以使用以下输入读取辅助函数列表：
 
 ```kotlin
-private fun readLn() = readLine()!! // 字符串行
-private fun readInt() = readLn().toInt() // 单个整数
-private fun readStrings() = readLn().split(" ") // 字符串列表
+private fun readInt() = readln().toInt() // 单个整数
+private fun readStrings() = readln().split(" ") // 字符串列表
 private fun readInts() = readStrings().map { it.toInt() } // 整数列表
 ```
 
@@ -163,7 +153,7 @@ private fun readInts() = readStrings().map { it.toInt() } // 整数列表
 ```kotlin
     // 读取输入
     val n = readInt()
-    val s = readLn()
+    val s = readln()
     val fl = readInts()
 ```
 

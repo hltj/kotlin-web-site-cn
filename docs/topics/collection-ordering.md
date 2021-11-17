@@ -26,12 +26,10 @@ Below is a class for ordering versions that consist of the major and the minor p
 
 ```kotlin
 class Version(val major: Int, val minor: Int): Comparable<Version> {
-    override fun compareTo(other: Version): Int {
-        if (this.major != other.major) {
-            return this.major - other.major
-        } else if (this.minor != other.minor) {
-            return this.minor - other.minor
-        } else return 0
+    override fun compareTo(other: Version): Int = when {
+        this.major != other.major -> this.major compareTo other.major // compareTo() in the infix form 
+        this.minor != other.minor -> this.minor compareTo other.minor
+        else -> 0
     }
 }
 
@@ -40,7 +38,7 @@ fun main() {
     println(Version(2, 0) > Version(1, 5))
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.6"}
 
 _自定义_ 顺序让你可以按自己喜欢的方式对任何类型的实例进行排序。
 特别是，你可以为不可比较类型定义顺序，或者为可比较类型定义非自然顺序。
