@@ -421,7 +421,7 @@ Learn more about the [currently supported compiler options](gradle.md#编译器�
 The new 1.6.0 version of the standard library stabilizes experimental features, introduces new ones, and unifies its behavior across the platforms:
 
 * [新版 readline 函数](#新版-readline-函数)
-* [稳定版 typeOf()](#稳定版-typeOf())
+* [稳定版 typeOf()](#稳定版-typeof)
 * [稳定版集合构建器](#稳定版集合构建器)
 * [稳定版 Duration API](#稳定版-duration-api)
 * [按 Regex 拆分为序列](#按-regex-拆分为序列)
