@@ -91,8 +91,8 @@ The detailed information about the differences is provided in the dedicated sect
 
 由于作用域函数本质上都非常相似，因此了解它们之间的区别很重要。
 每个作用域函数之间有两个主要区别：
-* 引用上下文对象的方式
-* 返回值
+* 引用上下文对象的方式。
+* 返回值。
 
 ### 上下文对象：this 还是 it
 
@@ -106,13 +106,13 @@ fun main() {
     val str = "Hello"
     // this
     str.run {
-        println("The receiver string length: $length")
-        //println("The receiver string length: ${this.length}") // 和上句效果相同
+        println("The string's length: $length")
+        //println("The string's length: ${this.length}") // 和上句效果相同
     }
 
     // it
     str.let {
-        println("The receiver string's length is ${it.length}")
+        println("The string's length is ${it.length}")
     }
 }
 ```
@@ -338,7 +338,7 @@ fun main() {
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 `let` 经常用于仅使用非空值执行代码块。如需对非空对象执行操作，
-可对其使用安全调用操作符 `?.` 并调用 `let` 在 lambda 表达式中执行操作。
+可对其使用[安全调用操作符 `?.`](null-safety.md#安全的调用) 并调用 `let` 在 lambda 表达式中执行操作。
 
 ```kotlin
 fun processNonNullString(str: String) {}
@@ -461,7 +461,7 @@ fun main() {
         Regex("[$sign]?[$digits$hexDigits]+")
     }
     
-    for (match in hexNumberRegex.findAll("+1234 -FFFF not-a-number")) {
+    for (match in hexNumberRegex.findAll("+123 -FFFF !%*& 88 XYZ")) {
         println(match.value)
     }
 //sampleEnd
