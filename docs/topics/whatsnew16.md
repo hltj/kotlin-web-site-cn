@@ -2,19 +2,19 @@
 
 _[发布日期：2021-11-16](releases.md#版本发布详情)_
 
-Kotlin 1.6.0 introduces new language features, optimizations and improvements to existing features, and a lot of improvements to the Kotlin standard library.
+Kotlin 1.6.0 引入了新的语言特性、对现有特性的优化与改进以及对 Kotlin 标准库的大量改进。
 
-You can also find an overview of the changes in the [release blog post](https://blog.jetbrains.com/kotlin/2021/11/kotlin-1-6-0-released/).
+还可以在[版本发布博文](https://blog.jetbrains.com/kotlin/2021/11/kotlin-1-6-0-released/)中找到这些变更的概述。
 
 ## 语言
 
-Kotlin 1.6.0 brings stabilization to several language features introduced for preview in the previous 1.5.30 release:
+Kotlin 1.6.0 将上一版本 1.5.30 中预览的几个语言特性提升为稳定版了：
 * [稳定版对于枚举、密封类与布尔值主语穷尽 when 语句]((#稳定版对于枚举密封类与布尔值主语穷尽-when-语句)
 * [稳定版挂起函数作为超类型](#稳定版挂起函数作为超类型)
 * [稳定版挂起转换](#稳定版挂起转换)
 * [稳定版注解类实例化](#稳定版注解类实例化)
 
-It also includes various type inference improvements and support for annotations on class type parameters:
+还包括各种类型推断改进以及对类的类型参数上注解的支持：
 * [改进了递归泛型类型的类型推断](#改进了递归泛型类型的类型推断)
 * [构建器类型推断变更](#构建器类型推断变更)
 * [对类的类型参数上注解的支持](#对类的类型参数上注解的支持)

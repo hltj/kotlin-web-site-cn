@@ -7,7 +7,7 @@ Android Studio will recommend an automatic update to a new Kotlin release. You c
 
 Here you can find a short summary of the features Kotlin provides for developing multiplatform mobile applications.
 
-## Kotlin 1.5.30 for KMM
+## Kotlin 1.5.30 用于 KMM
 
 [Kotlin 1.5.30](whatsnew1530.md) introduces a number of improvements and features that are helpful for KMM:
 
@@ -17,7 +17,7 @@ Here you can find a short summary of the features Kotlin provides for developing
 
   Learn more about [Apple silicon 支持](whatsnew1530.md#apple-silicon-支持).
 
-* **Improved Kotlin DSL for CocoaPods Gradle plugin.** Kotlin 1.5.30 introduces the improved CocoaPods Gradle plugin DSL.
+* **改进了用于 CocoaPods Gradle 插件的 Kotlin DSL。** Kotlin 1.5.30 introduces the improved CocoaPods Gradle plugin DSL.
   In addition to the name of the framework, you can now specify other parameters in the pod configuration: 
   * Dynamic or static version of the framework
   * Dependencies explicit export
@@ -36,7 +36,7 @@ Here you can find a short summary of the features Kotlin provides for developing
 
   [Learn more about mapping for objects and companion objects](whatsnew1530.md#改进了对象与伴生对象的-swift-objective-c-映射).
 
-* **Sharing custom `cinterop` libraries between platforms.**
+* **在平台间共享自定义的 `cinterop` 库。**
   Starting from Kotlin 1.5.30, you can use custom cinterop libraries in shared native code.
 
   [Learn more about sharing custom `cinterop` libraries between platforms](whatsnew1530.md#能在共享的原生代码中使用自定义-cinterop-库).
@@ -52,11 +52,11 @@ Here you can find a short summary of the features Kotlin provides for developing
 
   [Learn more about new default publishing setup for Android artifacts](whatsnew1530.md#android-构件的新版默认发布设置).
 
-## Kotlin 1.5.20 for KMM
+## Kotlin 1.5.20 用于 KMM
 
 [Kotlin 1.5.20](https://kotlinlang.org/docs/whatsnew1520.html) introduces a number of improvements and features that are helpful for KMM:
 
-* **Export of KDoc comments to generated Objective-C headers.**
+* **将 KDoc 注释导出到生成的 Objective-C 头文件。**
   You can now set the Kotlin/Native compiler to export the [documentation comments (KDoc)](kotlin-doc.md) from Kotlin code
   to the Objective-C frameworks generated from it, making them visible to the frameworks’ consumers.
 
@@ -64,14 +64,14 @@ Here you can find a short summary of the features Kotlin provides for developing
 
   Learn more about [exporting KDoc comments to generated Objective-C headers and how to opt in to this feature](whatsnew1520.md#将-kdoc-注释导出到所生成的-objective-c-头文件的选择加入项 ).
 
-* **New framework-packing task for Kotlin/Native**.
+* **适用于 Kotlin/Native 的新版框架打包任务**。
   The [Kotlin Multiplatform Gradle plugin](mpp-dsl-reference.md) now includes the `embedAndSignAppleFrameworkForXcode` task, which can be used from Xcode to connect KMM modules to the iOS part of your project.
 
   Check out this [blog post](https://blog.jetbrains.com/kotlin/2021/07/multiplatform-gradle-plugin-improved-for-connecting-kmm-modules/) to learn about the new framework-packing task and how to remove from the `packForXcode` task from your build script.
 
 Learn more about [what's new in Kotlin 1.5.20](whatsnew1520.md).
 
-## Kotlin 1.5.0 for KMM
+## Kotlin 1.5.0 用于 KMM
 
 [Kotlin 1.5.0](whatsnew15.md) introduces a number of improvements and features that are helpful for KMM:
 
@@ -96,7 +96,7 @@ Learn more about [what's new in Kotlin 1.5.20](whatsnew1520.md).
 
 Learn more about [what's new in Kotlin 1.5.0](whatsnew15.md).
 
-## Kotlin 1.4.30 for KMM
+## Kotlin 1.4.30 用于 KMM
 
 [Kotlin 1.4.30](whatsnew1430.md) introduces a number of improvements that are helpful for KMM:
 
@@ -111,7 +111,7 @@ Learn more about [what's new in Kotlin 1.5.0](whatsnew15.md).
 
 Learn more about [what's new in Kotlin 1.4.30](whatsnew1430.md).
 
-## Kotlin 1.4.20 for KMM
+## Kotlin 1.4.20 用于 KMM
 
 [Kotlin 1.4.20](whatsnew1420.md) introduces a number of features, improvements, and bug fixes that are helpful for KMM:
 
