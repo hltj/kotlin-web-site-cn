@@ -177,7 +177,7 @@ Using this feature, you can:
 * Compile and test code with a not-yet-released language version.
 
 With toolchains support, Gradle can autodetect local JDKs and install missing JDKs that Gradle requires for the build.
-Now Gradle itself can run on any JDK and still reuse the [remote build cache feature](#gradle-build-cache-support)
+Now Gradle itself can run on any JDK and still reuse the [remote build cache feature](#gradle-构建缓存支持)
 for tasks that depend on a major JDK version.
 
 The Kotlin Gradle plugin supports Java toolchains for Kotlin/JVM compilation tasks. JS and Native tasks don't use toolchains.
