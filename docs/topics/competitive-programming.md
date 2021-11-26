@@ -81,8 +81,8 @@ fun main() {
 
 在竞技程序设计中无需处理输入格式错误的情况。 竞技程序设计中的输入格式<!--
 -->向来都是精确指定的，并且实际输入不能偏离问题陈述中的输入规范<!--
--->。 That's why we're using Kotlin's `readln()` function. 它断言输入的字符串存在，
-如不存在则抛出异常。 同样，如果输入不是整数，那么 [String.toInt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int.html)
+-->。 That's why we're using Kotlin's [`readln()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/readln.html) function. 它断言输入的字符串存在，
+如不存在则抛出异常。 同样，如果输入不是整数，那么 [`String.toInt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int.html)
 函数会抛出异常。
 
 所有在线竞技程序设计活动都允许使用预编写代码，因此可以定义自己的<!--
