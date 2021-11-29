@@ -4,7 +4,7 @@ _[发布日期：2021-11-16](releases.md#版本发布详情)_
 
 Kotlin 1.6.0 引入了新的语言特性、对现有特性的优化与改进以及对 Kotlin 标准库的大量改进。
 
-还可以在[版本发布博文](https://blog.jetbrains.com/kotlin/2021/11/kotlin-1-6-0-released/)中找到这些变更的概述。
+还可以在[版本发布博文](https://blog.jetbrains.com/kotlin/2021/11/kotlin-1-6-0-is-released/)中找到这些变更的概述。
 
 ## 语言
 
