@@ -12,15 +12,15 @@
         </description>
         <tip-group>
             <a href="getting-started.md"
-               description="Create your first Kotlin project for a platform of your choice in an IDE: IntelliJ IDEA or Android Studio" type="start">Kotlin 入门</a>
-            <a href="https://play.kotlinlang.org/" description="Write, edit, run, and share Kotlin code right in the browser" type="install">在线试用 Kotlin</a>
+               description="在 IDE 中（IntelliJ IDEA 或 Android Studio）为所选平台创建第一个 Kotlin 项目" type="start">Kotlin 入门</a>
+            <a href="https://play.kotlinlang.org/" description="直接在浏览器中编写、编辑、运行与共享 Kotlin 代码" type="install">在线试用 Kotlin</a>
         </tip-group>
         <main-group>
             <title>第一步</title>
-            <a href="basic-syntax.md" description="A quick tour of Kotlin syntax: keywords, operators, program structure">基础语法</a>
-            <a href="https://play.kotlinlang.org/byExample/overview" description="Simple annotated examples for the Kotlin syntax">例学 Kotlin</a>
-            <a href="koans.md" description="Programming exercises to get you familiar with Kotlin">心印</a>
-            <a href="command-line.md" description="Download and install the Kotlin compiler" type="install">命令行编译器</a>
+            <a href="basic-syntax.md" description="快速了解 Kotlin 语法：关键字、操作符、程序结构">基础语法</a>
+            <a href="https://play.kotlinlang.org/byExample/overview" description="Kotlin 语法简单评注版示例">例学 Kotlin</a>
+            <a href="koans.md" description="让你熟悉 Kotlin 的编程练习">心印</a>
+            <a href="command-line.md" description="下载并安装 Kotlin 编译器" type="install">命令行编译器</a>
         </main-group>
         <highlighted-group>
             <title>精选主题</title>
