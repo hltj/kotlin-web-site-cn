@@ -140,7 +140,7 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
    |[KVision](https://kvision.io/) | 用于 Kotlin/JS 的一个第三方面向对象 web 框架。|
    |[fritz2](https://www.fritz2.dev/)| 一个轻量级、高性能、独立的第三方库，用于在 Kotlin 中构建高度依赖协程与流的反应式 web 应用。|
    |[Doodle](https://nacular.github.io/doodle/) | 一个基于矢量的第三方 UI 框架，使用浏览器的功能来绘制用户界面。|
-   |Compose for Web，[Compose Multiplatform](https://www.jetbrains.com/lp/compose-mpp/) 的一部分 | 将 [谷歌的 Jetpack Compose UI 工具包](https://developer.android.com/jetpack/compose)带到浏览器的 JetBrains 框架（目前处于 [Alpha](components-stability.md) 状态）。|
+   |Compose for Web，[Compose Multiplatform](https://www.jetbrains.com/lp/compose-mpp/) 的一部分 | 将 [谷歌的 Jetpack Compose UI 工具包](https://developer.android.com/jetpack/compose)带到浏览器的 JetBrains 框架。|
    |[kotlin-wrappers](https://github.com/JetBrains/kotlin-wrappers) | 为最流行的 JavaScript 框架之一提供方便的抽象与深度集成。 Kotlin wrappers 还为许多类似技术提供支持，例如 `react-redux`、 `react-router` 或者 `styled-components`。 |
 
 4. **了解关于 Kotlin 用于前端 web 开发的更多信息：**

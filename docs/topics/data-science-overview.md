@@ -17,7 +17,7 @@ Kotlin 与这些工具集成在一起，可以帮助探索数据、与同事<!--
 ### Jupyter Kotlin 内核
 
 Jupyter Notebook 是一个开源 Web 应用程序，
-它允许创建与共享包含代码、可视化与标记文本的文档（也称为“笔记本”）。
+它允许创建与共享包含代码、可视化与 Markdown 文本的文档（也称为“笔记本”）。
 [Kotlin-jupyter](https://github.com/Kotlin/kotlin-jupyter) 是一个开源项目，
 它为 Jupyter Notebook 带来了 Kotlin 支持。
 
@@ -110,4 +110,4 @@ R 的 [ggplot](https://ggplot2.tidyverse.org/)。
 * [Tablesaw](https://github.com/jtablesaw/tablesaw) - a Java dataframe. It includes a visualization library based on Plot.ly
 
 如果这个列表还不能满足需求，可以在 Thomas Nield 的
-**[Kotlin 数据科学资源](https://github.com/thomasnield/kotlin-data-science-resources)**摘要中找到更多选项。
+**[Kotlin Machine Learning Demos](https://github.com/thomasnield/kotlin-machine-learning-demos)** GitHub repository with showcases 中找到更多选项。

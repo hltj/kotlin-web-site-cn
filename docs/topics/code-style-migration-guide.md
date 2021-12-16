@@ -58,8 +58,8 @@ Kotlin 编码规范一致来消除这种隔阂似乎是符合逻辑的。但这�
 
 ## 迁移到新的代码风格
 
-可以在 __Settings | Editor | Code Style | Kotlin__ 对话框中切换 Kotlin 代码风格。
-将 Scheme 切换到 __Project__ 并从下方选择 __Set from... | Predefined Style | Kotlin Style Guide__。
+可以在 **Settings/Preferences** | **Editor** | **Code Style** | **Kotlin** 对话框中切换 Kotlin 代码风格。
+将 Scheme 切换到 **Project** 并从下方选择 **Set from...** | **Kotlin style guide**。
 
 为了向所有项目开发人员共享这些更改，必须将 `.idea/codeStyle` 文件夹提交给版本控制系统。
 
@@ -85,7 +85,7 @@ Kotlin 编码规范一致来消除这种隔阂似乎是符合逻辑的。但这�
 >
 {type="warning"}
 
-更新代码风格设置后，在所需范围的项目视图中选择“Reformat Code”。
+更新代码风格设置后，在所需范围的项目视图中选择 **Reformat Code**。
 
 <img src="reformat-code.png" alt="Reformat code" width="500"/>
 
@@ -95,9 +95,10 @@ Kotlin 编码规范一致来消除这种隔阂似乎是符合逻辑的。但这�
 
 ## 在项目中存储旧的代码风格
 
-随时可以将 IntelliJ IDEA 代码风格明确设置为项目的正确代码风格。
-为此，请在 **Settings | Editor | Code Style | Kotlin** 中将 Scheme 切换到 **Project**，然后在
-**Load/Save** 选项卡中的 **Use defaults from:** 中选择 **Kotlin obsolete IntelliJ IDEA codestyle** 。
+It's always possible to explicitly set the IntelliJ IDEA code style as the correct code style for the project:
+
+1. In **Settings/Preferences** | **Editor** | **Code Style** | **Kotlin**, switch to the **Project** scheme.
+2. Open the **Load/Save** tab and in the **Use defaults from** select **Kotlin obsolete IntelliJ IDEA codestyle**.
 
 为了在项目开发人员的 `.idea/codeStyle` 文件夹中共享更改，必须将其提交给版本控制系统。
 另外， **kotlin.code.style**=**obsolete** 可以用于配置了 Gradle 或 Maven 的项目。

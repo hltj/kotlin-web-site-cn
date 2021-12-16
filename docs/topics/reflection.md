@@ -1,20 +1,21 @@
 [//]: # (title: 反射)
 
-*反射*是这样的一组语言和库功能，它允许在运行时自省你的程序的结构。
-Kotlin 让语言中的函数和属性做为一等公民、并对其自省（即在运行时获悉<!--
--->一个名称或者一个属性或函数的类型）与简单地使用函数式或反应式风格紧密相关。
+*反射*是这样的一组语言和库功能，让你可以在运行时自省你的程序的结构。
+Kotlin 中的函数和属性是一等公民，而对其自省（即在运行时获悉<!--
+-->一个属性或函数的名称或类型）能力是使用函数式或反应式风格时所必需的。
 
-> Kotlin/JS provides the limited support for reflection features. [Learn more about reflection in Kotlin/JS](js-reflection.md).
+> Kotlin/JS provides limited support for reflection features. [Learn more about reflection in Kotlin/JS](js-reflection.md).
 >
 {type="note"}
 
 ## JVM dependency
 
-On the JVM platform, the runtime component required for using the reflection features is distributed as a separate
-artifact `kotlin-reflect.jar` in the Kotlin compiler distribution. This is done to reduce the required size of the runtime
+On the JVM platform, the Kotlin compiler distribution includes the runtime component required for using the reflection features as a separate
+artifact, `kotlin-reflect.jar`. This is done to reduce the required size of the runtime
 library for applications that do not use reflection features.
 
 To use reflection in a Gradle or Maven project, add the dependency on `kotlin-reflect`:
+
 * In Gradle:
 
     <tabs group="build-script">
@@ -50,9 +51,9 @@ To use reflection in a Gradle or Maven project, add the dependency on `kotlin-re
     ```
 
 If you don't use Gradle or Maven, make sure you have `kotlin-reflect.jar` in the classpath of your project.
-In other supported cases (IntelliJ IDEA projects, using command-line compiler or Ant),
-it is added by default. In command-line compiler and Ant, you can use `-no-reflect` compiler option to exclude
-`kotlin-reflect.jar` from the classpath. 
+In other supported cases (IntelliJ IDEA projects that use the command-line compiler or Ant),
+it is added by default. In the command-line compiler and Ant, you can use the `-no-reflect` compiler option to exclude
+`kotlin-reflect.jar` from the classpath.
 
 ## 类引用
 
@@ -79,27 +80,27 @@ val widget: Widget = ……
 assert(widget is GoodWidget) { "Bad widget: ${widget::class.qualifiedName}" }
 ```
 
-你可以获取对象的精确类的引用，例如 `GoodWidget` 或 `BadWidget`，
+你会获得对象的精确类的引用，例如 `GoodWidget` 或 `BadWidget`，
 尽管接收者表达式的类型是 `Widget`。
 
 ## 可调用引用
 
-函数、属性以及构造函数的引用，除了作为自省程序结构外，
-还可以用于调用或者用作[函数类型](lambdas.md#函数类型)的实例。
+函数、属性以及构造函数的引用可以<!--
+-->用于调用或者用作[函数类型](lambdas.md#函数类型)的实例。
 
 所有可调用引用的公共超类型是 [`KCallable<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-callable/index.html)，
-其中 `R` 是返回值类型，对于属性是属性类型，对于构造函数是所构造类型。
+其中 `R` 是返回值类型。对于属性是属性类型，对于构造函数是所构造类型。
 
 ### 函数引用
 
-当有一个具名函数声明如下：
+当有一个具名函数声明如下， you can call it directly (`isOdd(5)`):
 
 ```kotlin
 fun isOdd(x: Int) = x % 2 != 0
 ```
 
-You can call it directly (`isOdd(5)`). Alternatively, you can use it as a function type value: pass it 
-to another function. To do this, use the `::` operator:
+Alternatively, you can use the function as a function type value, that is, pass it
+to another function. To do so, use the `::` operator:
 
 ```kotlin
 fun isOdd(x: Int) = x % 2 != 0
@@ -116,7 +117,7 @@ fun main() {
 这里 `::isOdd` 是函数类型 `(Int) -> Boolean` 的一个值。
 
 函数引用属于 [`KFunction<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-function/index.html)
-的子类型之一，取决于参数个数，例如 `KFunction3<T1, T2, T3, R>`。
+的子类型之一，取决于参数个数。例如 `KFunction3<T1, T2, T3, R>`。
 
 当上下文中已知函数期望的类型时，`::` 可以用于重载函数。
 例如：
@@ -142,12 +143,12 @@ val predicate: (String) -> Boolean = ::isOdd   // 引用到 isOdd(x: String)
 
 如果需要使用类的成员函数或扩展函数，它需要是限定的，例如 `String::toCharArray`。
 
-请注意，即使以扩展函数的引用初始化一个变量，其推断出的函数类型也会<!--
--->没有接收者（它会有一个接受接收者对象的额外参数）。如需改为<!--
+即使以扩展函数的引用初始化一个变量，其推断出的函数类型也会<!--
+-->没有接收者，但是它会有一个接受接收者对象的额外参数。如需改为<!--
 -->带有接收者的函数类型，请明确指定其类型：
 
 ```kotlin
-val isEmptyStringList: List<String>.() -> Boolean = List<String>::isEmpty 
+val isEmptyStringList: List<String>.() -> Boolean = List<String>::isEmpty
 ```
 
 #### 示例：函数组合
@@ -161,7 +162,7 @@ fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
 ```
 
 它返回一个传给它的两个函数的组合：`compose(f, g) = f(g(*))`。
-现在，你可以将其应用于可调用引用：
+你可以将该函数应用于可调用引用：
 
 ```kotlin
 fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
@@ -275,7 +276,7 @@ fun getKClass(o: Any): KClass<Any> = o.javaClass.kotlin
 
 ### 构造函数引用
 
-构造函数可以像方法和属性那样引用。可以将其用于期待这样的函数类型对象的任何<!--
+构造函数可以像方法和属性那样引用。可以将其用于程序期待这样函数类型对象的任何<!--
 -->地方：它与该构造函数接受相同参数并且返回相应类型的对象。
 通过使用 `::` 操作符并添加类名来引用构造函数。考虑下面的函数，
 它期待一个无参并返回 `Foo` 类型的函数参数：
@@ -330,7 +331,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-比较绑定的类型和相应的未绑定类型的引用。
+比较绑定的引用与未绑定的引用的类型。
 绑定的可调用引用有其接收者“附加”到其上，因此接收者的类型不再是参数：
 
 ```kotlin

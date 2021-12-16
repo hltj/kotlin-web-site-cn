@@ -39,7 +39,7 @@ We make sure to document precisely which subcomponents are not stable. We also d
 ## Current stability of Kotlin components
 
 |**组件**|**状态**|**状态起始版本**|**备注**|
-| --- | --- | --- | --- |
+| --- | --- | -- | --- |
 Kotlin/JVM|Stable|1.0| |
 kotlin-stdlib（JVM）|已稳定|1.0| |
 协程|已稳定|1.3| |
@@ -52,10 +52,10 @@ KLib 二进制|Alpha|1.4| |
 多平台项目|Alpha|1.3| |
 Kotlin/Native 与 C 语言及 Objective C 互操作|Beta|1.3| |
 CocoaPods 集成|Beta|1.3| |
-用于 Android Studio 的 KMM 插件|实验性的|0.1|与语言版本独立
+用于 Android Studio 的 KMM 插件|Alpha|0.3.0|[与语言版本独立](kmm-plugin-releases.md)
 expect/actual 语言特性|Beta|1.2| |
 KDoc 语法|已稳定|1.0| |
-Dokka|Alpha|0.1| |
+Dokka|Beta|1.6| |
 脚本语法与语义|Alpha|1.2|
 脚本嵌入与扩展 API|Beta|1.5
 脚本 IDE 支持|实验性的|1.2

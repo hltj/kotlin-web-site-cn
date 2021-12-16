@@ -1,31 +1,62 @@
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
+<div class="sample" markdown="1" mode="kotlin" theme="kotlin-docs" data-highlight-only="1" auto-indent="false">
 ```kotlin
-/*
- 使用 JVM 上的任何现有库，因为有 100％ 的兼容性，包括 SAM 支持。
-*/
+// Use any existing JVM library or framework
+// Call Kotlin code from Java without an issue
 
-import io.reactivex.Flowable
-import io.reactivex.schedulers.Schedulers
+@SpringBootApplication
+class DemoApplication
 
-Flowable
-    .fromCallable {
-        Thread.sleep(1000) //  模仿高开销的计算
-        "Done"
-    }
-    .subscribeOn(Schedulers.io())
-    .observeOn(Schedulers.single())
-    .subscribe(::println, Throwable::printStackTrace)
+fun main(args: Array<String>) {
+   runApplication<DemoApplication>(*args)
+}
+
+@RestController
+class MessageResource {
+   @GetMapping
+   fun index(): List<Message> = listOf(
+      Message("1", "Hello!"),
+      Message("2", "Bonjour!"),
+      Message("3", "Privet!"),
+   )
+}
+
+data class Message(val id: String?, val text: String)
 ```
 </div>
 
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
+<div class="sample" markdown="1" mode="kotlin" theme="kotlin-docs" data-highlight-only="1" auto-indent="false">
+```
+// Write Kotlin code, compile it to JavaScript, and run it in the browser
+// Use existing JavaScript APIs and libraries
+
+import kotlinx.browser.window
+
+fun main() {
+   val body = window.document.body
+
+   body?.innerHTML += "<b>Hello, <i>Kotlin</i></b>"
+
+   window.setInterval({
+      body?.innerHTML += "!"
+   }, 1000)
+}
+```
+</div>
+
+<div class="sample" markdown="1" mode="kotlin" theme="kotlin-docs" data-highlight-only="1" auto-indent="false">
 ```kotlin
-// 无论是面向 JVM 还是 JavaScript 平台，都可用 Kotlin 写代码然后部署到你想要的地方
+// Use Kotlin wrappers to build applications with JavaScript frameworks such as React
 
-import kotlin.browser.window
+import react.*
+import react.dom.*
+import kotlinx.html.js.onClickFunction
 
-fun onLoad() {
-    window.document.body!!.innerHTML += "<br/>Hello, Kotlin!"
+val counter = functionalComponent<Props> {
+   val (count, setCount) = useState(0)
+   button {
+      attrs.onClickFunction = { setCount(count + 1) }
+      +count.toString()
+   }
 }
 ```
 </div>

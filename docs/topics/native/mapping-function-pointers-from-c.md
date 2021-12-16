@@ -168,7 +168,7 @@ fun main() {
 
 ## Kotlin 中的 C 函数指针
 
-通过 IntelliJ IDEA 的 __Go to | Declaration__ 或<!--
+通过 IntelliJ IDEA 的 **Go To** | **Declaration or Usages** 或<!--
 -->编译器错误的帮助，可以看到为 C 函数生成的如下声明：
 
 ```kotlin

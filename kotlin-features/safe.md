@@ -1,23 +1,23 @@
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
+<div class="sample" markdown="1" mode="kotlin" theme="kotlin-docs" auto-indent="false">
 ``` kotlin
-/*
- 彻底告别那些烦人的 NullPointerException——
-著名的十亿美金的错误
-*/
+fun reply(condition: Boolean): String? =          // Nullability is part of Kotlin’s type system
+   if (condition) "I'm fine" else null
 
-var output: String
-output = null   // 编译错误
+fun error(): Nothing =                            // Always throw an exception
+   throw IllegalStateException("Shouldn't be here")
 
-// Kotlin 可以保护你避免对可空类型进行误操作
+fun main() {
+   val condition = true                        // Try replacing `true` with `false` and run the sample!
+   val message = reply(condition)              // The result is nullable
+   // println(message.uppercase())             // This line doesn't compile
+   println(message?.replace("fine", "okay"))   // Access a nullable value in a safe manner
+   if (message != null) {                      // If you check that the type is right,
+   println(message.uppercase())                // the compiler will smart-cast it for you
+}
 
-val name: String? = null    // 可空类型
-println(name.length)        // 编译错误
-
-// 并且如果类型检测正确，编译器会为你做自动类型转换
-
-fun calculateTotal(obj: Any) {
-    if (obj is Invoice)
-        obj.calculateTotal()
+val nonNull: String =                             // If the null-case throws an error,
+   reply(condition = true) ?: error()             // Kotlin can infer that the result is non-null
+   println(nonNull)
 }
 ```
 </div>

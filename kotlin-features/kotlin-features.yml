@@ -1,11 +1,14 @@
 - title: 简洁
-  description: 大大减少样板代码的数量
   content_file: concise.md
 
 - title: 安全
-  description: 避免空指针异常等整个类的错误
   content_file: safe.md
 
+- title: Expressive
+  content_file: expressive.md
+
 - title: 互操作性
-  description: 充分利用 JVM、Android 和浏览器的现有库
   content_file: interoperable.md
+
+- title: Multiplatform
+  content_file: multiplatform.md
