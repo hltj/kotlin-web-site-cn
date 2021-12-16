@@ -58,13 +58,13 @@ val inferredType = 1 // 类型 Int 、默认 getter
 ```kotlin
 //sampleStart
 class Rectangle(val width: Int, val height: Int) {
-    val square: Int
+    val area: Int
         get() = this.width * this.height
 }
 //sampleEnd
 fun main() {
     val rectangle = Rectangle(3, 4)
-    println("Width=${rectangle.width}, height=${rectangle.height}, square=${rectangle.square}")
+    println("Width=${rectangle.width}, height=${rectangle.height}, area=${rectangle.area}")
 }
 ```
 {kotlin-runnable="true"}
@@ -72,7 +72,7 @@ fun main() {
 如果可以从 getter 推断出属性类型，则可以省略它：
 
 ```kotlin
-val square get() = this.width * this.height
+val area get() = this.width * this.height
 ```
 
 如果定义了一个自定义的 setter，那么每次给属性赋值时都会调用它, except its initialization.

@@ -79,6 +79,10 @@ fun main() {
 }
 ```
 
+> The readln() function is available since [Kotlin 1.6.0](whatsnew16.md#new-readline-functions).
+>
+{type="note"}
+
 在竞技程序设计中无需处理输入格式错误的情况。 竞技程序设计中的输入格式<!--
 -->向来都是精确指定的，并且实际输入不能偏离问题陈述中的输入规范<!--
 -->。 That's why we're using Kotlin's [`readln()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/readln.html) function. 它断言输入的字符串存在，

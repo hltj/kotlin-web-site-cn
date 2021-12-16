@@ -1,7 +1,7 @@
 [//]: # (title: 从 Java 迁移到 Kotlin：字符串)
 
 This guide contains examples of how to perform typical tasks with strings in Java and Kotlin.
-It will help you migrate from Java to Kotlin and write your code in the authentic Kotlin way.
+It will help you migrate from Java to Kotlin and write your code in the authentically Kotlin way.
 
 ## 字符串连接
 
@@ -358,6 +358,6 @@ Learn more about [multiline strings](coding-conventions.md#strings).
 
 * Look through other [Kotlin idioms](idioms.md).
 * Learn how to convert existing Java code to Kotlin with
-  [Java to Kotlin converter](mixing-java-kotlin-intellij.md#使用-j2k-将现有-java-文件转换为-kotlin-文件).
+  the [Java to Kotlin converter](mixing-java-kotlin-intellij.md#使用-j2k-将现有-java-文件转换为-kotlin-文件).
 
-If you have a favorite idiom, contribute it by sending a pull request.
+If you have a favorite idiom, we invite you to share it by sending a pull request.
