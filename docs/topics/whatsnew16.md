@@ -672,7 +672,7 @@ Learn more about Kover on its [GitHub repository](https://github.com/Kotlin/kotl
 `kotlinx.coroutines` [1.6.0-RC](https://github.com/Kotlin/kotlinx.coroutines/releases/tag/1.6.0-RC) is out with 
 multiple features and improvements:
 
-* Support for the [new Kotlin/Native memory manager](#preview-of-the-new-memory-manager)
+* Support for the [new Kotlin/Native memory manager](#新版内存管理器预览)
 * Introduction of dispatcher _views_ API, which allows limiting parallelism without creating additional threads
 * Migrating from Java 6 to Java 8 target
 * `kotlinx-coroutines-test` with the new reworked API and multiplatform support

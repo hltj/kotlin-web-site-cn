@@ -64,7 +64,7 @@ AWS Labs 提供了一个[示例项目](https://github.com/awslabs/serverless-pho
 * 关于更深入的介绍，请查看本站的 Kotlin 文档及 [Kotlin 心印](koans.md)。
 * Watch a webinar ["Micronaut for microservices with Kotlin"](https://micronaut.io/2020/12/03/webinar-micronaut-for-microservices-with-kotlin/) and
   explore a detailed [guide](https://guides.micronaut.io/latest/micronaut-kotlin-extension-fns.html)
-  showing how you can use [Kotlin extension functions](extensions.md#extension-functions) in the Micronaut framework.
+  showing how you can use [Kotlin extension functions](extensions.md#扩展函数) in the Micronaut framework.
 * http4k 提供了生成完整项目的 [CLI](https://toolbox.http4k.org)（译注：命令行界面），以及通过单条 bash 命令使用 GitHub、Travis 与 Heroku 生成整套 CD（译注：持续交付）流水线的 [starter](https://start.http4k.org) 仓库。
 * 想要从 Java 迁移到 Kotlin 吗？了解下[在 Java 与 Kotlin 中如何处理字符串的典型任务](java-to-kotlin-idioms-strings.md)。
 

@@ -79,7 +79,7 @@ fun main() {
 }
 ```
 
-> The readln() function is available since [Kotlin 1.6.0](whatsnew16.md#new-readline-functions).
+> The readln() function is available since [Kotlin 1.6.0](whatsnew16.md#新版-readline-函数).
 >
 {type="note"}
 

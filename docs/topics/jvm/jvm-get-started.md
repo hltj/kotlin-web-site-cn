@@ -33,7 +33,7 @@ Once you've installed IntelliJ IDEA, it's time to create your first Kotlin appli
    
    * Introduce a local variable `name` with the keyword `val`. It will get its value from an input where you will enter your name – [`readln()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/readln.html).
      
-     > The readln() function is available since [Kotlin 1.6.0](whatsnew16.md#new-readline-functions).  
+     > The readln() function is available since [Kotlin 1.6.0](whatsnew16.md#新版-readline-函数).  
      > Ensure that you have installed the latest version of the [Kotlin plugin](releases.md).
      > 
      {type="note"}
