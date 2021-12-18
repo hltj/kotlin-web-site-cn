@@ -6,8 +6,7 @@
 >
 {type="warning"}
 
-> 1.3.70 中引入了 `@RequireOptIn` 与 `@OptIn` 注解以取代先前使用的 `@Experimental` 与 `@UseExperimental`；
-> 同时 `-opt-in` 编译器选项也取代了 `-Xuse-experimental`。
+> The `-opt-in` compiler option is available since Kotlin 1.6.0. For earlier Kotlin versions, use `-Xopt-in`.
 >
 {type="note"}
 
@@ -137,6 +136,10 @@ fun displayDate() {
  ```
 
 ### 模块范围的选择加入
+
+> The `-opt-in` compiler option is available since Kotlin 1.6.0. For earlier Kotlin versions, use `-Xopt-in`.
+>
+{type="note"}
 
 如果你不想在使用要求选择加入 API 的每个地方都添加注解，则可以为整个模块选择加入这些 API。
 要选择在模块中使用 API，请使用参数 `-opt-in` 进行编译，

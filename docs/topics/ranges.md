@@ -5,10 +5,16 @@ Kotlin 可通过调用 `kotlin.ranges` 包中的 [`rangeTo()`](https://kotlinlan
 `!in` 函数。
 
 ```kotlin
-if (i in 1..4) { // 等同于 1 <= i && i <= 4
-    print(i)
+fun main() {
+    val i = 1 
+//sampleStart
+    if (i in 1..4) { // 等同于 1 <= i && i <= 4
+        print(i)
+    }
+//sampleEnd
 }
 ```
+{kotlin-runnable="true"}
 
 整数类型区间（[`IntRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html)、
 [`LongRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-long-range/index.html)、
