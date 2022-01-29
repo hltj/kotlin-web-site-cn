@@ -69,7 +69,7 @@ fun main() {
 
 fun main() {
 //sampleStart
-    for (i in 1 until 10) {       // i in [1, 10), 10被排除
+    for (i in 1 until 10) {       // i in 1 到 10, 不含 10
         print(i)
     }
 //sampleEnd

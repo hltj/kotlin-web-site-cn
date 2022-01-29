@@ -794,14 +794,14 @@ printMeanValue()
  * @param number The number to return the absolute value for.
  * @return The absolute value.
  */
-fun abs(number: Int) { /*……*/ }
+fun abs(number: Int): Int { /*……*/ }
 
 // 而要这样：
 
 /**
  * Returns the absolute value of the given [number].
  */
-fun abs(number: Int) { /*……*/ }
+fun abs(number: Int): Int { /*……*/ }
 ```
 
 ## 避免重复结构

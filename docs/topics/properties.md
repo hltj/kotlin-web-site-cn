@@ -37,7 +37,7 @@ var <propertyName>[: <PropertyType>] [= <property_initializer>]
 ```
 
 其初始器（initializer）、getter 和 setter 都是可选的。属性类型如果可以从初始器，
-（或者从初始化器或其 getter 的返回值，如下文所示）中推断出来，也可以省略：
+或其 getter 的返回值（如下文所示）中推断出来，也可以省略：
 
 ```kotlin
 var initialized = 1 // 类型 Int、默认 getter 和 setter
@@ -58,7 +58,7 @@ val inferredType = 1 // 类型 Int 、默认 getter
 ```kotlin
 //sampleStart
 class Rectangle(val width: Int, val height: Int) {
-    val area: Int
+    val area: Int // property type is optional since it can be inferred from the getter's return type
         get() = this.width * this.height
 }
 //sampleEnd
@@ -155,7 +155,9 @@ public val table: Map<String, Int>
 * 必须以 `String` 或原生类型值初始化
 * 不能有自定义 getter
 
-这些属性可以用在注解中：
+The compiler will inline usages of the constant, replacing the reference to the constant with its actual value. However, the field will not be removed and therefore can be interacted with using [reflection](reflection.md).
+
+这些属性也可以用在注解中：
 
 ```kotlin
 const val SUBSYSTEM_DEPRECATED: String = "This subsystem is deprecated"

@@ -110,14 +110,14 @@ html {
 唯一的区别是，它们将构建的实例添加到包含 `HTML` 实例的 `children` 集合中：
 
 ```kotlin
-fun head(init: Head.() -> Unit) : Head {
+fun head(init: Head.() -> Unit): Head {
     val head = Head()
     head.init()
     children.add(head)
     return head
 }
 
-fun body(init: Body.() -> Unit) : Body {
+fun body(init: Body.() -> Unit): Body {
     val body = Body()
     body.init()
     children.add(body)

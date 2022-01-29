@@ -13,7 +13,6 @@ Kotlin 集合包中包含 set 常用操作的扩展函数： 找出集合间的<
 这两个函数也能以中缀形式调用，例如， `a intersect b` 。
 
 ```kotlin
-
 fun main() {
 //sampleStart
     val numbers = setOf("one", "two", "three")
@@ -29,5 +28,18 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-注意， `List` 也支持 Set 操作。
-但是，对 List 进行 Set 操作的结果仍然是 `Set` ，因此将删除所有重复的元素。
+You can also apply `union`, `intersect`, and `subtract` to `List`.
+However, their result is _always_ a `Set`, even on lists. In this result, all the duplicate elements are merged into one 
+and the index access is not available.
+
+```kotlin
+fun main() {
+//sampleStart
+    val list1 = listOf(1, 1, 2 ,3, 5, 8, -1)
+    val list2 = listOf(1, 1, 2, 2 ,3, 5)
+    println(list1 intersect list2) // result on two lists is a Set
+    println(list1 union list2)     // equal elements are merged into one
+//sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}

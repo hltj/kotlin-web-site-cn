@@ -168,4 +168,4 @@ Kotlin 也会在全球不同地方举行大会。你可以在
 ### 在哪里可以获得高清 Kotlin 徽标？
 
 徽标可以在[这里](https://resources.jetbrains.com/storage/products/kotlin/docs/kotlin_logos.zip)下载。
-使用该徽标时，请遵循压缩包中的 `guidelines.pdf` 以及 [Kotlin 品牌使用指南](guidelines.md) 中的简单规则。
+使用该徽标时，请遵循压缩包中的 `guidelines.pdf` 以及 [Kotlin 品牌使用指南](https://kotlinfoundation.org/guidelines/) 中的简单规则。

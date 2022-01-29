@@ -32,6 +32,11 @@ Unlike a full-fledged compiler plugin, processors cannot modify the code.
 A compiler plugin that changes language semantics can sometimes be very confusing.
 KSP avoids that by treating the source programs as read-only.
 
+You can also get an overview of KSP in this video:
+
+<video href="bv-VyGM3HCY" title="Kotlin Symbol Processing (KSP)"/>
+
+
 ## How KSP looks at source files
 
 Most processors navigate through the various program structures of the input source code.
@@ -146,6 +151,8 @@ class HelloFunctionFinderProcessor : SymbolProcessor() {
 * [Reference for Java annotation processor authors](ksp-reference.md)
 * [Incremental processing notes](ksp-incremental.md)
 * [Multiple round processing notes](ksp-multi-round.md)
+* [KSP on multiplatform projects](ksp-multiplatform.md)
+* [Running KSP from command line](ksp-command-line.md)
 * [FAQ](ksp-faq.md)
 
 ## Supported libraries
@@ -166,3 +173,4 @@ The table below includes a list of popular libraries on Android and their variou
 |Hilt|Not yet supported|[Link](https://issuetracker.google.com/179057202)|
 |Glide|Not yet supported|[Link](https://github.com/bumptech/glide/issues/4492)|
 |DeeplinkDispatch|[Supported via airbnb/DeepLinkDispatch#323](https://github.com/airbnb/DeepLinkDispatch/pull/323)| |
+|Micronaut|In Progress|[Link](https://github.com/micronaut-projects/micronaut-core/issues/6781)|

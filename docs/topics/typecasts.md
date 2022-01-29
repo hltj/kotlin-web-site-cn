@@ -37,7 +37,7 @@ if (x !is String) return
 print(x.length) // x 自动转换为字符串
 ```
 
-或者在 `&&` 或 `||` 的右侧：
+或者在 `&&` 或 `||` 的右侧 and the proper check (regular or negative) is on the left-hand side：
 
 ```kotlin
 // `||` 右侧的 x 自动转换为 String

@@ -24,8 +24,8 @@ Kotlin/JS IR 编译器后端没有直接从 Kotlin 源代码生成 JavaScript �
 kotlin {
     js(IR) { // 或：LEGACY、BOTH
         // ...
+        binaries.executable() // not applicable to BOTH, see details below
     }
-    binaries.executable() // not applicable to BOTH, see details below
 }
 ```
 

@@ -13,7 +13,6 @@
 
     <toc-element toc-title="Kotlin overview">
         <toc-element id="multiplatform.md"/>
-        <toc-element id="kmm-overview.md"/>
         <toc-element id="server-overview.md" accepts-web-file-names="httpservlets.html"/>
         <toc-element id="android-overview.md"/>
         <toc-element id="js-overview.md"/>
@@ -97,7 +96,7 @@
     <toc-element toc-title="Multiplatform programming">
         <toc-element id="mpp-intro.md" accepts-web-file-names="building-mpp-with-gradle.html,intro-to-kotlin-mpp.html"/>
         <toc-element toc-title="Kotlin Multiplatform Mobile (KMM)">
-            <toc-element id="kmm-getting-started.md"/>
+            <toc-element id="kmm-getting-started.md" accepts-web-file-names="kmm-overview.html"/>
             <toc-element id="kmm-setup.md"/>
             <toc-element id="kmm-create-first-app.md"/>
             <toc-element id="kmm-understand-project-structure.md"/>
@@ -198,13 +197,21 @@
                 <toc-element id="mapping-strings-from-c.md"/>
             </toc-element>
             <toc-element id="native-objc-interop.md" toc-title="Objective-C interop"/>
-            <toc-element id="native-cocoapods.md"/>
+            <toc-element toc-title="CocoaPods integration">
+                <toc-element id="native-cocoapods.md"/>
+                <toc-element id="native-cocoapods-libraries.md"/>
+                <toc-element id="native-cocoapods-xcode.md"/>
+            </toc-element>
             <toc-element id="apple-framework.md"/>
             <toc-element id="native-debugging.md"/>
             <toc-element id="native-ios-symbolication.md"/>
             <toc-element id="native-improving-compilation-time.md" toc-title="Improving compilation times"/>
             <toc-element id="native-faq.md"/>
             <toc-element id="native-app-with-c-and-libcurl.md" accepts-web-file-names="curl.html"/>
+        </toc-element>
+
+        <toc-element toc-title="Scripting">
+            <toc-element id="custom-script-deps-tutorial.md"/>
         </toc-element>
     </toc-element>
 
@@ -293,6 +300,8 @@
             <toc-element id="ksp-reference.md" toc-title="Reference for Java annotation processor authors"/>
             <toc-element id="ksp-incremental.md" toc-title="Incremental processing"/>
             <toc-element id="ksp-multi-round.md" toc-title="Multiple round processing"/>
+            <toc-element id="ksp-multiplatform.md" toc-title="KSP with Kotlin Multiplatform"/>
+            <toc-element id="ksp-command-line.md" toc-title="Running KSP from command line"/>
             <toc-element id="ksp-faq.md" toc-title="FAQ"/>
         </toc-element>
         <toc-element id="kotlin-and-ci.md" toc-title="TeamCity"/>
@@ -334,11 +343,11 @@
             </toc-element>
         </toc-element>
         <toc-element toc-title="Kotlin Foundation">
-            <toc-element id="kotlin-foundation.md"/>
-            <toc-element id="language-committee-guidelines.md"/>
-            <toc-element toc-title="Submitting incompatible changes" id="submitting-incompatible-changes.md"/>
-            <toc-element toc-title="Brand usage" id="guidelines.md"/>
-            <toc-element id="foundation-faq.md"/>
+            <toc-element toc-title="Kotlin Foundation" href="https://kotlinfoundation.org/"/>
+            <toc-element toc-title="Language Committee guidelines" href="https://kotlinfoundation.org/language-committee-guidelines/"/>
+            <toc-element toc-title="Submitting incompatible changes" href="https://kotlinfoundation.org/submitting-incompatible-changes/"/>
+            <toc-element toc-title="Brand usage" href="https://kotlinfoundation.org/guidelines/"/>
+            <toc-element toc-title="Kotlin Foundation FAQ" href="https://kotlinfoundation.org/faq/"/>
         </toc-element>
         <toc-element id="security.md"/>
         <toc-element id="kotlin-pdf.md"/>

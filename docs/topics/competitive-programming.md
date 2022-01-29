@@ -29,7 +29,7 @@
 它要求实现问题陈述中所描述的简单算法。
 
 我们会通过创建一个任意名称的 Kotlin 源文件来解这个问题。`A.kt` 就挺好。
-首先，我们需要实现问题陈述中指定的函数，如下：
+首先，需要实现问题陈述中指定的函数，如下：
 
 我们以这样的方式来表示函数 f(x)：将 x 加 1，然后，如果得到的数至少以一个零结尾，
 就去掉这个零。
@@ -85,7 +85,7 @@ fun main() {
 
 在竞技程序设计中无需处理输入格式错误的情况。 竞技程序设计中的输入格式<!--
 -->向来都是精确指定的，并且实际输入不能偏离问题陈述中的输入规范<!--
--->。 That's why we're using Kotlin's [`readln()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/readln.html) function. 它断言输入的字符串存在，
+-->。 That's why you can use Kotlin's [`readln()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/readln.html) function. 它断言输入的字符串存在，
 如不存在则抛出异常。 同样，如果输入不是整数，那么 [`String.toInt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int.html)
 函数会抛出异常。
 

@@ -2,8 +2,8 @@
 
 This is a curated list of Kotlin Multiplatform Mobile (KMM) samples.
 
-Do you have a great idea for a sample, or one you would like to add to the list?  
-Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us about it!
+Do you have a great sample that you would like to add to the list?  
+Feel free to [create a pull request](https://github.com/JetBrains/kotlin-web-site/edit/master/docs/topics/kmm/kmm-samples.md) and tell us about it! You can use this [PR example](https://github.com/JetBrains/kotlin-web-site/pull/2723) for reference.
 
 <table>
     <tr>
@@ -206,6 +206,27 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
   			<li>Published to Google Play and App Store</li>
 		</ul>
 	</td>
+</tr>
+<tr>
+      <td>
+        <strong><a href="https://github.com/MartinRajniak/CatViewerDemo">CatViewerDemo</a></strong>
+      </td>
+      <td>Models, Networking, Data Storage, ViewModels</td>
+      <td>Ktor, multiplatform-settings, kotlinx.serialization</td>
+      <td>Jetpack Compose, SwiftUI</td>
+      <td>Xcode build phases</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>-</td>
+      <td>
+        <ul>
+            <li>Android Architecture</li>
+            <li>Pagination</li>
+            <li>Works on M1</li>
+            <li>GitHubActions CI</li>
+            <li>Cats 🐈</li>
+        </ul>
+    </td>
 </tr>
     <tr>
       <td>
