@@ -1,4 +1,4 @@
-[//]: # (title: Running KSP from command line)
+[//]: # (title: 在命令行运行 KSP)
 
 KSP is a Kotlin compiler plugin and needs to run with Kotlin compiler. Download and extract them.
 

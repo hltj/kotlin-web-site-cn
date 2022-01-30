@@ -1,4 +1,4 @@
-[//]: # (title: KSP with Kotlin Multiplatform)
+[//]: # (title: KSP 与 Kotlin 多平台)
 
 For a quick start, see a [sample Kotlin Multiplatform project](https://github.com/google/ksp/tree/main/examples/multiplatform) 
 defining a KSP processor.
