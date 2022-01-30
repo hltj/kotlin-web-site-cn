@@ -1,4 +1,4 @@
-[//]: # (title: Get started with Kotlin Multiplatform Mobile)
+[//]: # (title: Kotlin 多平台移动端入门)
 [//]: # (description: Simplify cross-platform app development with Kotlin Multiplatform Mobile. Create a single codebase
 for the business logic of your iOS and Android apps.)
 

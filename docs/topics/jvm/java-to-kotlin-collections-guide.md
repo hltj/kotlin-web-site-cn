@@ -1,4 +1,4 @@
-[//]: # (title: Collections in Java and Kotlin)
+[//]: # (title: Java 与 Kotlin 中的集合)
 [//]: # (description: Learn how to migrate from Java collections to Kotlin collections. This guide covers such data structures as Kotlin and Java Lists, ArrayLists, Maps, Sets, and others.)
 
 _Collections_ are groups of a variable number of items (possibly zero) that are significant to the problem being solved and are commonly operated on. 

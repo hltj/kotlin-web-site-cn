@@ -1,4 +1,4 @@
-[//]: # (title: Strings in Java and Kotlin)
+[//]: # (title: Java 与 Kotlin 中的字符串)
 [//]: # (description: Learn how to migrate from Java String to Kotlin String. This guide covers Java StringBuilder, string concatenation and splitting strings, multiline strings, streams, and other topics.)
 
 This guide contains examples of how to perform typical tasks with strings in Java and Kotlin.
