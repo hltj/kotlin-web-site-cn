@@ -1,4 +1,4 @@
-[//]: # (title: Add dependencies on a Pod library)
+[//]: # (title: 添加对 Pod 库的依赖)
 
 To add dependencies between a Kotlin project and a Pod library, you should [complete the initial configuration](native-cocoapods.md#set-up-the-environment-to-work-with-cocoapods).
 This allows you to add dependencies on different types of Pod libraries.

@@ -1,4 +1,4 @@
-[//]: # (title: Use a Kotlin Gradle project as a CocoaPods dependency)
+[//]: # (title: 使用 Kotlin Gradle 项目作为 CocoaPods 依赖项)
 
 You can use a Kotlin Multiplatform project with native targets as a CocoaPods dependency. You can include
 such a dependency in the Podfile of the Xcode project by its name and path to the project directory containing
