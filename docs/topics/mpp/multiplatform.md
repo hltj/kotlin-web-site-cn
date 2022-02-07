@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin Multiplatform)
+[//]: # (title: Kotlin 多平台)
 [//]: # (description: Kotlin Multiplatform allows creating cross-platform apps for desktop, web, and mobile devices.
 Share application logic while keeping native user experience.)
 

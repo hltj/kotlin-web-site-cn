@@ -1,4 +1,4 @@
-[//]: # (title: Run tests with Kotlin Multiplatform)
+[//]: # (title: 运行 Kotlin 多平台测试)
 
 By default, Kotlin supports running tests for JVM, JS, Android, Linux, Windows, macOS as well as iOS, watchOS, and tvOS simulators. 
 To run tests for other Kotlin/Native targets, you need to configure them manually in an appropriate environment, emulator, 

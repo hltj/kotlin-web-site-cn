@@ -1,4 +1,4 @@
-[//]: # (title: Get started with Kotlin Multiplatform)
+[//]: # (title: Kotlin 多平台入门)
 [//]: # (description: Learn how to create your first Kotlin cross-platform app or library benefiting from Kotlin Multiplatform.)
 
 > Multiplatform projects are in [Alpha](components-stability.md). Language features and tooling may change in future Kotlin versions.
