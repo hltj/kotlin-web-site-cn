@@ -1,4 +1,4 @@
-[//]: # (title: 添加依赖项)
+[//]: # (title: Add dependencies for Kotlin Multiplatform project)
 
 To add a dependency on a library, set a dependency of the required [type](gradle.md#dependency-types) (for example, `implementation`) in the 
 [`dependencies`](mpp-dsl-reference.md#依赖项) block in your [Gradle](gradle.md) build script.

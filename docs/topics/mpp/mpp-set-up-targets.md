@@ -1,4 +1,4 @@
-[//]: # (title: 手动设置目标)
+[//]: # (title: Set up targets for Kotlin Multiplatform)
 
 You can add targets when [creating a project with the Project Wizard](mpp-create-lib.md). If you need to add a target 
 later, you can do this manually using target presets for [supported platforms](mpp-supported-platforms.md).

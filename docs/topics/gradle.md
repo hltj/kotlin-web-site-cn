@@ -34,7 +34,7 @@ plugins {
 
 ## Targeting multiple platforms
 
-Projects targeting [multiple platforms](mpp-supported-platforms.md), called [multiplatform projects](mpp-intro.md),
+Projects targeting [multiple platforms](mpp-supported-platforms.md), called [multiplatform projects](mpp-get-started.md),
 require the `kotlin-multiplatform` plugin. [Learn more about the plugin](mpp-discover-project.md#多平台插件).
 
 >The `kotlin-multiplatform` plugin works with Gradle %minGradleVersion% or later.
@@ -219,16 +219,6 @@ kotlin {
 </tabs>
 
 Note that setting a toolchain via the `kotlin` extension will update the toolchain for Java compile tasks as well.
-
-You can set a toolchain via the `java` extension, and Kotlin compilation tasks will use it:
-
-```kotlin
-java {
-    toolchain {
-      languageVersion.set(JavaLanguageVersion.of(<MAJOR_JDK_VERSION>)) // "8" 
-    }
-}
-```
 
 To set any JDK (even local) for the specific task, use the Task DSL.
 

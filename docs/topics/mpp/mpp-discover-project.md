@@ -1,4 +1,4 @@
-[//]: # (title: 了解项目)
+[//]: # (title: Understand your Kotlin Multiplatform project)
 
 探索多平台项目的主要部分：
 

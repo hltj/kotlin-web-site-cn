@@ -4,9 +4,9 @@
 >
 {type="note"}
 
-Kotlin 多平台 Gradle 插件是用于创建 [Kotlin 多平台](multiplatform.md)
-项目的工具。这里我们提供了它的参考；在为 Kotlin 多平台项目编写 Gradle 构建脚本时，
-用它作提醒。 Learn the [concepts of Kotlin multiplatform projects, how to create and configure them](mpp-intro.md).
+Kotlin 多平台 Gradle 插件是用于创建 [Kotlin 多平台](multiplatform.md)项目的工具。
+这里我们提供了它的参考；在为 Kotlin 多平台项目编写 Gradle 构建脚本时，
+用它作提醒。 Learn the [concepts of Kotlin Multiplatform projects, how to create and configure them](mpp-get-started.md).
 
 ## id 与版本
 
@@ -402,7 +402,7 @@ kotlin {
 
 ### Android 目标
 
-The Kotlin multiplatform plugin contains two specific functions for android targets.
+The Kotlin Multiplatform plugin contains two specific functions for android targets.
 Two functions help you configure [build variants](https://developer.android.com/studio/build/build-variants):
 
 |**Name**|**Description**| 

@@ -99,7 +99,7 @@
    {type="tip"}
 
 4. **了解关于 KMM 的更多信息：**
-   * 了解关于 [Kotlin 多平台](mpp-intro.md)的更多信息。
+   * 了解关于 [Kotlin 多平台](mpp-get-started.md)的更多信息。
    * 浏览 [GitHub 上的 KMM 样例](kmm-samples.md)。
    * [创建并发布多平台库](mpp-create-lib.md)。
    * 了解 [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)、 [VWWare](https://kotlinlang.org/lp/mobile/case-studies/vmware/)、 [Yandex](https://kotlinlang.org/lp/mobile/case-studies/yandex/) 以及[许多其他公司](https://kotlinlang.org/lp/mobile/case-studies/)如何使用 KMM。
@@ -199,7 +199,7 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
 
 4. **了解关于 Kotlin 多平台程序设计的更多信息：**
 
-   * [Kotlin 多平台介绍](mpp-intro.md)。
+   * [Kotlin 多平台介绍](mpp-get-started.md)。
    * [Kotlin 多平台所支持平台](mpp-supported-platforms.md)。
    * [Kotlin 多平台程序设计优势](multiplatform.md)。
 
