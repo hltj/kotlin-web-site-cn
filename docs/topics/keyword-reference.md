@@ -89,8 +89,8 @@
 以下符号作为声明中修饰符列表中的关键字，并可用作其他上下文中<!--
 -->的标识符：
 
- * `actual` 表示[多平台项目](multiplatform.md)中的一个平台相关实现。
  * `abstract` 将一个类或成员标记为[抽象](classes.md#抽象类)。
+ * `actual` 表示[多平台项目](multiplatform.md)中的一个平台相关实现。
  * `annotation` 声明一个[注解类](annotations.md)。
  * `companion` 声明一个[伴生对象](object-declarations.md#伴生对象)。
  * `const` 将属性标记为[编译期常量](properties.md#编译期常量)。

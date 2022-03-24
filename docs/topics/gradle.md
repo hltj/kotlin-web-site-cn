@@ -34,8 +34,8 @@ plugins {
 
 ## Targeting multiple platforms
 
-Projects targeting [multiple platforms](mpp-supported-platforms.md), called [multiplatform projects](mpp-get-started.md),
-require the `kotlin-multiplatform` plugin. [Learn more about the plugin](mpp-discover-project.md#多平台插件).
+Projects targeting [multiple platforms](multiplatform-dsl-reference.md#targets), called [multiplatform projects](multiplatform-get-started.md),
+require the `kotlin-multiplatform` plugin. [Learn more about the plugin](multiplatform-discover-project.md#多平台插件).
 
 >The `kotlin-multiplatform` plugin works with Gradle %minGradleVersion% or later.
 >
@@ -203,7 +203,6 @@ kotlin {
 }
 ```
 
-
 </tab>
 <tab title="Groovy" group-key="groovy">
 
@@ -220,11 +219,17 @@ kotlin {
 
 Note that setting a toolchain via the `kotlin` extension will update the toolchain for Java compile tasks as well.
 
+> To understand which toolchain Gradle uses, run your Gradle build with the [log level `--info`](https://docs.gradle.org/current/userguide/logging.html#sec:choosing_a_log_level)
+> and find a string in the output starting with `[KOTLIN] Kotlin compilation 'jdkHome' argument:`.
+> The part after the colon will be the JDK version from the toolchain.
+>
+{type="note"}
+
 To set any JDK (even local) for the specific task, use the Task DSL.
 
 ### Setting JDK version with the Task DSL
 
-If you use the a Gradle version earlier than 6.7, there is no [Java toolchains support](#gradle-java-toolchains-support). 
+If you use a Gradle version earlier than 6.7, there is no [Java toolchains support](#gradle-java-toolchains-support). 
 You can use the Task DSL that allows setting any JDK version for any task implementing the `UsesKotlinJavaToolchain` interface.
 At the moment, these tasks are `KotlinCompile` and `KaptTask`.
 If you want Gradle to search for the major JDK version, replace the `<MAJOR_JDK_VERSION>` placeholder in your build script:
@@ -482,7 +487,7 @@ You can choose JUnit 5 or TestNG by calling
 [`useJUnitPlatform()`]( https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/Test.html#useJUnitPlatform)
 or [`useTestNG()`](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/Test.html#useTestNG) in the
 test task of your build script.
-The following example is for an MPP project:
+The following example is for a Kotlin Multiplatform project:
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -870,19 +875,33 @@ Each of the options in the following list overrides the ones that came before it
 * If nothing is specified, the Kotlin daemon inherits arguments from the Gradle daemon.
   For example, in the `gradle.properties` file:
 
- ```properties
+  ```properties
   org.gradle.jvmargs=-Xmx1500m -Xms=500m
   ```
 
 * If the Gradle daemon's JVM arguments have the `kotlin.daemon.jvm.options` system property – use it in the `gradle.properties` file:
 
- ```properties
-  org.gradle.jvmargs=-Dkotlin.daemon.jvm.options=-Xmx1500m -Xms=500m
+  ```properties
+  org.gradle.jvmargs=-Dkotlin.daemon.jvm.options=-Xmx1500m,Xms=500m
   ```
 
-* You can add the`kotlin.daemon.jvmargs` property in the `gradle.properties` file:
+  When passing the arguments, follow these rules:
+  * Use the minus sign `-` before the arguments `Xmx`, `XX:MaxMetaspaceSize`, and `XX:ReservedCodeCacheSize` and don't use it before all other arguments.
+  * Separate arguments with commas (`,`) _without_ spaces. Arguments that come after a space will be used for the Gradle daemon, not for the Kotlin daemon.
 
- ```properties
+  > Gradle ignores these properties if all the following conditions are satisfied:
+  > * Gradle is using JDK 1.9 or higher.
+  > * The version of Gradle is between 7.0 and 7.1.1 inclusively.
+  > * Gradle is compiling Kotlin DSL scripts.
+  > * There is no running Kotlin daemon.
+  > 
+  > To overcome this, upgrade Gradle to the version 7.2 (or higher) or use the `kotlin.daemon.jvmargs` property – see the following item.
+  >
+  {type="warning"}
+
+* You can add the `kotlin.daemon.jvmargs` property in the `gradle.properties` file:
+
+  ```properties
   kotlin.daemon.jvmargs=-Xmx1500m -Xms=500m
   ```
 

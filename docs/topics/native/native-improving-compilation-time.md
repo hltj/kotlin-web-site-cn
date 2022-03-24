@@ -44,8 +44,8 @@ Here are some recommendations for configuring Gradle for better compilation perf
       distribute a Kotlin/Native binary as a universal (fat) framework. During local development, it will be faster to build
       the `.framework` for only the platform you’re using.
       
-      To build a platform-specific framework, call the  `packForXcode` task generated
-      by the [KMM project wizard](kmm-create-first-app.md). 
+      To build a platform-specific framework, call the `packForXcode` task generated
+      by the [Kotlin Multiplatform Mobile project wizard](multiplatform-mobile-create-first-app.md). 
       
       > Remember that in this case, you will need to clean the build using `./gradlew clean` after switching between the
       > device and the simulator. See [this issue](https://youtrack.jetbrains.com/issue/KT-40907) for details.
@@ -56,6 +56,10 @@ Here are some recommendations for configuring Gradle for better compilation perf
 * **Don’t disable the [Gradle daemon](https://docs.gradle.org/current/userguide/gradle_daemon.html)** without having a
   good reason to. [Kotlin/Native runs from the Gradle daemon](https://blog.jetbrains.com/kotlin/2020/03/kotlin-1-3-70-released/#kotlin-native)
   by default. When it’s enabled, the same JVM process is used and there is no need to warm it up for each compilation.
+
+* **Don't use [transitiveExport = true](multiplatform-build-native-binaries.md#export-dependencies-to-binaries)**.
+  Using transitive export disables dead code elimination in many cases: the compiler has to process a lot of unused code. It increases the compilation time.
+  Use `export` explicitly for exporting the required projects and dependencies.
 
 * **Use the Gradle [build caches](https://docs.gradle.org/current/userguide/build_cache.html)**:
     * **Local build cache**: Add `org.gradle.caching=true` to your `gradle.properties` or run with `--build-cache` on the command line.

@@ -1,14 +1,10 @@
 [//]: # (title: 选择加入要求)
 
-> 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn` 是[实验性的](components-stability.md)。
-> They may be dropped or changed at any time. Opt-in is required (see details below).
-> Use them only for evaluation purposes. We appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
->
+> 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn`  是 [Beta 版](components-stability.md)。
+> It is almost stable, but migration steps may be required in the future. We'll do our best to minimize any changes you
+> have to make. See the details in the [Beta status of the opt-in requirements](#beta-status-of-the-opt-in-requirements) section.
+> 
 {type="warning"}
-
-> The `-opt-in` compiler option is available since Kotlin 1.6.0. For earlier Kotlin versions, use `-Xopt-in`.
->
-{type="note"}
 
 Kotlin 标准库提供了一种机制，用于要求并明确同意使用 API 的某些元素。
 通过这种机制，库开发人员可以将使用其 API 需要选择加入的特定条件告知用户，
@@ -297,16 +293,16 @@ Note that for some language elements, an opt-in requirement annotation is not ap
 annotation class ExperimentalDateTime
 ```
 
-## 选择加入要求的实验性状态
+## 选择加入要求的 Beta 状态
 
-选择加入要求的机制目前是[实验性的](components-stability.md)。
-这意味着在将来的版本中，可能会以不兼容的方式进行更改。
+选择加入要求的机制目前是[ Beta 版](components-stability.md)。 They are almost stable, but migration
+steps may be required in the future. We'll do our best to minimize any changes you have to make.
 
-为了让使用注解 `@OptIn` 和 `@RequiresOptIn` 的用户了解其实验状态，
+为了让使用注解 `@OptIn` 和 `@RequiresOptIn` 的用户了解其稳定前状态，
 编译器会在编译代码时发出警告：
 
-```This class can only be used with the compiler argument '-opt-in=kotlin.RequiresOptIn'```
+```This annotation should be used with the compiler argument '-opt-in=kotlin.RequiresOptIn'```
 
 如需移除警告，请添加编译器参数 `-opt-in=kotlin.RequiresOptIn`。
 
-Learn more about recent changes to opt-in requirements in [this KEEP](https://github.com/Kotlin/KEEP/blob/d7287626dd4c40c6c89877e266044b83fca38bcd/proposals/opt-in.md).
+Learn more about recent changes to opt-in requirements in [this KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/opt-in.md).

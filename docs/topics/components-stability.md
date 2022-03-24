@@ -52,7 +52,7 @@ KLib 二进制|Alpha|1.4| |
 多平台项目|Alpha|1.3| |
 Kotlin/Native 与 C 语言及 Objective C 互操作|Beta|1.3| |
 CocoaPods 集成|Beta|1.3| |
-用于 Android Studio 的 KMM 插件|Alpha|0.3.0|[与语言版本独立](kmm-plugin-releases.md)
+用于 Android Studio 的 Kotlin Multiplatform Mobile 插件|Alpha|0.3.0|[与语言版本独立](multiplatform-mobile-plugin-releases.md)
 expect/actual 语言特性|Beta|1.2| |
 KDoc 语法|已稳定|1.0| |
 Dokka|Beta|1.6| |

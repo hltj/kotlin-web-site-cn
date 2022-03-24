@@ -74,35 +74,35 @@
 
 <tab title="跨平台移动端应用">
 
-在此可以了解到如何使用 [Kotlin 多平台移动端（KMM）](https://kotlinlang.org/lp/mobile/)开发及改进跨平台移动端应用程序。
+在此可以了解到如何使用 [Kotlin 多平台移动端](https://kotlinlang.org/lp/mobile/)开发及改进跨平台移动端应用程序。
 
-1. **[搭建用于跨平台开发的环境](kmm-setup.md).**
+1. **[搭建用于跨平台移动端开发的环境](multiplatform-mobile-setup.md).**
 
-2. **创建第一个 KMM 应用程序：**
+2. **创建第一个用于 iOS 与 Android 应用程序：**
 
-   * 从头开始，[使用项目向导创建一个基本的 KMM 应用程序](kmm-create-first-app.md)。
-   * 如果有既有的 Android 应用程序并想让它跨平台，那么请完成[让 Android 应用程序也能用于 iOS](kmm-integrate-in-existing-app.md) 教程。
-   * 如果更倾向于现实生活的示例，那么请克隆并使用既有项目，例如[动手实践教程](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/01_Introduction)中的网络与数据存储项目或者任意 [KMM 样例](kmm-samples.md)。
+   * 从头开始，[使用项目向导创建一个基本的跨平台移动端应用程序](multiplatform-mobile-create-first-app.md)。
+   * 如果有既有的 Android 应用程序并想让它跨平台，那么请完成[让 Android 应用程序也能用于 iOS](multiplatform-mobile-integrate-in-existing-app.md) 教程。
+   * 如果更倾向于现实生活的示例，那么请克隆并使用既有项目，例如[动手实践教程](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/01_Introduction)中的网络与数据存储项目或者任意[样例项目](multiplatform-mobile-samples.md)。
 
-3. **使用一整套多平台库** 在共享模块中只实现一次所需的业务逻辑。 了解关于[添加依赖项](kmm-add-dependencies.md)的更多信息。
+3. **使用一整套多平台库** 在共享模块中只实现一次所需的业务逻辑。 了解关于[添加依赖项](multiplatform-add-dependencies.md)的更多信息。
    
    |库|详情|
    |-------|-------| 
    | Ktor |  [文档](https://ktor.io/docs/client.html)。| 
    | Serialization |  [文档](serialization.md)及[样例](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/04_Creating_a_data_model)。|
-   | Coroutines |  [文档](kmm-concurrency-overview.md)及[样例](kmm-concurrency-and-coroutines.md)。|
+   | Coroutines |  [文档](multiplatform-mobile-concurrency-overview.md)及[样例](multiplatform-mobile-concurrency-and-coroutines.md)。|
    | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)。|
-   | SQLDelight | 第三方库。 [文档](https://cashapp.github.io/sqldelight/)及[样例](kmm-configure-sqldelight-for-data-storage.md )。|
+   | SQLDelight | 第三方库。 [文档](https://cashapp.github.io/sqldelight/)。|
    
    > 还可以在[社区驱动列表](https://libs.kmp.icerock.dev/)中找到多平台库。
    > 
    {type="tip"}
 
-4. **了解关于 KMM 的更多信息：**
-   * 了解关于 [Kotlin 多平台](mpp-get-started.md)的更多信息。
-   * 浏览 [GitHub 上的 KMM 样例](kmm-samples.md)。
-   * [创建并发布多平台库](mpp-create-lib.md)。
-   * 了解 [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)、 [VWWare](https://kotlinlang.org/lp/mobile/case-studies/vmware/)、 [Yandex](https://kotlinlang.org/lp/mobile/case-studies/yandex/) 以及[许多其他公司](https://kotlinlang.org/lp/mobile/case-studies/)如何使用 KMM。
+4. **了解关于 Kotlin 多平台移动端的更多信息：**
+   * 了解关于 [Kotlin 多平台](multiplatform-get-started.md)的更多信息。
+   * 浏览 [GitHub 上的样例](multiplatform-mobile-samples.md)。
+   * [创建并发布多平台库](multiplatform-create-lib.md)。
+   * 了解 [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)、 [VMWare](https://kotlinlang.org/lp/mobile/case-studies/vmware/)、 [Yandex](https://kotlinlang.org/lp/mobile/case-studies/yandex/) 以及[许多其他公司](https://kotlinlang.org/lp/mobile/case-studies/)如何使用 Kotlin 多平台。
 
 5. **加入 Kotlin 多平台社区：**
 
@@ -180,11 +180,11 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
 
 2. **创建多平台库：**
 
-   * 从头开始，[创建一个基本项目](mpp-create-lib.md)。
+   * 从头开始，[创建一个基本项目](multiplatform-create-lib.md)。
    * 如果倾向于更健壮的示例，那么请完成[创建并发布多平台库](multiplatform-library.md)教程。 它展示了如何为 JVM、 JS 与原生平台创建多平台库，对其进行测试并发布到本地 Maven 仓库。
    * 使用[这一动手实践](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)构建一个全栈 web 应用程序。
 
-3. **在应用程序中使用库。** 了解关于[添加对库的依赖](mpp-add-dependencies.md)的更多内容。
+3. **在应用程序中使用库。** 了解关于[添加对库的依赖](multiplatform-add-dependencies.md)的更多内容。
 
    |库|详情|
    |-------|-------|
@@ -199,8 +199,8 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
 
 4. **了解关于 Kotlin 多平台程序设计的更多信息：**
 
-   * [Kotlin 多平台介绍](mpp-get-started.md)。
-   * [Kotlin 多平台所支持平台](mpp-supported-platforms.md)。
+   * [Kotlin 多平台介绍](multiplatform-get-started.md)。
+   * [Kotlin 多平台所支持平台](multiplatform-dsl-reference.md#targets)。
    * [Kotlin 多平台程序设计优势](multiplatform.md)。
 
 5. **加入 Kotlin 多平台社区：**

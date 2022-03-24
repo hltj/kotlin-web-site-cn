@@ -160,6 +160,12 @@ println(files?.size) // 如果 files 不是 null，那么输出其大小（size�
 val files = File("Test").listFiles()
 
 println(files?.size ?: "empty") // 如果 files 为 null，那么输出“empty”
+
+// To calculate the fallback value in a code block, use `run`
+val filesSize = files?.size ?: run { 
+    return someSize 
+}
+println(filesSize)
 ```
 
 ## if null 执行一个语句

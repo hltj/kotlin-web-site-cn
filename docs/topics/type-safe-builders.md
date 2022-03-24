@@ -7,7 +7,6 @@
 -->采用半声明方式构建复杂层次数据结构领域专用语言（DSL）。以下是构建器的样例应用场景：
 
 * 使用 Kotlin 代码生成标记语言，例如 [HTML](https://github.com/Kotlin/kotlinx.html) 或 XML
-* 以编程方式布局 UI 组件：[Anko](https://github.com/Kotlin/anko/wiki/Anko-Layouts)
 * 为 Web 服务器配置路由：[Ktor](https://ktor.kotlincn.net/servers/features/routing.html#routing-tree)
 
 考虑下面的代码：

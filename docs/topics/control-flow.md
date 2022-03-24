@@ -154,10 +154,10 @@ when {
 
 ```kotlin
 fun Request.getBody() =
-        when (val response = executeRequest()) {
-            is Success -> response.body
-            is HttpError -> throw HttpException(response.status)
-        }
+    when (val response = executeRequest()) {
+        is Success -> response.body
+        is HttpError -> throw HttpException(response.status)
+    }
 ```
 
 在 *when* 主语中引入的变量的作用域仅限于 *when* 主体。

@@ -149,7 +149,7 @@ The feature has the following restrictions:
 ### 对隐式用到实验性 API 要求选择加入
 
 > The opt-in requirement mechanism is [Experimental](components-stability.md).
-> It may change at any time. [See how to opt-in](opt-in-requirements.md#选择加入要求的实验性状态).
+> It may change at any time. [See how to opt-in](opt-in-requirements.md#选择加入要求的-beta-状态).
 > Use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
 >
 {type="warning"}
@@ -185,7 +185,7 @@ Learn more about [opt-in requirements](opt-in-requirements.md).
 ### 对使用选择加入要求的注解不同目标的变更
 
 > The opt-in requirement mechanism is [Experimental](components-stability.md).
-> It may change at any time. [See how to opt-in](opt-in-requirements.md#选择加入要求的实验性状态).
+> It may change at any time. [See how to opt-in](opt-in-requirements.md#选择加入要求的-beta-状态).
 > Use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
 >
 {type="warning"}
@@ -321,7 +321,7 @@ We’ve also introduced new targets that make Kotlin code run natively on Apple 
 
 They are available on both Intel-based and Apple silicon hosts. All existing targets are available on Apple silicon hosts as well.
 
-Note that in 1.5.30 we provide only basic support for Apple silicon targets in the `kotlin-multiplatform` Gradle plugin. Particularly, the new simulator targets aren’t included in the [`ios`, `tvos`, and `watchos` target shortcuts](mpp-share-on-platforms.md#使用目标快捷方式). Learn how to [use Apple silicon targets with the target shortcuts](mpp-share-on-platforms.md#target-shortcuts-and-arm64-apple-silicon-simulators).
+Note that in 1.5.30 we provide only basic support for Apple silicon targets in the `kotlin-multiplatform` Gradle plugin. Particularly, the new simulator targets aren’t included in the [`ios`, `tvos`, and `watchos` target shortcuts](multiplatform-share-on-platforms.md#使用目标快捷方式). Learn how to [use Apple silicon targets with the target shortcuts](multiplatform-share-on-platforms.md#target-shortcuts-and-arm64-apple-silicon-simulators).
 We will keep working to improve the user experience with the new targets.
 
 ### 改进了用于 CocoaPods Gradle 插件的 Kotlin DSL
@@ -349,7 +349,7 @@ cocoapods {
         isStatic = false
         // Dependency export
         export(project(":anotherKMMModule"))
-        transitiveExport = true
+        transitiveExport = false // This is default.
         // Bitcode embedding
         embedBitcode(BITCODE)
     }
@@ -433,7 +433,7 @@ Please share your thoughts and concerns about the transition to the LLD linker i
 
 ### 能在共享的原生代码中使用自定义 `cinterop` 库
 
-Kotlin Multiplatform gives you an [option](mpp-share-on-platforms.md#在层次结构中使用原生库) to use platform-dependent interop libraries in shared source sets. Before 1.5.30, this worked only with [platform libraries](native-platform-libs.md) shipped with Kotlin/Native distribution. Starting from 1.5.30, you can use it with your custom `cinterop` libraries. To enable this feature, add the `kotlin.mpp.enableCInteropCommonization=true` property in your `gradle.properties`:
+Kotlin Multiplatform gives you an [option](multiplatform-share-on-platforms.md#在层次结构中使用原生库) to use platform-dependent interop libraries in shared source sets. Before 1.5.30, this worked only with [platform libraries](native-platform-libs.md) shipped with Kotlin/Native distribution. Starting from 1.5.30, you can use it with your custom `cinterop` libraries. To enable this feature, add the `kotlin.mpp.enableCInteropCommonization=true` property in your `gradle.properties`:
 
 ```properties
 kotlin.mpp.enableGranularSourceSetsMetadata=true
@@ -447,7 +447,7 @@ All Kotlin Multiplatform projects can now have XCFrameworks as an output format.
 * Can gather logic for all the target platforms and architectures in a single bundle.
 * Don't need to remove all unnecessary architectures before publishing the application to the App Store.
 
-XCFrameworks is useful if you want to use your KMM framework for devices and simulators on Apple M1.
+XCFrameworks is useful if you want to use your Kotlin framework for devices and simulators on Apple M1.
 
 To use XCFrameworks, update your `build.gradle(.kts)` script:
 
@@ -531,7 +531,7 @@ Learn more about XCFrameworks in [this WWDC video](https://developer.apple.com/v
 
 ### Android 构件的新版默认发布设置
 
-Using the `maven-publish` Gradle plugin, you can [publish your multiplatform library for the Android target](mpp-publish-lib.md#发布-android-库) by specifying [Android variant](https://developer.android.com/studio/build/build-variants) names in the build script. The Kotlin Gradle plugin will generate publications automatically.
+Using the `maven-publish` Gradle plugin, you can [publish your multiplatform library for the Android target](multiplatform-publish-lib.md#发布-android-库) by specifying [Android variant](https://developer.android.com/studio/build/build-variants) names in the build script. The Kotlin Gradle plugin will generate publications automatically.
 
 Before 1.5.30, the generated publication [metadata](https://docs.gradle.org/current/userguide/publishing_gradle_module_metadata.html) included the build type attributes for every published Android variant, making it compatible only with the same build type used by the library consumer. Kotlin 1.5.30 introduces a new default publishing setup:
 * If all Android variants that the project publishes have the same build type attribute, then the published variants won't have the build type attribute and will be compatible with any build type.

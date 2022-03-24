@@ -20,7 +20,7 @@ Kotlin/Native 支持以下平台：
    * Windows（MinGW）
 * Android NDK
 
-[可在这里获取所支持目标的完整列表](mpp-supported-platforms.md)。
+[可在这里获取所支持目标的完整列表](multiplatform-dsl-reference.md)。
 
 
 ## 互操作
@@ -54,7 +54,7 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 多平台库为公共 Kotlin 代码提供了所需的 API，并且有助于在一处用 Kotlin 开发项目的共享部分，
 并将其与一些或所有目标平台共享。
 
-可以使用 [Kotlin 移动端多平台（KMM）](https://kotlinlang.org/lp/mobile/)通过 Android 与 iOS 之间共享代码创建多平台移动应用程序。
+可以使用 [Kotlin 移动端多平台](https://kotlinlang.org/lp/mobile/)通过 Android 与 iOS 之间共享代码创建多平台移动应用程序。
 
 ## 如何入门
 
@@ -63,21 +63,22 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 刚接触 Kotlin？可以看看 [Kotlin 入门](getting-started.md)页。
 
 推荐文档：
-- [Kotlin 移动端多平台文档](kmm-getting-started.md)
-- [多平台文档](mpp-get-started.md)
+
+- [Kotlin 移动端多平台文档](multiplatform-mobile-getting-started.md)
+- [多平台文档](multiplatform-get-started.md)
 - [C 语言互操作](native-c-interop.md)
 - [Swift/Objective-C 互操作](native-objc-interop.md)
 
 推荐教程：
 * [Kotlin/Native 入门](native-get-started.md)
-* [创建第一个 KMM 应用程序](kmm-create-first-app.md)
+* [创建第一个跨平台移动端应用程序](multiplatform-mobile-create-first-app.md)
 - [C 语言 Kotlin/Native 之间的类型映射](mapping-primitive-data-types-from-c.md)
 - [Kotlin/Native 开发动态库](native-dynamic-libraries.md)
 - [Kotlin/Native 开发 Apple 框架](apple-framework.md)
 
 ## 样例项目
 
-* [Kotlin 移动端多平台示例](kmm-samples.md)
+* [Kotlin 移动端多平台示例](multiplatform-mobile-samples.md)
 * [Kotlin/Native 源代码与示例](https://github.com/JetBrains/kotlin/tree/master/kotlin-native/samples)
 * [KotlinConf 应用](https://github.com/JetBrains/kotlinconf-app)
 * [KotlinConf Spinner 应用](https://github.com/jetbrains/kotlinconf-spinner)

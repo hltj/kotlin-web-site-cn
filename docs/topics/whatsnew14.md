@@ -287,7 +287,7 @@ With Kotlin 1.4, you can use the new tools in IntelliJ IDEA to simplify Kotlin d
 With the flexible new Kotlin Project Wizard, you have a place to easily create and configure different types of Kotlin 
 projects, including multiplatform projects, which can be difficult to configure without a UI.
 
-![Kotlin Project Wizard – Multiplatform project](mpp-project-1-wn.png)
+![Kotlin Project Wizard – Multiplatform project](multiplatform-project-1-wn.png)
 
 The new Kotlin Project Wizard is both simple and flexible:
 
@@ -301,7 +301,7 @@ Then you can finish creating your project or, optionally, *configure the project
 4. *Add/remove modules and targets* supported for this project template.
 5. *Configure module and target settings*, for example, the target JVM version, target template, and test framework.
 
-![Kotlin Project Wizard - Configure targets](mpp-project-2-wn.png)
+![Kotlin Project Wizard - Configure targets](multiplatform-project-2-wn.png)
 
 In the future, we are going to make the Kotlin Project Wizard even more flexible by adding more configuration options and templates.
 
@@ -803,7 +803,7 @@ The new dependency will be added automatically. No additional steps are required
 >
 {type="warning"}
 
-[Kotlin 多平台](multiplatform.md) reduces time spent writing and maintaining the same code for [different platforms](mpp-supported-platforms.md) 
+[Kotlin 多平台](multiplatform.md) reduces time spent writing and maintaining the same code for [different platforms](multiplatform-dsl-reference.md#targets) 
 while retaining the flexibility and benefits of native programming. We continue investing our effort in multiplatform features
 and improvements:
 
@@ -817,16 +817,16 @@ and improvements:
 
 ### 使用分层项目结构在多个目标中共享代码
 
-With the new hierarchical project structure support, you can share code among [several platforms](mpp-supported-platforms.md)
- in a [multiplatform project](mpp-discover-project.md).
+With the new hierarchical project structure support, you can share code among [several platforms](multiplatform-dsl-reference.md#targets)
+ in a [multiplatform project](multiplatform-discover-project.md).
 
 Previously, any code added to a multiplatform project could be placed either in a platform-specific source set, which is 
 limited to one target and can’t be reused by any other platform, or in a common source set, like `commonMain` or `commonTest`, 
 which is shared across all the platforms in the project. In the common source set, you could only call a platform-specific 
-API by using an [`expect` declaration that needs platform-specific `actual` implementations](mpp-connect-to-apis.md).
+API by using an [`expect` declaration that needs platform-specific `actual` implementations](multiplatform-connect-to-apis.md).
 
-This made it easy to [share code on all platforms](mpp-share-on-platforms.md#对所有平台共享代码), but it was
-not so easy to [share between only some of the targets](mpp-share-on-platforms.md#对相似平台共享代码), 
+This made it easy to [share code on all platforms](multiplatform-share-on-platforms.md#对所有平台共享代码), but it was
+not so easy to [share between only some of the targets](multiplatform-share-on-platforms.md#对相似平台共享代码), 
 especially similar ones that could potentially reuse a lot of the common logic and third-party APIs.
 
 For example, in a typical multiplatform project targeting iOS, there are two iOS-related targets: one for iOS ARM64 devices, 
@@ -839,10 +839,10 @@ code that could still directly call any of the APIs that are common to both the 
 
 ![Code shared for iOS targets](iosmain-hierarchy.png){width=300}
 
-Now you can do this with the [hierarchical project structure support](mpp-share-on-platforms.md#对相似平台共享代码), which infers and adapts the API and language features 
+Now you can do this with the [hierarchical project structure support](multiplatform-share-on-platforms.md#对相似平台共享代码), which infers and adapts the API and language features 
 available in each source set based on which targets consume them.
 
-For common combinations of targets, you can create a hierarchical structure with [target shortcuts](mpp-share-on-platforms.md#使用目标快捷方式).
+For common combinations of targets, you can create a hierarchical structure with [target shortcuts](multiplatform-share-on-platforms.md#使用目标快捷方式).
 
 For example, create two iOS targets and the shared source set shown above with the `ios()` shortcut:
 
@@ -852,7 +852,7 @@ kotlin {
 }
 ```
 
-For other combinations of targets, <!--TODO: [create a hierarchy manually](mpp-share-on-platforms.md#手动配置层次结构) -->
+For other combinations of targets, <!--TODO: [create a hierarchy manually](multiplatform-share-on-platforms.md#手动配置层次结构) -->
 by connecting the source sets with the `dependsOn` relation.
 
 ![Hierarchical structure](hierarchical-structure.png)
@@ -906,7 +906,7 @@ kotlin {
 </tabs>
 
 Thanks to the hierarchical project structure, libraries can also provide common APIs for a subset of targets. Learn more
-about [sharing code in libraries](mpp-share-on-platforms.md#在库中共享代码).
+about [sharing code in libraries](multiplatform-share-on-platforms.md#在库中共享代码).
 
 ### 在分层结构中利用原生库
 
@@ -916,7 +916,7 @@ native targets. This can help you share more native code without being limited b
 No additional steps are required – everything is done automatically. IntelliJ IDEA will help you detect common declarations 
 that you can use in the shared code.
 
-[Learn more about usage of platform-dependent libraries](mpp-share-on-platforms.md#在层次结构中使用原生库).
+[Learn more about usage of platform-dependent libraries](multiplatform-share-on-platforms.md#在层次结构中使用原生库).
 
 ### 只需指定一次依赖项
 
