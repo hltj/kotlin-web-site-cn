@@ -1,4 +1,4 @@
-[//]: # (title: Introduce cross-platform mobile development to your team)
+[//]: # (title: 向团队介绍跨平台移动端开发)
 
 These recommendations will help you introduce your team to Kotlin Multiplatform Mobile:
 

@@ -1,4 +1,4 @@
-[//]: # (title: Create your first cross-platform mobile app – tutorial)
+[//]: # (title: 创建第一个跨平台移动端应用——教程)
 
 Here you will learn how to create and run your first Kotlin Multiplatform Mobile application.
 

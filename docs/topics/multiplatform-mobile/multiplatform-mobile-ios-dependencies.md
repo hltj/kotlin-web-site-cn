@@ -1,4 +1,4 @@
-[//]: # (title: Adding iOS dependencies)
+[//]: # (title: 添加 iOS 依赖项)
 
 Apple SDK dependencies (such as Foundation or Core Bluetooth) are available as a set of prebuilt libraries in Kotlin
 Multiplatform Mobile projects. They do not require any additional configuration.

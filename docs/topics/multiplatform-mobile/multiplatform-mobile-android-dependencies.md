@@ -1,4 +1,4 @@
-[//]: # (title: Adding Android dependencies)
+[//]: # (title: 添加 Android 依赖项)
 
 The workflow for adding Android-specific dependencies to a Kotlin Multiplatform module is the same as it is for pure
 Android projects: declare the dependency in your Gradle file and import the project. After that, you can use this
