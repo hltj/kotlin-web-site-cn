@@ -200,7 +200,7 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
 4. **了解关于 Kotlin 多平台程序设计的更多信息：**
 
    * [Kotlin 多平台介绍](multiplatform-get-started.md)。
-   * [Kotlin 多平台所支持平台](multiplatform-dsl-reference.md#targets)。
+   * [Kotlin 多平台所支持平台](multiplatform-dsl-reference.md#目标)。
    * [Kotlin 多平台程序设计优势](multiplatform.md)。
 
 5. **加入 Kotlin 多平台社区：**

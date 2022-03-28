@@ -84,7 +84,7 @@ wrapper {
 
 Next, create an empty `settings.gradle` or `settings.gradle.kts` file in the project folder.
 
-取决于目标平台，不同的[函数](multiplatform-dsl-reference.md#targets)，
+取决于目标平台，不同的[函数](multiplatform-dsl-reference.md#目标)，
 例如：`macosX64`、`mingwX64`、`linuxX64`、`iosX64`，用于创建 Kotlin 目标。
 函数名称是其编译代码的平台。
 这些函数可以选择将目标名称作为参数，在本例中为 `"native"`。

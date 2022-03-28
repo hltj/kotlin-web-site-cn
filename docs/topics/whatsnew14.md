@@ -803,7 +803,7 @@ The new dependency will be added automatically. No additional steps are required
 >
 {type="warning"}
 
-[Kotlin 多平台](multiplatform.md) reduces time spent writing and maintaining the same code for [different platforms](multiplatform-dsl-reference.md#targets) 
+[Kotlin 多平台](multiplatform.md) reduces time spent writing and maintaining the same code for [different platforms](multiplatform-dsl-reference.md#目标) 
 while retaining the flexibility and benefits of native programming. We continue investing our effort in multiplatform features
 and improvements:
 
@@ -817,7 +817,7 @@ and improvements:
 
 ### 使用分层项目结构在多个目标中共享代码
 
-With the new hierarchical project structure support, you can share code among [several platforms](multiplatform-dsl-reference.md#targets)
+With the new hierarchical project structure support, you can share code among [several platforms](multiplatform-dsl-reference.md#目标)
  in a [multiplatform project](multiplatform-discover-project.md).
 
 Previously, any code added to a multiplatform project could be placed either in a platform-specific source set, which is 

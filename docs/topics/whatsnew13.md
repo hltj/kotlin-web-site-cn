@@ -22,7 +22,7 @@ Kotlin 1.3 继续改进与完善原生平台。详情请参见 [Kotlin/Native �
 
   * 在旧版模型中，需要将公共代码与平台相关代码分别放在独立的模块中，以 `expectedBy` 依赖项链接。
     现在，公共代码与平台相关代码放在相同模块的不同源根（source root）中，使项目更易于配置。
-  * 对于不同的已支持平台，现在有大量的[预设的平台配置](multiplatform-dsl-reference.md#targets)。
+  * 对于不同的已支持平台，现在有大量的[预设的平台配置](multiplatform-dsl-reference.md#目标)。
   * 更改了[依赖配置]((multiplatform-add-dependencies.md))；
     现在为每个源根分别指定依赖项。
   * 源代码集（source set）现在可以在任意平台子集之间共享

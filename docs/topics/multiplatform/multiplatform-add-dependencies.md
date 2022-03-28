@@ -5,7 +5,7 @@ multiplatform libraries that work for all target platforms, platform-specific li
 
 To add a dependency on a library, set a dependency of the required [type](gradle.md#dependency-types) (for
 example, `implementation`) in the
-[`dependencies`](multiplatform-dsl-reference.md#dependencies) block in your [Gradle](gradle.md) build script.
+[`dependencies`](multiplatform-dsl-reference.md#依赖项) block in your [Gradle](gradle.md) build script.
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -51,9 +51,9 @@ library is the same as the version of the `kotlin-multiplatform` plugin.
 
 For platform-specific source sets, the corresponding platform-specific variant of the library is used, while a common
 standard library is added to the rest. The Kotlin Gradle plugin will select the appropriate JVM standard library
-depending on the `kotlinOptions.jvmTarget` [compiler option](gradle.md#compiler-options) of your Gradle build script
+depending on the `kotlinOptions.jvmTarget` [compiler option](gradle.md#编译器选项) of your Gradle build script
 
-Learn how to [change the default behavior](gradle.md#dependency-on-the-standard-library).
+Learn how to [change the default behavior](gradle.md#对标准库的依赖).
 
 ### Test libraries
 
@@ -245,7 +245,7 @@ kotlin {
 </tab>
 </tabs>
 
-> When using a multiplatform library that does not have [hierarchical structure support](multiplatform-share-on-platforms.md#share-code-on-similar-platforms)
+> When using a multiplatform library that does not have [hierarchical structure support](multiplatform-share-on-platforms.md#对相似平台共享代码)
 > in a multiplatform project that does, you won't be able to use IDE features, such as code completion and highlighting, for the shared iOS source set.
 >
 > This is a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), and we are working on resolving it. In the meantime,

@@ -34,7 +34,7 @@ plugins {
 
 ## Targeting multiple platforms
 
-Projects targeting [multiple platforms](multiplatform-dsl-reference.md#targets), called [multiplatform projects](multiplatform-get-started.md),
+Projects targeting [multiple platforms](multiplatform-dsl-reference.md#目标), called [multiplatform projects](multiplatform-get-started.md),
 require the `kotlin-multiplatform` plugin. [Learn more about the plugin](multiplatform-discover-project.md#多平台插件).
 
 >The `kotlin-multiplatform` plugin works with Gradle %minGradleVersion% or later.

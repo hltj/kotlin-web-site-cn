@@ -14,7 +14,7 @@ We recommend [using CocoaPods](#with-cocoapods) to handle iOS dependencies in Ko
 [Manage dependencies manually](#without-cocoapods) only if you want to tune the interop process specifically or if you
 have some other strong reason to do so.
 
-> When using third-party iOS libraries in multiplatform projects with [hierarchical structure support](multiplatform-share-on-platforms.md#share-code-on-similar-platforms), for example with the `ios()` [target shortcut](multiplatform-share-on-platforms.md#use-target-shortcuts),
+> When using third-party iOS libraries in multiplatform projects with [hierarchical structure support](multiplatform-share-on-platforms.md#对相似平台共享代码), for example with the `ios()` [target shortcut](multiplatform-share-on-platforms.md#使用目标快捷方式),
 > you won't be able to use IDE features, such as code completion and highlighting, for the shared iOS source set.
 >
 > This is a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), and we are working on resolving it. In the meantime, you can use [this workaround](#workaround-to-enable-ide-support-for-the-shared-ios-source-set).
@@ -275,7 +275,7 @@ Learn more about [Objective-C and Swift interop](native-objc-interop.md) and
 
 Due to a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), you won't be able to use IDE features, such as
 code completion and highlighting, for the shared iOS source set in a multiplatform project
-with [hierarchical structure support](multiplatform-share-on-platforms.md#share-code-on-similar-platforms) if your
+with [hierarchical structure support](multiplatform-share-on-platforms.md#对相似平台共享代码) if your
 project depends on:
 
 * Multiplatform libraries that don't support the hierarchical structure.
@@ -323,7 +323,7 @@ In this code sample, the configuration of iOS targets depends on the environment
 by Xcode. For each build, you'll have only one iOS target, named `ios`, that uses the `iosMain` source set. There will
 be no hierarchy of the `iosMain`, `iosArm64`, and `iosX64` source sets.
 
-> This is a temporary workaround. If you are a library author, we recommend that you [migrate to the hierarchical structure](migrating-multiplatform-project-to-14.md#migrate-to-the-hierarchical-project-structure) as soon as possible.
+> This is a temporary workaround. If you are a library author, we recommend that you [migrate to the hierarchical structure](migrating-multiplatform-project-to-14.md#尝试分层项目结构) as soon as possible.
 >
 > With this workaround, Kotlin Multiplatform tooling analyzes your code against only the one native target that is active during the current build.
 > This might lead to various errors during the complete build with all targets, and errors are more likely if your project contains other native targets in addition to the iOS ones.

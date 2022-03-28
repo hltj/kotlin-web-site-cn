@@ -6,7 +6,7 @@ Share application logic while keeping native user experience.)
 >
 {type="note"}
 
-支持多平台程序设计是 Kotlin 的主要优势之一。 它减少了为[不同平台](multiplatform-dsl-reference.md#targets)<!--
+支持多平台程序设计是 Kotlin 的主要优势之一。 它减少了为[不同平台](multiplatform-dsl-reference.md#目标)<!--
 -->编写与维护相同代码所花的时间，同时保留了原生编程的灵活性与优势。 
 
 ## Kotlin Multiplatform use cases
@@ -65,7 +65,7 @@ project — a cross-platform application for iOS and Android with desktop and we
 
 ### Code sharing between platforms
 
-使用 Kotlin 多平台，花更少的时间为[不同平台](multiplatform-dsl-reference.md#targets)编写并维护相同的代码
+使用 Kotlin 多平台，花更少的时间为[不同平台](multiplatform-dsl-reference.md#目标)编写并维护相同的代码
 ——只需使用 Kotlin 提供的机制进行共享即可：
 
 * [在项目中用到的所有平台之间共享代码](multiplatform-share-on-platforms.md#对所有平台共享代码)。 用以共享适用于<!--

@@ -44,7 +44,7 @@ plugins {
 | --- | --- |
 | _\<目标名称\>_ |声明项目的特定目标，所有可用的目标名称已陈列在[目标](#目标)部分中.|
 |`targets` |项目的所有目标。|
-|`presets` |所有预定义的目标。使用这个同时[配置多个预定义目标](multiplatform-dsl-reference.md#targets)。|
+|`presets` |所有预定义的目标。使用这个同时[配置多个预定义目标](multiplatform-dsl-reference.md#目标)。|
 |`sourceSets` |配置预定义和声明自定义项目的[源代码集](#源代码集)。|
 
 ## 目标
@@ -79,7 +79,7 @@ test and production purposes, you can [create custom compilations](multiplatform
                 <li><code>browser {}</code> for applications running in the browser.</li>
                 <li><code>nodejs{}</code> for applications running on Node.js.</li>
             </ul>
-            <p>Learn more in <a href="js-project-setup.md#execution-environments">Setting up a Kotlin/JS project</a>.</p>
+            <p>Learn more in <a href="js-project-setup.md#执行环境">Setting up a Kotlin/JS project</a>.</p>
         </td>
     </tr>
     <tr>

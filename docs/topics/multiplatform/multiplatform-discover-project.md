@@ -49,7 +49,7 @@ plugins {
 
 一个多平台项目针对以不同目标表示的多个平台。
 目标是构建的一部分，负责为特定平台（例如 macOS、iOS或Android）构建、测试与打包应用程序。
-请参阅[支持的平台](multiplatform-dsl-reference.md#targets)列表。
+请参阅[支持的平台](multiplatform-dsl-reference.md#目标)列表。
 
 创建多平台项目时，会将目标添加到 `build.gradle`(`build.gradle.kts`) 文件中的 `kotlin` 块中。
 

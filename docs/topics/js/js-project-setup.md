@@ -55,7 +55,7 @@ kotlin {
 * [项目的 `package.json` 文件](#package-json-定制)
 
 
-## 执行环境`
+## 执行环境
 
 Kotlin/JS 项目可以针对两个不同的执行环境：
 

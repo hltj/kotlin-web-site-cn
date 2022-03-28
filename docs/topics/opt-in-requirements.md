@@ -2,7 +2,7 @@
 
 > 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn`  是 [Beta 版](components-stability.md)。
 > It is almost stable, but migration steps may be required in the future. We'll do our best to minimize any changes you
-> have to make. See the details in the [Beta status of the opt-in requirements](#beta-status-of-the-opt-in-requirements) section.
+> have to make. See the details in the [Beta status of the opt-in requirements](#选择加入要求的-beta-状态) section.
 > 
 {type="warning"}
 
