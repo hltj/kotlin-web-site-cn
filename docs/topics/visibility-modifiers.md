@@ -51,7 +51,7 @@ internal val baz = 6    // 相同模块内可见
 * `private` 意味着只该成员在这个类内部（包含其所有成员）可见；
 * `protected` 意味着该成员具有与 `private` 一样的可见性，但也在子类中可见。
 * `internal` 意味着能见到类声明的*本模块内*的任何客户端都可见其 `internal` 成员。
-* `public` 移位置能见到类声明的任何客户端都可见其 `public` 成员。
+* `public` 意味着能见到类声明的任何客户端都可见其 `public` 成员。
 
 > 在 Kotlin 中，外部类不能访问内部类的 private 成员。
 >
