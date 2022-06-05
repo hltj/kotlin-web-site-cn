@@ -44,7 +44,7 @@ plugins {
 | --- | --- |
 | _\<目标名称\>_ |声明项目的特定目标，所有可用的目标名称已陈列在[目标](#目标)部分中.|
 |`targets` |项目的所有目标。|
-|`presets` |所有预定义的目标。使用这个同时[配置多个预定义目标](multiplatform-dsl-reference.md#目标)。|
+|`presets` |所有预定义的目标。使用这个同时[配置多个预定义目标](#目标)。|
 |`sourceSets` |配置预定义和声明自定义项目的[源代码集](#源代码集)。|
 
 ## 目标
@@ -77,7 +77,7 @@ test and production purposes, you can [create custom compilations](multiplatform
             <p>Select the execution environment:</p>
             <ul>
                 <li><code>browser {}</code> for applications running in the browser.</li>
-                <li><code>nodejs{}</code> for applications running on Node.js.</li>
+                <li><code>nodejs {}</code> for applications running on Node.js.</li>
             </ul>
             <p>Learn more in <a href="js-project-setup.md#执行环境">Setting up a Kotlin/JS project</a>.</p>
         </td>
@@ -115,7 +115,7 @@ test and production purposes, you can [create custom compilations](multiplatform
                <li><code>iosSimulatorArm64</code> — Apple iOS simulator on Apple Silicon platforms</li>
             </ul>
         </td>
-        <td>Requires a macOS host.</td>
+        <td>Requires a macOS host with <a href="https://apps.apple.com/us/app/xcode/id497799835">Xcode</a> and its command-line tools installed.</td>
     </tr>
     <tr>
         <td>watchOS</td>
@@ -128,7 +128,7 @@ test and production purposes, you can [create custom compilations](multiplatform
                <li><code>watchosSimulatorArm64</code> — Apple watchOS simulator on Apple Silicon platforms</li>
             </ul>
         </td>
-        <td>Requires a macOS host.</td>
+        <td>Requires a macOS host with <a href="https://apps.apple.com/us/app/xcode/id497799835">Xcode</a> and its command-line tools installed.</td>
     </tr>
     <tr>
         <td>tvOS</td>
@@ -139,7 +139,7 @@ test and production purposes, you can [create custom compilations](multiplatform
                <li><code>tvosSimulatorArm64</code> — Apple tvOS simulator on Apple Silicon platforms</li>
             </ul>
         </td>
-        <td>Requires a macOS host.</td>
+        <td>Requires a macOS host with <a href="https://apps.apple.com/us/app/xcode/id497799835">Xcode</a> and its command-line tools installed.</td>
     </tr>
     <tr>
         <td>macOS</td>
@@ -149,7 +149,7 @@ test and production purposes, you can [create custom compilations](multiplatform
                <li><code>macosArm64</code> — Apple macOS on Apple Silicon platforms</li>
             </ul>
         </td>
-        <td>Requires a macOS host.</td>
+        <td>Requires a macOS host with <a href="https://apps.apple.com/us/app/xcode/id497799835">Xcode</a> and its command-line tools installed.</td>
     </tr>
     <tr>
         <td>Linux</td>
@@ -212,7 +212,7 @@ In any target block, you can use the following declarations:
 | --- | --- |
 |`attributes`|Attributes used for [disambiguating targets](multiplatform-set-up-targets.md#区分一个平台的多个目标) for a single platform.|
 |`preset`|The preset that the target has been created from, if any.|
-|`platformType`|Designates the Kotlin platform of this target. Avaiable values: `jvm`, `androidJvm`, `js`, `native`, `common`.|
+|`platformType`|Designates the Kotlin platform of this target. Available values: `jvm`, `androidJvm`, `js`, `native`, `common`.|
 |`artifactsTaskName`|The name of the task that builds the resulting artifacts of this target.|
 |`components`|The components used to setup Gradle publications.|
 
@@ -548,9 +548,9 @@ With Kotlin Gradle DSL, the sections of predefined source sets should be marked 
 
 ```kotlin
 kotlin {
- sourceSets {
-  val commonMain by getting { /* ... */ }
- }
+    sourceSets {
+        val commonMain by getting { /* ... */ }
+    }
 }
 ```
 

@@ -55,10 +55,12 @@ templates to automatically mark interfaces as `external`:
 ## Convert properties of external interfaces to var
 
 **Issue**: properties of external interfaces in Kotlin/JS code can't be read-only (`val`) properties because their values can be
-assigned only after the object is created with `js()` or `jsObject()` (a helper function from [`kotlin-wrappers`](https://github.com/JetBrains/kotlin-wrappers)):
+assigned only after the object is created with `js()` or `jso()` (a helper function from [`kotlin-wrappers`](https://github.com/JetBrains/kotlin-wrappers)):
 
 ```kotlin
-val myState = js("{}") as CustomComponentState
+import kotlinx.js.jso
+
+val myState = jso<CustomComponentState>()
 myState.name = "name"
 ```
 
@@ -75,50 +77,6 @@ external interface CustomComponentState : State {
 // With this
 external interface CustomComponentState : State {
    var name: String
-}
-```
-
-## Make boolean properties nullable in external interfaces
-
-**Issue**: JavaScript treats the `null` or undefined value of a boolean variable as `false`. So, boolean properties can be used
-in expressions without being defined. This is okay in JavaScript, but not in Kotlin.
-
-```kotlin
-external interface ComponentProps: Props {
-   var isInitialized: Boolean
-   var visible: Boolean
-}
-```
-
-```kotlin
-val props = js("{}") as ComponentProps
-props.isInitialized = true
-// visible is not initialized - OK in JS – means it's false
-```
-
-If you try to use such a property in a function overridden in Kotlin (for example, a React `button`), you'll get a `ClassCastException`:
-
-```kotlin
-button {
-   attrs {
-       autoFocus = props.visible // ClassCastException here
-   }
-}
-```
-
-**Solution**: make all `Boolean` properties of external interfaces nullable (`Boolean?`):
-
-```kotlin
-// Replace this
-external interface ComponentProps: Props {
-   var visible: Boolean
-}
-```
-
-```kotlin
-// With this
-external interface ComponentProps: Props {
-   var visible: Boolean?
 }
 ```
 
@@ -167,7 +125,7 @@ fun main() {
 }
 ```
 
-**Solution 1**: create plain JavaScript objects with `js()` or `jsObject()` (a helper function from [`kotlin-wrappers`](https://github.com/JetBrains/kotlin-wrappers)):
+**Solution 1**: create plain JavaScript objects with `js()` or `jso()` (a helper function from [`kotlin-wrappers`](https://github.com/JetBrains/kotlin-wrappers)):
 
 ```kotlin
 external interface AppProps { var name: String }
@@ -181,7 +139,7 @@ val ktApp = AppPropsImpl("App1") // Kotlin object
 
 ```kotlin
 // With this
-val jsApp = js("{name: 'App1'}") as AppProps // or jsObject {}
+val jsApp = js("{name: 'App1'}") as AppProps // or jso {}
 ```
 
 **Solution 2**: create objects with `kotlin.js.json()`:
@@ -213,5 +171,40 @@ kotlin {
         }
         binaries.executable()
     }
+}
+```
+
+## Additional troubleshooting tips when working with the Kotlin/JS IR compiler
+
+These hints may help you when troubleshooting problems in your projects using the Kotlin/JS IR compiler.
+
+### Make boolean properties nullable in external interfaces
+
+**Issue**: when you call `toString` on a `Boolean` from an external interface, you're getting an error like `Uncaught TypeError: Cannot read properties of undefined (reading 'toString')`. JavaScript treats the `null` or `undefined` values of a boolean variable as `false`. If you rely on calling `toString` on a `Boolean` that may be `null` or `undefined` (for example when your code is called from JavaScript code you have no control over), be aware of this:
+
+```kotlin
+external interface SomeExternal {
+    var visible: Boolean
+}
+
+fun main() {
+    val empty: SomeExternal = js("{}")
+    println(empty.visible.toString()) // Uncaught TypeError: Cannot read properties of undefined (reading 'toString')
+}
+```
+
+**Solution**: you can make your `Boolean` properties of external interfaces nullable (`Boolean?`):
+
+```kotlin
+// Replace this
+external interface SomeExternal {
+    var visible: Boolean
+}
+```
+
+```kotlin
+// With this
+external interface SomeExternal {
+    var visible: Boolean?
 }
 ```

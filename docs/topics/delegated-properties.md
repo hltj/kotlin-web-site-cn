@@ -311,7 +311,7 @@ val readOnly: Int by resourceDelegate()  // ReadWriteProperty as val
 var readWrite: Int by resourceDelegate()
 ```
 
-### Translation rules for delegated properties
+## Translation rules for delegated properties
 
 本质上说，Kotlin 编译器会为每个委托属性生成辅助属性并委托给它。
 例如，对于属性 `prop`，生成隐藏属性 `prop$delegate`，而访问器的代码只是<!--
@@ -367,7 +367,7 @@ class C<Type> {
 }
 ```
 
-### 提供委托
+## 提供委托
 
 通过定义 `provideDelegate` 操作符，可以扩展创建属性实现所委托对象的逻辑。
 如果 `by` 右侧所使用的对象将 `provideDelegate` 定义为成员或扩展函数，

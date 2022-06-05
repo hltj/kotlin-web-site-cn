@@ -311,11 +311,11 @@ binaries {
 
 ```groovy
 binaries {
-   framework {
-       export project(':dependency')
-       // Export transitively.
-       transitiveExport = true
-   }
+    framework {
+        export project(':dependency')
+        // Export transitively.
+        transitiveExport = true
+    }
 }
 ```
 
@@ -329,9 +329,9 @@ frameworks into a single universal (fat) binary using the [`lipo` tool](https://
 This operation especially makes sense for 32-bit and 64-bit iOS frameworks. In this case, you can use the resulting universal 
 framework on both 32-bit and 64-bit devices.
  
-> The fat framework must have the same base name as the initial frameworks.
+> The fat framework must have the same base name as the initial frameworks. Otherwise, you'll get an error.
 >
-{type="note"}
+{type="warning"}
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -356,8 +356,8 @@ kotlin {
         destinationDir = buildDir.resolve("fat-framework/debug")
         // Specify the frameworks to be merged.
         from(
-                ios32.binaries.getFramework("DEBUG"),
-                ios64.binaries.getFramework("DEBUG")
+            ios32.binaries.getFramework("DEBUG"),
+            ios64.binaries.getFramework("DEBUG")
         )
     }
 }
@@ -388,8 +388,8 @@ kotlin {
         destinationDir = file("$buildDir/fat-framework/debug")
         // Specify the frameworks to be merged.
         from(
-                targets.ios32.binaries.getFramework("DEBUG"),
-                targets.ios64.binaries.getFramework("DEBUG")
+            targets.ios32.binaries.getFramework("DEBUG"),
+            targets.ios64.binaries.getFramework("DEBUG")
         )
     }
 }
@@ -478,3 +478,18 @@ When you declare XCFrameworks, Kotlin Gradle plugin will register three Gradle t
 * `assembleXCFramework`
 * `assembleDebugXCFramework` (additionally debug artifact that contains [dSYMs](native-ios-symbolication.md))
 * `assembleReleaseXCFramework`
+
+If you're using [CocoaPods integration](native-cocoapods.md) in your projects, you can build XCFrameworks with the Kotlin
+CocoaPods Gradle plugin. It includes the following tasks that build XCFrameworks with all the registered targets and
+generate podspec files:
+* `podPublishReleaseXCFramework`, which generates a release XCFramework along with a podspec file.
+* `podPublishDebugXCFramework`, which generates a debug XCFramework along with a podspec file.
+* `podPublishXCFramework`, which generates both debug and release XCFrameworks along with a podspec file.
+
+This can help you distribute shared parts of your project separately from mobile apps through CocoaPods. You can also use XCFrameworks
+for publishing to private or public podspec repositories.
+
+> Publishing Kotlin frameworks to public repositories is not recommended if those frameworks are built for different versions
+> of Kotlin. Doing so might lead to conflicts in the end-users' projects.
+>
+{type="warning"}

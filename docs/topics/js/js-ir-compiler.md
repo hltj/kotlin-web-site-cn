@@ -36,6 +36,50 @@ kotlin {
 还可以使用键值 `kotlin.js.compiler=ir` 在 `gradle.properties` 文件中设置编译器类型。
 但是，`build.gradle(.kts)` 中的任何设置都会覆盖此行为。
 
+## Lazy initialization of top-level properties
+
+For better application startup performance, the Kotlin/JS IR compiler initializes top-level properties lazily. This way,
+the application loads without initializing all the top-level properties used in its code. It initializes
+only the ones needed at startup; other properties receive their values later when the code that uses them actually runs.
+
+```kotlin
+val a = run { 
+    val result = // intensive computations
+    println(result)
+    result 
+} // value is computed upon the first usage
+```
+
+If for some reason you need to initialize a property eagerly (upon the application start), mark it with the 
+[`@EagerInitialization`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-eager-initialization/){nullable="true"} annotation.
+
+## Incremental compilation for development binaries
+
+The JS IR compiler provides the _incremental compilation mode for development binaries_ that speeds up the development process.
+In this mode, the compiler caches the results of `compileDevelopmentExecutableKotlinJs` Gradle task on the module level.
+It uses the cached compilation results for unchanged source files during subsequent compilations, making them complete faster,
+especially with small changes.
+
+To enable incremental compilation for development binaries, add the following line to the project’s `gradle.properties`
+or `local.properties`:
+
+```properties
+kotlin.incremental.js.ir=true // false by default
+```
+
+> The clean build in the incremental compilation mode is usually slower because of the need to create and populate the caches.
+>
+{type="note"}
+
+## Output .js files: one per module or one for the whole project
+
+As a compilation result, the JS IR compiler outputs separate `.js` files for each module of a project. 
+Alternatively, you can compile the whole project into a single `.js` file by adding the following line to `gradle.properties`:
+
+```properties
+kotlin.js.ir.output.granularity=whole-program // 'per-module' is the default
+```
+
 ## 忽略编译错误
 
 >_Ignore compilation errors_ mode is [Experimental](components-stability.md). It may be dropped or changed at any time.
@@ -57,7 +101,7 @@ Kotlin/JS IR 编译器提供了默认后端中不可用的新编译模式——_
   例如，为字符串变量赋值一个数字（类型不匹配）。
 - `SYNTAX`：编译器将接受任何代码，即使其中包含语法错误。
   无论编写什么内容，编译器仍尝试生成可运行的可执行文件。
-    
+
 作为实验特性，忽略编译错误需要选择加入。
 要启用此模式，请添加 `-Xerror-tolerance-policy={SEMANTIC|SYNTAX}` 编译器选项：
 
@@ -70,47 +114,7 @@ kotlin {
    }
 }
 ```
-
-## 顶层属性的延迟初始化
-
-> 顶层属性的延迟初始化 is [Experimental](components-stability.md). It may be dropped or changed at any time.
-> Opt-in is required (see the details below), and you should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-44320).
->
-{type="warning"}
-
-For better application startup performance, the Kotlin/JS IR compiler offers an option to initialize top-level properties
-lazily. This way, the application loads without initializing all the top-level properties used in its code. It initializes
-only the ones needed at startup; other properties receive their values later when the code that uses them actually runs. 
-
-As an experimental feature, lazy initialization of top-level properties requires an opt-in. To use the lazy initialization
-of top-level properties, add the `-Xir-property-lazy-initialization` option when compiling the code with the JS IR compiler:
-
-<tabs group="build-script">
-<tab title="Kotlin" group-key="kotlin">
-
-```kotlin
-tasks.withType<Kotlin2JsCompile> {
-   kotlinOptions {
-     freeCompilerArgs += "-Xir-property-lazy-initialization"
-   }
-}
-```
-
-</tab>
-<tab title="Groovy" group-key="groovy">
-    
-```groovy
-tasks.withType(Kotlin2JsCompile) {
-   kotlinOptions {
-     freeCompilerArgs += "-Xir-property-lazy-initialization"
-   }
-}
-```
-
-</tab>
-</tabs>
-
-## 预览：TypeScript 声明文件（d.ts）的生成
+## Preview: generation of TypeScript declaration files (d.ts)
 
 > The generation of TypeScript declaration files (`d.ts`) is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues?q=%23%7BKJS:%20d.ts%20generation%7D).
@@ -130,8 +134,9 @@ JavaScript 工具与 IDE 可以使用这些定义来提供自动补全功能、�
 ## IR 编译器的当前限制
 
 新的 IR 编译器后端的主要变化是与默认后端 **没有二进制兼容性**。
-Kotlin/JS 的两个后端之间缺乏这种兼容性，这意味着使用新的 IR 编译器后端创建的库<!--
--->无法在默认后端使用，反之亦然。
+A library created with the new IR compiler uses a [`klib` format](native-libraries.md#library-format) and can’t be used 
+from the default backend. In the meantime, a library created with the old compiler is a `jar` with `js` files, which 
+can’t be used from the IR backend.
 
 如果要为项目使用 IR 编译器后端，则需要 **将所有 Kotlin 依赖项更新为<!--
 -->支持该新后端的版本**。由 JetBrains 针对 Kotlin/JS 发布的针对 Kotlin 1.4+ 的库已经包含了<!--

@@ -20,8 +20,12 @@ Kotlin/Native 支持以下平台：
    * Windows（MinGW）
 * Android NDK
 
-[可在这里获取所支持目标的完整列表](multiplatform-dsl-reference.md)。
+> To compile Apple targets, macOS, iOS, tvOS, and watchOS, you need [Xcode](https://apps.apple.com/us/app/xcode/id497799835)
+> and its command-line tools installed.
+> 
+{type="note"}
 
+[可在这里获取所支持目标的完整列表](multiplatform-dsl-reference.md)。
 
 ## 互操作
 

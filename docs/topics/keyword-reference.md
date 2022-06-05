@@ -165,3 +165,5 @@ Kotlin 支持以下操作符和特殊符号：
  * `_`
    - 在 [lambda 表达式](lambdas.md#下划线用于未使用的变量)中代替未使用的参数。
    - 在[解构声明](destructuring-declarations.md#下划线用于未使用的变量)中代替未使用的参数。
+
+For operator precedence, see [this reference](https://kotlinlang.org/docs/reference/grammar.html#expressions) in Kotlin grammar.

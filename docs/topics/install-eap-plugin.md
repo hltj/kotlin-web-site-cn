@@ -5,6 +5,10 @@
     <p><a href="eap.md#build-details">Explore Kotlin EAP release details</a></p>
 </microformat>
 
+> Due to Android Studios plugins renaming (`Beta`), plug-in installation is available on top of [1.6.20+ versions](https://developer.android.com/studio/preview).
+> 
+{type="warning"}
+
 You can follow these instructions to install [the preview version of the Kotlin Plugin for IntelliJ IDEA or Android Studio](eap.md#build-details).
 
 1. Select **Tools** | **Kotlin** | **Configure Kotlin Plugin Updates**. 
@@ -12,12 +16,13 @@ You can follow these instructions to install [the preview version of the Kotlin 
    ![Select Kotlin Plugin Updates](idea-kotlin-plugin-updates.png)
    {width="600"}
     
-2. In the **Update channel** list, select the **Early Access Preview *X*** channel, where *X* is the latest version of Kotlin.
+2. In the **Update channel** list, select the **Early Access Preview** channel.
     
     ![Select the EAP update channel](idea-kotlin-update-channel.png)
     {width="500"}
 
 3. Click **Check again**. The latest EAP build version appears.
+
     ![Install the EAP build](idea-latest-kotlin-eap.png)
     {width="500"}
 

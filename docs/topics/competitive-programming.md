@@ -66,9 +66,12 @@ fun f(x: Int): Int {
 
 默认情况下，Kotlin 在 JVM 上运行，可以直接访问丰富且高效的集合库，其中包含<!--
 -->通用的集合与数据结构，如动态大小的数组（`ArrayList`）、
-基于哈希的 map 与 set（`HashMap`/`HashSet`）、基于树的 map 与 set（`TreeMap`/`TreeSet`）等。
+基于哈希的 map 与 set（`HashMap`/`HashSet`）、基于树的 map 与 set（`TreeMap`/`TreeSet`）。
 使用整数哈希 set 来跟踪应用函数 `f` 时已达到的值，
 该问题解法的一个简单命令式版本可以这样编写：
+
+<tabs group="kotlin-versions">
+<tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
 
 ```kotlin
 fun main() {
@@ -77,11 +80,8 @@ fun main() {
     while (reached.add(n)) n = f(n) // 迭代函数 f
     println(reached.size) // 输出答案
 }
-```
 
-> The readln() function is available since [Kotlin 1.6.0](whatsnew16.md#新版-readline-函数).
->
-{type="note"}
+```
 
 在竞技程序设计中无需处理输入格式错误的情况。 竞技程序设计中的输入格式<!--
 -->向来都是精确指定的，并且实际输入不能偏离问题陈述中的输入规范<!--
@@ -89,16 +89,60 @@ fun main() {
 如不存在则抛出异常。 同样，如果输入不是整数，那么 [`String.toInt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int.html)
 函数会抛出异常。
 
+</tab>
+<tab title="Earlier versions" group-key="kotlin-1-5">
+
+```kotlin
+fun main() {
+    var n = readLine()!!.toInt() // read integer from the input
+    val reached = HashSet<Int>() // a mutable hash set 
+    while (reached.add(n)) n = f(n) // iterate function f
+    println(reached.size) // print answer to the output
+}
+```
+
+Note the use of Kotlin's
+[null-assertion operator](null-safety.md#the-operator) `!!`
+after the [readLine()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/read-line.html) function call.
+Kotlin's `readLine()` function is defined to return a
+[nullable type](null-safety.md#nullable-types-and-non-null-types)
+`String?` and returns `null` on the end of the input, which explicitly forces the developer to handle the
+case of missing input.
+
+There is no need to handle the case of misformatted input in competitive programming.
+In competitive programming, an input format is always precisely specified and the actual input cannot deviate from
+the input specification in the problem statement. That's what the null-assertion operator `!!` essentially does —
+it asserts that the input string is present and throws an exception otherwise. Likewise,
+the [String.toInt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int.html).
+
+</tab>
+</tabs>
+
 所有在线竞技程序设计活动都允许使用预编写代码，因此可以定义自己的<!--
 -->面向竞技程序设计的工具函数库，以使实际解题代码更易<!--
 -->于读写。然后，可以使用该代码作为解题模板。例如，可以定义<!--
 -->以下辅助函数来读取竞技程序设计中的输入：
+
+<tabs group="kotlin-versions">
+<tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
 
 ```kotlin
 private fun readInt() = readln().toInt()
 private fun readStr() = readln().toString()
 // 用于在解题中会用到的其他类型的类似声明等
 ```
+
+</tab>
+<tab title="Earlier versions" group-key="kotlin-1-5">
+
+```kotlin
+private fun readInt() = readLn().toInt()
+private fun readStr() = readLn().toString()
+// similar for other types you'd use in your solutions
+```
+
+</tab>
+</tabs>
 
 请注意这里使用了 `private`（私有）[可见修饰符](visibility-modifiers.md)。
 虽然可见性修饰符的概念与竞技程序设计并无瓜葛，
@@ -112,6 +156,9 @@ private fun readStr() = readln().toString()
 -->流水线。例如<!--
 -->[问题 B：长数](https://codeforces.com/contest/1157/problem/B)问题<!--
 -->用一个简单的贪心算法实现，可以采用这种风格编写而无需任何可变变量：
+
+<tabs group="kotlin-versions">
+<tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
 
 ```kotlin
 fun main() {
@@ -135,6 +182,34 @@ fun main() {
 }
 ```
 
+</tab>
+<tab title="Earlier versions" group-key="kotlin-1-5">
+
+```kotlin
+fun main() {
+    // read input
+    val n = readLine()!!.toInt()
+    val s = readLine()!!
+    val fl = readLine()!!.split(" ").map { it.toInt() }
+    // define local function f
+    fun f(c: Char) = '0' + fl[c - '1']
+    // greedily find first and last indices
+    val i = s.indexOfFirst { c -> f(c) > c }
+        .takeIf { it >= 0 } ?: s.length
+    val j = s.withIndex().indexOfFirst { (j, c) -> j > i && f(c) < c }
+        .takeIf { it >= 0 } ?: s.length
+    // compose and write the answer
+    val ans =
+        s.substring(0, i) +
+        s.substring(i, j).map { c -> f(c) }.joinToString("") + 
+        s.substring(j)
+    println(ans)
+}
+```
+
+</tab>
+</tabs>
+
 在这段密集的代码中，除了集合转换之外，还可以看到像局部函数<!--
 -->以及 [elvis 操作符](null-safety.md#elvis-操作符) `?:` 这样灵便的 Kotlin 特性，
 通过 elvis 操作符，可以用<!--
@@ -145,21 +220,52 @@ fun main() {
 为了让这种竞技程序设计任务中读取输入更简洁，
 可以使用以下输入读取辅助函数列表：
 
+<tabs group="kotlin-versions">
+<tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
+
 ```kotlin
 private fun readInt() = readln().toInt() // 单个整数
 private fun readStrings() = readln().split(" ") // 字符串列表
 private fun readInts() = readStrings().map { it.toInt() } // 整数列表
 ```
 
+</tab>
+<tab title="Earlier versions" group-key="kotlin-1-5">
+
+```kotlin
+private fun readLn() = readLine()!! // string line
+private fun readInt() = readLn().toInt() // single int
+private fun readStrings() = readLn().split(" ") // list of strings
+```
+
+</tab>
+</tabs>
+
 有了这些辅助函数，读取输入的代码部分变得更简单，一行行地严格遵循<!--
 -->问题陈述中的输入规范：
 
+<tabs group="kotlin-versions">
+<tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
+
 ```kotlin
     // 读取输入
-    val n = readInt()
-    val s = readln()
-    val fl = readInts()
+val n = readInt()
+val s = readln()
+val fl = readInts()
 ```
+
+</tab>
+<tab title="Earlier versions" group-key="kotlin-1-5">
+
+```kotlin
+// read input
+val n = readInt()
+val s = readLn()
+val fl = readInts()
+```
+
+</tab>
+</tabs>
 
 请注意，在竞技程序设计中，习惯给变量取比<!--
 -->通常在工业编程实践中更短的名称，因为代码只需编写一次，以后就不用支持了。

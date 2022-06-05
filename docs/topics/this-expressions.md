@@ -25,7 +25,7 @@ class A { // 隐式标签 @A
             val c1 = this@foo // foo() 的接收者，一个 Int
 
             val funLit = lambda@ fun String.() {
-                val d = this // funLit 的接收者
+                val d = this // funLit 的接收者，一个 String
             }
 
             val funLit2 = { s: String ->

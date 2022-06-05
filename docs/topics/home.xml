@@ -34,7 +34,7 @@
         <custom-groups>
             <group type="cards" display="wide">
                 <title>新特性</title>
-                <a href="whatsnew16.md" description="Latest features: sealed whens, suspend functions as supertypes, and more">Kotlin 1.6.0 的新特性</a>
+                <a href="whatsnew1620.md" description="Latest features: prototype of context receivers on JVM, definitely non-nullable types, performance improvements for JVM, Native, and JS, and more">Kotlin 1.6.20 的新特性</a>
                 <a href="roadmap.md" description="Future plans on Kotlin development">Kotlin 公共路线图</a>
             </group>
             <group type="cards">

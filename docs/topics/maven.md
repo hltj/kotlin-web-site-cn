@@ -31,7 +31,7 @@ To use the standard library in your project, 在 pom 文件中配置以下依赖
 -->为新版 JDK 所增 API 而加的额外的扩展函数。使用 `kotlin-stdlib-jdk7`
 或 `kotlin-stdlib-jdk8` 取代 `kotlin-stdlib`，这取决于你的 JDK 版本（对于 Kotlin 1.1.x 用 `kotlin-stdlib-jre7` 与 `kotlin-stdlib-jre8`，因为相应的 `jdk` 构件在 1.2.0 才引入）。
 
->For Kotlin versions older that  1.2, use `kotlin-stdlib-jre7` and `kotlin-stdlib-jre8`.
+>For Kotlin versions older than 1.2, use `kotlin-stdlib-jre7` and `kotlin-stdlib-jre8`.
 >
 {type="note"}
 

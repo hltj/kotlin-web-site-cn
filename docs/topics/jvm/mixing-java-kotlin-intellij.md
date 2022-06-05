@@ -3,7 +3,7 @@
 Kotlin provides the first-class interoperability with Java, and modern IDEs make it even better.
 In this tutorial, you'll learn how to use both Kotlin and Java sources in the same project in 
 IntelliJ IDEA. To learn how to start a new Kotlin project in IntelliJ IDEA, 
-see [Getting started with IntellJ IDEA](jvm-get-started.md). 
+see [Getting started with IntelliJ IDEA](jvm-get-started.md). 
 
 ## 将 Java 源代码添加到现有 Kotlin 项目中
 
@@ -55,13 +55,10 @@ println(customer.placeOrder())
 
 ![Add new Kotlin file class](new-kotlin-file.png){width=400}
 
-如果这是你第一次将 Kotlin 文件添加到此项目中，IntelliJ IDEA 会提示你添加所需的Kotlin运行时。
-对于 Java 项目，将 Kotlin 运行时配置为 **Kotlin Java Module**。
+如果这是你第一次将 Kotlin 文件添加到此项目中，IntelliJ IDEA 会自动添加所需的
+Kotlin 运行时。
 
-下一步是决定要配置哪些模块（如果项目有多个模块）以及是否想要
-将运行时库添加到项目中或使用当前 Kotlin 插件提供的那些库。
-
-![Bundling Kotlin runtime](bundling-kotlin-option.png){width=600}
+![Bundling Kotlin runtime](bundling-kotlin-option.png){width=350}
 
 你也可以在 **Tools** | **Kotlin** | **Configure Kotlin in Project** 中手动打开 Kotlin 运行时配置。
 

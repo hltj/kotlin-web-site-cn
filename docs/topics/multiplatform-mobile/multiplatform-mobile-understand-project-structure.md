@@ -6,12 +6,16 @@ logic for Android and iOS platforms. To make this possible, it uses a mobile-spe
 This page describes the structure of a basic cross-platform mobile project. Note that this structure isn’t the only
 possible way to organize your project; however, we recommend it as a starting point.
 
+To view the complete structure of your mobile multiplatform project, switch the view from **Android** to **Project**.
+
+![Select the Project view](select-project-view.png){width=200}
+
 A basic Kotlin Mobile Multiplatform project consists of three components:
 
 * _Shared module_ – a Kotlin module that contains common logic for both Android and iOS applications.
-Builds into an Android library and an iOS framework. Uses Gradle as a build system.
+Builds into an Android library and an iOS framework. Uses Gradle as the build system.
 * _Android application_ – a Kotlin module that builds into the Android application.
-Uses Gradle as a build system.
+Uses Gradle as the build system.
 * _iOS application_ – an Xcode project that builds into the iOS application.
 
 ![Basic Multiplatform Mobile project structure](basic-project-structure.png){width=700}
@@ -179,8 +183,7 @@ kotlin {
         // ...
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation(kotlin("test"))
             }
         }
         val androidTest by getting
@@ -200,8 +203,7 @@ kotlin {
 
         commonTest {
             dependencies {
-                implementation kotlin('test-common')
-                implementation kotlin('test-annotations-common')
+                implementation kotlin('test')
             }
         }
         androidTest {
@@ -227,10 +229,7 @@ The configuration of the Android library produced from the shared module is typi
 To learn about Android libraries creation, see [Create an Android library](https://developer.android.com/studio/projects/android-library)
 in the Android developer documentation.
 
-To produce the Android library, two more Gradle plugins are used in addition to Kotlin Multiplatform:
-
-* Android library
-* Kotlin Android extensions
+To produce the Android library, a separate Gradle plugin is used in addition to Kotlin Multiplatform:
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -239,7 +238,6 @@ To produce the Android library, two more Gradle plugins are used in addition to 
 plugins {
     // ...
     id("com.android.library")
-    id("kotlin-android-extensions")
 }
 ```
 
@@ -250,7 +248,6 @@ plugins {
 plugins {
     // ...
     id 'com.android.library'
-    id 'kotlin-android-extensions'
 }
 ```
 
@@ -265,16 +262,10 @@ The configuration of Android library is stored in the `android {}` top-level blo
 ```kotlin
 android {
     compileSdk = 29
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 24
         targetSdk = 29
-        versionCode = 1
-        versionName = "1.0"
-    }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
     }
 }
 ```
@@ -285,16 +276,10 @@ android {
 ```groovy
 android {
     compileSdk 29
+    sourceSets.main.manifest.srcFile 'src/androidMain/AndroidManifest.xml'
     defaultConfig {
         minSdk 24
         targetSdk 29
-        versionCode 1
-        versionName '1.0'
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
     }
 }
 ```
@@ -353,21 +338,24 @@ kotlin {
 </tab>
 </tabs>
 
-Additionally, there is a Gradle task `embedAndSignAppleFrameworkForXcode` that exposes the framework to the Xcode project from which the iOS application is built.
-It uses the configuration of the iOS application project to define the build mode (`debug` or `release`) and provide
-the appropriate framework version to the specified location.
+Additionally, there is a Gradle task `embedAndSignAppleFrameworkForXcode`, that exposes the framework to the Xcode project
+the iOS application is built from. It uses the iOS application's project configuration to define the build
+mode (`debug` or `release`) and provide the appropriate framework version to the specified location.
 
-The task is built-in in the multiplatform plugin. It executes upon each build of the Xcode project to provide the latest version of the framework for the iOS application.
-For details, see [iOS application](#ios-application).
+The task is built into the multiplatform plugin. It executes upon each build of the Xcode project to provide the latest
+version of the framework for the iOS application. For details, see [iOS application](#ios-application).
+
+> Use the `embedAndSignAppleFrameworkForXcode` Gradle task with Xcode project builds only; otherwise, you'll get an error.
+>
+{type="note"}
 
 ## Android application
 
 The Android application part of a Multiplatform Mobile project is a typical Android application written in Kotlin.
-In a basic cross-platform mobile project, it uses three Gradle plugins: 
+In a basic cross-platform mobile project, it uses two Gradle plugins: 
 
 * Kotlin Android
 * Android Application
-* Kotlin Android Extensions
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -376,7 +364,6 @@ In a basic cross-platform mobile project, it uses three Gradle plugins:
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("kotlin-android-extensions")
 } 
 ```
 
@@ -387,7 +374,6 @@ plugins {
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android-extensions'
 }
 ```
 
@@ -501,12 +487,24 @@ To learn more, see the [Android developer documentation](https://developer.andro
 
 ## iOS application
 
-The iOS application is produced from an Xcode project generated automatically by the Project Wizard.
-It resides in a separate directory within the root project. 
+The iOS application is produced from an Xcode project generated automatically by the New Project wizard.
+It resides in a separate directory within the root project.
 
 ![Basic Kotlin Multiplatform Xcode project](basic-xcode-project.png){width=400}
 
-For each build of the iOS application, the project obtains the latest version of the framework. To do this, it uses a **Run Script** build phase that executes the `embedAndSignAppleFrameworkForXcode` Gradle task from the shared module. This task generates the `.framework` with the needed configuration, depending on the Xcode environment settings, and puts the artifact into the `DerivedData` Xcode directory.
+For each build of the iOS application, the project obtains the latest version of the framework. To do this, it uses a
+**Run Script** build phase that executes the `embedAndSignAppleFrameworkForXcode` Gradle task from the shared module.
+This task generates the `.framework` with the required configuration, depending on the Xcode environment settings, and puts
+the artifact into the `DerivedData` Xcode directory.
+
+* If you have a custom name for the Apple framework, use `embedAndSign<Custom-name>AppleFrameworkForXcode` as the name for
+this Gradle task.
+* If you have a custom build configuration that is different from the default `Debug` or `Release`, on the **Build Settings**
+tab, add the `KOTLIN_FRAMEWORK_BUILD_TYPE` setting under **User-Defined** and set it to `Debug` or `Release`.
+
+> Use the `embedAndSignAppleFrameworkForXcode` Gradle task with Xcode project builds only; otherwise, you'll get an error.
+>
+{type="note"}
 
 ![Execution of `embedAndSignAppleFrameworkForXcode` in the Xcode project settings](packforxcode-in-project-settings.png){width=700}
 

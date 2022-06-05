@@ -104,7 +104,7 @@ for (x in 10 downTo 1) { …… }
 ## 延迟属性
 
 ```kotlin
-val p: String by lazy {
+val p: String by lazy { // the value is computed only on first access
     // 计算该字符串
 }
 ```

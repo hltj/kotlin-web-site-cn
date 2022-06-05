@@ -58,10 +58,12 @@ Kotlin 社区创建的用于数据相关任务的类库生态系统正在迅速�
 切片操作符（诸如 `countBy`、 `simpleRegressionBy`）、分箱（binning）操作符、离散 PDF 采样、
 朴素贝叶斯分类器、聚类、线性回归等等。
 
-* [kmath](https://github.com/mipt-npm/kmath) 是一个受 [NumPy](https://numpy.org/) 启发的库。
-这个库支持代数结构与运算、类数组结构、数学表达式、直方图、
-流运算、[commons-math](https://commons.apache.org/proper/commons-math/) 与
-[koma](https://github.com/kyonifer/koma) 的包装等等。
+* [kmath](https://github.com/mipt-npm/kmath) is an experimental library that was intially inspired by
+[NumPy](https://numpy.org/) but evolved to more flexible abstractions. It implements mathematical operations combined in
+algebraic structures over Kotlin types, defines APIs for linear structures, expressions, histograms, streaming operations,
+provides interchangeable wrappers over existing Java and Kotlin libraries including
+[ND4J](https://github.com/eclipse/deeplearning4j/tree/master/nd4j),
+[Commons Math](https://commons.apache.org/proper/commons-math/), [Multik](https://github.com/Kotlin/multik), etc.
 
 * [krangl](https://github.com/holgerbrandl/krangl) 是一个受 R 语言的 [dplyr](https://dplyr.tidyverse.org/)
 与 Python 的 [pandas](https://pandas.pydata.org/) 启发的库。这个库提供了采用函数式风格 API
@@ -80,9 +82,9 @@ R 的 [ggplot](https://ggplot2.tidyverse.org/)。
 因为 Kotlin 提供了与 Java 互操作的头等支持，所以也可以在用于数据科学的 Kotlin 代码中使用 Java 库。
 以下是这些库的一些示例：
 
-* [DeepLearning4J](https://deeplearning4j.org/)——一个 Java 深度学习库
+* [DeepLearning4J](https://deeplearning4j.konduit.ai)——一个 Java 深度学习库
 
-* [ND4J](https://github.com/deeplearning4j/nd4j)——用于 JVM 的高效矩阵数学库
+* [ND4J](https://github.com/eclipse/deeplearning4j/tree/master/nd4j)——用于 JVM 的高效矩阵数学库
 
 * [Dex](https://github.com/PatMartin/Dex)——一个基于 Java 的数据可视化工具
 

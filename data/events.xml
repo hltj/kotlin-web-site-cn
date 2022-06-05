@@ -1,5 +1,460 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <events>
+   <event>
+        <lang>en</lang>
+        <startDate>2022-06-02</startDate>
+        <endDate>2022-06-02</endDate>
+        <location>San Francisco, CA, USA</location>
+        <speaker>Kevin Galligan</speaker>
+        <title>droidconsanfrancisco</title>
+        <subject>Troubled Waters: Bridging platform-native SDKs with Kotlin Multiplatform</subject>
+        <url>https://www.sf.droidcon.com/schedule</url>
+        <description>
+            <![CDATA[
+<p>One of the most valuable features of Kotlin Multiplatform is being able to interop with existing platform-native SDKs from Kotlin code. This allows you to take existing code from Android and iOS, and rather than "rewrite it", simply create a common Kotlin SDK surface that delegates to the platform-native SDK code. Then you can call everything from Kotlin!<p>
+<p>This is not always so easy. There are a number of considerations you should keep in mind when planning your shared code utopian vision. In this talk we'll discuss:
+<p>* When to bridge and when to rewrite (if possible)
+* Interfaces or expect/actual? (Almost always interfaces, but no spoilers here)
+* cinterop basics
+* Packaging and deployment related topics.<p>
+<p>Some of this ground was covered at Droidcon SF 2019, but we've learned and refined so, so much since then!<p>
+]]>
+         </description>
+   </event>
+
+   <event>
+        <lang>en</lang>
+        <startDate>2022-06-03</startDate>
+        <endDate>2022-06-03</endDate>
+        <location>San Francisco, CA, USA</location>
+        <speaker>Lena Stepanova</speaker>
+        <title>droidconsanfrancisco</title>
+        <subject>Kotlin Multiplatform Mobile in production: key takeaways from developing two cross-platform apps</subject>
+        <url>https://www.sf.droidcon.com/schedule</url>
+        <description>
+            <![CDATA[
+<p>Kotlin Multiplatform Mobile is a young promising technology, but is it there to stay? And is it worth trying out? This talk is based on the experience of developing two very different cross-platform apps with KMM. The goal of this talk is to introduce KMM, discuss the pitfalls that a new KMM developer may encounter and share some valuable tips that were collected along the way of KMM development: from preferable app architecture to team requirements.<p>
+]]>
+         </description>
+   </event>
+
+   <event>
+        <lang>en</lang>
+        <startDate>2022-06-02</startDate>
+        <endDate>2022-06-02</endDate>
+        <location>San Francisco, CA, USA</location>
+        <speaker>Bree Hoffman</speaker>
+        <title>droidconsanfrancisco</title>
+        <subject>Kotlin Generics In Depth</subject>
+        <url>https://www.sf.droidcon.com/schedule</url>
+        <description>
+            <![CDATA[
+<p>When writing more powerful abstractions with Kotlin it becomes necessary to have a strong grasp of how to use generics. This talk covers a variety of concepts surrounding generic types & type parameters.
+Key points:
+* variance (covariance, contravariance, invariance)
+* type projection (+star projection, aka wildcard)
+* type constraints
+* reification (with inline modifier)<p>
+]]>
+         </description>
+   </event>
+
+   <event>
+        <lang>sv</lang>
+        <startDate>2022-05-20</startDate>
+        <endDate>2022-05-20</endDate>
+        <location>Stockholm, Sweden</location>
+        <speaker>Petrus</speaker>
+        <title>Apputveckling Sverige</title>
+        <subject>Kotlin Multiplatform - erfarenheter från 5 Appar under 2021</subject>
+        <url>https://www.meetup.com/Apputveckling-sverige/events/284973447/</url>
+        <description>
+            <![CDATA[
+<p>Kotlin Multiplatform Mobile har väckt mer och mer intresse sedan första lansering för ca 2,5 år sedan. Språket är utvecklat av JetBrains och stöds av Google samt är Open Source. I praktiken är det ett SDK för iOS- och Android-apputveckling.<p>
+]]>
+         </description>
+   </event>
+
+   <event>
+        <lang>en</lang>
+        <startDate>2022-05-09</startDate>
+        <endDate>2022-05-09</endDate>
+        <location>Tel Aviv-Yafo, Israel</location>
+        <speaker>Ronel Girat</speaker>
+        <title>Full Stack Developers Israel</title>
+        <subject>Asynchronous Data Streams with Kotlin Flow</subject>
+        <url>https://www.meetup.com/full-stack-developer-il/events/285268669/</url>
+        <description>
+            <![CDATA[
+<p>In this talk, we will discuss how Kotlin Flows can overcome the challenges of working with asynchronous streams.<p>
+<p>We will go through the basics of Kotlin Flow design, see their typical usage patterns, and how they enable writing safe, reliable, and leak-free systems.<p>
+]]>
+         </description>
+   </event>
+
+   <event>
+        <lang>en</lang>
+        <startDate>2022-06-30</startDate>
+        <endDate>2022-06-30</endDate>
+        <location>Brighton, United Kingdom</location>
+        <speaker>Arnaud Giuliani</speaker>
+        <title>Brighton Kotlin</title>
+        <subject>Android Architecture Design with Koin</subject>
+        <url>https://www.meetup.com/Brighton-Kotlin/events/285386453/</url>
+        <description>
+            <![CDATA[
+<p>In this session, I propose to see together how we can structure our components, for the following topics:<p>
+<p>Classical Components in MVP, MVVM
+Dealing with Scopes
+Jetpack Navigation
+Jetpack Compose
+Integrating with Multi-Platform<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-06-15</startDate>
+        <endDate>2022-06-15</endDate>
+        <location>Berlin, Germany</location>
+        <speaker>Urs Peter</speaker>
+        <title>WeAreDevelopers World Congress</title>
+        <subject>Moving from Java to Kotlin</subject>
+        <url>https://www.wearedevelopers.com/world-congress/topics#/</url>
+        <description>
+            <![CDATA[
+<p>In this talk, we will explore the journey you embark on when moving from Java to Kotlin. Based on real-world experience, code statistics, and many code samples, light will be shed on questions like ‘What were the benefits and drawbacks?’, ‘How did we approach it?’ …and most of all: ‘Was it worth it and why?’ At the end of this talk, you know in detail the differences between Java and Kotlin. You have learned what to expect when embracing Kotlin and which best practices you can apply, providing you with the information and tools to evaluate whether Kotlin is worth a try.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-05-05</startDate>
+        <endDate>2022-05-05</endDate>
+        <location>Philadelphia, PA, USA</location>
+        <speaker>Kevin Galligan</speaker>
+        <title>Philly Mobile Developer Conference</title>
+        <subject>Kotlin Multiplatform iOS Interop Overview</subject>
+        <url>https://www.comcastlabsconnect.com/2022-mobile-abstracts/kotlin-multiplatform-ios-interop-overview</url>
+        <description>
+            <![CDATA[
+<p>Everybody knows that Kotlin Multiplatform for native mobile will allow you to export code that can be called from iOS. However, within that statement, there are many details to learn and decisions to be made. As many KMP/KMM developers are coming from an Android background, these details are often missing background knowledge that everybody learns “the hard way”. Static or dynamic frameworks? Linking? Cocoapods vs SPM? This talk is an introduction to what the Kotlin compiler actually produces, what choices you’ll need to make, and things you may want to consider before attempting to integrate Kotlin shared-native code into a production iOS environment.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-05-05</startDate>
+        <endDate>2022-05-05</endDate>
+        <location>Philadelphia, PA, USA</location>
+        <speaker>Mohit Sarveiya </speaker>
+        <title>Philly Mobile Developer Conference</title>
+        <subject>Building Android Infrastructure Teams at Scale</subject>
+        <url>https://www.comcastlabsconnect.com/2022-mobile-abstracts/building-android-infrastructure-teams-at-scale</url>
+        <description>
+            <![CDATA[
+<p>In this talk, I will share with you the purpose of a Infrastructure team, the responsibilities and how to build it. I’ll share my experiences of working on Infrastructure teams and the challenges you’ll encounter. Lastly, I’ll cover fragmentation of large codebases and what role an Infrastructure team could play to improve it. At various companies, such a team is called an platform or foundations team.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-05-17</startDate>
+        <endDate>2022-05-17</endDate>
+        <location>Zurich, Switzerland</location>
+        <speaker>Sebastian Brunnre</speaker>
+        <title>Voxxed Days Zürich 2022</title>
+        <subject>9 Java Patterns That Kotlin Made Obsolete</subject>
+        <url>https://voxxeddays.com/zurich/schedule/speaker-details/?id=4001</url>
+        <description>
+            <![CDATA[
+<p>Are you a Kotlin expert? Or maybe you have never worked with it before?  Either way, there's a lot for you to learn because Kotlin isn't just a fancy, new Java syntax, but another way of programming!  Come with me on a quick journey comparing Java's beloved design patterns and how they were simplified or even replaced by Kotlin quirks and features.  Amongst those patterns are Singleton, Factory, Builder, Util and more. Even if you're not interested in patterns, you can still learn about the features of Kotlin like extension properties or delegates. There's something new for everyone.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-05-22</startDate>
+        <endDate>2022-05-22</endDate>
+        <location>San Jose, Costa Rica</location>
+        <speaker>Alejandra Gil</speaker>
+        <title>Kotlin Day</title>
+        <subject>Intro to kotlin on Android</subject>
+        <url>https://gdg.community.dev/events/details/google-gdg-pura-vida-presents-kotlin-day/</url>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-06-02</startDate>
+        <endDate>2022-06-02</endDate>
+        <location>San Francisco, CA, USA</location>
+        <speaker>Mohit Sarveiya</speaker>
+        <title>droidconsanfrancisco</title>
+        <subject>Migrating to Kotlin State &amp; Shared Flows</subject>
+        <url>https://www.sf.droidcon.com/speaker/mohit-sarveiya/migrating-to-kotlin-state-%26-shared-flows</url>
+        <description>
+            <![CDATA[
+<p>State Flows and Shared Flows were introduced to broadcast events to multiple consumers with coroutines. You might have been using Broadcast Channels and are starting to migrate to Shared Flows. Or, you might be converting your RxJava code to Flows.<p>
+<p>We’ll dive deep into the Shared & State Flow APIs. A Shared Flow provides you with ability to replay and cache events. How does it compare and map to existing RxJava constructs like publisher subjects? Or, how is it different from a Broadcast Channel? How do you handle back pressure? We’ll look into simple to complex use cases for migrating to Shared Flows and explore these questions in detail.<p>
+<p>By the end of this talk, you’ll have a good starting point to begin to migrate to State Flows and Shared Flows.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-06-02</startDate>
+        <endDate>2022-06-02</endDate>
+        <location>San Francisco, CA, USA</location>
+        <speaker>Anna Zharkova</speaker>
+        <title>droidconsanfrancisco</title>
+        <subject>KSP and Plugins. Optimizing Kotlin Multiplatform common code</subject>
+        <url>https://www.sf.droidcon.com/speaker/anna-zharkova/ksp-and-plugins.-optimizing-kotlin-multiplatform-common-code</url>
+        <description>
+            <![CDATA[
+<p>KSP (Kotlin Symbol Processing) is an API from Google for writing Kotlin compiler plugins. Using KSP we can write annotation processors to reduce boilerplate and solve cross-cutting concerns. Also KSP is more effective than KAPT. Among the advantages of using it is the support of Kotlin Multiplatform. Another way to optimize common code is to use Kotlin plugins. In my talk I would to like to show some samples how to use own plugins and KSP processing in Kotlin Multiplatform app supporting both iOS and Android.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-25</startDate>
+        <endDate>2022-04-25</endDate>
+        <location>Paris, France</location>
+        <speaker>Marton Braun</speaker>
+        <title>AndroidMakers 2022</title>
+        <subject>Untangling Coroutine Testing</subject>
+        <url>https://androidmakers.fr/speakers/5498b37176004d47f01ecb6d61bdead82ff63d9b</url>
+        <description>
+            <![CDATA[
+<p>Coroutines are embraced on Android as a tool to perform asynchronous operations and manage threading in your apps. Testing them requires some extra work and a solid understanding of scopes and dispatchers. In this talk, we’ll look at how to test coroutines with the latest available testing APIs introduced in kotlinx.coroutines 1.6, from the simplest cases all the way to Flows.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-26</startDate>
+        <endDate>2022-04-26</endDate>
+        <location>Paris, France</location>
+        <speaker>Carlos Mota</speaker>
+        <title>AndroidMakers 2022</title>
+        <subject>The Adventures of Kotlin And Compose Through the Multiplatform World</subject>
+        <url>https://androidmakers.fr/speakers/aaec18080e28068c1d725fb7747a77a26df8dcd8</url>
+        <description>
+            <![CDATA[
+<p>Join me in this adventure through Kotlin and Compose Multiplatform and learn how you can develop apps using these technologies. You’ve got your Android app already developed? See how you can make it run on your watch and on the Desktop effortlessly. Or how you can share your business logic with iOS and speed up your development. Perhaps, you want to develop for the Web? See how you can give the first steps into Compose for the Web while also sharing your logic.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-25</startDate>
+        <endDate>2022-04-25</endDate>
+        <location>Paris, France</location>
+        <speaker>Martin Bonnin, Bennoit Lubek</speaker>
+        <title>AndroidMakers 2022</title>
+        <subject>Caching your data Graph - Offline &amp; Reactive apps using Apollo Kotlin</subject>
+        <url>https://androidmakers.fr/speakers/efd0a931724dbd49a6e5b9e6883cc57230a26149</url>
+        <description>
+            <![CDATA[
+<p>In this talk, we'll look at GraphQL, how it differs from REST and how having a type system for your data can help with caching.<p>
+<p>We'll explore normalized databases, how using them as source of truth keeps your UI state always consistent and make sure state changes are reflected in all your screens.<p>
+<p>Finally, we'll put that to practice by looking at how that can be done in the Android Makers app.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-19</startDate>
+        <endDate>2022-04-19</endDate>
+        <online>true</online>
+        <speaker>Anna Zharkova</speaker>
+        <title>Android Worldwide 2022</title>
+        <subject>KSP and Plugins. Optimizing Kotlin Multiplatform common code</subject>
+        <url>https://www.airmeet.com/e/b175b620-a460-11ec-8379-23dfd175322a</url>
+        <description>
+            <![CDATA[
+<p>KSP (Kotlin Symbol Processing) is an API from Google for writing Kotlin compiler plugins. Using KSP we can write annotation processors to reduce boilerplate and solve cross-cutting concerns. Also KSP is more effective than KAPT. Among the advantages of using it is the support of Kotlin Multiplatform. Another way to optimize common code is to use Kotlin plugins. In my talk I would to like to show some samples how to use own plugins and KSP processing in Kotlin Multiplatform app supporting both iOS and Android.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-19</startDate>
+        <endDate>2022-04-19</endDate>
+        <online>true</online>
+        <speaker>Martin Bonnin, Bennoit Lubek</speaker>
+        <title>Android Worldwide 2022</title>
+        <subject>Caching your data Graph - Offline &amp; Reactive apps using Apollo Kotlin</subject>
+        <url>https://www.airmeet.com/e/b175b620-a460-11ec-8379-23dfd175322a</url>
+        <description>
+            <![CDATA[
+<p>In this talk, we'll look at GraphQL, how it differs from REST and how having a type system for your data can help with caching.<p>
+<p>We'll explore normalized databases, how using them as source of truth keeps your UI state always consistent and make sure state changes are reflected in all your screens.
+<p>Finally, we'll put that to practice by looking at how that can be done in a demo conference app.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>sk</lang>
+        <startDate>2022-03-30</startDate>
+        <endDate>2022-03-30</endDate>
+        <location>Zhilina, Slovakia</location>
+        <speaker>Jozef Kňažko</speaker>
+        <title>Kotlin Slovakia</title>
+        <subject>Interné fungovanie suspend funkcií</subject>
+        <url>https://www.meetup.com/Kotlin-Slovakia/events/284797974</url>
+        <description>
+            <![CDATA[
+<p>- Ako na pozadí fungujú suspend funkcie?
+- Čo je to Continuation a CoroutineContext.
+- Ako a či vôbec tieto veci využívať vo vlastnom kóde.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-28</startDate>
+        <endDate>2022-04-28</endDate>
+        <location>Berlin, Germany</location>
+        <speaker>Julien Lengrand-Lambert</speaker>
+        <title>Virtual Kotlin User Group</title>
+        <subject>Introducing Kotlin in Your Organization</subject>
+        <url>https://www.meetup.com/Virtual-Kotlin-User-Group/events/284825796</url>
+        <description>
+            <![CDATA[
+<p>A little guide on how to convince management to try out new technologies! For you, it's obvious, Kotlin is the next big thing, and it'll bring your team to the next level. You see clear advantages, but others are not quite there yet. In this talk, I'll describe the ways we found to get Kotlin inside ING, one of the largest European bank. We'll look into simple ways to convince your colleagues, your management and make it a success for everyone! Those days, there are so many tools to improve one developer's workflow that it's hard to make a choice, and sometimes convince others. Languages, frameworks, tooling, paradigms, there is so much to try and not everything can be a benefit. In this talk, we will have a look at why Kotlin probably makes a lot of sense for your team. We'll have a quick glance at some language features, the ecosystem and the community as well. But we'll mostly have a look at various techniques to make Kotlin (or, for that matter, any other kind of proposal) a convincing user case for your team.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-21</startDate>
+        <endDate>2022-04-21</endDate>
+        <location>Krynica-Zdrój, Poland</location>
+        <speaker>Jarek Ratajski</speaker>
+        <title>TypeVille</title>
+        <subject>Pure Kotlin</subject>
+        <url>https://www.typeville.io/event/pure-kotlin</url>
+        <description>
+            <![CDATA[
+<p>You can write Haskell in any language. In this talk, I am going to show you how to do that in Kotlin.You will see a beautiful world without loops, variables, and other impure monsters. You will see monads that work on production. On top of that an insane linter that enables you to gradually enforce purity in your projects.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-21</startDate>
+        <endDate>2022-04-21</endDate>
+        <location>Krynica-Zdrój, Poland</location>
+        <speaker>Anton Keks</speaker>
+        <title>TypeVille</title>
+        <subject>Klite - how Kotlin enables small, light, non-blocking server app framework with zero dependencies</subject>
+        <url>https://www.typeville.io/event/klite-how-kotlin-enables-small-light-non-blocking-server-app-framework-with-zero-dependencies</url>
+        <description>
+            <![CDATA[
+<p>After trying Kotlin years ago I quickly realized that you can do a lot more with much less code. It hits the right balance of language features and complexity, so that a lot can be achieved without any frameworks or libraries at all. However, because of good Java-interop, people still use many server frameworks and libraries that are written in Java and for Java. These contain lots of complex code, many dependencies waiting to prove vulnerable (like log4j) and other unnecessary bloat. Moreover, Kotlin type system is stronger than Java’s and thus many modern patterns that Java developers use seem unnecessary when writing in Kotlin.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-22</startDate>
+        <endDate>2022-04-22</endDate>
+        <location>Krynica-Zdrój, Poland</location>
+        <speaker>Jakub Pierzchlewicz</speaker>
+        <title>TypeVille</title>
+        <subject>Ubiquitous Language with Kotlin</subject>
+        <url>https://www.typeville.io/event/ubiquitous-language-with-kotlin</url>
+        <description>
+            <![CDATA[
+<p>Throughout history we have used languages as a means of communication. They are part of our identity. Something that makes us feel that we belong. Languages have structure, vocabulary, grammar. With irregularities. With words having different meanings in different contexts. The rise of computers has brought us strictly defined programming languages that conflict with the, often loosely defined, human language. A translation layer is needed. I want to explore how we can use Kotlin to create such a translation within our bounded contexts and how we can use grammar to define our domains.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-21</startDate>
+        <endDate>2022-04-21</endDate>
+        <location>Lisbon, Portugal</location>
+        <speaker>Carlos Mota</speaker>
+        <title>droidconlisbon</title>
+        <subject>The Adventures of Kotlin And Compose Through the Multiplatform World</subject>
+        <url>https://www.lisbon.droidcon.com/session/the-adventures-of-kotlin-and-compose-through-the-multiplatform-world</url>
+        <description>
+            <![CDATA[
+<p>Join me in this adventure through Kotlin and Compose Multiplatform and learn how you can develop apps using these technologies. You’ve got your Android app already developed? See how you can make it run on your watch and on the Desktop effortlessly. Or how you can share your business logic with iOS and speed up your development. Perhaps, you want to develop for the Web? See how you can give the first steps into Compose for the Web while also sharing your logic.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-21</startDate>
+        <endDate>2022-04-21</endDate>
+        <location>Lisbon, Portugal</location>
+        <speaker>Nuno Alves de Sousa</speaker>
+        <title>droidconlisbon</title>
+        <subject>"Kotlinifying" UI Testing</subject>
+        <url>https://www.lisbon.droidcon.com/session/%22kotlinifying%22-ui-testing</url>
+        <description>
+            <![CDATA[
+<p>Let’s face it, ui testing is probably not on top of every developer's wishlist. Even though it is an important part of the development process, it can be a tedious and monotonous job.<p>
+<p>This talk describes CTW’s effort to make writing test cases more efficient, safe, and expressive by leveraging Kotlin-specific features such as function types with receivers, extension and infix functions.<p>
+<p>We’ll present a lightweight and type safe Kotlin DSL for ui testing that is being used as an alternative to frameworks such as Cucumber, while still achieving highly readable test cases directly in Kotlin code. We’ll also show how this approach can reduce code duplication, speedup writing test cases and improve productivity by building a repository of reusable actions and assertions that can take advantage of syntax autocompletion provided by the IDE. We’ll even get our feet wet with popular testing frameworks Espresso and UiAutomator and see how we're able to completely abstract away these implementations details.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-21</startDate>
+        <endDate>2022-04-21</endDate>
+        <location>Lisbon, Portugal</location>
+        <speaker>Hari Vignesh Jayapalan</speaker>
+        <title>droidconlisbon</title>
+        <subject>Functional Programming in Kotlin for AndroidDevs</subject>
+        <url>https://www.lisbon.droidcon.com/session/functional-programming-in-kotlin-for-androiddevs</url>
+        <description>
+            <![CDATA[
+<p>This talk is anyone who is curious about functional programming and to understand how this is possible with Kotlin and how it enables us to write pure functions for our everyday Android chores.<p>
+<p>The talk will start from the basics - understanding the functional programming paradigm with mathematical models, why we need it and how different it is from regular functions. We'll then do a postmortem of few default functions offered by Kotlin OOTB to grasp the basics. Then we'll cover something a bit intermediate - composing our own functions with some aesthetics (demo, yes!) with examples to also some advanced concepts like Currying. Finally, we'll end the talk with small quiz like for audience to find pure and impure functions written in Kotlin.<p>
+]]>
+         </description>
+    </event>
+
+    <event>
+        <lang>en</lang>
+        <startDate>2022-04-21</startDate>
+        <endDate>2022-04-21</endDate>
+        <location>Lisbon, Portugal</location>
+        <speaker>Lena Stepanova</speaker>
+        <title>droidconlisbon</title>
+        <subject>Kotlin Multiplatform Mobile in production: key takeaways from developing two cross-platform apps</subject>
+        <url>https://www.lisbon.droidcon.com/session/kotlin-multiplatform-mobile-in-production%3A-key-takeaways-from-developing-two-cross-platform-apps</url>
+        <description>
+            <![CDATA[
+<p>Kotlin Multiplatform Mobile is a young promising technology, but is it there to stay? And is it worth trying out? This talk is based on the experience of developing two very different cross-platform apps with KMM. The goal of this talk is to introduce KMM, discuss the pitfalls that a new KMM developer may encounter and share some valuable tips that were collected along the way of KMM development: from preferable app architecture to team requirements.<p>
+]]>
+         </description>
+    </event>
+
     <event>
         <lang>pl</lang>
         <startDate>2022-03-24</startDate>

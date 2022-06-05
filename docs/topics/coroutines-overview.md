@@ -29,6 +29,7 @@ such as concurrency and actors.
 - [协程与通道简介](https://play.kotlinlang.org/hands-on/Introduction%20to%20Coroutines%20and%20Channels/01_Introduction)
 - [Debug coroutines using IntelliJ IDEA](debug-coroutines-with-idea.md)
 - [Debug Kotlin Flow using IntelliJ IDEA – tutorial](debug-flow-with-idea.md)
+- [Testing Kotlin coroutines on Android](https://developer.android.com/kotlin/coroutines/test)
 
 ## Sample projects
 

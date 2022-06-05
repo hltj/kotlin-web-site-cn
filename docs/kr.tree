@@ -22,7 +22,8 @@
     </toc-element>
 
     <toc-element toc-title="What's new in Kotlin">
-        <toc-element id="whatsnew16.md" toc-title="Kotlin 1.6.0" accepts-web-file-names="whatsnew.html"/>
+        <toc-element id="whatsnew1620.md" toc-title="Kotlin 1.6.20" accepts-web-file-names="whatsnew.html"/>
+        <toc-element id="whatsnew16.md" toc-title="Kotlin 1.6.0"/>
         <toc-element toc-title="Earlier versions">
             <toc-element id="whatsnew1530.md" toc-title="Kotlin 1.5.30"/>
             <toc-element id="whatsnew1520.md" toc-title="Kotlin 1.5.20"/>
@@ -103,7 +104,7 @@
             <toc-element id="multiplatform-mobile-publish-apps.md" accepts-web-file-names="kmm-publish-apps.html"/>
         </toc-element>
         <toc-element toc-title="Kotlin Multiplatform for other platforms">
-            <toc-element id="multiplatform-get-started.md" accepts-web-file-names="building-mpp-with-gradle.html,intro-to-kotlin-mpp.html,mpp-intro.html,mpp-get-started.html,kmm-configure-sqldelight-for-data-storage.html,multiplatform-mobile-configure-sqldelight-for-data-storage.html,multiplatform-tutorials.html"/>
+            <toc-element id="multiplatform-get-started.md" accepts-web-file-names="building-mpp-with-gradle.html,intro-to-kotlin-mpp.html,mpp-intro.html,mpp-get-started.html,multiplatform-tutorials.html"/>
             <toc-element id="multiplatform-discover-project.md" accepts-web-file-names="mpp-discover-project.html"/>
             <toc-element id="multiplatform-set-up-targets.md" toc-title="Set up targets manually" accepts-web-file-names="mpp-set-up-targets.html"/>
         </toc-element>
@@ -115,7 +116,7 @@
         <toc-element toc-title="Sharing code principles">
             <toc-element id="multiplatform-share-on-platforms.md" accepts-web-file-names="mpp-share-on-platforms.html"/>
             <toc-element id="multiplatform-connect-to-apis.md" accepts-web-file-names="platform-specific-declarations.html,mpp-connect-to-apis.html,kmm-connect-to-platform-specific-apis.html,multiplatform-mobile-connect-to-platform-specific-apis.html"/>
-            <toc-element id="migrating-multiplatform-project-to-14.md"/>
+            <toc-element id="multiplatform-hierarchy.md" accepts-web-file-names="migrating-multiplatform-project-to-14.html"/>
         </toc-element>
         <toc-element toc-title="Adding dependencies">
             <toc-element id="multiplatform-add-dependencies.md" toc-title="On multiplatform libraries" accepts-web-file-names="mpp-add-dependencies.html"/>
@@ -200,6 +201,7 @@
                 <toc-element id="native-cocoapods.md"/>
                 <toc-element id="native-cocoapods-libraries.md"/>
                 <toc-element id="native-cocoapods-xcode.md"/>
+                <toc-element id="native-cocoapods-dsl-reference.md"/>
             </toc-element>
             <toc-element id="native-libraries.md"/>
             <toc-element id="native-platform-libs.md"/>
@@ -320,8 +322,9 @@
         <toc-element href="https://play.kotlinlang.org/byExample/overview" toc-title="Kotlin by example"/>
         <toc-element id="koans.md"/>
         <toc-element href="https://hyperskill.org/tracks/18" toc-title="Kotlin Basics track"/>
-        <toc-element id="advent-of-code.md" toc-title="Advent of Code puzzles"/>
+        <toc-element id="kotlin-tips.md"/>
         <toc-element id="books.md"/>
+        <toc-element id="advent-of-code.md" toc-title="Advent of Code puzzles"/>
         <toc-element toc-title="Learn in IDE (EduTools)">
             <toc-element id="edu-tools-learner.md" toc-title="Learn Kotlin"/>
             <toc-element id="edu-tools-educator.md" toc-title="Teach Kotlin"/>
