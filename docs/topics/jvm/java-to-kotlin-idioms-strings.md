@@ -353,7 +353,7 @@ fun main() {
 ```
 {kotlin-runnable="true" id="join-strings-trim-margin-kotlin"}
 
-Learn more about [multiline strings](coding-conventions.md#strings).
+Learn more about [multiline strings](coding-conventions.md#字符串).
 
 ## 下一步做什么？
 

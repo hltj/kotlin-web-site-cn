@@ -24,7 +24,7 @@ Shadowing means having two declarations in a scope have the same name. So, how d
 
 ## Return and throw with the Elvis operator
 
-[Elvis](null-safety.md#elvis-operator) has entered the building once more! Seb explains why the operator is named after the famous singer, and how you can use `?:` in Kotlin to return or throw. The magic behind the scenes? [The Nothing type](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing.html).
+[Elvis](null-safety.md#elvis-操作符) has entered the building once more! Seb explains why the operator is named after the famous singer, and how you can use `?:` in Kotlin to return or throw. The magic behind the scenes? [The Nothing type](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing.html).
 
 <video width="560" height="315" href="L8aFK7QrbA8" title="Kotlin Tips: Return and Throw with the Elvis Operator"/>
 
@@ -48,19 +48,19 @@ Watch Seb give a quick overview of the [`measureTimedValue()`](https://kotlinlan
 
 ## Improving loops
 
-In this video, Sebastian will demonstrate how to improve [loops](control-flow.md#for-loops) to make your code more readable, understandable, and concise:
+In this video, Sebastian will demonstrate how to improve [loops](control-flow.md#for-循环) to make your code more readable, understandable, and concise:
 
 <video width="560" height="315" href="i-kyPp1qFBA" title="Kotlin Tips: Improving Loops"/>
 
 ## Strings
 
-In this episode, Kate Petrova shows three tips to help you work with [Strings](basic-types.md#strings) in Kotlin:
+In this episode, Kate Petrova shows three tips to help you work with [Strings](basic-types.md#字符串) in Kotlin:
 
 <video width="560" height="315" href="IL3RLKvWJF4" title="Kotlin Tips: Strings"/>
 
 ## Doing more with the Elvis operator
 
-In this video, Sebastian will show how to add more logic to the [Elvis operator](null-safety.md#elvis-operator), such as logging to the right part of the operator:
+In this video, Sebastian will show how to add more logic to the [Elvis operator](null-safety.md#elvis-操作符), such as logging to the right part of the operator:
 
 <video width="560" height="315" href="L9wqYQ-fXaM" title="Kotlin Tips: The Elvis Operator"/>
 

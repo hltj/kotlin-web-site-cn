@@ -6,7 +6,7 @@ including using platform-dependent libraries in common source sets and the abili
 libraries.
 
 To get a default hierarchical project structure in your
-projects, [update to the latest release](releases.md#update-to-a-new-release). If you need to keep using an earlier version
+projects, [update to the latest release](releases.md#更新到新版本). If you need to keep using an earlier version
 than 1.6.20, you can still enable this feature manually. For this, add the following to your `gradle.properties`:
 
 ```properties
@@ -48,7 +48,7 @@ ln -s iosMain iosArm64Main && ln -s iosMain iosX64Main
 {initial-collapse-state="collapsed"}
 
 Instead of doing this, you can create a hierarchical structure
-with [target shortcuts](multiplatform-share-on-platforms.md#use-target-shortcuts)
+with [target shortcuts](multiplatform-share-on-platforms.md#使用目标快捷方式)
 available for typical multi-target scenarios, or you can manually declare and connect the source sets. For example, you
 can create two iOS targets and a shared source set with the `ios()` shortcut:
 

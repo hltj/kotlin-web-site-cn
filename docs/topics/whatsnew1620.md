@@ -131,7 +131,7 @@ Kotlin 1.6.20 introduces:
 
 ### New @JvmDefaultWithCompatibility annotation for interfaces
 
-Kotlin 1.6.20 introduces the [new annotation `@JvmDefaultWithCompatibility`](https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/jvm/src/kotlin/jvm/JvmDefault.kt#L53): use it along with the `-Xjvm-default=all` compiler option [to create the default method in JVM interface](java-to-kotlin-interop.md#default-methods-in-interfaces) for any non-abstract member in any Kotlin interface.
+Kotlin 1.6.20 introduces the [new annotation `@JvmDefaultWithCompatibility`](https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/jvm/src/kotlin/jvm/JvmDefault.kt#L53): use it along with the `-Xjvm-default=all` compiler option [to create the default method in JVM interface](java-to-kotlin-interop.md#接口中的默认方法) for any non-abstract member in any Kotlin interface.
 
 If there are clients that use your Kotlin interfaces compiled without the `-Xjvm-default=all` option, they may be binary-incompatible with the code compiled with this option.
 Before Kotlin 1.6.20, to avoid this compatibility issue, the [recommended approach](https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-m3-generating-default-methods-in-interfaces/#JvmDefaultWithoutCompatibility) was to use the `-Xjvm-default=all-compatibility` mode and also the `@JvmDefaultWithoutCompatibility` annotation for interfaces that didn't need this type of compatibility.
@@ -156,7 +156,7 @@ Kotlin 1.6.20 deprecates the `compatibility` and `enable` modes of the compiler 
 There are changes in other modes' descriptions regarding the compatibility, but the overall logic remains the same.
 You can check out the [updated descriptions](java-to-kotlin-interop.md#compatibility-modes-for-default-methods).
 
-For more information about default methods in the Java interop, see the [interoperability documentation](java-to-kotlin-interop.md#default-methods-in-interfaces) and
+For more information about default methods in the Java interop, see the [interoperability documentation](java-to-kotlin-interop.md#接口中的默认方法) and
 [this blog post](https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-m3-generating-default-methods-in-interfaces/).
 
 ### Support for parallel compilation of a single module in the JVM backend
@@ -171,7 +171,7 @@ We are continuing our work to [improve the new JVM IR backend compilation time](
 In Kotlin 1.6.20, we added the experimental JVM IR backend mode to compile all the files in a module in parallel.
 Parallel compilation can reduce the total compilation time by up to 15%.
 
-Enable the experimental parallel backend mode with the [compiler option](compiler-reference.md#compiler-options) `-Xbackend-threads`.
+Enable the experimental parallel backend mode with the [compiler option](compiler-reference.md#编译器选项) `-Xbackend-threads`.
 Use the following arguments for this option:
 
 * `N` is the number of threads you want to use. It should not be greater than your number of CPU cores; otherwise, parallelization stops being effective because of switching context between threads
@@ -269,7 +269,7 @@ Try using the new memory manager on your projects to see how it works and share 
 
 ### Concurrent implementation for the sweep phase in new memory manager
 
-If you have already switched to our new memory manager, which was [announced in Kotlin 1.6](whatsnew16.md#preview-of-the-new-memory-manager), you might notice a huge execution time improvement: our benchmarks show 35% improvement on average.
+If you have already switched to our new memory manager, which was [announced in Kotlin 1.6](whatsnew16.md#新版内存管理器预览), you might notice a huge execution time improvement: our benchmarks show 35% improvement on average.
 Starting with 1.6.20, there is also a concurrent implementation for the sweep phase available for the new memory manager.
 This should also improve the performance and decrease the duration of garbage collector pauses.
 
@@ -295,7 +295,7 @@ Learn more about [instantiation of annotation classes](annotations.md#instantiat
 >
 {type="warning"}
 
-We've continued working on the [experimental interop with Swift's async/await](whatsnew1530.md#experimental-interoperability-with-swift-5-5-async-await) (available since Swift 5.5).
+We've continued working on the [experimental interop with Swift's async/await](whatsnew1530.md#与-swift-5-5-async-await-的实验性互操作) (available since Swift 5.5).
 Kotlin 1.6.20 differs from previous versions in the way it works with `suspend` functions with the `Unit` return type.
 
 Previously, such functions were presented in Swift as `async` functions returning `KotlinUnit`. However, the proper return type for them is `Void`, similar to non-suspending functions.
@@ -464,7 +464,7 @@ Feel free to access them from anywhere in your Kotlin code.
 ### Hierarchical structure support for multiplatform projects
 
 Kotlin 1.6.20 comes with hierarchical structure support enabled by default.
-Since [introducing it in Kotlin 1.4.0](whatsnew14.md#sharing-code-in-several-targets-with-the-hierarchical-project-structure), we've significantly improved the frontend and made IDE import stable.
+Since [introducing it in Kotlin 1.4.0](whatsnew14.md#使用分层项目结构在多个目标中共享代码), we've significantly improved the frontend and made IDE import stable.
 
 Previously, there were two ways to add code in a multiplatform project. The first was to insert it in a platform-specific source set, which is limited to one target and can't be reused by other platforms.
 The second is to use a common source set shared across all the platforms that are currently supported by Kotlin.
@@ -482,7 +482,7 @@ Learn more about [project-library compatibility](multiplatform-hierarchy.md#comp
 #### Better code-sharing in your project
 
 Without hierarchical structure support, there is no straightforward way to share code across _some_ but not _all_ [Kotlin targets](multiplatform-dsl-reference.md#目标).
-One popular example is sharing code across all iOS targets and having access to iOS-specific [dependencies](multiplatform-share-on-platforms.md#use-native-libraries-in-the-hierarchical-structure), like `Foundation`.
+One popular example is sharing code across all iOS targets and having access to iOS-specific [dependencies](multiplatform-share-on-platforms.md#在层次结构中使用原生库), like `Foundation`.
 
 Thanks to the hierarchical project structure support, you can now achieve this out of the box.
 In the new structure, source sets form a hierarchy.
@@ -501,13 +501,13 @@ This prevents such cases as, for example, the use of a macOS-specific function i
 
 When a multiplatform library is published, the API of its intermediate source sets is now properly published alongside it, making it available for consumers.
 Again, the Kotlin toolchain will automatically figure out the API available in the consumer source set while carefully watching out for unsafe usages, like using an API meant for the JVM in JS code.
-Learn more about [sharing code in libraries](multiplatform-share-on-platforms.md#share-code-in-libraries).
+Learn more about [sharing code in libraries](multiplatform-share-on-platforms.md#在库中共享代码).
 
 #### Configuration and setup
 
 Starting with Kotlin 1.6.20, all your new multiplatform projects will have a hierarchical project structure. No additional setup is required.
 
-* If you've already [turned it on manually](multiplatform-share-on-platforms.md#share-code-on-similar-platforms), you can remove the deprecated options from `gradle.properties`:
+* If you've already [turned it on manually](multiplatform-share-on-platforms.md#对相似平台共享代码), you can remove the deprecated options from `gradle.properties`:
 
   ```properties
   # gradle.properties
@@ -594,7 +594,7 @@ Please tell us what you think of using incremental compilation with your Kotlin/
 
 ### Lazy initialization of top-level properties by default with IR compiler
 
-In Kotlin 1.4.30, we presented a prototype of [lazy initialization of top-level properties](whatsnew1430.md#lazy-initialization-of-top-level-properties) in the JS IR compiler.
+In Kotlin 1.4.30, we presented a prototype of [lazy initialization of top-level properties](whatsnew1430.md#顶层属性的延迟初始化) in the JS IR compiler.
 By eliminating the need to initialize all properties when the application launches, lazy initialization reduces the startup time.
 Our measurements showed about a 10% speed-up on a real-life Kotlin/JS application.
 
@@ -638,7 +638,7 @@ Aside from the performance improvement, this changes the way `Char` is exported 
 
 ### Improvements to export and TypeScript declaration generation
 
-Kotlin 1.6.20 is bringing multiple fixes and improvements to the export mechanism (the [`@JsExport`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-export/) annotation), including the [generation of TypeScript declarations (`.d.ts`)](js-ir-compiler.md#preview-generation-of-typescript-declaration-files-d-ts).
+Kotlin 1.6.20 is bringing multiple fixes and improvements to the export mechanism (the [`@JsExport`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-export/) annotation), including the [generation of TypeScript declarations (`.d.ts`)](js-ir-compiler.md#预览-typescript-声明文件d-ts的生成).
 We've added the ability to export interfaces and enums, and we've fixed the export behavior in some corner cases that were reported to us previously.
 For more details, see the [list of export improvements in YouTrack](https://youtrack.jetbrains.com/issues?q=Project:%20Kotlin%20issue%20id:%20KT-45434,%20KT-44494,%20KT-37916,%20KT-43191,%20KT-46961,%20KT-40236).
 
@@ -768,7 +768,7 @@ rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlu
 </tab>
 </tabs>
 
-Learn more about [npm dependencies of a Kotlin/JS Gradle project](js-project-setup.md#npm-dependencies).
+Learn more about [npm dependencies of a Kotlin/JS Gradle project](js-project-setup.md#npm-依赖).
 
 ## Gradle
 
@@ -849,10 +849,10 @@ In Kotlin 1.6.20, we changed deprecation levels of the properties:
 
 ### Removal of the kotlin.parallel.tasks.in.project build option
 
-In Kotlin 1.5.20, we announced [the deprecation of the build option `kotlin.parallel.tasks.in.project`](whatsnew1520.md#deprecation-of-the-kotlin-parallel-tasks-in-project-build-property).
+In Kotlin 1.5.20, we announced [the deprecation of the build option `kotlin.parallel.tasks.in.project`](whatsnew1520.md#弃用-kotlin-parallel-tasks-in-project-构建属性).
 This option has been removed in Kotlin 1.6.20.
 
 Depending on the project, parallel compilation in the Kotlin daemon may require more memory.
 To reduce memory consumption, [increase the heap size for the Kotlin daemon](gradle.md#setting-kotlin-daemon-s-jvm-arguments).
 
-Learn more about the [currently supported compiler options](gradle.md#compiler-options) in the Kotlin Gradle plugin.
+Learn more about the [currently supported compiler options](gradle.md#编译器选项) in the Kotlin Gradle plugin.

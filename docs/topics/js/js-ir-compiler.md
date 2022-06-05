@@ -114,7 +114,7 @@ kotlin {
    }
 }
 ```
-## 预览：TypeScript 声明文件（ d.ts）的生成
+## 预览：TypeScript 声明文件（d.ts）的生成
 
 > The generation of TypeScript declaration files (`d.ts`) is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues?q=%23%7BKJS:%20d.ts%20generation%7D).
