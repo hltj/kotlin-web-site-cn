@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin tips)
+[//]: # (title: Kotlin 小窍门)
 
 Kotlin Tips is a series of short videos where members of the Kotlin team show how to use Kotlin in a more efficient and idiomatic way to have more fun when writing code.
 

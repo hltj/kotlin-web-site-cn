@@ -1,4 +1,4 @@
-[//]: # (title: Hierarchical project structure)
+[//]: # (title: 分层项目结构)
 
 With Kotlin 1.6.20, every new multiplatform project comes with a hierarchical project structure. This means that source
 sets form a hierarchy for sharing the common code among several targets. It opens up a variety of opportunities,
