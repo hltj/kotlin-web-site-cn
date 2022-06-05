@@ -17,7 +17,7 @@ kotlin.native.enableDependencyPropagation=false
 ## For multiplatform project authors
 
 With the new hierarchical project structure support, you can share code among some, but not
-all, [targets](multiplatform-dsl-reference.md#targets) in a multiplatform project.
+all, [targets](multiplatform-dsl-reference.md#目标) in a multiplatform project.
 
 You can also use platform-dependent libraries, such as `UIKit` and `POSIX`, in source sets shared among several native
 targets. One popular case is having access to iOS-specific dependencies like `Foundation` when sharing code across all

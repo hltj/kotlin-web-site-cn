@@ -1,6 +1,6 @@
 [//]: # (title: What's new in Kotlin 1.6.20)
 
-_[Release date: 4 April 2022](releases.md#release-details)_
+_[Release date: 4 April 2022](releases.md#版本发布详情)_
 
 Kotlin 1.6.20 reveals previews of the future language features, makes the hierarchical structure the default for multiplatform projects, and brings evolutionary improvements to other components.
 
@@ -196,7 +196,7 @@ If your project consists of lots of small modules and has a build parallelized b
 >
 {type="warning"}
 
-Support for [callable references](reflection.md#callable-references) to functional interface constructors adds a source-compatible way to migrate from an interface with a constructor function to a [functional interface](fun-interfaces.md).
+Support for [callable references](reflection.md#可调用引用) to functional interface constructors adds a source-compatible way to migrate from an interface with a constructor function to a [functional interface](fun-interfaces.md).
 
 Consider the following code:
 
@@ -481,7 +481,7 @@ Learn more about [project-library compatibility](multiplatform-hierarchy.md#comp
 
 #### Better code-sharing in your project
 
-Without hierarchical structure support, there is no straightforward way to share code across _some_ but not _all_ [Kotlin targets](multiplatform-dsl-reference.md#targets).
+Without hierarchical structure support, there is no straightforward way to share code across _some_ but not _all_ [Kotlin targets](multiplatform-dsl-reference.md#目标).
 One popular example is sharing code across all iOS targets and having access to iOS-specific [dependencies](multiplatform-share-on-platforms.md#use-native-libraries-in-the-hierarchical-structure), like `Foundation`.
 
 Thanks to the hierarchical project structure support, you can now achieve this out of the box.
@@ -659,7 +659,7 @@ Kotlin 1.6.20 introduces a couple of features to improve the security of your co
 
 ### Using relative paths in klibs
 
-A library in `klib` format [contains](native-libraries.md#library-format) a serialized IR representation of source files, which also includes their paths for generating proper debug information.
+A library in `klib` format [contains](native-libraries.md#库格式) a serialized IR representation of source files, which also includes their paths for generating proper debug information.
 Before Kotlin 1.6.20, stored file paths were absolute. Since the library author may not want to share absolute paths, the 1.6.20 version comes with an alternative option.
 
 If you are publishing a `klib` and want to use only relative paths of source files in the artifact, you can now pass the `-Xklib-relative-path-base` compiler option with one or multiple base paths of source files:

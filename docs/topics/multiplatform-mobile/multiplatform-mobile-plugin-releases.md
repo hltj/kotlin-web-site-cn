@@ -51,7 +51,7 @@ Released: 4 April, 2022
 </td>
 <td>
 
-* [Kotlin 1.5.0—1.6.*](releases.md#release-details)
+* [Kotlin 1.5.0—1.6.*](releases.md#版本发布详情)
 
 </td>
 </tr>

@@ -114,7 +114,7 @@ kotlin {
    }
 }
 ```
-## Preview: generation of TypeScript declaration files (d.ts)
+## 预览：TypeScript 声明文件（ d.ts）的生成
 
 > The generation of TypeScript declaration files (`d.ts`) is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues?q=%23%7BKJS:%20d.ts%20generation%7D).
@@ -134,7 +134,7 @@ JavaScript 工具与 IDE 可以使用这些定义来提供自动补全功能、�
 ## IR 编译器的当前限制
 
 新的 IR 编译器后端的主要变化是与默认后端 **没有二进制兼容性**。
-A library created with the new IR compiler uses a [`klib` format](native-libraries.md#library-format) and can’t be used 
+A library created with the new IR compiler uses a [`klib` format](native-libraries.md#库格式) and can’t be used 
 from the default backend. In the meantime, a library created with the old compiler is a `jar` with `js` files, which 
 can’t be used from the IR backend.
 

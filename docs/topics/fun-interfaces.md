@@ -71,7 +71,7 @@ fun main() {
 >
 {type="warning"}
 
-Starting from 1.6.20, Kotlin supports [callable references](reflection.md#callable-references) to functional interface constructors, which
+Starting from 1.6.20, Kotlin supports [callable references](reflection.md#可调用引用) to functional interface constructors, which
 adds a source-compatible way to migrate from an interface with a constructor function to a functional interface.
 Consider the following code:
 

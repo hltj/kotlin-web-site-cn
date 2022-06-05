@@ -178,7 +178,7 @@ Kotlin/Native 是包含预定义目录结构的 zip 文件，
 > 
 {type="note"}
 
-A serialized IR representation of source files is [a part of](#library-format) a `klib` library. It includes paths of 
+A serialized IR representation of source files is [a part of](#库格式) a `klib` library. It includes paths of 
 files for generating proper debug information. By default, stored paths are absolute.
 With the `-Xklib-relative-path-base` compiler option, you can change the format and use only relative path in the 
 artifact. To make it work, pass one or multiple base paths of source files as an argument:
