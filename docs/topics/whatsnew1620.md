@@ -1,4 +1,4 @@
-[//]: # (title: What's new in Kotlin 1.6.20)
+[//]: # (title: Kotlin 1.6.20 的新特性)
 
 _[Release date: 4 April 2022](releases.md#版本发布详情)_
 
