@@ -35,7 +35,7 @@ val positives = list.filter { x -> x > 0 }
 val positives = list.filter { it > 0 }
 ```
 
-了解 [Java 与 Kotlin 过滤](java-to-kotlin-idioms-strings.md#由集合内元素创建字符串)的区别。
+了解 [Java 与 Kotlin 过滤](java-to-kotlin-collections-guide.md#filter-elements)的区别。
 
 ### 检测元素是否存在于集合中
 

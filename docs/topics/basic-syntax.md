@@ -3,7 +3,7 @@
 这是一组基本语法元素及示例。在每段的末尾都有<!--
 -->一个指向相关主题详述的链接。
 
-也可以通过 JetBrains 学院上的免费 [Kotlin 基础课程](https://hyperskill.org/tracks/18)学习所有
+也可以通过 JetBrains 学院上的免费 [Kotlin 基础课程](https://hyperskill.org/join/fromdocstoJetSalesStat?redirect=true&next=/tracks/18)学习所有
 Kotlin 要领。
 
 ## 包的定义与导入

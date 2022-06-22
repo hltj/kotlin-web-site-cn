@@ -1,16 +1,13 @@
 import React from "react";
 
-import YoutubePlayer from '@jetbrains/kotlin-web-site-ui/dist/youtubePlayer';
+import '@jetbrains/kotlin-web-site-ui/out/components/typography';
+import '@jetbrains/kotlin-web-site-ui/out/components/grid';
+import YoutubePlayer from '@jetbrains/kotlin-web-site-ui/out/components/youtube-player';
 
 import {TeachCtaBlock} from "./components/teach-cta-block";
 import {TeachTopMenu} from "./components/teach-top-menu";
 import {TeachNumbers} from "./components/teach-numbers";
 import {TeachQuotes} from "./components/teach-quotes";
-
-import '@jetbrains/kotlin-web-site-ui/dist/topMenu.css';
-import '@jetbrains/kotlin-web-site-ui/dist/typography.css';
-import '@jetbrains/kotlin-web-site-ui/dist/grid.css';
-import '@jetbrains/kotlin-web-site-ui/dist/youtubePlayer.css';
 
 import '@rescui/typography';
 
@@ -216,7 +213,7 @@ const Teach = (props) => {
                   </a>
                 </li>
                 <li className="teach-list__item">
-                  <a href="https://hyperskill.org/tracks/18" target="_blank" rel="noopener">
+                  <a href="https://hyperskill.org/join/fromeducationtoJetSalesStat?redirect=true&next=/tracks/18" target="_blank" rel="noopener">
                     <span className="rs-link">Kotlin Basics track on JetBrains Academy</span>
                     <span>↗</span>
                   </a>

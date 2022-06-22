@@ -9,7 +9,7 @@
 
 * 如果你已熟悉一门或多门编程语言并想学习 Kotlin，请从这些 [Kotlin 学习资料](learning-materials-overview.md)开始。
 * 如果 Kotlin 是你的第一门编程语言，我们建议从[《Atomic Kotlin》这本书](https://www.atomickotlin.com/atomickotlin/)开始，
-或者在 JetBrains 学院报名免费的[Kotlin 基础课程](https://hyperskill.org/tracks/18)。
+或者在 JetBrains 学院报名免费的[Kotlin 基础课程](https://hyperskill.org/join/fromdocstoJetSalesStat?redirect=true&next=/tracks/18)。
 
 ## 使用 Kotlin 创建强大的应用程序
  

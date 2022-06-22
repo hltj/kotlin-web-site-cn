@@ -62,6 +62,7 @@ We make sure to document precisely which subcomponents are not stable. We also d
 |**组件**|**状态**|**状态起始版本**|**备注**|
 | --- | --- | -- | --- |
 Kotlin/JVM|Stable|1.0| |
+Kotlin K2（JVM）|Alpha|1.7| |
 kotlin-stdlib（JVM）|已稳定|1.0| |
 协程|已稳定|1.3| |
 kotlin-reflect（JVM）|Beta|1.0| |
@@ -78,10 +79,10 @@ CocoaPods 集成|Beta|1.3| |
 expect/actual 语言特性|Beta|1.2| |
 KDoc 语法|已稳定|1.0| |
 Dokka|Beta|1.6| |
-脚本语法与语义|Alpha|1.2|
-脚本嵌入与扩展 API|Beta|1.5
-脚本 IDE 支持|实验性的|1.2
-CLI 脚本|Alpha|1.2
+脚本语法与语义|Alpha|1.2| |
+脚本嵌入与扩展 API|Beta|1.5| |
+脚本 IDE 支持|实验性的|1.2| |
+CLI 脚本|Alpha|1.2| |
 编译器插件 API|实验性的|1.0| |
 序列化编译器插件|已稳定|1.4| |
 序列化核心库|已稳定|1.0.0|与语言版本独立

@@ -31,9 +31,9 @@ Kotlin 更简洁。粗略估计显示，代码行数减少约 40％。
 ### Kotlin 与 Java 语言兼容吗？
 
 兼容。Kotlin 与 Java 语言可以 100％ 互操作，并且主要强调确保你现有的代码库<!--
--->可以与Kotlin 正确交互。你可以轻松地在 Java 中调用 Kotlin 代码以及在 Kotlin
-中调用 Java 代码。 这使得采用 Kotlin 更容易、风险更低。内置于
-IDE 的自动化 Java 到 Kotlin 转换器可简化现有代码的迁移。
+-->可以与Kotlin 正确交互。你可以轻松地[在 Java 中调用 Kotlin 代码](java-to-kotlin-interop.md)以及[在 Kotlin
+中调用 Java 代码](java-interop.md)。 这使得采用 Kotlin 更容易、风险更低。内置于
+IDE 的自动化 [Java 到 Kotlin 转换器](mixing-java-kotlin-intellij.md#converting-an-existing-java-file-to-kotlin-with-j2k)可简化现有代码的迁移。
 
 ### 我可以用 Kotlin 做什么？
 
@@ -95,14 +95,15 @@ JavaScript 的构建工具。
 
 Kotlin 会让你选择用于执行的 JVM 版本。默认情况下，Kotlin/JVM 编译器会生成兼容 Java 8 的字节码。
 如果要利用 Java 新版本中提供的优化功能，可以将目标 Java
-版本显式指定为 9 到 17。 请注意，这种情况下生成的字节码可能无法在较低版本中运行。 
+版本显式指定为 9 到 18。 请注意，这种情况下生成的字节码可能无法在较低版本中运行。 
 
 ### Kotlin 难吗？
 
 Kotlin 是受 Java、C#、JavaScript、Scala 以及 Groovy 等现有语言的启发。我们已经努力确保
 Kotlin 易于学习，
 所以人们可以在几天之内轻松转向、阅读和编写 Kotlin。 
-学习惯用的 Kotlin 和使用更多它的高级功能可能需要一点时间，但总体来说这不是一个复杂的语言。
+学习惯用的 Kotlin 和使用更多它的高级功能可能需要一点时间，但总体来说这不是一个复杂的语言。 
+For more information, check out [our learning materials](learning-materials-overview.md).
  
 ### 哪些公司使用 Kotlin？
  
@@ -118,7 +119,7 @@ Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模�
 
 ### 在哪里可以了解关于 Kotlin 更多？
 
-最好的起始地方好是[本网站](https://www.kotlincn.net)（原文是[英文官网](https://kotlinlang.org)）。从那里你可以下载编译器、
+最好的起始地方好是[本网站](https://www.kotlincn.net)（原文是[英文官网](https://kotlinlang.org)）。从那里你可以[下载编译器](command-line.md)、
 [在线尝试](https://play.kotlinlang.org)以及访问相关资源。
 
 ### 有没有关于 Kotlin 的书？
@@ -128,7 +129,7 @@ on the [Books](books.md) page. For more books, see the community-maintained list
 
 ### Kotlin 有没有在线课程？
 
-You can learn all the Kotlin essentials while creating working applications with the [Kotlin Basics track](https://hyperskill.org/tracks/18) on JetBrains Academy.
+You can learn all the Kotlin essentials while creating working applications with the [Kotlin Basics track](https://hyperskill.org/join/fromdocstoJetSalesStat?redirect=true&next=/tracks/18) on JetBrains Academy.
 
 A few other courses you can take:
 * [Pluralsight Course: Getting Started with Kotlin](https://www.pluralsight.com/courses/kotlin-getting-started) by Kevin Jones

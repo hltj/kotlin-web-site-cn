@@ -341,3 +341,37 @@ Kotlin 为泛型声明用法执行的类型安全检测在编译期进行。
 内联函数的[具体化的类型参数](inline-functions.md#具体化的类型参数)会由<!--
 -->调用处内联函数体中的类型实参所代入，因此可以用于类型检测与转换，
 与上述泛型类型的实例具有相同限制。
+
+## Underscore operator for type arguments
+
+The underscore operator `_` can be used for type arguments. Use it to automatically infer a type of the argument when other types are explicitly specified:
+
+```kotlin
+abstract class SomeClass<T> {
+    abstract fun execute() : T
+}
+
+class SomeImplementation : SomeClass<String>() {
+    override fun execute(): String = "Test"
+}
+
+class OtherImplementation : SomeClass<Int>() {
+    override fun execute(): Int = 42
+}
+
+object Runner {
+    inline fun <reified S: SomeClass<T>, T> run() : T {
+        return S::class.java.getDeclaredConstructor().newInstance().execute()
+    }
+}
+
+fun main() {
+    // T is inferred as String because SomeImplementation derives from SomeClass<String>
+    val s = Runner.run<SomeImplementation, _>()
+    assert(s == "Test")
+
+    // T is inferred as Int because OtherImplementation derives from SomeClass<Int>
+    val n = Runner.run<OtherImplementation, _>()
+    assert(n == 42)
+}
+```

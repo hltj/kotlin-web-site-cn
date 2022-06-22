@@ -288,7 +288,7 @@ strings.filter { it.length == 5 }.sortedBy { it }.map { it.uppercase() }
 如果 lambda 表达式的参数未使用，那么可以用下划线取代其名称：
 
 ```kotlin
-map.forEach { _, value -> println("$value!") }
+map.forEach { (_, value) -> println("$value!") }
 ```
 
 ### 在 lambda 表达式中解构

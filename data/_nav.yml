@@ -368,6 +368,8 @@ reference:
           title: Compatibility Guide for Kotlin 1.5
         - url: /docs/reference/compatibility-guide-16.html
           title: Compatibility Guide for Kotlin 1.6
+        - url: /docs/reference/compatibility-guide-17.html
+          title: Compatibility Guide for Kotlin 1.7
 
     - title: 常见问题
       description: 你想到的问题可能会在这里得到解答。
@@ -514,24 +516,3 @@ foundation:
       title: Kotlin 品牌使用指南
     - url: /foundation/faq.html
       title: FAQ
-
-groups:
-  content:
-    - url: /user-groups/user-group-list.html
-      title: Kotlin 用户组列表
-    - url: /user-groups/support.html
-      title: 准则与支持
-    - url: /user-groups/branding.html
-      title: 品牌宣传资料
-    - url: https://confluence.jetbrains.com/display/ALL/JetBrains+Open+Source+and+Community+Code+of+Conduct
-      title: 行为守则
-
-
-events:
-  content:
-    - url: /community/events.html
-      title: Kotlin 活动
-    - url: /community/kotlin-nights/guidelines.html
-      title: 准则与支持
-    - url: /community/kotlin-nights/branding.html
-      title: 品牌宣传资料

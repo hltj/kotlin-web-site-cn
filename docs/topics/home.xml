@@ -34,8 +34,8 @@
         <custom-groups>
             <group type="cards" display="wide">
                 <title>新特性</title>
-                <a href="whatsnew1620.md" description="Latest features: prototype of context receivers on JVM, definitely non-nullable types, performance improvements for JVM, Native, and JS, and more">Kotlin 1.6.20 的新特性</a>
-                <a href="roadmap.md" description="Future plans on Kotlin development">Kotlin 公共路线图</a>
+                <a href="whatsnew17.md" description="Latest features: Kotlin K2 compiler in Alpha on JVM, stable opt-in requirement annotations, definitely non-nullable types, builder inference, performance improvements for JVM, Native, and JS, and more">What's New in Kotlin 1.7.0</a>
+                <a href="roadmap.md" description="Future plans on Kotlin development">Kotlin 公共路线图p</a>
             </group>
             <group type="cards">
                 <title>Kotlin 多平台移动端</title>
@@ -48,7 +48,7 @@
                     <title>学习 Kotlin</title>
                     <a href="https://play.kotlinlang.org/byExample/overview" description="Simple annotated examples for the Kotlin syntax">例学 Kotlin</a>
                     <a href="koans.md" description="Programming exercises to get you familiar with Kotlin">心印</a>
-                    <a href="https://hyperskill.org/tracks/18" description="Kotlin Basics track on JetBrains Academy">JetBrains 学院</a>
+                    <a href="https://hyperskill.org/join/fromdocstoJetSalesStat?redirect=true&amp;next=/tracks/18" description="Kotlin Basics track on JetBrains Academy">JetBrains 学院</a>
                     <a href="advent-of-code.md" description="Code puzzles in idiomatic Kotlin">Advent of Code</a>
                     <a href="https://play.kotlinlang.org/hands-on/overview" description="Complete long-form tutorials to fully grasp a technology">动手实践教程</a>
                     <a href="edu-tools-learner.md" description="An IDE plugin for learning and teaching programming languages">IntelliJ IDEA 中的 EduTools</a>

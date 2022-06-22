@@ -3,8 +3,7 @@ import React from 'react';
 import {TeachTopMenu} from "../teach/components/teach-top-menu";
 import {TeachCtaBlock} from "../teach/components/teach-cta-block";
 
-import {QuotesSlider} from '@jetbrains/kotlin-web-site-ui/dist/quotesSlider';
-import '@jetbrains/kotlin-web-site-ui/dist/quotesSlider.css';
+import QuotesSlider from '@jetbrains/kotlin-web-site-ui/out/components/quotes-slider';
 
 import './style.scss'
 
@@ -423,7 +422,7 @@ export const WhyTeach = ({path}) => {
                       </a>
                     </li>
                     <li>
-                      <a href="https://hyperskill.org/tracks/18" target="_blank" className="ktl-text-2 ktl-link">
+                      <a href="https://hyperskill.org/join/fromeducationtoJetSalesStat?redirect=true&next=/tracks/18" target="_blank" className="ktl-text-2 ktl-link">
                         <span className="rs-link">Kotlin Basics track on JetBrains Academy</span>
                         <span>&nbsp;↗</span>
                       </a>

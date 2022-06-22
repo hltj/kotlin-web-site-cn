@@ -149,7 +149,7 @@ The feature has the following restrictions:
 ### 对隐式用到实验性 API 要求选择加入
 
 > The opt-in requirement mechanism is [Experimental](components-stability.md).
-> It may change at any time. [See how to opt-in](opt-in-requirements.md#选择加入要求的-beta-状态).
+> It may change at any time. [See how to opt-in](opt-in-requirements.md).
 > Use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
 >
 {type="warning"}
@@ -185,7 +185,7 @@ Learn more about [opt-in requirements](opt-in-requirements.md).
 ### 对使用选择加入要求的注解不同目标的变更
 
 > The opt-in requirement mechanism is [Experimental](components-stability.md).
-> It may change at any time. [See how to opt-in](opt-in-requirements.md#选择加入要求的-beta-状态).
+> It may change at any time. [See how to opt-in](opt-in-requirements.md).
 > Use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
 >
 {type="warning"}

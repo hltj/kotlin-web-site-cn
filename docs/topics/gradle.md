@@ -157,9 +157,8 @@ Control the behavior of this check by setting the `kotlin.jvm.target.validation.
 ### Set custom JDK home
 
 By default, Kotlin compile tasks use the current Gradle JDK. 
-If you need to change the JDK by some reason, you can set the JDK home in the following ways:
-* For Gradle 6.7 and later – with [Java toolchains](#gradle-java-toolchains-support) or the [Task DSL](#setting-jdk-version-with-the-task-dsl) to set a local JDK.
-* For earlier Gradle versions without Java toolchains (up to 6.6) – with the [`UsesKotlinJavaToolchain` interface and the Task DSL](#setting-jdk-version-with-the-task-dsl).
+If you need to change the JDK by some reason, you can set the JDK home with [Java toolchains](#gradle-java-toolchains-support) 
+or the [Task DSL](#setting-jdk-version-with-the-task-dsl) to set a local JDK.
 
 > The `jdkHome` compiler option is deprecated since Kotlin 1.5.30.
 >
@@ -198,7 +197,7 @@ Use the following code to set a toolchain. Replace the placeholder `<MAJOR_JDK_V
 ```kotlin
 kotlin {
     jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(<MAJOR_JDK_VERSION>)) // "8" 
+        languageVersion.set(JavaLanguageVersion.of(<MAJOR_JDK_VERSION>)) // "8" 
     }
 }
 ```
@@ -229,8 +228,7 @@ To set any JDK (even local) for the specific task, use the Task DSL.
 
 ### Setting JDK version with the Task DSL
 
-If you use a Gradle version earlier than 6.7, there is no [Java toolchains support](#gradle-java-toolchains-support). 
-You can use the Task DSL that allows setting any JDK version for any task implementing the `UsesKotlinJavaToolchain` interface.
+The Task DSL allows setting any JDK version for any task implementing the `UsesKotlinJavaToolchain` interface.
 At the moment, these tasks are `KotlinCompile` and `KaptTask`.
 If you want Gradle to search for the major JDK version, replace the `<MAJOR_JDK_VERSION>` placeholder in your build script:
 
@@ -699,6 +697,37 @@ Kotlin/JVM 与 Kotlin/JS 项目均支持增量编译 and is enabled by default s
 
 首次构建决不会是增量的。
 
+> Sometimes problems with incremental compilation become visible several rounds after the failure occurs. Use [build reports](#build-reports)
+> to track the history of changes and compilations. Doing so may also help you provide reproducible bug reports.
+> 
+{type="tip"}
+
+### A new approach to incremental compilation
+
+> The new approach to incremental compilation is [Experimental](components-stability.md). It may be dropped or changed at any time.
+> Opt-in is required (see the details below). We encourage you to use it only for evaluation purposes, and we would
+> appreciate your feedback in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
+>
+{type="warning"}
+
+The new approach to incremental compilation supports changes made inside dependent non-Kotlin modules, includes an improved
+compilation avoidance, and is compatible with the [Gradle build cache](#gradle-build-cache-support).
+
+All these advancements decrease the number of non-incremental builds, making the overall compilation time faster. The most
+significant benefit of the new approach is expected if you use the build cache or frequently make changes in non-Kotlin
+Gradle modules.
+
+To enable this new approach, set the following option in your `gradle.properties`:
+
+```properties
+kotlin.incremental.useClasspathSnapshot=true
+```
+
+> The new approach to incremental compilation is available since Kotlin 1.7.0 for the JVM backend in the Gradle
+> build system only.
+>
+{type="note"}
+
 ## Gradle 构建缓存支持
 
 The Kotlin plugin uses the [Gradle build cache](https://docs.gradle.org/current/userguide/build_cache.html), which stores
@@ -723,6 +752,54 @@ which speeds up the build process by reusing the results of the configuration ph
 See the [Gradle documentation](https://docs.gradle.org/current/userguide/configuration_cache.html#config_cache:usage)
 to learn how to enable the configuration cache. After you enable this feature, the Kotlin Gradle plugin will automatically
 start using it.
+
+## Build reports
+
+> Build reports are [Experimental](components-stability.md). They may be dropped or changed at any time.
+> Opt-in is required (see details below). Use them only for evaluation purposes. We appreciate your feedback on them
+> in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
+>
+{type="warning"}
+
+Build reports for tracking compiler performance are available for Kotlin 1.7.0. Reports contain the durations of different
+compilation phases and reasons why compilation couldn't be incremental.
+
+Use build reports to investigate performance issues, when the compilation time is too long or when it differs for the same
+project.
+
+To enable build reports, declare where to save the build report output in `gradle.properties`:
+
+```properties
+kotlin.build.report.output=file
+```
+
+The following values and their combinations are available for the output:
+
+| Option       | Description                                                                                                                                                                                                                                                                                                                                     |
+|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `file`       | Saves build reports in a local file                                                                                                                                                                                                                                                                                                             |
+| `build_scan` | Saves build reports in the `custom values` section of the [build scan](https://scans.gradle.com/). Note that the Gradle Enterprise plugin limits the number of custom values and their length. In big projects, some values could be lost                                                                                                       |                                                                                                                                                                                                                                                                                                                                                                                               |
+| `http`       | Posts build reports using HTTP(S). The POST method sends metrics in the JSON format. You can see the current version of the sent data in the [Kotlin repository](https://github.com/JetBrains/kotlin/blob/master/libraries/tools/kotlin-gradle-plugin/src/common/kotlin/org/jetbrains/kotlin/gradle/plugin/statistics/CompileStatisticsData.kt) |
+
+Here's the full list of available options for `kotlin.build.report`:
+
+```properties
+# Required outputs. Any combinations are allowed
+kotlin.build.report.output=file,http,build_scan
+
+# Optional. Output directory for file-based reports. Default: build/reports/kotlin-build/
+kotlin.build.report.file.output_dir=kotlin-reports
+
+# Mandatory if http output is used. Where to post HTTP(S)-based reports
+kotlin.build.report.http.url=http://127.0.0.1:8080
+
+# Optional. User and password if the HTTP endpoint requires authentication
+kotlin.build.report.http.user=someUser
+kotlin.build.report.http.password=somePassword
+
+# Optional. Label for marking your build report (e.g. debug parameters)
+kotlin.build.report.label=some_label
+```
 
 ## 编译器选项
 
@@ -810,18 +887,18 @@ Gradle 任务的完整选项列表如下：
 
 | 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
-| `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.3"（已弃用）、 "1.4"（已弃用）、  "1.5"、 "1.6"、 "1.7"（实验性） |  |
-| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"（实验性） |  |
+| `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.3"（已弃用）、 "1.4"（已弃用）、  "1.5"、 "1.6"、 "1.7" |  |
+| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7" |  |
 
 ### JVM 特有的属性
 
-| 名称 | 描述        | 可能的值        |默认值        |
-|------|-------------|-----------------|--------------|
-| `javaParameters` | 为方法参数生成 Java 1.8 反射的元数据 |  | false |
-| `jdkHome` | 将来自指定位置的自定义 JDK 而不是默认的 JAVA_HOME 包含到类路径中。 Direct setting is deprecated sinсe 1.5.30, use [other ways to set this option](#set-custom-jdk-home).  |  |  |
-| `jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"（已弃用）、 "1.8"、 "9"、 "10"、 "11"、 "12"、 "13"、 "14"、 "15"、 "16"、 "17" | "%defaultJvmTargetVersion%" |
-| `noJdk` | 不要自动在类路径中包含 Java 运行时 |  | false |
-| `useOldBackend` | Use the [old JVM backend](whatsnew15.md#稳定版-jvm-ir-后端) |  | false |
+| 名称 | 描述        | 可能的值                                  |默认值        |
+|------|-------------|---------------------------------------|--------------|
+| `javaParameters` | 为方法参数生成 Java 1.8 反射的元数据 |                                       | false |
+| `jdkHome` | 将来自指定位置的自定义 JDK 而不是默认的 JAVA_HOME 包含到类路径中。 Direct setting is not possible, use [other ways to set this option](#set-custom-jdk-home).  |                                       |  |
+| `jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"（已弃用）、 "1.8"、 "9"、 "10"、……、 "18" | "%defaultJvmTargetVersion%" |
+| `noJdk` | 不要自动在类路径中包含 Java 运行时 |                                       | false |
+| `useOldBackend` | Use the [old JVM backend](whatsnew15.md#稳定版-jvm-ir-后端) |                                       | false |
 
 ### JS 特有的属性
 
@@ -831,7 +908,6 @@ Gradle 任务的完整选项列表如下：
 | `main` | 定义是否在执行时调用 `main` 函数 | "call"、 "noCall" | "call" |
 | `metaInfo` | 使用元数据生成 .meta.js 与 .kjsm 文件。用于创建库 |  | true |
 | `moduleKind` | 编译器生成的 JS 模块类型 | "umd"、 "commonjs"、 "amd"、 "plain" | "umd" |
-| `noStdlib` | 不要自动将默认的 Kotlin/JS stdlib 包含到编译依赖项中 |  | true |
 | `outputFile` | 编译结果的目标 *.js 文件 |  | "\<buildDir>/js/packages/\<project.name>/kotlin/\<project.name>.js" |
 | `sourceMap` | 生成源代码映射（source map） |  | true |
 | `sourceMapEmbedSources` | 将源代码嵌入到源代码映射中 | "never"、 "always"、 "inlining" | |
@@ -844,7 +920,7 @@ Gradle 任务的完整选项列表如下：
 要生成 Kotlin 项目的文档，请使用 [Dokka](https://github.com/Kotlin/dokka)；
 相关配置说明请参见 [Dokka README](https://github.com/Kotlin/dokka/blob/master/README.md#using-the-maven-plugin)
 。Dokka 支持混合语言项目，并且可以生成多种格式的输出
-，包括标准 JavaDoc。
+，包括标准 Javadoc。
 
 ## OSGi
 
@@ -975,16 +1051,16 @@ _Kotlin compiler execution strategy_ defines where the Kotlin compiler is execut
 
 There are three compiler execution strategies:
 
-| Strategy       | Where Kotlin compiler is executed    | Incremental compilation | Other characteristics                                                  |
-|----------------|--------------------------------------|-------------------------------------|------------------------------------------------------------------------|
-| Daemon         | Inside its own daemon process        | Yes                                 | *The default strategy*. Can be shared between different Gradle daemons |
-| In process     | Inside the Gradle daemon process     | No                                  | May share the heap with the Gradle daemon                                  |
-| Out of process | In a separate process for each call  | No                                  | -                                                                      |
+| Strategy       | Where Kotlin compiler is executed          | Incremental compilation | Other characteristics and notes                                                                                                                                                                                                                                                |
+|----------------|--------------------------------------------|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Daemon         | Inside its own daemon process              | Yes                     | *The default and the fastest strategy*. Can be shared between different Gradle daemons and multiple parallel compilations.                                                                                                                                                     |
+| In process     | Inside the Gradle daemon process           | No                      | May share the heap with the Gradle daemon. The "In process" execution strategy is _slower_ than the "Daemon" execution strategy. Each [worker](https://docs.gradle.org/current/userguide/worker_api.html) creates a separate Kotlin compiler classloader for each compilation. |
+| Out of process | In a separate process for each compilation | No                      | The slowest execution strategy. Similar to the "In process", but additionally creates a separate Java process within a Gradle worker for each compilation.                                                                                                                     |
 
 To define a Kotlin compiler execution strategy, you can use one of the following properties:
 * The `kotlin.compiler.execution.strategy` Gradle property.
 * The `compilerExecutionStrategy` compile task property.
-* The `-Dkotlin.compiler.execution.strategy` system property, which will be removed in future releases. 
+* The deprecated `-Dkotlin.compiler.execution.strategy` system property, which will be removed in future releases. 
 
 The priority of properties is the following:
 * The task property `compilerExecutionStrategy` takes priority over the system property and the Gradle property `kotlin.compiler.execution.strategy`.
@@ -1035,6 +1111,40 @@ tasks.withType(KotlinCompile)
     .configureEach {
          compilerExecutionStrategy.set(KotlinCompilerExecutionStrategy.IN_PROCESS)
     }
+```
+
+</tab>
+</tabs>
+
+## Triggering configuration actions with the KotlinBasePlugin interface
+
+To trigger some configuration action whenever any Kotlin Gradle plugin (JVM, JS, Multiplatform, Native, and others) is applied, 
+use the `KotlinBasePlugin` interface that all Kotlin plugins inherit from:
+
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+import org.jetbrains.kotlin.gradle.plugin.KotlinBasePlugin
+
+// ...
+
+project.plugins.withType<KotlinBasePlugin>() {
+// Configure your action here
+}
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+import org.jetbrains.kotlin.gradle.plugin.KotlinBasePlugin
+
+// ...
+
+project.plugins.withType(KotlinBasePlugin.class) {
+// Configure your action here
+}
 ```
 
 </tab>

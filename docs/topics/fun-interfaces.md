@@ -65,12 +65,6 @@ fun main() {
 
 ## Migration from an interface with constructor function to a functional interface
 
-> Support for callable references to functional interface constructors is [Experimental](components-stability.md).
-> It may be dropped or changed at any time. Opt-in is required (see details below), and you should use it only for evaluation purposes.
-> We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-47939).
->
-{type="warning"}
-
 Starting from 1.6.20, Kotlin supports [callable references](reflection.md#可调用引用) to functional interface constructors, which
 adds a source-compatible way to migrate from an interface with a constructor function to a functional interface.
 Consider the following code:
@@ -105,11 +99,21 @@ annotation with `DeprecationLevel.HIDDEN`:
 fun Printer(...) {...}
 ```
 
-Use the compiler option `-XXLanguage:+KotlinFunInterfaceConstructorReference` to enable this feature.
-
 ## 函数式接口与类型别名比较
 
-函数式接口和[类型别名](type-aliases.md)用途并不相同。
+You can also simply rewrite the above using a [type alias](type-aliases.md) for a functional type:
+
+```kotlin
+typealias IntPredicate = (i: Int) -> Boolean
+
+val isEven: IntPredicate = { it % 2 == 0 }
+
+fun main() {
+   println("Is 7 even? - ${isEven(7)}")
+}
+```
+
+However, 函数式接口和[类型别名](type-aliases.md)用途并不相同。
 类型别名只是现有类型的名称——它们不会创建新的类型，而函数式接口却会创建新类型。
 You can provide extensions that are specific to a particular functional interface to be inapplicable for plain functions or their type aliases.
 

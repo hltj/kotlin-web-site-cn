@@ -267,8 +267,8 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 | 名称 | 属性名 | 描述 | 可能的值 | 默认值 |
 |------|---------------|-------------|-----------------|--------------|
 | `nowarn` | | 不生成警告 | true、 false | false |
-| `languageVersion` | `kotlin.compiler.languageVersion` | 提供与指定语言版本源代码兼容性 | "1.4"（已弃用）、"1.5"、 "1.6"、 "1.7"（实验性） |
-| `apiVersion` | `kotlin.compiler.apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.3"（已弃用）、"1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"（实验性） |
+| `languageVersion` | `kotlin.compiler.languageVersion` | 提供与指定语言版本源代码兼容性 | "1.4"（已弃用）、"1.5"、 "1.6"、 "1.7" |
+| `apiVersion` | `kotlin.compiler.apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.3"（已弃用）、"1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7" |
 | `sourceDirs` | | 包含要编译源文件的目录 | | 该项目源代码根目录
 | `compilerPlugins` | | 启用[编译器插件](compiler-plugins.md)  | | []
 | `pluginOptions` | | 编译器插件的选项  | | []
@@ -276,10 +276,10 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 ### JVM 特有的属性
 
-| 名称 | 属性名 | 描述 | 可能的值 | 默认值 |
-|------|---------------|-------------|-----------------|--------------|
-| `jvmTarget` | `kotlin.compiler.jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"（已弃用）、 "1.8"、 "9"、 "10"、 "11"、 "12" 、 "13" 、 "14"、 "15"、 "16", "17" | "%defaultJvmTargetVersion%" |
-| `jdkHome` | `kotlin.compiler.jdkHome` | Include a custom JDK from the specified location into the classpath instead of the default JAVA_HOME | | &nbsp; |
+| 名称 | 属性名 | 描述 | 可能的值                      | 默认值 |
+|------|---------------|-------------|---------------------------|--------------|
+| `jvmTarget` | `kotlin.compiler.jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.8"、 "9"、 "10"、……、 "18" | "%defaultJvmTargetVersion%" |
+| `jdkHome` | `kotlin.compiler.jdkHome` | Include a custom JDK from the specified location into the classpath instead of the default JAVA_HOME |                           | &nbsp; |
 
 ### JS 特有的属性
 
@@ -294,11 +294,11 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 ## 生成文档
 
-标准的 JavaDoc 生成插件（`maven-javadoc-plugin`）不支持 Kotlin 代码。
+标准的 Javadoc 生成插件（`maven-javadoc-plugin`）不支持 Kotlin 代码。
 要生成 Kotlin 项目的文档，请使用 [Dokka](https://github.com/Kotlin/dokka)；
 相关配置说明请参见 [Dokka README](https://github.com/Kotlin/dokka/blob/master/README.md#using-the-maven-plugin)
 。Dokka 支持混合语言项目，并且可以生成多种格式的输出
-，包括标准 JavaDoc。
+，包括标准 Javadoc。
 
 ## OSGi
 

@@ -50,6 +50,33 @@ You can also use [preview versions of Kotlin](eap.md#build-details).
         <th>推荐的 kotlinx 库版本</th>
     </tr>
     <tr>
+        <td><strong>1.7.0</strong>
+            <p>Released: <strong>June 9, 2022</strong></p>
+            <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.7.0" target="_blank">Release on GitHub</a></p>
+        </td>
+        <td>
+            <p>A feature release with Kotlin K2 compiler in Alpha for JVM, stabilzed language features, performance improvements, and evolutionary changes such as stabilizing experimental APIs.</p>
+            <p>Learn more in:</p>
+            <ul>
+                <li><a href="whatsnew17.md" target="_blank">What's new in Kotlin 1.7.0</a></li>
+                <li><a href="https://youtu.be/54WEfLKtCGk" target="_blank">What's new in Kotlin YouTube video</a></li>
+                <li><a href="compatibility-guide-17.md" target="_blank">Compatibility guide for Kotlin 1.7.0</a></li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <li><a href="https://github.com/Kotlin/kotlinx.serialization" target="_blank">kotlinx.serialization</a> version: <a href="https://github.com/Kotlin/kotlinx.serialization/releases/tag/v1.3.2" target="_blank">1.3.2</a></li>
+                <li><a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank">kotlinx.coroutines</a> version: <a href="https://github.com/Kotlin/kotlinx.coroutines/releases/tag/1.6.2" target="_blank">1.6.2</a></li>
+                <li><a href="https://github.com/Kotlin/kotlinx.atomicfu" target="_blank">kotlinx.atomicfu</a> version: <a href="https://github.com/Kotlin/kotlinx.atomicfu/releases/tag/0.17.1" target="_blank">0.17.1</a></li>
+                <li><a href="https://github.com/Kotlin/kotlinx-datetime" target="_blank"><strong>kotlinx-datetime</strong></a> version: <a href="https://github.com/Kotlin/kotlinx-datetime/releases/tag/v0.3.3" target="_blank">0.3.3</a></li>
+                <li><a href="https://ktor.io/" target="_blank">ktor</a> version: <a href="https://github.com/ktorio/ktor/releases/tag/2.0.0-beta-1" target="_blank">2.0.0-beta-1</a></li>
+                <li><a href="https://github.com/Kotlin/kotlinx.html" target="_blank">kotlinx.html</a> version: <a href="https://github.com/Kotlin/kotlinx.html/releases/tag/0.7.5" target="_blank">0.7.5</a></li>
+                <li><a href="https://github.com/Kotlin/kotlinx-nodejs" target="_blank">kotlinx-nodejs</a> version: <a href="https://bintray.com/kotlin/kotlinx/kotlinx.nodejs/0.0.7" target="_blank">0.0.7</a></li>
+            </ul>
+            <p>The versions of libraries from <code>kotlin-wrappers</code> (such as <code>kotlin-react</code>) can be found in the <a href="https://github.com/JetBrains/kotlin-wrappers" target="_blank">corresponding repository</a>.</p>
+        </td>
+    </tr>
+    <tr>
         <td><strong>1.6.21</strong>
             <p>Released: <strong>April 20, 2022</strong></p>
             <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.6.21" target="_blank">Release on GitHub</a></p>
@@ -131,7 +158,7 @@ You can also use [preview versions of Kotlin](eap.md#build-details).
             <ul>
                 <li><a href="https://blog.jetbrains.com/kotlin/2021/11/kotlin-1-6-0-is-released/" target="_blank">Release blog post</a></li>
                 <li><a href="whatsnew16.md" target="_blank">What's new in Kotlin 1.6.0</a></li>
-                <li><a href="compatibility-guide-16.md" target="_blank">Compatibility Guide</a></li>
+                <li><a href="compatibility-guide-16.md" target="_blank">Compatibility guide</a></li>
             </ul>
         </td>
         <td>
@@ -306,7 +333,7 @@ You can also use [preview versions of Kotlin](eap.md#build-details).
             <ul>
                 <li><a href="https://blog.jetbrains.com/kotlin/2021/04/kotlin-1-5-0-released/" target="_blank">Release blog post</a></li>
                 <li><a href="whatsnew15.md" target="_blank">What's new in Kotlin 1.5.0</a></li>
-                <li><a href="compatibility-guide-15.md" target="_blank">Compatibility Guide</a></li>
+                <li><a href="compatibility-guide-15.md" target="_blank">Compatibility guide</a></li>
             </ul>
         </td>
         <td>
@@ -477,7 +504,7 @@ You can also use [preview versions of Kotlin](eap.md#build-details).
             <ul>
                 <li><a href="https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/" target="_blank">Release blog post</a></li>
                 <li><a href="whatsnew14.md" target="_blank">What's new in Kotlin 1.4.0</a></li>
-                <li><a href="compatibility-guide-14.md" target="_blank">Compatibility Guide</a></li>
+                <li><a href="compatibility-guide-14.md" target="_blank">Compatibility guide</a></li>
                 <li><a href="whatsnew14.md#迁移到-kotlin-1-4-0" target="_blank">Migrating to Kotlin 1.4.0</a></li>
             </ul>
         </td>

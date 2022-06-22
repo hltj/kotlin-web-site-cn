@@ -267,7 +267,7 @@ fun sendString() {
     }
   }
 
-  val copiedStringFromC = buf.stringFromUtf8()
+  val copiedStringFromC = buf.decodeToString()
   println("Message from C: $copiedStringFromC")
 }
 
@@ -278,7 +278,7 @@ fun sendString() {
 -->来临时固定字节数组的<!--
 -->原生内存地址。该 C 函数填充了<!--
 -->带数据的字节数组。使用另一个扩展<!--
--->函数 `ByteArray.stringFromUtf8()` 将字节<!--
+-->函数 `ByteArray.decodeToString()` 将字节<!--
 -->数组转换为一个 Kotlin `String`，假设它是 UTF-8 编码的。
 
 ## 修复代码
@@ -310,7 +310,7 @@ fun main() {
 
     val useMe2 = copy_string(pinned.addressOf(0), pinned.get().size - 1)
     if (useMe2 != 0) throw Error("Failed to read string from C")
-    pinned.get().stringFromUtf8()
+    pinned.get().decodeToString()
   }
 
   println(copyFromC)

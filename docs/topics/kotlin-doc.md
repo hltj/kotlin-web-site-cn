@@ -1,7 +1,7 @@
 [//]: # (title: 编写 Kotlin 代码文档)
 
-用来编写 Kotlin 代码文档的语言（相当于 Java 的 JavaDoc）称为 **KDoc**。本质上 KDoc
-是将 JavaDoc 的块标签（block tags）语法（扩展为支持 Kotlin 的特定构造）和 Markdown 的<!--
+用来编写 Kotlin 代码文档的语言（相当于 Java 的 Javadoc）称为 **KDoc**。本质上 KDoc
+是将 Javadoc 的块标签（block tags）语法（扩展为支持 Kotlin 的特定构造）和 Markdown 的<!--
 -->内联标记（inline markup）结合在一起。
 
 ## 生成文档
@@ -13,7 +13,7 @@ Dokka 有 Gradle、Maven 与 Ant 的插件，因此你可以将文档生成集�
 
 ## KDoc 语法
 
-像 JavaDoc 一样，KDoc 注释也以 `/**` 开头、以 `*/` 结尾。注释的每一行可以以<!--
+像 Javadoc 一样，KDoc 注释也以 `/**` 开头、以 `*/` 结尾。注释的每一行可以以<!--
 -->星号开头，该星号不会当作注释内容的一部分。
 
 按惯例来说，文档文本的第一段（到第一行空白行结束）是该元素的<!--
@@ -126,7 +126,7 @@ KDoc 目前支持以下块标签（block tags）：
 为此目的，请使用[这个方法][foo]。
 ```
 
-你还可以在链接中使用限定的名称。请注意，与 JavaDoc 不同，限定的名称总是使用点字符<!--
+你还可以在链接中使用限定的名称。请注意，与 Javadoc 不同，限定的名称总是使用点字符<!--
 -->来分隔组件，即使在方法名称之前：
 
 ```

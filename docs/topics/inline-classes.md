@@ -88,7 +88,7 @@ fun main() {
 ```
 
 禁止内联类参与到类的继承关系结构中。这就意味着内联类不能继承<!--
--->其他的类而且必须是 `final`。
+-->其他的类而且始终是 `final` 的。
 
 ## 表示方式
 
@@ -200,5 +200,28 @@ fun main() {
     // And vice versa:
     acceptNameTypeAlias(string) // 正确: 传递基础类型的实参替代函数中别名类型的形参
     acceptNameInlineClass(string) // 错误: 不能传递基础类型的实参替代函数中内联类类型的形参
+}
+```
+
+## Inline classes and delegation
+
+Implementation by delegation to inlined value of inlined class is allowed with interfaces:
+
+```kotlin
+interface MyInterface {
+    fun bar()
+    fun foo() = "foo"
+}
+
+@JvmInline
+value class MyInterfaceWrapper(val myInterface: MyInterface) : MyInterface by myInterface
+
+fun main() {
+    val my = MyInterfaceWrapper(object : MyInterface {
+        override fun bar() {
+            // body
+        }
+    })
+    println(my.foo()) // prints "foo"
 }
 ```
