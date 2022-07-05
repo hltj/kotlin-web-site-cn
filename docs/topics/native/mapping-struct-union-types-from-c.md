@@ -147,7 +147,7 @@ Check out the [kotlin-multiplatform](multiplatform-discover-project.md#多平台
 plugin documentation to learn about all the different ways you could configure it.
 
 Create a `src/nativeMain/kotlin/hello.kt` stub file with the following content
-to see how C declarations are visible from Kotlin:
+to see how C struct and union declarations are visible from Kotlin:
 
 ```kotlin
 import interop.*
@@ -165,9 +165,9 @@ fun main() {
 现在已经准备好<!--
 -->[在 IntelliJ IDEA 中打开这个项目](native-get-started.md)<!--
 -->并且看看如何修正这个示例项目。当做了这些之后，
-会看到 C 的原生类型已经被映射到了 Kotlin/Native。
+会看到 C 语言的的结构与联合类型如何被映射到 Kotlin/Native 的。
 
-## Kotlin 中的原生类型
+## Struct and union types in Kotlin
 
 通过 IntelliJ IDEA 的__Go to | Declaration__ 或<!--
 -->编译器错误的帮助，会看到如下的为 C  函数、`struct` 以及 `union` 生成的 API：
@@ -401,4 +401,3 @@ fun main() {
 - [映射来自 C 语言的字符串](mapping-strings-from-c.md)
 
 这篇[与 C 语言互操作文档](native-c-interop.md)涵盖了更多的高级互操作场景
-

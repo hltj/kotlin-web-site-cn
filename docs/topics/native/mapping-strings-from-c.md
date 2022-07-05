@@ -174,7 +174,7 @@ Check out the [kotlin-multiplatform](multiplatform-discover-project.md#多平台
 plugin documentation to learn about all the different ways you could configure it.
 
 我们使用下面的内容创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件，
-以用来观察 C 中的原生类型是如何在 Kotlin 中可见的：
+以用来观察 C 语言中的字符串是如何在 Kotlin 中可见的：
 
 ```kotlin
 import interop.*
@@ -191,9 +191,9 @@ fun main() {
 现在已经准备好<!--
 -->[在 IntelliJ IDEA 中打开这个项目](native-get-started.md)<!--
 -->并且看看如何修正这个示例项目。当做了这些之后，
-可以看下 C 函数是如何映射到 Kotlin/Native 声明的。
+可以看下 C 语言字符串是如何映射到 Kotlin/Native 声明的。
 
-## Kotlin 中的原生类型
+## Strings in Kotlin
 
 通过 IntelliJ IDEA 的 __Go to | Declaration__ 或<!--
 -->编译器错误的帮助，可以看到如下为 C 函数生成的声明：

@@ -45,7 +45,7 @@ Download that meta-runner and import it from the TeamCity user interface
 
 <img src="teamcity-setupkotlin.png" alt="Setup Kotlin Compiler" width="700"/>
 
-运行程序将根据 IntelliJ IDEA 项目中的路径设置，将属性 system.path.macro.KOTLIN.BUNDLED
+运行程序将根据 IntelliJ IDEA 项目中的路径设置，将属性 `system.path.macro.KOTLIN.BUNDLED`
 的值设置为正确的值。 但是，这个值需要在 TeamCity 中定义（可以设置为任何值）。
 因此，需要将其定义为系统变量。
 
@@ -61,4 +61,3 @@ Download that meta-runner and import it from the TeamCity user interface
 
 如果使用与 TeamCity 不同的持续集成工具，只要它支持任何构建工具<!--
 -->或者调用命令行工具， 那么应该都可以将 Kotlin 编译和自动化作为 CI 流程的一部分。
-

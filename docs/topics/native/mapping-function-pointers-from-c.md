@@ -148,7 +148,7 @@ Check out the [kotlin-multiplatform](multiplatform-discover-project.md#多平台
 plugin documentation to learn about all the different ways you could configure it.
 
 我们使用下面的内容创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件，
-以用来观察 C 中的原生类型是如何在 Kotlin 中可见的：
+以用来观察 C 语言中的函数指针是如何在 Kotlin 中可见的：
 
 ```kotlin
 import interop.*

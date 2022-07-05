@@ -96,6 +96,7 @@ JavaScript 的构建工具。
 Kotlin 会让你选择用于执行的 JVM 版本。默认情况下，Kotlin/JVM 编译器会生成兼容 Java 8 的字节码。
 如果要利用 Java 新版本中提供的优化功能，可以将目标 Java
 版本显式指定为 9 到 18。 请注意，这种情况下生成的字节码可能无法在较低版本中运行。 
+Starting with [Kotlin 1.5](whatsnew15.md#new-default-jvm-target-1-8), the compiler does not support producing bytecode compatible with Java versions below 8.
 
 ### Kotlin 难吗？
 

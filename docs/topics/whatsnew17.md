@@ -61,8 +61,9 @@ enable the Kotlin K2 compiler, use the following compiler option:
 Also, the K2 compiler [includes a number of bugfixes](https://youtrack.jetbrains.com/issues/KT?q=tag:%20fixed-in-frontend-ir%20sort%20by:%20Priority,%20votes,%20updated).
 Please note that even issues with **State: Open** from this list are in fact fixed in K2.
 
-The next Kotlin releases will improve the stability of the K2 compiler and provide more features, so stay tuned and
-provide your feedback!
+The next Kotlin releases will improve the stability of the K2 compiler and provide more features, so stay tuned!
+
+If you face any performance issues with the Kotlin K2 compiler, please [report them to our issue tracker](https://youtrack.jetbrains.com/newIssue?project=KT&c=Type%20Performance%20Problem&c=Subsystems%20Frontend.%20IR).
 
 ## Language
 
@@ -802,6 +803,8 @@ There are two common cases that analyzing build reports for long-running compila
 * The build wasn't incremental. Analyze the reasons and fix underlying problems.
 * The build was incremental, but took too much time. Try to reorganize source files — split big files, save separate
   classes in different files, refactor large classes, declare top-level functions in different files, and so on.
+
+Learn more about new build reports in [this blog post](https://blog.jetbrains.com/kotlin/2022/06/introducing-kotlin-build-reports/).
 
 You are welcome to try using build reports in your infrastructure. If you have any feedback, encounter any issues, or
 want to suggest improvements, please don't hesitate to report them in

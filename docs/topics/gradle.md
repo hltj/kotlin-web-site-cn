@@ -1,5 +1,10 @@
 [//]: # (title: Gradle)
 
+<microformat>
+    <p>Minimum supported Gradle version: <strong>%minGradleVersion%</strong></p>
+    <p>Minimum supported Android Gradle plugin version: <strong>%minAndroidGradleVersion%</strong></p>
+</microformat>
+
 In order to build a Kotlin project with Gradle, you should [apply the Kotlin Gradle plugin to your project](#插件与版本)
 and [configure the dependencies](#configuring-dependencies).
 
@@ -741,8 +746,13 @@ the build outputs for reuse in future builds.
 
 ## Gradle configuration cache support
 
-> The configuration cache is available in Gradle 6.5 and later as an experimental feature.
-> You can check the [Gradle releases page](https://gradle.org/releases/) to see whether it has been promoted to stable.
+> Gradle configuration cache support has some constraints:
+> * The configuration cache is available in Gradle 6.5 and later as an experimental feature.  
+>   You can check the [Gradle releases page](https://gradle.org/releases/) to see whether it has been promoted to stable.
+> * The feature is supported only by the following Gradle plugins:
+>   * `org.jetbrains.kotlin.jvm`
+>   * `org.jetbrains.kotlin.js`
+>   * `org.jetbrains.kotlin.android`
 >
 {type="note"}
 
