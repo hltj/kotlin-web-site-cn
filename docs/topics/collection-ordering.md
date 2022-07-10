@@ -5,7 +5,7 @@
 
 在 Kotlin 中，可以通过多种方式定义对象的顺序。
 
-首先，有 _自然_ 顺序。它是为 [`Comparable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html) 接口的继承者定义的。
+首先，有 _自然_ 顺序。它是为 [`Comparable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html) 接口的实现定义的。
 当没有指定其他顺序时，使用自然顺序为它们排序。
 
 大多数内置类型是可比较的：
@@ -14,7 +14,7 @@
 * `Char` 和 `String` 使用[字典顺序](https://en.wikipedia.org/wiki/Lexicographical_order)： `b`
    大于 `a`； `world` 大于 `hello`。
 
-如需为用户定义的类型定义一个自然顺序，可以让这个类型继承 `Comparable`。
+如需为用户定义的类型定义一个自然顺序，可以让这个类型实现 `Comparable`。
 这需要实现  `compareTo()` 函数。 `compareTo()` 必须将另一个具有相同类型的对象作为参数<!--
 -->并返回一个整数值来显示哪个对象更大：
 

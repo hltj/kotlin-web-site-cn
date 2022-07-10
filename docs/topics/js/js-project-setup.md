@@ -394,13 +394,17 @@ Kotlin/JS Gradle 插件会在构建时自动生成一个标准的 webpack 配置
 例如，要添加新的 [webpack loader](https://webpack.js.org/loaders/)，
 请将以下内容添加到 `webpack.config.d` 中的 `.js` 文件中：
 
+> In this case, the configuration object presented in the `config` global object. You need to modify it in your script.
+>
+{type="note"}
+
 ```groovy
 config.module.rules.push({
     test: /\.extension$/,
     loader: 'loader-name'
 });
 ```
-
+     
 所有 webpack 配置功能在其
 [文档](https://webpack.js.org/concepts/configuration/) 中都有详细说明。
 
