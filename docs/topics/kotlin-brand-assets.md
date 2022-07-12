@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin brand assets)
+[//]: # (title: Kotlin 品牌素材)
 
 ## Kotlin Logo
 

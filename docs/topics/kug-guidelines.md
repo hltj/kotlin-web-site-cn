@@ -1,4 +1,4 @@
-[//]: # (title: KUG guidelines)
+[//]: # (title: KUG 准则)
 
 A Kotlin User Group, or KUG, is a community that is dedicated to Kotlin and that offers you a place to share your
 Kotlin programming experience with like-minded people.

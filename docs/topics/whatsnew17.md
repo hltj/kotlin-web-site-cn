@@ -1,4 +1,4 @@
-[//]: # (title: What's new in Kotlin 1.7.0)
+[//]: # (title: Kotlin 1.7.0 的新特性)
 
 _[Release date: 9 June 2022](releases.md#release-details)_
 

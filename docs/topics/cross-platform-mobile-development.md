@@ -1,4 +1,4 @@
-[//]: # (title: What is cross-platform mobile development?)
+[//]: # (title: 什么是跨平台移动端开发？)
 
 [//]: # (description: Cross-platform mobile development helps you save much time and effort. See why many developers have already switched to technology that is cost efficient.)
 

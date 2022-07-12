@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin Night guidelines)
+[//]: # (title: Kotlin 之夜准则)
 
 Kotlin Night is a meetup that includes 3-4 talks on Kotlin or related technologies.
 
