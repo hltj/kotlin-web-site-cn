@@ -73,6 +73,9 @@ fun main() {
 ```
 {kotlin-runnable="true"}
 
+All enum constants implement the [Comparable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html)
+interface by default. Constants in the enum class are defined in the natural order. For more information, see [Ordering](collection-ordering.md).
+
 ## 使用枚举常量
 
 Kotlin 中的枚举类也有合成方法用于列出<!--
@@ -100,13 +103,9 @@ inline fun <reified T : Enum<T>> printAllValues() {
 printAllValues<RGB>() // 输出 RED, GREEN, BLUE
 ```
 
-每个枚举常量都具有在枚举类声明中获取其名称与位置的属性：
+每个枚举常量都具有在枚举类声明中获取其名称与（自 0 起的）位置的属性：
 
 ```kotlin
 val name: String
 val ordinal: Int
 ```
-
-枚举常量还实现了 [Comparable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html) 接口，
-其中自然顺序是它们在枚举类中定义的顺序。
-
