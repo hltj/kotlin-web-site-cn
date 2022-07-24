@@ -101,7 +101,7 @@
 4. **了解关于 Kotlin 多平台移动端的更多信息：**
    * 了解关于 [Kotlin 多平台](multiplatform-get-started.md)的更多信息。
    * 浏览 [GitHub 上的样例](multiplatform-mobile-samples.md)。
-   * [创建并发布多平台库](multiplatform-create-lib.md)。
+   * [创建并发布多平台库](multiplatform-library.md)。
    * 了解 [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)、 [VMWare](https://kotlinlang.org/lp/mobile/case-studies/vmware/)、 [Yandex](https://kotlinlang.org/lp/mobile/case-studies/yandex/) 以及[许多其他公司](https://kotlinlang.org/lp/mobile/case-studies/)如何使用 Kotlin 多平台。
 
 5. **加入 Kotlin 多平台社区：**
@@ -180,8 +180,7 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
 
 2. **创建多平台库：**
 
-   * 从头开始，[创建一个基本项目](multiplatform-create-lib.md)。
-   * 如果倾向于更健壮的示例，那么请完成[创建并发布多平台库](multiplatform-library.md)教程。 它展示了如何为 JVM、 JS 与原生平台创建多平台库，对其进行测试并发布到本地 Maven 仓库。
+   * 完成[创建并发布多平台库](multiplatform-library.md)教程。 它展示了如何为 JVM、 JS 与原生平台创建多平台库，对其进行测试并发布到本地 Maven 仓库。
    * 使用[这一动手实践](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)构建一个全栈 web 应用程序。
 
 3. **在应用程序中使用库。** 了解关于[添加对库的依赖](multiplatform-add-dependencies.md)的更多内容。

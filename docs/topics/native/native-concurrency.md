@@ -55,9 +55,6 @@ future.consume {
 那么该程序可能会意外崩溃，因此考虑将 `UNSAFE` 作为最后的优化手段而不是通用<!--
  -->机制来使用。
 
-更完整的示例请参考 Kotlin/Native 版本库中的 [worker 示例](https://github.com/JetBrains/kotlin/tree/master/kotlin-native/samples/workers)<!--
--->。
-
 ### 对象转移与冻结
 
 Kotlin/Native 运行时维护的一个重要的不变式是，对象要么归单个<!--

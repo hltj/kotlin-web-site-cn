@@ -474,8 +474,7 @@ cl.exe main.c libnative.lib
 
 动态库是从现有程序使用 Kotlin 代码的主要方式。
 可以使用它们来共享代码到许多平台以及其他语言，包括 JVM、
-[Python](https://github.com/JetBrains/kotlin/blob/master/kotlin-native/samples/python_extension/src/main/c/kotlin_bridge.c)、
-iOS、Android 以及其他平台。
+Python、 iOS、Android 以及其他平台。
 
 Kotlin/Native 同样也可以与 Objective-C 以及 Swift 紧密集成。
 这部分内容被包含在 [Kotlin/Native 开发 Apple Framework](apple-framework.md)

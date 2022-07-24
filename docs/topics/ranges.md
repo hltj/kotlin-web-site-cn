@@ -8,7 +8,7 @@ Kotlin 可通过调用 `kotlin.ranges` 包中的 [`rangeTo()`](https://kotlinlan
 fun main() {
     val i = 1 
 //sampleStart
-    if (i in 1..4) { // 等同于 1 <= i && i <= 4
+    if (i in 1..4) { // 等同于 i >= 1 && i <= 4
         print(i)
     }
 //sampleEnd

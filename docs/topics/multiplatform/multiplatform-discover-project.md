@@ -9,7 +9,7 @@
 
 ## 多平台插件
 
-[创建多平台项目](multiplatform-create-lib.md)时，
+[创建多平台项目](multiplatform-library.md)时，
 项目向导会自动在 `build.gradle`(`.kts`) 文件中应用 `kotlin-multiplatform` 插件。
 
 也可以手动应用它。

@@ -197,7 +197,7 @@ fun main() {
 ```
 {kotlin-runnable="true" id="covariance-kotlin"}
 
-Read more about [collection types](collections-overview.md#集合类型)here.
+Read more about [collection types](collections-overview.md#集合类型) here.
 
 ## 区间与数列
 
