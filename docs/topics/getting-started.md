@@ -126,7 +126,7 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
 2. **创建第一个前端 web 应用程序：**
 
    * 从头开始，[使用 IntelliJ IDEA 项目向导创建一个基本的浏览器应用程序](js-project-setup.md)。
-   * 如果倾向于更健壮的示例，那么请完成[使用 React 与 Kotlin/JS 构建 web 应用程序](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction)动手实践教程。 它有一个可以作为你自己项目良好起点的样例项目，其中包含有用的片段和模板。
+   * 如果倾向于更健壮的示例，那么请完成[使用 React 与 Kotlin/JS 构建 web 应用程序](js-react.md)教程。 它有一个可以作为你自己项目良好起点的样例项目，其中包含有用的片段和模板。
    * 查看 [Kotlin/JS 样例](js-samples.md)列表，了解关于如何使用 Kotlin/JS 的更多看法。
 
 3. **在应用程序中使用库。** 了解[添加依赖项](js-project-setup.md#依赖项)的更多信息。  

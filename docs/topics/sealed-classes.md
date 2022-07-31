@@ -88,7 +88,7 @@ you can create subclasses in any source set between the `expect` and `actual` de
 fun log(e: Error) = when(e) {
     is FileReadError -> { println("Error while reading file ${e.file}") }
     is DatabaseError -> { println("Error while reading from database ${e.source}") }
-    RuntimeError ->  { println("Runtime error") }
+    is RuntimeError ->  { println("Runtime error") }
     // 不再需要 `else` 子句，因为已经覆盖了所有的情况
 }
 ```
