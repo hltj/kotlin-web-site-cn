@@ -33,7 +33,7 @@ Kotlin 更简洁。粗略估计显示，代码行数减少约 40％。
 兼容。Kotlin 与 Java 语言可以 100％ 互操作，并且主要强调确保你现有的代码库<!--
 -->可以与Kotlin 正确交互。你可以轻松地[在 Java 中调用 Kotlin 代码](java-to-kotlin-interop.md)以及[在 Kotlin
 中调用 Java 代码](java-interop.md)。 这使得采用 Kotlin 更容易、风险更低。内置于
-IDE 的自动化 [Java 到 Kotlin 转换器](mixing-java-kotlin-intellij.md#converting-an-existing-java-file-to-kotlin-with-j2k)可简化现有代码的迁移。
+IDE 的自动化 [Java 到 Kotlin 转换器](mixing-java-kotlin-intellij.md#使用-j2k-将现有-java-文件转换为-kotlin-文件)可简化现有代码的迁移。
 
 ### 我可以用 Kotlin 做什么？
 
@@ -96,7 +96,7 @@ JavaScript 的构建工具。
 Kotlin 会让你选择用于执行的 JVM 版本。默认情况下，Kotlin/JVM 编译器会生成兼容 Java 8 的字节码。
 如果要利用 Java 新版本中提供的优化功能，可以将目标 Java
 版本显式指定为 9 到 18。 请注意，这种情况下生成的字节码可能无法在较低版本中运行。 
-Starting with [Kotlin 1.5](whatsnew15.md#new-default-jvm-target-1-8), the compiler does not support producing bytecode compatible with Java versions below 8.
+Starting with [Kotlin 1.5](whatsnew15.md#新的默认-jvm-目标-1-8), the compiler does not support producing bytecode compatible with Java versions below 8.
 
 ### Kotlin 难吗？
 

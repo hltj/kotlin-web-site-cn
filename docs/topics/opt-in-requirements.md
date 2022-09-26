@@ -125,7 +125,7 @@ fun displayDate() {
  @file:OptIn(MyDateTime::class)
  ```
 
-### 模块范围的选择加入
+### 模块级选择加入
 
 > The `-opt-in` compiler option is available since Kotlin 1.6.0. For earlier Kotlin versions, use `-Xopt-in`.
 >

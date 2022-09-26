@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.7.0 的新特性)
 
-_[Release date: 9 June 2022](releases.md#release-details)_
+_[Release date: 9 June 2022](releases.md#版本发布详情)_
 
 Kotlin 1.7.0 has been released. It unveils the Alpha version of the new Kotlin/JVM K2 compiler, stabilizes language
 features, and brings performance improvements for the JVM, JS, and Native platforms.
@@ -142,7 +142,7 @@ the compiler infer the type arguments of a call using the type information about
 
 Starting with 1.7.0, builder inference is automatically activated if a regular type inference cannot get enough
 information about a type without specifying the `-Xenable-builder-inference` compiler option, which
-was [introduced in 1.6.0](whatsnew16.md#changes-to-builder-inference).
+was [introduced in 1.6.0](whatsnew16.md#构建器类型推断变更).
 
 [Learn how to write custom generic builders](using-builders-with-builder-inference.md).
 
@@ -153,7 +153,7 @@ additional compiler configuration.
 
 Before 1.7.0, the opt-in feature itself required the argument `-opt-in=kotlin.RequiresOptIn` to avoid a warning. It no
 longer requires this; however, you can still use the compiler argument `-opt-in` to opt-in for other
-annotations, [module-wise](opt-in-requirements.md#module-wide-opt-in).
+annotations, [module-wise](opt-in-requirements.md#模块级选择加入).
 
 ### Stable definitely non-nullable types
 
@@ -220,7 +220,7 @@ on [this YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-29974/Add-a-co
 
 ### Stable callable references to functional interface constructors
 
-[Callable references](reflection.md#callable-references) to functional interface constructors are
+[Callable references](reflection.md#可调用引用) to functional interface constructors are
 now [Stable](components-stability.md). Learn how
 to [migrate](fun-interfaces.md#migration-from-an-interface-with-constructor-function-to-a-functional-interface)
 from an interface with a constructor function to a functional interface using callable references.
@@ -233,8 +233,8 @@ The default target version for Kotlin/JVM compilations is `1.8`. The `1.6` targe
 
 Please migrate to JVM target 1.8 or above. Learn how to update the JVM target version for:
 
-* [Gradle](gradle.md#attributes-specific-to-jvm)
-* [Maven](maven.md#attributes-specific-to-jvm)
+* [Gradle](gradle.md#jvm-特有的属性)
+* [Maven](maven.md#jvm-特有的属性)
 * [The command-line compiler](compiler-reference.md#jvm-target-version)
 
 ## Kotlin/Native
@@ -243,7 +243,7 @@ Kotlin 1.7.0 includes changes to Objective-C and Swift interoperability and stab
 previous releases. It also brings performance improvements for the new memory manager along with other updates:
 
 * [Performance improvements for the new memory manager](#performance-improvements-for-the-new-memory-manager)
-* [Unified compiler plugin ABI with JVM and JS IR backends](#unified-compiler-plugin-abi-with-jvm-and-js-ir-backends)
+* [与 JVM 及 JS IR 后端统一编译器插件 ABI](#与-jvm-及-js-ir-后端统一编译器插件-abi)
 * [Support for standalone Android executables](#support-for-standalone-android-executables)
 * [Interop with Swift async/await: returning `Void` instead of `KotlinUnit`](#interop-with-swift-async-await-returning-void-instead-of-kotlinunit)
 * [Prohibited undeclared exceptions through Objective-C bridges](#prohibited-undeclared-exceptions-through-objective-c-bridges)
@@ -271,10 +271,10 @@ roughly 30% for debug binaries on our benchmarks.
 Try using the new memory manager in your projects to see how it works, and share your feedback with us
 in [YouTrack](https://youtrack.jetbrains.com/issue/KT-48525).
 
-### Unified compiler plugin ABI with JVM and JS IR backends
+### 与 JVM 及 JS IR 后端统一编译器插件 ABI
 
 Starting with Kotlin 1.7.0, the Kotlin Multiplatform Gradle plugin uses the embeddable compiler jar for Kotlin/Native by
-default. This [feature was announced in 1.6.0](whatsnew16.md#unified-compiler-plugin-abi-with-jvm-and-js-ir-backends) as
+default. This [feature was announced in 1.6.0](whatsnew16.md#与-jvm-及-js-ir-后端统一编译器插件-abi) as
 Experimental, and now it's stable and ready to use.
 
 This improvement is very handy for library authors, as it improves the compiler plugin development experience. Before
@@ -478,7 +478,7 @@ fun main() {
 ### Regular expression matching at specific indices
 
 The `Regex.matchAt()` and `Regex.matchesAt()`
-functions, [introduced in 1.5.30](whatsnew1530.md#matching-with-regex-at-a-particular-position), are now Stable. They
+functions, [introduced in 1.5.30](whatsnew1530.md#在特定位置匹配-regex), are now Stable. They
 provide a way to check whether a regular expression has an exact match at a particular position in a `String`
 or `CharSequence`.
 
@@ -522,7 +522,7 @@ compatibility, see [Compatibility modes](compatibility-modes.md).
 ### Access to annotations via reflection
 
 The `KAnnotatedElement.[findAnnotations()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect.full/find-annotations.html)`
-extension function, which was first [introduced in 1.6.0](whatsnew16.md#repeatable-annotations-with-runtime-retention-for-1-8-jvm-target),
+extension function, which was first [introduced in 1.6.0](whatsnew16.md#1-8-jvm-目标平台中运行时保留的可重复注解),
 is now [Stable](components-stability.md). This [reflection](reflection.md)
 function returns all annotations of a given type on an element, including individually applied and repeated annotations.
 
@@ -993,7 +993,7 @@ We've completed the deprecation cycle for several compiler options:
 
 * The `kotlinOptions.jdkHome` compiler option was deprecated in 1.5.30 and has been removed in the current release.
   Gradle builds now fail if they contain this option. We encourage you to
-  use [Java toolchains](whatsnew1530.md#support-for-java-toolchains), which have been supported since Kotlin 1.5.30.
+  use [Java toolchains](whatsnew1530.md#支持-java-toolchains), which have been supported since Kotlin 1.5.30.
 * The deprecated 'noStdlib' compiler option has also been removed. The Gradle plugin uses
   the `kotlin.stdlib.default.dependency=true` property to control whether the Kotlin standard library is present.
 
@@ -1063,12 +1063,12 @@ The new command-line compiler is available for download on the [GitHub release p
 ### Migrate existing or start a new project with Kotlin 1.7.0
 
 * To migrate existing projects to Kotlin 1.7.0, change the Kotlin version to `1.7.0` and reimport your Gradle or Maven
-project. [Learn how to update to Kotlin 1.7.0](releases.md#update-to-a-new-release).
+project. [Learn how to update to Kotlin 1.7.0](releases.md#更新到新版本).
 
 * To start a new project with Kotlin 1.7.0, update the Kotlin plugin and run the Project Wizard from **File** \| **New** \|
 **Project**.
 
 ### Compatibility guide for Kotlin 1.7.0
 
-Kotlin 1.7.0 is a [feature release](kotlin-evolution.md#feature-releases-and-incremental-releases) and can, therefore, bring changes that are incompatible with your code written for earlier versions of the language.
+Kotlin 1.7.0 is a [feature release](kotlin-evolution.md#特性发布与增量发布) and can, therefore, bring changes that are incompatible with your code written for earlier versions of the language.
 Find the detailed list of such changes in the [Compatibility guide for Kotlin 1.7.0](compatibility-guide-17.md).

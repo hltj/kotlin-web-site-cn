@@ -477,7 +477,7 @@ that holds all the props which can be passed to a `VideoList` component:
        var videos: List<Video>
    }
    ```
-   The [external](js-interop.md#external-modifier) modifier tells the compiler that the interface implementation is provided
+   The [external](js-interop.md#external-修饰符) modifier tells the compiler that the interface implementation is provided
    externally, so it doesn't try to generate JavaScript code from the declaration.
 
 2. Adjust the class definition of `VideoList` to make use of those props, which are passed into the `FC` block as a parameter:
@@ -666,7 +666,7 @@ the state of a parent component, you need the state lifting again.
 
 In React, state always flows from parent to child. So, to change the _application_ state from one of the child components,
 you need to move the logic for handling user interaction to the parent component and then pass the logic in as a prop.
-Remember that in Kotlin, variables can have the [type of a function](lambdas.md#function-types).
+Remember that in Kotlin, variables can have the [type of a function](lambdas.md#函数类型).
 
 1. Expand the `VideoListProps` interface again so that it contains a variable `onSelectVideo`, which is a function taking a
 `Video` and returning `Unit`:
