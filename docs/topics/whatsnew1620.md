@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.6.20 的新特性)
 
-_[Release date: 4 April 2022](releases.md#版本发布详情)_
+_[发布日期：2022-04-04](releases.md#版本发布详情)_
 
 Kotlin 1.6.20 reveals previews of the future language features, makes the hierarchical structure the default for multiplatform projects, and brings evolutionary improvements to other components.
 
@@ -8,14 +8,14 @@ You can also find a short overview of the changes in this video:
 
 <video href="8F19ds109-o" title="What's new in Kotlin 1.6.20"/>
 
-## Language
+## 语言
 
 In Kotlin 1.6.20, you can try two new language features:
 
-* [Prototype of context receivers for Kotlin/JVM](#prototype-of-context-receivers-for-kotlin-jvm)
-* [Definitely non-nullable types](#definitely-non-nullable-types)
+* [Kotlin/JVM 的上下文接收者原型](#kotlin-jvm-的上下文接收者原型)
+* [绝对不可空类型](#绝对不可空类型)
 
-### Prototype of context receivers for Kotlin/JVM
+### Kotlin/JVM 的上下文接收者原型
 
 > The feature is a prototype available only for Kotlin/JVM. With `-Xcontext-receivers` enabled,
 > the compiler will produce pre-release binaries that cannot be used in production code.
@@ -60,7 +60,7 @@ Please note that the implementation is a prototype:
 Try the feature in your toy projects and share your thoughts and experience with us in [this YouTrack issue](https://youtrack.jetbrains.com/issue/KT-42435).
 If you run into any problems, please [file a new issue](https://kotl.in/issue).
 
-### Definitely non-nullable types
+### 绝对不可空类型
 
 > Definitely non-nullable types are in [Beta](components-stability.md). They are almost stable,
 > but migration steps may be required in the future.
@@ -125,11 +125,11 @@ Learn more about definitely non-nullable types in [the KEEP](https://github.com/
 
 Kotlin 1.6.20 introduces:
 
-* Compatibility improvements of default methods in JVM interfaces: [new `@JvmDefaultWithCompatibility` annotation for interfaces](#new-jvmdefaultwithcompatibility-annotation-for-interfaces) and [compatibility changes in the `-Xjvm-default` modes](#compatibility-changes-in-the-xjvm-default-modes)
-* [Support for parallel compilation of a single module in the JVM backend](#support-for-parallel-compilation-of-a-single-module-in-the-jvm-backend)
-* [Support for callable references to functional interface constructors](#support-for-callable-references-to-functional-interface-constructors)
+* Compatibility improvements of default methods in JVM interfaces: [接口的新 `@JvmDefaultWithCompatibility` 注解](#接口的新-jvmdefaultwithcompatibility-注解) and [`-Xjvm-default` 模式的兼容性变更](#xjvm-default-模式的兼容性变更)
+* [支持 JVM 后端中单个模块的并行编译](#支持-jvm-后端中单个模块的并行编译)
+* [支持函数式接口构造函数的可调用引用](#支持函数式接口构造函数的可调用引用)
 
-### New @JvmDefaultWithCompatibility annotation for interfaces
+### 接口的新 @JvmDefaultWithCompatibility 注解
 
 Kotlin 1.6.20 introduces the new annotation [`@JvmDefaultWithCompatibility`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default-with-compatibility/): use it along with the `-Xjvm-default=all` compiler option [to create the default method in JVM interface](java-to-kotlin-interop.md#接口中的默认方法) for any non-abstract member in any Kotlin interface.
 
@@ -146,7 +146,7 @@ This allows you to add this annotation to all interfaces in the public API once,
 
 Leave your feedback about this new annotation in [this YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-48217).
 
-### Compatibility changes in the -Xjvm-default modes
+### -Xjvm-default 模式的兼容性变更
 
 Kotlin 1.6.20 adds the option to compile modules in the default mode (the `-Xjvm-default=disable` compiler option) against modules compiled with the `-Xjvm-default=all` or `-Xjvm-default=all-compatibility` modes.
 As before, compilations will also be successful if all modules have the `-Xjvm-default=all` or `-Xjvm-default=all-compatibility` modes.
@@ -159,7 +159,7 @@ You can check out the [updated descriptions](java-to-kotlin-interop.md#compatibi
 For more information about default methods in the Java interop, see the [interoperability documentation](java-to-kotlin-interop.md#接口中的默认方法) and
 [this blog post](https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-m3-generating-default-methods-in-interfaces/).
 
-### Support for parallel compilation of a single module in the JVM backend
+### 支持 JVM 后端中单个模块的并行编译
 
 > Support for parallel compilation of a single module in the JVM backend is [Experimental](components-stability.md).
 > It may be dropped or changed at any time. Opt-in is required (see details below), and you should use it only for evaluation purposes.
@@ -188,7 +188,7 @@ If your project consists of lots of small modules and has a build parallelized b
 {type="note"}
 
 
-### Support for callable references to functional interface constructors
+### 支持函数式接口构造函数的可调用引用
 
 > Support for callable references to functional interface constructors is [Experimental](components-stability.md).
 > It may be dropped or changed at any time. Opt-in is required (see details below), and you should use it only for evaluation purposes.
@@ -237,17 +237,17 @@ Use the compiler option `-XXLanguage:+KotlinFunInterfaceConstructorReference` to
 
 Kotlin/Native 1.6.20 marks continued development of its new components. We've taken another step toward consistent experience with Kotlin on other platforms:
 
-* [An update on the new memory manager](#an-update-on-the-new-memory-manager)
-* [Concurrent implementation for the sweep phase in new memory manager](#concurrent-implementation-for-the-sweep-phase-in-new-memory-manager)
-* [Instantiation of annotation classes](#instantiation-of-annotation-classes)
-* [Interop with Swift async/await: returning Swift's Void instead of KotlinUnit](#interop-with-swift-async-await-returning-void-instead-of-kotlinunit)
-* [Better stack traces with libbacktrace](#better-stack-traces-with-libbacktrace)
-* [Support for standalone Android executables](#support-for-standalone-android-executables)
-* [Performance improvements](#performance-improvements)
-* [Improved error handling during cinterop modules import](#improved-error-handling-during-cinterop-modules-import)
-* [Support for Xcode 13 libraries](#support-for-xcode-13-libraries)
+* [新版内存管理器的更新](#新版内存管理器的更新)
+* [新版内存管理器中清除阶段的并发实现](#新版内存管理器中清除阶段的并发实现)
+* [注解类的实例化](#注解类的实例化)
+* [与 Swift async/await 互操作：返回 Void 而不是 KotlinUnit](#与-swift-async-await-互操作返回-void-而不是-kotlinunit)
+* [使用 libbacktrace 实现更佳的堆栈跟踪](#使用-libbacktrace-实现更佳的堆栈跟踪)
+* [支持独立的 Android 可执行文件](#支持独立的-android-可执行文件)
+* [性能提升](#性能提升)
+* [改进了 cinterop 模块导入过程中的错误处理](#改进了-cinterop-模块导入过程中的错误处理)
+* [对 Xcode 13 库的支持](#对-xcode-13-库的支持)
 
-### An update on the new memory manager 
+### 新版内存管理器的更新 
 
 > The new Kotlin/Native memory manager is in [Alpha](components-stability.md). 
 > It may change incompatibly and require manual migration in the future.
@@ -267,7 +267,7 @@ Check out our [blog post](https://blog.jetbrains.com/kotlin/2021/08/try-the-new-
 
 Try using the new memory manager on your projects to see how it works and share feedback in our issue tracker, [YouTrack](https://youtrack.jetbrains.com/issue/KT-48525).
 
-### Concurrent implementation for the sweep phase in new memory manager
+### 新版内存管理器中清除阶段的并发实现
 
 If you have already switched to our new memory manager, which was [announced in Kotlin 1.6](whatsnew16.md#新版内存管理器预览), you might notice a huge execution time improvement: our benchmarks show 35% improvement on average.
 Starting with 1.6.20, there is also a concurrent implementation for the sweep phase available for the new memory manager.
@@ -281,14 +281,14 @@ To enable the feature for the new Kotlin/Native memory manager, pass the followi
 
 Feel free to share your feedback on the new memory manager performance in this [YouTrack issue](https://youtrack.jetbrains.com/issue/KT-48526).
 
-### Instantiation of annotation classes
+### 注解类的实例化
 
 In Kotlin 1.6.0, instantiation of annotation classes became [Stable](components-stability.md) for Kotlin/JVM and Kotlin/JS.
 The 1.6.20 version delivers support for Kotlin/Native.
 
-Learn more about [instantiation of annotation classes](annotations.md#instantiation).
+Learn more about [注解类的实例化](annotations.md#instantiation).
 
-### Interop with Swift async/await: returning Void instead of KotlinUnit
+### 与 Swift async/await 互操作：返回 Void 而不是 KotlinUnit
 
 > Concurrency interoperability with Swift async/await is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > You should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-47610).
@@ -309,7 +309,7 @@ kotlin.native.binary.unitSuspendFunctionObjCExport=proper
 
 We plan to make this behavior the default in future Kotlin releases.
 
-### Better stack traces with libbacktrace
+### 使用 libbacktrace 实现更佳的堆栈跟踪
 
 > Using libbacktrace for resolving source locations is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > You should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-48424).
@@ -400,7 +400,7 @@ kotlin.native.binary.sourceInfoType=libbacktrace
 
 Please tell us how debugging Kotlin/Native with libbacktrace works for you in [this YouTrack issue](https://youtrack.jetbrains.com/issue/KT-48424).
 
-### Support for standalone Android executables
+### 支持独立的 Android 可执行文件
 
 Previously, Android Native executables in Kotlin/Native were not actually executables but shared libraries that you could use as a NativeActivity. Now there's an option to generate standard executables for Android Native targets.
 
@@ -428,7 +428,7 @@ binaryOptions["androidProgramType"] = "nativeActivity"
 
 Thanks to Mattia Iavarone for the [implementation](https://github.com/jetbrains/kotlin/pull/4624)!
 
-### Performance improvements
+### 性能提升
 
 We are working hard on Kotlin/Native to [speed up the compilation process](https://youtrack.jetbrains.com/issue/KT-42294) and improve your developing experience.
 
@@ -443,25 +443,25 @@ These changes also provide a 10% reduction in compilation time for a debug binar
 
 To achieve this, we've implemented static initialization for some of the compiler-generated synthetic objects, improved the way we structure LLVM IR for every function, and optimized the compiler caches.
 
-### Improved error handling during cinterop modules import
+### 改进了 cinterop 模块导入过程中的错误处理
 
 This release introduces improved error handling for cases where you import an Objective-C module using the `cinterop` tool (as is typical for CocoaPods pods).
 Previously, if you got an error while trying to work with an Objective-C module (for instance, when dealing with a compilation error in a header), you received an uninformative error message, such as `fatal error: could not build module $name`.
 We expanded upon this part of the `cinterop` tool, so you'll get an error message with an extended description.
 
-### Support for Xcode 13 libraries
+### 对 Xcode 13 库的支持
 
 Libraries delivered with Xcode 13 have full support as of this release.
 Feel free to access them from anywhere in your Kotlin code.
 
-## Kotlin Multiplatform
+## Kotlin 多平台
 
 1.6.20 brings the following notable updates to Kotlin Multiplatform:
 
-* [Hierarchical structure support is now default for all new multiplatform projects](#hierarchical-structure-support-for-multiplatform-projects)
-* [Kotlin CocoaPods Gradle plugin received several useful features for CocoaPods integration](#kotlin-cocoapods-gradle-plugin)
+* [所有新建多平台项目现在默认都支持分层结构](#多平台项目的分层结构支持)
+* [Kotlin CocoaPods Gradle 插件为 CocoaPods 集成提供了几个有用的特性](#kotlin-cocoapods-gradle-插件)
 
-### Hierarchical structure support for multiplatform projects
+### 多平台项目的分层结构支持
 
 Kotlin 1.6.20 comes with hierarchical structure support enabled by default.
 Since [introducing it in Kotlin 1.4.0](whatsnew14.md#使用分层项目结构在多个目标中共享代码), we've significantly improved the frontend and made IDE import stable.
@@ -469,17 +469,17 @@ Since [introducing it in Kotlin 1.4.0](whatsnew14.md#使用分层项目结构在
 Previously, there were two ways to add code in a multiplatform project. The first was to insert it in a platform-specific source set, which is limited to one target and can't be reused by other platforms.
 The second is to use a common source set shared across all the platforms that are currently supported by Kotlin.
 
-Now you can [share source code](#better-code-sharing-in-your-project) among several similar native targets that reuse a lot of the common logic and third-party APIs.
+Now you can [share source code](#在项目中更好地共享代码) among several similar native targets that reuse a lot of the common logic and third-party APIs.
 The technology will provide the correct default dependencies and find the exact API available in the shared code.
 This eliminates a complex build setup and having to use workarounds to get IDE support for sharing source sets among native targets.
 It also helps prevent unsafe API usages meant for a different target.
 
-The technology will come in handy for [library authors](#more-opportunities-for-library-authors), too, as a hierarchical project structure allows them to publish and consume libraries with common APIs for a subset of targets.
+The technology will come in handy for [library authors](#库作者的更多机会), too, as a hierarchical project structure allows them to publish and consume libraries with common APIs for a subset of targets.
 
 By default, libraries published with the hierarchical project structure are compatible only with hierarchical structure projects.
 Learn more about [project-library compatibility](multiplatform-hierarchy.md#compatibility).
 
-#### Better code-sharing in your project
+#### 在项目中更好地共享代码
 
 Without hierarchical structure support, there is no straightforward way to share code across _some_ but not _all_ [Kotlin targets](multiplatform-dsl-reference.md#目标).
 One popular example is sharing code across all iOS targets and having access to iOS-specific [dependencies](multiplatform-share-on-platforms.md#在层次结构中使用原生库), like `Foundation`.
@@ -497,13 +497,13 @@ The Kotlin toolchain provides the correct default dependencies, like Kotlin/Nati
 Moreover, Kotlin tooling will try its best to find exactly the API surface area available in the shared code.
 This prevents such cases as, for example, the use of a macOS-specific function in code shared for Windows.
 
-#### More opportunities for library authors
+#### 库作者的更多机会
 
 When a multiplatform library is published, the API of its intermediate source sets is now properly published alongside it, making it available for consumers.
 Again, the Kotlin toolchain will automatically figure out the API available in the consumer source set while carefully watching out for unsafe usages, like using an API meant for the JVM in JS code.
 Learn more about [sharing code in libraries](multiplatform-share-on-platforms.md#在库中共享代码).
 
-#### Configuration and setup
+#### 配置与设置
 
 Starting with Kotlin 1.6.20, all your new multiplatform projects will have a hierarchical project structure. No additional setup is required.
 
@@ -524,13 +524,13 @@ Starting with Kotlin 1.6.20, all your new multiplatform projects will have a hie
   kotlin.mpp.hierarchicalStructureSupport=false
   ```
 
-#### Leave your feedback
+#### 敬请反馈
 
 This is a significant change to the whole ecosystem. We would appreciate your feedback to help make it even better.
 
 Try it now and report any difficulties you encounter to [our issue tracker](https://kotl.in/issue).
 
-### Kotlin CocoaPods Gradle plugin
+### Kotlin CocoaPods Gradle 插件
 
 To simplify CocoaPods integration, Kotlin 1.6.20 delivers the following features:
 
@@ -566,14 +566,14 @@ See the full Kotlin CocoaPods Gradle plugin [DSL reference](native-cocoapods-dsl
 
 Kotlin/JS improvements in 1.6.20 mainly affect the IR compiler:
 
-* [Incremental compilation for development binaries (IR)](#incremental-compilation-for-development-binaries-with-ir-compiler)
-* [Lazy initialization of top-level properties by default (IR)](#lazy-initialization-of-top-level-properties-by-default-with-ir-compiler)
-* [Separate JS files for project modules by default (IR)](#separate-js-files-for-project-modules-by-default-with-ir-compiler)
-* [Char class optimization (IR)](#char-class-optimization)
-* [Export improvements (both IR and legacy backends)](#improvements-to-export-and-typescript-declaration-generation)
-* [@AfterTest guarantees for asynchronous tests](#aftertest-guarantees-for-asynchronous-tests)
+* [开发版二进制文件的增量编译（IR）](#使用-ir-编译器对开发版二进制文件进行增量编译)
+* [时顶层属性默认惰性初始化（IR）](#使用-ir-编译器时顶层属性默认惰性初始化)
+* [模块默认采用分开的 JS 文件（IR）](#使用-ir-编译器时模块默认采用分开的-js-文件)
+* [Char 类优化（IR）](#char-类优化)
+* [导出改进（IR 与旧版后端）](#导出与-typescript-声明生成的改进)
+* [异步测试的 @AfterTest 保证](#异步测试的-aftertest-保证)
 
-### Incremental compilation for development binaries with IR compiler
+### 使用 IR 编译器对开发版二进制文件进行增量编译
 
 To make Kotlin/JS development with the IR compiler more efficient, we're introducing a new _incremental compilation_ mode.
 
@@ -592,7 +592,7 @@ In our test projects, the new mode made incremental compilation up to 30% faster
 
 Please tell us what you think of using incremental compilation with your Kotlin/JS projects in [this YouTrack issue](https://youtrack.jetbrains.com/issue/KT-50203).
 
-### Lazy initialization of top-level properties by default with IR compiler
+### 使用 IR 编译器时顶层属性默认惰性初始化
 
 In Kotlin 1.4.30, we presented a prototype of [lazy initialization of top-level properties](whatsnew1430.md#顶层属性的延迟初始化) in the JS IR compiler.
 By eliminating the need to initialize all properties when the application launches, lazy initialization reduces the startup time.
@@ -611,7 +611,7 @@ val a = run {
 
 If for some reason you need to initialize a property eagerly (upon the application start), mark it with the [`@EagerInitialization`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.native/-eager-initialization/) annotation.
 
-### Separate JS files for project modules by default with IR compiler
+### 使用 IR 编译器时模块默认采用分开的 JS 文件
 
 Previously, the JS IR compiler offered an [ability to generate separate `.js` files]( https://youtrack.jetbrains.com/issue/KT-44319) for project modules.
 This was an alternative to the default option – a single `.js` file for the whole project.
@@ -627,16 +627,16 @@ Compiling the project into a single `.js` file is now available with the followi
 kotlin.js.ir.output.granularity=whole-program // `per-module` is the default
 ```
 
-In previous releases, the experimental per-module mode (available via the `-Xir-per-module=true` flag) invoked `main()` functions in each module. This is inconsistent with the regular 'single .js' mode. Starting with 1.6.20,  the `main()` function will be invoked in the main module only in both cases. If you do need to run some code when a module is loaded, you can use top-local properties annotated with the `@EagerInitialization` annotation. See [Lazy initialization of top-level properties by default (IR)](#lazy-initialization-of-top-level-properties-by-default-with-ir-compiler).
+In previous releases, the experimental per-module mode (available via the `-Xir-per-module=true` flag) invoked `main()` functions in each module. This is inconsistent with the regular 'single .js' mode. Starting with 1.6.20,  the `main()` function will be invoked in the main module only in both cases. If you do need to run some code when a module is loaded, you can use top-local properties annotated with the `@EagerInitialization` annotation. See [Lazy initialization of top-level properties by default (IR)](#使用-ir-编译器时顶层属性默认惰性初始化).
 
-### Char class optimization
+### Char 类优化
 
 The `Char` class is now handled by the Kotlin/JS compiler without introducing boxing (similar to [inline classes](inline-classes.md)).
 This speeds up operations on chars in Kotlin/JS code.
 
 Aside from the performance improvement, this changes the way `Char` is exported to JavaScript: it's now translated to `Number`.
 
-### Improvements to export and TypeScript declaration generation
+### 导出与 TypeScript 声明生成的改进
 
 Kotlin 1.6.20 is bringing multiple fixes and improvements to the export mechanism (the [`@JsExport`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-export/) annotation), including the [generation of TypeScript declarations (`.d.ts`)](js-ir-compiler.md#预览-typescript-声明文件d-ts的生成).
 We've added the ability to export interfaces and enums, and we've fixed the export behavior in some corner cases that were reported to us previously.
@@ -644,20 +644,20 @@ For more details, see the [list of export improvements in YouTrack](https://yout
 
 Learn more about [using Kotlin code from JavaScript](js-to-kotlin-interop.md).
 
-### @AfterTest guarantees for asynchronous tests
+### 异步测试的 @AfterTest 保证
 
 Kotlin 1.6.20 makes [`@AfterTest`](https://kotlinlang.org/api/latest/kotlin.test/kotlin.test/-after-test/) functions work properly with asynchronous tests on Kotlin/JS.
 If a test function's return type is statically resolved to [`Promise`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-promise/), the compiler now schedules the execution of the `@AfterTest` function to the corresponding [`then()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-promise/then.html) callback.
 
-## Security
+## 安全
 
 Kotlin 1.6.20 introduces a couple of features to improve the security of your code:
 
-* [Using relative paths in klibs](#using-relative-paths-in-klibs)
-* [Persisting yarn.lock for Kotlin/JS Gradle projects](#persisting-yarn-lock-for-kotlin-js-gradle-projects)
-* [Installation of npm dependencies with `--ignore-scripts` by default](#installation-of-npm-dependencies-with-ignore-scripts-by-default)
+* [在 klibs 中使用相对路径](#在-klibs-中使用相对路径)
+* [Kotlin/JS Gradle 项目持久化 yarn.lock](#kotlin-js-gradle-项目持久化-yarn-lock)
+* [默认使用 `--ignore-scripts` 安装 npm 依赖](#默认使用-ignore-scripts-安装-npm-依赖)
 
-### Using relative paths in klibs
+### 在 klibs 中使用相对路径
 
 A library in `klib` format [contains](native-libraries.md#库格式) a serialized IR representation of source files, which also includes their paths for generating proper debug information.
 Before Kotlin 1.6.20, stored file paths were absolute. Since the library author may not want to share absolute paths, the 1.6.20 version comes with an alternative option.
@@ -689,7 +689,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
 </tab>
 </tabs>
 
-### Persisting yarn.lock for Kotlin/JS Gradle projects
+### Kotlin/JS Gradle 项目持久化 yarn.lock
 
 > The feature was backported to Kotlin 1.6.10.
 >
@@ -736,7 +736,7 @@ rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlu
 > 
 {type="warning"}
 
-### Installation of npm dependencies with --ignore-scripts by default
+### 默认使用 --ignore-scripts 安装 npm 依赖
 
 > The feature was backported to Kotlin 1.6.10.
 >
@@ -774,11 +774,11 @@ Learn more about [npm dependencies of a Kotlin/JS Gradle project](js-project-set
 
 Kotlin 1.6.20 brings the following changes for the Kotlin Gradle Plugin:
 
-* New [properties `kotlin.compiler.execution.strategy` and `compilerExecutionStrategy`](#properties-for-defining-kotlin-compiler-execution-strategy) for defining a Kotlin compiler execution strategy
-* [Deprecation of the options `kapt.use.worker.api`, `kotlin.experimental.coroutines`, and `kotlin.coroutines`](#deprecation-of-build-options-for-kapt-and-coroutines)
-* [Removal of the `kotlin.parallel.tasks.in.project` build option](#removal-of-the-kotlin-parallel-tasks-in-project-build-option)
+* 用于定义 Kotlin 编译器执行策略的新[属性 `kotlin.compiler.execution.strategy` 与 `compilerExecutionStrategy`](#用于定义-kotlin-编译器执行策略的属性)
+* [弃用选项 `kapt.use.worker.api`、 `kotlin.experimental.coroutines` 与 `kotlin.coroutines`](#弃用一些-kapt-与协程的构建选项)
+* [删除 `kotlin.parallel.tasks.in.project` 构建选项](#删除-kotlin-parallel-tasks-in-project-构建选项)
 
-### Properties for defining Kotlin compiler execution strategy
+### 用于定义 Kotlin 编译器执行策略的属性
 
 Before Kotlin 1.6.20, you used the system property `-Dkotlin.compiler.execution.strategy` to define a Kotlin compiler execution strategy.
 This property might have been inconvenient in some cases.
@@ -833,7 +833,7 @@ tasks.withType<KotlinCompile>().configureEach {
 
 Please leave your feedback in [this YouTrack task](https://youtrack.jetbrains.com/issue/KT-49299).
 
-### Deprecation of build options for kapt and coroutines
+### 弃用一些 kapt 与协程的构建选项
 
 In Kotlin 1.6.20, we changed deprecation levels of the properties:
 
@@ -847,7 +847,7 @@ In Kotlin 1.6.20, we changed deprecation levels of the properties:
   
   Learn more about coroutines in the [Coroutines guide](coroutines-guide.md).
 
-### Removal of the kotlin.parallel.tasks.in.project build option
+### 删除 kotlin.parallel.tasks.in.project 构建选项
 
 In Kotlin 1.5.20, we announced [the deprecation of the build option `kotlin.parallel.tasks.in.project`](whatsnew1520.md#弃用-kotlin-parallel-tasks-in-project-构建属性).
 This option has been removed in Kotlin 1.6.20.

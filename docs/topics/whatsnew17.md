@@ -1,28 +1,28 @@
 [//]: # (title: Kotlin 1.7.0 的新特性)
 
-_[Release date: 9 June 2022](releases.md#版本发布详情)_
+_[发布日期：2022-07-09](releases.md#版本发布详情)_
 
 Kotlin 1.7.0 has been released. It unveils the Alpha version of the new Kotlin/JVM K2 compiler, stabilizes language
 features, and brings performance improvements for the JVM, JS, and Native platforms.
 
 Here is a list of the major updates in this version:
 
-* [The new Kotlin K2 compiler is in Alpha now](#new-kotlin-k2-compiler-for-the-jvm-in-alpha), and it offers serious
+* [The new Kotlin K2 compiler is in Alpha now](#用于-jvm-的新版-kotlin-k2-编译器进入-alpha-阶段), and it offers serious
   performance improvements. It is available only for the JVM, and none of the compiler plugins, including kapt, work with it.
-* [A new approach to the incremental compilation in Gradle](#a-new-approach-to-incremental-compilation). Incremental
+* [A new approach to the incremental compilation in Gradle](#增量编译的新方式). Incremental
   compilation is now also supported for changes made inside dependent non-Kotlin modules and is compatible with Gradle.
-* We've stabilized [opt-in requirement annotations](#stable-opt-in-requirements), [definitely non-nullable types](#stable-definitely-non-nullable-types),
-  and [builder inference](#stable-builder-inference).
-* [There's now an underscore operator for type args](#underscore-operator-for-type-arguments). You can use it to
+* We've stabilized [opt-in requirement annotations](#稳定版选择加入要求), [definitely non-nullable types](#稳定版绝对不可空类型),
+  and [builder inference](#稳定版构建器推断).
+* [There's now an underscore operator for type args](#下划线操作符用于类型参数). You can use it to
   automatically infer a type of argument when other types are specified.
-* [This release allows implementation by delegation to an inlined value of an inline class](#allow-implementation-by-delegation-to-an-inlined-value-of-an-inline-class). You can now create
+* [This release allows implementation by delegation to an inlined value of an inline class](#内联类的内联值可以通过委托来实现). You can now create
   lightweight wrappers that do not allocate memory in most cases.
 
 You can also find a short overview of the changes in this video:
 
 <video href="54WEfLKtCGk" title="What's new in Kotlin 1.7.0"/>
 
-## New Kotlin K2 compiler for the JVM in Alpha
+## 用于 JVM 的新版 Kotlin K2 编译器进入 Alpha 阶段
 
 This Kotlin release introduces the **Alpha** version of the new Kotlin K2 compiler. The new compiler aims to speed up
 the development of new language features, unify all of the platforms Kotlin supports, bring performance improvements, and
@@ -65,18 +65,18 @@ The next Kotlin releases will improve the stability of the K2 compiler and provi
 
 If you face any performance issues with the Kotlin K2 compiler, please [report them to our issue tracker](https://youtrack.jetbrains.com/newIssue?project=KT&c=Type%20Performance%20Problem&c=Subsystems%20Frontend.%20IR).
 
-## Language
+## 语言
 
 Kotlin 1.7.0 introduces support for implementation by delegation and a new underscore operator for type arguments. It
 also stabilizes several language features introduced as previews in previous releases:
 
-* [Implementation by delegation to inlined value of inline class](#allow-implementation-by-delegation-to-an-inlined-value-of-an-inline-class)
-* [Underscore operator for type arguments](#underscore-operator-for-type-arguments)
-* [Stable builder inference](#stable-builder-inference)
-* [Stable opt-in requirements](#stable-opt-in-requirements)
-* [Stable definitely non-nullable types](#stable-definitely-non-nullable-types)
+* [用委托实现内联类的内联值](#内联类的内联值可以通过委托来实现)
+* [下划线操作符用于类型参数](#下划线操作符用于类型参数)
+* [稳定版构建器推断](#稳定版构建器推断)
+* [稳定版选择加入要求](#稳定版选择加入要求)
+* [稳定版绝对不可空类型](#稳定版绝对不可空类型)
 
-### Allow implementation by delegation to an inlined value of an inline class
+### 内联类的内联值可以通过委托来实现
 
 If you want to create a lightweight wrapper for a value or class instance, it's necessary to implement all interface
 methods by hand. Implementation by delegation solves this issue, but it did not work with inline classes before 1.7.0.
@@ -96,7 +96,7 @@ fun main() {
 }
 ```
 
-### Underscore operator for type arguments
+### 下划线操作符用于类型参数
 
 Kotlin 1.7.0 introduces an underscore operator, `_`, for type arguments. You can use it to automatically infer a type
 argument when other types are specified:
@@ -135,7 +135,7 @@ fun main() {
 >
 {type="note"}
 
-### Stable builder inference
+### 稳定版构建器推断
 
 Builder inference is a special kind of type inference that is useful when calling generic builder functions. It helps
 the compiler infer the type arguments of a call using the type information about other calls inside its lambda argument.
@@ -146,7 +146,7 @@ was [introduced in 1.6.0](whatsnew16.md#构建器类型推断变更).
 
 [Learn how to write custom generic builders](using-builders-with-builder-inference.md).
 
-### Stable opt-in requirements
+### 稳定版选择加入要求
 
 [Opt-in requirements](opt-in-requirements.md) are now [Stable](components-stability.md) and do not require
 additional compiler configuration.
@@ -155,7 +155,7 @@ Before 1.7.0, the opt-in feature itself required the argument `-opt-in=kotlin.Re
 longer requires this; however, you can still use the compiler argument `-opt-in` to opt-in for other
 annotations, [module-wise](opt-in-requirements.md#模块级选择加入).
 
-### Stable definitely non-nullable types
+### 稳定版绝对不可空类型
 
 In Kotlin 1.7.0, definitely non-nullable types have been promoted to [Stable](components-stability.md). They provide
 better interoperability when extending generic Java classes and interfaces.
@@ -190,12 +190,12 @@ This release brings performance improvements for the Kotlin/JVM compiler and a n
 callable references to functional interface constructors have become Stable. Note that since 1.7.0, the default target
 version for Kotlin/JVM compilations is now `1.8`.
 
-* [Compiler performance optimizations](#compiler-performance-optimizations)
-* [New compiler option `-Xjdk-release`](#new-compiler-option-xjdk-release)
-* [Stable callable references to functional interface constructors](#stable-callable-references-to-functional-interface-constructors)
-* [Removed the JVM target version 1.6](#removed-jvm-target-version-1-6)
+* [编译器性能优化](#编译器性能优化)
+* [新增编译器选项 `-Xjdk-release`](#新增编译器选项-xjdk-release)
+* [稳定版函数式接口构造函数的可调用引用](#稳定版函数式接口构造函数的可调用引用)
+* [删除了 JVM 目标平台版本 1.6](#删除了-jvm-目标平台版本-1-6)
 
-### Compiler performance optimizations
+### 编译器性能优化
 
 Kotlin 1.7.0 introduces performance improvements for the Kotlin/JVM compiler. According to our benchmarks, compilation
 time has been [reduced by 10% on average](https://youtrack.jetbrains.com/issue/KT-48233/Switching-to-JVM-IR-backend-increases-compilation-time-by-more-t#focus=Comments-27-6114542.0-0)
@@ -203,7 +203,7 @@ compared to Kotlin 1.6.0. Projects with lots of usages of inline functions, for
 example, [projects using `kotlinx.html`](https://youtrack.jetbrains.com/issue/KT-51416/Compilation-of-kotlinx-html-DSL-should-still-be-faster),
 will compile faster thanks to the improvements to the bytecode postprocessing.
 
-### New compiler option: -Xjdk-release
+### 新增编译器选项：-Xjdk-release
 
 Kotlin 1.7.0 presents a new compiler option, `-Xjdk-release`. This option is similar to
 the [javac's command-line `--release` option](http://openjdk.java.net/jeps/247). The `-Xjdk-release` option controls the
@@ -218,7 +218,7 @@ version 9 or higher.
 Please leave your feedback
 on [this YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-29974/Add-a-compiler-option-Xjdk-release-similar-to-javac-s-release-to).
 
-### Stable callable references to functional interface constructors
+### 稳定版函数式接口构造函数的可调用引用
 
 [Callable references](reflection.md#可调用引用) to functional interface constructors are
 now [Stable](components-stability.md). Learn how
@@ -227,7 +227,7 @@ from an interface with a constructor function to a functional interface using ca
 
 Please report any issues you find in [YouTrack](https://youtrack.jetbrains.com/newissue?project=kt).
 
-### Removed JVM target version 1.6
+### 删除了 JVM 目标平台版本 1.6
 
 The default target version for Kotlin/JVM compilations is `1.8`. The `1.6` target has been removed.
 
@@ -242,15 +242,15 @@ Please migrate to JVM target 1.8 or above. Learn how to update the JVM target ve
 Kotlin 1.7.0 includes changes to Objective-C and Swift interoperability and stabilizes features that were introduced in
 previous releases. It also brings performance improvements for the new memory manager along with other updates:
 
-* [Performance improvements for the new memory manager](#performance-improvements-for-the-new-memory-manager)
+* [新版内存管理器的性能改进](#新版内存管理器的性能改进)
 * [与 JVM 及 JS IR 后端统一编译器插件 ABI](#与-jvm-及-js-ir-后端统一编译器插件-abi)
-* [Support for standalone Android executables](#support-for-standalone-android-executables)
-* [Interop with Swift async/await: returning `Void` instead of `KotlinUnit`](#interop-with-swift-async-await-returning-void-instead-of-kotlinunit)
-* [Prohibited undeclared exceptions through Objective-C bridges](#prohibited-undeclared-exceptions-through-objective-c-bridges)
-* [Improved CocoaPods integration](#improved-cocoapods-integration)
-* [Overriding of the Kotlin/Native compiler download URL](#overriding-the-kotlin-native-compiler-download-url)
+* [支持独立的 Android 可执行文件](#支持独立的-android-可执行文件)
+* [与 Swift async/await 互操作：返回 `Void` 而不是 `KotlinUnit`](#与-swift-async-await-互操作返回-void-而不是-kotlinunit)
+* [通过 Objective-C 桥接禁止未声明的异常](#通过-objective-c-桥接禁止未声明的异常)
+* [改进了 CocoaPods 集成](#改进了-cocoapods-集成)
+* [覆盖了 Kotlin/Native 编译器下载 URL](#覆盖了-kotlin-native-编译器下载-url)
 
-### Performance improvements for the new memory manager
+### 新版内存管理器的性能改进
 
 > The new Kotlin/Native memory manager is in [Alpha](components-stability.md).
 > It may change incompatibly and require manual migration in the future.
@@ -288,10 +288,10 @@ artifacts for Native and other supported platforms.
 >
 {type="warning"}
 
-### Support for standalone Android executables
+### 支持独立的 Android 可执行文件
 
 Kotlin 1.7.0 provides full support for generating standard executables for Android Native targets.
-It was [introduced in 1.6.20](whatsnew1620.md#support-for-standalone-android-executables), and now it's enabled
+It was [introduced in 1.6.20](whatsnew1620.md#支持独立的-android-可执行文件), and now it's enabled
 by default.
 
 If you want to roll back to the previous behavior when Kotlin/Native generated shared libraries, use the following
@@ -301,17 +301,17 @@ setting:
 binaryOptions["androidProgramType"] = "nativeActivity"
 ```
 
-### Interop with Swift async/await: returning Void instead of KotlinUnit
+### 与 Swift async/await 互操作：返回 Void 而不是 KotlinUnit
 
 Kotlin `suspend` functions now return the `Void` type instead of `KotlinUnit` in Swift. This is the result of the
 improved interop with Swift's `async`/`await`. This feature
-was [introduced in 1.6.20](whatsnew1620.md#interop-with-swift-async-await-returning-void-instead-of-kotlinunit),
+was [introduced in 1.6.20](whatsnew1620.md#与-swift-async-await-互操作返回-void-而不是-kotlinunit),
 and this release enables this behavior by default.
 
 You don't need to use the `kotlin.native.binary.unitSuspendFunctionObjCExport=proper` property anymore to return the
 proper type for such functions.
 
-### Prohibited undeclared exceptions through Objective-C bridges
+### 通过 Objective-C 桥接禁止未声明的异常
 
 When you call Kotlin code from Swift/Objective-C code (or vice versa) and this code throws an exception, it should be
 handled by the code where the exception occurred, unless you specifically allowed the forwarding of exceptions between
@@ -326,7 +326,7 @@ the Swift code.
 
 The `@Throws` annotation continues to work as before.
 
-### Improved CocoaPods integration
+### 改进了 CocoaPods 集成
 
 Starting with Kotlin 1.7.0, you no longer need to install the `cocoapods-generate` plugin if you want to integrate
 CocoaPods in your projects.
@@ -341,7 +341,7 @@ installed on Ruby 3 and later. Now the newest Ruby versions that work better on 
 See how to set up
 the [initial CocoaPods integration](native-cocoapods.md#set-up-the-environment-to-work-with-cocoapods).
 
-### Overriding the Kotlin/Native compiler download URL
+### 覆盖了 Kotlin/Native 编译器下载 URL
 
 Starting with Kotlin 1.7.0, you can customize the download URL for the Kotlin/Native compiler. This is useful when
 external links on the CI are forbidden.
@@ -363,13 +363,13 @@ kotlin.native.distribution.baseDownloadUrl=https://example.com
 Kotlin/JS is receiving further improvements to the [JS IR compiler backend](js-ir-compiler.md) along with other updates
 that can make your development experience better:
 
-* [Performance improvements for the new IR backend](#performance-improvements-for-the-new-ir-backend)
-* [Minification for member names when using IR](#minification-for-member-names-when-using-ir)
-* [Support for older browsers via polyfills in the IR backend](#support-for-older-browsers-via-polyfills-in-the-ir-backend)
-* [Dynamically load JavaScript modules from js expressions](#dynamically-load-javascript-modules-from-js-expressions)
-* [Specify environment variables for JavaScript test runners](#specify-environment-variables-for-javascript-test-runners)
+* [新版 IR 后端的性能改进](#新版-ir-后端的性能改进)
+* [使用 IR 时的成员名缩短](#使用-ir-时的成员名缩短)
+* [通过 IR 后端的 polyfill 支持旧版浏览器](#通过-ir-后端的-polyfill-支持旧版浏览器)
+* [从 js 表达式动态加载 JavaScript 模块](#从-js-表达式动态加载-javascript-模块)
+* [为 JavaScript 测试运行器指定环境变量](#为-javascript-测试运行器指定环境变量)
 
-### Performance improvements for the new IR backend
+### 新版 IR 后端的性能改进
 
 This release has some major updates that should improve your development experience:
 
@@ -381,7 +381,7 @@ This release has some major updates that should improve your development experie
 * Type checking for interfaces has been improved by orders of magnitude.
 * Kotlin generates higher-quality JS code
 
-### Minification for member names when using IR
+### 使用 IR 时的成员名缩短
 
 The Kotlin/JS IR compiler now uses its internal information about the relationships of your Kotlin classes and functions
 to apply more efficient minification, shortening the names of functions, properties, and classes. This shrinks the
@@ -400,7 +400,7 @@ kotlin {
 }
 ```
 
-### Support for older browsers via polyfills in the IR backend
+### 通过 IR 后端的 polyfill 支持旧版浏览器
 
 The IR compiler backend for Kotlin/JS now includes the same polyfills as the legacy backend. This allows code compiled
 with the new compiler to run in older browsers that do not support all the methods from ES2015 used by the Kotlin
@@ -409,7 +409,7 @@ their potential impact on the bundle size.
 
 This feature is enabled by default when using the IR compiler, and you don't need to configure it.
 
-### Dynamically load JavaScript modules from js expressions
+### 从 js 表达式动态加载 JavaScript 模块
 
 When working with the JavaScript modules, most applications use static imports, whose use is covered with
 the [JavaScript module integration](js-modules.md). However, Kotlin/JS was missing a mechanism to load JavaScript
@@ -422,7 +422,7 @@ dynamically bring packages into your application at runtime:
 val myPackage = js("import('my-package')")
 ```
 
-### Specify environment variables for JavaScript test runners
+### 为 JavaScript 测试运行器指定环境变量
 
 To tune Node.js package resolution or pass external information to Node.js tests, you can now specify environment
 variables used by the JavaScript test runners. To define an environment variable, use the `environment()` function with
@@ -440,21 +440,21 @@ kotlin {
 }
 ```
 
-## Standard library
+## 标准库
 
 In Kotlin 1.7.0, the standard library has received a range of changes and improvements. They introduce new features,
 stabilize experimental ones, and unify support for named capturing groups for Native, JS, and the JVM:
 
-* [min() and max() collection functions return as non-nullable](#min-and-max-collection-functions-return-as-non-nullable)
-* [Regular expression matching at specific indices](#regular-expression-matching-at-specific-indices)
-* [Extended support of previous language and API versions](#extended-support-for-previous-language-and-api-versions)
-* [Access to annotations via reflection](#access-to-annotations-via-reflection)
-* [Stable deep recursive functions](#stable-deep-recursive-functions)
-* [Time marks based on inline classes for default time source](#time-marks-based-on-inline-classes-for-default-time-source)
-* [New experimental extension functions for Java Optionals](#new-experimental-extension-functions-for-java-optionals)
-* [Support for named capturing groups in JS and Native](#support-for-named-capturing-groups-in-js-and-native)
+* [集合函数 min() 与 max() 返回不可空值](#集合函数-min-与-max-返回不可空值)
+* [指定索引位置的正则表达式匹配](#指定索引位置的正则表达式匹配)
+* [对以前语言与 API 版本的扩展支持](#对以前语言与-api-版本的扩展支持)
+* [通过反射访问注解](#通过反射访问注解)
+* [稳定版深递归函数](#稳定版深递归函数)
+* [默认时间源的时间标记基于内联类](#默认时间源的时间标记基于内联类)
+* [Java Optional 的新实验性扩展函数](#java-optional-的新实验性扩展函数)
+* [在 JS 与 Native 平台支持命名捕获](#在-js-与-native-平台支持命名捕获)
 
-### min() and max() collection functions return as non-nullable
+### 集合函数 min() 与 max() 返回不可空值
 
 In [Kotlin 1.4.0](whatsnew14.md), we renamed the `min()` and `max()` collection functions to `minOrNull()`
 and `maxOrNull()`. These new names better reflect their behavior – returning null if the receiver collection is empty.
@@ -475,7 +475,7 @@ fun main() {
 }
 ```
 
-### Regular expression matching at specific indices
+### 指定索引位置的正则表达式匹配
 
 The `Regex.matchAt()` and `Regex.matchesAt()`
 functions, [introduced in 1.5.30](whatsnew1530.md#在特定位置匹配-regex), are now Stable. They
@@ -509,7 +509,7 @@ fun main() {
 
 We'd be grateful for your feedback on this [YouTrack issue](https://youtrack.jetbrains.com/issue/KT-34021).
 
-### Extended support for previous language and API versions
+### 对以前语言与 API 版本的扩展支持
 
 To support library authors developing libraries that are meant to be consumable in a wide range of previous Kotlin
 versions, and to address the increased frequency of major Kotlin releases, we have extended our support for previous
@@ -519,7 +519,7 @@ With Kotlin 1.7.0, we're supporting three previous language and API versions rat
 supports the development of libraries targeting Kotlin versions down to 1.4.0. For more information on backward
 compatibility, see [Compatibility modes](compatibility-modes.md).
 
-### Access to annotations via reflection
+### 通过反射访问注解
 
 The `KAnnotatedElement.[findAnnotations()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect.full/find-annotations.html)`
 extension function, which was first [introduced in 1.6.0](whatsnew16.md#1-8-jvm-目标平台中运行时保留的可重复注解),
@@ -544,7 +544,7 @@ fun main() {
 }
 ```
 
-### Stable deep recursive functions
+### 稳定版深递归函数
 
 Deep recursive functions have been available as an experimental feature
 since [Kotlin 1.4.0](https://blog.jetbrains.com/kotlin/2020/07/kotlin-1-4-rc-debugging-coroutines/#Defining_deep_recursive_functions_using_coroutines),
@@ -577,7 +577,7 @@ fun main() {
 
 Consider using deep recursive functions in your code where your recursion depth exceeds 1000 calls.
 
-### Time marks based on inline classes for default time source
+### 默认时间源的时间标记基于内联类
 
 Kotlin 1.7.0 improves the performance of time measurement functionality by changing the time marks returned
 by `TimeSource.Monotonic` into inline value classes. This means that calling functions like `markNow()`, `elapsedNow()`
@@ -598,7 +598,7 @@ fun main() {
 >
 {type="note"}
 
-### New experimental extension functions for Java Optionals
+### Java Optional 的新实验性扩展函数
 
 Kotlin 1.7.0 comes with new convenience functions that simplify working with `Optional` classes in Java. These new
 functions can be used to unwrap and convert optional objects on the JVM and help make working with Java APIs more
@@ -654,7 +654,7 @@ These extension functions are being introduced as Experimental in Kotlin 1.7.0. 
 extensions in [this KEEP](https://github.com/Kotlin/KEEP/pull/291). As always, we welcome your feedback in
 the [Kotlin issue tracker](https://kotl.in/issue).
 
-### Support for named capturing groups in JS and Native
+### 在 JS 与 Native 平台支持命名捕获
 
 Starting with Kotlin 1.7.0, named capturing groups are supported not only on the JVM, but on the JS and Native platforms
 as well.
@@ -663,7 +663,7 @@ To give a name to a capturing group, use the (`?<name>group`) syntax in your reg
 by a group, call the newly introduced [`MatchGroupCollection.get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/get.html)
 function and pass the group name.
 
-#### Retrieve matched group value by name
+#### 按名称取回匹配分组的值
 
 Consider this example for matching city coordinates. To get a collection of groups matched by the regular expression,
 use [`groups`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-match-result/groups.html). Compare retrieving a
@@ -679,7 +679,7 @@ fun main() {
 }
 ```
 
-#### Named backreferencing
+#### 命名反向引用
 
 You can now also use group names when backreferencing groups. Backreferences match the same text that was previously
 matched by a capturing group. For this, use the `\k<name>` syntax in your regular expression:
@@ -693,7 +693,7 @@ fun backRef() {
 }
 ```
 
-#### Named groups in replacement expressions
+#### 替换表达式中的命名分组
 
 Named group references can be used with replacement expressions. Consider
 the [`replace()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/replace.html) function that substitutes all
@@ -717,18 +717,18 @@ fun dateReplace() {
 
 This release introduces new build reports, support for Gradle plugin variants, new statistics in kapt, and a lot more:
 
-* [A new approach to incremental compilation](#a-new-approach-to-incremental-compilation)
-* [New build reports for tracking compiler performance](#build-reports-for-kotlin-compiler-tasks)
-* [Changes to the minimum supported versions of Gradle and the Android Gradle plugin](#bumping-minimum-supported-versions)
-* [Support for Gradle plugin variants](#support-for-gradle-plugin-variants)
-* [Updates in the Kotlin Gradle plugin API](#updates-in-the-kotlin-gradle-plugin-api)
-* [Availability of the sam-with-receiver plugin via the plugins API](#the-sam-with-receiver-plugin-is-available-via-the-plugins-api)
-* [Changes in compile tasks](#changes-in-compile-tasks)
-* [New statistics of generated files by each annotation processor in kapt](#statistics-of-generated-files-by-each-annotation-processor-in-kapt)
-* [Deprecation of the kotlin.compiler.execution.strategy system property](#deprecation-of-the-kotlin-compiler-execution-strategy-system-property)
-* [Removal of deprecated options, methods, and plugins](#removal-of-deprecated-options-methods-and-plugins)
+* [增量编译的新方式](#增量编译的新方式)
+* [用于跟踪编译器性能的新版构建报告](#kotlin-编译器任务的构建报告)
+* [Gradle 与 Android Gradle 插件最低支持版本的变更](#最低支持版本升级)
+* [支持 Gradle 插件变体](#支持-gradle-插件变体)
+* [Kotlin Gradle 插件 API 的更新](#kotlin-gradle-插件-api-的更新)
+* [通过插件 API 提供 sam-with-receiver 插件](#通过插件-api-提供了-sam-with-receiver-插件)
+* [编译任务的变更](#编译任务的变更)
+* [kapt 中每个注解处理器生成文件的新版统计信息](#kapt-中每个注解处理器生成文件的统计信息)
+* [弃用 kotlin.compiler.execution.strategy 系统属性](#弃用-kotlin-compiler-execution-strategy-系统属性)
+* [删除弃用的选项、方法与插件](#删除弃用的选项方法与插件)
 
-### A new approach to incremental compilation
+### 增量编译的新方式
 
 > The new approach to incremental compilation is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see the details below). We encourage you to use it only for evaluation purposes, and we would
@@ -766,7 +766,7 @@ encounter in this compilation scheme. Thank you!
 The Kotlin team is very grateful to [Ivan Gavrilovic](https://github.com/gavra0), [Hung Nguyen](https://github.com/hungvietnguyen),
 [Cédric Champeau](https://github.com/melix), and other external contributors for their help.
 
-### Build reports for Kotlin compiler tasks
+### Kotlin 编译器任务的构建报告
 
 > Kotlin build reports are [Experimental](components-stability.md). They may be dropped or changed at any time.
 > Opt-in is required (see details below). Use them only for evaluation purposes. We appreciate your feedback on them
@@ -813,16 +813,16 @@ You are welcome to try using build reports in your infrastructure. If you have a
 want to suggest improvements, please don't hesitate to report them in
 our [issue tracker](https://youtrack.jetbrains.com/newIssue). Thank you!
 
-### Bumping minimum supported versions
+### 最低支持版本升级
 
 Starting with Kotlin 1.7.0, the minimum supported Gradle version is 6.7.1. We had
 to [raise the version](https://youtrack.jetbrains.com/issue/KT-49733/Bump-minimal-supported-Gradle-version-to-6-7-1) to
-support [Gradle plugin variants](#support-for-gradle-plugin-variants) and the new Gradle API. In the future, we should
+support [Gradle plugin variants](#支持-gradle-插件变体) and the new Gradle API. In the future, we should
 not have to raise the minimum supported version as often, thanks to the Gradle plugin variants feature.
 
 Also, the minimal supported Android Gradle plugin version is now 3.6.4.
 
-### Support for Gradle plugin variants
+### 支持 Gradle 插件变体
 
 Gradle 7.0 introduced a new feature for Gradle plugin authors
 — [plugins with variants](https://docs.gradle.org/7.0/userguide/implementing_gradle_plugins.html#plugin-with-variants).
@@ -855,7 +855,7 @@ string in the output starting with `Using Kotlin Gradle plugin`, for example, `U
 Leave your feedback
 on [this YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-49227/Support-Gradle-plugins-variants).
 
-### Updates in the Kotlin Gradle plugin API
+### Kotlin Gradle 插件 API 的更新
 
 The Kotlin Gradle plugin API artifact has received several improvements:
 
@@ -877,7 +877,7 @@ The Kotlin Gradle plugin API artifact has received several improvements:
   Follow [Android Gradle Plugin release announcements](https://developer.android.com/studio/releases/gradle-plugin) to
   learn about the added support and try it out!
 
-### The sam-with-receiver plugin is available via the plugins API
+### 通过插件 API 提供了 sam-with-receiver 插件
 
 The [sam-with-receiver compiler plugin](sam-with-receiver-plugin.md) is now available via
 the [Gradle plugins DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block):
@@ -888,7 +888,7 @@ plugins {
 }
 ```
 
-### Changes in compile tasks
+### 编译任务的变更
 
 Compile tasks have received lots of changes in this release:
 
@@ -908,7 +908,7 @@ Compile tasks have received lots of changes in this release:
 
 Please leave your feedback in [this YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-32805).
 
-### Statistics of generated files by each annotation processor in kapt
+### kapt 中每个注解处理器生成文件的统计信息
 
 The `kotlin-kapt` Gradle plugin
 already [reports performance statistics for each processor](https://github.com/JetBrains/kotlin/pull/4280). Starting
@@ -950,10 +950,10 @@ processor. For example:
 Please leave your feedback
 in [this YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-51132/KAPT-Support-reporting-the-number-of-generated-files-by-each-ann).
 
-### Deprecation of the kotlin.compiler.execution.strategy system property
+### 弃用 kotlin.compiler.execution.strategy 系统属性
 
 Kotlin 1.6.20
-introduced [new properties for defining a Kotlin compiler execution strategy](whatsnew1620.md#properties-for-defining-kotlin-compiler-execution-strategy).
+introduced [new properties for defining a Kotlin compiler execution strategy](whatsnew1620.md#用于定义-kotlin-编译器执行策略的属性).
 In Kotlin 1.7.0, a deprecation cycle has started for the old system property `kotlin.compiler.execution.strategy` in
 favor of the new properties.
 
@@ -968,9 +968,9 @@ kotlin.compiler.execution.strategy=out-of-process
 You can also use the compile task property `compilerExecutionStrategy`. Learn more about this on
 the [Gradle page](gradle.md#defining-kotlin-compiler-execution-strategy).
 
-### Removal of deprecated options, methods, and plugins
+### 删除弃用的选项、方法与插件
 
-#### Removal of the useExperimentalAnnotation method
+#### 删除 useExperimentalAnnotation 方法
 
 In Kotlin 1.7.0, we completed the deprecation cycle for the `useExperimentalAnnotation` Gradle method. Use `optIn()`
 instead to opt in to using an API in a module.
@@ -987,7 +987,7 @@ sourceSets {
 
 Learn more about [opt-in requirements](opt-in-requirements.md) in Kotlin.
 
-#### Removal of deprecated compiler options
+#### 删除弃用的编译器选项
 
 We've completed the deprecation cycle for several compiler options:
 
@@ -1001,7 +1001,7 @@ We've completed the deprecation cycle for several compiler options:
 >
 {type="note"}
 
-#### Removal of deprecated plugins
+#### 删除弃用的插件
 
 In Kotlin 1.4.0, the `kotlin2js` and `kotlin-dce-plugin` plugins were deprecated, and they have been removed in this
 release. Instead of `kotlin2js`, use the new `org.jetbrains.kotlin.js` plugin. Dead code elimination (DCE) works when
@@ -1016,7 +1016,7 @@ the `KotlinCompilerPluginSupportPlugin` class instead.
 >
 {type="tip"}
 
-#### Removal of the deprecated coroutines DSL option and property
+#### 删除弃用的协程 DSL 选项与属性
 
 We removed the deprecated `kotlin.experimental.coroutines` Gradle DSL option and the `kotlin.coroutines` property used
 in `gradle.properties`. Now you can just use _[suspending functions](coroutines-basics.md#extract-function-refactoring)_
@@ -1025,7 +1025,7 @@ script.
 
 Learn more about coroutines in the [Coroutines guide](coroutines-guide.md).
 
-#### Removal of the type cast in the toolchain extension method
+#### 删除工具链扩展方法中的类型转换
 
 Before Kotlin 1.7.0, you had to do the type cast into the `JavaToolchainSpec` class when configuring the Gradle
 toolchain with Kotlin DSL:
@@ -1048,9 +1048,9 @@ kotlin {
 }
 ```
 
-## Migrating to Kotlin 1.7.0
+## 迁移到 Kotlin 1.7.0
 
-### Install Kotlin 1.7.0
+### 安装 Kotlin 1.7.0
 
 IntelliJ IDEA 2022.1 and Android Studio Chipmunk (212) automatically suggest updating the Kotlin plugin to 1.7.0.
 
@@ -1060,7 +1060,7 @@ IntelliJ IDEA 2022.1 and Android Studio Chipmunk (212) automatically suggest upd
 
 The new command-line compiler is available for download on the [GitHub release page](https://github.com/JetBrains/kotlin/releases/tag/v1.7.0).
 
-### Migrate existing or start a new project with Kotlin 1.7.0
+### 使用 Kotlin 1.7.0 迁移既有项目或启动新项目
 
 * To migrate existing projects to Kotlin 1.7.0, change the Kotlin version to `1.7.0` and reimport your Gradle or Maven
 project. [Learn how to update to Kotlin 1.7.0](releases.md#更新到新版本).
@@ -1068,7 +1068,7 @@ project. [Learn how to update to Kotlin 1.7.0](releases.md#更新到新版本).
 * To start a new project with Kotlin 1.7.0, update the Kotlin plugin and run the Project Wizard from **File** \| **New** \|
 **Project**.
 
-### Compatibility guide for Kotlin 1.7.0
+### Kotlin 1.7.0 的兼容性指南
 
 Kotlin 1.7.0 is a [feature release](kotlin-evolution.md#特性发布与增量发布) and can, therefore, bring changes that are incompatible with your code written for earlier versions of the language.
 Find the detailed list of such changes in the [Compatibility guide for Kotlin 1.7.0](compatibility-guide-17.md).
