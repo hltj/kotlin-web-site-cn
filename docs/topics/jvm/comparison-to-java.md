@@ -45,4 +45,7 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 
 ## 下一步做什么？
 
-了解下[在 Java 与 Kotlin 中如何处理字符串的典型任务](java-to-kotlin-idioms-strings.md)。
+了解如何：
+* [在 Java 与 Kotlin 中处理字符串的典型任务](java-to-kotlin-idioms-strings.md)。
+* Perform [typical tasks with collections in Java and Kotlin](java-to-kotlin-collections-guide.md).
+* [Handle nullability in Java and Kotlin](java-to-kotlin-nullability-guide.md).

@@ -362,4 +362,6 @@ IntelliJ IDEA 的 kotlin 插件理解 `TODO()` 的语言，并且会自动在 TO
 ## 下一步做什么？
 
 * 使用地道 Kotlin 风格求解 [Advent of Code 谜题](advent-of-code.md)
-* 了解[在 Java 与 Kotlin 中如何处理字符串的典型任务](java-to-kotlin-idioms-strings.md)
+* 了解如何[在 Java 与 Kotlin 中处理字符串的典型任务](java-to-kotlin-idioms-strings.md)
+* Learn how to perform [typical tasks with collections in Java and Kotlin](java-to-kotlin-collections-guide.md).
+* Learn how to [handle nullability in Java and Kotlin](java-to-kotlin-nullability-guide.md).
