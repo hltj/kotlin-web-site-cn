@@ -370,6 +370,8 @@ reference:
           title: Compatibility Guide for Kotlin 1.6
         - url: /docs/reference/compatibility-guide-17.html
           title: Compatibility Guide for Kotlin 1.7
+        - url: /docs/reference/compatibility-guide-1720.html
+          title: Compatibility Guide for Kotlin 1.7.20
 
     - title: 常见问题
       description: 你想到的问题可能会在这里得到解答。

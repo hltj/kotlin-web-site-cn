@@ -184,7 +184,7 @@ Visit the [roadmap board in our issue tracker YouTrack](https://youtrack.jetbrai
 </table>
 
 > * This roadmap is not an exhaustive list of all things the team is working on, only the biggest projects.
-> * There’s no commitment to delivering specific features or fixes in specific versions.
+> * There's no commitment to delivering specific features or fixes in specific versions.
 > * We will adjust our priorities as we go and update the roadmap approximately every six months.
 > 
 {type="note"}

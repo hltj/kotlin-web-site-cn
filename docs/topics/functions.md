@@ -115,7 +115,7 @@ fun reformat(
 ) { /*……*/ }
 ```
 
-When calling this function, you don’t have to name all its arguments:
+When calling this function, you don't have to name all its arguments:
 
 ```kotlin
 reformat(
@@ -231,7 +231,7 @@ val a = arrayOf(1, 2, 3)
 val list = asList(-1, 0, *a, 4)
 ```
 
-If you want to pass a [primitive type array](basic-types.md#原生类型数组)
+If you want to pass a [primitive type array](arrays.md#原生类型数组)
 into `vararg`, you need to convert it to a regular (typed) array using the `toTypedArray()` function:
 
 ```kotlin

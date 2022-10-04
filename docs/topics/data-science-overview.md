@@ -9,7 +9,7 @@ Kotlin 可能是处理数据的绝佳选择：
 
 ## 交互式编辑器
 
-[Jupyter Notebook](https://jupyter.org/) 与 [Apache Zeppelin](https://zeppelin.apache.org/) 等笔记本为<!--
+[Jupyter Notebook](https://jupyter.org/)、 [Datalore](http://jetbrains.com/datalore) 与 [Apache Zeppelin](https://zeppelin.apache.org/) 等笔记本为<!--
 -->数据可视化与探索性研究提供了方便的工具。 
 Kotlin 与这些工具集成在一起，可以帮助探索数据、与同事<!--
 -->共享发现或建立数据科学和机器学习技能。
@@ -21,10 +21,20 @@ Jupyter Notebook 是一个开源 Web 应用程序，
 [Kotlin-jupyter](https://github.com/Kotlin/kotlin-jupyter) 是一个开源项目，
 它为 Jupyter Notebook 带来了 Kotlin 支持。
 
-<img src="kotlin-jupyter-kernel.png" alt="Kotlin in Jupyter notebook" width="800"/>
+![Kotlin in Jupyter notebook](kotlin-jupyter-kernel.png){width=800}
 
 查看 Kotlin 内核的 [GitHub 仓库](https://github.com/Kotlin/kotlin-jupyter)
 以获取安装说明、文档与示例。
+
+### Kotlin Notebooks in Datalore
+
+With Datalore, you can use Kotlin in the browser straight out of the box, no installation required.
+You can also collaborate on Kotlin notebooks in real time, get smart coding assistance when writing code, and share results as interactive or static reports.
+Check out a [sample report](https://datalore.jetbrains.com/view/report/9YLrg20eesVX2cQu1FKLiZ).
+
+![Kotlin in Datalore](kotlin-datalore.png){width=800}
+
+[Sign up and use Kotlin with a free Datalore Community account](https://datalore.jetbrains.com/).
 
 ### Zeppelin Kotlin 解释器
 
@@ -33,7 +43,7 @@ Apache Zeppelin 是一种流行的基于 Web 的交互式数据分析解决方�
 这对数据工程特别有用。
 从[版本 0.9.0](https://zeppelin.apache.org/docs/0.9.0-preview1/) 开始，Apache Zeppelin 内置了 Kotlin 解释器。
 
-<img src="kotlin-zeppelin-interpreter.png" alt="Kotlin in Zeppelin notebook" width="800"/>
+![Kotlin in Zeppelin notebook](kotlin-zeppelin-interpreter.png){width=800}
 
 ## 类库
 
@@ -67,7 +77,7 @@ Kotlin 社区创建的用于数据相关任务的类库生态系统正在迅速�
 algebraic structures over Kotlin types, defines APIs for linear structures, expressions, histograms, streaming operations,
 provides interchangeable wrappers over existing Java and Kotlin libraries including
 [ND4J](https://github.com/eclipse/deeplearning4j/tree/master/nd4j),
-[Commons Math](https://commons.apache.org/proper/commons-math/), [Multik](https://github.com/Kotlin/multik), etc.
+[Commons Math](https://commons.apache.org/proper/commons-math/), [Multik](https://github.com/Kotlin/multik), and others.
 
 * [krangl](https://github.com/holgerbrandl/krangl) 是一个受 R 语言的 [dplyr](https://dplyr.tidyverse.org/)
 与 Python 的 [pandas](https://pandas.pydata.org/) 启发的库。这个库提供了采用函数式风格 API
@@ -106,6 +116,8 @@ R 的 [ggplot](https://ggplot2.tidyverse.org/)。
 * [OptaPlanner](https://www.optaplanner.org/)——一个用于优化规划问题的求解器实用程序
 
 * [Charts](https://github.com/HanSolo/charts)——一个正在开发中的科学 JavaFX 图表库
+
+* [Apache OpenNLP](https://opennlp.apache.org/) - a machine learning based toolkit for the processing of natural language text
 
 * [CoreNLP](https://stanfordnlp.github.io/CoreNLP/)——一个自然语言处理工具包
 

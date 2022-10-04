@@ -1,28 +1,136 @@
 [//]: # (title: 搭建环境)
 
-Before you begin [creating your first application](multiplatform-mobile-create-first-app.md) to work on both iOS and Android, start by setting up an environment for Kotlin Multiplatform Mobile development:
+<microformat>
+    <p>This is the first part of the <strong>Getting started with Kotlin Multiplatform Mobile</strong> tutorial:</p>
+    <p><img src="icon-1.svg" width="20" alt="First step"/> <strong>Set up an environment</strong><br/><img src="icon-2-todo.svg" width="20" alt="Second step"/> Create your first cross-platform app<br/><img src="icon-3-todo.svg" width="20" alt="Third step"/> Add dependencies<br/><img src="icon-4-todo.svg" width="20" alt="Fourth step"/> Upgrade your app<br/><img src="icon-5-todo.svg" width="20" alt="Fifth step"/> Wrap up your project</p>
+</microformat>
 
-1. If you are going to work with shared code or Android-specific code, you can work on any computer with an operating 
-   system supported by [Android Studio](https://developer.android.com/studio).  
-   If you also want to write iOS-specific code and run an iOS application on a simulated or real device, use a Mac with a 
-   macOS. These steps cannot be performed on other operating systems, such as Microsoft Windows. This is due to an Apple requirement.
-2. Install [Android Studio](https://developer.android.com/studio) 4.2 or 2020.3.1 Canary 8 or higher.   
-    You will use Android Studio for creating your multiplatform applications and running them on simulated or hardware devices.
-3. If you need to write iOS-specific code and run an iOS application, install [Xcode](https://apps.apple.com/us/app/xcode/id497799835)
-    –  version 11.3 or higher.                                                                                                                                                                                                                                                                                                                          
-    Most of the time, Xcode will work in the background. You will use it to add Swift or Objective-C code to your iOS application.
-4. Make sure that you have a [compatible Kotlin plugin](multiplatform-mobile-plugin-releases.md#版本发布详情) installed.  
-    In Android Studio, select **Tools** | **Kotlin** | **Configure Kotlin Plugin Updates** and check the current Kotlin 
-    plugin version. If needed, update to the latest version in the **Stable** update channel.
-5. Install the *Kotlin Multiplatform Mobile* plugin.  
-    In Android Studio, select  **Preferences** | **Plugins**, search for the plugin *Kotlin Multiplatform Mobile* in 
-    **Marketplace** and install it.
-    
-    ![Kotlin Multiplatform Mobile plugin](mobile-multiplatform-plugin.png){width=500}
-    
-    Check out [Kotlin Multiplatform Mobile plugin release notes](multiplatform-mobile-plugin-releases.md).
-    
-6. Install the [JDK](https://www.oracle.com/java/technologies/javase-downloads.html) if you haven't already done so.  
-    To check if it's installed, run the command `java -version` in the Terminal.       
-     
-Now it's time to [create your first cross-platform mobile application](multiplatform-mobile-create-first-app.md).
+Before you create your first application that works on both iOS and Android, you'll need to set up an environment for Kotlin Multiplatform
+Mobile development.
+
+> To write iOS-specific code and run an iOS application on a simulated or real device, you'll need a Mac with macOS.
+> This cannot be performed on other operating systems, such as Microsoft Windows. This is an Apple requirement.
+>
+{type="warning"}
+
+## Install the necessary tools
+
+We recommend that you install the latest stable versions for compatibility and better performance.
+
+<table>
+   <tr>
+      <td>Tool</td>
+      <td>Comments</td>
+   </tr>
+    <tr>
+        <td><a href="https://developer.android.com/studio">Android Studio</a></td>
+        <td>You will use Android Studio to create your multiplatform applications and run them on simulated or hardware devices.</td>
+    </tr>
+    <tr>
+        <td><a href="https://apps.apple.com/us/app/xcode/id497799835">Xcode</a></td>
+        <td>Most of the time, Xcode will work in the background. You will use it to add Swift or Objective-C code to your iOS application.</td>
+   </tr>
+   <tr>
+        <td><a href="https://www.oracle.com/java/technologies/javase-downloads.html">JDK</a></td>
+        <td>To check whether it's installed, run the following command in the Android Studio terminal or your command-line tool: <code style="block"
+            lang="bash">java -version</code></td>
+   </tr>
+   <tr>
+        <td><a href="multiplatform-mobile-plugin-releases.md">Kotlin Multiplatform Mobile plugin</a></td>
+        <td>In Android Studio, select <strong>Settings/Preferences | Plugins</strong>, search <strong>Marketplace</strong> for <i>Kotlin Multiplatform Mobile</i>, and then install it.</td>
+   </tr>
+   <tr>
+        <td><a href="plugin-releases.md#update-to-a-new-release">Kotlin plugin</a></td>
+        <td>
+            <p>The Kotlin plugin is bundled with each Android Studio release. However, it still needs to be updated to the latest version to avoid compatibility issues.</p> 
+            <p>To update the plugin, on the Android Studio welcome screen, select <strong>Plugins | Installed</strong>. Click <strong>Update</strong> next to Kotlin. You can also check the Kotlin version in <strong>Tools | Kotlin | Configure Kotlin Plugin Updates</strong>.</p>
+            <p>The Kotlin plugin should be compatible with the Kotlin Multiplatform Mobile plugin. Refer to the <a href="multiplatform-mobile-plugin-releases.md#release-details">compatibility table</a>.</p></td>
+   </tr>
+</table>
+
+## Check your environment
+
+To make sure everything works as expected, install and run the KDoctor tool:
+
+> KDoctor works on macOS only.
+>
+{type="note"}
+
+1. In the Android Studio terminal or your command-line tool, run the following command to install the tool using Homebrew:
+
+    ```bash
+    brew install kdoctor
+    ```
+
+   If you don't have Homebrew yet, [install it](https://brew.sh/) or see the KDoctor [README](https://github.com/Kotlin/kdoctor#installation) for other ways to install it.
+2. After the installation is completed, call KDoctor in the console: 
+
+    ```bash
+    kdoctor
+    ```
+
+3. If KDoctor diagnoses any problems while checking your environment, review the output for issues and possible solutions:
+
+   * Fix any failed checks (`[x]`). You can find problem descriptions and potential solutions after the `*` symbol.
+   * Check the warnings (`[!]`) and successful messages (`[v]`). They may contain useful notes and tips, as well.
+   
+   > You may ignore KDoctor's warnings regarding the CocoaPods installation. In your first project, you will use a
+   > different iOS framework distribution option.
+   >
+   {type="tip"}
+
+## Possible issues and solutions
+
+<deflist collapsible="true">
+   <def title="Android Studio">
+      Make sure that you have Android Studio installed. You can get it from its <a href="https://developer.android.com/studio">official website.</a>
+   </def>
+   <def title="Java and JDK">
+      <list>
+         <ul>
+           <li>Make sure that you have JDK installed. You can get it from its <a href="https://www.oracle.com/java/technologies/javase-downloads.html">official website</a>.</li>
+           <li>Android Studio uses a bundled JDK to execute Gradle tasks. To configure the Gradle JDK in Android Studio, select <strong>Settings/Preferences | Build, Execution, Deployment | Build Tools | Gradle</strong>.</li>
+           <li>You might encounter issues related to <code>JAVA_HOME</code>. This environment variable specifies the location of the Java binary required for Xcode and Gradle. If so, follow KDoctor's tips to fix the issues.</li>
+         </ul>
+      </list>
+   </def>
+   <def title="Xcode">
+      <ul>
+         <li>Make sure that you have Xcode installed. You can get it from its <a href="https://developer.apple.com/xcode/">official website</a>.</li>
+         <li>Launch Xcode in a separate window to accept its license terms and allow it to perform some necessary initial tasks.</li>
+      </ul>
+   </def>
+   <def title="Kotlin plugins">
+         <chunk>
+            <p><strong>Kotlin Multiplatform Mobile plugin</strong></p>
+               <ul>
+                  <li>Make sure that the Kotlin Mobile Multiplatform plugin is installed and enabled. On the Android Studio welcome screen, select <strong>Plugins | Installed</strong>. Verify that you have the plugin enabled. If it's not in the <strong>Installed</strong> list, search <strong>Marketplace</strong> for it and install the plugin.</li>
+                  <li>If the plugin is outdated, click <strong>Update</strong> next to the plugin name. You can do the same in the <strong>Settings/Preferences | Tools | Plugins</strong> section.</li>
+                  <li>Check the compatibility of the Kotlin Multiplatform Mobile plugin with your version of Kotlin in the <a href="https://kotlinlang.org/docs/multiplatform-mobile-plugin-releases.html#release-details">Release details</a> table.</li>
+               </ul>
+         </chunk>
+         <chunk>
+            <p><strong>Kotlin plugin</strong></p>
+            <p>Make sure that the Kotlin plugin is updated to the latest version. To do that, on the Android Studio welcome screen, select <strong>Plugins | Installed</strong>. Click <strong>Update</strong> next to Kotlin.</p>
+            <p>You can also check the Kotlin version in <strong>Tools | Kotlin | Configure Kotlin Plugin Updates</strong>.</p>
+         </chunk>
+   </def>
+   <def title="Command line">
+         <list>
+            <p>Make sure you have all the necessary tools installed:</p>
+            <ul>
+              <li><code>command not found: brew</code> — <a href="https://brew.sh/">install Homebrew</a>.</li>
+              <li><code>command not found: java</code> — <a href="https://www.oracle.com/java/technologies/javase-downloads.html">install Java</a>.</li>
+           </ul>
+         </list>
+    </def>
+</deflist>
+
+## Next step
+
+Once the setup is complete, you can start [creating your first cross-platform mobile application](multiplatform-mobile-create-first-app.md).
+
+## Get help
+
+* **Kotlin Slack**. Get an [invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) and join the [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) channel.
+* **Kotlin issue tracker**. [Report a new issue](https://youtrack.jetbrains.com/newIssue?project=KT).

@@ -98,6 +98,7 @@ Joshua Bloch 称那些你只能*从中读取*的对象为*生产者*，并称那
 >
 > _PECS 代表生产者-Extends、消费者-Super（Producer-Extends, Consumer-Super）。_
 >
+{type="tip"}
 
 > 如果你使用一个生产者对象，如 `List<? extends Foo>`，在该对象上不允许调用 `add()` 或 `set()`，
 > 但这并不意味着它是*不可变的*：例如，没有什么阻止你调用 `clear()`
@@ -328,19 +329,112 @@ Kotlin 为泛型声明用法执行的类型安全检测在编译期进行。
 其类型信息称为被*擦除*。例如，`Foo<Bar>` 与 `Foo<Baz?>` 的实例都会被擦除为
 `Foo<*>`。
 
-因此，并没有通用的方法在运行时检测一个泛型类型的实例是否通过指定类型参数所创建
-，并且编译器[禁止这种 `is` 检测](typecasts.md#类型擦除与泛型检测)。
+### Generics type checks and casts
+
+Due to the type erasure, 并没有通用的方法在运行时检测一个泛型类型的实例是否通过指定类型参数所创建
+，并且编译器禁止这种 `is` 检测，例如
+`ints is List<Int>` or `list is T` (type parameter). 当然，你可以对一个实例检测星投影的类型：
+
+```kotlin
+if (something is List<*>) {
+    something.forEach { println(it) } // The items are typed as `Any?`
+}
+```
+
+类似地，当已经让一个实例的类型参数（在编译期）静态检测，
+就可以对涉及非泛型部分做 `is` 检测或者类型转换。请注意，
+在这种情况下，会省略尖括号：
+
+```kotlin
+fun handleStrings(list: MutableList<String>) {
+    if (list is ArrayList) {
+        // `list` is smart-cast to `ArrayList<String>`
+    }
+}
+```
+
+省略类型参数的这种语法可用于不考虑类型参数的类型转换：`list as ArrayList`。
+
+泛型函数调用的类型参数也同样只在编译期检测。在函数体内部，
+类型参数不能用于类型检测，并且类型转换为类型参数（`foo as T`）也是非受检的。
+The only exclusion is inline functions with [reified type parameters](inline-functions.md#reified-type-parameters),
+which have their actual type arguments inlined at each call site. This enables type checks and casts for the type parameters.
+However, the restrictions described above still apply for instances of generic types used inside checks or casts.
+For example, in the type check `arg is T`, if `arg` is an instance of a generic type itself, its type arguments are still erased.
+
+```kotlin
+//sampleStart
+inline fun <reified A, reified B> Pair<*, *>.asPairOf(): Pair<A, B>? {
+    if (first !is A || second !is B) return null
+    return first as A to second as B
+}
+
+val somePair: Pair<Any?, Any?> = "items" to listOf(1, 2, 3)
+
+
+val stringToSomething = somePair.asPairOf<String, Any>()
+val stringToInt = somePair.asPairOf<String, Int>()
+val stringToList = somePair.asPairOf<String, List<*>>()
+val stringToStringList = somePair.asPairOf<String, List<String>>() // Compiles but breaks type safety!
+// Expand the sample for more details
+
+//sampleEnd
+
+fun main() {
+    println("stringToSomething = " + stringToSomething)
+    println("stringToInt = " + stringToInt)
+    println("stringToList = " + stringToList)
+    println("stringToStringList = " + stringToStringList)
+    //println(stringToStringList?.second?.forEach() {it.length}) // This will throw ClassCastException as list items are not String
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+### 非受检类型转换
 
 类型转换为带有具体类型参数的泛型类型，如 `foo as List<String>` 无法在运行时检测。
 当高级程序逻辑隐含了类型转换的类型安全而无法直接通过编译器推断时，
-可以使用这种[非受检类型转换](typecasts.md#非受检类型转换)。编译器会对非受检类型转换发出警告，并且在<!--
--->运行时只对非泛型部分检测（相当于 `foo as List<*>`）。
+可以使用这种非受检类型转换。 See the example below.
 
-泛型函数调用的类型参数也同样只在编译期检测。在函数体内部，
-类型参数不能用于类型检测，并且类型转换为类型参数（`foo as T`）也是非受检的。然而，
-内联函数的[具体化的类型参数](inline-functions.md#具体化的类型参数)会由<!--
--->调用处内联函数体中的类型实参所代入，因此可以用于类型检测与转换，
-与上述泛型类型的实例具有相同限制。
+```kotlin
+fun readDictionary(file: File): Map<String, *> = file.inputStream().use { 
+    TODO("Read a mapping of strings to arbitrary elements.")
+}
+
+// 我们已将存有一些 `Int` 的映射保存到这个文件
+val intsFile = File("ints.dictionary")
+
+// Warning: Unchecked cast: `Map<String, *>` to `Map<String, Int>`
+val intsDictionary: Map<String, Int> = readDictionary(intsFile) as Map<String, Int>
+```
+最后一行的类型转换会出现一个警告。编译器无法在运行时完全检测该类型转换，并且<!--
+-->不能保证映射中的值是“Int”。
+
+为避免未受检类型转换，可以重新设计程序结构。在上例中，可以使用具有类型安全实现的不同接口
+`DictionaryReader<T>` 与 `DictionaryWriter<T>`。
+可以引入合理的抽象，将未受检的类型转换从调用处移动到实现细节中。
+正确使用[泛型型变](#型变)也有帮助。
+
+对于泛型函数，使用[具体化的类型参数](inline-functions.md#具体化的类型参数)可以使<!-- 
+-->形如 `arg as T` 这样的类型转换受检，除非 `arg` 对应类型的*自身*类型参数已被擦除。
+
+可以通过在产生警告的语句或声明上用注解 `@Suppress("UNCHECKED_CAST")`
+[标注](annotations.md)来禁止未受检类型转换警告：
+
+```kotlin
+inline fun <reified T> List<*>.asListOfType(): List<T>? =
+    if (all { it is T })
+        @Suppress("UNCHECKED_CAST")
+        this as List<T> else
+        null
+```
+
+>**对于 JVM 平台**：[数组类型](arrays.md)（`Array<Foo>`）会保留关于<!--
+-->其元素被擦除类型的信息，并且类型转换为一个数组类型可以部分受检：
+元素类型的可空性与类型实参仍然会被擦除。例如，
+如果 `foo` 是一个保存了任何 `List<*>`（无论可不可空）的数组的话，类型转换 `foo as Array<List<String>?>` 都会成功。
+>
+{type="note"}
 
 ## Underscore operator for type arguments
 

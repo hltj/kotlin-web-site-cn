@@ -72,9 +72,14 @@ vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](ht
 
 ### 哪些 IDE 支持 Kotlin？
 
-所有主要的 Java IDE 都支持 Kotlin，包括 [IntelliJ IDEA](jvm-get-started.html)、
-[Android Studio](https://developer.android.com/kotlin/get-started) 与 [Eclipse](eclipse.html)。另外，有一个[命令行编译器](command-line.html)<!--
--->可用，为编译和运行应用程序提供了直接的支持。
+Kotlin has full out-of-the-box support in [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) and
+[Android Studio](https://developer.android.com/kotlin/get-started) with an official Kotlin plugin developed by JetBrains.
+Other IDEs and source editors, such as Eclipse, Visual Studio Code, and Atom, have Kotlin community-supported plugins.
+
+You can also try [Kotlin Playground](https://play.kotlinlang.org) for writing, running, and sharing 
+Kotlin code in your browser.
+
+In addition, a [command line compiler](command-line.md) is available, which provides straightforward support for compiling and running applications.
   
 ### 哪些构建工具支持 Kotlin？
 
@@ -134,7 +139,7 @@ You can learn all the Kotlin essentials while creating working applications with
 
 A few other courses you can take:
 * [Pluralsight Course: Getting Started with Kotlin](https://www.pluralsight.com/courses/kotlin-getting-started) by Kevin Jones
-* [O’Reilly Course: Introduction to Kotlin Programming](https://www.oreilly.com/library/view/introduction-to-kotlin/9781491964125/) by Hadi Hariri
+* [O'Reilly Course: Introduction to Kotlin Programming](https://www.oreilly.com/library/view/introduction-to-kotlin/9781491964125/) by Hadi Hariri
 * [Udemy Course: 10 Kotlin Tutorials for Beginneres](https://petersommerhoff.com/dev/kotlin/kotlin-beginner-tutorial/) by Peter Sommerhoff
 
 You can also check out the other tutorials and content on our [YouTube channel](https://www.youtube.com/c/Kotlin).

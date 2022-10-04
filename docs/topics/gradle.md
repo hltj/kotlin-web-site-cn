@@ -1,25 +1,23 @@
 [//]: # (title: Gradle)
 
-<microformat>
-    <p>Minimum supported Gradle version: <strong>%minGradleVersion%</strong></p>
-    <p>Minimum supported Android Gradle plugin version: <strong>%minAndroidGradleVersion%</strong></p>
-</microformat>
+Gradle is a build system that helps automate and manage your building process. It downloads specified dependencies,
+packages your code, and prepares it for compilation.
 
-In order to build a Kotlin project with Gradle, you should [apply the Kotlin Gradle plugin to your project](#插件与版本)
-and [configure the dependencies](#configuring-dependencies).
+To build a Kotlin project with Gradle, you'll need to add the [Kotlin Gradle plugin](#apply-the-plugin)
+and [configure dependencies](#configure-dependencies).
 
-## 插件与版本
+## Apply the plugin
 
-使用 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 应用 Kotlin Gradle 插件。
-
-The Kotlin Gradle plugin and the `kotlin-multiplatform` plugin %kotlinVersion% require Gradle %minGradleVersion% or later.
+To apply the Kotlin Gradle plugin, use the [`plugins` block](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block)
+from the Gradle plugins DSL:
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
+// replace `<...>` with the plugin name 
 plugins {
-  kotlin("<...>") version "%kotlinVersion%"
+    kotlin("<...>") version "%kotlinVersion%"
 }
 ```
 
@@ -27,6 +25,7 @@ plugins {
 <tab title="Groovy" group-key="groovy">
 
 ```groovy
+// replace `<...>` with the plugin name
 plugins {
   id 'org.jetbrains.kotlin.＜……＞' version '%kotlinVersion%'
 }
@@ -35,7 +34,18 @@ plugins {
 </tab>
 </tabs>
 
-需要将其中的占位符 `＜……＞` 替换为在后续部分讨论的插件名之一。
+When configuring your project, check the Kotlin Gradle plugin compatibility with available Gradle versions:
+
+|                       | Minimum supported version | Maximum fully supported version |
+|-----------------------|---------------------------|---------------------------------|
+| Gradle                | %minGradleVersion%        | %maxGradleVersion%              |   
+| Android Gradle plugin | %minAndroidGradleVersion% | %maxAndroidGradleVersion%       |
+
+For example, the Kotlin Gradle plugin and the `kotlin-multiplatform` plugin %kotlinVersion% require the minimum Gradle
+version of %minGradleVersion% for your project to compile.
+
+In turn, the maximum fully supported version is %maxGradleVersion%. It doesn't have deprecated Gradle
+methods and properties and supports all the current Gradle features.
 
 ## Targeting multiple platforms
 
@@ -148,21 +158,61 @@ In the build module, you may have related compile tasks, for example:
 >
 {type="note"}
 
-For such related tasks, the Kotlin Gradle plugin checks for JVM target compatibility. Different values of `jvmTarget` in the `kotlin` extension
-and [`targetCompatibility`](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java-extension)
+For such related tasks, the Kotlin Gradle plugin checks for JVM target compatibility. Different values of `jvmTarget` in
+the `kotlin` extension and [`targetCompatibility`](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java-extension)
 in the `java` extension cause incompatibility. For example:
 the `compileKotlin` task has `jvmTarget=1.8`, and
 the `compileJava` task has (or [inherits](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java-extension)) `targetCompatibility=15`.
 
-Control the behavior of this check by setting the `kotlin.jvm.target.validation.mode` property in the `build.gradle` file equal to:
+Control the behavior of this check by setting the `kotlin.jvm.target.validation.mode` property in the `build.gradle`
+file equal to:
+
 * `warning` – the default value; the Kotlin Gradle plugin will print a warning message.
 * `error` – the plugin will fail the build.
 * `ignore` – the plugin will skip the check and won't produce any messages.
 
+### Associate compiler tasks
+
+You can _associate_ compilations by setting up such a relationship between them that one compilation will use the compiled
+outputs of the other. Associating compilations establishes `internal` visibility between them.
+
+The Kotlin compiler associates some compilations by default, such as the `test` and `main` compilations of each target.
+If you need to express that one of your custom compilations is connected to another, create your own associated
+compilation.
+
+To make the IDE support associated compilations for inferring visibility between source sets, add the following code to
+your `build.gradle(.kts)`:
+
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+val integrationTestCompilation = kotlin.target.compilations.create("integrationTest") {
+    associateWith(kotlin.target.compilations.getByName("main"))
+}
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+integrationTestCompilation {
+    kotlin.target.compilations.create("integrationTest") {
+        associateWith(kotlin.target.compilations.getByName("main"))
+    }
+}
+```
+
+</tab>
+</tabs>
+
+Here, the `integrationTest` compilation is associated with the `main` compilation that gives access to `internal`
+objects from functional tests.
+
 ### Set custom JDK home
 
-By default, Kotlin compile tasks use the current Gradle JDK. 
-If you need to change the JDK by some reason, you can set the JDK home with [Java toolchains](#gradle-java-toolchains-support) 
+By default, Kotlin compile tasks use the current Gradle JDK.
+If you need to change the JDK by some reason, you can set the JDK home with [Java toolchains](#gradle-java-toolchains-support)
 or the [Task DSL](#setting-jdk-version-with-the-task-dsl) to set a local JDK.
 
 > The `jdkHome` compiler option is deprecated since Kotlin 1.5.30.
@@ -192,6 +242,7 @@ A Java toolchain:
   if the user doesn't set the `jvmTarget` option explicitly.
   If the user doesn't configure the toolchain, the `jvmTarget` field will use the default value.
   Learn more about [JVM target compatibility](#check-for-jvm-target-compatibility-of-related-compile-tasks).
+* Sets the toolchain to be used by any Java compile, test and javadoc tasks.
 * Affects which JDK [`kapt` workers](kapt.md#running-kapt-tasks-in-parallel) are running on.
 
 Use the following code to set a toolchain. Replace the placeholder `<MAJOR_JDK_VERSION>` with the JDK version you would like to use:
@@ -336,7 +387,7 @@ kotlin {
 
 It's recommended to use Android Studio for creating Android applications. [Learn how to use Android Gradle plugin](https://developer.android.com/studio/releases/gradle-plugin).
 
-## Configuring dependencies
+## Configure dependencies
 
 To add a dependency on a library, set the dependency of the required [type](#dependency-types) (for example, `implementation`) in the
 `dependencies` block of the source sets DSL.
@@ -1079,7 +1130,7 @@ The priority of properties is the following:
 The available values for `kotlin.compiler.execution.strategy` properties (both system and Gradle's) are:
 1. `daemon` (default)
 2. `in-process`
-3. `ouf-of-process`
+3. `out-of-process`
 
 Use the Gradle property `kotlin.compiler.execution.strategy` in `gradle.properties`:
 

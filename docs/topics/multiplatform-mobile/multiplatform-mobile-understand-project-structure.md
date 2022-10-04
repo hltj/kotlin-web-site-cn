@@ -3,32 +3,24 @@
 The purpose of the Kotlin Multiplatform Mobile technology is unifying the development of applications with common 
 logic for Android and iOS platforms. To make this possible, it uses a mobile-specific structure of
 [Kotlin Multiplatform](multiplatform.md) projects.
-This page describes the structure of a basic cross-platform mobile project. Note that this structure isn’t the only
-possible way to organize your project; however, we recommend it as a starting point.
+
+This page describes the structure and components of a basic cross-platform mobile project: shared module, Android app,
+and an iOS app.
+
+> This structure isn't the only possible way to organize your project; however, we recommend it as a starting point.
+>
+{type="note"}
 
 To view the complete structure of your mobile multiplatform project, switch the view from **Android** to **Project**.
 
 ![Select the Project view](select-project-view.png){width=200}
 
-A basic Kotlin Mobile Multiplatform project consists of three components:
-
-* _Shared module_ – a Kotlin module that contains common logic for both Android and iOS applications.
-Builds into an Android library and an iOS framework. Uses Gradle as the build system.
-* _Android application_ – a Kotlin module that builds into the Android application.
-Uses Gradle as the build system.
-* _iOS application_ – an Xcode project that builds into the iOS application.
-
-![Basic Multiplatform Mobile project structure](basic-project-structure.png){width=700}
-
-This is the structure of a Multiplatform Mobile project that you create with a Project Wizard in IntelliJ IDEA or Android Studio.
-Real-life projects can have more complex structure; we consider these three components essential.
-
-Let’s take a closer look at the basic project and its components.
-
 ## Root project
 
 The root project is a Gradle project that holds the shared module and the Android application as its subprojects.
 They are linked together via the [Gradle multi-project mechanism](https://docs.gradle.org/current/userguide/multi_project_builds.html). 
+
+![Basic Multiplatform Mobile project structure](basic-project-structure.png){width=700}
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -51,8 +43,8 @@ include ':androidApp'
 </tab>
 </tabs>
 
-The iOS application is produced from an Xcode project. It’s stored in a separate directory within the root project.
-Xcode uses its own build system; thus, the iOS application project isn’t connected with other parts of the Multiplatform Mobile project
+The iOS application is produced from an Xcode project. It's stored in a separate directory within the root project.
+Xcode uses its own build system; thus, the iOS application project isn't connected with other parts of the Multiplatform Mobile project
 via Gradle. Instead, it uses the shared module as an external artifact – framework. For details on integration between
 the shared module and the iOS application, see [iOS application](#ios-application).
 
@@ -68,9 +60,9 @@ For more complex projects, you can add more modules into the root project by cre
 
 ## Shared module
 
-Shared module contains the core application logic used in both target platforms: classes, functions, and so on.
+Shared module contains the core application logic used in both Android and iOS target platforms: classes, functions, and so on.
 This is a [Kotlin Multiplatform](multiplatform-get-started.md) module that compiles
-into an Android library and an iOS framework. It uses Gradle with the Kotlin Multiplatform plugin applied and 
+into an Android library and an iOS framework. It uses the Gradle build system with the Kotlin Multiplatform plugin applied and 
 has targets for Android and iOS.
 
 <tabs group="build-script">
@@ -109,15 +101,15 @@ kotlin {
 ### Source sets
 
 The shared module contains the code that is common for Android and iOS applications. However, to implement the same logic
- on Android and iOS, you sometimes need to write two platform-specific versions of it. 
- To handle such cases, Kotlin offers the [expect/actual](multiplatform-connect-to-apis.md) mechanism.
- The source code of the shared module is organized in three source sets accordingly:
+on Android and iOS, you sometimes need to write two platform-specific versions of it.
+To handle such cases, Kotlin offers the [expect/actual](multiplatform-connect-to-apis.md) mechanism.
+The source code of the shared module is organized in three source sets accordingly:
 
 * `commonMain` stores the code that works on both platforms, including the `expect` declarations
 * `androidMain` stores Android-specific parts, including `actual` implementations
 * `iosMain` stores iOS-specific parts, including `actual` implementations
 
-Each source set has its own dependencies. Kotlin standard library is added automatically to all source sets, you don’t need to declare it in the build script.
+Each source set has its own dependencies. Kotlin standard library is added automatically to all source sets, you don't need to declare it in the build script.
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -254,7 +246,7 @@ plugins {
 </tab>
 </tabs>
 
-The configuration of Android library is stored in the `android {}` top-level block of the shared module’s build script:
+The configuration of Android library is stored in the `android {}` top-level block of the shared module's build script:
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -287,7 +279,7 @@ android {
 </tab>
 </tabs>
 
-It’s typical for any Android project. You can edit it to suit your needs.
+It's typical for any Android project. You can edit it to suit your needs.
 To learn more, see the [Android developer documentation](https://developer.android.com/studio/build#module-level).
 
 ### iOS framework
@@ -300,7 +292,7 @@ The framework is produced via the [Kotlin/Native](native-overview.md) compiler.
 The framework configuration is stored in the `ios {}` block of the build script within `kotlin {}`.
 It defines the output type `framework` and the string identifier `baseName` that is used to form the name
 of the output artifact. Its default value matches the Gradle module name. 
-For a real project, it’s likely that you’ll need a more complex configuration of the framework production.
+For a real project, it's likely that you'll need a more complex configuration of the framework production.
 For details, see [Multiplatform documentation](multiplatform-build-native-binaries.md).
 
 <tabs group="build-script">
@@ -434,7 +426,7 @@ dependencies {
 </tab>
 </tabs>
 
-Add your project’s Android-specific dependencies to this block.
+Add your project's Android-specific dependencies to this block.
 The build configuration of the Android application is located in the `android {}` top-level block of the build script:
 
 <tabs group="build-script">
@@ -482,7 +474,7 @@ android {
 </tab>
 </tabs>
 
-It’s typical for any Android project. You can edit it to suit your needs.
+It's typical for any Android project. You can edit it to suit your needs.
 To learn more, see the [Android developer documentation](https://developer.android.com/studio/build#module-level).
 
 ## iOS application

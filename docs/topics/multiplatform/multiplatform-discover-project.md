@@ -79,7 +79,8 @@ kotlin {
 >
 {type="note"}
 
-源代码集被添加到顶层 `kotlin` 块的 `sourceSets` 块中。
+源代码集被添加到顶层 `kotlin` 块的 `sourceSets` 块中。 For example, this is the source sets
+structure you get when creating a multiplatform library with the IntelliJ IDEA project wizard:
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -87,12 +88,18 @@ kotlin {
 ```kotlin
 kotlin {
     sourceSets {
-        val commonMain by getting { /* ... */ }
-        val commonTest by getting { /* ... */ }
-        val jvmMain by getting { /* ... */ }
-        val jvmTest by getting { /* ... */ } 
-        val jsMain by getting { /* ... */ }
-        val jsTest by getting { /* ... */ } 
+        val commonMain by getting
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+            }
+        }
+        val jvmMain by getting
+        val jvmTest by getting
+        val jsMain by getting
+        val jsTest by getting
+        val nativeMain by getting
+        val nativeTest by getting
     }
 }
 ```
@@ -103,12 +110,32 @@ kotlin {
 ```groovy
 kotlin {
     sourceSets {
-        commonMain { /* ... */} 
-        commonTest { /* ... */}
-        jvmMain { /* ... */}
-        jvmTest { /* ... */ }
-        jsMain { /* ... */}
-        jsTest { /* ... */}    
+        commonMain {
+
+        }
+        commonTest {
+            dependencies {
+                implementation kotlin('test')
+            }
+        }
+        jvmMain {
+
+        }
+        jvmTest {
+
+        }
+        jsMain {
+
+        }
+        jsTest {
+
+        }
+        nativeMain {
+
+        }
+        nativeTest {
+
+        }
     }
 }
 ```

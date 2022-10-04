@@ -187,7 +187,7 @@ in the table:
 
 来看看 Kotlin 的运行时声明：
 
-```obj-c
+```objc
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KotlinBase : NSObject
@@ -251,7 +251,7 @@ Kotlin 类在 Objective-C 中拥有一个 `KotlinBase` 基类，该类在这里�
 每个数字类型都有一个类方法，用于从相关的简单类型创建新实例。此外，还有一个实例方法<!--
 -->用于提取一个简单的值。原理上，声明看起来像这样：
 
-```obj-c
+```objc
 __attribute__((objc_runtime_name("Kotlin__TYPE__")))
 __attribute__((swift_name("Kotlin__TYPE__")))
 @interface Demo__TYPE__ : DemoNumber
@@ -271,7 +271,7 @@ __attribute__((swift_name("Kotlin__TYPE__")))
 生成的 `<Framework>/Headers/Demo.h` 文件包含
 `Class`、`Interface` 与 `Object` 的确切定义：
 
-```obj-c
+```objc
 NS_ASSUME_NONNULL_BEGIN
 
 __attribute__((objc_subclassing_restricted))
@@ -313,7 +313,7 @@ Objective-C 与 Swift 语言中使用该 framework 的帮助。
 所有 Kotlin 中的全局声明<!--
 -->都被转化为 Objective-C 中的 `DemoLibKt` 以及 Swift 中的 `LibKt`。
 
-```obj-c
+```objc
 NS_ASSUME_NONNULL_BEGIN
 
 __attribute__((objc_subclassing_restricted))
@@ -350,7 +350,7 @@ Kotlin/Native 实例的生命周期。
 让我们在 Objective-C 中调用代码。为此，使用下面的内容创建
 `main.m` 文件：
 
-```obj-c 
+```objc 
 #import <Foundation/Foundation.h>
 #import <Demo/Demo.h>
 

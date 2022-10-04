@@ -1,6 +1,6 @@
 [//]: # (title: 配置构建采用 EAP)
 
-If you create new projects using the EAP version of Kotlin, you don’t need to perform any additional steps. The [Kotlin Plugin](install-eap-plugin.md) will do everything for you!
+If you create new projects using the EAP version of Kotlin, you don't need to perform any additional steps. The [Kotlin Plugin](install-eap-plugin.md) will do everything for you!
 
 You only need to configure your build manually for existing projects — projects that were created before installing the EAP version.
 

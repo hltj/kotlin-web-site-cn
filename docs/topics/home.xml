@@ -20,7 +20,7 @@
             <a href="basic-syntax.md" description="快速了解 Kotlin 语法：关键字、操作符、程序结构">基础语法</a>
             <a href="https://play.kotlinlang.org/byExample/overview" description="Kotlin 语法简单评注版示例">例学 Kotlin</a>
             <a href="koans.md" description="让你熟悉 Kotlin 的编程练习">心印</a>
-            <a href="command-line.md" description="下载并安装 Kotlin 编译器" type="install">命令行编译器</a>
+            <a href="command-line.md" description="下载并安装 Kotlin 编译器">命令行编译器</a>
         </main-group>
         <highlighted-group>
             <title>精选主题</title>
@@ -34,7 +34,7 @@
         <custom-groups>
             <group type="cards" display="wide">
                 <title>新特性</title>
-                <a href="whatsnew17.md" description="Latest features: Kotlin K2 compiler in Alpha on JVM, stable opt-in requirement annotations, definitely non-nullable types, builder inference, performance improvements for JVM, Native, and JS, and more">What's New in Kotlin 1.7.0</a>
+                <a href="whatsnew1720.md" description="Latest features: a new operator for open-ended ranges, support for compiler plugins in the Kotlin K2 compiler, the new Kotlin/Native memory manager enabled by default, support for Gradle 7.1, and more">What's New in Kotlin 1.7.20</a>
                 <a href="roadmap.md" description="Future plans on Kotlin development">Kotlin 公共路线图p</a>
             </group>
             <group type="cards">
@@ -52,7 +52,7 @@
                     <a href="advent-of-code.md" description="Code puzzles in idiomatic Kotlin">Advent of Code</a>
                     <a href="https://play.kotlinlang.org/hands-on/overview" description="Complete long-form tutorials to fully grasp a technology">动手实践教程</a>
                     <a href="edu-tools-learner.md" description="An IDE plugin for learning and teaching programming languages">IntelliJ IDEA 中的 EduTools</a>
-                    <a href="books.md" description="The books that we’ve reviewed and recommend for learning Kotlin">图书</a>
+                    <a href="books.md" description="The books that we've reviewed and recommend for learning Kotlin">图书</a>
                 </link-collection>
                 <link-collection>
                     <title>在 YouTube 上观看 Kotlin 视频</title>

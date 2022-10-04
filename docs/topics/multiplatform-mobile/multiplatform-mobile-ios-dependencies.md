@@ -25,7 +25,7 @@ have some other strong reason to do so.
 
 ### With CocoaPods
 
-1. Perform [initial CocoaPods integration setup](native-cocoapods.md#set-up-the-environment-to-work-with-cocoapods).
+1. Perform [initial CocoaPods integration setup](native-cocoapods.md#set-up-an-environment-to-work-with-cocoapods).
 2. Add a dependency on a Pod library from the CocoaPods repository that you want to use by including the `pod()`
    function call in `build.gradle.kts` (`build.gradle`) of your project.
 
@@ -174,7 +174,7 @@ and [frameworks](#add-a-framework-without-cocoapods), but the idea remains the s
 
 7. Build the project.
 
-Now you can use this dependency in your Kotlin code. To do that, import the package you’ve set up in the `package`
+Now you can use this dependency in your Kotlin code. To do that, import the package you've set up in the `package`
 property in the `.def` file. For the example above, this will be:
 
 ```kotlin
@@ -261,7 +261,7 @@ import DateTools.*
 
 7. Build the project.
 
-Now you can use this dependency in your Kotlin code. To do this, import the package you’ve set up in the package
+Now you can use this dependency in your Kotlin code. To do this, import the package you've set up in the package
 property in the `.def` file. For the example above, this will be:
 
 ```kotlin

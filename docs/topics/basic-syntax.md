@@ -266,7 +266,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-参见[字符串模板](basic-types.md#字符串模板)。
+参见[字符串模板](strings.md#字符串模板)。
 
 ## 条件表达式
 

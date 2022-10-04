@@ -94,7 +94,7 @@ fun main() {
 
 在生成的代码中，Kotlin 编译器为每个内联类保留一个包装器。内联类的实例可以在<!--
 -->运行时表示为包装器或者基础类型。这就类似于 `Int`
-可以[表示](basic-types.md#jvm-平台的数字表示)为原生类型 `int` 或者包装器 `Integer`。
+可以[表示](numbers.md#jvm-平台的数字表示)为原生类型 `int` 或者包装器 `Integer`。
 
 为了生成性能最优的代码，Kotlin 编译更倾向于使用基础类型而不是包装器。
 然而，有时候使用包装器是必要的。一般来说，只要将内联类用作另一种类型，
@@ -129,6 +129,21 @@ fun main() {
 
 因为内联类既可以表示为基础类型有可以表示为包装器，[引用相等](equality.md#引用相等)<!--
 -->对于内联类而言毫无意义，因此这也是被禁止的。
+
+Inline classes can also have a generic type parameter as the underlying type. In this case, the compiler maps it to `Any?`
+or, generally, to the upper bound of the type parameter.
+
+```kotlin
+@JvmInline
+value class UserId<T>(val value: T)
+
+fun compute(s: UserId<String>) {} // compiler generates fun compute-<hashcode>(s: Any?)
+```
+
+> Generic inline classes is an [Experimental](components-stability.md) feature.
+> It may be dropped or changed at any time. Opt-in is required with the `-language-version 1.8` compiler option.
+>
+{type="warning"}
 
 ### 名字修饰
 

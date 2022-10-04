@@ -1,5 +1,10 @@
 [//]: # (title: 并发概述)
 
+> This page describes the features of the legacy memory manager. Check out [Kotlin/Native memory management](native-memory-manager.md)
+> to learn about the new memory manager, which has been enabled by default since Kotlin 1.7.20.
+>
+{type="note"}
+
 When you extend your development experience from Android to Kotlin Multiplatform Mobile, you will encounter a different state 
 and concurrency model for iOS. This is a Kotlin/Native model that compiles Kotlin code to native binaries that can run without a virtual machine, for example on iOS. 
 
@@ -8,7 +13,7 @@ Languages like Java, C++, and Swift/Objective-C let multiple threads access the 
 often very difficult to reproduce. You may not see them locally while developing, and they may happen sporadically. 
 And sometimes you can only see them in production under load.
 
-In short, just because your tests pass, you can’t necessarily be sure that your code is OK.
+In short, just because your tests pass, you can't necessarily be sure that your code is OK.
 
 Not all languages are designed this way. JavaScript simply does not 
 allow you to access the same state concurrently. At the other end of the spectrum is Rust, with its
@@ -41,7 +46,7 @@ fun simpleState(){
 }
 ```
 
-If there's only one thread, you won’t have concurrency issues. Technically this is referred 
+If there's only one thread, you won't have concurrency issues. Technically this is referred 
 to as _thread confinement_, which means that you cannot change the UI from a background thread. Kotlin/Native's state rules 
 formalize that concept for all threads.
 

@@ -18,8 +18,6 @@ Kotlin/JS IR 编译器后端没有直接从 Kotlin 源代码生成 JavaScript �
 从 Kotlin 1.4.0 开始，可以通过 Kotlin/JS Gradle 插件使用 IR 编译器后端。要在项目中启用它，
 请将编译器类型传递给 Gradle 构建脚本中的 `js` 函数：
 
-<!--suppress ALL -->
-
 ```groovy
 kotlin {
     js(IR) { // 或：LEGACY、BOTH
@@ -29,9 +27,9 @@ kotlin {
 }
 ```
 
-- `IR` 使用 Kotlin/JS 的新 IR 编译器后端。
-- `LEGACY` 使用默认编译器后端。
-- `BOTH` 使用新的 IR 编译器以及默认的编译器后端编译项目。这个模式用于[创作与两个后端兼容的库](#为-ir-编译器创作具有向后兼容性的库)。
+* `IR` 使用 Kotlin/JS 的新 IR 编译器后端。
+* `LEGACY` 使用默认编译器后端。
+* `BOTH` 使用新的 IR 编译器以及默认的编译器后端编译项目。这个模式用于[创作与两个后端兼容的库](#为-ir-编译器创作具有向后兼容性的库)。
 
 还可以使用键值 `kotlin.js.compiler=ir` 在 `gradle.properties` 文件中设置编译器类型。
 但是，`build.gradle(.kts)` 中的任何设置都会覆盖此行为。
@@ -60,7 +58,7 @@ In this mode, the compiler caches the results of `compileDevelopmentExecutableKo
 It uses the cached compilation results for unchanged source files during subsequent compilations, making them complete faster,
 especially with small changes.
 
-To enable incremental compilation for development binaries, add the following line to the project’s `gradle.properties`
+To enable incremental compilation for development binaries, add the following line to the project's `gradle.properties`
 or `local.properties`:
 
 ```properties
@@ -82,7 +80,7 @@ kotlin.js.ir.output.granularity=whole-program // 'per-module' is the default
 
 ## 忽略编译错误
 
->_Ignore compilation errors_ mode is [Experimental](components-stability.md). It may be dropped or changed at any time.
+> _Ignore compilation errors_ mode is [Experimental](components-stability.md). It may be dropped or changed at any time.
 > Opt-in is required (see the details below), and you should use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issues/KT).
 >
 {type="warning"}
@@ -121,7 +119,7 @@ The Kotlin/JS IR compiler uses its internal information about the relationships 
 
 This type of minification is automatically applied when you build your Kotlin/JS application in [production](js-project-setup.md#building-executables) mode, and enabled by default. To disable member name minification, use the `-Xir-minimized-member-names` compiler option:
 
-```
+```kotlin
 kotlin {
    js(IR) {
        compilations.all {
@@ -151,9 +149,9 @@ JavaScript 工具与 IDE 可以使用这些定义来提供自动补全功能、�
 ## IR 编译器的当前限制
 
 新的 IR 编译器后端的主要变化是与默认后端 **没有二进制兼容性**。
-A library created with the new IR compiler uses a [`klib` format](native-libraries.md#库格式) and can’t be used 
+A library created with the new IR compiler uses a [`klib` format](native-libraries.md#库格式) and can't be used 
 from the default backend. In the meantime, a library created with the old compiler is a `jar` with `js` files, which 
-can’t be used from the IR backend.
+can't be used from the IR backend.
 
 如果要为项目使用 IR 编译器后端，则需要 **将所有 Kotlin 依赖项更新为<!--
 -->支持该新后端的版本**。由 JetBrains 针对 Kotlin/JS 发布的针对 Kotlin 1.4+ 的库已经包含了<!--

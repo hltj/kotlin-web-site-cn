@@ -27,8 +27,8 @@ Another scenario when code sharing may bring benefits is a connected application
 reused on both the server and the client side running in the browser. This is covered by Kotlin
 Multiplatform as well.
 
-See [Build a Full Stack Web App with Kotlin Multiplatform](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)
-hands-on, where you will create a connected application consisting of a server part, using Kotlin/JVM and a web client,
+See [Build a full-stack web app with Kotlin Multiplatform](multiplatform-full-stack-app.md)
+tutorial, where you will create a connected application consisting of a server part, using Kotlin/JVM and a web client,
 using Kotlin/JS.
 
 ### Multiplatform libraries
@@ -74,7 +74,7 @@ project — a cross-platform application for iOS and Android with desktop and we
 * 在项目中包含的[某些平台（而不是所有平台）间共享代码](multiplatform-share-on-platforms.md#对相似平台共享代码)。 当<!--
 -->可以对类似的平台共享大量代码时请这么用。 
 
-    ![为 iOS 目标共享代码](kotlin-multiplatofrm-hierarchical-structure.png){width=700}
+    ![为 iOS 目标共享代码](kotlin-multiplatform-hierarchical-structure.svg){width=700}
 
 * 如果需要从共享代码中访问平台相关的 API，请使用 Kotlin 的<!--
 -->[预期声明与实际声明](multiplatform-connect-to-apis.md)机制。
@@ -95,4 +95,4 @@ Look through cross-platform application samples to understand how Kotlin Multipl
 * [Kotlin Multiplatform Mobile samples](multiplatform-mobile-samples.md)
 * [KotlinConf 应用](https://github.com/JetBrains/kotlinconf-app)
 * [KotlinConf Spinner 应用](https://github.com/jetbrains/kotlinconf-spinner)
-* [Build a Full Stack Web App with Kotlin Multiplatform hands-on](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)
+* [Build a full-stack web app with Kotlin Multiplatform](multiplatform-full-stack-app.md)

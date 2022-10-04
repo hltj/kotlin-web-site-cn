@@ -11,17 +11,20 @@
 * 如果 Kotlin 是你的第一门编程语言，我们建议从[《Atomic Kotlin》这本书](https://www.atomickotlin.com/atomickotlin/)开始，
 或者在 JetBrains 学院报名免费的[Kotlin 基础课程](https://hyperskill.org/join/fromdocstoJetSalesStat?redirect=true&next=/tracks/18)。
 
+## Install Kotlin
+
+Kotlin is included in each [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) and [Android Studio](https://developer.android.com/studio) release.  
+Download and install one of these IDEs to start using Kotlin.
+
 ## 使用 Kotlin 创建强大的应用程序
  
 <tabs>
 
-<tab title="后端应用">
+<tab id="backend" title="后端应用">
 
 以下是开发 Kotlin 服务器端应用程序的第一步。
 
-1. **安装 [IntelliJ IDEA 最新版](https://www.jetbrains.com/idea/download/index.html)。**
-
-2. **创建第一个后端应用程序：**
+1. **创建第一个后端应用程序：**
    
    * 从头开始，[使用 IntelliJ IDEA 项目向导创建一个基本的 JVM 应用程序](jvm-get-started.md)。
    * 如果倾向于更健壮的示例，请选择以下框架之一来创建一个项目：
@@ -54,25 +57,25 @@
    </tr>
    </table>
 
-3. **在应用程序中使用 Kotlin 库与第三方库**。 了解关于[向项目中添加库与工具依赖项](gradle.md#configuring-dependencies)的更多信息。
+2. **在应用程序中使用 Kotlin 库与第三方库**。 了解关于[向项目中添加库与工具依赖项](gradle.md#configure-dependencies)的更多信息。
    * [Kotlin 标准库](https://kotlinlang.org/api/latest/jvm/stdlib/)提供了许多实用的内容，例如[集合](collections-overview.md)与[协程](coroutines-guide.md)。
    * 看看这些[用于 Kotlin 的第三方框架、库与工具](https://blog.jetbrains.com/kotlin/2020/11/server-side-development-with-kotlin-frameworks-and-libraries/)。
 
-4. **了解关于 Kotlin 用于服务器端开发的更多信息：**
+3. **了解关于 Kotlin 用于服务器端开发的更多信息：**
    * [如何编写第一个单元测试](jvm-test-using-junit.md)。
    * [如何在应用程序中混用 Kotlin 与 Java 代码](mixing-java-kotlin-intellij.md)。
 
-5. **加入 Kotlin 服务器端社区：**
+4. **加入 Kotlin 服务器端社区：**
    * ![Slack](slack.svg){width=25}{type="joined"} Slack：[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)并加入 [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA)、 [#server](https://kotlinlang.slack.com/archives/C0B8RC352)、 [#spring](https://kotlinlang.slack.com/archives/C0B8ZTWE4) 或 [#ktor](https://kotlinlang.slack.com/archives/C0A974TJ9) 频道。
-   * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅[“kotlin”](https://stackoverflow.com/questions/tagged/kotlin)、[“spring-kotlin”](https://stackoverflow.com/questions/tagged/spring-kotlin)或[“ktor”](https://stackoverflow.com/questions/tagged/ktor)标签。
+   * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅["kotlin"](https://stackoverflow.com/questions/tagged/kotlin)、[“spring-kotlin”](https://stackoverflow.com/questions/tagged/spring-kotlin)或[“ktor”](https://stackoverflow.com/questions/tagged/ktor)标签。
 
-6. **关注 Kotlin**： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/)、 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
+5. **关注 Kotlin**： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/)、 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
 
 如果遇到任何困难和问题，请在我们的[问题跟踪系统](https://youtrack.jetbrains.com/issues/KT)提报。
 
 </tab>
 
-<tab title="跨平台移动端应用">
+<tab id="cross-platform-mobile" title="跨平台移动端应用">
 
 在此可以了解到如何使用 [Kotlin 多平台移动端](https://kotlinlang.org/lp/mobile/)开发及改进跨平台移动端应用程序。
 
@@ -115,21 +118,19 @@
 
 </tab>
 
-<tab title="前端 web 应用">
+<tab id="frontend" title="前端 web 应用">
 
 Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项转换为 JavaScript。
 
 在此可以了解到如何使用 [Kotlin/JS](js-overview.md) 开发及改进前端 web 应用程序。
 
-1. **安装[IntelliJ IDEA 最新版](https://www.jetbrains.com/idea/download/index.html)。**
-
-2. **创建第一个前端 web 应用程序：**
+1. **创建第一个前端 web 应用程序：**
 
    * 从头开始，[使用 IntelliJ IDEA 项目向导创建一个基本的浏览器应用程序](js-project-setup.md)。
    * 如果倾向于更健壮的示例，那么请完成[使用 React 与 Kotlin/JS 构建 web 应用程序](js-react.md)教程。 它有一个可以作为你自己项目良好起点的样例项目，其中包含有用的片段和模板。
    * 查看 [Kotlin/JS 样例](js-samples.md)列表，了解关于如何使用 Kotlin/JS 的更多看法。
 
-3. **在应用程序中使用库。** 了解[添加依赖项](js-project-setup.md#依赖项)的更多信息。  
+2. **在应用程序中使用库。** 了解[添加依赖项](js-project-setup.md#依赖项)的更多信息。  
     
    |库 | 详情 |
    |--------|---------|
@@ -143,24 +144,24 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
    |Compose for Web，[Compose Multiplatform](https://www.jetbrains.com/lp/compose-mpp/) 的一部分 | 将 [谷歌的 Jetpack Compose UI 工具包](https://developer.android.com/jetpack/compose)带到浏览器的 JetBrains 框架。|
    |[kotlin-wrappers](https://github.com/JetBrains/kotlin-wrappers) | 为最流行的 JavaScript 框架之一提供方便的抽象与深度集成。 Kotlin wrappers 还为许多类似技术提供支持，例如 `react-redux`、 `react-router` 或者 `styled-components`。 |
 
-4. **了解关于 Kotlin 用于前端 web 开发的更多信息：**
+3. **了解关于 Kotlin 用于前端 web 开发的更多信息：**
 
    * [新版 Kotlin/JS IR 编译器](js-ir-compiler.md)（目前处于 [Beta](components-stability.md) 状态）。
    * [使用来自 npm 的依赖项](using-packages-from-npm.md)。
    * [在 JavaScript 中使用 Kotlin 代码](js-to-kotlin-interop.md)。
 
-5. **加入 Kotlin 前端 web 社区：**
+4. **加入 Kotlin 前端 web 社区：**
 
    * ![Slack](slack.svg){width=25}{type="joined"} Slack：[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)并加入 [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) 与 [#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) 频道。
    * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅[“kotlin-js” 标签](https://stackoverflow.com/questions/tagged/kotlin-js)。
 
-6. **关注 Kotlin**： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/)、 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
+5. **关注 Kotlin**： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/)、 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
 
 如果遇到任何困难和问题，请在我们的[问题跟踪系统](https://youtrack.jetbrains.com/issues/KT)提报。
 
 </tab>
 
-<tab title="Android 应用">
+<tab id="android" title="Android 应用">
 
 * 如果希望开始使用 Kotlin 用于 Android 开发，请阅读 [谷歌对 Android 上 Kotlin 入门的建议](https://developer.android.com/kotlin/get-started)。
 
@@ -170,44 +171,42 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
 
 </tab>
 
-<tab title="多平台库">
+<tab id="multiplatform-library" title="多平台库">
 
 支持多平台程序设计是 Kotlin 的主要优势之一。 它减少了为不同平台编写与维护相同代码所花的时间，同时保留了原生编程的灵活性与优势。
 
 在此可以了解到如何开发并发布多平台库：
 
-1. **安装[IntelliJ IDEA 最新版](https://www.jetbrains.com/idea/download/index.html)。**
-
-2. **创建多平台库：**
+1. **创建多平台库：**
 
    * 完成[创建并发布多平台库](multiplatform-library.md)教程。 它展示了如何为 JVM、 JS 与原生平台创建多平台库，对其进行测试并发布到本地 Maven 仓库。
-   * 使用[这一动手实践](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)构建一个全栈 web 应用程序。
+   * 使用[这个教程](multiplatform-full-stack-app.md)构建一个全栈 web 应用程序。
 
-3. **在应用程序中使用库。** 了解关于[添加对库的依赖](multiplatform-add-dependencies.md)的更多内容。
+2. **在应用程序中使用库。** 了解关于[添加对库的依赖](multiplatform-add-dependencies.md)的更多内容。
 
-   |库|详情|
-   |-------|-------|
-   | Ktor |  [文档](https://ktor.io/docs/)与[样例](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/03_A_Simple_API_Server)。| 
-   | Serialization |  [文档](serialization.md)与[样例](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)。|
-   | Coroutines |  [文档](coroutines-overview.md)。|
-   | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)。|
+   |库|详情                                                                                                 |
+   |---------------------------------------------------------------------------------------------------------|-------|
+   | Ktor | [文档](https://ktor.io/docs/)与[样例](multiplatform-full-stack-app.md#build-the-backend)。 | 
+   | Serialization | [文档](serialization.md)与[样例](multiplatform-full-stack-app.md)。                                 |
+   | Coroutines | [文档](coroutines-overview.md)。                                                                         |
+   | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)。                                              |
 
    > 还可以在[社区驱动列表](https://libs.kmp.icerock.dev/)中找到多平台库。
    >
    {type="tip"}
 
-4. **了解关于 Kotlin 多平台程序设计的更多信息：**
+3. **了解关于 Kotlin 多平台程序设计的更多信息：**
 
    * [Kotlin 多平台介绍](multiplatform-get-started.md)。
    * [Kotlin 多平台所支持平台](multiplatform-dsl-reference.md#目标)。
    * [Kotlin 多平台程序设计优势](multiplatform.md)。
 
-5. **加入 Kotlin 多平台社区：**
+4. **加入 Kotlin 多平台社区：**
 
    * ![Slack](slack.svg){width=25}{type="joined"} Slack：[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)并加入 [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) 与 [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) 频道。
    * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅 [“kotlin-multiplatform” 标签](https://stackoverflow.com/questions/tagged/kotlin-multiplatform)。
 
-6. **关注 Kotlin**： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/)、 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
+5. **关注 Kotlin**： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/)、 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
 
 如果遇到任何困难和问题，请在我们的[问题跟踪系统](https://youtrack.jetbrains.com/issues/KT)提报。
 

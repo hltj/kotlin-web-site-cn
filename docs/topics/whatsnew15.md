@@ -19,10 +19,10 @@ and the corresponding pages of Kotlin documentation.
 
 ### JVM 记录类型支持
 
-Java is evolving fast, and to make sure Kotlin remains interoperable with it, we’ve introduced support for one of its latest
+Java is evolving fast, and to make sure Kotlin remains interoperable with it, we've introduced support for one of its latest
 features – [record classes](https://openjdk.java.net/jeps/395).
 
-Kotlin’s support for JVM records includes bidirectional interoperability:
+Kotlin's support for JVM records includes bidirectional interoperability:
 * In Kotlin code, you can use Java record classes like you would use typical classes with properties.
 * To use a Kotlin class as a record in Java code, make it a `data` class and mark it with the `@JvmRecord` annotation.
 
@@ -123,7 +123,7 @@ now become the default for language version `1.5`. The old backend is still used
 
 You can find more details about the benefits of the IR backend and its future development in [this blog post](https://blog.jetbrains.com/kotlin/2021/02/the-jvm-backend-is-in-beta-let-s-make-it-stable-together/).
 
-If you need to use the old backend in Kotlin 1.5.0, you can add the following lines to the project’s configuration file:
+If you need to use the old backend in Kotlin 1.5.0, you can add the following lines to the project's configuration file:
 
 * In Gradle:
 
@@ -175,7 +175,7 @@ Kotlin 1.5.0 now uses dynamic invocations (`invokedynamic`) for compiling SAM (S
 * Over lambda if the SAM type is a [Kotlin functional interface](fun-interfaces.md#sam-转换)
 
 The new implementation uses [`LambdaMetafactory.metafactory()`](https://docs.oracle.com/javase/8/docs/api/java/lang/invoke/LambdaMetafactory.html#metafactory-java.lang.invoke.MethodHandles.Lookup-java.lang.String-java.lang.invoke.MethodType-java.lang.invoke.MethodType-java.lang.invoke.MethodHandle-java.lang.invoke.MethodType-)
-and auxiliary wrapper classes are no longer generated during compilation. This decreases the size of the application’s JAR,
+and auxiliary wrapper classes are no longer generated during compilation. This decreases the size of the application's JAR,
 which improves the JVM startup performance.
 
 To roll back to the old implementation scheme based on anonymous class generation, add the compiler option `-Xsam-conversions=class`.
@@ -199,7 +199,7 @@ lambda compilation:
 * Calling `toString()` on such a lambda produces a less readable string representation.
 * Experimental [`reflect`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect.jvm/reflect.html) API does not support lambdas created with `LambdaMetafactory`.
 
-To try this feature, add the `-Xlambdas=indy` compiler option. We’d be grateful if you could share your feedback on it using
+To try this feature, add the `-Xlambdas=indy` compiler option. We would be grateful if you could share your feedback on it using
 this [YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-45375).
 
 Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and [command-line compiler](compiler-reference.md#编译器选项).
@@ -251,7 +251,7 @@ In 1.5.0, Kotlin/Native is receiving a set of performance improvements that spee
 debug mode for `linuxX64` (only on Linux hosts) and `iosArm64` targets. With compiler caches enabled, most debug compilations
 complete much faster, except for the first one. Measurements showed about a 200% speed increase on our test projects.
 
-To use compiler caches for new targets, opt in by adding the following lines to the project’s `gradle.properties`:
+To use compiler caches for new targets, opt in by adding the following lines to the project's `gradle.properties`:
 * For `linuxX64` : `kotlin.native.cacheKind.linuxX64=static`
 * For `iosArm64`: `kotlin.native.cacheKind.iosArm64=static`
 
@@ -266,7 +266,7 @@ Other improvements speed up the execution of Kotlin/Native code:
 The built-in Kotlin/Native memory leak checker has been disabled by default.
 
 It was initially designed for internal use, and it is able to find leaks only in a limited number of cases, not all of them.
-Moreover, it later turned out to have issues that can cause application crashes. So we’ve decided to turn off the memory leak checker.
+Moreover, it later turned out to have issues that can cause application crashes. So we've decided to turn off the memory leak checker.
 
 The memory leak checker can still be useful for certain cases, for example, unit testing. For these cases, you can enable
 it by adding the following line of code:
@@ -279,7 +279,7 @@ Note that enabling the checker for the application runtime is not recommended.
 
 ## Kotlin/JS
 
-Kotlin/JS is receiving evolutionary changes in 1.5.0. We’re continuing our work on moving the [JS IR compiler backend](js-ir-compiler.md)
+Kotlin/JS is receiving evolutionary changes in 1.5.0. We're continuing our work on moving the [JS IR compiler backend](js-ir-compiler.md)
 towards stable and shipping other updates:
 
 * [将 webpack 升级到版本 5](#升级到-webpack-5)
@@ -288,7 +288,7 @@ towards stable and shipping other updates:
 ### 升级到 webpack 5
 
 The Kotlin/JS Gradle plugin now uses webpack 5 for browser targets instead of webpack 4. This is a major webpack upgrade
-that brings incompatible changes. If you’re using a custom webpack configuration, be sure to check the [webpack 5 release notes](https://webpack.js.org/blog/2020-10-10-webpack-5-release/).
+that brings incompatible changes. If you're using a custom webpack configuration, be sure to check the [webpack 5 release notes](https://webpack.js.org/blog/2020-10-10-webpack-5-release/).
 
 [Learn more about bundling Kotlin/JS projects with webpack](js-project-setup.md#webpack-绑定).
 
@@ -304,10 +304,10 @@ projects in `both` mode. This means they are able to produce artifacts for both 
 the ecosystem for the new compiler.
 
 Many well-known frameworks and libraries are already available for the IR backend: [KVision](https://kvision.io/), [fritz2](https://www.fritz2.dev/),
-[doodle](https://github.com/nacular/doodle), and others. If you’re using them in your project, you can already build it
+[doodle](https://github.com/nacular/doodle), and others. If you're using them in your project, you can already build it
 with the IR backend and see the benefits it brings.
 
-If you’re writing your own library, [compile it in the 'both' mode](js-ir-compiler.md#为-ir-编译器创作具有向后兼容性的库)
+If you're writing your own library, [compile it in the 'both' mode](js-ir-compiler.md#为-ir-编译器创作具有向后兼容性的库)
 so that your clients can also use it with the new compiler.
 
 
@@ -341,7 +341,7 @@ You can learn more about the standard library changes in [this blog post](https:
 The `UInt`, `ULong`, `UByte`, `UShort` unsigned integer types are now [Stable](components-stability.md). The same goes
 for operations on these types, ranges, and progressions of them. Unsigned arrays and operations on them remain in Beta.
 
-[Learn more about unsigned integer types](basic-types.md#无符号整型).
+[Learn more about unsigned integer types](unsigned-integer-types.md).
 
 ### 稳定版用于大小写文本的区域设置无关 API
 
@@ -434,11 +434,11 @@ New operations for modular arithmetics have been added to the standard library:
 * `floorDiv()` returns the result of [floored division](https://en.wikipedia.org/wiki/Floor_and_ceiling_functions). It is available for integer types.
 * `mod()` returns the remainder of floored division (_modulus_). It is available for all numeric types.
 
-These operations look quite similar to the existing [division of integers](basic-types.md#运算) and [rem()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/rem.html)
+These operations look quite similar to the existing [division of integers](numbers.md#operations-on-numbers) and [rem()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/rem.html)
 function (or the `%`operator), but they work differently on negative numbers:
 * `a.floorDiv(b)` differs from a regular `/` in that `floorDiv` rounds the result down (towards the lesser integer),
   whereas `/` truncates the result to the integer closer to 0.
-* `a.mod(b)` is the difference between `a` and `a.floorDiv(b) * b`. It’s either zero or has the same sign as `b`,
+* `a.mod(b)` is the difference between `a` and `a.floorDiv(b) * b`. It's either zero or has the same sign as `b`,
   while `a % b` can have a different one.
 
 ```kotlin
@@ -487,7 +487,7 @@ fun main() {
 
 ### 用于获取字符类别的新版 API 现已对多平台代码可用
 
-Kotlin 1.5.0 introduces the new API for getting a character’s category according to Unicode in multiplatform projects.
+Kotlin 1.5.0 introduces the new API for getting a character's category according to Unicode in multiplatform projects.
 Several functions are now available in all the platforms and in the common code.
 
 Functions for checking whether a char is a letter or a digit:
@@ -532,7 +532,7 @@ The property [`Char.category`](https://kotlinlang.org/api/latest/jvm/stdlib/kotl
 enum class [`CharCategory`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-char-category/), which indicates
 a char's general category according to Unicode, are now also available in multiplatform projects.
 
-[Learn more about characters](basic-types.md#字符).
+[Learn more about characters](characters.md).
 
 ### 新的集合函数 firstNotNullOf()
 
@@ -650,7 +650,7 @@ tasks {
 ```
 
 You can disable automatic testing framework selection by adding the line `kotlin.test.infer.jvm.variant=false`
-to the project’s `gradle.properties`.
+to the project's `gradle.properties`.
 
 Learn more about [setting dependencies on test libraries](gradle.md#set-dependencies-on-test-libraries).
 
@@ -678,7 +678,7 @@ The `kotlin-test` library now has the following features:
 
 * **比较数组、序列以及任意可迭代容器的内容**
 
-  There is a new set of overloaded `assertContentEquals()` functions for comparing content for different collections that don’t implement [structural equality](equality.md#结构相等):
+  There is a new set of overloaded `assertContentEquals()` functions for comparing content for different collections that don't implement [structural equality](equality.md#结构相等):
 
   ```kotlin
   @Test

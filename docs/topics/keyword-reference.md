@@ -13,7 +13,7 @@
  * `continue` [继续最近层循环的下一步](returns.md)。
  * `do` 开始一个 [do/while 循环](control-flow.md#while-循环)（后置条件的循环）。
  * `else` 定义一个 [if 表达式](control-flow.md#if-表达式)条件为 false 时执行的分支。
- * `false` 指定[布尔类型](basic-types.md#布尔)的“假”值。
+ * `false` 指定[布尔类型](booleans.md)的“假”值。
  * `for` 开始一个 [for 循环](control-flow.md#for-循环)。
  * `fun` 声明一个[函数](functions.md)。
  * `if` 开始一个 [if 表达式](control-flow.md#if-表达式)。
@@ -45,7 +45,7 @@
    - 引用[当前接收者](this-expressions.md)。
    - [在次构造函数中调用同一个类的另一个构造函数](classes.md#构造函数)。
  * `throw` [抛出一个异常](exceptions.md)。
- * `true` 指定[布尔类型](basic-types.md#布尔)的“真”值。
+ * `true` 指定[布尔类型](booleans.md)的“真”值。
  * `try` [开始一个异常处理块](exceptions.md)。
  * `typealias` 声明一个[类型别名](type-aliases.md)。
  * `typeof` 保留以供未来使用。
@@ -138,7 +138,7 @@ Kotlin 支持以下操作符和特殊符号：
    - 也用于指定[参数的默认值](functions.md#默认参数)。
  * `+=`、 `-=`、 `*=`、 `/=`、 `%=` —— [广义赋值操作符](operator-overloading.md#广义赋值)。
  * `++`、 `--` —— [递增与递减操作符](operator-overloading.md#递增与递减)。
- * `&&`、 `||`、 `!` —— 逻辑“与”、“或”、“非”操作符（对于位运算，请使用相应的[中缀函数](basic-types.md#运算)）。
+ * `&&`、 `||`、 `!` —— 逻辑“与”、“或”、“非”操作符（对于位运算，请使用相应的[中缀函数](numbers.md#数字运算)）。
  * `==`、 `!=` —— [相等操作符](operator-overloading.md#相等与不等操作符)（对于非原生类型会翻译为调用 `equals()`）。
  * `===`、 `!==` —— [引用相等操作符](equality.md#引用相等)。
  * `<`、 `>`、 `<=`、 `>=` —— [比较操作符](operator-overloading.md#比较操作符)（对于非原生类型会翻译为调用 `compareTo()`）。
@@ -161,7 +161,7 @@ Kotlin 支持以下操作符和特殊符号：
    - 引用一个来自外部作用域的 [“this”表达式](this-expressions.md#限定的-this)。
    - 引用一个[外部超类](inheritance.md#调用超类实现)。
  * `;` 分隔位于同一行的多个语句。
- * `$` 在[字符串模版](basic-types.md#字符串模板)中引用变量或者表达式。
+ * `$` 在[字符串模版](strings.md#字符串模板)中引用变量或者表达式。
  * `_`
    - 在 [lambda 表达式](lambdas.md#下划线用于未使用的变量)中代替未使用的参数。
    - 在[解构声明](destructuring-declarations.md#下划线用于未使用的变量)中代替未使用的参数。

@@ -298,7 +298,7 @@ Kotlin 中使用它们会很自然。然而请注意，`java.util.Scanner` 极�
 在 Kotlin 中写输出通常很简单，调用 
 [println(...)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/println.html) 
 以及使用 Kotlin 的<!-- 
--->[字符串模板](basic-types.md#字符串模板)。然而，当输出<!-- 
+-->[字符串模板](strings.md#字符串模板)。然而，当输出<!-- 
 -->包含大约 10<sup>5</sup> 或更多行时，必须小心。调用这么多次 `println` 太慢了，因为 
 Kotlin 中的该输出会在每行后自动刷新写缓冲。 
 从数组或 list 中写多行的更快方式是使用

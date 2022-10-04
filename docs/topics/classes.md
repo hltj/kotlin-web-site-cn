@@ -158,7 +158,7 @@ fun main() {
 如果你不希望你的类有一个公有构造函数，那么声明一个带有非默认可见性的空的主构造函数：
 
 ```kotlin
-class DontCreateMe private constructor () { /*……*/ }
+class DontCreateMe private constructor() { /*……*/ }
 ```
 
 > 在 JVM 上，如果主构造函数的所有的参数都有默认值，编译器会生成一个额外的无参构造函数，它将使用默认值。这使得 Kotlin 更易于使用像 Jackson 或者 JPA 这样的通过无参构造函数创建类的实例的库。

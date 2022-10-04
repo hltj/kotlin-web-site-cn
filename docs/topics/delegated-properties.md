@@ -313,7 +313,13 @@ var readWrite: Int by resourceDelegate()
 
 ## Translation rules for delegated properties
 
-本质上说，Kotlin 编译器会为每个委托属性生成辅助属性并委托给它。
+在底层，Kotlin 编译器会为某些类型的委托属性生成辅助属性并委托给它们。
+
+> For the optimization purposes, the compiler [_does not_ generate auxiliary properties in several cases](#optimized-cases-for-delegated-properties).
+> Learn about the optimization on the example of [delegating to another property](#translation-rules-when-delegating-to-another-property).
+>
+{type="note"}
+
 例如，对于属性 `prop`，生成隐藏属性 `prop$delegate`，而访问器的代码只是<!--
 -->简单地委托给这个附加属性：
 
@@ -333,6 +339,48 @@ class C {
 
 Kotlin 编译器在参数中提供了关于 `prop` 的所有必要信息：第一个参数 `this` 引用<!--
 -->到外部类 `C` 的实例，而 `this::prop` 是 `KProperty` 类型的反射对象，该对象描述 `prop` 自身。
+
+### Optimized cases for delegated properties
+
+The `$delegate` field will be omitted if a delegate is:
+* A referenced property:
+
+  ```kotlin
+  class C<Type> {
+      private var impl: Type = ...
+      var prop: Type by ::impl
+  }
+  ```
+
+* A named object:
+
+  ```kotlin
+  object NamedObject {
+      operator fun getValue(thisRef: Any?, property: KProperty<*>): String = ...
+  }
+
+  val s: String by NamedObject
+  ```
+
+* A final `val` property with a backing field and a default getter in the same module:
+
+  ```kotlin
+  val impl: ReadOnlyProperty<Any?, String> = ...
+
+  class A {
+      val s: String by impl
+  }
+  ```
+
+* A constant expression, enum entry, `this`, `null`. The example of `this`:
+
+  ```kotlin
+  class A {
+      operator fun getValue(thisRef: Any?, property: KProperty<*>) ...
+ 
+      val s by this
+  }
+  ```
 
 ### Translation rules when delegating to another property
 

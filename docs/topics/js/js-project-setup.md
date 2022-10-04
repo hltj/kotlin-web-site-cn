@@ -369,7 +369,7 @@ kotlin.js.webpack.major.version=4
 最常见的 webpack 调整可以直接通过 Gradle 构建文件中的
 `kotlin.js.browser.webpackTask` 配置块进行：
 - `outputFileName`——Webpacked 输出文件的名称。
-  在执行 webpack 任务后，它将在 `<projectDir>/build/distibution/` 中生成。默认值为项目名称。
+  在执行 webpack 任务后，它将在 `<projectDir>/build/distributions/` 中生成。默认值为项目名称。
 - `output.libraryTarget`——Webpacked 输出的模块系统。
   了解有关 [Kotlin/JS 项目可用的模块系统](js-modules.md)的更多信息。默认值为 `umd`。
   

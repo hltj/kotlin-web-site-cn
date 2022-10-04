@@ -55,8 +55,8 @@ Enter your name in the text box and accept the greetings from your application!
 2. Change the code of `div` to show your name backwards.  
    
    * Use the standard library function `reversed()` to reverse your name.
-   * Use a [string template](basic-types.md#字符串模板) for your reversed 
-   name by adding a dollar sign `$` and enclosing it in curly braces – `${name.reversed()}`.
+   * Use a [string template](strings.md#字符串模板) for your reversed 
+   name by adding a dollar sign `$` and enclosing it in curly braces – `${state.name.reversed()}`.
 
    ```kotlin
    div {
@@ -141,7 +141,7 @@ guides you through the process of building a simple web application using the Re
 DSL for HTML makes it easy to build reactive DOM elements, and illustrates how to use third-party React components and
 obtain information from APIs, all while writing the whole application logic in pure Kotlin/JS.
 
-* [Building a Full Stack Web App with Kotlin Multiplatform](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)
+* [Build a full-stack web app with Kotlin Multiplatform](multiplatform-full-stack-app.md)
 teaches the concepts behind building an application that targets Kotlin/JVM and Kotlin/JS by building a client-server
 application that makes use of shared code, serialization, and other multiplatform paradigms. It also provides a brief
 introduction to working with Ktor both as a server- and client-side framework.
