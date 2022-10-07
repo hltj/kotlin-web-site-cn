@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin/Native memory management)
+[//]: # (title: Kotlin/Native 内存管理)
 
 > This page describes features of the new memory manager enabled by default since Kotlin 1.7.20.
 > See our [migration guide](native-migration-guide.md) to move your projects from the legacy memory manager.

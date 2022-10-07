@@ -1,4 +1,4 @@
-[//]: # (title: Migrate to the new memory manager)
+[//]: # (title: 迁移到新版内存管理器)
 
 This guide compares the new [Kotlin/Native memory manager](native-memory-manager.md) with the legacy one and
 describes how to migrate your projects.
@@ -30,7 +30,7 @@ Follow these guidelines to migrate your projects from the legacy memory manager:
 ## Update Kotlin
 
 The new Kotlin/Native memory manager has been enabled by default since Kotlin 1.7.20. Check the Kotlin version and [update
-to the latest one](releases.md#update-to-a-new-release) if necessary.
+to the latest one](releases.md#更新到新版本) if necessary.
 
 ## Update dependencies
 

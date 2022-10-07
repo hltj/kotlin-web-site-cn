@@ -45,7 +45,7 @@ Follow these steps:
    apply plugin: 'kotlin-kapt'
    ```
 
-   Applying Kotlin plugins with `apply` in the Kotlin Gradle DSL is not recommended – [see why](gradle.md#using-the-gradle-kotlin-dsl).
+   不建议在 Kotlin Gradle DSL 中以 `apply` 的方式应用 Kotlin 插件——[参见为什么](gradle.md#使用-gradle-kotlin-dsl)。
 
 2. Add the respective dependencies using the `kapt` configuration in your `dependencies` block:
 

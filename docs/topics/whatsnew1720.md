@@ -1,10 +1,10 @@
-[//]: # (title: What's new in Kotlin 1.7.20)
+[//]: # (title: Kotlin 1.7.20 的新特性)
 
 <microformat>
    <p>The IDE support for Kotlin 1.7.20 is available for IntelliJ IDEA 213, 221, and 222.</p>
 </microformat>
 
-_[Release date: %kotlinReleaseDate%](eap.md#build-details)_
+_[发布日期：%kotlinReleaseDate%](eap.md#build-details)_
 
 The Kotlin 1.7.20 release is out! Here are some highlights from this release:
 
@@ -20,7 +20,7 @@ You can also find a short overview of the changes in this video:
 ## Support for Kotlin K2 compiler plugins
 
 The Kotlin team continues to stabilize the K2 compiler.
-K2 is still in **Alpha** (as announced in the [Kotlin 1.7.0 release](whatsnew17.md#new-kotlin-k2-compiler-for-the-jvm-in-alpha)),
+K2 is still in **Alpha** (as announced in the [Kotlin 1.7.0 release](whatsnew17.md#用于-jvm-的新版-kotlin-k2-编译器进入-alpha-阶段)),
 but it now supports several compiler plugins. You can follow [this YouTrack issue](https://youtrack.jetbrains.com/issue/KT-52604)
 to get updates from the Kotlin team on the new compiler.
 
@@ -355,7 +355,7 @@ We would appreciate your feedback on this feature in [YouTrack](https://youtrack
 ### More optimized cases of delegated properties
 
 In Kotlin 1.6.0, we optimized the case of delegating to a property by omitting the `$delegate` field and [generating
-immediate access to the referenced property](whatsnew16.md#optimize-delegated-properties-which-call-get-set-on-the-given-kproperty-instance). In 1.7.20, we've implemented this optimization for more cases.
+immediate access to the referenced property](whatsnew16.md#优化了在给定-kproperty-实例上调用了-get-set-的委托属性). In 1.7.20, we've implemented this optimization for more cases.
 The `$delegate` field will now be omitted if a delegate is:
 
 * A named object:
@@ -369,7 +369,7 @@ The `$delegate` field will now be omitted if a delegate is:
   ```
   {validate="false"}
 
-* A final `val` property with a [backing field](properties.md#backing-fields) and a default getter in the same module:
+* A final `val` property with a [backing field](properties.md#幕后字段) and a default getter in the same module:
 
   ```kotlin
   val impl: ReadOnlyProperty<Any?, String> = ...
@@ -403,7 +403,7 @@ We would appreciate your feedback on this feature in [YouTrack](https://youtrack
 {type="warning"}
 
 Before 1.7.20, the kapt stub generating task used the old backend, and [repeatable annotations](annotations.md#repeatable-annotations)
-didn't work with [kapt](kapt.md). With Kotlin 1.7.20, we've added support for the [JVM IR backend](whatsnew15.md#stable-jvm-ir-backend)
+didn't work with [kapt](kapt.md). With Kotlin 1.7.20, we've added support for the [JVM IR backend](whatsnew15.md#稳定版-jvm-ir-后端)
 in the kapt stub generating task. This makes it possible to use all the newest Kotlin features with kapt, including
 repeatable annotations.
 
@@ -592,7 +592,7 @@ kotlin {
 
 ## Standard library
 
-Kotlin 1.7.20 offers new [extension functions](extensions.md#extension-functions) for the `java.nio.file.Path` class, which allows you to walk through a file tree:
+Kotlin 1.7.20 offers new [extension functions](extensions.md#扩展函数) for the `java.nio.file.Path` class, which allows you to walk through a file tree:
 
 * `walk()` lazily traverses the file tree rooted at the specified path.
 * `fileVisitor()` makes it possible to create a `FileVisitor` separately. `FileVisitor` defines actions on directories

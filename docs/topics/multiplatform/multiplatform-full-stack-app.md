@@ -1,4 +1,4 @@
-[//]: # (title: Build a full-stack web app with Kotlin Multiplatform)
+[//]: # (title: 使用 Kotlin 多平台构建全栈 web 应用)
 
 This tutorial demonstrates how to build a connected full-stack application with IntelliJ IDEA. You will create a simple
 JSON API and learn how to use the API from a web app using Kotlin and React.
@@ -82,7 +82,7 @@ js {
 }
 ```
 
-For more detailed information on targets, see [Understand Multiplatform project structure](multiplatform-discover-project.md#targets).
+For more detailed information on targets, see [Understand Multiplatform project structure](multiplatform-discover-project.md#目标).
 
 #### Source sets {initial-collapse-state="collapsed"}
 
@@ -112,7 +112,7 @@ sourceSets {
 Each source set also corresponds to a folder in the `src` directory. In your project, there are three
 folders, `commonMain`, `jsMain`, and `jvmMain`, which contain their own `resources` and `kotlin` folders.
 
-For detailed information on source sets, see [Understand Multiplatform project structure](multiplatform-discover-project.md#source-sets).
+For detailed information on source sets, see [Understand Multiplatform project structure](multiplatform-discover-project.md#源代码集).
 
 ## Build the backend
 

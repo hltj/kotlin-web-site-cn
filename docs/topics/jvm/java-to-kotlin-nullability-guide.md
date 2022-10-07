@@ -1,4 +1,4 @@
-[//]: # (title: Nullability in Java and Kotlin)
+[//]: # (title: Java 与 Kotlin 中的可空性)
 [//]: # (description: Learn how to migrate nullable constructions from Java to Kotlin. This guide covers support for nullable types in Kotlin, how Kotlin treats nullable annotations from Java, and more.)
 
 _Nullability_ is the ability of a variable to hold a `null` value.
@@ -85,10 +85,10 @@ After the check is passed successfully, the compiler treats the variable as if i
 in the scope where the compiler performs the check.
 
 If you don't perform this check, the code will fail to compile with the following message:
-"Only [safe (?.)](null-safety.md#safe-calls) or [non-null asserted (!!.) calls](null-safety.md#the-operator) are allowed
-on a [nullable receiver](extensions.md#nullable-receiver) of type String?".
+"Only [safe (?.)](null-safety.md#安全的调用) or [non-null asserted (!!.) calls](null-safety.md#操作符) are allowed
+on a [nullable receiver](extensions.md#可空接收者) of type String?".
 
-You can write the same shorter – use the [safe-call operator ?. (If-not-null shorthand)](idioms.md#if-not-null-shorthand), 
+You can write the same shorter – use the [safe-call operator ?. (If-not-null shorthand)](idioms.md#if-not-null-缩写), 
 which allows you to combine a null check and a method call into a single operation:
 
 ```kotlin
@@ -103,7 +103,7 @@ In Java, you can use annotations showing whether a variable can or cannot be `nu
 Such annotations aren't part of the standard library, but you can add them separately.
 For example, you can use the JetBrains annotations `@Nullable` and `@NotNull` (from the `org.jetbrains.annotations` package)
 or annotations from Eclipse (`org.eclipse.jdt.annotation`).
-Kotlin can recognize such annotations when you're [calling Java code from Kotlin code](java-interop.md#nullability-annotations)
+Kotlin can recognize such annotations when you're [calling Java code from Kotlin code](java-interop.md#可空性注解)
 and will treat types according to their annotations.
 
 If your Java code doesn't have these annotations, then Kotlin will treat Java types as _platform types_.
@@ -114,7 +114,7 @@ You will need to decide whether to perform null checks, because:
 * The compiler won't highlight any redundant null checks, which it normally does when you perform a null-safe operation
 on a value of a non-nullable type.
 
-Learn more about [calling Java from Kotlin in regard to null-safety and platform types](java-interop.md#null-safety-and-platform-types).
+Learn more about [calling Java from Kotlin in regard to null-safety and platform types](java-interop.md#空安全与平台类型).
 
 ## Checking the result of a function call
 
@@ -166,7 +166,7 @@ if (order != null){
 ```
 {id="process-customer-if-not-null-kotlin"}
 
-Use the [safe-call operator `?.` (If-not-null shorthand)](idioms.md#if-not-null-shorthand) 
+Use the [safe-call operator `?.` (If-not-null shorthand)](idioms.md#if-not-null-缩写) 
 in combination with any of the [scope functions](scope-functions.md) from the standard library.
 The `let` function is usually used for this:
 
@@ -190,7 +190,7 @@ findOrder()?.customer?.let(::processCustomer)
 
 ## Default values instead of null
 
-Checking for `null` is often used in combination with [setting the default value](functions.md#default-arguments)
+Checking for `null` is often used in combination with [setting the default value](functions.md#默认参数)
 in case the null check is successful.
 
 The Java code with a null check:
@@ -204,7 +204,7 @@ if (order == null) {
 ```
 {id="default-value-instead-of-null-java"}
 
-To express the same in Kotlin, use the [Elvis operator (If-not-null-else shorthand)](null-safety.md#elvis-operator):
+To express the same in Kotlin, use the [Elvis operator (If-not-null-else shorthand)](null-safety.md#elvis-操作符):
 
 ```kotlin
 // Kotlin
@@ -290,7 +290,7 @@ void main() {
 ```
 {id="casting-types-java"}
 
-To avoid exceptions in Kotlin, use the [safe cast operator](typecasts.md#safe-nullable-cast-operator) `as?`, which returns `null` on failure:
+To avoid exceptions in Kotlin, use the [safe cast operator](typecasts.md#安全的可空转换操作符) `as?`, which returns `null` on failure:
 
 ```kotlin
 // Kotlin
@@ -315,7 +315,7 @@ you would do the check anyway, but no additional boxing is performed this way.
 ## What's next?
 
 * Browse other [Kotlin idioms](idioms.md).
-* Learn how to convert existing Java code to Kotlin with the [Java-to-Kotlin (J2K) converter](mixing-java-kotlin-intellij.md#converting-an-existing-java-file-to-kotlin-with-j2k).
+* Learn how to convert existing Java code to Kotlin with the [Java-to-Kotlin (J2K) converter](mixing-java-kotlin-intellij.md#使用-j2k-将现有-java-文件转换为-kotlin-文件).
 * Check out other migration guides:
   * [Strings in Java and Kotlin](java-to-kotlin-idioms-strings.md)
   * [Collections in Java and Kotlin](java-to-kotlin-collections-guide.md).

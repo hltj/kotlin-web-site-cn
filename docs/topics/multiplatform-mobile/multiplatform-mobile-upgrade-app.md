@@ -1,4 +1,4 @@
-[//]: # (title: Upgrade your app)
+[//]: # (title: 升级应用)
 
 <microformat>
     <p>This is the fourth part of the <strong>Getting started with Kotlin Multiplatform Mobile</strong> tutorial. Before proceeding, make sure you've completed previous steps.</p>

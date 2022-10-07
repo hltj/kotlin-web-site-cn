@@ -1,6 +1,6 @@
-[//]: # (title: What's new in Kotlin 1.7.20-RC)
+[//]: # (title: Kotlin 1.7.20-RC 的新特性)
 
-_[Release date: %kotlinEapReleaseDate%](eap.md#build-details)_
+_[发布日期：%kotlinEapReleaseDate%](eap.md#build-details)_
 
 > This document doesn't cover all the features of the Early Access Preview (EAP) release, but highlights the new ones and some major improvements.
 > See the full list of changes in the [GitHub changelog](https://github.com/JetBrains/kotlin/releases/tag/v1.7.20-RC).
@@ -18,7 +18,7 @@ The Kotlin 1.7.20-RC release is out! Here are some highlights from this preview 
 ## Support for Kotlin K2 compiler plugins
 
 The Kotlin team continues to stabilize the K2 compiler.
-K2 is still in Alpha (as [announced in the Kotlin 1.7.0 release](whatsnew17.md#new-kotlin-k2-compiler-for-the-jvm-in-alpha)), but now it supports several compiler plugins.
+K2 is still in Alpha (as [announced in the Kotlin 1.7.0 release](whatsnew17.md#用于-jvm-的新版-kotlin-k2-编译器进入-alpha-阶段)), but now it supports several compiler plugins.
 You can follow [this YouTrack issue](https://youtrack.jetbrains.com/issue/KT-52604) to get updates from the Kotlin team on the new compiler.
 
 Starting with this preview version, the Kotlin K2 compiler supports the following plugins:

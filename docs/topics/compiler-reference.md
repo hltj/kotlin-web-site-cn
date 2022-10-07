@@ -280,7 +280,7 @@ Produce an application for running unit tests from the project.
 
 ### -generate-worker-test-runner (-trw)
 
-Produce an application for running unit tests in a [worker thread](native-immutability.md#concurrency-in-kotlin-native).
+Produce an application for running unit tests in a [worker thread](native-immutability.md#kotlin-native-中的并发).
 
 ### -generate-no-exit-test-runner (-trn)
 

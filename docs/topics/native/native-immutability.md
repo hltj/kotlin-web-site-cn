@@ -28,7 +28,7 @@ Kotlin/Native 实现了严格的可变性检测，确保了<!--
 在其他线程中访问会引发 `IncorrectDereferenceException` 异常。
 如需其他线程可访问这种变量，可以使用 `@ThreadLocal`
 注解将该值标记为线程局部，或者使用 `@SharedImmutable` 注解，它会冻结该值并使<!--
--->其他线程可访问。 See [Global variables and singletons](#global-variables-and-singletons).
+-->其他线程可访问。 参见[全局变量与单例](#全局变量与单例)。
 
 `AtomicReference` 类可用于将变更后的冻结状态发布给<!--
  -->其他线程，从而构建共享缓存等模式。 See [Atomic primitives and references](#atomic-primitives-and-references).

@@ -10,7 +10,7 @@ Kotlin and the Kotlin plugin have distinct sets of features:
 
 This also affects the versioning of the Kotlin plugin. Releases now have the same version as the simultaneous IntelliJ IDEA release.
 
-## Update to a new release
+## 更新到新版本
 
 IntelliJ IDEA and Android Studio suggest updating to a new release once it is out. When you accept the suggestion,
 it automatically updates the Kotlin plugin to the new version. You can check the Kotlin plugin version in **Tools** | **Kotlin** 
@@ -18,7 +18,7 @@ it automatically updates the Kotlin plugin to the new version. You can check the
 
 If you are migrating to the new feature release, Kotlin plugin's migration tools will help you with the migration.
 
-## Release details
+## 版本发布详情
 
 The following table lists the details of the latest Kotlin plugin releases: 
 

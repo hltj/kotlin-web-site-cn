@@ -1,4 +1,4 @@
-[//]: # (title: Add dependencies to your project)
+[//]: # (title: 向项目中添加依赖)
 
 <microformat>
     <p>This is the third part of the <strong>Getting started with Kotlin Multiplatform Mobile</strong> tutorial. Before proceeding, make sure you've completed previous steps.</p>

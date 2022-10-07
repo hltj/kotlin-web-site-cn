@@ -357,7 +357,7 @@ fun handleStrings(list: MutableList<String>) {
 
 泛型函数调用的类型参数也同样只在编译期检测。在函数体内部，
 类型参数不能用于类型检测，并且类型转换为类型参数（`foo as T`）也是非受检的。
-The only exclusion is inline functions with [reified type parameters](inline-functions.md#reified-type-parameters),
+The only exclusion is inline functions with [reified type parameters](inline-functions.md#具体化的类型参数),
 which have their actual type arguments inlined at each call site. This enables type checks and casts for the type parameters.
 However, the restrictions described above still apply for instances of generic types used inside checks or casts.
 For example, in the type check `arg is T`, if `arg` is an instance of a generic type itself, its type arguments are still erased.

@@ -5,7 +5,7 @@ and will be regularly releasing new versions that include new features, improvem
 
 Ensure that you have the latest version of the Kotlin Multiplatform Mobile plugin!
 
-## Update to the new release
+## 更新到新版本
 
 Android Studio will suggest updating to a new Kotlin Multiplatform Mobile plugin release as soon as it is available. If you accept the suggestion, it will automatically update the plugin to the latest version. 
 You'll need to restart Android Studio to complete the plugin installation.
@@ -61,7 +61,7 @@ Released: 12 September, 2022
 </td>
 <td>
 
-* [Kotlin 1.7.0—1.7.*](releases.md#release-details)
+* [Kotlin 1.7.0—1.7.*](releases.md#版本发布详情)
 
 </td>
 </tr>

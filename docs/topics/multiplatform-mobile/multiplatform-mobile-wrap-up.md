@@ -1,4 +1,4 @@
-[//]: # (title: Wrap up your project)
+[//]: # (title: 项目圆满结束)
 
 <microformat>
     <p>This is final part of the <strong>Getting started with Kotlin Multiplatform Mobile</strong> tutorial. Before proceeding, make sure you've completed previous steps.</p>
