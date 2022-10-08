@@ -9,13 +9,13 @@ _[发布日期：%kotlinEapReleaseDate%](eap.md#build-details)_
 
 The Kotlin 1.7.20-RC release is out! Here are some highlights from this preview version of Kotlin:
 
-* [The new Kotlin K2 compiler supports `all-open`, SAM with receiver, Lombok, Parcelize, and other compiler plugins](#support-for-kotlin-k2-compiler-plugins)
-* [We introduced the preview of the `..<` operator for creating open-ended ranges](#preview-of-the-operator-for-creating-open-ended-ranges)
-* [The new Kotlin/Native memory manager enabled by default](#the-new-kotlin-native-memory-manager-is-enabled-by-default)
-* [We introduced a new experimental feature for JVM: inline classes with a generic underlying type](#generic-inline-classes)
-* [Kotlin Gradle plugin updates for Gradle 7.1 support](#support-for-gradle-7-1)
+* [新版 Kotlin K2 编译器支持 `all-open`、带有接收者的 SAM、Lombok、Parcelize 以及其他编译器插件](#支持-kotlin-k2-编译器插件)
+* [我们引入了用于创建前闭后开区间的 ..< 操作符预览版](#用于创建前闭后开区间的-操作符预览版)
+* [默认启用新版 Kotlin/Native 内存管理器](#默认启用新版-kotlin-native-内存管理器)
+* [我们为 JVM 引入了一个新的实验性特性：拥有泛型底层类型的内联类](#泛型内联类)
+* [Kotlin Gradle 插件更新对 Gradle 7.1 的支持](#对-gradle-7-1-的支持)
 
-## Support for Kotlin K2 compiler plugins
+## 支持 Kotlin K2 编译器插件
 
 The Kotlin team continues to stabilize the K2 compiler.
 K2 is still in Alpha (as [announced in the Kotlin 1.7.0 release](whatsnew17.md#用于-jvm-的新版-kotlin-k2-编译器进入-alpha-阶段)), but now it supports several compiler plugins.
@@ -25,7 +25,7 @@ Starting with this preview version, the Kotlin K2 compiler supports the followin
 
 * [`all-open`](all-open-plugin.md)
 * [`no-arg`](no-arg-plugin.md)
-* [SAM with receiver](sam-with-receiver-plugin.md)
+* [带有接收者的 SAM](sam-with-receiver-plugin.md)
 * [Lombok](lombok.md)
 * Parcelize
 * AtomicFU
@@ -41,7 +41,7 @@ Learn more about the new compiler and its benefits in the following videos:
 * [K2 Compiler: a Top-Down View](https://www.youtube.com/watch?v=db19VFLZqJM)
 
 
-### How to enable the Kotlin K2 compiler
+### 如何启用 Kotlin K2 编译器
 
 To enable the Kotlin K2 compiler and test it, use the following compiler option:
 
@@ -51,14 +51,14 @@ To enable the Kotlin K2 compiler and test it, use the following compiler option:
 
 You can check out the performance boost on your JVM projects and compare it with the results of the old compiler.
 
-### Leave your feedback on the new K2 compiler
+### 请反馈关于新版 K2 编译器的问题
 
 We really appreciate your feedback in any form:
 * Provide your feedback directly to K2 developers in Kotlin Slack: [get an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up?_gl=1*ju6cbn*_ga*MTA3MTk5NDkzMC4xNjQ2MDY3MDU4*_ga_9J976DJZ68*MTY1ODMzNzA3OS4xMDAuMS4xNjU4MzQwODEwLjYw) and join the [#k2-early-adopters](https://kotlinlang.slack.com/archives/C03PK0PE257) channel
 * Report any problems you faced with the new K2 compiler to [our issue tracker](https://youtrack.jetbrains.com/newIssue?project=KT&c=Type%20Performance%20Problem&c=Subsystems%20Frontend.%20IR)
 * [Enable the **Send usage statistics** option](https://www.jetbrains.com/help/idea/settings-usage-statistics.html) to allow JetBrains collecting anonymous data about K2 usage
 
-## Preview of the ..< operator for creating open-ended ranges
+## 用于创建前闭后开区间的 ..< 操作符预览版
 
 > The new operator is [Experimental](components-stability.md#stability-levels-explained), and it has limited support in the IDE.
 >
@@ -81,11 +81,11 @@ when (value) {
 ```
 {validate="false"}
 
-### Standard library API changes
+### 标准库 API 变更
 
 The following new types and operations will be introduced in the `kotlin.ranges` packages in the common Kotlin standard library:
 
-#### New OpenEndRange<T> interface
+#### 新接口 OpenEndRange<T>
 
 The new interface to represent open-ended ranges is very similar to the existing `ClosedRange<T>` interface:
 
@@ -101,7 +101,7 @@ interface OpenEndRange<T : Comparable<T>> {
 ```
 {validate="false"}
 
-#### Implementing OpenEndRange in the existing iterable ranges
+#### 在现有可迭代区间中实现 OpenEndRange
 
 Currently, in a situation when a developer needs to get a range with excluded upper bound, they use `until` function producing a closed iterable range effectively with the same values.
 In order to make these ranges acceptable in the new API that takes `OpenEndRange<T>`, we want to implement that interface in the existing iterable ranges: `IntRange`, `LongRange`, `CharRange`, `UIntRange`, `ULongRange`.
@@ -116,12 +116,12 @@ class IntRange : IntProgression(...), ClosedRange<Int>, OpenEndRange<Int> {
 ```
 {validate="false"}
 
-#### rangeUntil operators for the standard types
+#### 标准类型的 rangeUntil 运算符
 
 `rangeUntil` operators will be provided for the same types and their combinations that currently have `rangeTo` operator defined.
 For the purposes of prototype, we provide them as extension functions, but for consistency we plan to make them members later, before stabilizing the open-ended ranges API.
 
-### How to enable the `..<` operator
+### 如何启用 `..<` 操作符
 
 In order to use the `..<` operator or to implement that operator convention for your own types, you should enable the `-XXLanguage:+RangeUntilOperator`compiler option.
 
@@ -130,7 +130,7 @@ Alternatively, you could use a compiler option: `-opt-in=kotlin.ExperimentalStdl
 
 [Read more about the new operator in this KEEP document](https://github.com/kotlin/KEEP/blob/open-ended-ranges/proposals/open-ended-ranges.md).
 
-## The new Kotlin/Native memory manager is enabled by default
+## 默认启用新版 Kotlin/Native 内存管理器
 
 Kotlin 1.7.20 comes with the new Kotlin/Native memory manager enabled by default.
 This release brings further stability and performance improvements, allowing us to promote the new memory manager to [Beta](components-stability.md#stability-levels-explained).
@@ -143,7 +143,7 @@ The new memory manager also supports the compiler cache that makes compilation t
 For more on the benefits of the new memory manager, see our original [blog post](https://blog.jetbrains.com/kotlin/2021/08/try-the-new-kotlin-native-memory-manager-development-preview/) for the preview version.
 You can find more technical details in the [migration instructions on GitHub](https://github.com/JetBrains/kotlin/blob/master/kotlin-native/NEW_MM.md).
 
-### Configuration and setup
+### 配置与设置
 
 Starting with Kotlin 1.7.20, the new memory manager is the default. Not much additional setup is required.
 
@@ -152,7 +152,7 @@ If you've already turned it on manually, you can remove the `kotlin.native.binar
 If it's necessary, you can switch back to the legacy memory manager with the `kotlin.native.binary.memoryModel=strict` option in your `gradle.properties`.
 However, compiler cache support is not available for the legacy memory manager anymore, so compilation times might become worse.
 
-#### Freezing
+#### 冻结
 
 In the new memory manager, freezing is deprecated. Don't use it unless you need your code to work with the legacy manager (where freezing is still required).
 This may be helpful for library authors that need to maintain support for the legacy memory manager or developers who want to have a fallback if they encounter issues with the new memory manager.
@@ -163,7 +163,7 @@ In such cases, you can temporarily support code for both new and legacy memory m
 * Apply `languageSettings.optIn("kotlin.native.FreezingIsDeprecated")` to all the Kotlin source sets in Gradle.
 * Pass the compiler flag `-opt-in=kotlin.native.FreezingIsDeprecated`.
 
-#### Calling Kotlin suspending functions from Swift/Objective-C
+#### 在 Swift/Objective-C 中调用 Kotlin 挂起函数
 
 The new memory manager still has a restriction on calling Kotlin `suspend` functions from Swift and Objective-C from threads other than the main one, but you can lift it with a new Gradle option.
 
@@ -183,13 +183,13 @@ kotlin.native.binary.objcExportSuspendFunctionLaunchThreadRestriction=none
 
 The Kotlin team is very grateful to [Ahmed El-Helw](https://github.com/ahmedre) for implementing this option.
 
-### Leave your feedback
+### 请反馈
 
 This is a significant change to our ecosystem. We would appreciate your feedback to help make it even better.
 
 Try the new memory manager on your projects and [share feedback in our issue tracker, YouTrack](https://youtrack.jetbrains.com/issue/KT-48525).
 
-## Generic inline classes
+## 泛型内联类
 
 > Generic inline classes is an [Experimental](components-stability.md#stability-levels-explained) feature.
 > It may be dropped or changed at any time. Opt-in is required (see details below), and you should use it only for evaluation purposes.
@@ -213,7 +213,7 @@ The function accepts the inline class as a parameter. The parameter is mapped to
 
 To enable this feature, use the `-language-version 1.8` compiler option.
 
-## Support for Gradle 7.1
+## 对 Gradle 7.1 的支持
 
 Kotlin 1.7.20-RC fixes usages of deprecated in Gradle 7.1 methods and properties, which removes deprecation warnings introduced in this Gradle release.
 
@@ -225,7 +225,7 @@ If you have multiplatform projects, mind the following changes:
 * Target accessors auto-generated by Gradle are no longer available inside the `kotlin.targets { }` block. Please use the `findByName("targetName")` method instead.
 Note that such accessors are still available in the `kotlin.targets` case, for example `kotlin.targets.linuxX64`.
 
-## How to update to the Kotlin 1.7.20-RC
+## 如何更新到 Kotlin 1.7.20-RC
 
 The IDE support for Kotlin 1.7.20-RC is available for IntelliJ IDEA 2022.2.1, Android Studio Dolphin (2021.3.1),
 and Android Studio Electric Eel (2022.1.1).

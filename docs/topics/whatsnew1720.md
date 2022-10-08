@@ -8,16 +8,16 @@ _[发布日期：%kotlinReleaseDate%](eap.md#build-details)_
 
 The Kotlin 1.7.20 release is out! Here are some highlights from this release:
 
-* [The new Kotlin K2 compiler supports `all-open`, SAM with receiver, Lombok, and other compiler plugins](#support-for-kotlin-k2-compiler-plugins)
-* [We introduced the preview of the `..<` operator for creating open-ended ranges](#preview-of-the-operator-for-creating-open-ended-ranges)
-* [The new Kotlin/Native memory manager is now enabled by default](#the-new-kotlin-native-memory-manager-enabled-by-default)
-* [We introduced a new experimental feature for JVM: inline classes with a generic underlying type](#generic-inline-classes)
+* [新版 Kotlin K2 编译器支持 `all-open`、带有接收者的 SAM、Lombok 以及其他编译器插件](#支持-kotlin-k2-编译器插件)
+* [我们引入了用于创建前闭后开区间的 ..< 操作符预览版](#用于创建前闭后开区间的-操作符预览版)
+* [现在默认启用新版 Kotlin/Native 内存管理器](#默认启用新版-kotlin-native-内存管理器)
+* [我们为 JVM 引入了一个新的实验性特性：拥有泛型底层类型的内联类](#泛型内联类)
 
 You can also find a short overview of the changes in this video:
 
 <video href="OG9npowJgE8" title="What's new in Kotlin 1.7.20"/>
 
-## Support for Kotlin K2 compiler plugins
+## 支持 Kotlin K2 编译器插件
 
 The Kotlin team continues to stabilize the K2 compiler.
 K2 is still in **Alpha** (as announced in the [Kotlin 1.7.0 release](whatsnew17.md#用于-jvm-的新版-kotlin-k2-编译器进入-alpha-阶段)),
@@ -28,7 +28,7 @@ Starting with this 1.7.20 release, the Kotlin K2 compiler supports the following
 
 * [`all-open`](all-open-plugin.md)
 * [`no-arg`](no-arg-plugin.md)
-* [SAM with receiver](sam-with-receiver-plugin.md)
+* [带有接收者的 SAM](sam-with-receiver-plugin.md)
 * [Lombok](lombok.md)
 * AtomicFU
 * `jvm-abi-gen`
@@ -42,7 +42,7 @@ Learn more about the new compiler and its benefits in the following videos:
 * [The Road to the New Kotlin Compiler](https://www.youtube.com/watch?v=iTdJJq_LyoY)
 * [K2 Compiler: a Top-Down View](https://www.youtube.com/watch?v=db19VFLZqJM)
 
-### How to enable the Kotlin K2 compiler
+### 如何启用 Kotlin K2 编译器
 
 To enable the Kotlin K2 compiler and test it, use the following compiler option:
 
@@ -52,22 +52,22 @@ To enable the Kotlin K2 compiler and test it, use the following compiler option:
 
 You can check out the performance boost on your JVM projects and compare it with the results of the old compiler.
 
-### Leave your feedback on the new K2 compiler
+### 请反馈关于新版 K2 编译器的问题
 
 We really appreciate your feedback in any form:
 * Provide your feedback directly to K2 developers in Kotlin Slack: [get an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up?_gl=1*ju6cbn*_ga*MTA3MTk5NDkzMC4xNjQ2MDY3MDU4*_ga_9J976DJZ68*MTY1ODMzNzA3OS4xMDAuMS4xNjU4MzQwODEwLjYw) and join the [#k2-early-adopters](https://kotlinlang.slack.com/archives/C03PK0PE257) channel.
 * Report any problems you faced with the new K2 compiler to [our issue tracker](https://youtrack.jetbrains.com/newIssue?project=KT&c=Type%20Performance%20Problem&c=Subsystems%20Frontend.%20IR).
 * [Enable the **Send usage statistics** option](https://www.jetbrains.com/help/idea/settings-usage-statistics.html) to allow JetBrains collecting anonymous data about K2 usage.
 
-## Language
+## 语言
 
 Kotlin 1.7.20 introduces preview versions for new language features, as well as puts restrictions on builder type inference:
 
-* [Preview of the ..< operator for creating open-ended ranges](#preview-of-the-operator-for-creating-open-ended-ranges)
-* [New data object declarations](#improved-string-representations-for-singletons-and-sealed-class-hierarchies-with-data-objects)
-* [Builder type inference restrictions](#new-builder-type-inference-restrictions)
+* [用于创建前闭后开区间的 ..< 操作符预览版](#用于创建前闭后开区间的-操作符预览版)
+* [新增数据对象声明](#通过数据对象改进了单例与密封类层次结构的字符串表示)
+* [构建器类型推断限制](#新的构建器类型推断限制)
 
-### Preview of the ..< operator for creating open-ended ranges
+### 用于创建前闭后开区间的 ..< 操作符预览版
 
 > The new operator is [Experimental](components-stability.md#stability-levels-explained), and it has limited support in the IDE.
 >
@@ -93,12 +93,12 @@ when (value) {
 ```
 {validate="false"}
 
-#### Standard library API changes
+#### 标准库 API 变更
 
 The following new types and operations will be introduced in the `kotlin.ranges` packages in the common Kotlin standard
 library:
 
-##### New OpenEndRange<T> interface
+##### 新接口 OpenEndRange<T>
 
 The new interface to represent open-ended ranges is very similar to the existing `ClosedRange<T>` interface:
 
@@ -114,7 +114,7 @@ interface OpenEndRange<T : Comparable<T>> {
 ```
 {validate="false"}
 
-##### Implementing OpenEndRange in the existing iterable ranges
+##### 在现有可迭代区间中实现 OpenEndRange
 
 When developers need to get a range with an excluded upper bound, they currently use the `until` function to effectively
 produce a closed iterable range with the same values. To make these ranges acceptable in the new API that takes `OpenEndRange<T>`,
@@ -130,13 +130,13 @@ class IntRange : IntProgression(...), ClosedRange<Int>, OpenEndRange<Int> {
 ```
 {validate="false"}
 
-##### rangeUntil operators for the standard types
+##### 标准类型的 rangeUntil 运算符
 
 The `rangeUntil` operators will be provided for the same types and combinations currently defined by the `rangeTo` operator.
 We provide them as extension functions for prototype purposes, but for consistency, we plan to make them members later
 before stabilizing the open-ended ranges API.
 
-#### How to enable the `..<` operator
+#### 如何启用 `..<` 操作符
 
 To use the `..<` operator or to implement that operator convention for your own types, enable the `-language-version 1.8`
 compiler option.
@@ -147,7 +147,7 @@ the `-opt-in=kotlin.ExperimentalStdlibApi` compiler option.
 
 [Read more about the new operator in this KEEP document](https://github.com/kotlin/KEEP/blob/open-ended-ranges/proposals/open-ended-ranges.md).
 
-### Improved string representations for singletons and sealed class hierarchies with data objects
+### 通过数据对象改进了单例与密封类层次结构的字符串表示
 
 > Data objects are [Experimental](components-stability.md#stability-levels-explained), and have limited support in the IDE at the moment.
 >
@@ -188,7 +188,7 @@ fun main() {
 }
 ```
 
-#### How to enable data objects
+#### 如何启用数据对象
 
 To use data object declarations in your code, enable the `-language-version 1.8` compiler option. In a Gradle project,
 you can do so by adding the following to your `build.gradle(.kts)`:
@@ -217,7 +217,7 @@ compileKotlin {
 
 Read more about data objects, and share your feedback on their implementation in the [respective KEEP document](https://github.com/Kotlin/KEEP/pull/316).
 
-### New builder type inference restrictions
+### 新的构建器类型推断限制
 
 Kotlin 1.7.20 places some major restrictions on the [use of builder type inference](using-builders-with-builder-inference.md)
 that could affect your code. These restrictions apply to code containing builder lambda functions, where it's impossible
@@ -320,11 +320,11 @@ See this [YouTrack issue](https://youtrack.jetbrains.com/issue/KT-53797) for mor
 Kotlin 1.7.20 introduces generic inline classes, adds more bytecode optimizations for delegated properties, and supports
 IR in the kapt stub generating task, making it possible to use all the newest Kotlin features with kapt:
 
-* [Generic inline classes](#generic-inline-classes)
-* [More optimized cases of delegated properties](#more-optimized-cases-of-delegated-properties)
-* [Support for the JVM IR backend in kapt stub generating task](#support-for-the-jvm-ir-backend-in-kapt-stub-generating-task)
+* [泛型内联类](#泛型内联类)
+* [更多属性委托的优化场景](#更多属性委托的优化场景)
+* [在 kapt 存根生成任务中支持 JVM IR 后端](#在-kapt-存根生成任务中支持-jvm-ir-后端)
 
-### Generic inline classes
+### 泛型内联类
 
 > Generic inline classes is an [Experimental](components-stability.md#stability-levels-explained) feature.
 > It may be dropped or changed at any time. Opt-in is required (see details below), and you should use it only for evaluation purposes.
@@ -352,7 +352,7 @@ To enable this feature, use the `-language-version 1.8` compiler option.
 
 We would appreciate your feedback on this feature in [YouTrack](https://youtrack.jetbrains.com/issue/KT-52994).
 
-### More optimized cases of delegated properties
+### 更多属性委托的优化场景
 
 In Kotlin 1.6.0, we optimized the case of delegating to a property by omitting the `$delegate` field and [generating
 immediate access to the referenced property](whatsnew16.md#优化了在给定-kproperty-实例上调用了-get-set-的委托属性). In 1.7.20, we've implemented this optimization for more cases.
@@ -395,7 +395,7 @@ Learn more about [delegated properties](delegated-properties.md).
 
 We would appreciate your feedback on this feature in [YouTrack](https://youtrack.jetbrains.com/issue/KT-23397).
 
-### Support for the JVM IR backend in kapt stub generating task
+### 在 kapt 存根生成任务中支持 JVM IR 后端
 
 > Support for the JVM IR backend in the kapt stub generating task is an [Experimental](components-stability.md) feature.
 > It may be changed at any time. Opt-in is required (see details below), and you should use it only for evaluation purposes.
@@ -420,10 +420,10 @@ We would appreciate your feedback on this feature in [YouTrack](https://youtrack
 Kotlin 1.7.20 comes with the new Kotlin/Native memory manager enabled by default and gives you the option to customize
 the `Info.plist` file:
 
-* [The new default memory manager](#the-new-kotlin-native-memory-manager-enabled-by-default)
-* [Customizing the Info.plist file](#customizing-the-info-plist-file)
+* [新的默认内存管理器](#默认启用新版-kotlin-native-内存管理器)
+* [自定义 Info.plist 文件](#自定义-info-plist-文件)
 
-### The new Kotlin/Native memory manager enabled by default
+### 默认启用新版 Kotlin/Native 内存管理器
 
 This release brings further stability and performance improvements to the new memory manager, allowing us to promote the
 new memory manager to [Beta](components-stability.md).
@@ -437,7 +437,7 @@ The new memory manager also supports the compiler cache that makes compilation t
 For more on the benefits of the new memory manager, see our original [blog post](https://blog.jetbrains.com/kotlin/2021/08/try-the-new-kotlin-native-memory-manager-development-preview/)
 for the preview version. You can find more technical details in the [documentation](native-memory-manager.md).
 
-#### Configuration and setup
+#### 配置与设置
 
 Starting with Kotlin 1.7.20, the new memory manager is the default. Not much additional setup is required.
 
@@ -448,7 +448,7 @@ If necessary, you can switch back to the legacy memory manager with the `kotlin.
 in your `gradle.properties`. However, compiler cache support is no longer available for the legacy memory manager,
 so compilation times might worsen.
 
-#### Freezing
+#### 冻结
 
 In the new memory manager, freezing is deprecated. Don't use it unless you need your code to work with the legacy manager
 (where freezing is still required). This may be helpful for library authors that need to maintain support for the legacy
@@ -461,7 +461,7 @@ do one of the following:
 * Apply `languageSettings.optIn("kotlin.native.FreezingIsDeprecated")` to all the Kotlin source sets in Gradle.
 * Pass the compiler flag `-opt-in=kotlin.native.FreezingIsDeprecated`.
 
-#### Calling Kotlin suspending functions from Swift/Objective-C
+#### 在 Swift/Objective-C 中调用 Kotlin 挂起函数
 
 The new memory manager still restricts calling Kotlin `suspend` functions from Swift and Objective-C from threads other
 than the main one, but you can lift it with a new Gradle option.
@@ -485,13 +485,13 @@ kotlin.native.binary.objcExportSuspendFunctionLaunchThreadRestriction=none
 
 The Kotlin team is very grateful to [Ahmed El-Helw](https://github.com/ahmedre) for implementing this option.
 
-#### Leave your feedback
+#### 请反馈
 
 This is a significant change to our ecosystem. We would appreciate your feedback to help make it even better.
 
 Try the new memory manager on your projects and [share feedback in our issue tracker, YouTrack](https://youtrack.jetbrains.com/issue/KT-48525).
 
-### Customizing the Info.plist file
+### 自定义 Info.plist 文件
 
 When producing a framework, the Kotlin/Native compiler generates the information property list file, `Info.plist`.
 Previously, it was cumbersome to customize its contents. With Kotlin 1.7.20, you can directly set the following properties:
@@ -526,7 +526,7 @@ reducing the number of deprecation warnings produced by the Kotlin Gradle plugin
 
 There are, however, some potentially breaking changes that may need your attention:
 
-### Target configuration
+### 目标配置
 
 * `org.jetbrains.kotlin.gradle.dsl.SingleTargetExtension` now has a generic parameter, `SingleTargetExtension<T : KotlinTarget>`.
 * The `kotlin.targets.fromPreset()` convention has been deprecated. Instead, you can still use `kotlin.targets { fromPreset() }`,
@@ -536,7 +536,7 @@ There are, however, some potentially breaking changes that may need your attenti
 
   Note that such accessors are still available in the case of `kotlin.targets`, for example, `kotlin.targets.linuxX64`.
 
-### Source directories configuration
+### 源代码目录配置
 
 The Kotlin Gradle plugin now adds Kotlin `SourceDirectorySet` as a `kotlin` extension to Java's `SourceSet` group.
 This makes it possible to configure source directories in the `build.gradle.kts` file similarly to how they are configured
@@ -567,7 +567,7 @@ kotlin {
 }
 ```
 
-### New method for JVM toolchain configuration
+### 用于 JVM 工具链配置的新方法
 
 This release provides the new `jvmToolchain()` method for enabling the [JVM toolchain feature](gradle.md#gradle-java-toolchains-support).
 If you don't need any additional [configuration fields](https://docs.gradle.org/current/javadoc/org/gradle/jvm/toolchain/JavaToolchainSpec.html),
@@ -590,7 +590,7 @@ kotlin {
 }
 ```
 
-## Standard library
+## 标准库
 
 Kotlin 1.7.20 offers new [extension functions](extensions.md#扩展函数) for the `java.nio.file.Path` class, which allows you to walk through a file tree:
 
@@ -707,27 +707,27 @@ or `@kotlin.io.path.ExperimentalPathApi`. Alternatively, you can use a compiler 
 We would appreciate your feedback on the [`walk()` function](https://youtrack.jetbrains.com/issue/KT-52909) and the
 [visit extension functions](https://youtrack.jetbrains.com/issue/KT-52910) in YouTrack.
 
-## Documentation updates
+## 文档更新
 
 Since the previous release, the Kotlin documentation has received some notable changes:
 
-### Revamped and improved pages
+### 修订与改进的页面
 
-* [Basic types overview](basic-types.md) − learn about the basic types used in Kotlin: numbers, Booleans, characters, strings, arrays, and unsigned integer numbers.
-* [IDEs for Kotlin development](kotlin-ide.md) − see the list of IDEs with official Kotlin support and tools that have community-supported plugins.
+* [基本类型概述](basic-types.md) − learn about the basic types used in Kotlin: numbers, Booleans, characters, strings, arrays, and unsigned integer numbers.
+* [用于 Kotlin 开发的 IDE](kotlin-ide.md) − see the list of IDEs with official Kotlin support and tools that have community-supported plugins.
 
-### New articles in the Kotlin Multiplatform journal
+### Kotlin Multiplatform 期刊中的新增文章
 
-* [Native and cross-platform app development: how to choose?](native-and-cross-platform.md) − check out our overview and advantages of cross-platform app development and the native approach.
-* [The six best cross-platform app development frameworks](cross-platform-frameworks.md) − read about the key aspects to help you choose the right framework for your cross-platform project.
+* [原生与跨平台应用开发：如何选择？](native-and-cross-platform.md) − check out our overview and advantages of cross-platform app development and the native approach.
+* [六大最佳跨平台应用开发框架](cross-platform-frameworks.md) − read about the key aspects to help you choose the right framework for your cross-platform project.
 
-### New and updated tutorials
+### 新增与更新的教程
 
-* [Get started with Kotlin Multiplatform Mobile](multiplatform-mobile-getting-started.md) − learn about cross-platform mobile development with Kotlin and create an app that works on both Android and iOS.
-* [Build a full-stack web app with Kotlin Multiplatform](multiplatform-full-stack-app.md) − create an app using Kotlin throughout the whole stack, with a Kotlin/JVM server part and a Kotlin/JS web client.
-* [Build a web application with React and Kotlin/JS](js-react.md) − create a browser app exploring Kotlin's DSLs and features of a typical React program.
+* [多平台移动端入门](multiplatform-mobile-getting-started.md) − learn about cross-platform mobile development with Kotlin and create an app that works on both Android and iOS.
+* [使用 Kotlin 多平台构建全栈 web 应用](multiplatform-full-stack-app.md) − create an app using Kotlin throughout the whole stack, with a Kotlin/JVM server part and a Kotlin/JS web client.
+* [使用 React 与 Kotlin/JS 构建 web 应用程序](js-react.md) − create a browser app exploring Kotlin's DSLs and features of a typical React program.
 
-### Changes in release documentation
+### 版本发布文档中的变更
 
 We no longer provide a list of recommended kotlinx libraries for each release. This list included only the versions
 recommended and tested with Kotlin itself. It didn't take into account that some libraries depend on each other and require
@@ -736,7 +736,7 @@ a special kotlinx version, which may differ from the recommended Kotlin version.
 We're working on finding a way to provide information on how libraries interrelate and depend on each other so that it
 will be clear which kotlinx library version you should use when you upgrade the Kotlin version in your project.
 
-## Install Kotlin 1.7.20
+## 安装 Kotlin 1.7.20
 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 2021.3, 2022.1, and 2022.2 automatically suggest updating the Kotlin plugin to 1.7.20.
 
@@ -747,7 +747,7 @@ will be clear which kotlinx library version you should use when you upgrade the 
 
 The new command-line compiler is available for download on the [GitHub release page](https://github.com/JetBrains/kotlin/releases/tag/v1.7.20).
 
-### Compatibility guide for Kotlin 1.7.20
+### Kotlin 1.7.20 的兼容性指南
 
 Although Kotlin 1.7.20 is an incremental release, there are still incompatible changes we had to make
 to limit spread of the issues introduced in Kotlin 1.7.0.
