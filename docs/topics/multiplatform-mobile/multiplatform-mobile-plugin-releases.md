@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 多平台移动端插件版本发布)
 
-Since Kotlin Multiplatform Mobile is now in [Alpha](kotlin-evolution.md), we are working on stabilizing the corresponding [plugin for Android Studio](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) 
+Since Kotlin Multiplatform Mobile is now in [Beta](kotlin-evolution.md), we are working on stabilizing the corresponding [plugin for Android Studio](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) 
 and will be regularly releasing new versions that include new features, improvements, and bug fixes. 
 
 Ensure that you have the latest version of the Kotlin Multiplatform Mobile plugin!

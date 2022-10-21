@@ -1,6 +1,7 @@
 [//]: # (title: 序列)
 
-除了集合之外，Kotlin 标准库还包含另一种容器类型——_序列_（[`Sequence<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html)）。
+除了集合之外，Kotlin 标准库还包含另一种类型——_序列_（[`Sequence<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html)）。
+Unlike collections, sequences don't contain elements, they produce them while iterating.
 序列提供与 [`Iterable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html)
 相同的函数，但实现另一种方法来进行多步骤集合处理。
 

@@ -70,7 +70,7 @@ Kotlin/JS（旧版后端）|已稳定|1.3| |
 Kotlin/JVM（基于 IR）|已稳定|1.5| |
 Kotlin/JS（基于 IR）|Beta|1.5| |
 Kotlin/Native 运行时|Beta|1.3| |
-Kotlin/Native new memory manager|Alpha|1.6.20| |
+Kotlin/Native new memory manager|Beta|1.7.20| |
 Klib 二进制|Alpha|1.4| |
 多平台项目|Alpha|1.3| |
 Kotlin/Native 与 C 语言及 Objective C 互操作|Beta|1.3| |

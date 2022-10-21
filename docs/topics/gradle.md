@@ -1008,41 +1008,54 @@ The Kotlin daemon uses the same JDK that the Gradle daemon does.
 
 ### Setting Kotlin daemon's JVM arguments
 
-Each of the options in the following list overrides the ones that came before it:
-* If nothing is specified, the Kotlin daemon inherits arguments from the Gradle daemon.
-  For example, in the `gradle.properties` file:
+Each of the following ways to set arguments overrides the ones that came before it:
+* [Gradle daemon arguments inheritance](#gradle-daemon-arguments-inheritance)
+* [`kotlin.daemon.jvm.options` system property](#kotlin-daemon-jvm-options-system-property)
+* [`kotlin.daemon.jvmargs` property](#kotlin-daemon-jvmargs-property)
+* [`kotlin` extension](#kotlin-extension)
+* [Specific task definition](#specific-task-definition)
 
-  ```properties
-  org.gradle.jvmargs=-Xmx1500m -Xms=500m
-  ```
+#### Gradle daemon arguments inheritance
 
-* If the Gradle daemon's JVM arguments have the `kotlin.daemon.jvm.options` system property – use it in the `gradle.properties` file:
+If nothing is specified, the Kotlin daemon inherits arguments from the Gradle daemon. For example, in the `gradle.properties` file:
 
-  ```properties
-  org.gradle.jvmargs=-Dkotlin.daemon.jvm.options=-Xmx1500m,Xms=500m
-  ```
+```properties
+org.gradle.jvmargs=-Xmx1500m -Xms=500m
+```
 
-  When passing the arguments, follow these rules:
-  * Use the minus sign `-` before the arguments `Xmx`, `XX:MaxMetaspaceSize`, and `XX:ReservedCodeCacheSize` and don't use it before all other arguments.
-  * Separate arguments with commas (`,`) _without_ spaces. Arguments that come after a space will be used for the Gradle daemon, not for the Kotlin daemon.
+#### kotlin.daemon.jvm.options system property
 
-  > Gradle ignores these properties if all the following conditions are satisfied:
-  > * Gradle is using JDK 1.9 or higher.
-  > * The version of Gradle is between 7.0 and 7.1.1 inclusively.
-  > * Gradle is compiling Kotlin DSL scripts.
-  > * There is no running Kotlin daemon.
-  > 
-  > To overcome this, upgrade Gradle to the version 7.2 (or higher) or use the `kotlin.daemon.jvmargs` property – see the following item.
-  >
-  {type="warning"}
+If the Gradle daemon's JVM arguments have the `kotlin.daemon.jvm.options` system property – use it in the `gradle.properties` file:
 
-* You can add the `kotlin.daemon.jvmargs` property in the `gradle.properties` file:
+```properties
+org.gradle.jvmargs=-Dkotlin.daemon.jvm.options=-Xmx1500m,Xms=500m
+```
 
-  ```properties
-  kotlin.daemon.jvmargs=-Xmx1500m -Xms=500m
-  ```
+When passing the arguments, follow these rules:
+* Use the minus sign `-` before the arguments `Xmx`, `XX:MaxMetaspaceSize`, and `XX:ReservedCodeCacheSize` and don't use it before all other arguments.
+* Separate arguments with commas (`,`) _without_ spaces. Arguments that come after a space will be used for the Gradle daemon, not for the Kotlin daemon.
 
-* You can specify arguments in the `kotlin` extension:
+> Gradle ignores these properties if all the following conditions are satisfied:
+> * Gradle is using JDK 1.9 or higher.
+> * The version of Gradle is between 7.0 and 7.1.1 inclusively.
+> * Gradle is compiling Kotlin DSL scripts.
+> * There is no running Kotlin daemon.
+> 
+> To overcome this, upgrade Gradle to the version 7.2 (or higher) or use the `kotlin.daemon.jvmargs` property – see the following item.
+>
+{type="warning"}
+
+#### kotlin.daemon.jvmargs property
+
+You can add the `kotlin.daemon.jvmargs` property in the `gradle.properties` file:
+
+```properties
+kotlin.daemon.jvmargs=-Xmx1500m -Xms=500m
+```
+
+#### kotlin extension
+
+You can specify arguments in the `kotlin` extension:
 
   <tabs group="build-script">
   <tab title="Kotlin" group-key="kotlin">
@@ -1053,8 +1066,8 @@ Each of the options in the following list overrides the ones that came before it
   }
   ```
 
-  </tab>
-  <tab title="Groovy" group-key="groovy">
+</tab>
+<tab title="Groovy" group-key="groovy">
 
   ```groovy
   kotlin {
@@ -1065,7 +1078,9 @@ Each of the options in the following list overrides the ones that came before it
   </tab>
   </tabs>
 
-* You can specify arguments for a specific task:
+#### Specific task definition
+
+You can specify arguments for a specific task:
 
   <tabs group="build-script">
   <tab title="Kotlin" group-key="kotlin">
@@ -1088,9 +1103,9 @@ Each of the options in the following list overrides the ones that came before it
   </tab>
   </tabs>
 
-  > In this case a new Kotlin daemon instance can start on task execution. Learn more about [Kotlin daemon's behavior with JVM arguments](#kotlin-daemon-s-behavior-with-jvm-arguments).
-  >
-  {type="note"}
+> In this case a new Kotlin daemon instance can start on task execution. Learn more about [Kotlin daemon's behavior with JVM arguments](#kotlin-daemon-s-behavior-with-jvm-arguments).
+>
+{type="note"}
 
 ### Kotlin daemon's behavior with JVM arguments
 

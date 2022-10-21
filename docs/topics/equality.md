@@ -39,6 +39,6 @@ a?.equals(b) ?: (b === null)
 当相等性检测的两个操作数都是静态已知的（可空或非空的）`Float` 或 `Double` 类型时，该检测遵循
 [IEEE 754 浮点数运算标准](https://en.wikipedia.org/wiki/IEEE_754)。
 
-否则会使用不符合该标准的结构相等性检测，这会导致 `NaN` 等于其自身，而 `-0.0` 不等于 `0.0`。
+否则会使用不符合该标准的结构相等性检测，这会导致 `NaN` 等于其自身，`NaN` is considered greater than any other element, including `POSITIVE_INFINITY`, 而 `-0.0` 不等于 `0.0`。
 
 参见：[浮点数比较](numbers.md#浮点数比较)。
