@@ -17,9 +17,8 @@ the given code style.
 
 ### Verify that your code follows the style guide
 
-1. Go to **Settings/Preferences | Editor | Inspections | Kotlin**.
-2. Open **Kotlin | Style issues**.
-3. Switch on **File is not formatted according to project settings** inspection.
+1. Go to **Settings/Preferences | Editor | Inspections | General**.
+2. Switch on **Incorrect formatting** inspection.
 Additional inspections that verify other issues described in the style guide (such as naming conventions) are enabled by default.
 
 ## 源代码组织
@@ -879,7 +878,7 @@ fun foo(a: String = "a") { /*……*/ }
 typealias MouseClickHandler = (Any, MouseEvent) -> Unit
 typealias PersonIndex = Map<String, Person>
 ```
-If you use a private or internal type alias for avoiding name collision, prefer the `import … as …` mentioned in 
+If you use a private or internal type alias for avoiding name collision, prefer the `import ... as ...` mentioned in 
 [Packages and Imports](packages.md).
 
 ### Lambda 表达式参数

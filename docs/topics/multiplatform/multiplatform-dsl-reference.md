@@ -270,7 +270,7 @@ kotlin {
         }
         distribution {
             directory = File("$projectDir/customdir/")
-        }        
+        }
     }
 }
 ```
@@ -563,7 +563,7 @@ kotlin {
         commonMain { /* ... */ } 
     }
 }
-``` 
+```
 
 </tab>
 </tabs>
@@ -596,7 +596,7 @@ kotlin {
         myMain { /* ... */ } // create or configure a source set by the name 'myMain' 
     }
 }
-``` 
+```
 
 </tab>
 </tabs>
@@ -614,7 +614,7 @@ Configurations of source sets are stored inside the corresponding blocks of `sou
 |`resources.srcDir`| Location of resources inside the source set directory.                                                                         |
 |`dependsOn`| [Connection with another source set](multiplatform-share-on-platforms.md#手动配置层次结构).       |
 |`dependencies`| [依赖项](#依赖项) of the source set.                                                                               |
-|`languageSettings`| [语言设置](multiplatform-dsl-reference.md#语言设置) applied to the source set. |
+|`languageSettings`| [语言设置](#语言设置) applied to the source set. |
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -625,11 +625,11 @@ kotlin {
         val commonMain by getting {
             kotlin.srcDir("src")
             resources.srcDir("res")
-            
+
             dependencies {
                 /* ... */
-            } 
-        } 
+            }
+        }
     }
 }
 ```
@@ -643,11 +643,11 @@ kotlin {
         commonMain {
             kotlin.srcDir('src')
             resources.srcDir('res')
-            
+
             dependencies {
                 /* ... */
-            }           
-        } 
+            }
+        }
     }
 }
 ``` 
@@ -684,7 +684,7 @@ kotlin {
         val main by compilations.getting {
             output // get the main compilation output
         }
-        
+
         compilations["test"].runtimeDependencyFiles // get the test runtime classpath
     }
 }
@@ -797,7 +797,7 @@ kotlin {
         
         compilations["test"].runtimeDependencyFiles // get the test runtime classpath
     }
-    
+
     // Configure all compilations of all targets:
     targets.all {
         compilations.all {
@@ -819,12 +819,12 @@ kotlin {
             // Setup the Kotlin compiler options for the 'main' compilation:
             jvmTarget = "1.8"
         }
-        
+
         compilations.main.compileKotlinTask // get the Kotlin task 'compileKotlinJvm' 
         compilations.main.output // get the main compilation output
         compilations.test.runtimeDependencyFiles // get the test runtime classpath
     }
-    
+
     // Configure all compilations of all targets:
     targets.all {
         compilations.all {

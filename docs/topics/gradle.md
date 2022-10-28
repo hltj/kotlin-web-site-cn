@@ -61,7 +61,7 @@ require the `kotlin-multiplatform` plugin. [Learn more about the plugin](multipl
 
 ```kotlin
 plugins {
-  kotlin("multiplatform") version "%kotlinVersion%"
+    kotlin("multiplatform") version "%kotlinVersion%"
 }
 ```
 
@@ -70,7 +70,7 @@ plugins {
 
 ```groovy
 plugins {
-  id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
+    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
 }
 ```
 
@@ -82,7 +82,7 @@ plugins {
 如需面向 JVM 平台，请应用 Kotlin JVM 插件。
 
 <tabs group="build-script">
-    <tab title="Kotlin" group-key="kotlin">
+<tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 plugins {
@@ -116,7 +116,7 @@ apply plugin: 'kotlin'
 
 Kotlin 源代码可以与 Java 源代码放在相同文件夹或者不同文件夹中。默认约定是使用不同的文件夹：
 
-```groovy
+```text
 project
     - src
         - main (root)
@@ -479,7 +479,7 @@ plugin won't override it or add a second standard library.
 
 If you do not need a standard library at all, you can add the opt-out option to the `gradle.properties`:
 
-```kotlin
+```properties
 kotlin.stdlib.default.dependency=false
 ```
 
@@ -1158,7 +1158,7 @@ The available values for the `compilerExecutionStrategy` task property are:
 2. `org.jetbrains.kotlin.gradle.tasks.KotlinCompilerExecutionStrategy.IN_PROCESS`
 3. `org.jetbrains.kotlin.gradle.tasks.KotlinCompilerExecutionStrategy.OUT_OF_PROCESS`
 
-Use the task property `compilerExecutionStrategy` in your buildscripts:
+Use the task property `compilerExecutionStrategy` in your build scripts:
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -1185,7 +1185,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilerExecutionStrategy
 
 tasks.withType(KotlinCompile)
     .configureEach {
-         compilerExecutionStrategy.set(KotlinCompilerExecutionStrategy.IN_PROCESS)
+        compilerExecutionStrategy.set(KotlinCompilerExecutionStrategy.IN_PROCESS)
     }
 ```
 

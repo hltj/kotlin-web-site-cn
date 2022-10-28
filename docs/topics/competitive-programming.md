@@ -41,7 +41,7 @@ Kotlin 是一门实用且不拘一格的语言，既支持命令式也支持函�
 ```kotlin
 tailrec fun removeZeroes(x: Int): Int =
     if (x % 10 == 0) removeZeroes(x / 10) else x
-    
+
 fun f(x: Int) = removeZeroes(x + 1)
 ```
 
@@ -80,7 +80,6 @@ fun main() {
     while (reached.add(n)) n = f(n) // 迭代函数 f
     println(reached.size) // 输出答案
 }
-
 ```
 
 在竞技程序设计中无需处理输入格式错误的情况。 竞技程序设计中的输入格式<!--
@@ -127,8 +126,8 @@ the [String.toInt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to
 <tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
 
 ```kotlin
-private fun readInt() = readln().toInt()
-private fun readStr() = readln().toString()
+private fun readStr() = readln() // string line
+private fun readInt() = readStr().toInt() // single int
 // 用于在解题中会用到的其他类型的类似声明等
 ```
 
@@ -136,8 +135,8 @@ private fun readStr() = readln().toString()
 <tab title="Earlier versions" group-key="kotlin-1-5">
 
 ```kotlin
-private fun readInt() = readLn().toInt()
-private fun readStr() = readLn().toString()
+private fun readStr() = readLine()!! // string line
+private fun readInt() = readStr().toInt() // single int
 // similar for other types you'd use in your solutions
 ```
 
@@ -224,8 +223,9 @@ fun main() {
 <tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
 
 ```kotlin
-private fun readInt() = readln().toInt() // 单个整数
-private fun readStrings() = readln().split(" ") // 字符串列表
+private fun readStr() = readln() // string line
+private fun readInt() = readStr().toInt() // 单个整数
+private fun readStrings() = readStr().split(" ") // 字符串列表
 private fun readInts() = readStrings().map { it.toInt() } // 整数列表
 ```
 
@@ -233,9 +233,10 @@ private fun readInts() = readStrings().map { it.toInt() } // 整数列表
 <tab title="Earlier versions" group-key="kotlin-1-5">
 
 ```kotlin
-private fun readLn() = readLine()!! // string line
-private fun readInt() = readLn().toInt() // single int
-private fun readStrings() = readLn().split(" ") // list of strings
+private fun readStr() = readLine()!! // string line
+private fun readInt() = readStr().toInt() // single int
+private fun readStrings() = readStr().split(" ") // list of strings
+private fun readInts() = readStrings().map { it.toInt() } // list of ints
 ```
 
 </tab>
@@ -244,28 +245,12 @@ private fun readStrings() = readLn().split(" ") // list of strings
 有了这些辅助函数，读取输入的代码部分变得更简单，一行行地严格遵循<!--
 -->问题陈述中的输入规范：
 
-<tabs group="kotlin-versions">
-<tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
-
 ```kotlin
-    // 读取输入
+// 读取输入
 val n = readInt()
-val s = readln()
+val s = readStr()
 val fl = readInts()
 ```
-
-</tab>
-<tab title="Earlier versions" group-key="kotlin-1-5">
-
-```kotlin
-// read input
-val n = readInt()
-val s = readLn()
-val fl = readInts()
-```
-
-</tab>
-</tabs>
 
 请注意，在竞技程序设计中，习惯给变量取比<!--
 -->通常在工业编程实践中更短的名称，因为代码只需编写一次，以后就不用支持了。
@@ -286,7 +271,7 @@ val fl = readInts()
 -->的下列语句简明地解析：
 
 ```kotlin
-val (n, k) = readInts() 
+val (n, k) = readInts()
 ```
 
 很多人习惯使用 JVM 的 `java.util.Scanner` 类来解析结构较少的<!--
@@ -323,4 +308,3 @@ IDEA 已内置
 
 学习 Kotlin 语法以及 Kotlin 标准库 API 的一个很好的资源是
 [Kotlin 心印](koans.md)。
-

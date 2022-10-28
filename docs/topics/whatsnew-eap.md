@@ -9,7 +9,7 @@ _[发布日期：%kotlinEapReleaseDate%](eap.md#build-details)_
 
 The Kotlin 1.7.20-RC release is out! Here are some highlights from this preview version of Kotlin:
 
-* [新版 Kotlin K2 编译器支持 `all-open`、带有接收者的 SAM、Lombok、Parcelize 以及其他编译器插件](#支持-kotlin-k2-编译器插件)
+* [新版 Kotlin K2 编译器支持 `all-open`、 `no-arg`、 带有接收者的 SAM、Lombok、Parcelize 以及其他编译器插件](#支持-kotlin-k2-编译器插件)
 * [我们引入了用于创建前闭后开区间的 ..< 操作符预览版](#用于创建前闭后开区间的-操作符预览版)
 * [默认启用新版 Kotlin/Native 内存管理器](#默认启用新版-kotlin-native-内存管理器)
 * [我们为 JVM 引入了一个新的实验性特性：拥有泛型底层类型的内联类](#泛型内联类)
@@ -123,7 +123,7 @@ For the purposes of prototype, we provide them as extension functions, but for c
 
 ### 如何启用 `..<` 操作符
 
-In order to use the `..<` operator or to implement that operator convention for your own types, you should enable the `-XXLanguage:+RangeUntilOperator`compiler option.
+In order to use the `..<` operator or to implement that operator convention for your own types, you should enable the `-XXLanguage:+RangeUntilOperator` compiler option.
 
 The new API elements introduced to support the open-ended ranges of the standard types require an opt-in, as usual for an experimental stdlib API: `@OptIn(ExperimentalStdlibApi::class)`.
 Alternatively, you could use a compiler option: `-opt-in=kotlin.ExperimentalStdlibApi`.
