@@ -1,4 +1,4 @@
-[//]: # (title: Create a multiplatform app using Ktor and SQLDelight – tutorial)
+[//]: # (title: 使用 Ktor 和 SQLDelight 创建多平台应用——教程)
 
 This tutorial demonstrates how to use Android Studio to create a mobile application for iOS and Android using Kotlin
 Multiplatform Mobile with Ktor and SQLDelight.
