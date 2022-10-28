@@ -360,7 +360,7 @@ a `Database` class, which will wrap the `AppDatabase` class and contain the cach
    }
    ```
 
-   This class's [visibility](visibility-modifiers.md#class-members) is set to internal, which means it is only
+   This class's [visibility](visibility-modifiers.md#类成员) is set to internal, which means it is only
    accessible from within the multiplatform module.
 
 3. Inside the `Database` class, implement some data handling operations. Add a function to clear all the tables in the
@@ -1022,7 +1022,7 @@ library.
            }
    ```
 
-   * When you compile a Kotlin module into an Apple framework, [suspending functions](whatsnew14.md#support-for-kotlin-s-suspending-functions-in-swift-and-objective-c)
+   * When you compile a Kotlin module into an Apple framework, [suspending functions](whatsnew14.md#在-swift-与-objective-c-中支持-kotlin-的挂起函数)
      are available in it as functions with callbacks (`completionHandler`).
    * Since the `getLaunches` function is marked with the `@Throws(Exception::class)` annotation, any exceptions that are
      instances of the `Exception` class or its subclass will be propagated as `NSError`. Therefore, all such errors can
