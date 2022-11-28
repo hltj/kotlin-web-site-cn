@@ -164,7 +164,7 @@ The default target version for Kotlin/JVM compilations is now `1.8`. The `1.6` t
 
 If you need a build for JVM 1.6, you can still switch to this target. Learn how:
 
-* [in Gradle](gradle.md#jvm-特有的属性)
+* [in Gradle](gradle-compiler-options.md#jvm-特有的属性)
 * [in Maven](maven.md#jvm-特有的属性)
 * [in the command-line compiler](compiler-reference.md#jvm-target-version)
 
@@ -180,7 +180,7 @@ which improves the JVM startup performance.
 
 To roll back to the old implementation scheme based on anonymous class generation, add the compiler option `-Xsam-conversions=class`.
 
-Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and the [command-line compiler](compiler-reference.md#编译器选项).
+Learn how to add compiler options in [Gradle](gradle-compiler-options.md), [Maven](maven.md#指定编译器选项), and the [command-line compiler](compiler-reference.md#编译器选项).
 
 ### 采用 invokedynamic 的 lambda 表达式
 
@@ -202,7 +202,7 @@ lambda compilation:
 To try this feature, add the `-Xlambdas=indy` compiler option. We would be grateful if you could share your feedback on it using
 this [YouTrack ticket](https://youtrack.jetbrains.com/issue/KT-45375).
 
-Learn how to add compiler options in [Gradle](gradle.md#编译器选项), [Maven](maven.md#指定编译器选项), and [command-line compiler](compiler-reference.md#编译器选项).
+Learn how to add compiler options in [Gradle](gradle-compiler-options.md), [Maven](maven.md#指定编译器选项), and [command-line compiler](compiler-reference.md#编译器选项).
 
 ### @JvmDefault 与旧版 Xjvm-default 模式的弃用
 
@@ -483,7 +483,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.5"}
+{validate="false"}
 
 ### 用于获取字符类别的新版 API 现已对多平台代码可用
 
@@ -589,7 +589,7 @@ Additionally, you can use the `kotlin-test` dependency in any shared or platform
 
 An existing kotlin-test setup with explicit dependencies will continue to work both in Gradle and in Maven.
 
-Learn more about [setting dependencies on test libraries](gradle.md#set-dependencies-on-test-libraries).
+Learn more about [setting dependencies on test libraries](gradle-configure-project.md#set-dependencies-on-test-libraries).
 
 ### Kotlin/JVM 源代码集测试框架的自动选择
 
@@ -634,7 +634,7 @@ kotlin {
 </tab>
 </tabs>
 
-You can choose JUnit 5 or TestNG by calling [`useJUnitPlatform()`]( https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/Test.html#useJUnitPlatform)
+You can choose JUnit 5 or TestNG by calling [`useJUnitPlatform()`](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/Test.html#useJUnitPlatform)
 or [`useTestNG()`](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/Test.html#useTestNG) in the test task:
 
 ```groovy
@@ -652,7 +652,7 @@ tasks {
 You can disable automatic testing framework selection by adding the line `kotlin.test.infer.jvm.variant=false`
 to the project's `gradle.properties`.
 
-Learn more about [setting dependencies on test libraries](gradle.md#set-dependencies-on-test-libraries).
+Learn more about [setting dependencies on test libraries](gradle-configure-project.md#set-dependencies-on-test-libraries).
 
 ### 断言函数更新
 

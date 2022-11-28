@@ -82,7 +82,7 @@ val item = list[0] // 推断为平台类型（普通 Java 对象）
 -->阻止空值传播的断言：
 
 ```kotlin
-item.substring(1) // 允许，如果 item == null 可能会抛出异常
+item.substring(1) // 允许，如果 item == null 会抛出异常
 ```
 
 平台类型是*不可标示*的，意味着不能在语言中明确地写下它们。

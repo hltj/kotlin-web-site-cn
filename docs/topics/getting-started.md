@@ -57,7 +57,7 @@ Download and install one of these IDEs to start using Kotlin.
    </tr>
    </table>
 
-2. **在应用程序中使用 Kotlin 库与第三方库**。 了解关于[向项目中添加库与工具依赖项](gradle.md#configure-dependencies)的更多信息。
+2. **在应用程序中使用 Kotlin 库与第三方库**。 了解关于[向项目中添加库与工具依赖项](gradle-configure-project.md#configure-dependencies)的更多信息。
    * [Kotlin 标准库](https://kotlinlang.org/api/latest/jvm/stdlib/)提供了许多实用的内容，例如[集合](collections-overview.md)与[协程](coroutines-guide.md)。
    * 看看这些[用于 Kotlin 的第三方框架、库与工具](https://blog.jetbrains.com/kotlin/2020/11/server-side-development-with-kotlin-frameworks-and-libraries/)。
 
@@ -85,17 +85,17 @@ Download and install one of these IDEs to start using Kotlin.
 
    * 从头开始，[使用项目向导创建一个基本的跨平台移动端应用程序](multiplatform-mobile-create-first-app.md)。
    * 如果有既有的 Android 应用程序并想让它跨平台，那么请完成[让 Android 应用程序也能用于 iOS](multiplatform-mobile-integrate-in-existing-app.md) 教程。
-   * 如果更倾向于现实生活的示例，那么请克隆并使用既有项目，例如[动手实践教程](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/01_Introduction)中的网络与数据存储项目或者任意[样例项目](multiplatform-mobile-samples.md)。
+   * 如果更倾向于现实生活的示例，那么请克隆并使用既有项目，例如[使用 Ktor 和 SQLDelight 创建多平台应用](multiplatform-mobile-ktor-sqldelight.md)教程中的网络与数据存储项目或者任意[样例项目](multiplatform-mobile-samples.md)。
 
 3. **使用一整套多平台库** 在共享模块中只实现一次所需的业务逻辑。 了解关于[添加依赖项](multiplatform-add-dependencies.md)的更多信息。
-   
+
    |库|详情|
-   |-------|-------| 
-   | Ktor |  [文档](https://ktor.io/docs/client.html)。| 
-   | Serialization |  [文档](serialization.md)及[样例](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/04_Creating_a_data_model)。|
-   | Coroutines |  [文档](multiplatform-mobile-concurrency-overview.md)及[样例](multiplatform-mobile-concurrency-and-coroutines.md)。|
-   | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)。|
-   | SQLDelight | 第三方库。 [文档](https://cashapp.github.io/sqldelight/)。|
+   |--|----| 
+   | Ktor | [文档](https://ktor.io/docs/client.html)| 
+   | Serialization | [文档](serialization.md)及[样例](multiplatform-mobile-ktor-sqldelight.md#create-an-application-data-model)|
+   | Coroutines | [文档](coroutines-guide.md)及[样例](coroutines-and-channels.md)|
+   | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)|
+   | SQLDelight | 第三方库。 [文档](https://cashapp.github.io/sqldelight/)|
    
    > 还可以在[社区驱动列表](https://libs.kmp.icerock.dev/)中找到多平台库。
    > 

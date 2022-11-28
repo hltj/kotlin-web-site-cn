@@ -19,7 +19,7 @@ You can configure how artifacts are produced in:
 * [一个目标的编译项](#为一个目标配置编译项) since one target can have multiple compilations.
 * [具体编译项](#配置一个编译项).
 
-See the [list of compilation parameters](multiplatform-dsl-reference.md#编译项参数) and [compiler options](gradle.md#编译器选项) 
+See the [list of compilation parameters](multiplatform-dsl-reference.md#编译项参数) and [compiler options](gradle-compiler-options.md)
 available for all or specific targets.
 
 ## 配置所有编译项

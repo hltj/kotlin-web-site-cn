@@ -3,11 +3,13 @@
 Each release of Kotlin includes compilers for the supported targets: 
 JVM, JavaScript, and native binaries for [supported platforms](native-overview.md#目标平台).
 
-These compilers are used by the IDE when you click the __Compile__ or __Run__ button for your Kotlin project.  
+These compilers are used by:
+* The IDE, when you click the __Compile__ or __Run__ button for your Kotlin project.
+* Gradle, when you call `gradle build` in a console or in the IDE.
+* Maven, when you call `mvn compile` or `mvn test-compile` in a console or in the IDE.
 
 You can also run Kotlin compilers manually from the command line as described 
 in the [Working with command-line compiler](command-line.md) tutorial. 
-
 
 ## 编译器选项
 
@@ -18,7 +20,7 @@ There are several ways to set the compiler options and their values (_compiler a
 * In IntelliJ IDEA, write in the compiler arguments in the **Additional command line parameters** text box in
   **Settings/Preferences** | **Build, Execution, Deployment** | **Compiler** | **Kotlin Compiler**.
 * If you're using Gradle, specify the compiler arguments in the `kotlinOptions` property of the Kotlin compilation task.
-For details, see [Gradle](gradle.md#编译器选项).
+For details, see [Gradle compiler options](gradle-compiler-options.md#how-to-define-options).
 * If you're using Maven, specify the compiler arguments in the `<configuration>` element of the Maven plugin node. 
 For details, see [Maven](maven.md#指定编译器选项).
 * If you run a command-line compiler, add the compiler arguments directly to the utility call or write them into an [argfile](#argfile).

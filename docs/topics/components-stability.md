@@ -72,7 +72,7 @@ Kotlin/JS（基于 IR）|Beta|1.5| |
 Kotlin/Native 运行时|Beta|1.3| |
 Kotlin/Native new memory manager|Beta|1.7.20| |
 Klib 二进制|Alpha|1.4| |
-多平台项目|Alpha|1.3| |
+Kotlin 多平台|Beta|1.7.20| |
 Kotlin/Native 与 C 语言及 Objective C 互操作|Beta|1.3| |
 CocoaPods 集成|Beta|1.3| |
 用于 Android Studio 的 Kotlin Multiplatform Mobile 插件|Alpha|0.3.0|[与语言版本独立](multiplatform-mobile-plugin-releases.md)

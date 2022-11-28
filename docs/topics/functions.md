@@ -53,9 +53,9 @@ fun read(
 ) { /*……*/ }
 ```
 
-A default value is defined using `=` after the type.
+A default value is set by appending `=` to the type.
 
-覆盖方法总是使用与基类型方法相同的默认参数值。
+覆盖方法总是使用与基类型方法的默认参数值。
 当覆盖一个有默认参数值的方法时，必须从签名中省略默认参数值：
 
 ```kotlin
@@ -97,13 +97,13 @@ foo { println("hello") }        // 使用两个默认值 bar = 0 与 baz = 1
 
 ### 具名参数
 
-When calling a function, you can name one or more of its arguments. This can be helpful when a function has many
+You can name one or more of a function's arguments when calling it. This can be helpful when a function has many
 arguments and it's difficult to associate a value with an argument, especially if it's a boolean or `null` value.
 
-When you use named arguments in a function call, you can freely change the order they are listed in, and if you want to
+When you use named arguments in a function call, you can freely change the order that they are listed in. If you want to
 use their default values, you can just leave these arguments out altogether.
 
-Consider the following function, `reformat()`, which has 4 arguments with default values.
+Consider the `reformat()` function, which has 4 arguments with default values.
 
 ```kotlin
 fun reformat(
@@ -149,7 +149,7 @@ fun foo(vararg strings: String) { /*……*/ }
 foo(strings = *arrayOf("a", "b", "c"))
 ```
 
-> 对于 JVM 平台：在调用 Java 函数时不能使用具名参数语法，因为 Java 字节码并不<!--
+> 在 JVM 平台中调用 Java 函数时不能使用具名参数语法，因为 Java 字节码并不<!--
 > -->总是保留函数参数的名称。
 >
 {type="note"}

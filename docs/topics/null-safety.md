@@ -2,7 +2,7 @@
 
 ## 可空类型与非空类型
 
-Kotlin 的类型系统旨在消除来自代码空引用的危险，也称为[《十亿美元的错误》](https://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions)。
+Kotlin 的类型系统旨在消除来自代码空引用的危险，也称为[《十亿美元的错误》](https://en.wikipedia.org/wiki/Null_pointer#History)。
 
 许多编程语言（包括 Java）中最常见的陷阱之一，就是访问空引用的成员<!--
 -->会导致空引用异常。在 Java 中，这等同于 `NullPointerException` 

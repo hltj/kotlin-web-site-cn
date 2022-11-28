@@ -2,12 +2,14 @@
 [//]: # (description: Kotlin Multiplatform allows creating cross-platform apps for desktop, web, and mobile devices.
 Share application logic while keeping native user experience.)
 
-> 多平台项目处于 [Alpha](components-stability.md)版。语言特性与工具都可能在未来的 Kotlin 版本中发生变化。
+> Kotlin Multiplatform is in [Beta](components-stability.md). It is almost stable, but migration steps may be required
+> in the future. We'll do our best to minimize any changes you have to make.
 >
 {type="note"}
 
-支持多平台程序设计是 Kotlin 的主要优势之一。 它减少了为[不同平台](multiplatform-dsl-reference.md#目标)<!--
--->编写与维护相同代码所花的时间，同时保留了原生编程的灵活性与优势。 
+The Kotlin Multiplatform technology is designed to simplify the development of cross-platform projects. 它减少了为<!--
+-->[不同平台](#kotlin-multiplatform-use-cases)编写与维护相同代码所花的时间，
+同时保留了原生编程的灵活性与优势。 
 
 ## Kotlin Multiplatform use cases
 
@@ -17,9 +19,9 @@ Sharing code between mobile platforms is one of the major Kotlin Multiplatform u
 you can build cross-platform mobile applications and share common code between Android and iOS, such as business logic, connectivity,
 and more.
 
-Check out the [Get started with Kotlin Multiplatform Mobile](https://kotlinlang.org/lp/mobile/) section and
-[Kotlin Multiplatform Hands-on: Networking and Data Storage](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/01_Introduction),
-where you will create an application for Android and iOS that includes a module with shared code for both platforms.
+Check out the [Get started with Kotlin Multiplatform Mobile](multiplatform-get-started.md) and
+[Create a multiplatform app using Ktor and SQLDelight](multiplatform-mobile-ktor-sqldelight.md) tutorials,
+where you will create applications for Android and iOS that include a module with shared code for both platforms.
 
 ### Full-stack web applications
 
@@ -70,7 +72,6 @@ project — a cross-platform application for iOS and Android with desktop and we
 
 * [在项目中用到的所有平台之间共享代码](multiplatform-share-on-platforms.md#对所有平台共享代码)。 用以共享适用于<!--
 -->所有平台的公共业务逻辑。
-
 * 在项目中包含的[某些平台（而不是所有平台）间共享代码](multiplatform-share-on-platforms.md#对相似平台共享代码)。 当<!--
 -->可以对类似的平台共享大量代码时请这么用。 
 
@@ -81,8 +82,8 @@ project — a cross-platform application for iOS and Android with desktop and we
 
 ## Get started
 
-* Look through [our examples and tutorials](multiplatform-share-on-platforms.md) if you want to create applications or libraries targeting JVM, JavaScript, and other platforms
 * Start with the [Get started with Kotlin Multiplatform Mobile](multiplatform-mobile-getting-started.md) if you want to create iOS and Android applications with shared code
+* Look through [sharing code principles and examples](multiplatform-share-on-platforms.md) if you want to create applications or libraries targeting other platforms
 
 > New to Kotlin? Take a look at [Getting started with Kotlin](getting-started.md).
 >

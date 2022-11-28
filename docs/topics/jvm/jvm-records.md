@@ -63,7 +63,7 @@ To declare a data class with the `@JvmRecord` annotation, it must meet the follo
 
 JVM records require the `16` target version or higher of the generated JVM bytecode.
 
-To specify it explicitly, use the `jvmTarget` compiler option in [Gradle](gradle.md#jvm-特有的属性) or [Maven](maven.md#jvm-特有的属性).
+To specify it explicitly, use the `jvmTarget` compiler option in [Gradle](gradle-compiler-options.md#jvm-特有的属性) or [Maven](maven.md#jvm-特有的属性).
 
 ## Further discussion
 

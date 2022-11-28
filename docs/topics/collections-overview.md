@@ -184,7 +184,7 @@ fun main() {
 反之，List 没有预定义的大小；作为写操作的结果，可以更改 List 的大小：添加、
 更新或删除元素。
 
-在 Kotlin 中，`List` 的默认实现是 [`ArrayList`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/index.html)，
+在 Kotlin 中，`MutableList` 的默认实现是 [`ArrayList`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/index.html)，
 可以将其视为可调整大小的数组。
 
 ### Set
@@ -210,7 +210,7 @@ fun main() {
 [`MutableSet`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html) 是一个带有来自 `MutableCollection`
 的写操作接口的 `Set`。
 
-`Set`的默认实现 -  [`LinkedHashSet`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-set/index.html)——
+`MutableSet`的默认实现 -  [`LinkedHashSet`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-set/index.html)——
 保留元素插入的顺序。
 因此，依赖于顺序的函数，例如 `first()` 或 `last()`，会在这些 `set` 上返回可预测的结果。
 
@@ -283,7 +283,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-`Map` 的默认实现 – [`LinkedHashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-map/index.html)——
+`MutableMap` 的默认实现 – [`LinkedHashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-map/index.html)——
 迭代 Map 时保留元素插入的顺序。
 反之，另一种实现 – [`HashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html)——
 不声明元素的顺序。
