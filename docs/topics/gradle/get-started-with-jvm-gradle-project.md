@@ -1,4 +1,4 @@
-[//]: # (title: Get started with Gradle and Kotlin/JVM)
+[//]: # (title: 以 Gradle 与 Kotlin/JVM 入门)
 
 This tutorial demonstrates how to use IntelliJ IDEA and Gradle for creating a console application.
 

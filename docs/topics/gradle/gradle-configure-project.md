@@ -1,4 +1,4 @@
-[//]: # (title: Configure a Gradle project)
+[//]: # (title: 配置 Gradle 项目)
 
 To build a Kotlin project with [Gradle](https://docs.gradle.org/current/userguide/getting_started.html), 
 you need to add the [Kotlin Gradle plugin](#apply-the-plugin) to your build script file `build.gradle(.kts)` 

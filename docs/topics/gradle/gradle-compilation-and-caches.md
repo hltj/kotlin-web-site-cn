@@ -1,4 +1,4 @@
-[//]: # (title: Compilation and caches in the Kotlin Gradle plugin)
+[//]: # (title: Kotlin Gradle 插件中的编译项与缓存)
 
 On this page, you can learn about the following topics:
 * [Incremental compilation](#incremental-compilation)

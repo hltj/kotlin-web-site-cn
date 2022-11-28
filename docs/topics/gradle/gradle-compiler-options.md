@@ -1,4 +1,4 @@
-[//]: # (title: Compiler options in the Kotlin Gradle plugin)
+[//]: # (title: Kotlin Gradle 插件中的编译器选项)
 
 Each release of Kotlin includes compilers for the supported targets:
 JVM, JavaScript, and native binaries for [supported platforms](native-overview.md#target-platforms).
