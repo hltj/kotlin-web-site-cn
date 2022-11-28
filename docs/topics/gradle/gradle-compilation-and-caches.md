@@ -1,8 +1,8 @@
 [//]: # (title: Kotlin Gradle 插件中的编译项与缓存)
 
 On this page, you can learn about the following topics:
-* [Incremental compilation](#incremental-compilation)
-* [Gradle build cache support](#gradle-build-cache-support)
+* [增量编译](#增量编译)
+* [Gradle 构建缓存支持](#gradle-构建缓存支持)
 * [Gradle configuration cache support](#gradle-configuration-cache-support)
 * [Build reports](#build-reports)
 * [The Kotlin daemon and how to use it with Gradle](#the-kotlin-daemon-and-how-to-use-it-with-gradle)
