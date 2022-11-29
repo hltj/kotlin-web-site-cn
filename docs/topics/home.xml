@@ -24,12 +24,12 @@
         </main-group>
         <highlighted-group>
             <title>精选主题</title>
-            <a href="https://kotlinlang.org/api/latest/jvm/stdlib/" description="Living essentials for everyday work with Kotlin: IO, files, threading, collections, and much more">标准库 API 参考</a>
-            <a href="coding-conventions.md" description="Recommendations on the code organization, formatting, and naming">编码规范</a>
-            <a href="basic-types.md" description="Kotlin type system: numbers, strings, arrays, and other built-in types">基本类型</a>
-            <a href="control-flow.md" description="Conditions and loops: if, when, for, while">控制流程</a>
-            <a href="null-safety.md" description="Nullable and non-null types, elvis operator, safe calls and casts ">空安全</a>
-            <a href="coroutines-overview.md" description="Concurrency: coroutines, flows, channels">协程</a>
+            <a href="https://kotlinlang.org/api/latest/jvm/stdlib/" description="Kotlin 日常工作必备：IO、 文件、 线程、 集合等等">标准库 API 参考</a>
+            <a href="coding-conventions.md" description="关于代码组织、格式与命名的建议">编码规范</a>
+            <a href="basic-types.md" description="Kotlin 类型系统：数字、字符串、数组与其他内置类型">基本类型</a>
+            <a href="control-flow.md" description="条件与循环：if、 when、 for、 while">控制流程</a>
+            <a href="null-safety.md" description="可空与非空类型、 elvis 运算符、安全调用与类型转换">空安全</a>
+            <a href="coroutines-overview.md" description="并发：协程、流、通道">协程</a>
         </highlighted-group>
         <custom-groups>
             <group type="cards" display="wide">

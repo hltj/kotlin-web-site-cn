@@ -11,10 +11,10 @@
 * 如果 Kotlin 是你的第一门编程语言，我们建议从[《Atomic Kotlin》这本书](https://www.atomickotlin.com/atomickotlin/)开始，
 或者在 JetBrains 学院报名免费的[Kotlin 基础课程](https://hyperskill.org/join/fromdocstoJetSalesStat?redirect=true&next=/tracks/18)。
 
-## Install Kotlin
+## 安装 Kotlin
 
-Kotlin is included in each [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) and [Android Studio](https://developer.android.com/studio) release.  
-Download and install one of these IDEs to start using Kotlin.
+Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 与 [Android Studio](https://developer.android.com/studio) 版本中了。  
+可下载并安装这两个 IDE 之一来开始使用 Kotlin。
 
 ## 使用 Kotlin 创建强大的应用程序
  
