@@ -143,6 +143,28 @@ fun main() {
 person?.department?.head = managersPool.getManager()
 ```
 
+## Nullable receiver
+
+Extension functions can be defined on a [nullable receiver](extensions.md#nullable-receiver).
+This way you can specify behaviour for null values without the need to use null-checking logic at each call-site. 
+
+For example, the [`toString()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/to-string.html) function is defined on a nullable receiver. It returns the String "null" (as opposed to a `null` value). This can be helpful in certain situations, for example, logging:
+
+```kotlin
+val person: Person? = null
+logger.debug(person.toString()) // Logs "null", does not throw an exception
+```
+
+If you want your `toString()` invocation to return a nullable string, use the [safe-call operator `?.`](#safe-calls):
+
+```kotlin
+var timestamp: Instant? = null
+val isoTimestamp = timestamp?.toString() // Returns a String? object which is `null`
+if (isoTimestamp == null) {
+   // Handle the case where timestamp was `null`
+}
+```
+
 ## Elvis 操作符
 
 当有一个可空的引用 `b` 时，可以说“如果 `b` 不是 `null`，就使用它；否则使用某个非空的值”：
