@@ -45,7 +45,7 @@ Multiplatform technology is constantly evolving. Some cross-platform development
 
 Poor performance was long considered to be one of the main disadvantages of multiplatform applications. However, the performance and quality of your product largely depend on the tools you use to build the app. The latest cross-platform frameworks provide all the tools necessary to develop apps with a native-like user experience.
 
-By using different compiler backends, [Kotlin](multiplatform.md#code-sharing-between-platforms) is compiled to platform formats – JVM bytecode for Android and native binaries for iOS. As a result, the performance of your shared code is the same as if you write them natively.
+By using different compiler backends, [Kotlin](multiplatform.md#不同平台间共享代码) is compiled to platform formats – JVM bytecode for Android and native binaries for iOS. As a result, the performance of your shared code is the same as if you write them natively.
 
 #### 2. Cross-platform frameworks are unsafe.
 
