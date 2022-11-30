@@ -34,8 +34,8 @@
         <custom-groups>
             <group type="cards" display="wide">
                 <title>新特性</title>
-                <a href="whatsnew1720.md" description="Latest features: a new operator for open-ended ranges, support for compiler plugins in the Kotlin K2 compiler, the new Kotlin/Native memory manager enabled by default, support for Gradle 7.1, and more">What's New in Kotlin 1.7.20</a>
-                <a href="roadmap.md" description="Future plans on Kotlin development">Kotlin 公共路线图p</a>
+                <a href="whatsnew1720.md" description="最新特性：用于前闭后开区间的新操作符、 在 Kotlin K2 编译器中对编译器插件的支持、 默认启用的新 Kotlin/Native 内存管理器、 对 Gradle 7.1 的支持等">What's New in Kotlin 1.7.20</a>
+                <a href="roadmap.md" description="Kotlin 开发的未来计划">Kotlin 公共路线图</a>
             </group>
             <group type="cards">
                 <title>Kotlin 多平台移动端</title>
