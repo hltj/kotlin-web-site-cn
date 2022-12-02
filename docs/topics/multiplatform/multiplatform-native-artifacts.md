@@ -1,4 +1,4 @@
-[//]: # (title: Build Kotlin/Native artifacts)
+[//]: # (title: 构建 Kotlin/Native 构件)
 
 > The new DSL described below is [Experimental](components-stability.md). It may be changed at any time.
 > We encourage you to use it for evaluation purposes.
@@ -23,7 +23,7 @@ Kotlin artifact DSL can help you to solve a common issue: when you need to acces
 Since the usage of several Kotlin/Native artifacts is limited, you can export multiple Kotlin modules into a single
 artifact with new DSL.
 
-## Declare binaries
+## 声明二进制文件
 
 The `kotlinArtifacts` element is the top-level block for artifact configuration in the Gradle build script. Use
 the following kinds of binaries to declare elements of the `kotlinArtifacts` DSL: 
@@ -38,7 +38,7 @@ the following kinds of binaries to declare elements of the `kotlinArtifacts` DSL
 
 Inside the `kotlinArtifacts` element, you can write the following blocks:
 
-* [Native.Library](#library)
+* [Native.Library](#库)
 * [Native.Framework](#framework)
 * [Native.FatFramework](#fat-frameworks)
 * [Native.XCFramework](#xcframeworks)
@@ -111,7 +111,7 @@ kotlinArtifacts {
 The argument sets a name prefix, which is the default name for the binary file. For example, for Windows the code 
 produces the `mylib.dll` file.
 
-## Configure binaries
+## 配置二进制文件
 
 For the binary configuration, the following common parameters are available:
 
@@ -123,13 +123,13 @@ For the binary configuration, the following common parameters are available:
 | `addModule`     | In addition to the current module, you can add other modules to the resulting artifact.                                         |
 | `setModules`    | You can override the list of all modules that will be added to the resulting artifact.                                          |
 
-### Libraries and frameworks
+### 库与 framework
 
 When building an Objective-C framework or a native library (shared or static), you may need to pack not just the classes
 of the current project but also the classes of any other multiplatform module into a single entity and export all these
 modules to it.
 
-#### Library
+#### 库
 
 For the library configuration, the additional `target` parameter is available:
 
