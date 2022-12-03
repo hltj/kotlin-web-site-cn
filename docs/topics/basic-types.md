@@ -5,7 +5,7 @@
 -->在运行时表示为原生类型值，但是对于用户来说，它们看起来就像普通的类。
 
 本节会描述 Kotlin 中使用的基本类型：
-* [数字](numbers.md) and their [unsigned counterparts](unsigned-integer-types.md)
+* [数字](numbers.md)及其[无符号版](unsigned-integer-types.md)
 * [布尔](booleans.md)
 * [字符](characters.md)
 * [字符串](strings.md)

@@ -104,7 +104,7 @@ for (x in 10 downTo 1) { …… }
 ## 延迟属性
 
 ```kotlin
-val p: String by lazy { // the value is computed only on first access
+val p: String by lazy { // 该值仅在首次访问时计算
     // 计算该字符串
 }
 ```
@@ -190,7 +190,7 @@ val mainEmail = emails.firstOrNull() ?: ""
 val value = ……
 
 value?.let {
-…… // 代码会执行到此处, 假如data不为null
+    …… // 如果非空会执行这个代码块
 }
 ```
 
@@ -363,5 +363,5 @@ IntelliJ IDEA 的 kotlin 插件理解 `TODO()` 的语言，并且会自动在 TO
 
 * 使用地道 Kotlin 风格求解 [Advent of Code 谜题](advent-of-code.md)。
 * 了解如何[在 Java 与 Kotlin 中处理字符串的典型任务](java-to-kotlin-idioms-strings.md)。
-* Learn how to perform [typical tasks with collections in Java and Kotlin](java-to-kotlin-collections-guide.md).
-* Learn how to [handle nullability in Java and Kotlin](java-to-kotlin-nullability-guide.md).
+* 了解如何[在 Java 与 Kotlin 中处理集合的典型任务](java-to-kotlin-collections-guide.md)。
+* 了解如何[在 Java 与 Kotlin 中处理可空性](java-to-kotlin-nullability-guide.md)。
