@@ -9,8 +9,8 @@ Kotlin 心印是一系列让你熟悉 Kotlin 语法的练习。
   -->并[选择 Kotlin Koans 课程](https://plugins.jetbrains.com/plugin/10081-edutools/docs/learner-start-guide.html?section=Kotlin%20Koans)来完成 IntelliJ IDEA 或 Android Studio 中的任务。
 
 无论选择何种方式来解 Kotlin 心印，都可以看到每项任务的答案：
-* 在线版，点击“**Show answer**”。
-* 对于 EduTools 插件，try to complete the task first and then choose **Peek solution** if your answer is incorrect.
+* 在线版，点击“**Show answer**”（显示答案）。
+* 对于 EduTools 插件，请尝试先自行作答，如果答案不正确选择 **Peek solution**（速览答案）。
 
 我们建议你在完成任务后核对答案，以便将你的解答与标准答案进行比较。
 请不要作弊！

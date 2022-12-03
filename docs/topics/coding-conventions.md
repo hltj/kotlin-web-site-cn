@@ -1,25 +1,25 @@
 [//]: # (title: 编码规范)
 
-Commonly known and easy-to-follow coding conventions are vital for any programming language.
-Here we provide guidelines on the code style and code organization for projects that use Kotlin.
+众所周知且易于遵循的编码规范对于任何编程语言都至关重要。
+在这里，我们为使用 Kotlin 的项目提供关于代码风格与代码组织的准则。
 
-## Configure style in IDE
+## 在 IDE 中配置风格
 
-Two most popular IDEs for Kotlin - [IntelliJ IDEA](https://www.jetbrains.com/idea/) and [Android Studio](https://developer.android.com/studio/)
-provide powerful support for code styling. You can configure them to automatically format your code in consistence with
-the given code style. 
+两个最流行的 Kotlin IDE——[IntelliJ IDEA](https://www.jetbrains.com/idea/) 与 [Android Studio](https://developer.android.com/studio/)
+都为代码风格提供了强大的支持。 可以将它们配置为根据指定的代码风格<!--
+-->自动格式化代码。
  
 ### 应用风格指南
 
-1. Go to **Settings/Preferences | Editor | Code Style | Kotlin**.
-2. Click **Set from...**.
-3. Select **Kotlin style guide** .
+1. 转到 **Settings/Preferences | Editor | Code Style | Kotlin**。
+2. 点击 **Set from...**。
+3. 选择 **Kotlin style guide** 。
 
-### Verify that your code follows the style guide
+### 验证代码是否遵循风格指南
 
-1. Go to **Settings/Preferences | Editor | Inspections | General**.
-2. Switch on **Incorrect formatting** inspection.
-Additional inspections that verify other issues described in the style guide (such as naming conventions) are enabled by default.
+1. 转到 **Settings/Preferences | Editor | Inspections | General**。
+2. 打开 **Incorrect formatting** 探查项。
+默认启用验证样式指南中描述的其他问题（例如命名约定）的附加探查项。
 
 ## 源代码组织
 
@@ -126,9 +126,9 @@ fun Foo(): Foo { return FooImpl() }
 
 ```kotlin
 class MyTestCase {
-     @Test fun `ensure everything works`() { /*...*/ }
+     @Test fun `ensure everything works`() { /*……*/ }
      
-     @Test fun ensureEverythingWorks_onAndroid() { /*...*/ }
+     @Test fun ensureEverythingWorks_onAndroid() { /*……*/ }
 }
 ```
 
@@ -152,7 +152,7 @@ val mutableCollection: MutableSet<String> = HashSet()
 保存单例对象引用的属性的名称可以使用与 `object` 声明相同的命名风格：
 
 ```kotlin
-val PersonComparator: Comparator<Person> = /*...*/
+val PersonComparator: Comparator<Person> = /*……*/
 ```
 
 对于枚举常量，可以使用大写、下划线分隔的名称 ([screaming snake case](https://en.wikipedia.org/wiki/Snake_case))
@@ -188,7 +188,7 @@ class C {
 
 ## 格式化
 
-### Indentation
+### 缩进
 
 使用 4 个空格缩进。不要使用 tab。
 
@@ -307,7 +307,7 @@ class MyFavouriteVeryLongClassHolder :
     SomeOtherInterface,
     AndAnotherOne {
 
-    fun foo() { /*...*/ }
+    fun foo() { /*……*/ }
 }
 ```
 
@@ -320,7 +320,7 @@ class MyFavouriteVeryLongClassHolder :
     SomeOtherInterface,
     AndAnotherOne 
 {
-    fun foo() { /*...*/ }
+    fun foo() { /*……*/ }
 }
 ```
 
@@ -610,7 +610,7 @@ enum class Direction {
 #### Value arguments {initial-collapse-state="collapsed"}
 
 ```kotlin
-fun shift(x: Int, y: Int) { /*...*/ }
+fun shift(x: Int, y: Int) { /*……*/ }
 shift(
     25,
     20, // trailing comma
@@ -641,7 +641,7 @@ class Customer(
 fun powerOf(
     number: Int, 
     exponent: Int, // trailing comma
-) { /*...*/ }
+) { /*……*/ }
 constructor(
     x: Comparable<Number>,
     y: Iterable<Number>, // trailing comma
@@ -809,7 +809,7 @@ fun abs(number: Int): Int { /*……*/ }
 高亮为冗余的，那么应该在代码中省略之。为了清楚起见，不要在代码中保留不必要的语法元素
 。
 
-### Unit return type
+### Unit 返回类型
 
 如果函数返回 Unit，那么应该省略返回类型：
 
@@ -878,8 +878,8 @@ fun foo(a: String = "a") { /*……*/ }
 typealias MouseClickHandler = (Any, MouseEvent) -> Unit
 typealias PersonIndex = Map<String, Person>
 ```
-If you use a private or internal type alias for avoiding name collision, prefer the `import ... as ...` mentioned in 
-[Packages and Imports](packages.md).
+如果使用一个 private 或者 internal 的类型别名来避免名称冲突，请优先使用<!--
+-->[包与导入](packages.md)中提到的 `import …… as ……`。
 
 ### Lambda 表达式参数
 
@@ -936,13 +936,13 @@ when(x) {
 ### if 还是 when
 
 二元条件优先使用 `if` 而不是 `when`。
-For example, use this syntax with `if`:
+例如，使用 `if` 的这种语法：
 
 ```kotlin
-if (x == null) ... else ...
+if (x == null) …… else ……
 ```
 
-instead of this one with `when`:
+而不是使用 `when` 的这种：
 
 ```kotlin
 when (x) {
@@ -1048,7 +1048,7 @@ fun main() {
 ```kotlin
 class Point(val x: Double, val y: Double) {
     companion object {
-        fun fromPolar(angle: Double, radius: Double) = Point(...)
+        fun fromPolar(angle: Double, radius: Double) = Point(……)
     }
 }
 ```
