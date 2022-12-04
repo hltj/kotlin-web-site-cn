@@ -76,7 +76,7 @@ In this episode, Kate Petrova shows three tips to help you work with [Kotlin Col
 
 <video width="560" height="315" href="ApXbm1T_eI4" title="Kotlin Tips: Kotlin Collections"/>
 
-## What's next?
+## 下一步做什么？
 
 * See the complete list of Kotlin Tips in our [YouTube playlist](https://youtube.com/playlist?list=PLlFc5cFwUnmyDrc-mwwAL9cYFkSHoHHz7)
 * Learn how to write [idiomatic Kotlin code for popular cases](idioms.md)

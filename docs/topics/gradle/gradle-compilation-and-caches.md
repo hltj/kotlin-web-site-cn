@@ -331,6 +331,6 @@ kotlin.build.report.http.password=somePassword
 kotlin.build.report.label=some_label
 ```
 
-## What's next?
+## 下一步做什么？
 
 Learn more about [Gradle basics and specifics](https://docs.gradle.org/current/userguide/getting_started.html).

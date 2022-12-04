@@ -352,7 +352,7 @@ printing the results of calling its functions:
 Resolving dependencies may take some time on the first run. Subsequent runs will complete much faster because they use
 downloaded dependencies from the local Maven repository.
 
-## What's next?
+## 下一步做什么？
 
 Once you've created a simple Kotlin scripting project, find more information on this topic:
 * Read the [Kotlin scripting KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/scripting-support.md)

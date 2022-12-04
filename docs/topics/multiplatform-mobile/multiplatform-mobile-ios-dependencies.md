@@ -342,7 +342,7 @@ kotlin.mpp.enableCInteropCommonization=true
 >
 {type="note"}
 
-## What's next?
+## 下一步做什么？
 
 Check out other resources on adding dependencies in multiplatform projects and learn more about:
 

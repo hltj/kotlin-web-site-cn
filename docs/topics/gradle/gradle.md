@@ -12,7 +12,7 @@ In this chapter, you can also learn about:
 * [Compiler options and how to pass them](gradle-compiler-options.md).
 * [Incremental compilation, caches support, build reports, and the Kotlin daemon](gradle-compilation-and-caches.md).
 
-## What's next?
+## 下一步做什么？
 
 Learn about:
 * **Gradle Kotlin DSL**. The [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) is a domain specific language 

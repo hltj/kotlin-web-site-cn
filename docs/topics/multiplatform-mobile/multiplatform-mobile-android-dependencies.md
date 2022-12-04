@@ -73,7 +73,7 @@ Android projects, is also supported. However, we strongly recommend **against** 
 script with Android dependencies in the top-level block and other target dependencies in each source set is likely to
 cause confusion.
 
-## What's next?
+## 下一步做什么？
 
 Check out other resources on adding dependencies in multiplatform projects and learn more about:
 

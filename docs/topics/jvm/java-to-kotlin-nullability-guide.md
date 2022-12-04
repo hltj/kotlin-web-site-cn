@@ -307,7 +307,7 @@ you would do the check anyway, but no additional boxing is performed this way.
 >
 {type="note"}
 
-## What's next?
+## 下一步做什么？
 
 * Browse other [Kotlin idioms](idioms.md).
 * Learn how to convert existing Java code to Kotlin with the [Java-to-Kotlin (J2K) converter](mixing-java-kotlin-intellij.md#使用-j2k-将现有-java-文件转换为-kotlin-文件).

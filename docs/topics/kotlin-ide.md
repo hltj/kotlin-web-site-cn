@@ -50,7 +50,7 @@ You can use any text editor to write the Kotlin code, but without IDE-related fe
 To use Kotlin in text editors, you can download the latest Kotlin command-line compiler (`kotlin-compiler-%kotlinVersion%.zip`) from Kotlin [GitHub Releases](%kotlinLatestUrl%) and [install it manually](command-line.md#manual-install).
 Also, you could use package managers, such as [Homebrew](command-line.md#homebrew), [SDKMAN!](command-line.md#sdkman), and [Snap package](command-line.md#snap-package).
 
-## What's next?
+## 下一步做什么？
 
 * [Start your first project using IntelliJ IDEA IDE](jvm-get-started.md)
 * [Create your first cross-platform mobile app using Android Studio](multiplatform-mobile-create-first-app.md)

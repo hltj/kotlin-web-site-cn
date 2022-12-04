@@ -39,7 +39,7 @@
 ### 源文件名称
 
 如果 Kotlin 文件包含单个类或接口（以及可能相关的顶层声明），那么文件名应该与<!--
--->该类的名称相同，并追加 `.kt` 扩展名。 It applies to all types of classes and interfaces.
+-->该类的名称相同，并追加 `.kt` 扩展名。 这适用于所有类型的类和接口。
 如果文件包含多个类或只包含顶层声明， 那么选择一个描述该文件所包含内容的名称，并以此命名该文件。
 使用首字母大写的[驼峰风格](https://zh.wikipedia.org/wiki/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB)（也称为 Pascal 风格），
 例如 `ProcessDeclarations.kt`。
@@ -465,7 +465,7 @@ if (!component.isSyncing &&
 }
 ```
 
-This helps align the condition and statement bodies. 
+这有助于对齐条件与语句体。
 
 将 `else`、 `catch`、 `finally` 关键字以及 `do-while` 循环的 `while` 关键字与<!--
 -->之前的花括号放在相同的行上：

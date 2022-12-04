@@ -278,7 +278,7 @@ To enable this support, specify the additional `kotlin.mpp.enableCInteropCommoni
 kotlin.mpp.enableCInteropCommonization=true
 ```
 
-## What's next?
+## 下一步做什么？
 
 * Check out examples of code sharing using the Kotlin mechanism of [expect and actual declarations](multiplatform-connect-to-apis.md)
 * Learn more about [hierarchical project structure](multiplatform-hierarchy.md)

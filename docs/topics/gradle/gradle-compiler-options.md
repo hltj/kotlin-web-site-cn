@@ -132,7 +132,7 @@ Gradle 任务的完整选项列表如下：
 | `target` | 生成指定 ECMA 版本的 JS 文件 | "v5" | "v5" |
 | `typedArrays` | 将原生数组转换为 JS 带类型数组 |  | true |
 
-## What's next?
+## 下一步做什么？
 
 Learn more about:
 * [Incremental compilation, caches support, build reports, and the Kotlin daemon](gradle-compilation-and-caches.md).

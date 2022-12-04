@@ -106,7 +106,7 @@ You can see the result in the **Run** tool window.
 
 Congratulations! You have just run your first Kotlin application.
 
-## What's next?
+## 下一步做什么？
 
 Learn more about:
 * [Gradle build file properties](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#N14E9A).

@@ -94,7 +94,7 @@ fun main() {
 
 ## 安全的调用
 
-Your second option for accessing a property on a nullable variable is using the safe call operator `?.`:
+访问可空变量的属性的第二种选择是使用安全调用操作符 `?.`：
 
 ```kotlin
 fun main() {
@@ -143,25 +143,25 @@ fun main() {
 person?.department?.head = managersPool.getManager()
 ```
 
-## Nullable receiver
+## 可空接收者
 
-Extension functions can be defined on a [nullable receiver](extensions.md#可空接收者).
-This way you can specify behaviour for null values without the need to use null-checking logic at each call-site. 
+可以为[可空接收者](extensions.md#可空接收者)定义扩展函数。
+这样就可以为空值指定行为，而无需在每个调用处都使用空检测逻辑。 
 
-For example, the [`toString()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/to-string.html) function is defined on a nullable receiver. It returns the String "null" (as opposed to a `null` value). This can be helpful in certain situations, for example, logging:
+例如，[`toString()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/to-string.html) 函数就是为可空接收者定义的。 它返回字符串 "null"（而不是 `null` 值）。 这在某些情况下很有用，例如，记录日志：
 
 ```kotlin
 val person: Person? = null
-logger.debug(person.toString()) // Logs "null", does not throw an exception
+logger.debug(person.toString()) // 日志记录“null”，不抛异常
 ```
 
-If you want your `toString()` invocation to return a nullable string, use the [safe-call operator `?.`](#安全的调用):
+如果希望调用 `toString()` 返回一个可空字符串，请使用[安全调用操作符 `?.`](#安全的调用)：
 
 ```kotlin
 var timestamp: Instant? = null
-val isoTimestamp = timestamp?.toString() // Returns a String? object which is `null`
+val isoTimestamp = timestamp?.toString() // 返回一个 String? 对象其值为 `null`
 if (isoTimestamp == null) {
-   // Handle the case where timestamp was `null`
+   // 处理时间戳为 `null` 的情况
 }
 ```
 
@@ -173,7 +173,7 @@ if (isoTimestamp == null) {
 val l: Int = if (b != null) b.length else -1
 ```
 
-Instead of writing the complete `if` expression, you can also express this with the Elvis operator `?:`:
+除了写完整的 `if` 表达式，还可以使用 Elvis 操作符 `?:` 来表达：
 
 ```kotlin
 val l = b?.length ?: -1
@@ -225,6 +225,6 @@ val nullableList: List<Int?> = listOf(1, 2, null, 4)
 val intList: List<Int> = nullableList.filterNotNull()
 ```
 
-## What's next?
+## 下一步做什么？
 
-Learn how to [handle nullability in Java and Kotlin](java-to-kotlin-nullability-guide.md).
+了解如何[在 Java 与 Kotlin 中处理可空性](java-to-kotlin-nullability-guide.md)。

@@ -760,7 +760,7 @@ dependencies {
 </tab>
 </tabs>
 
-## What's next?
+## 下一步做什么？
 
 Learn more about:
 * [Compiler options and how to pass them](gradle-compiler-options.md).
