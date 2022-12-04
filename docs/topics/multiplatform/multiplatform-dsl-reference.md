@@ -293,7 +293,7 @@ kotlin {
 }
 ```
 
-### Native 目标
+### 原生目标
 
 For native targets, the following specific blocks are available:
 

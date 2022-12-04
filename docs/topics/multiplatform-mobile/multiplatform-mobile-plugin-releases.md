@@ -51,7 +51,7 @@ Released: 30 November, 2022
 </td>
 <td>
 
-* [Kotlin 1.7.0—*](releases.md#release-details)
+* [Kotlin 1.7.0—*](releases.md#版本发布详情)
 
 </td>
 </tr>

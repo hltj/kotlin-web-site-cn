@@ -8,7 +8,7 @@
 > 
 {type="warning"}
 
-[Kotlin/Native targets](multiplatform-dsl-reference.md#native-targets) are compiled to the `*.klib` library artifacts,
+[Kotlin/Native targets](multiplatform-dsl-reference.md#原生目标) are compiled to the `*.klib` library artifacts,
 which can be consumed by Kotlin/Native itself as a dependency but cannot be used as a native library.
  
 To declare final native binaries, use the new binaries format with the `kotlinArtifacts` DSL. It represents a collection
@@ -133,9 +133,9 @@ modules to it.
 
 For the library configuration, the additional `target` parameter is available:
 
-| **Name**        | **Description**                                                                                                                                        |
-|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `target`        | Declares a particular target of a project. The names of available targets are listed in the [Targets](multiplatform-dsl-reference.md#targets) section. |
+| **Name**        | **Description**                                                                                                                                   |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| `target`        | Declares a particular target of a project. The names of available targets are listed in the [Targets](multiplatform-dsl-reference.md#目标) section. |
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -184,7 +184,7 @@ For the framework configuration, the following additional parameters are availab
 
 | **Name**       | **Description**                                                                                                                                                                                   |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `target`       | Declares a particular target of a project. The names of available targets are listed in the [Targets](multiplatform-dsl-reference.md#targets) section.                                            |
+| `target`       | Declares a particular target of a project. The names of available targets are listed in the [Targets](multiplatform-dsl-reference.md#目标) section.                                                 |
 | `embedBitcode` | Declares the mode of bitcode embedding. Use `MARKER` to embed the bitcode marker (for debug builds) or `DISABLE` to turn off embedding. Bitcode embedding is not required for Xcode 14 and later. |
 
 <tabs group="build-script">
@@ -226,7 +226,7 @@ kotlinArtifacts {
 
 The registered Gradle task is `assembleMyframeFramework` that assembles all types of registered "myframe" framework.
 
-> If for some reason the new DSL doesn't work for you, try [the previous approach](multiplatform-build-native-binaries.md#export-dependencies-to-binaries)
+> If for some reason the new DSL doesn't work for you, try [the previous approach](multiplatform-build-native-binaries.md#将依赖项导出到二进制文件)
 > to export dependencies to binaries.
 >
 {type="tip"}
@@ -279,7 +279,7 @@ kotlinArtifacts {
 
 The registered Gradle task is `assembleMyfatframeFatFramework` that assembles all types of registered "myfatframe" fat framework.
 
-> If for some reason the new DSL doesn't work for you, try [the previous approach](multiplatform-build-native-binaries.md#build-universal-frameworks)
+> If for some reason the new DSL doesn't work for you, try [the previous approach](multiplatform-build-native-binaries.md#构建-universal-frameworks)
 > to build fat frameworks.
 >
 {type="tip"}
