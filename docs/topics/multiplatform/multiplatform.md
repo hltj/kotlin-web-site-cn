@@ -91,7 +91,7 @@ project — a cross-platform application for iOS and Android with desktop and we
 
 ### 样例项目
 
-Look through cross-platform application samples to understand how Kotlin Multiplatform works:
+浏览跨平台应用程序样例以了解 Kotlin 多平台的工作原理：
 
 * [Kotlin 多平台移动端样例](multiplatform-mobile-samples.md)
 * [KotlinConf 应用](https://github.com/JetBrains/kotlinconf-app)

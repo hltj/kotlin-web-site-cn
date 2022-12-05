@@ -13,7 +13,7 @@
 -->程序员所需编写与阅读的样板代码量，这样几乎可以像动态<!--
 -->脚本语言一样编写代码，同时又有静态类型语言的工具与性能支持。
 
-关于如何搭建 Kotlin 开发环境，请参见[Get started with Kotlin/JVM](jvm-get-started.md)<!--
+关于如何搭建 Kotlin 开发环境，请参见 [Kotlin/JVM 入门](jvm-get-started.md)<!--
 -->。在竞技程序设计中，通常会创建单个项目，而每个问题的答案<!--
 -->写在单个源文件中。
 
@@ -71,7 +71,7 @@ fun f(x: Int): Int {
 该问题解法的一个简单命令式版本可以这样编写：
 
 <tabs group="kotlin-versions">
-<tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
+<tab title="Kotlin 1.6.0 及更高版本" group-key="kotlin-1-6">
 
 ```kotlin
 fun main() {
@@ -89,14 +89,14 @@ fun main() {
 函数会抛出异常。
 
 </tab>
-<tab title="Earlier versions" group-key="kotlin-1-5">
+<tab title="早期版本" group-key="kotlin-1-5">
 
 ```kotlin
 fun main() {
-    var n = readLine()!!.toInt() // read integer from the input
-    val reached = HashSet<Int>() // a mutable hash set 
-    while (reached.add(n)) n = f(n) // iterate function f
-    println(reached.size) // print answer to the output
+    var n = readLine()!!.toInt() // 读取输入的整数
+    val reached = HashSet<Int>() // 可变的哈希 set 
+    while (reached.add(n)) n = f(n) // 迭代函数 f
+    println(reached.size) // 输出答案
 }
 ```
 
@@ -123,21 +123,21 @@ the [String.toInt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to
 -->以下辅助函数来读取竞技程序设计中的输入：
 
 <tabs group="kotlin-versions">
-<tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
+<tab title="Kotlin 1.6.0 及更高版本" group-key="kotlin-1-6">
 
 ```kotlin
-private fun readStr() = readln() // string line
-private fun readInt() = readStr().toInt() // single int
+private fun readStr() = readln() // 一行字符串
+private fun readInt() = readStr().toInt() // 单个整数
 // 用于在解题中会用到的其他类型的类似声明等
 ```
 
 </tab>
-<tab title="Earlier versions" group-key="kotlin-1-5">
+<tab title="早期版本" group-key="kotlin-1-5">
 
 ```kotlin
-private fun readStr() = readLine()!! // string line
-private fun readInt() = readStr().toInt() // single int
-// similar for other types you'd use in your solutions
+private fun readStr() = readLine()!! // 一行字符串
+private fun readInt() = readStr().toInt() // 单个整数
+// 用于在解题中会用到的其他类型的类似声明等
 ```
 
 </tab>
@@ -157,7 +157,7 @@ private fun readInt() = readStr().toInt() // single int
 -->用一个简单的贪心算法实现，可以采用这种风格编写而无需任何可变变量：
 
 <tabs group="kotlin-versions">
-<tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
+<tab title="Kotlin 1.6.0 及更高版本" group-key="kotlin-1-6">
 
 ```kotlin
 fun main() {
@@ -182,22 +182,22 @@ fun main() {
 ```
 
 </tab>
-<tab title="Earlier versions" group-key="kotlin-1-5">
+<tab title="早期版本" group-key="kotlin-1-5">
 
 ```kotlin
 fun main() {
-    // read input
+    // 读取输入
     val n = readLine()!!.toInt()
     val s = readLine()!!
     val fl = readLine()!!.split(" ").map { it.toInt() }
-    // define local function f
+    // 定义局部函数 f
     fun f(c: Char) = '0' + fl[c - '1']
-    // greedily find first and last indices
+    // 贪婪查找第一个与最后一个索引
     val i = s.indexOfFirst { c -> f(c) > c }
         .takeIf { it >= 0 } ?: s.length
     val j = s.withIndex().indexOfFirst { (j, c) -> j > i && f(c) < c }
         .takeIf { it >= 0 } ?: s.length
-    // compose and write the answer
+    // 组合并写出答案
     val ans =
         s.substring(0, i) +
         s.substring(i, j).map { c -> f(c) }.joinToString("") + 
@@ -220,23 +220,23 @@ fun main() {
 可以使用以下输入读取辅助函数列表：
 
 <tabs group="kotlin-versions">
-<tab title="Kotlin 1.6.0 and later" group-key="kotlin-1-6">
+<tab title="Kotlin 1.6.0 及更高版本" group-key="kotlin-1-6">
 
 ```kotlin
-private fun readStr() = readln() // string line
+private fun readStr() = readln() // 一行字符串
 private fun readInt() = readStr().toInt() // 单个整数
 private fun readStrings() = readStr().split(" ") // 字符串列表
 private fun readInts() = readStrings().map { it.toInt() } // 整数列表
 ```
 
 </tab>
-<tab title="Earlier versions" group-key="kotlin-1-5">
+<tab title="早期版本" group-key="kotlin-1-5">
 
 ```kotlin
-private fun readStr() = readLine()!! // string line
-private fun readInt() = readStr().toInt() // single int
-private fun readStrings() = readStr().split(" ") // list of strings
-private fun readInts() = readStrings().map { it.toInt() } // list of ints
+private fun readStr() = readLine()!! // 一行字符串
+private fun readInt() = readStr().toInt() // 单个整数
+private fun readStrings() = readStr().split(" ") // 字符串列表
+private fun readInts() = readStrings().map { it.toInt() } // 整数列表
 ```
 
 </tab>

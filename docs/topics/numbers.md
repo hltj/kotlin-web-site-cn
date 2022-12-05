@@ -12,10 +12,10 @@ Kotlin 提供了一组表示数字的内置类型。
 | `Int`	 | 32            |-2,147,483,648 (-2<sup>31</sup>)| 2,147,483,647 (2<sup>31</sup> - 1)|
 | `Long`	 | 64            |-9,223,372,036,854,775,808 (-2<sup>63</sup>)|9,223,372,036,854,775,807 (2<sup>63</sup> - 1)|
 
-When you initialize a variable with no explicit type specification, the compiler automatically infers the type with the 
-smallest range enough to represent the value. If it is not exceeding the range of `Int`, the type is `Int`. If it exceeds,
-the type is `Long`. To specify the `Long` value explicitly, append the suffix `L` to the value. 
-Explicit type specification triggers the compiler to check the value not to exceed the range of the specified type.
+当初始化一个没有显式指定类型的变量时，编译器会自动推断为足以<!--
+-->表示该值的最小类型。 如果不超过 `Int` 的表示范围，那么类型是 `Int`。 如果超过了，
+那么类型是 `Long`。 如需显式指定 `Long` 值，请在给该值追加后缀 `L`。
+显式指定类型会触发编译器检测该值是否超出指定类型的表示范围。
 
 ```kotlin
 val one = 1 // Int
@@ -29,7 +29,7 @@ val oneByte: Byte = 1
 对于实数，Kotlin 提供了浮点类型 `Float` 与 `Double` 类型，遵循 [IEEE 754 标准](https://zh.wikipedia.org/wiki/IEEE_754)。
 `Float` 表达 IEEE 754 *单精度*，而 `Double` 表达*双精度*。
 
-These types differ in their size and provide storage for floating-point numbers with different precision:
+这两个类型的大小不同，并为两种精度的浮点数提供存储：
 
 | 类型	 | 大小（比特数）| 有效数字比特数 | 指数比特数 | 十进制位数 |
 |--------|---------------|--------------- |------------|------------|
@@ -102,8 +102,8 @@ val hexBytes = 0xFF_EC_DE_5E
 val bytes = 0b11010010_01101001_10010100_10010010
 ```
 
-> There are also special tags for unsigned integer literals.  
-> Read more about [literals for unsigned integer types](unsigned-integer-types.md).
+> 无符号整数字面值也有特殊标记。  
+> 更多内容请参阅[无符号整型字面值](unsigned-integer-types.md).
 > 
 {type="tip"}
 
