@@ -296,7 +296,7 @@ println(a.joinToString("\n")) // 数组/list 中的每个元素占一行
 
 ## 学习 Kotlin
 
-Kotlin is easy to learn, especially for those who already know Java.
+Kotlin 很易学，尤其对于已经了解 Java 的人。
 对于软件开发人员来说，关于 Kotlin 基本语法的简短介绍可以直接在<!--
 -->以[基本语法](basic-syntax.md)开始的网站参考部分中直接找到。
 

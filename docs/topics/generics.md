@@ -329,15 +329,15 @@ Kotlin 为泛型声明用法执行的类型安全检测在编译期进行。
 其类型信息称为被*擦除*。例如，`Foo<Bar>` 与 `Foo<Baz?>` 的实例都会被擦除为
 `Foo<*>`。
 
-### Generics type checks and casts
+### 泛型类型检测与类型转换
 
-Due to the type erasure, 并没有通用的方法在运行时检测一个泛型类型的实例是否通过指定类型参数所创建
+由于类型擦除，并没有通用的方法在运行时检测一个泛型类型的实例是否通过指定类型参数所创建
 ，并且编译器禁止这种 `is` 检测，例如
 `ints is List<Int>` or `list is T` (type parameter). 当然，你可以对一个实例检测星投影的类型：
 
 ```kotlin
 if (something is List<*>) {
-    something.forEach { println(it) } // The items are typed as `Any?`
+    something.forEach { println(it) } // 每一项的类型都是 `Any?`
 }
 ```
 
@@ -348,7 +348,7 @@ if (something is List<*>) {
 ```kotlin
 fun handleStrings(list: MutableList<String>) {
     if (list is ArrayList) {
-        // `list` is smart-cast to `ArrayList<String>`
+        // `list` 智能转换为 `ArrayList<String>`
     }
 }
 ```

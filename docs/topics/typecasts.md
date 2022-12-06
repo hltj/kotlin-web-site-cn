@@ -37,7 +37,7 @@ if (x !is String) return
 print(x.length) // x 自动转换为字符串
 ```
 
-或者在 `&&` 或 `||` 的右侧 and the proper check (regular or negative) is on the left-hand side：
+或者转换在 `&&` 或 `||` 的右侧，而相应的（正常或否定）检测在左侧：
 
 ```kotlin
 // `||` 右侧的 x 自动转换为 String
@@ -95,7 +95,7 @@ val x: String? = y as? String
 
 请注意，尽管事实上 `as?` 的右边是一个非空类型的 `String`，但是其转换的结果是可空的。
 
-## Generics type checks and casts
+## 泛型类型检测与类型转换
 
-Please see the corresponding section in the [generics documentation page](generics.md#generics-type-checks-and-casts)
-for information on which type checks and casts you can perform with generics.
+请参见[泛型文档页](generics.md#泛型类型检测与类型转换)中相应部分<!--
+-->了解可以使用泛型进行类型检测与类型转换的信息。
