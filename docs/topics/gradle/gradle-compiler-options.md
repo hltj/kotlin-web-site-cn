@@ -73,7 +73,7 @@ compileKotlin {
 <tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile>().configureEach {
     kotlinOptions { /*……*/ }
 }
 ```
@@ -82,7 +82,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 <tab title="Groovy" group-key="groovy">
 
 ```groovy
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinCompile).configureEach {
     kotlinOptions { /*……*/ }
 }
 ```
@@ -108,7 +108,61 @@ Gradle 任务的完整选项列表如下：
 | `allWarningsAsErrors` | 任何警告都报告为错误 |  | false |
 | `suppressWarnings` | 不生成警告 |  | false |
 | `verbose` | 启用详细日志输出。 仅在[已启用 Gradle debug 日志](https://docs.gradle.org/current/userguide/logging.html)时才有效 |  | false |
-| `freeCompilerArgs` | 附加编译器参数的列表 |  | [] |
+| `freeCompilerArgs` | 附加编译器参数的列表。You can use experimental `-X` arguments here too. See an [example](#example-of-additional-arguments-usage-via-freecompilerargs) |  | [] |
+
+> We are going to deprecate the attribute `freeCompilerArgs` in future releases. If you miss some option in the Kotlin Gradle DSL,
+> please, [file an issue](https://youtrack.jetbrains.com/newissue?project=kt).
+>
+{type="warning"}
+
+#### Example of additional arguments usage via freeCompilerArgs {initial-collapse-state="collapsed"}
+
+Use the attribute `freeCompilerArgs` to supply additional (including experimental) compiler arguments. You can add a single
+argument to this attribute or a list of arguments:
+
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
+// ...
+
+val compileKotlin: KotlinCompile by tasks
+
+// Single experimental argument
+compileKotlin.kotlinOptions.freeCompilerArgs += "-Xexport-kdoc"
+// Single additional argument, can be a key-value pair
+compileKotlin.kotlinOptions.freeCompilerArgs += "-opt-in=org.mylibrary.OptInAnnotation"
+// List of arguments
+compileKotlin.kotlinOptions.freeCompilerArgs += listOf("-Xno-param-assertions", "-Xno-receiver-assertions", "-Xno-call-assertions")
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+compileKotlin {
+    // Single experimental argument
+    kotlinOptions.freeCompilerArgs += "-Xexport-kdoc"
+    // Single additional argument, can be a key-value pair
+    kotlinOptions.freeCompilerArgs += "-opt-in=org.mylibrary.OptInAnnotation"
+    // List of arguments
+    kotlinOptions.freeCompilerArgs += ["-Xno-param-assertions", "-Xno-receiver-assertions", "-Xno-call-assertions"]
+}
+
+//or
+
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs += "-Xexport-kdoc"
+        kotlinOptions.freeCompilerArgs += "-opt-in=org.mylibrary.OptInAnnotation"
+        freeCompilerArgs += ["-Xno-param-assertions", "-Xno-receiver-assertions", "-Xno-call-assertions"]
+    }
+}
+```
+
+</tab>
+</tabs>
 
 ### JVM 与 JS 的公共属性
 
