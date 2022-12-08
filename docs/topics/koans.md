@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 心印)
 
-Kotlin Koans are a series of exercises designed primarily for Java developers, to help you become familiar with the Kotlin syntax.
+Kotlin 心印是一系列主要为 Java 开发人员设计、帮助你熟悉 Kotlin 语法的练习。
 每个练习都是不能通过的单元测试，你的任务就是使其通过。
 可以通过下列方式中的一种来完成 Kotlin 心印任务：
 
@@ -13,4 +13,4 @@ Kotlin Koans are a series of exercises designed primarily for Java developers, t
 * 对于 EduTools 插件，请尝试先自行作答，如果答案不正确选择 **Peek solution**（速览答案）。
 
 我们建议你在完成任务后核对答案，以便将你的解答与标准答案进行比较。
-请不要作弊！
+请不要作弊哦！
