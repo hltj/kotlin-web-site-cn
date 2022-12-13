@@ -1,16 +1,16 @@
 [//]: # (title: 布尔)
 
-The type `Boolean` represents boolean objects that can have two values: `true` and `false`.
+`Boolean` 类型表示可以有 `true` 与 `false` 两个值的布尔对象。
 
-`Boolean` has a nullable counterpart `Boolean?` that also has the `null` value.
+`Boolean` 的可空版 `Boolean?` 还有 `null` 值。
 
-Built-in operations on booleans include:
+布尔值的内置运算有：
 
-* `||` – disjunction (logical _OR_)
-* `&&` – conjunction (logical _AND_)
-* `!` – negation (logical _NOT_)
+* `||`——析取（逻辑*或*）
+* `&&`——合取（逻辑*与*）
+* `!`——否定（逻辑*非*）
 
-`||` and `&&` work lazily.
+`||` 与 `&&` 都是惰性（短路）的。
 
 ```kotlin
 fun main() {

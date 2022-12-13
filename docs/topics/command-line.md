@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 命令行编译器)
 
-Every Kotlin release ships with a standalone version of the compiler. You can download the latest version manually or via a package manager.
+每个 Kotlin 版本都附带了一个独立版的编译器。 可以手动或者通过包管理器下载其最新版。
 
 >Installing the command-line compiler is not an essential step to use Kotlin. A general way to write Kotlin applications is using an
 >IDE - [IntelliJ IDEA](https://www.jetbrains.com/idea/) or [Android Studio](https://developer.android.com/studio).
@@ -9,9 +9,9 @@ Every Kotlin release ships with a standalone version of the compiler. You can do
 > 
 {type="note"}
 
-## Install the compiler
+## 安装编译器
 
-### Manual install
+### 手动安装
 
 1. Download the latest version (`kotlin-compiler-%kotlinVersion%.zip`) from [GitHub Releases](%kotlinLatestUrl%).
 2. Unzip the standalone compiler into a directory and optionally add the `bin` directory to the system path.
@@ -37,7 +37,7 @@ brew update
 brew install kotlin
 ```
 
-### Snap package
+### Snap 包
 
 If you use [Snap](https://snapcraft.io/) on Ubuntu 16.04 or later, you can install the compiler from the command line:
 
@@ -45,7 +45,7 @@ If you use [Snap](https://snapcraft.io/) on Ubuntu 16.04 or later, you can insta
 sudo snap install --classic kotlin
 ```
 
-## Create and run an application
+## 创建并运行应用程序
 
 1. Create a simple application in Kotlin that displays `"Hello, World!"`. In your favorite editor, create a new file called
    `hello.kt` with the following lines:
@@ -78,7 +78,7 @@ library in it.
    java -jar hello.jar
    ```
 
-## Compile a library
+## 编译库
 
 If you're developing a library to be used by other Kotlin applications, you can build the *.jar* file without including
 the Kotlin runtime in it:
@@ -98,14 +98,14 @@ kotlin -classpath hello.jar HelloKt
 
 `HelloKt` is the main class name that the Kotlin compiler generates for the file named `hello.kt`.
 
-## Run the REPL
+## 运行 REPL
 
 You can run the compiler without parameters to have an interactive shell. In this shell, you can type any valid Kotlin code
 and see the results.
 
 <img src="kotlin-shell.png" alt="Shell" width="500"/>
 
-## Run scripts
+## 运行脚本
 
 Kotlin can also be used as a scripting language. A script is a Kotlin source file (`.kts`) with top-level executable code.
 
