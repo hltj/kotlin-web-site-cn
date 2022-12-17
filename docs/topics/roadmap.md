@@ -15,26 +15,26 @@
 
 ## 关键优先事项
 
-这个路线图的目标是给出一个大的图景。这里列出了我们的关键项目——the most important things we focus on delivering:
+这个路线图的目标是给出一个大的图景。这里列出了我们的关键项目——我们专注于交付的最重要的事情：
 
-* **K2 compiler**: 重写 Kotlin 编译器，针对速度、并行性与统一性进行优化。 It will also let us introduce many anticipated language features.
+* **K2 编译器**: 重写 Kotlin 编译器，针对速度、并行性与统一性进行优化。 它还能让我们引入许多预期的语言特性。
 * **K2-based IntelliJ plugin**: much faster code completion, highlighting, and search, together with a more stable code analysis.
 * **Kotlin Multiplatform Mobile**: promote the technology to Stable by improving the toolchain stability and documentation, and ensuring compatibility guarantees.
 * **Experience of library authors**: a set of documentation and tools helping to set up, develop, and publish Kotlin libraries.
 
 ## 以子系统划分的 Kotlin 路线图
 
-To view the biggest projects we're working on, visit the [YouTrack board](https://youtrack.jetbrains.com/agiles/153-1251/current) or the [Roadmap details](#roadmap-details) table.
+To view the biggest projects we're working on, visit the [YouTrack board](https://youtrack.jetbrains.com/agiles/153-1251/current) or the [Roadmap details](#路线图详情) table.
 
 If you have any questions or feedback about the roadmap or the items on it, feel free to post them to [YouTrack tickets](https://youtrack.jetbrains.com/issues?q=project:%20KT,%20KTIJ%20tag:%20%7BRoadmap%20Item%7D%20%23Unresolved%20) or in the [#kotlin-roadmap](https://kotlinlang.slack.com/archives/C01AAJSG3V4) channel of Kotlin Slack ([request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)).
 
-### YouTrack board
+### YouTrack 看板
 
 Visit the [roadmap board in our issue tracker YouTrack](https://youtrack.jetbrains.com/agiles/153-1251/current) ![YouTrack](youtrack-logo.png){width=30}{type="joined"}
 
 ![Roadmap board in YouTrack](roadmap-board.png){width=700}
 
-### Roadmap details
+### 路线图详情
 
 <table>
     <tr>
@@ -91,7 +91,7 @@ Visit the [roadmap board in our issue tracker YouTrack](https://youtrack.jetbrai
          </td>
     </tr>
     <tr>
-        <td><strong>Library ecosystem</strong></td>
+        <td><strong>库生态</strong></td>
         <td>
             <ul>
                 <li>🆕 <a href="https://youtrack.jetbrains.com/issue/KT-55073" target="_blank">Improve KDoc experience</a></li>
@@ -115,9 +115,9 @@ Visit the [roadmap board in our issue tracker YouTrack](https://youtrack.jetbrai
 > 
 {type="note"}
 
-## What's changed since May 2022
+## 相对 2022 年 5 月版的变化
 
-### Completed items
+### 已完成
 
 We've **completed** the following items from the previous roadmap:
 
@@ -141,7 +141,7 @@ We've **completed** the following items from the previous roadmap:
 * ✅ Website: [Make the Kotlin website mobile friendly](https://youtrack.jetbrains.com/issue/KT-44339)
 * ✅ Website: [Make the UI and navigation consistent](https://youtrack.jetbrains.com/issue/KT-46791)
 
-### New items
+### 新增
 
 We've **added** the following items to the roadmap:
 
@@ -155,7 +155,7 @@ We've **added** the following items to the roadmap:
 * 🆕 Libraries: [Improve KDoc experience](https://youtrack.jetbrains.com/issue/KT-55073)
 * 🆕 Libraries: [Provide a Kotlin API guide for libraries authors](https://youtrack.jetbrains.com/issue/KT-55077)
 
-### Removed items
+### 已删除
 
 We've **removed** the following items from the roadmap:
 
@@ -176,7 +176,7 @@ We've **removed** the following items from the roadmap:
 >
 {type="note"}
 
-### Items in progress
+### 进行中
 
 All other previously identified roadmap items are in progress. You can check their [YouTrack tickets](https://youtrack.jetbrains.com/issues?q=project:%20KT,%20KTIJ%20tag:%20%7BRoadmap%20Item%7D%20%23Unresolved%20)
 for updates.

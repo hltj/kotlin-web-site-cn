@@ -46,7 +46,7 @@ with Kotlin/Native. It makes the integration with Kotlin Multiplatform Mobile se
 ### What are the plans for the technology evolution?
 
 Kotlin Multiplatform Mobile is one of the focus areas of the [Kotlin roadmap](roadmap.md). To see which parts we're 
-working on right now, check out the [roadmap details](roadmap.md#roadmap-details). 
+working on right now, check out the [roadmap details](roadmap.md#路线图详情). 
 Most of the recent changes affect the **Kotlin Multiplatform** and **Kotlin/Native** sections.
 
 The following video presents the current state and our plans for the Kotlin Multiplatform Mobile development: 

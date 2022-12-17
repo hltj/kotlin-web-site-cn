@@ -27,6 +27,6 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-> **On JVM**: nullable references to boolean objects are boxed similarly to [numbers](numbers.md#jvm-平台的数字表示).
+> **JVM 平台**： 布尔对象的可空引用会装箱，类似于[数字](numbers.md#jvm-平台的数字表示)。
 >
 {type="note"}
