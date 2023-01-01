@@ -279,7 +279,7 @@ in [YouTrack](https://youtrack.jetbrains.com/issue/KT-48525).
 
 Starting with Kotlin 1.7.0, the Kotlin Multiplatform Gradle plugin uses the embeddable compiler jar for Kotlin/Native by
 default. This [feature was announced in 1.6.0](whatsnew16.md#与-jvm-及-js-ir-后端统一编译器插件-abi) as
-Experimental, and now it's stable and ready to use.
+Experimental, and now it's Stable and ready to use.
 
 This improvement is very handy for library authors, as it improves the compiler plugin development experience. Before
 this release, you had to provide separate artifacts for Kotlin/Native, but now you can use the same compiler plugin
@@ -353,7 +353,7 @@ external links on the CI are forbidden.
 To override the default base URL `https://download.jetbrains.com/kotlin/native/builds`, use the following Gradle
 property:
 
-```properties
+```none
 kotlin.native.distribution.baseDownloadUrl=https://example.com
 ```
 
@@ -750,7 +750,7 @@ improvement of greater than 80% for the changes after the cache hit.
 
 To try this new approach, set the following option in your `gradle.properties`:
 
-```properties
+```none
 kotlin.incremental.useClasspathSnapshot=true
 ```
 
@@ -787,7 +787,7 @@ Build reports come in handy when you want to investigate issues with compiler ta
 
 To enable build reports, declare where to save the build report output in `gradle.properties`:
 
-```properties
+```none
 kotlin.build.report.output=file
 ```
 
@@ -840,7 +840,7 @@ functionality.
 
 Currently, there are only two variants of the Kotlin Gradle plugin:
 
-* `main` for Gradle versions 6.7.1–6.9.2
+* `main` for Gradle versions 6.7.1–6.9.3
 * `gradle70` for Gradle versions 7.0 and higher
 
 In future Kotlin releases, we may add more.
@@ -932,7 +932,7 @@ Enable the statistics in two steps:
 
 * Set the `kapt.verbose` Gradle property to `true` in your `gradle.properties`:
   
-  ```properties
+  ```none
   kapt.verbose=true
   ```
 
@@ -966,7 +966,7 @@ When using the `kotlin.compiler.execution.strategy` system property, you'll rece
 deleted in future releases. To preserve the old behavior, replace the system property with the Gradle property of the
 same name. You can do this in `gradle.properties`, for example:
 
-```properties
+```none
 kotlin.compiler.execution.strategy=out-of-process
 ```
 

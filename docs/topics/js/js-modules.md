@@ -49,7 +49,7 @@ Webpack 提供了 `commonjs` 与 `commonjs2` 这两种不同的 CommonJS“风�
 
 ```kotlin
 tasks.named<KotlinJsCompile>("compileKotlinJs").configure {
-    kotlinOptions.moduleKind = "commonjs"
+    compilerOptions.moduleKind.set(org.jetbrains.kotlin.gradle.dsl.JsModuleKind.MODULE_COMMONJS)
 }
 ```
 
@@ -57,7 +57,7 @@ tasks.named<KotlinJsCompile>("compileKotlinJs").configure {
 <tab title="Groovy" group-key="groovy">
 
 ```groovy
-compileKotlinJs.kotlinOptions.moduleKind = "commonjs"
+compileKotlinJs.compilerOptions.moduleKind = org.jetbrains.kotlin.gradle.dsl.JsModuleKind.MODULE_COMMONJS
 ```
 
 </tab>
@@ -66,7 +66,7 @@ compileKotlinJs.kotlinOptions.moduleKind = "commonjs"
 可用值为：`umd`（默认）、`commonjs`、`amd`、`plain`。
 
 > 这与调整 `webpackTask.output.libraryTarget` 不同。库目标更改了
-> _webpack 生成的_ 输出（在代码已编译之后）。`kotlinOptions.moduleKind` 更改
+> _webpack 生成的_ 输出（在代码已编译之后）。`compilerOptions.moduleKind` 更改
 > _由 Kotlin 编译器_ 生成的输出。
 >
 {type="note"}  

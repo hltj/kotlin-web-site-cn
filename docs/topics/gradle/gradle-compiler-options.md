@@ -15,12 +15,35 @@ in the [Working with command-line compiler](command-line.md) tutorial.
 
 Kotlin compilers have a number of options for tailoring the compiling process.
 
-Using a build script, you can specify additional compilation options. 使用 Kotlin 编译任务的 `kotlinOptions` 属性来指定。 
+Using a build script, you can specify additional compilation options. 使用 Kotlin 编译任务的 `compilerOptions` 属性来指定。 
 For example:
 
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
 ```kotlin
-compileKotlin.kotlinOptions.freeCompilerArgs += "-Xexport-kdoc"
+compileKotlin.compilerOptions.freeCompilerArgs.add("-Xexport-kdoc")
 ```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+compileKotlin {
+    compilerOptions.freeCompilerArgs.add("-Xexport-kdoc")
+}
+
+//or
+
+compileKotlin {
+    compilerOptions {
+        freeCompilerArgs.add("-Xexport-kdoc")
+    }
+}
+```
+
+</tab>
+</tabs>
 
 当面向 JVM 时，对于生产代码这些任务称为 `compileKotlin` 而对于<!--
 -->测试代码称为 `compileTestKotlin`。对于自定义源代码集（source set）这些任务命名遵循 `compile＜Name＞Kotlin` 模式。
@@ -35,27 +58,24 @@ Android 项目中的任务名称包含[构建变体](https://developer.android.c
 <tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 // ……
 
-val compileKotlin: KotlinCompile by tasks
+val compileKotlin: KotlinCompilationTask<*> by tasks
 
-compileKotlin.kotlinOptions.suppressWarnings = true
+compileKotlin.compilerOptions.suppressWarnings.set(true)
 ```
 
 </tab>
 <tab title="Groovy" group-key="groovy">
 
 ```groovy
-compileKotlin {
-    kotlinOptions.suppressWarnings = true
-}
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+// ...
 
-//或者
-
-compileKotlin {
-    kotlinOptions {
-        suppressWarnings = true
+tasks.named('compileKotlin', KotlinCompilationTask) {
+    compilerOptions {
+        suppressWarnings.set(true)
     }
 }
 ```
@@ -73,8 +93,8 @@ compileKotlin {
 <tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
-tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile>().configureEach {
-    kotlinOptions { /*……*/ }
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask<*>>().configureEach {
+    compilerOptions { /*……*/ }
 }
 ```
 
@@ -82,8 +102,8 @@ tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile>().configureEach {
 <tab title="Groovy" group-key="groovy">
 
 ```groovy
-tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinCompile).configureEach {
-    kotlinOptions { /*……*/ }
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask).configureEach {
+    compilerOptions { /*……*/ }
 }
 ```
 </tab>
@@ -93,13 +113,11 @@ Gradle 任务的完整选项列表如下：
 
 ### JVM 特有的属性
 
-| 名称 | 描述        | 可能的值                                  |默认值        |
+| 名称 | 描述        | 可能的值                              |默认值        |
 |------|-------------|---------------------------------------|--------------|
-| `javaParameters` | 为方法参数生成 Java 1.8 反射的元数据 |                                       | false |
-| `jdkHome` | 将来自指定位置的自定义 JDK 而不是默认的 JAVA_HOME 包含到类路径中。 Direct setting is not possible, use [other ways to set this option](gradle-configure-project.md#set-custom-jdk-home).  |                                       |  |
-| `jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"（已弃用）、 "1.8"、 "9"、 "10"、……、 "18" | "%defaultJvmTargetVersion%" |
-| `noJdk` | 不要自动在类路径中包含 Java 运行时 |                                       | false |
-| `useOldBackend` | Use the [old JVM backend](whatsnew15.md#稳定版-jvm-ir-后端) |                                       | false |
+| `javaParameters` | 为方法参数生成 Java 1.8 反射的元数据 |   | false |
+| `jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"（已弃用）、 "1.8"、 "9"、 "10"、……、 "18"、 "19"。 Also, see [Types for compiler options](#types-for-compiler-options) | "%defaultJvmTargetVersion%" |
+| `noJdk` | 不要自动在类路径中包含 Java 运行时 |   | false |
 
 ### JVM、JS 与 JS DCE 的公共属性
 
@@ -124,39 +142,34 @@ argument to this attribute or a list of arguments:
 <tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
-import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 // ...
 
-val compileKotlin: KotlinCompile by tasks
+val compileKotlin: KotlinCompilationTask<*> by tasks
 
 // Single experimental argument
-compileKotlin.kotlinOptions.freeCompilerArgs += "-Xexport-kdoc"
+compileKotlin.compilerOptions.freeCompilerArgs.add("-Xexport-kdoc")
 // Single additional argument, can be a key-value pair
-compileKotlin.kotlinOptions.freeCompilerArgs += "-opt-in=org.mylibrary.OptInAnnotation"
+compileKotlin.compilerOptions.freeCompilerArgs.add("-opt-in=org.mylibrary.OptInAnnotation")
 // List of arguments
-compileKotlin.kotlinOptions.freeCompilerArgs += listOf("-Xno-param-assertions", "-Xno-receiver-assertions", "-Xno-call-assertions")
+compileKotlin.compilerOptions.freeCompilerArgs.addAll(listOf("-Xno-param-assertions", "-Xno-receiver-assertions", "-Xno-call-assertions"))
 ```
 
 </tab>
 <tab title="Groovy" group-key="groovy">
 
 ```groovy
-compileKotlin {
-    // Single experimental argument
-    kotlinOptions.freeCompilerArgs += "-Xexport-kdoc"
-    // Single additional argument, can be a key-value pair
-    kotlinOptions.freeCompilerArgs += "-opt-in=org.mylibrary.OptInAnnotation"
-    // List of arguments
-    kotlinOptions.freeCompilerArgs += ["-Xno-param-assertions", "-Xno-receiver-assertions", "-Xno-call-assertions"]
-}
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+// ...
 
-//or
-
-compileKotlin {
-    kotlinOptions {
-        freeCompilerArgs += "-Xexport-kdoc"
-        kotlinOptions.freeCompilerArgs += "-opt-in=org.mylibrary.OptInAnnotation"
-        freeCompilerArgs += ["-Xno-param-assertions", "-Xno-receiver-assertions", "-Xno-call-assertions"]
+tasks.named('compileKotlin', KotlinCompilationTask) {
+    compilerOptions {
+        // Single experimental argument
+        freeCompilerArgs.add("-Xexport-kdoc")
+        // Single additional argument, can be a key-value pair
+        freeCompilerArgs.add("-opt-in=org.mylibrary.OptInAnnotation")
+        // List of arguments
+        freeCompilerArgs.addAll(["-Xno-param-assertions", "-Xno-receiver-assertions", "-Xno-call-assertions"])
     }
 }
 ```
@@ -168,26 +181,41 @@ compileKotlin {
 
 | 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
-| `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.3"（已弃用）、 "1.4"（已弃用）、  "1.5"、 "1.6"、 "1.7" |  |
-| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7" |  |
+| `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.3"（已弃用）、 "1.4"（已弃用）、  "1.5"、 "1.6"、 "1.7", "1.8", "1.9" |  |
+| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7", "1.8", "1.9" |  |
+
+Also, see [Types for compiler options](#types-for-compiler-options).
 
 ### JS 特有的属性
 
 | 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
 | `friendModulesDisabled` | 禁用内部声明导出 |  | false |
-| `main` | 定义是否在执行时调用 `main` 函数 | "call"、 "noCall" | "call" |
+| `main` | 定义是否在执行时调用 `main` 函数 | "call"、 "noCall". Also, see [Types for compiler options](#types-for-compiler-options) | "call" |
 | `metaInfo` | 使用元数据生成 .meta.js 与 .kjsm 文件。用于创建库 |  | true |
-| `moduleKind` | 编译器生成的 JS 模块类型 | "umd"、 "commonjs"、 "amd"、 "plain" | "umd" |
+| `moduleKind` | 编译器生成的 JS 模块类型 | "umd"、 "commonjs"、 "amd"、 "plain", "es". Also, see [Types for compiler options](#types-for-compiler-options) | "umd" |
 | `outputFile` | 编译结果的目标 *.js 文件 |  | "\<buildDir>/js/packages/\<project.name>/kotlin/\<project.name>.js" |
 | `sourceMap` | 生成源代码映射（source map） |  | true |
-| `sourceMapEmbedSources` | 将源代码嵌入到源代码映射中 | "never"、 "always"、 "inlining" | |
+| `sourceMapEmbedSources` | 将源代码嵌入到源代码映射中 | "never"、 "always"、 "inlining". Also, see [Types for compiler options](#types-for-compiler-options) | |
 | `sourceMapPrefix` | 将指定前缀添加到源代码映射中的路径 |  |  |
 | `target` | 生成指定 ECMA 版本的 JS 文件 | "v5" | "v5" |
 | `typedArrays` | 将原生数组转换为 JS 带类型数组 |  | true |
+
+### Types for compiler options
+
+Some of the `compilerOptions` use the new types instead of the `String` type:
+
+| Option | Type | Example |
+|--------|------|---------|
+| `jvmTarget` | [`JvmTarget`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JvmTarget.kt) | `compilerOptions.jvmTarget.set(JvmTarget.JVM_11)` |
+| `apiVersion` and `languageVersion` | [`KotlinVersion`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/KotlinVersion.kt) | `compilerOptions.languageVersion.set(KotlinVersion.KOTLIN_1_9)` |
+| `main` | [`JsMainFunctionExecutionMode`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JsMainFunctionExecutionMode.kt) | `compilerOptions.main.set(JsMainFunctionExecutionMode.NO_CALL)` |
+| `moduleKind` | [`JsModuleKind`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JsModuleKind.kt) | `compilerOptions.moduleKind.set(JsModuleKind.MODULE_ES)` |
+| `sourceMapEmbedSources` | [`JsSourceMapEmbedMode`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JsSourceMapEmbedMode.kt) | `compilerOptions.sourceMapEmbedSources.set(JsSourceMapEmbedMode.SOURCE_MAP_SOURCE_CONTENT_INLINING)` |
 
 ## 下一步做什么？
 
 Learn more about:
 * [Incremental compilation, caches support, build reports, and the Kotlin daemon](gradle-compilation-and-caches.md).
 * [Gradle basics and specifics](https://docs.gradle.org/current/userguide/getting_started.html).
+* [Support for Gradle plugin variants](gradle-plugin-variants.md).

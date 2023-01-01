@@ -264,6 +264,6 @@
   link: https://github.com/kunalsheth/units-of-measure
   
 - name: TornadoFX
-  description: 基于 JavaFX 的 Koltin GUI 框架
+  description: 基于 JavaFX 的 Kotlin GUI 框架
   type: 框架
   link: https://tornadofx.io

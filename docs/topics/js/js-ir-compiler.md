@@ -1,10 +1,5 @@
 [//]: # (title: Kotlin/JS IR 编译器)
 
-> The Kotlin/JS IR compiler is in [Beta](components-stability.md). It is almost stable, but migration steps may be required
-> in the future. We'll do our best to minimize any changes you have to make.
->
-{type="warning"}
-
 Kotlin/JS IR 编译器后端是围绕 Kotlin/JS 进行创新的主要焦点，并为该技术的发展铺平了道路
 。 
 
@@ -58,11 +53,11 @@ In this mode, the compiler caches the results of `compileDevelopmentExecutableKo
 It uses the cached compilation results for unchanged source files during subsequent compilations, making them complete faster,
 especially with small changes.
 
-To enable incremental compilation for development binaries, add the following line to the project's `gradle.properties`
+Incremental compilation is enabled by default. To disable incremental compilation for development binaries, add the following line to the project's `gradle.properties`
 or `local.properties`:
 
-```properties
-kotlin.incremental.js.ir=true // false by default
+```none
+kotlin.incremental.js.ir=false // true by default
 ```
 
 > The clean build in the incremental compilation mode is usually slower because of the need to create and populate the caches.
@@ -74,7 +69,7 @@ kotlin.incremental.js.ir=true // false by default
 As a compilation result, the JS IR compiler outputs separate `.js` files for each module of a project. 
 Alternatively, you can compile the whole project into a single `.js` file by adding the following line to `gradle.properties`:
 
-```properties
+```none
 kotlin.js.ir.output.granularity=whole-program // 'per-module' is the default
 ```
 
@@ -107,7 +102,9 @@ Kotlin/JS IR 编译器提供了默认后端中不可用的新编译模式——_
 kotlin {
    js(IR) {
        compilations.all {
-           compileKotlinTask.kotlinOptions.freeCompilerArgs += listOf("-Xerror-tolerance-policy=SYNTAX")
+           compileTaskProvider.configure {
+               compilerOptions.freeCompilerArgs.add("-Xerror-tolerance-policy=SYNTAX")
+           }
        }
    }
 }
@@ -123,7 +120,9 @@ This type of minification is automatically applied when you build your Kotlin/JS
 kotlin {
    js(IR) {
        compilations.all {
-           compileKotlinTask.kotlinOptions.freeCompilerArgs += listOf("-Xir-minimized-member-names=false")
+           compileTaskProvider.configure {
+               compilerOptions.freeCompilerArgs.add("-Xir-minimized-member-names=false")
+           }
        }
    }
 }
