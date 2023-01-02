@@ -129,7 +129,7 @@ In the build module, you may have related compile tasks, for example:
 {type="note"}
 
 For related tasks like these, the Kotlin Gradle plugin checks for JVM target compatibility. Different values of 
-the [`jvmTarget` attribute](gradle-compiler-options.md#attributes-specific-to-jvm) in the `kotlin` extension or task 
+the [`jvmTarget` attribute](gradle-compiler-options.md#jvm-特有的属性) in the `kotlin` extension or task 
 and [`targetCompatibility`](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java-extension)
 in the `java` extension or task cause JVM target incompatibility. For example:
 the `compileKotlin` task has `jvmTarget=1.8`, and
@@ -601,7 +601,7 @@ kotlin.stdlib.default.dependency=false
 If you explicitly write the Kotlin version 1.8.0 or higher in your dependencies, for example: 
 `implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.0")`, then the Kotlin Gradle Plugin uses this Kotlin version 
 for transitive `kotlin-stdlib-jdk7` and `kotlin-stdlib-jdk8` dependencies. This is for avoiding class duplication from 
-different stdlib versions.[Learn more about [merging `kotlin-stdlib-jdk7` and `kotlin-stdlib-jdk8` into `kotlin-stdlib`](whatsnew18.md#updated-jvm-compilation-target). 
+different stdlib versions.[Learn more about [merging `kotlin-stdlib-jdk7` and `kotlin-stdlib-jdk8` into `kotlin-stdlib`](whatsnew18.md#更新了-jvm-编译项目标). 
 You can disable this behavior with the `kotlin.stdlib.jdk.variants.version.alignment` Gradle property:
 
 ```none
@@ -708,7 +708,7 @@ You can disable this behavior with the `kotlin.stdlib.jdk.variants.version.align
 * If you have an explicit old version (less than `1.8.0`) of `kotlin-stdlib-jdk7`/`kotlin-stdlib-jdk8`, for example, 
   `implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:SOME_OLD_KOTLIN_VERSION")`, and a dependency that 
   transitively brings `kotlin-stdlib:1.8+`, [replace your `kotlin-stdlib-jdk<7/8>:SOME_OLD_KOTLIN_VERSION` with 
-  `kotlin-stdlib-jdk*:%kotlinVersion%`](whatsnew18.md#updated-jvm-compilation-target) or [exclude](https://docs.gradle.org/current/userguide/dependency_downgrade_and_exclude.html#sec:excluding-transitive-deps) 
+  `kotlin-stdlib-jdk*:%kotlinVersion%`](whatsnew18.md#更新了-jvm-编译项目标) or [exclude](https://docs.gradle.org/current/userguide/dependency_downgrade_and_exclude.html#sec:excluding-transitive-deps) 
   a transitive `kotlin-stdlib:1.8+` from the library that brings it:
 
   <tabs group="build-script">

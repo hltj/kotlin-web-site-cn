@@ -7,21 +7,21 @@ Kotlin/JS 提供了转换 Kotlin 代码、Kotlin 标准库的能力，并且兼�
 这包括基本特性，例如控制应用程序的捆绑，直接从 npm 添加 JavaScript 依赖项等等。要获得<!--
 -->可用选项的概述，请查看[搭建 Kotlin/JS 项目](js-project-setup.md)文档。
 
-## Kotlin/JS IR compiler
+## Kotlin/JS IR 编译器
 
-The [Kotlin/JS IR compiler](js-ir-compiler.md) comes with a number of improvements over the old default compiler.
-For example, it reduces the size of generated executables
-via dead code elimination and provides smoother interoperability with the JavaScript ecosystem and its tooling.
+[Kotlin/JS IR 编译器](js-ir-compiler.md)相对于旧版默认编译器进行了许多改进。
+例如，通过消除死代码来减小生成的可执行文件的体积，
+并提供了与 JavaScript 生态系统及其工具更加流畅的互操作性。
 
-> The old compiler has been deprecated since the Kotlin 1.8.0 release.
-> 
+> 自 Kotlin 1.8.0 版起，旧编译器已弃用。
+>
 {type="note"}
 
-By generating TypeScript declaration files (`d.ts`) from Kotlin code, the IR compiler makes it easier to create "hybrid"
-applications that mix TypeScript and Kotlin code and to leverage code-sharing functionality using Kotlin Multiplatform.
+通过从 Kotlin 代码生成 TypeScript 声明文件（`d.ts`），IR 编译器使创建混合 TypeScript 与 Kotlin 代码的“混合”
+应用程序变得更加容易，并利用 Kotlin 多平台代码共享功能。
 
-To learn more about the available features in the Kotlin/JS IR compiler and how to try it for your project, visit the
-[Kotlin/JS IR compiler documentation page](js-ir-compiler.md) and the [migration guide](js-ir-migration.md).
+如需了解关于 Kotlin/JS IR 编译器中可用特性的更多信息，以及如何在项目中尝试使用它，请访问
+[Kotlin/JS IR 编译器文档页](js-ir-compiler.md)及其[迁移指南](js-ir-migration.md)。
 
 ## Kotlin/JS 的使用场景
 

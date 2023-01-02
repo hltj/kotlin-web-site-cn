@@ -1,4 +1,4 @@
-[//]: # (title: Support for Gradle plugin variants)
+[//]: # (title: 支持 Gradle 插件变体)
 
 Gradle 7.0 introduced a new feature for Gradle plugin authors
 — [plugins with variants](https://docs.gradle.org/7.0/userguide/implementing_gradle_plugins.html#plugin-with-variants).
@@ -27,7 +27,7 @@ To check which variant your build uses, enable
 the [`--info` log level](https://docs.gradle.org/current/userguide/logging.html#sec:choosing_a_log_level) and find a
 string in the output starting with `Using Kotlin Gradle plugin`, for example, `Using Kotlin Gradle plugin main variant`.
 
-## Troubleshooting
+## 问题排查
 
 > Here are workarounds for some known issues with variant selection in Gradle:
 > * [ResolutionStrategy in pluginManagement is not working for plugins with multivariants](https://github.com/gradle/gradle/issues/20545)
@@ -35,7 +35,7 @@ string in the output starting with `Using Kotlin Gradle plugin`, for example, `U
 >
 {type="note"}
 
-### Gradle can't select a KGP variant in a custom configuration
+### Gradle 无法在自定义配置中选择 KGP 变体
 
 This is an expected situation that Gradle can't select a KGP variant in a custom configuration.
 If you use a custom Gradle configuration:
@@ -154,6 +154,6 @@ Otherwise, you will receive an error similar to this:
                  - Unmatched attributes:
 ```
 
-## What's next?
+## 下一步做什么？
 
 Learn more about [Gradle basics and specifics](https://docs.gradle.org/current/userguide/getting_started.html).

@@ -34,8 +34,8 @@
         <custom-groups>
             <group type="cards" display="wide">
                 <title>新特性</title>
-                <a href="whatsnew18.md" description="Latest features: Improved kotlin-reflect performance, new recursively copy or delete directory content experimental functions for JVM, `kotlin-stdlib-jdk7` and `kotlin-stdlib-jdk8` merged into `kotlin-stdlib`, improved Objective-C/Swift interoperability and more">Kotlin 1.8.0 的新特性</a>
-                <a href="roadmap.md" description="Future plans on Kotlin development">Kotlin public roadmap</a>
+                <a href="whatsnew18.md" description="最新特性：改进了 kotlin-reflect 性能，JVM 平台新版递归复制或删除目录内容的实验性函数，`kotlin-stdlib-jdk7` 与 `kotlin-stdlib-jdk8` 合并到 `kotlin-stdlib`，改进了 Objective-C/Swift 互操作性等等">Kotlin 1.8.0 的新特性</a>
+                <a href="roadmap.md" description="Kotlin 开发的未来计划">Kotlin 公开路线图</a>
             </group>
             <group type="cards">
                 <title>Kotlin 多平台移动端</title>

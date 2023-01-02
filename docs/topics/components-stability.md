@@ -68,7 +68,7 @@ kotlin-stdlib（JVM）|已稳定|1.0| |
 kotlin-reflect（JVM）|Beta|1.0| |
 Kotlin/JS（旧版后端）|已稳定|1.3| |
 Kotlin/JVM（基于 IR）|已稳定|1.5| |
-Kotlin/JS（基于 IR）|Stable|1.8| |
+Kotlin/JS（基于 IR）|已稳定|1.8| |
 Kotlin/Native 运行时|Beta|1.3| |
 Kotlin/Native new memory manager|Beta|1.7.20| |
 Klib 二进制|Alpha|1.4| |

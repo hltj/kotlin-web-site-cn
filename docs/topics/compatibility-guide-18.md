@@ -1,4 +1,4 @@
-[//]: # (title: Compatibility guide for Kotlin 1.8)
+[//]: # (title: Kotlin 1.8 的兼容性指南)
 
 _[Keeping the Language Modern](kotlin-evolution.md)_ and _[Comfortable Updates](kotlin-evolution.md)_ are among the fundamental principles in
 Kotlin Language Design. The former says that constructs which obstruct language evolution should be removed, and the
@@ -613,7 +613,7 @@ perspective
 > `KotlinJsCompilerOptions.outputFile` and the related `KotlinJsOptions.outputFile` options are deprecated. 
 > Use the `Kotlin2JsCompile.outputFileProperty` task input instead. The `kotlinOptions` task input and the `kotlinOptions{...}` 
 > task DSL are in a support mode and will be deprecated in upcoming releases. `compilerOptions` and `kotlinOptions` can not be changed on a 
-> task execution phase (see one exception in [What's new in Kotlin 1.8](whatsnew18.md#limitations)). 
+> task execution phase (see one exception in [What's new in Kotlin 1.8](whatsnew18.md#限制)). 
 > `freeCompilerArgs` returns an immutable `List<String>` – `kotlinOptions.freeCompilerArgs.remove("something")` will fail. 
 > The `useOldBackend` property that allowed to use the old JVM backend is removed
 >
