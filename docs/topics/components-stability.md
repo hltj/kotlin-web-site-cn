@@ -66,7 +66,7 @@ Kotlin K2（JVM）|Alpha|1.7| |
 kotlin-stdlib（JVM）|已稳定|1.0| |
 协程|已稳定|1.3| |
 kotlin-reflect（JVM）|Beta|1.0| |
-Kotlin/JS（旧版后端）|已稳定|1.3| |
+Kotlin/JS（旧版后端）|已稳定|1.3|Deprecated from 1.8.0, read the [IR migration guide](js-ir-migration.html)|
 Kotlin/JVM（基于 IR）|已稳定|1.5| |
 Kotlin/JS（基于 IR）|已稳定|1.8| |
 Kotlin/Native 运行时|Beta|1.3| |
