@@ -11,7 +11,7 @@ Some of them are very early stage, some are more mature. We mark them as **Exper
 
 Here's a quick guide to these stability levels and their meaning:
 
-**Experimental** means "try it only in toy projects":
+**实验性的** means "try it only in toy projects":
   * We are just trying out an idea and want some users to play with it and give feedback. If it doesn't work out, we may drop it any minute.
 
 **Alpha** means "use at your own risk, expect migration issues": 
@@ -25,7 +25,7 @@ Here's a quick guide to these stability levels and their meaning:
 We collectively refer to _Experimental_, _Alpha_ and _Beta_ as **pre-stable** levels.
 
 <a name="stable"></a>
-**Stable** means "use it even in most conservative scenarios":
+**已稳定** means "use it even in most conservative scenarios":
   * It's done. We will be evolving it according to our strict [backward compatibility rules](https://kotlinfoundation.org/language-committee-guidelines/).
 
 Please note that stability levels do not say anything about how soon a component will be released as Stable. Similarly, they do not indicate how much a component will be changed before release. They only say how fast a component is changing and how much risk of update issues users are running.
@@ -66,7 +66,7 @@ Kotlin K2（JVM）|Alpha|1.7| |
 kotlin-stdlib（JVM）|已稳定|1.0| |
 协程|已稳定|1.3| |
 kotlin-reflect（JVM）|Beta|1.0| |
-Kotlin/JS（旧版后端）|已稳定|1.3|Deprecated from 1.8.0, read the [IR migration guide](js-ir-migration.html)|
+Kotlin/JS（旧版后端）|已稳定|1.3|1.8.0 起已弃用，请参阅 [IR 迁移指南](js-ir-migration.html)|
 Kotlin/JVM（基于 IR）|已稳定|1.5| |
 Kotlin/JS（基于 IR）|已稳定|1.8| |
 Kotlin/Native 运行时|Beta|1.3| |

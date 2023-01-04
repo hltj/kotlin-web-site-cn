@@ -1,13 +1,13 @@
 [//]: # (title: 字符串)
 
-Kotlin 中字符串用 `String` 类型表示。 Generally, a string value is a sequence of characters in double quotes (`"`)：
+Kotlin 中字符串用 `String` 类型表示。 通常，字符串值是双引号（`"`）中的字符序列：
 
 ```kotlin
 val str = "abcd 123"
 ```
 
 字符串的元素——字符可以使用索引运算符访问: `s[i]`。
-You can iterate over these characters with a `for` loop:
+可以使用 `for` 循环遍历这些字符：
 
 ```kotlin
 fun main() {
@@ -21,15 +21,15 @@ for (c in str) {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-字符串是不可变的。 Once you initialize a string, you can't change its value or assign a new value to it.
-All operations that transform strings return their results in a new `String` object, leaving the original string unchanged:
+字符串是不可变的。 一旦初始化了一个字符串，就不能改变它的值或者给它赋新值。
+所有转换字符串的操作都以一个新的 `String` 对象来返回结果，而保持原始字符串不变：
 
 ```kotlin
 fun main() {
 //sampleStart
     val str = "abcd"
-    println(str.uppercase()) // Create and print a new String object
-    println(str) // The original string remains the same
+    println(str.uppercase()) // 创建并输出一个新的 String 对象
+    println(str) // 原始字符串保持不变
 //sampleEnd
 }
 ```
@@ -82,7 +82,7 @@ val text = """
 """
 ```
 
-To remove leading whitespace from raw strings, use the [`trimMargin()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim-margin.html) function:
+如需删掉原始字符串中的前导空格，请使用 [`trimMargin()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim-margin.html) 函数：
 
 ```kotlin
 val text = """
@@ -116,16 +116,16 @@ fun main() {
 fun main() {
 //sampleStart
     val s = "abc"
-    println("$s.length is ${s.length}") // Prints "abc.length is 3"
+    println("$s.length is ${s.length}") // 输出 "abc.length is 3"
 //sampleEnd
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-You can use templates both in raw and escaped strings.
-To insert the dollar sign `$`  in a raw string (which doesn't support backslash escaping) before any symbol,
-which is allowed as a beginning of an [identifier](https://kotlinlang.org/docs/reference/grammar.html#identifiers),
-use the following syntax:
+在原始字符串及转义字符串中都可以使用模板。
+如需在原始字符串（不支持反斜杠转义）中的<!--
+-->允许作为[标识符（identifier）](https://kotlinlang.org/docs/reference/grammar.html#identifiers)开头的任意符号之前插入美元符 `$`，
+请使用以下语法：s
 
 ```kotlin
 val price = """

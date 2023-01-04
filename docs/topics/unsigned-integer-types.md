@@ -9,16 +9,16 @@
 
 无符号类型支持其对应有符号类型的大多数操作。
 
-> Unsigned numbers are implemented as [inline classes](inline-classes.md) with the single storage property of the corresponding 
-> signed counterpart type of the same width. Nevertheless, 将类型从无符号类型更改为对应的有符号类型（反之亦然）
+> 无符号数实现为具有单个存储属性的[内联类](inline-classes.md)， 
+> 该属性类型为与其宽度相同的对应有符号类型。 尽管如此，将类型从无符号类型更改为对应的有符号类型（反之亦然）
 > 是*二进制不兼容*变更。
 >
 {type="note"}
 
 ## 无符号数组与区间
 
-> Unsigned arrays and operations on them are in [Beta](components-stability.md). They can be changed incompatibly at any time.
-> Opt-in is required (see the details below).
+> 无符号数组及其对应操作处于 [Beta](components-stability.md) 状态。 它们可能随时进行不兼容变更。
+> 需要选择加入（详见下文）。
 >
 {type="warning"}
 
@@ -63,7 +63,7 @@ arrays are not a stable feature, so API which uses them can be broken by changes
   val a = 1UL // ULong，即使未提供预期类型并且常量适于 UInt
   ```
 
-## Use cases
+## 使用场景
 
 The main use case of unsigned numbers is utilizing the full bit range of an integer to represent positive values.  
 For example, to represent hexadecimal constants that do not fit in signed types such as color in 32-bit `AARRGGBB` format:
@@ -83,7 +83,7 @@ val byteOrderMarkUtf8 = ubyteArrayOf(0xEFu, 0xBBu, 0xBFu)
 Another use case is interoperability with native APIs. Kotlin allows representing native declarations that contain 
 unsigned types in the signature. The mapping won't substitute unsigned integers with signed ones keeping the semantics unaltered.
 
-### Non-goals
+### 非目标
 
 While unsigned integers can only represent positive numbers and zero, it's not a goal to use them where application 
 domain requires non-negative integers. For example, as a type of collection size or collection index value.

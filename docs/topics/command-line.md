@@ -2,10 +2,10 @@
 
 每个 Kotlin 版本都附带了一个独立版的编译器。 可以手动或者通过包管理器下载其最新版。
 
->Installing the command-line compiler is not an essential step to use Kotlin. A general way to write Kotlin applications is using an
->IDE - [IntelliJ IDEA](https://www.jetbrains.com/idea/) or [Android Studio](https://developer.android.com/studio).
->They provide full Kotlin support out of the box without needing additional components. Learn how to 
-[get started with Kotlin in an IDE](getting-started.md).
+>安装命令行编译器并不是使用 Kotlin 的必要步骤。 编写 Kotlin 应用程序的通常方式是使用
+>IDE——[IntelliJ IDEA](https://www.jetbrains.com/idea/) 或者 [Android Studio](https://developer.android.com/studio)。
+>它们开箱即用地提供完整的 Kotlin 支持，无需附加组件。 了解如何<!--
+> -->[在 IDE 中入门 Kotlin](getting-started.md)。
 > 
 {type="note"}
 
@@ -13,9 +13,9 @@
 
 ### 手动安装
 
-1. Download the latest version (`kotlin-compiler-%kotlinVersion%.zip`) from [GitHub Releases](%kotlinLatestUrl%).
-2. Unzip the standalone compiler into a directory and optionally add the `bin` directory to the system path.
-The `bin` directory contains the scripts needed to compile and run Kotlin on Windows, macOS, and Linux.
+1. 在 [GitHub Releases](%kotlinLatestUrl%) 页下载最新版本（`kotlin-compiler-%kotlinVersion%.zip`）。
+2. 将独立编译器解压缩到一个目录中，并可选择将其 `bin` 目录添加到系统路径。
+`bin` 目录包含了在 Windows、macOS 与 Linux 上编译及运行 Kotlin 所需的脚本。
 
 ### SDKMAN!
 

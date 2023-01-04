@@ -184,27 +184,27 @@ Here are some of the key differences between the two layouts:
 
 #### KotlinSourceSet 命名模式
 
-| Current source set layout              | New source set layout           |
+| 当前源代码集布局                       | 新版源代码集布局                |
 |----------------------------------------|---------------------------------|
 | `targetName` + `AndroidSourceSet.name` | targetName + AndroidVariantType |
 
 `{AndroidSourceSet.name}` maps to `{KotlinSourceSet.name}` as follows:
 
-| `AndroidSourceSet.name` | `KotlinSourceSet.name` in current source set layout | `KotlinSourceSet.name` in new source set layout |
-|-------------------------|-----------------------------------------------------|-------------------------------------------------|
-| main                    | androidMain                                         | androidMain                                     |
-| test                    | androidTest                                         | android<b>Unit</b>Test                          |
-| androidTest             | android<b>Android</b>Test                           | android<b>Instrumented</b>Test                  |
+| `AndroidSourceSet.name` | 当前源代码集布局中的 `KotlinSourceSet.name` | 新版源代码集布局中的 `KotlinSourceSet.name` |
+|-------------------------|---------------------------------------------|---------------------------------------------|
+| main                    | androidMain                                 | androidMain                                 |
+| test                    | androidTest                                 | android<b>Unit</b>Test                      |
+| androidTest             | android<b>Android</b>Test                   | android<b>Instrumented</b>Test              |
 
 #### SourceDirectories
 
-| Current source set layout                               | New source set layout                                                     |
+| 当前源代码集布局                                        | 新版源代码集布局                                                          |
 |---------------------------------------------------------|---------------------------------------------------------------------------|
 | The layout adds additional `/kotlin` SourceDirectories  | `src/{AndroidSourceSet.name}/kotlin`, `src/{KotlinSourceSet.name}/kotlin` |
 
 `{AndroidSourceSet.name}` maps to `{Source Directories included}` as follows:
 
-| `AndroidSourceSet.name` | `{Source Directories included}` in current source set layout      | `{Source Directories included}` in new source set layout                                              |
+| `AndroidSourceSet.name` | 当前源代码集布局中的 `{Source Directories included}`              | 新版源代码集布局中的 `{Source Directories included}`                                                  |
 |-------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | main                    | src/androidMain/kotlin, src/main/kotlin, src/main/java            | src/androidMain/kotlin, src/main/kotlin, src/main/java                                                |
 | test                    | src/androidTest/kotlin, src/test/kotlin, src/test/java            | src/android<b>Unit</b>Test/kotlin, src/test/kotlin, src/test/java                                     |
@@ -212,16 +212,16 @@ Here are some of the key differences between the two layouts:
 
 #### `AndroidManifest.xml` 文件的位置
 
-| Current source set layout                              | New source set layout                                 |
+| 当前源代码集布局                                       | 新版源代码集布局                                      |
 |--------------------------------------------------------|-------------------------------------------------------|
 | src/{<b>AndroidSourceSet</b>.name}/AndroidManifest.xml | src/{<b>KotlinSourceSet</b>.name}/AndroidManifest.xml |
 
 `{AndroidSourceSet.name}` maps to`{AndroidManifest.xml location}` as follows:
 
-| `AndroidSourceSet.name` | `{AndroidManifest.xml location}` in current source set layout | `{AndroidManifest.xml location}` in new source set layout |
-|-------------------------|---------------------------------------------------------------|-----------------------------------------------------------|
-| main                    | src/main/AndroidManifest.xml                                  | src/<b>android</b>Main/AndroidManifest.xml                |
-| debug                   | src/debug/AndroidManifest.xml                                 | src/<b>android</b>Debug/AndroidManifest.xml               |
+| `AndroidSourceSet.name` | 当前源代码集布局中的 `{AndroidManifest.xml location}` | 新版源代码集布局中的 `{AndroidManifest.xml location}` |
+|-------------------------|-------------------------------------------------------|-------------------------------------------------------|
+| main                    | src/main/AndroidManifest.xml                          | src/<b>android</b>Main/AndroidManifest.xml            |
+| debug                   | src/debug/AndroidManifest.xml                         | src/<b>android</b>Debug/AndroidManifest.xml           |
 
 ### 配置与设置
 
