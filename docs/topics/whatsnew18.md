@@ -29,10 +29,10 @@ The Kotlin plugin that supports 1.8.0 is available for:
 
 ## Kotlin/JVM
 
-Starting with version 1.8.0, the compiler can generate classes with a bytecode version corresponding to JVM 19. 
+Starting with version 1.8.0, the compiler can generate classes with a bytecode version corresponding to JVM 19.
 The new language version also includes:
 
-* [关闭 JVM 注解目标生成的编译器参数](#不生成-type-use-与-type-parameter-注解目标的能力)
+* [关闭 JVM 注解目标生成的编译器选项](#不生成-type-use-与-type-parameter-注解目标的能力)
 * [用于禁用优化的新增 `-Xdebug` 编译器选项](#用于禁用优化的新增编译器选项)
 * [删除旧版后端](#删除旧版后端)
 * [支持 Lombok 的 @Builder 注解](#支持-lombok-的-builder-注解)
@@ -44,7 +44,7 @@ in its list of Java annotation targets. This is just like how the `TYPE_PARAMETE
 the `java.lang.annotation.ElementType.TYPE_PARAMETER` Java target. This is an issue for Android clients with API levels 
 less than 26, which don't have these targets in the API.
 
-Starting with Kotlin 1.8.0, you can use the new compiler argument `-Xno-new-java-annotation-targets` to avoid generating 
+Starting with Kotlin 1.8.0, you can use the new compiler option `-Xno-new-java-annotation-targets` to avoid generating 
 the `TYPE_USE` and `TYPE_PARAMETER` annotation targets.
 
 ### 用于禁用优化的新增编译器选项
@@ -56,7 +56,7 @@ this option will disable them, too.
 The "was optimized out" feature optimizes variables when you use suspend functions. However, it is difficult to debug code 
 with optimized variables because you don't see their values.
 
-> **Never use this flag in production**: Disabling this feature via `-Xdebug` can 
+> **Never use this option in production**: Disabling this feature via `-Xdebug` can 
 > [cause memory leaks](https://youtrack.jetbrains.com/issue/KT-48678/Coroutine-debugger-disable-was-optimised-out-compiler-feature#focus=Comments-27-6015585.0-0).
 >
 {type="warning"}
@@ -83,8 +83,8 @@ vote for the [@SuperBuilder](https://youtrack.jetbrains.com/issue/KT-53563/Kotli
 Kotlin 1.8.0 includes changes to Objective-C and Swift interoperability, support for Xcode 14.1, and improvements to 
 the CocoaPods Gradle plugin:
 
-* [改进了 Objective-C/Swift 互操作性](#改进了-objective-c-swift-互操作性)
 * [支持 Xcode 14.1](#支持-xcode-14-1)
+* [改进了 Objective-C/Swift 互操作性](#改进了-objective-c-swift-互操作性)
 * [CocoaPods Gradle 插件中默认动态 framework](#cocoapods-gradle-插件中默认动态-framework)
 
 ### 支持 Xcode 14.1
@@ -298,7 +298,7 @@ rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlu
 Starting with Kotlin 1.8.0, you can set test targets for different browsers right in the Gradle properties file. Doing so 
 shrinks the size of the build script file as you no longer need to write all targets in `build.gradle.kts`.
 
-You can use these properties to define a list of browsers for all modules, and then add specific browsers in the build 
+You can use this property to define a list of browsers for all modules, and then add specific browsers in the build 
 scripts of particular modules.
 
 For example, the following line in your Gradle property file will run the test in Firefox and Safari for all modules:
@@ -307,7 +307,7 @@ For example, the following line in your Gradle property file will run the test i
 kotlin.js.browser.karma.browsers=firefox,safari
 ```
 
-See the full list of [available values for the property on GitHub](https://github.com/JetBrains/kotlin/blob/b01411544aa970745d40369f1993fa93479ca485/libraries/tools/kotlin-gradle-plugin/src/common/kotlin/org/jetbrains/kotlin/gradle/targets/js/testing/karma/KotlinKarma.kt#L104).
+See the full list of [available values for the property on GitHub](https://github.com/JetBrains/kotlin/blob/master/libraries/tools/kotlin-gradle-plugin/src/common/kotlin/org/jetbrains/kotlin/gradle/targets/js/testing/karma/KotlinKarma.kt#L106).
 
 The Kotlin team is very grateful to [Martynas Petuška](https://github.com/mpetuska) for implementing this feature.
 
@@ -426,6 +426,8 @@ Gradle is going to add fixes for the [`kotlin-dsl` plugin](https://github.com/gr
 
 Starting with Kotlin 1.8.0, the minimum supported Gradle version is 6.8.3 and the minimum supported Android Gradle plugin 
 version is 4.1.3.
+
+See the [Kotlin Gradle plugin compatibility with available Gradle versions in our documentation](gradle-configure-project.md#apply-the-plugin)
 
 ### 禁用 Kotlin 守护程序回退策略的能力
 
@@ -565,6 +567,8 @@ fun main() {
             cbrt(negNum.toDouble()))
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.8"}
+
 ### Java 与 Kotlin 之间的 TimeUnit 转换
 
 The `toTimeUnit()` and `toDurationUnit()` functions in `kotlin.time` are now Stable. Introduced as Experimental in Kotlin 
@@ -574,7 +578,7 @@ The `toTimeUnit()` and `toDurationUnit()` functions in `kotlin.time` are now Sta
 ```kotlin
 import kotlin.time.*
 
-// For use from Java.
+// For use from Java
 fun wait(timeout: Long, unit: TimeUnit) {
     val duration: Duration = timeout.toDuration(unit.toDurationUnit())
     ...
@@ -605,7 +609,7 @@ fun main() {
     Thread.sleep(500) // Sleep 0.5 seconds
     val mark2 = timeSource.markNow()
 
-    // Before 1.8
+    // Before 1.8.0
     repeat(4) { n ->
         val elapsed1 = mark1.elapsedNow()
         val elapsed2 = mark2.elapsedNow()
@@ -635,6 +639,7 @@ fun main() {
 }
 
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.8"}
 
 This new functionality is particularly useful in animation calculations where you want to calculate the difference between, 
 or compare, multiple `TimeMarks` representing different frames.
@@ -658,14 +663,14 @@ These functions can be very useful as part of a backup process.
 #### 错误处理
 
 Using `copyToRecursively()`, you can define what should happen if an exception occurs while copying, by overloading 
-the `onError` lambda function.
+the `onError` lambda function:
 
 ```kotlin
 sourceRoot.copyToRecursively(destinationRoot, followLinks = false, 
-  onError = { source, target, exception ->
-    logger.logError(exception, "Failed to copy $source to $target")
-    OnErrorResult.TERMINATE
-})
+    onError = { source, target, exception ->
+        logger.logError(exception, "Failed to copy $source to $target")
+        OnErrorResult.TERMINATE
+    })
 ```
 {validate="false"}
 
@@ -676,7 +681,7 @@ that occurred as suppressed exceptions.
 #### 文件覆盖
 
 If `copyToRecursively()` finds that a file already exists in the destination directory, then an exception occurs. 
-If you want to overwrite the file instead, use the overload that has `overwrite` as an argument and set it to `true`.
+If you want to overwrite the file instead, use the overload that has `overwrite` as an argument and set it to `true`:
 
 ```kotlin
 fun setUpEnvironment(projectDirectory: Path, fixtureName: String) {
@@ -692,7 +697,7 @@ fun setUpEnvironment(projectDirectory: Path, fixtureName: String) {
 #### 自定义复制动作
 
 To define your own custom logic for copying, use the overload that has `copyAction` as an additional argument. 
-By using `copyAction` you can provide a lambda function, for example, with your preferred actions.
+By using `copyAction` you can provide a lambda function, for example, with your preferred actions:
 
 ```kotlin
 sourceRoot.copyToRecursively(destinationRoot, followLinks = false) { source, target ->
@@ -727,22 +732,21 @@ The Kotlin documentation has received some notable changes:
 
 ### 修订与新增页面
 
-* [Gradle overview](gradle.md) − learn how to configure and build a Kotlin project with the Gradle build system, 
+* [Gradle overview](gradle.md) – learn how to configure and build a Kotlin project with the Gradle build system, 
   available compiler options, compilation, and caches in the Kotlin Gradle plugin.
-* [Nullability in Java and Kotlin](java-to-kotlin-nullability-guide.md) − see the differences between Java's and Kotlin's 
+* [Nullability in Java and Kotlin](java-to-kotlin-nullability-guide.md) – see the differences between Java's and Kotlin's 
   approaches to handling possibly nullable variables.
-* [Lincheck guide](lincheck-guide.md) − learn how to set up and use the Lincheck framework for testing concurrent algorithms 
+* [Lincheck guide](lincheck-guide.md) – learn how to set up and use the Lincheck framework for testing concurrent algorithms 
   on the JVM.
 
 ### 新增与更新教程
 
-* [Get started with Gradle and Kotlin/JVM](get-started-with-jvm-gradle-project.md) − create a console application using 
+* [Get started with Gradle and Kotlin/JVM](get-started-with-jvm-gradle-project.md) – create a console application using 
   IntelliJ IDEA and Gradle.
-* [Create a multiplatform app using Ktor and SQLDelight](multiplatform-mobile-ktor-sqldelight.md) − create a mobile 
+* [Create a multiplatform app using Ktor and SQLDelight](multiplatform-mobile-ktor-sqldelight.md) – create a mobile 
   application for iOS and Android using Kotlin Multiplatform Mobile.
-* [Get started with Kotlin Multiplatform Mobile](multiplatform-mobile-getting-started.md) − learn about cross-platform 
+* [Get started with Kotlin Multiplatform Mobile](multiplatform-mobile-getting-started.md) – learn about cross-platform 
   mobile development with Kotlin and create an app that works on both Android and iOS.
-
 
 ## 安装 Kotlin 1.8.0
 

@@ -297,6 +297,14 @@ kotlin {
 }
 ```
 
+Alternatively, you can add test targets for browsers in the `gradle.properties` file:
+
+```text
+kotlin.js.browser.karma.browsers=firefox,safari
+```
+
+This approach allows you to define a list of browsers for all modules, and then add specific browsers in the build scripts of particular modules. 
+
 请注意，Kotlin/JS Gradle 插件不会自动安装这些浏览器，只会使用<!--
 -->其执行环境中可用的浏览器。例如，如果要在持续集成服务器上执行 Kotlin/JS 测试，
 请确保已安装要测试的浏览器。
@@ -439,31 +447,93 @@ Kotlin/JS Gradle 插件还支持 webpack 的 [CSS](https://webpack.js.org/loader
 要在项目中打开 CSS 支持，请在 `commonWebpackConfig`
 块的 Gradle 构建文件中设置 `cssSupport.enabled` 选项。使用向导创建新项目时，默认情况下也会启用此配置。
 
-```groovy
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
 browser {
     commonWebpackConfig {
-        cssSupport.enabled = true
+        cssSupport {
+            enabled.set(true)
+        }
     }
     binaries.executable()
 }
 ```
 
-另外，可以为选定的任务添加 CSS 支持，例如 `webpackTask`、`runTask` 与 `testTask`。
+</tab>
+<tab title="Groovy" group-key="groovy">
 
 ```groovy
-webpackTask {
-   cssSupport.enabled = true
-}
-runTask {
-   cssSupport.enabled = true
-}
-testTask {
-   useKarma {
-      // ……
-      webpackConfig.cssSupport.enabled = true
-   }
+browser {
+    commonWebpackConfig {
+        cssSupport {
+            it.enabled.set(true)
+        }
+    }
+    binaries.executable()
 }
 ```
+
+</tab>
+</tabs>
+
+另外，可以为选定的任务添加 CSS 支持，例如 `webpackTask`、`runTask` 与 `testTask`。
+
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+browser {
+    webpackTask {
+        cssSupport {
+            enabled.set(true)
+        }
+    }
+    runTask {
+        cssSupport {
+            enabled.set(true)
+        }
+    }
+    testTask {
+        useKarma {
+            // . . .
+            webpackConfig.cssSupport {
+                enabled.set(true)
+            }
+        }
+    }
+}
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+browser {
+    webpackTask {
+        cssSupport {
+            it.enabled.set(true)
+        }
+    }
+    runTask {
+        cssSupport {
+            it.enabled.set(true)
+        }
+    }
+    testTask {
+        useKarma {
+            // ……
+            webpackConfig.cssSupport {
+                it.enabled.set(true)
+            }
+        }
+    }
+}
+```
+
+</tab>
+</tabs>
 
 在项目中激活 CSS 支持有助于防止在尝试使用<!--
 -->未配置项目中的样式表时发生的常见错误，例如 `Module parse failed: Unexpected character '@' (14:0)`。
