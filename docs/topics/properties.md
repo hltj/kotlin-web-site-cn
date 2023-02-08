@@ -88,8 +88,8 @@ var stringRepresentation: String
 
 按照惯例，setter 参数的名称是 `value`，但是如果你喜欢你可以选择一个不同的名称。
 
-如果你需要改变对一个访问器进行注解或者改变其可见性，但是不需要改变默认的实现，
-你可以定义访问器而不定义其实现:
+如果需要改变对一个访问器进行注解或者改变其可见性，但是不希望改变默认的实现，
+那么可以定义访问器而不定义其实现:
 
 ```kotlin
 var setterVisibility: String = "abc"

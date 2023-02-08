@@ -37,6 +37,11 @@ The IDE support for the latest version of the language is available for the foll
     * [Latest released](https://developer.android.com/studio) version
     * [Early access](https://developer.android.com/studio/preview) versions
 
+> Learn more about the latest Kotlin-related updates in IntelliJ IDEA in the **Kotlin** section of the
+> [What's new in IntelliJ IDEA page](https://www.jetbrains.com/idea/whatsnew/).
+> 
+{type="tip"}
+
 ## 版本发布详情
 
 The following table lists details of the latest Kotlin releases.
@@ -47,6 +52,17 @@ You can also use [preview versions of Kotlin](eap.md#build-details).
     <tr>
         <th>版本信息</th>
         <th>版本重点</th>
+    </tr>
+    <tr>
+        <td><strong>1.8.10</strong>
+            <p>Released: <strong>February 2, 2023</strong></p>
+            <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.8.10" target="_blank">Release on GitHub</a></p>
+        </td>
+        <td>
+            <p>A bug fix release for Kotlin 1.8.0.</p>
+            <p>Learn more about <a href="https://github.com/JetBrains/kotlin/releases/tag/v1.8.0" target="_blank">Kotlin 1.8.0</a>.</p>
+            <note>For Android Studio Electric Eel and Flamingo, the Kotlin plugin 1.8.10 will be delivered with upcoming Android Studios updates.</note>
+        </td>
     </tr>
     <tr>
         <td><strong>1.8.0</strong>

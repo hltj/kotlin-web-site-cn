@@ -4,8 +4,7 @@
 
 Kotlin/Native 编译器适用于 macOS、Linux 及 Windows。它是一个命令行工具，作为标准 Kotlin 发行版的<!--
 -->一部分提供，可以从 [GitHub 发行版](%kotlinLatestUrl%)下载。它支持包括
-iOS （arm32、arm64、simulator x86_64）、Windows （mingw32 及 x86_64）在内的多个不同目标平台，
-Linux （x86_64、arm64、MIPS）、macOS （x86_64）、Raspberry PI、STM32、WASM。[关于目标的完整列表，请参见这里](native-overview.md)。
+Linux、 macOS、 iOS 及其他平台在内的多个不同目标平台。[参见所支持目标平台的完整列表](native-target-support.md)。
 进行跨平台交叉编译，这意味着可以使用一个平台针对另一个平台进行编译，
 在这个 %kotlinLatestUrl% 场景中，我们将针对跟本机相同的单平台。
 

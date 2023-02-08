@@ -25,7 +25,7 @@ Kotlin/Native 支持以下平台：
 > 
 {type="note"}
 
-[可在这里获取所支持目标的完整列表](multiplatform-dsl-reference.md)。
+[参见所支持目标的完整列表](native-target-support.md)。
 
 ## 互操作
 

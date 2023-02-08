@@ -59,7 +59,7 @@ import org.example.* // “org.example”中的一切都可访问
 
 ```kotlin
 import org.example.Message // Message 可访问
-import org.test.Message as testMessage // testMessage 代表“org.test.Message”
+import org.test.Message as TestMessage // TestMessage 代表“org.test.Message”
 ```
 
 关键字 `import` 并不仅限于导入类；也可用它来导入其他声明：

@@ -93,19 +93,26 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 <tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask<*>>().configureEach {
-    compilerOptions { /*……*/ }
-}
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+// ...
+
+val compileKotlin = tasks.named<KotlinCompilationTask<*>>("compileKotlin")
+
+compileKotlin.compilerOptions { /*……*/ }
 ```
 
 </tab>
 <tab title="Groovy" group-key="groovy">
 
 ```groovy
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask).configureEach {
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+// ...
+
+tasks.named('compileKotlin', KotlinCompilationTask) {
     compilerOptions { /*……*/ }
 }
 ```
+
 </tab>
 </tabs>
 

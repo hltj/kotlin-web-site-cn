@@ -1,4 +1,4 @@
-<section class="kotlin-code-examples-section kto-overview-section kto-overview-section_mode_dark" id="try-kotlin">
+<section class="kotlin-code-examples-section kto-overview-section kto-overview-section_mode_dark" id="try-kotlin-examples">
     <div class="g-layout">
         <h2 class="kto-heading kto-heading_size_h1">试用 Kotlin</h2>
         <div class="kotlin-overview-code-example-tabs">
@@ -85,7 +85,7 @@ fun main() {
     val sam = RestaurantCustomer("Sam", "Mixed salad")
     sam.greet() // An implementation of an abstract function
     sam.order() // A member function
-    sam.eat() // An implementation of an interface function
+    sam.eat()   // An implementation of an interface function
     sam.pay(10) // A default implementation in an interface
 }</pre>
             </div>
@@ -112,13 +112,13 @@ fun main() {
     println(senders) // [Adam, Ma]
 }
 
-data class Message(                                          // Create a data class
+data class Message(                                           // Create a data class
     val sender: String,
     val body: String,
     val isRead: Boolean = false,                              // Provide a default value for the argument
 )
 
-val messages = listOf(                                       // Create a list
+val messages = listOf(                                        // Create a list
     Message("Ma", "Hey! Where are you?"),
     Message("Adam", "Everything going according to plan today?"),
     Message("Ma", "Please reply. I've lost you!"),
@@ -155,7 +155,9 @@ fun sum(a: Int, b: Int) = a + b
 fun setup() {}
 fun compute() = true</pre>
             </div>
-            <a href="https://play.kotlinlang.org/byExample/overview" target="_blank" class="kto-button kto-button_theme_dark kto-button_size_l kto-button_mode_outline kotlin-overview-code-example-tabs__button">More examples ↗</a>
+            <a href="https://play.kotlinlang.org/byExample/overview" target="_blank" class="kto-button kto-button_theme_dark kto-button_size_l kto-button_mode_outline kotlin-overview-code-example-tabs__button _examples-button">More examples ↗</a>
+
+          <a href="/docs/getting-started.html" class="kto-button kto-button_theme_dark kto-button_size_l kto-button_mode_outline kotlin-overview-code-example-tabs__button _get-started-button">Get started ↗</a>
         </div>
     </div>
 </section>

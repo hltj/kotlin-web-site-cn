@@ -81,8 +81,7 @@ you can create subclasses in any source set between the `expect` and `actual` de
 
 使用密封类的关键好处在于使用 [`when` 表达式](control-flow.md#when-表达式)<!--
 -->的时候。
-如果能够验证语句覆盖了所有情况，就不需要为该语句再添加一个 `else` 子句了。 
-当然，这只有当你用 `when` 作为表达式（使用结果）而不是作为语句时才有用。
+如果能够验证语句覆盖了所有情况，就不需要为该语句再添加一个 `else` 子句了：
 
 ```kotlin
 fun log(e: Error) = when(e) {

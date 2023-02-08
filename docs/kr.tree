@@ -23,6 +23,7 @@
 
     <toc-element toc-title="What's new in Kotlin">
         <toc-element id="whatsnew18.md" toc-title="Kotlin 1.8.0" accepts-web-file-names="whatsnew.html"/>
+        <toc-element id="whatsnew-eap.md" toc-title="Kotlin 1.8.20-Beta"/>
         <toc-element toc-title="Earlier versions">
             <toc-element id="whatsnew1720.md" toc-title="Kotlin 1.7.20"/>
             <toc-element id="whatsnew17.md" toc-title="Kotlin 1.7.0"/>
@@ -40,11 +41,9 @@
         </toc-element>
     </toc-element>
 
-    <toc-element toc-title="Early access preview (EAP)">
-        <toc-element id="whatsnew-eap.md" toc-title="Kotlin 1.8.0-RC2"  hidden="true"/>
-        <toc-element toc-title="Participate" id="eap.md"/>
-        <toc-element toc-title="Install the Kotlin EAP Plugin" id="install-eap-plugin.md"/>
-        <toc-element id="configure-build-for-eap.md"/>
+    <toc-element toc-title="Releases and roadmap">
+        <toc-element id="releases.md" accepts-web-file-names="plugin-releases.html"/>
+        <toc-element id="roadmap.md"/>
     </toc-element>
 
     <toc-element toc-title="Basics">
@@ -148,13 +147,15 @@
         <toc-element id="multiplatform-run-tests.md" toc-title="Running tests" accepts-web-file-names="mpp-run-tests.html"/>
         <toc-element toc-title="Artifact compilation">
             <toc-element id="multiplatform-configure-compilations.md" accepts-web-file-names="mpp-configure-compilations.html"/>
-            <toc-element id="multiplatform-native-artifacts.md"/>
+            <toc-element toc-title="[Experimental DSL] Build final native binaries" id="multiplatform-native-artifacts.md"/>
             <toc-element id="multiplatform-build-native-binaries.md" accepts-web-file-names="mpp-build-native-binaries.html"/>
         </toc-element>
         <toc-element id="multiplatform-dsl-reference.md" accepts-web-file-names="mpp-dsl-reference.html,mpp-supported-platforms.html,multiplatform-supported-platforms.html"/>
         <toc-element id="multiplatform-mobile-samples.md" accepts-web-file-names="kmm-samples.html"/>
         <toc-element id="multiplatform-mobile-faq.md" accepts-web-file-names="kmm-faq.html"/>
         <toc-element id="multiplatform-mobile-introduce-your-team.md" accepts-web-file-names="kmm-introduce-your-team.html"/>
+        <toc-element id="multiplatform-compatibility-guide.md" toc-title="Compatibility guide"/>
+        <toc-element id="multiplatform-mobile-plugin-releases.md" accepts-web-file-names="kmm-plugin-releases.html"/>
     </toc-element>
 
     <toc-element toc-title="Platforms">
@@ -242,6 +243,7 @@
                 </toc-element>
             </toc-element>
             <toc-element id="native-debugging.md"/>
+            <toc-element id="native-target-support.md" toc-title="Target support"/>
             <toc-element id="native-ios-symbolication.md"/>
             <toc-element id="native-improving-compilation-time.md" toc-title="Improving compilation times"/>
             <toc-element id="native-faq.md"/>
@@ -250,13 +252,6 @@
         <toc-element toc-title="Scripting">
             <toc-element id="custom-script-deps-tutorial.md"/>
         </toc-element>
-    </toc-element>
-
-    <toc-element toc-title="Releases and roadmap">
-        <toc-element id="releases.md"/>
-        <toc-element id="multiplatform-mobile-plugin-releases.md" accepts-web-file-names="kmm-plugin-releases.html"/>
-        <toc-element id="plugin-releases.md"/>
-        <toc-element id="roadmap.md"/>
     </toc-element>
 
     <toc-element toc-title="Standard library">
@@ -323,9 +318,18 @@
             <toc-element id="maven.md" accepts-web-file-names="using-maven.html"/>
             <toc-element id="ant.md" accepts-web-file-names="using-ant.html"/>
         </toc-element>
+        <toc-element toc-title="Dokka">
+            <include from="kl" target="dokka" origin="dokka"/>
+        </toc-element>
         <toc-element toc-title="IDE for Kotlin development" id="kotlin-ide.md" accepts-web-file-names="getting-started-eclipse.html,eclipse.html"/>
         <toc-element toc-title="Migrate to Kotlin code style with IntelliJ IDEA"  id="code-style-migration-guide.md"/>
         <toc-element id="run-code-snippets.md" accepts-web-file-names="quick-run.html"/>
+        <toc-element id="kotlin-and-ci.md" toc-title="TeamCity"/>
+        <toc-element id="kotlin-doc.md" toc-title="KDoc"/>
+        <toc-element id="kotlin-osgi.md" toc-title="OSGi"/>
+    </toc-element>
+
+    <toc-element toc-title="Compiler and plugins">
         <toc-element toc-title="Compiler">
             <toc-element toc-title="Command-line compiler" id="command-line.md"/>
             <toc-element toc-title="Compiler options" id="compiler-reference.md"/>
@@ -350,9 +354,6 @@
             <toc-element id="ksp-command-line.md" toc-title="Running KSP from command line"/>
             <toc-element id="ksp-faq.md" toc-title="FAQ"/>
         </toc-element>
-        <toc-element id="kotlin-and-ci.md" toc-title="TeamCity"/>
-        <toc-element id="kotlin-doc.md" toc-title="KDoc and Dokka"/>
-        <toc-element id="kotlin-osgi.md" toc-title="OSGi"/>
     </toc-element>
 
     <toc-element toc-title="Learning materials">
@@ -367,6 +368,12 @@
             <toc-element id="edu-tools-learner.md" toc-title="Learn Kotlin"/>
             <toc-element id="edu-tools-educator.md" toc-title="Teach Kotlin"/>
         </toc-element>
+    </toc-element>
+
+    <toc-element toc-title="Early access preview (EAP)">
+        <toc-element toc-title="Participate" id="eap.md"/>
+        <toc-element toc-title="Install the Kotlin EAP Plugin" id="install-eap-plugin.md"/>
+        <toc-element id="configure-build-for-eap.md"/>
     </toc-element>
 
     <toc-element toc-title="Other resources">

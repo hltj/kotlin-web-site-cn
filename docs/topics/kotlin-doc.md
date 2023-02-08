@@ -1,15 +1,13 @@
-[//]: # (title: 编写 Kotlin 代码文档)
+[//]: # (title: 编写 Kotlin 代码文档：KDoc)
 
 用来编写 Kotlin 代码文档的语言（相当于 Java 的 Javadoc）称为 **KDoc**。本质上 KDoc
 是将 Javadoc 的块标签（block tags）语法（扩展为支持 Kotlin 的特定构造）和 Markdown 的<!--
 -->内联标记（inline markup）结合在一起。
 
-## 生成文档
-
-Kotlin 的文档生成工具称为 [Dokka](https://github.com/Kotlin/dokka)。其使用说明请参见
-[Dokka README](https://github.com/Kotlin/dokka/blob/master/README.md)。
-
-Dokka 有 Gradle、Maven 与 Ant 的插件，因此你可以将文档生成集成到你的构建过程中。
+> Kotlin's documentation engine: Dokka, understands KDoc and can be used to generate documentation in various formats.
+> For more information, read our [Dokka documentation](dokka-introduction.md).
+>
+{type="note"}
 
 ## KDoc 语法
 
@@ -137,36 +135,10 @@ KDoc 目前支持以下块标签（block tags）：
 特别是，这意味着如果你已将名称导入当前文件，那么当你在 KDoc 注释中使用它时，
 不需要再对其进行完整限定。
 
-请注意 KDoc 没有用于解析链接中的重载成员的任何语法。 因为 Kotlin 文档生成<!--
+请注意 KDoc 没有用于解析链接中的重载成员的任何语法。 因为 Kotlin 的文档生成<!--
 -->工具将一个函数的所有重载的文档放在同一页面上，标识一个特定的重载函数<!--
 -->并不是链接生效所必需的。
 
-## 模块和包文档
+## What's next?
 
-作为一个整体的模块、以及该模块中的包的文档，由单独的 Markdown 文件提供，
-并且使用 `-include` 命令行参数或 Ant、Maven 和 Gradle 中的相应插件<!--
--->将该文件的路径传递给 Dokka。
-
-在该文件内部，作为一个整体的模块和分开的软件包的文档由相应的一级标题引入
-。标题的文本对于模块必须是 **Module `<模块名>`**，对于包必须是 **Package `<限定的包名>`**
-。
-
-以下是该文件的一个示例内容：
-
-```text
-# Module kotlin-demo
-
-该模块显示 Dokka 语法的用法。
-
-# Package org.jetbrains.kotlin.demo
-
-包含各种有用的东西。
-
-## 二级标题
-
-这个标题下的文本也是 `org.jetbrains.kotlin.demo` 文档的一部分。
-
-# Package org.jetbrains.kotlin.demo2
-
-另一个包中有用的东西。
-```
+Learn how to use Kotlin's documentation generation tool: [Dokka](dokka-introduction.md).

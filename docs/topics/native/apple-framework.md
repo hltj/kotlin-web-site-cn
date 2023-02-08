@@ -150,12 +150,12 @@ targets. You may replace the `macosX64` with respective functions as shown
 in the table:
 
 | 目标 平台/设备           | Gradle 函数      |
-|------------------------|-----------------|
-| macOS x86_64           | `macosX64()`    | 
-| macOS ARM 64           | `macosArm64()`  | 
-| iOS ARM 32             | `iosArm32()`    | 
-| iOS ARM 64             | `iosArm64()`    | 
-| iOS Simulator (x86_64) | `iosX64()`      |
+|------------------------|---------------------|
+| macOS x86_64           | `macosX64()`        | 
+| macOS ARM 64           | `macosArm64()`      |
+| iOS ARM 64             | `iosArm64()`        | 
+| iOS Simulator (x86_64) | `iosX64()`          |
+| iOS Simulator (arm64)  | `iosSimulatorArm64` |
 
 运行 `linkNative` Gradle 任务以<!-- 
 -->[在 IDE 中](native-get-started.md)构建该库，

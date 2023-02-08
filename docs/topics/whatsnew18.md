@@ -127,7 +127,7 @@ To make Kotlin more interoperable with Objective-C and Swift, three new annotati
   replacing a Kotlin declaration with a wrapper written in Swift.
 
   The annotation instructs the Kotlin compiler to mark a function or property as `swift_private` in the generated 
-  Objective-C API. Such declarations get the `**` prefix, which makes them invisible to Swift code.
+  Objective-C API. Such declarations get the `__` prefix, which makes them invisible to Swift code.
 
   You can still use these declarations in your Swift code to create a Swift-friendly API, but they won't be suggested 
   by Xcode's autocompletion, for example.
@@ -184,17 +184,17 @@ Here are some of the key differences between the two layouts:
 
 #### KotlinSourceSet 命名模式
 
-| 当前源代码集布局                       | 新版源代码集布局                |
-|----------------------------------------|---------------------------------|
-| `targetName` + `AndroidSourceSet.name` | targetName + AndroidVariantType |
+| 当前源代码集布局                       | 新版源代码集布局                    |
+|----------------------------------------|-------------------------------------|
+| `targetName` + `AndroidSourceSet.name` | `targetName` + `AndroidVariantType` |
 
 `{AndroidSourceSet.name}` maps to `{KotlinSourceSet.name}` as follows:
 
-| `AndroidSourceSet.name` | 当前源代码集布局中的 `KotlinSourceSet.name` | 新版源代码集布局中的 `KotlinSourceSet.name` |
-|-------------------------|---------------------------------------------|---------------------------------------------|
-| main                    | androidMain                                 | androidMain                                 |
-| test                    | androidTest                                 | android<b>Unit</b>Test                      |
-| androidTest             | android<b>Android</b>Test                   | android<b>Instrumented</b>Test              |
+|             | 当前源代码集布局          | 新版源代码集布局               |
+|-------------|---------------------------|--------------------------------|
+| main        | androidMain               | androidMain                    |
+| test        | androidTest               | android<b>Unit</b>Test         |
+| androidTest | android<b>Android</b>Test | android<b>Instrumented</b>Test |
 
 #### SourceDirectories
 
@@ -202,26 +202,26 @@ Here are some of the key differences between the two layouts:
 |---------------------------------------------------------|---------------------------------------------------------------------------|
 | The layout adds additional `/kotlin` SourceDirectories  | `src/{AndroidSourceSet.name}/kotlin`, `src/{KotlinSourceSet.name}/kotlin` |
 
-`{AndroidSourceSet.name}` maps to `{Source Directories included}` as follows:
+`{AndroidSourceSet.name}` maps to `{SourceDirectories included}` as follows:
 
-| `AndroidSourceSet.name` | 当前源代码集布局中的 `{Source Directories included}`              | 新版源代码集布局中的 `{Source Directories included}`                                                  |
-|-------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| main                    | src/androidMain/kotlin, src/main/kotlin, src/main/java            | src/androidMain/kotlin, src/main/kotlin, src/main/java                                                |
-| test                    | src/androidTest/kotlin, src/test/kotlin, src/test/java            | src/android<b>Unit</b>Test/kotlin, src/test/kotlin, src/test/java                                     |
-| androidTest             | src/android<b>Android</b>Test/kotlin, src/<b>androidTest</b>/java | src/android<b>Instrumented</b>Test/kotlin, src/<b>androidTest</b>/java, src/<b>androidTest</b>/kotlin |
+|             | 当前源代码集布局                                           | 新版源代码集布局                                                                               |
+|-------------|------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| main        | src/androidMain/kotlin, src/main/kotlin, src/main/java     | src/androidMain/kotlin, src/main/kotlin, src/main/java                                         |
+| test        | src/androidTest/kotlin, src/test/kotlin, src/test/java     | src/android<b>Unit</b>Test/kotlin, src/test/kotlin, src/test/java                              |
+| androidTest | src/android<b>Android</b>Test/kotlin, src/androidTest/java | src/android<b>Instrumented</b>Test/kotlin, src/androidTest/java, <b>src/androidTest/kotlin</b> |
 
 #### `AndroidManifest.xml` 文件的位置
 
 | 当前源代码集布局                                       | 新版源代码集布局                                      |
 |--------------------------------------------------------|-------------------------------------------------------|
-| src/{<b>AndroidSourceSet</b>.name}/AndroidManifest.xml | src/{<b>KotlinSourceSet</b>.name}/AndroidManifest.xml |
+| src/{<b>Android</b>SourceSet.name}/AndroidManifest.xml | src/{<b>Kotlin</b>SourceSet.name}/AndroidManifest.xml |
 
 `{AndroidSourceSet.name}` maps to`{AndroidManifest.xml location}` as follows:
 
-| `AndroidSourceSet.name` | 当前源代码集布局中的 `{AndroidManifest.xml location}` | 新版源代码集布局中的 `{AndroidManifest.xml location}` |
-|-------------------------|-------------------------------------------------------|-------------------------------------------------------|
-| main                    | src/main/AndroidManifest.xml                          | src/<b>android</b>Main/AndroidManifest.xml            |
-| debug                   | src/debug/AndroidManifest.xml                         | src/<b>android</b>Debug/AndroidManifest.xml           |
+|       | 当前源代码集布局              | 新版源代码集布局                            |
+|-------|-------------------------------|---------------------------------------------|
+| main  | src/main/AndroidManifest.xml  | src/<b>android</b>Main/AndroidManifest.xml  |
+| debug | src/debug/AndroidManifest.xml | src/<b>android</b>Debug/AndroidManifest.xml |
 
 ### 配置与设置
 
@@ -231,7 +231,7 @@ The new layout will become the default in future releases. You can enable it now
 kotlin.mpp.androidSourceSetLayoutVersion=2
 ```
 
-> The new layout requires Android Gradle plugin 7.0 or later and is supported in Android Studio > 2022.3 and later.
+> The new layout requires Android Gradle plugin 7.0 or later and is supported in Android Studio 2022.3 and later.
 >
 {type="note"}
 
@@ -319,14 +319,22 @@ so don't forget to update your Gradle build script files as described below.
 Before Kotlin 1.8.0, the `cssSupport.enabled` property was used to add CSS support:
 
 ```kotlin
-cssSupport.enabled = true
+browser {
+    commonWebpackConfig {
+        cssSupport.enabled = true
+    }
+}
 ```
 
-Now you should use the `enabled.set()` method in the `cssSupport{}` block:
+Now you should use the `enabled.set()` method in the `cssSupport {}` block:
 
 ```kotlin
-cssSupport {
-    enabled.set(true)
+browser {
+    commonWebpackConfig {
+        cssSupport {
+            enabled.set(true)
+        }
+    }
 }
 ```
 
