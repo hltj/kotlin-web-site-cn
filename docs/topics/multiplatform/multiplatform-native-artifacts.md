@@ -1,4 +1,4 @@
-[//]: # (title: Build final native binaries (Experimental DSL))
+[//]: # (title: 构建最终原生二进制文件（实验性 DSL）)
 
 > The new DSL described below is [Experimental](components-stability.md). It may be changed at any time.
 > We encourage you to use it for evaluation purposes.

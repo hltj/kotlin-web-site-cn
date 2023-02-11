@@ -32,7 +32,7 @@ The Kotlin plugins that support 1.8.20-Beta are available for:
 ## New Kotlin K2 compiler updates
 
 The Kotlin team continues to stabilize the K2 compiler. It's still in **Alpha** (as announced in
-the [Kotlin 1.7.0](whatsnew17.md#new-kotlin-k2-compiler-for-the-jvm-in-alpha)), and this release introduces further
+the [Kotlin 1.7.0](whatsnew17.md#用于-jvm-的新版-kotlin-k2-编译器进入-alpha-阶段)), and this release introduces further
 improvements on the road to [K2 Beta](https://youtrack.jetbrains.com/issue/KT-52604).
 
 Starting with this 1.8.20-Beta release, the Kotlin K2 compiler:
@@ -185,7 +185,7 @@ We'd appreciate your feedback in any form:
 ## New JVM incremental compilation by default in Gradle
 
 The new approach to incremental compilation,
-which [exists from Kotlin 1.7.0](whatsnew17.md#a-new-approach-to-incremental-compilation),
+which [exists from Kotlin 1.7.0](whatsnew17.md#增量编译的新方式),
 now works by default. You don't need to specify `kotlin.incremental.useClasspathSnapshot=true` in your
 `gradle.properties` to enable it.
 

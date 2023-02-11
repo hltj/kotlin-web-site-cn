@@ -1,6 +1,6 @@
-[//]: # (title: Compatibility guide for Kotlin Multiplatform)
+[//]: # (title: Kotlin 多平台兼容性指南)
 
-This guide summarizes [incompatible changes](kotlin-evolution.md#incompatible-changes) you might encounter while
+This guide summarizes [incompatible changes](kotlin-evolution.md#不兼容的变更) you might encounter while
 developing projects with Kotlin Multiplatform.
 
 > Mind the deprecation cycle of a specific change in relation to the Kotlin version you have in your projects. The current

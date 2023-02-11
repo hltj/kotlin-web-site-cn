@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin/Native target support)
+[//]: # (title: Kotlin/Native 目标平台支持)
 
 The Kotlin/Native compiler supports a great number of different targets, though it is hard to provide the same level of
 support for all of them. This document describes which targets Kotlin/Native supports and breaks them into several
