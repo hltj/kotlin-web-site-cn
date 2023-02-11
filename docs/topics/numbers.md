@@ -24,6 +24,10 @@ val oneLong = 1L // Long
 val oneByte: Byte = 1
 ```
 
+> In addition to integer types, Kotlin also provides unsigned integer types. For more information, see [Unsigned integer types](unsigned-integer-types.md).
+>
+{type="tip"}
+
 ## 浮点类型
 
 对于实数，Kotlin 提供了浮点类型 `Float` 与 `Double` 类型，遵循 [IEEE 754 标准](https://zh.wikipedia.org/wiki/IEEE_754)。

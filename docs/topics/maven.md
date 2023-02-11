@@ -265,8 +265,8 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 | 名称 | 属性名 | 描述 | 可能的值                                                     | 默认值 |
 |------|---------------|-------------|----------------------------------------------------------|--------------|
 | `nowarn` | | 不生成警告 | true、 false                                              | false |
-| `languageVersion` | `kotlin.compiler.languageVersion` | 提供与指定语言版本源代码兼容性 | "1.4"（已弃用）、"1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"             |
-| `apiVersion` | `kotlin.compiler.apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.3"（已弃用）、"1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9" |
+| `languageVersion` | `kotlin.compiler.languageVersion` | 提供与指定语言版本源代码兼容性 | "1.3"（已弃用）、 "1.4"（已弃用）、"1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9" (EXPERIMENTAL) |
+| `apiVersion` | `kotlin.compiler.apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.3"（已弃用）、"1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9" (EXPERIMENTAL) |
 | `sourceDirs` | | 包含要编译源文件的目录 |                                                          | 该项目源代码根目录
 | `compilerPlugins` | | 启用[编译器插件](compiler-plugins.md)  |                                                          | []
 | `pluginOptions` | | 编译器插件的选项  |                                                          | []
