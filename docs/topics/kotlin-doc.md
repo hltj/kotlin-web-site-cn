@@ -4,8 +4,8 @@
 是将 Javadoc 的块标签（block tags）语法（扩展为支持 Kotlin 的特定构造）和 Markdown 的<!--
 -->内联标记（inline markup）结合在一起。
 
-> Kotlin's documentation engine: Dokka, understands KDoc and can be used to generate documentation in various formats.
-> For more information, read our [Dokka documentation](dokka-introduction.md).
+> Kotlin 的文档引擎：Dokka，理解 KDoc 并可以用于生成各种格式的文档。
+> 更多信息请参阅 [Dokka 文档](dokka-introduction.md)。
 >
 {type="note"}
 
@@ -141,4 +141,4 @@ KDoc 目前支持以下块标签（block tags）：
 
 ## 下一步做什么？
 
-Learn how to use Kotlin's documentation generation tool: [Dokka](dokka-introduction.md).
+了解如何使用 Kotlin 的文档生成工具：[Dokka](dokka-introduction.md)。

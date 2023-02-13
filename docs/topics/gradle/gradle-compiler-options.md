@@ -188,8 +188,8 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 
 | 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
-| `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.3"（已弃用）、 "1.4"（已弃用）、  "1.5"、 "1.6"、 "1.7", "1.8", "1.9" (EXPERIMENTAL) |  |
-| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.3" (DEPRECATED), "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7", "1.8", "1.9" (EXPERIMENTAL) |  |
+| `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.3"（已弃用）、 "1.4"（已弃用）、  "1.5"、 "1.6"、 "1.7", "1.8", "1.9"（实验性的） |  |
+| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.3"（已弃用）、 "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7", "1.8", "1.9"（实验性的） |  |
 
 Also, see [Types for compiler options](#types-for-compiler-options).
 

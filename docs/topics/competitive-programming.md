@@ -100,19 +100,19 @@ fun main() {
 }
 ```
 
-Note the use of Kotlin's
-[null-assertion operator](null-safety.md#操作符) `!!`
-after the [readLine()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/read-line.html) function call.
-Kotlin's `readLine()` function is defined to return a
-[nullable type](null-safety.md#可空类型与非空类型)
-`String?` and returns `null` on the end of the input, which explicitly forces the developer to handle the
-case of missing input.
+请注意
+[readLine()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/read-line.html) 函数调用之后的<!--
+-->[空断言操作符](null-safety.md#操作符) `!!` 的使用。
+Kotlin 的 `readLine()` 函数定义为返回<!--
+-->[可空类型](null-safety.md#可空类型与非空类型)
+`String?` 并且在输入结束时返回 `null`，这样显式迫使开发人员处理<!--
+-->缺少输入的情况。
 
-There is no need to handle the case of misformatted input in competitive programming.
-In competitive programming, an input format is always precisely specified and the actual input cannot deviate from
-the input specification in the problem statement. That's what the null-assertion operator `!!` essentially does —
-it asserts that the input string is present and throws an exception otherwise. Likewise,
-the [String.toInt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int.html).
+在竞技程序设计中无需处理输入格式错误的情况。
+在竞技程序设计中，输入格式总是精确指定并且实际输入不能偏离<!--
+-->问题陈述中的输入规范。 这就是空断言操作符 `!!` 本质上所做的——
+它断言输入字符串存在否则抛出异常。 同理，
+[String.toInt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int.html) 也是这样。
 
 </tab>
 </tabs>

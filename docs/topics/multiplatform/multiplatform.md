@@ -15,13 +15,13 @@ Kotlin 多平台技术旨在简化跨平台项目的开发。 它减少了为<!-
 
 ### Android 与 iOS 应用程序
 
-Sharing code between mobile platforms is one of the major Kotlin Multiplatform use cases. With Kotlin Multiplatform Mobile,
-you can build cross-platform mobile applications and share common code between Android and iOS, such as business logic, connectivity,
-and more.
+在移动平台间共享代码是 Kotlin 多平台的主要使用场景之一。 借助 Kotlin 多平台移动端，
+可以构建跨平台移动端应用程序并在 Android 与 iOS 之间共享公共代码，例如业务逻辑、连接性<!--
+-->等。
 
-Check out the [Get started with Kotlin Multiplatform Mobile](multiplatform-mobile-getting-started.md) and
-[Create a multiplatform app using Ktor and SQLDelight](multiplatform-mobile-ktor-sqldelight.md) tutorials,
-where you will create applications for Android and iOS that include a module with shared code for both platforms.
+查看 [Kotlin 多平台移动端入门](multiplatform-mobile-getting-started.md)与<!--
+-->[使用 Ktor 与 SQLDelight 创建多平台应用](multiplatform-mobile-ktor-sqldelight.md)教程，
+其中会创建包含两个平台共享代码的模块的 Android 与 iOS 应用程序。
 
 ### 全栈 web 应用程序
 
