@@ -504,9 +504,9 @@ tutorials:
     - title: 教学
       content:
         - url: /docs/tutorials/edu-tools-learner.html
-          title: 通过 EduTools 插件学习 Kotlin
+          title: 通过 JetBrains 学院插件学习 Kotlin
         - url: /docs/tutorials/edu-tools-educator.html
-          title: 通过 EduTools 插件讲授 Kotlin
+          title: 通过 JetBrains 学院插件讲授 Kotlin
 
 foundation:
   content:
