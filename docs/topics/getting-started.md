@@ -39,7 +39,7 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
      一套成熟的框架族，拥有全球数百万开发人员都在用的成熟生态系统。
    <br/>
    <list>
-      <li><a href="jvm-spring-boot-restful.md">使用 Spring Boot 创建 RESTful web 服务</a>。</li>
+      <li><a href="jvm-get-started-spring-boot.md">使用 Spring Boot 创建 RESTful web 服务</a>。</li>
       <li><a href="https://spring.io/guides/tutorials/spring-boot-kotlin/">使用 Spring Boot 与 Kotlin 构建 web 应用程序</a>。</li>
       <li><a href="https://spring.io/guides/tutorials/spring-webflux-kotlin-rsocket/">Spring Boot 与 Kotlin 及 RSocket 合用</a>。</li>
    </list>
