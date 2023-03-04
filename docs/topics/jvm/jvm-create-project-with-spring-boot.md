@@ -1,4 +1,4 @@
-[//]: # (title: Create a Spring Boot project with Kotlin)
+[//]: # (title: 创建使用 Kotlin 的 Spring Boot 项目)
 [//]: # (description: Create a Spring Boot application with Kotlin using IntelliJ IDEA.)
 
 <microformat>
@@ -152,11 +152,11 @@ fun main(args: Array<String>) {
       </p>
    </def>
    <def title="Program entry point – main()">
-      <p>The <a href="basic-syntax.md#program-entry-point"><code>main()</code></a> function is the entry point to the application.</p>
-      <p>It is declared as a <a href="functions.md#function-scope">top-level function</a> outside the <code>DemoApplication</code> class. The main function invokes the Spring's <code>runApplication(&amp;args)</code> function to start the application with the Spring Framework.</p>
+      <p>The <a href="basic-syntax.md#程序入口点"><code>main()</code></a> function is the entry point to the application.</p>
+      <p>It is declared as a <a href="functions.md#函数作用域">top-level function</a> outside the <code>DemoApplication</code> class. The main function invokes the Spring's <code>runApplication(&amp;args)</code> function to start the application with the Spring Framework.</p>
    </def>
    <def title="Variable arguments – args: Array&lt;String&gt;">
-      <p>If you check the declaration of the <code>runApplication()</code> function, you will see that the parameter of the function is marked with <a href="functions.md#variable-number-of-arguments-varargs"><code>vararg</code> modifier</a>: <code>vararg args: String</code>.
+      <p>If you check the declaration of the <code>runApplication()</code> function, you will see that the parameter of the function is marked with <a href="functions.md#可变数量的参数varargs"><code>vararg</code> modifier</a>: <code>vararg args: String</code>.
         This means that you can pass a variable number of String arguments to the function.
       </p>
    </def>
@@ -199,7 +199,7 @@ class MessageController {
       <p>Hence, if you access the application at the root and supply a request parameter called "name", like <code>/?name=&lt;your-value&gt;</code>, the parameter value will be used as an argument for invoking the <code>index()</code> function.</p>
    </def>
    <def title="Single-expression functions – index()">
-      <p>Since the <code>index()</code> function contains only one statement you can declare it as a <a href="functions.md#single-expression-functions">single-expression function</a>.</p>
+      <p>Since the <code>index()</code> function contains only one statement you can declare it as a <a href="functions.md#单表达式函数">single-expression function</a>.</p>
       <p>This means the curly braces can be omitted and the body is specified after the equals sign <code>=</code>.</p>
    </def>
    <def title="Type inference for function return types">
@@ -207,7 +207,7 @@ class MessageController {
       <p>The type of <code>Hello, $name!</code> expression is <code>String</code>, hence the return type of the function is also <code>String</code>.</p>
    </def>
    <def title="String templates – $name">
-      <p><code>Hello, $name!</code> expression is called a <a href="strings.md#string-templates"><i>String template</i></a> in Kotlin.</p>
+      <p><code>Hello, $name!</code> expression is called a <a href="strings.md#字符串模板"><i>String template</i></a> in Kotlin.</p>
       <p>String templates are String literals that contain embedded expressions.</p>
       <p>This is a convenient replacement for String concatenation operations.</p>
    </def>

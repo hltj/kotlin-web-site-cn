@@ -1,4 +1,4 @@
-[//]: # (title: Add database support for Spring Boot project)
+[//]: # (title: 为 Spring Boot 项目添加数据库支持)
 [//]: # (description: Add a database support for Sprint Boot project written in Kotlin using JDBC template.)
 
 <microformat>
@@ -36,7 +36,7 @@ class MessageService(val db: JdbcTemplate) {
 
 <deflist collapsible="true">
    <def title="Constructor argument and dependency injection – (val db: JdbcTemplate)">
-      <p>A class in Kotlin can have a primary constructor and one or more <a href="classes.md#secondary-constructors">secondary constructors</a>.
+      <p>A class in Kotlin can have a primary constructor and one or more <a href="classes.md#次构造函数">secondary constructors</a>.
       The <i>primary constructor</i> is a part of the class header, and it goes after the class name and optional type parameters. In our case, the constructor is <code>(val db: JdbcTemplate)</code>.</p>
       <p><code>val db: JdbcTemplate</code> is the constructor's argument:</p>
       <code style="block" lang="kotlin">
@@ -49,11 +49,11 @@ class MessageService(val db: JdbcTemplate) {
       <code style="block" lang="sql">
       db.query("...", RowMapper { ... } )
       </code><br/>
-      <p>The <code>RowMapper</code> interface declares only one method, so it is possible to implement it via lambda expression by omitting the name of the interface. The Kotlin compiler knows the interface that the lambda expression needs to be converted to because you use it as a parameter for the function call. This is known as <a href="java-interop.md#sam-conversions">SAM conversion in Kotlin</a>:</p>
+      <p>The <code>RowMapper</code> interface declares only one method, so it is possible to implement it via lambda expression by omitting the name of the interface. The Kotlin compiler knows the interface that the lambda expression needs to be converted to because you use it as a parameter for the function call. This is known as <a href="java-interop.md#sam-转换">SAM conversion in Kotlin</a>:</p>
       <code style="block" lang="sql">
       db.query("...", { ... } )
       </code><br/>
-      <p>After the SAM conversion, the query function ends up with two arguments: a String at the first position, and a lambda expression at the last position. According to the Kotlin convention, if the last parameter of a function is a function, then a lambda expression passed as the corresponding argument can be placed outside the parentheses. Such syntax is also known as <a href="lambdas.md#passing-trailing-lambdas">trailing lambda</a>:</p>
+      <p>After the SAM conversion, the query function ends up with two arguments: a String at the first position, and a lambda expression at the last position. According to the Kotlin convention, if the last parameter of a function is a function, then a lambda expression passed as the corresponding argument can be placed outside the parentheses. Such syntax is also known as <a href="lambdas.md#传递末尾的-lambda-表达式">trailing lambda</a>:</p>
       <code style="block" lang="sql">
       db.query("...") { ... }
       </code>
@@ -122,7 +122,7 @@ class MessageService(val db: JdbcTemplate) {
 
 <deflist collapsible="true">
    <def title="Elvis operator – ?:">
-      <p>The code <code>message.id ?: UUID.randomUUID().toString()</code> uses the <a href="null-safety.md#elvis-operator">Elvis operator (if-not-null-else shorthand) <code>?:</code></a>. If the expression to the left of <code>?:</code> is not <code>null</code>, the Elvis operator returns it; otherwise, it returns the expression to the right. Note that the expression on the right-hand side is evaluated only if the left-hand side is <code>null</code>.</p>
+      <p>The code <code>message.id ?: UUID.randomUUID().toString()</code> uses the <a href="null-safety.md#elvis-操作符">Elvis operator (if-not-null-else shorthand) <code>?:</code></a>. If the expression to the left of <code>?:</code> is not <code>null</code>, the Elvis operator returns it; otherwise, it returns the expression to the right. Note that the expression on the right-hand side is evaluated only if the left-hand side is <code>null</code>.</p>
    </def>
 </deflist>
 
@@ -251,7 +251,7 @@ Extend the functionality of the application to retrieve the individual messages 
     }
     ```
    
-    > The `query()` function that is used to fetch the message by its id is a [Kotlin extension function](extensions.md#extension-functions) provided by the Spring Framework and requires an additional import as in the code above.
+    > The `query()` function that is used to fetch the message by its id is a [Kotlin extension function](extensions.md#扩展函数) provided by the Spring Framework and requires an additional import as in the code above.
     >
     {type="note"}
 

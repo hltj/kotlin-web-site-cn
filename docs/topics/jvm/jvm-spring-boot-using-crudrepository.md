@@ -1,4 +1,4 @@
-[//]: # (title: Use Spring Data CrudRepository for database access)
+[//]: # (title: 使用 Spring Data CrudRepository 进行数据库访问)
 [//]: # (description: Work with Spring Data interface in a Spring Boot project written in Kotlin.)
 
 <microformat>
@@ -59,7 +59,7 @@ First, you need to adjust the `Message` class for work with the `CrudRepository`
 
     <deflist collapsible="true">
        <def title="Extension functions">
-          <p>The return type of the <code>findById()</code> function in the <code>CrudRepository</code> interface is an instance of the <code>Optional</code> class. However, it would be convenient to return a <code>List</code> with a single message for consistency. For that, you need to unwrap the <code>Optional</code> value if it’s present, and return a list with the value. This can be implemented as an <a href="extensions.md#extension-functions">extension function</a> to the <code>Optional</code> type.</p>
+          <p>The return type of the <code>findById()</code> function in the <code>CrudRepository</code> interface is an instance of the <code>Optional</code> class. However, it would be convenient to return a <code>List</code> with a single message for consistency. For that, you need to unwrap the <code>Optional</code> value if it’s present, and return a list with the value. This can be implemented as an <a href="extensions.md#扩展函数">extension function</a> to the <code>Optional</code> type.</p>
           <p>In the code, <code>Optional&lt;out T&gt;.toList()</code>, <code>toList()</code> is the extension function for <code>Optional</code>. Extension functions allow you to write additional functions to any classes, which is especially useful when you want to extend functionality of some library class.</p>
        </def>
        <def title="CrudRepository save() function">
