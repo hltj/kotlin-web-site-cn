@@ -59,37 +59,37 @@ We make sure to document precisely which subcomponents are not stable. We also d
 
 ## Current stability of Kotlin components
 
-|**组件**|**状态**|**状态起始版本**|**备注**|
-| --- | --- | -- | --- |
-Kotlin/JVM|Stable|1.0| |
-Kotlin K2（JVM）|Alpha|1.7| |
-kotlin-stdlib（JVM）|已稳定|1.0| |
-协程|已稳定|1.3| |
-kotlin-reflect（JVM）|Beta|1.0| |
-Kotlin/JS（旧版后端）|已稳定|1.3|1.8.0 起已弃用，请参阅 [IR 迁移指南](js-ir-migration.md)|
-Kotlin/JVM（基于 IR）|已稳定|1.5| |
-Kotlin/JS（基于 IR）|已稳定|1.8| |
-Kotlin/Native 运行时|Beta|1.3| |
-Kotlin/Native new memory manager|Beta|1.7.20| |
-Klib 二进制|Alpha|1.4| |
-Kotlin 多平台|Beta|1.7.20| |
-Kotlin/Native 与 C 语言及 Objective C 互操作|Beta|1.3| |
-CocoaPods 集成|Beta|1.3| |
-用于 Android Studio 的 Kotlin Multiplatform Mobile 插件|Alpha|0.3.0|[与语言版本独立](multiplatform-mobile-plugin-releases.md)
-expect/actual 语言特性|Beta|1.2| |
-KDoc 语法|已稳定|1.0| |
-Dokka|Beta|1.6| |
-脚本语法与语义|Alpha|1.2| |
-脚本嵌入与扩展 API|Beta|1.5| |
-脚本 IDE 支持|实验性的|1.2| |
-CLI 脚本|Alpha|1.2| |
-编译器插件 API|实验性的|1.0| |
-序列化编译器插件|已稳定|1.4| |
-序列化核心库|已稳定|1.0.0|与语言版本独立
-内联类|已稳定|1.5| |
-无符号算术|已稳定|1.5| |
-stdlib 中的契约|已稳定|1.3| |
-用户自定义契约|实验性的|1.3| |
-**默认情况下，所有其他实验性特性**|实验性的|N/A| |
+| **组件**                                              | **状态**     | **状态起始版本**         | **备注**                                                                          |
+|-------------------------------------------------------|--------------|--------------------------|-----------------------------------------------------------------------------------|
+| Kotlin/JVM                                            | 已稳定       | 1.0                      |                                                                                   |
+| Kotlin K2 (JVM)                                       | Alpha        | 1.7                      |                                                                                   |
+| kotlin-stdlib (JVM)                                   | 已稳定       | 1.0                      |                                                                                   |
+| 协程                                                  | 已稳定       | 1.3                      |                                                                                   |
+| kotlin-reflect (JVM)                                  | Beta         | 1.0                      |                                                                                   |
+| Kotlin/JS（旧版后端）                                 | 已稳定       | 1.3                      | 1.8.0 起已弃用，请参阅 [IR 迁移指南](js-ir-migration.md)                          |
+| Kotlin/JVM（基于 IR）                                 | 已稳定       | 1.5                      |                                                                                   |
+| Kotlin/JS（基于 IR）                                  | 已稳定       | 1.8                      |                                                                                   |
+| Kotlin/Native 运行时                                  | Beta         | 1.3                      |                                                                                   |
+| Kotlin/Native 新版内存管理器                          | Beta         | 1.7.20                   |                                                                                   |
+| klib 二进制                                           | Alpha        | 1.4                      |                                                                                   |
+| Kotlin 多平台                                         | Beta         | 1.7.20                   |                                                                                   |
+| Kotlin/Native 与 C 语言及 Objective C 互操作          | Beta         | 1.3                      |                                                                                   |
+| CocoaPods 集成                                        | Beta         | 1.3                      |                                                                                   |
+| 用于 Android Studio 的 Kotlin 多平台移动端插件        | Beta         | 0.5.2                    | [与语言版本独立](multiplatform-mobile-plugin-releases.md)                         |
+| expect/actual 语言特性                                | Beta         | 1.2                      |                                                                                   |
+| KDoc 语法                                             | 已稳定       | 1.0                      |                                                                                   |
+| Dokka                                                 | Beta         | 1.6                      |                                                                                   |
+| 脚本语法与语义                                        | Alpha        | 1.2                      |                                                                                   |
+| 脚本嵌入与扩展 API                                    | Beta         | 1.5                      |                                                                                   |
+| 脚本 IDE 支持                                         | Beta         |                          | Available since IntelliJ IDEA 2023.1 and later                                    |
+| CLI 脚本                                              | Alpha        | 1.2                      |                                                                                   |
+| 编译器插件 API                                        | 实验性的     | 1.0                      |                                                                                   |
+| 序列化编译器插件                                      | 已稳定       | 1.4                      |                                                                                   |
+| 序列化核心库                                          | 已稳定       | 1.0.0                    | 与语言版本独立                                                                    |
+| 内联类                                                | 已稳定       | 1.5                      |                                                                                   |
+| 无符号算术                                            | 已稳定       | 1.5                      |                                                                                   |
+| stdlib 中的契约                                       | 已稳定       | 1.3                      |                                                                                   |
+| 用户自定义契约                                        | 实验性的     | 1.3                      |                                                                                   |
+| **默认情况下，所有其他实验性特性**                    | 实验性的     | N/A                      |                                                                                   |
 
 *[The pre-1.4 version of this page is available here](components-stability-pre-1.4.md).*

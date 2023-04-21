@@ -1,4 +1,4 @@
-[//]: # (title: 范例)
+[//]: # (title: Kotlin/JS 范例)
 
 This is a curated list of Kotlin/JS samples.
 

@@ -41,20 +41,53 @@
 
 将 `kotlin-osgi-bundle` 引入到 Gradle 项目中：
 
-```groovy
-compile "org.jetbrains.kotlin:kotlin-osgi-bundle:$kotlinVersion"
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+dependencies {
+    implementation(kotlin("osgi-bundle"))
+}
 ```
 
-要排除作为传递依赖的默认 Kotlin 库，你可以使用以下方法：
+</tab>
+<tab title="Groovy" group-key="groovy">
 
 ```groovy
 dependencies {
- compile (
-   [group: 'some.group.id', name: 'some.library', version: 'someversion'],
-   ……) {
-  exclude group: 'org.jetbrains.kotlin'
+    implementation "org.jetbrains.kotlin:kotlin-osgi-bundle:%kotlinVersion%"
 }
 ```
+
+</tab>
+</tabs>
+
+要排除作为传递依赖的默认 Kotlin 库，你可以使用以下方法：
+
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+dependencies {
+    implementation("some.group.id:some.library:someversion") {
+        exclude(group = "org.jetbrains.kotlin")
+    }
+}
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+dependencies {
+    implementation('some.group.id:some.library:someversion') {
+        exclude group: 'org.jetbrains.kotlin'
+    }
+}
+```
+
+</tab>
+</tabs>
 
 ## FAQ
 

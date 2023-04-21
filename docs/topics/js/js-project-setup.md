@@ -13,7 +13,7 @@ Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理�
 ![New project wizard](js-new-project-1.png){width=700}
 
 另外，还可以在 Gradle 构建文件
-(`build.gradle` 或 `build.gradle.kts`) 中手动将 `org.jetbrains.kotlin.js` 插件应用于 Gradle 项目。
+（`build.gradle(.kts)`）中手动将 `org.jetbrains.kotlin.js` 插件应用于 Gradle 项目。
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">

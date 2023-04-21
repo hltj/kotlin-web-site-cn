@@ -25,7 +25,8 @@ fun demo(source: List<Int>) {
 ## Getter 与 Setter
 
 遵循 Java 约定的 getter 与 setter 的方法（名称以 `get` 开头的无参数方法<!--
--->及以 `set` 开头的单参数方法）在 Kotlin 中表示为属性。
+-->及以 `set` 开头的单参数方法）在 Kotlin 中表示为属性。 Such properties are
+also called _synthetic properties_.
 `Boolean` 访问器方法（其中 getter 的名称以 `is` 开头而 setter 的名称以 `set` 开头）<!--
 -->会表示为与 getter 方法具有相同名称的属性。
 
@@ -43,8 +44,87 @@ fun calendarDemo() {
 }
 ```
 
+`calendar.firstDayOfWeek` above is an example of a synthetic property.
+
 请注意，如果 Java 类只有一个 setter，它在 Kotlin 中不会作为属性可见，因为 Kotlin 不支持<!--
 -->只写（set-only）属性。
+
+## Java synthetic property references
+
+> This feature is [Experimental](components-stability.md#stability-levels-explained). It may be dropped or changed at any time.
+> We recommend that you use it only for evaluation purposes.
+>
+{type="warning"}
+
+Starting from Kotlin 1.8.20, you can create references to Java synthetic properties. Consider the following Java code:
+
+```java
+public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+```
+
+Kotlin has always allowed you to write `person.age`, where `age` is a synthetic property. Now, you can also 
+create references to `Person::age` and `person::age`. The same applies for `name`, as well.
+
+```kotlin
+val persons = listOf(Person("Jack", 11), Person("Sofie", 12), Person("Peter", 11))
+    Persons
+         // Call a reference to Java synthetic property:
+        .sortedBy(Person::age)
+         // Call Java getter via the Kotlin property syntax:
+        .forEach { person -> println(person.name) }
+}
+```
+
+### How to enable Java synthetic property references {initial-collapse-state="collapsed"}
+
+To enable this feature, set the `-language-version 1.9` compiler option. In a Gradle project, you can do so 
+by adding the following to your `build.gradle(.kts)`:
+
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+tasks
+    .withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask<*>>()
+    .configureEach {
+        compilerOptions
+            .languageVersion
+            .set(
+                org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9
+            )
+    }
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+tasks
+    .withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask.class)
+    .configureEach {
+        compilerOptions.languageVersion
+            = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9
+}
+```
+
+</tab>
+</tabs>
 
 ## 返回 void 的方法
 

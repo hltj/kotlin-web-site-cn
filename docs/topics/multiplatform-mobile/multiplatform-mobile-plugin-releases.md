@@ -39,6 +39,28 @@ Compatible Kotlin version
 <tr>
 <td>
 
+**0.5.3**
+
+Released: 12 April, 2023
+
+</td>
+<td>
+
+* Updated Kotlin and Compose versions.
+* Fixed an Xcode project scheme parsing.
+* Added a scheme product type check.
+* `iosApp` scheme is now selected by default if presented.
+
+</td>
+<td>
+
+* [Any of Kotlin plugin versions](releases.md#release-details)
+
+</td>
+</tr>
+<tr>
+<td>
+
 **0.5.2**
 
 Released: 30 January, 2023
@@ -46,7 +68,7 @@ Released: 30 January, 2023
 </td>
 <td>
 
-* [Fixed a problem with Kotlin/Native debugger (slow Spotlight indexing)](https://youtrack.jetbrains.com/issue/KT-55988)
+* [Fixed a problem with Kotlin/Native debugger (slow Spotlight indexing)](https://youtrack.jetbrains.com/issue/KT-55988).
 * [Fixed Kotlin/Native debugger in multimodule projects](https://youtrack.jetbrains.com/issue/KT-24450).
 * [New build for Android Studio Giraffe 2022.3.1 Canary](https://youtrack.jetbrains.com/issue/KT-55274).
 * [Added provisioning flags for an iOS app build](https://youtrack.jetbrains.com/issue/KT-55204).
@@ -203,7 +225,7 @@ Released: 16 November, 2021
 
 * [New Kotlin Multiplatform Library wizard](https://youtrack.jetbrains.com/issue/KTIJ-19367).
 * Support for the new type of Kotlin Multiplatform library distribution: [XCFramework](multiplatform-build-native-binaries.md#build-xcframeworks).
-* Enabled [hierarchical project structure](multiplatform-share-on-platforms.md#手动配置层次结构) for new cross-platform mobile projects.
+* Enabled [hierarchical project structure](multiplatform-hierarchy.md#manual-configuration) for new cross-platform mobile projects.
 * Support for [explicit iOS targets declaration](https://youtrack.jetbrains.com/issue/KT-46861).
 * [Enabled Kotlin Multiplatform Mobile plugin wizards on non-Mac machines](https://youtrack.jetbrains.com/issue/KT-48614).
 * [Support for subfolders in the Kotlin Multiplatform module wizard](https://youtrack.jetbrains.com/issue/KT-47923).

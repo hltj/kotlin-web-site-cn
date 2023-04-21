@@ -82,7 +82,7 @@ project — a cross-platform application for iOS and Android with desktop and we
 
 ## 入门
 
-* Start with the [Get started with Kotlin Multiplatform Mobile](multiplatform-mobile-getting-started.md) if you want to create iOS and Android applications with shared code
+* Begin with the [Get started with Kotlin Multiplatform for mobile](multiplatform-mobile-getting-started.md) if you want to create iOS and Android applications with shared code
 * Look through [sharing code principles and examples](multiplatform-share-on-platforms.md) if you want to create applications or libraries targeting other platforms
 
 > New to Kotlin? Take a look at [Getting started with Kotlin](getting-started.md).

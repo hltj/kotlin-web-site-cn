@@ -66,8 +66,8 @@ Kotlin/JS 提供了转换 Kotlin 代码、Kotlin 标准库的能力，并且兼�
 
 无论具体用例如何，Kotlin/JS 项目都可以使用兼容**Kotlin 生态系统中的库**，
 以及第三方的**JavaScript 与 TypeScript 生态系统中的库**。如果要在 Kotlin 代码中使用后者，
-可以提供自己的类型安全包装器、使用社区维护的包装器， 也可以让 [Dukat](js-external-declarations-with-dukat.md)
-自动生成 Kotlin 声明。使用 Kotlin/JS 专有的[动态类型](dynamic-type.md)可以放宽 Kotlin
+可以提供自己的类型安全包装器、使用社区维护的包装器， 也可以让 [Dukat](https://github.com/kotlin/dukat)
+生成 Kotlin 声明。使用 Kotlin/JS 专有的[动态类型](dynamic-type.md)可以放宽 Kotlin
 的类型系统的约束，而跳过创建详细的库包装器，尽管这是以牺牲类型安全为代价。
 
 Kotlin/JS 还与最常见的模块系统兼容：UMD、CommonJS 与 AMD。能够[生产与使用模块](js-modules.md)<!--

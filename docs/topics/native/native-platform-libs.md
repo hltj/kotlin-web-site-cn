@@ -7,7 +7,7 @@ Kotlin/Native 发行版包含了一组为每个目标平台预构建的库<!--
 ### POSIX 绑定
 
 对于所有基于 Unix 或 Windows 的目标平台（包括 Android 与
-iOS 目标平台），我们提供了 `POSIX` 平台库。它包含对
+iOS 目标平台），我们提供了 POSIX 平台库。它包含对
 [POSIX 标准](https://en.wikipedia.org/wiki/POSIX)的平台实现的绑定。
 
 使用该库只需导入之： 
@@ -19,7 +19,7 @@ import platform.posix.*
 唯一不可用的目标平台是 [WebAssembly](https://zh.wikipedia.org/wiki/WebAssembly)。
 
 请注意，`platform.posix` 的内容在<!--
--->不同平台上并不相同，就像不同的 `POSIX` 实现<!--
+-->不同平台上并不相同，就像不同的 POSIX 实现<!--
 -->一样略有不同。
 
 ### 热门原生库

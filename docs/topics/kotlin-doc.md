@@ -114,30 +114,38 @@ KDoc 目前支持以下块标签（block tags）：
 
 要链接到另一个元素（类、方法、属性或参数），只需将其名称放在方括号中：
 
-```
+```none
 为此目的，请使用方法 [foo]。
 ```
 
-如果要为链接指定自定义标签（label），请使用 Markdown 引用样式语法：
+如果要为链接指定自定义标签（label），add it in another set of square brackets before the element link:
 
-```
-为此目的，请使用[这个方法](foo)。
+```none
+为此目的，请使用[这个方法][foo]。
 ```
 
-你还可以在链接中使用限定的名称。请注意，与 Javadoc 不同，限定的名称总是使用点字符<!--
+你还可以在元素链接中使用限定的名称。请注意，与 Javadoc 不同，限定的名称总是使用点字符<!--
 -->来分隔组件，即使在方法名称之前：
 
-```
+```none
 使用 [kotlin.reflect.KClass.properties] 来枚举类的属性。
 ```
 
-链接中的名称与正写文档的元素内使用该名称使用相同的规则解析。
+元素链接中的名称与正写文档的元素内使用该名称使用相同的规则解析。
 特别是，这意味着如果你已将名称导入当前文件，那么当你在 KDoc 注释中使用它时，
 不需要再对其进行完整限定。
 
 请注意 KDoc 没有用于解析链接中的重载成员的任何语法。 因为 Kotlin 的文档生成<!--
 -->工具将一个函数的所有重载的文档放在同一页面上，标识一个特定的重载函数<!--
 -->并不是链接生效所必需的。
+
+### External links
+
+To add an external link, use the typical Markdown syntax:
+
+```none
+For more information about KDoc syntax, see [KDoc](<example-URL>).
+```
 
 ## 下一步做什么？
 

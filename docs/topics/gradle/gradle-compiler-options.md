@@ -22,20 +22,18 @@ For example:
 <tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
-compileKotlin.compilerOptions.freeCompilerArgs.add("-Xexport-kdoc")
+tasks.named("compileKotlin", org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask::class.java) {
+    compilerOptions {
+        freeCompilerArgs.add("-Xexport-kdoc")
+    }
+}
 ```
 
 </tab>
 <tab title="Groovy" group-key="groovy">
 
 ```groovy
-compileKotlin {
-    compilerOptions.freeCompilerArgs.add("-Xexport-kdoc")
-}
-
-//or
-
-compileKotlin {
+tasks.named('compileKotlin', org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask.class) {
     compilerOptions {
         freeCompilerArgs.add("-Xexport-kdoc")
     }
@@ -191,22 +189,57 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 | `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.3"（已弃用）、 "1.4"（已弃用）、  "1.5"、 "1.6"、 "1.7", "1.8", "1.9"（实验性的） |  |
 | `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.3"（已弃用）、 "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7", "1.8", "1.9"（实验性的） |  |
 
+#### Example of setting a languageVersion
+
+To set a language version, use the following syntax:
+
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+tasks
+    .withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask<*>>()
+    .configureEach {
+        compilerOptions
+            .languageVersion
+            .set(
+                org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9
+            )
+    }
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+tasks
+    .withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask.class)
+    .configureEach {
+        compilerOptions.languageVersion = 
+                org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9
+}
+```
+
+</tab>
+</tabs>
+
 Also, see [Types for compiler options](#types-for-compiler-options).
 
 ### JS 特有的属性
 
 | 名称 | 描述        | 可能的值        |默认值        |
-|------|-------------|-----------------|--------------|
-| `friendModulesDisabled` | 禁用内部声明导出 |  | false |
+|---|---|---|---|
+| `friendModulesDisabled` | 禁用内部声明导出| | false |
 | `main` | 定义是否在执行时调用 `main` 函数 | "call"、 "noCall". Also, see [Types for compiler options](#types-for-compiler-options) | "call" |
-| `metaInfo` | 使用元数据生成 .meta.js 与 .kjsm 文件。用于创建库 |  | true |
+| `metaInfo` | 使用元数据生成 .meta.js 与 .kjsm 文件。用于创建库 | | true |
 | `moduleKind` | 编译器生成的 JS 模块类型 | "umd"、 "commonjs"、 "amd"、 "plain", "es". Also, see [Types for compiler options](#types-for-compiler-options) | "umd" |
-| `outputFile` | 编译结果的目标 *.js 文件 |  | "\<buildDir>/js/packages/\<project.name>/kotlin/\<project.name>.js" |
-| `sourceMap` | 生成源代码映射（source map） |  | true |
+| `outputFile` | 编译结果的目标 *.js 文件 | | "\<buildDir>/js/packages/\<project.name>/kotlin/\<project.name>.js" |
+| `sourceMap` | 生成源代码映射（source map） | | true |
 | `sourceMapEmbedSources` | 将源代码嵌入到源代码映射中 | "never"、 "always"、 "inlining". Also, see [Types for compiler options](#types-for-compiler-options) | |
+| `sourceMapNamesPolicy` | Add variable and function names that you declared in Kotlin code into the source map. For more information on the behavior, see our [compiler reference](compiler-reference.md#source-map-names-policy-simple-names-fully-qualified-names-no). | "simple-names", "fully-qualified-names", "no". Also, see [Types for compiler options](#types-for-compiler-options)                                                              | "simple-names" |
 | `sourceMapPrefix` | 将指定前缀添加到源代码映射中的路径 |  |  |
-| `target` | 生成指定 ECMA 版本的 JS 文件 | "v5" | "v5" |
-| `typedArrays` | 将原生数组转换为 JS 带类型数组 |  | true |
+| `target` | 生成指定 ECMA 版本的 JS 文件  | "v5"  | "v5" |
+| `typedArrays` | 将原生数组转换为 JS 带类型数组 | | true |
 
 ### Types for compiler options
 
@@ -219,6 +252,7 @@ Some of the `compilerOptions` use the new types instead of the `String` type:
 | `main` | [`JsMainFunctionExecutionMode`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JsMainFunctionExecutionMode.kt) | `compilerOptions.main.set(JsMainFunctionExecutionMode.NO_CALL)` |
 | `moduleKind` | [`JsModuleKind`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JsModuleKind.kt) | `compilerOptions.moduleKind.set(JsModuleKind.MODULE_ES)` |
 | `sourceMapEmbedSources` | [`JsSourceMapEmbedMode`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JsSourceMapEmbedMode.kt) | `compilerOptions.sourceMapEmbedSources.set(JsSourceMapEmbedMode.SOURCE_MAP_SOURCE_CONTENT_INLINING)` |
+| `sourceMapNamesPolicy` | [`JsSourceMapNamesPolicy`](https://github.com/JetBrains/kotlin/blob/1.8.20/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JsSourceMapNamesPolicy.kt) | `compilerOptions.sourceMapNamesPolicy.set(JsSourceMapNamesPolicy.SOURCE_MAP_NAMES_POLICY_FQ_NAMES)` |
 
 ## 下一步做什么？
 

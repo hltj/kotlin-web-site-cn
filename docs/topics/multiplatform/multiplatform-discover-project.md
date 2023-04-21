@@ -10,7 +10,7 @@
 ## 多平台插件
 
 [创建多平台项目](multiplatform-library.md)时，
-项目向导会自动在 `build.gradle`(`.kts`) 文件中应用 `kotlin-multiplatform` 插件。
+项目向导会自动在 `build.gradle(.kts`) 文件中应用 `kotlin-multiplatform` 插件。
 
 也可以手动应用它。
 
@@ -42,7 +42,7 @@ plugins {
 `kotlin-multiplatform` 插件可配置项目以创建可在多个平台上工作的应用程序或库，
 并为在这些平台上构建做好准备。
 
-在 `build.gradle`(`.kts`) 文件中，它在顶层创建 `kotlin` 扩展，
+在 `build.gradle(.kts`) 文件中，它在顶层创建 `kotlin` 扩展，
 其中包括[目标](#目标)、[源代码集](#源代码集)与依赖项的配置。
 
 ## 目标
@@ -51,7 +51,7 @@ plugins {
 目标是构建的一部分，负责为特定平台（例如 macOS、iOS或Android）构建、测试与打包应用程序。
 请参阅[支持的平台](multiplatform-dsl-reference.md#目标)列表。
 
-创建多平台项目时，会将目标添加到 `build.gradle`(`build.gradle.kts`) 文件中的 `kotlin` 块中。
+创建多平台项目时，会将目标添加到 `build.gradle(.kts`) 文件中的 `kotlin` 块中。
 
 ```kotlin
 kotlin {
@@ -149,7 +149,7 @@ kotlin {
 例如，所有 Kotlin 原生特性都可以在 `desktopMain` 源代码集中可用，
 该源代码集的目标是 Linux(`linuxX64`)、Windows(`mingwX64`) 与 macOS(`macosX64`) 平台。
 
-![层次结构](hierarchical-structure.png)
+![层次结构](manual-hierarchical-structure.png)
 
 了解如何[构建源代码集的层次结构](multiplatform-share-on-platforms.md#对相似平台共享代码)。
 

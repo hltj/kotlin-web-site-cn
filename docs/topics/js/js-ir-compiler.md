@@ -139,10 +139,26 @@ Kotlin/JS IR 编译器能够从 Kotlin 代码生成 TypeScript 定义。在混�
 JavaScript 工具与 IDE 可以使用这些定义来提供自动补全功能、支持静态分析器，
 并使在 JavaScript 与 TypeScript 项目中更容易包含 Kotlin 代码。
 
-在产生可执行文件（`binaries.executable()`）的项目中，标有 [`@JsExport`](js-to-kotlin-interop.md#jsexport-注解)
-的顶级声明将生成一个 `.d.ts` 文件，
-其中包含导出的 Kotlin 声明的 TypeScript 定义。
-可以在 `build/js/packages/<package_name>/kotlin` 中找到这些声明以及相应的<!--
+If your project produces executable files (`binaries.executable()`), the Kotlin/JS IR compiler collects 
+any top-level declarations marked with [`@JsExport`](js-to-kotlin-interop.md#jsexport-annotation) and automatically 
+generates TypeScript definitions in a `.d.ts` file.
+
+If you want to generate TypeScript definitions, you have to explicitly configure this in your Gradle build file. 
+Add `generateTypeScriptDefinitions()` to your `build.gradle.kts` file in the [`js` section](js-project-setup.md#execution-environments). 
+For example:
+
+```kotlin
+kotlin {
+   js {
+       binaries.executable()
+       browser {
+       }
+       generateTypeScriptDefinitions()
+   }
+}
+```
+
+可以在 `build/js/packages/<package_name>/kotlin` 中找到其定义以及相应的<!--
 -->未打包 Web 的 JavaScript 代码。
 
 ## IR 编译器的当前限制

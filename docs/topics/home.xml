@@ -34,14 +34,14 @@
         <custom-groups>
             <group type="cards" display="wide">
                 <title>新特性</title>
-                <a href="whatsnew18.md" description="最新特性：改进了 kotlin-reflect 性能，JVM 平台新版递归复制或删除目录内容的实验性函数，`kotlin-stdlib-jdk7` 与 `kotlin-stdlib-jdk8` 合并到 `kotlin-stdlib`，改进了 Objective-C/Swift 互操作性等等">Kotlin 1.8.0 的新特性</a>
+                <a href="whatsnew1820.md" description="Latest features: Kotlin K2 compiler updates, AutoCloseable interface and Base64 encoding in stdlib, new JVM incremental compilation enabled by default, new Kotlin/Wasm compiler backend">What's New in Kotlin 1.8.20</a>
                 <a href="roadmap.md" description="Kotlin 开发的未来计划">Kotlin 公开路线图</a>
             </group>
             <group type="cards">
                 <title>Kotlin 多平台移动端</title>
                 <a href="multiplatform-mobile-getting-started.md" description="Useful links to help you start using the SDK">Android Studio 中 KMM 入门</a>
                 <a href="multiplatform-mobile-plugin-releases.md" description="Features of the Kotlin Multiplatform Mobile plugin">用于 Android Studio 的插件版本发布</a>
-                <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C" description="Videos about Kotlin Multiplatform Mobile on our YouTube channel">Kotlin 多平台 Multiverse</a>
+                <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C" description="Videos about Kotlin Multiplatform for mobile on our YouTube channel">Kotlin 多平台 Multiverse</a>
             </group>
             <group type="links" display="normal">
                 <link-collection>
@@ -61,7 +61,7 @@
                     <a href="https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw" description="Official Kotlin YouTube channel">Kotlin YouTube channel</a>
                     <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmxOJL0GSSZ1Vot4KL2Vwe7x" description="Tutorials on using Kotlin with Spring">Kotlin in Spring Framework</a>
                     <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmx-dpq9nkdaVJX0GnrM1Mp1" description="Webinars on using Kotlin for server-side development">Webinars with experts</a>
-                    <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C" description="Tutorials on using Kotlin Multiplatform Mobile">Kotlin Multiplatform Multiverse</a>
+                    <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C" description="Tutorials on using Kotlin Multiplatform for mobile">Kotlin Multiplatform Multiverse</a>
                     <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmyQA0l15nAfE1-pnu6fSvvG" description="Kotlin for competitive programming">Competitive programming</a>
                     <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy6Fz9aq-JMlzk34ce5hJrg" description="Tutorials on using the standard library">Kotlin standard library</a>
                     <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmz1TwkP9SKCHU978dqLTANB" description="Talking Kotlin podcast">Talking Kotlin podcast</a>

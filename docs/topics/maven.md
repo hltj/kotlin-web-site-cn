@@ -79,10 +79,20 @@ To use the standard library in your project, 在 pom 文件中配置以下依赖
 </build>
 ```
 
+Starting from Kotlin 1.8.20, you can replace the whole `<executions>` element above with `<extensions>true</extensions>`. 
+Enabling extensions automatically adds the `compile`, `test-compile`, `kapt`, and `test-kapt` executions to your build, 
+bound to their appropriate [lifecycle phases](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html). 
+If you need to configure an execution, you need to specify its ID. You can find an example of this in the next section.
+
+> If several build plugins overwrite the default lifecycle and you also enabled the `extensions` option, the last plugin in 
+> the `<build>` section has priority in terms of lifecycle settings. All earlier changes to lifecycle settings are ignored.
+> 
+{type="note"}
+
 ## 同时编译 Kotlin 与 Java 源代码
 
 要编译混合代码应用程序，必须在 Java 编译器之前调用 Kotlin 编译器。
-按照 maven 的方式，这意味着应该使用以下方法在 `maven-compiler-plugin` 之前运行  `kotlin-maven-plugin`。
+按照 Maven 的方式，这意味着应该使用以下方法在 `maven-compiler-plugin` 之前运行  `kotlin-maven-plugin`。
 确保 `pom.xml` 文件中的 `kotlin` 插件位于 `maven-compiler-plugin` 之前：
 
 ```xml
@@ -92,11 +102,14 @@ To use the standard library in your project, 在 pom 文件中配置以下依赖
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-maven-plugin</artifactId>
             <version>${kotlin.version}</version>
+            <extensions>true</extensions> <!-- You can set this option 
+            to automatically take information about lifecycles -->
             <executions>
                 <execution>
                     <id>compile</id>
                     <goals>
-                        <goal>compile</goal>
+                        <goal>compile</goal> <!-- You can skip the <goals> element 
+                        if you enable extensions for the plugin -->
                     </goals>
                     <configuration>
                         <sourceDirs>
@@ -107,7 +120,8 @@ To use the standard library in your project, 在 pom 文件中配置以下依赖
                 </execution>
                 <execution>
                     <id>test-compile</id>
-                    <goals> <goal>test-compile</goal> </goals>
+                    <goals> <goal>test-compile</goal> </goals> <!-- You can skip the <goals> element 
+                    if you enable extensions for the plugin -->
                     <configuration>
                         <sourceDirs>
                             <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
@@ -122,12 +136,12 @@ To use the standard library in your project, 在 pom 文件中配置以下依赖
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.5.1</version>
             <executions>
-                <!-- 替换会被 maven 特别处理的 default-compile -->
+                <!-- 替换会被 Maven 特别处理的 default-compile -->
                 <execution>
                     <id>default-compile</id>
                     <phase>none</phase>
                 </execution>
-                <!-- 替换会被 maven 特别处理的 default-testCompile -->
+                <!-- 替换会被 Maven 特别处理的 default-testCompile -->
                 <execution>
                     <id>default-testCompile</id>
                     <phase>none</phase>
@@ -237,6 +251,7 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
     <groupId>org.jetbrains.kotlin</groupId>
     <artifactId>kotlin-maven-plugin</artifactId>
     <version>${kotlin.version}</version>
+    <extensions>true</extensions> <!-- If you want to enable automatic addition of executions to your build -->
     <executions>……</executions>
     <configuration>
         <nowarn>true</nowarn>  <!-- 禁用警告 -->
@@ -253,7 +268,7 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 ```xml
 <project ……>
     <properties>
-        <kotlin.compiler.languageVersion>1.0</kotlin.compiler.languageVersion>
+        <kotlin.compiler.languageVersion>1.9</kotlin.compiler.languageVersion>
     </properties>
 </project>
 ```

@@ -87,10 +87,22 @@ EnumClass.valueOf(value: String): EnumClass
 EnumClass.values(): Array<EnumClass>
 ```
 
+Below is an example of these methods in action:
+
+```kotlin
+enum class RGB { RED, GREEN, BLUE }
+
+fun main() {
+    for (color in RGB.values()) println(color.toString()) // prints RED, GREEN, BLUE
+    println("The first color is: ${RGB.valueOf("RED")}") // prints "The first color is: RED"
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="rgb-enums-kotlin"}
+
 如果指定的名称与类中定义的任何枚举常量均不匹配，
 `valueOf()` 方法会抛出 `IllegalArgumentException` 异常。
 
-可以使用 `enumValues<T>()` 与 `enumValueOf<T>()` 函数<!--
+可以使用 [`enumValues<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/enum-values.html) 与 [`enumValueOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/enum-value-of.html) 函数<!--
 -->以泛型的方式访问枚举类中的常量：
 
 ```kotlin
@@ -103,9 +115,42 @@ inline fun <reified T : Enum<T>> printAllValues() {
 printAllValues<RGB>() // 输出 RED, GREEN, BLUE
 ```
 
-每个枚举常量都具有在枚举类声明中获取其名称与（自 0 起的）位置的属性：
+> For more information about inline functions and reified type parameters, see [Inline functions](inline-functions.md).
+> 
+> {type="tip"}
+
+In Kotlin 1.8.20, the `entries` property is introduced as a future replacement for the `values()` function. The 
+`entries` property returns a pre-allocated immutable list of your enum constants. This is particularly useful when you 
+are working with [collections](collections-overview.md) and can you help you avoid [performance issues](https://github.com/Kotlin/KEEP/blob/master/proposals/enum-entries.md#examples-of-performance-issues).
+
+For example:
+```kotlin
+enum class RGB { RED, GREEN, BLUE }
+
+@OptIn(ExperimentalStdlibApi::class)
+fun main() {
+    for (color in RGB.entries) println(color.toString())
+    // prints RED, GREEN, BLUE
+}
+```
+
+> The `entries` property is Experimental. To use it, opt in with `@OptIn(ExperimentalStdlibApi)`, and
+> [set the language version to 1.9](gradle-compiler-options.md#attributes-common-to-jvm-and-js).
+>
+{type="warning"}
+
+每个枚举常量也都具有这两个属性：[`name`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/name.html)
+与 [`ordinal`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/ordinal.html)， 用于在枚举类声明中获取其名称<!--
+-->与（自 0 起的）位置：
 
 ```kotlin
-val name: String
-val ordinal: Int
+enum class RGB { RED, GREEN, BLUE }
+
+fun main() {
+    //sampleStart
+    println(RGB.RED.name) // prints RED
+    println(RGB.RED.ordinal) // prints 0
+    //sampleEnd
+}
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="rgb-enums-properties-kotlin"}

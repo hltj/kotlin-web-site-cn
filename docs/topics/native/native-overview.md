@@ -68,7 +68,7 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 
 推荐文档：
 
-- [Kotlin 移动端多平台文档](multiplatform-mobile-getting-started.md)
+- [Kotlin 多平台移动端](multiplatform-mobile-getting-started.md)
 - [多平台文档](multiplatform-get-started.md)
 - [C 语言互操作](native-c-interop.md)
 - [Swift/Objective-C 互操作](native-objc-interop.md)

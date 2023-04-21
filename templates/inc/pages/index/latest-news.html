@@ -1,14 +1,20 @@
 
 <h2 class="kotlin-banner-section__header kto-heading kto-heading_size_h1">Kotlin 近期动态</h2>
-<div class="kotlin-banner-section__banner">
-  <a target="_blank" class="kotlin-banner-section__link"
-     href="https://kotlinlang.org/docs/whatsnew-eap.html">
-    <picture>
-      <source media="(max-width: 537px)" srcset="/assets/images/index/banners/kotlin-1.8.20-beta-mobile.jpg">
-      <img src="/assets/images/index/banners/kotlin-1.8.20-beta.jpg" alt="Kotlin 1.8.20 Beta Released" width="100%">
-    </picture>
-  </a>
-</div>
+
+{% if site.data["release-banner"].isActive %}
+  {% ktl_component "release-banner" params=site.data["release-banner"] %}
+{% else %}
+  <div class="kotlin-banner-section__banner">
+    <a target="_blank" class="kotlin-banner-section__link"
+       href="https://blog.jetbrains.com/kotlin/2023/04/kotlinconf-2023-opening-keynote/">
+      <picture>
+        <source media="(max-width: 537px)" srcset="/assets/images/index/banners/kotlin-conf-keynote_mobile.jpg">
+        <img src="/assets/images/index/banners/kotlin-conf-keynote.jpg" alt="KotlinConf 2023: A Look at the Opening Keynote" width="100%">
+      </picture>
+    </a>
+  </div>
+{% endif %}
+
 <div class="kotlin-news-section">
   {% set index_news_group = split_chunk(site.data["last-news"], 2) %}
   {% for news_list in index_news_group %}

@@ -517,7 +517,7 @@ kotlin {
 </tabs>
 
 Note that a newly created source set isn't connected to other ones. To use it in the project's compilations,
-[connect it with other source sets](multiplatform-share-on-platforms.md#手动配置层次结构).
+[connect it with other source sets](multiplatform-hierarchy.md#manual-configuration).
 
 ### 源代码集参数
 
@@ -527,7 +527,7 @@ Configurations of source sets are stored inside the corresponding blocks of `sou
 |--------------------|--------------------------------------------------------------------------------------------------------------------------|
 | `kotlin.srcDir`    | Location of Kotlin source files inside the source set directory.                                                         |
 | `resources.srcDir` | Location of resources inside the source set directory.                                                                   |
-| `dependsOn`        | [Connection with another source set](multiplatform-share-on-platforms.md#手动配置层次结构). |
+| `dependsOn`        | [Connection with another source set](multiplatform-hierarchy.md#manual-configuration). |
 | `dependencies`     | [依赖项](#依赖项) of the source set.                                                                         |
 | `languageSettings` | [语言设置](#语言设置) applied to the source set.                                                       |
 

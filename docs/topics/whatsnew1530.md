@@ -321,7 +321,7 @@ We've also introduced new targets that make Kotlin code run natively on Apple si
 
 They are available on both Intel-based and Apple silicon hosts. All existing targets are available on Apple silicon hosts as well.
 
-Note that in 1.5.30 we provide only basic support for Apple silicon targets in the `kotlin-multiplatform` Gradle plugin. Particularly, the new simulator targets aren't included in the [`ios`, `tvos`, and `watchos` target shortcuts](multiplatform-share-on-platforms.md#使用目标快捷方式). Learn how to [use Apple silicon targets with the target shortcuts](multiplatform-share-on-platforms.md#target-shortcuts-and-arm64-apple-silicon-simulators).
+Note that in 1.5.30 we provide only basic support for Apple silicon targets in the `kotlin-multiplatform` Gradle plugin. Particularly, the new simulator targets aren't included in the [`ios`, `tvos`, and `watchos` target shortcuts](multiplatform-hierarchy.md#target-shortcuts). Learn how to [use Apple silicon targets with the target shortcuts](multiplatform-hierarchy.md#target-shortcuts-and-arm64-apple-silicon-simulators).
 We will keep working to improve the user experience with the new targets.
 
 ### 改进了用于 CocoaPods Gradle 插件的 Kotlin DSL
@@ -433,7 +433,7 @@ Please share your thoughts and concerns about the transition to the LLD linker i
 
 ### 能在共享的原生代码中使用自定义 `cinterop` 库
 
-Kotlin Multiplatform gives you an [option](multiplatform-share-on-platforms.md#在层次结构中使用原生库) to use platform-dependent interop libraries in shared source sets. Before 1.5.30, this worked only with [platform libraries](native-platform-libs.md) shipped with Kotlin/Native distribution. Starting from 1.5.30, you can use it with your custom `cinterop` libraries. To enable this feature, add the `kotlin.mpp.enableCInteropCommonization=true` property in your `gradle.properties`:
+Kotlin Multiplatform gives you an [option](multiplatform-share-on-platforms.md#connect-platform-specific-libraries) to use platform-dependent interop libraries in shared source sets. Before 1.5.30, this worked only with [platform libraries](native-platform-libs.md) shipped with Kotlin/Native distribution. Starting from 1.5.30, you can use it with your custom `cinterop` libraries. To enable this feature, add the `kotlin.mpp.enableCInteropCommonization=true` property in your `gradle.properties`:
 
 ```none
 kotlin.mpp.enableGranularSourceSetsMetadata=true

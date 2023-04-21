@@ -8,9 +8,6 @@ Java 也将 Kotlin 类视为 Java 类。
 可以为 JavaScript 库创建 Kotlin 编译器与<!--
 -->周边工具可理解的外部声明。
 
-还提供了一种实验工具，可为 npm 依赖自动创建 Kotlin 外部声明，该声明提供称为 [Dukat](js-external-declarations-with-dukat.md) 的类型定义
-（TypeScript / `d.ts`）。
-
 ## 内联 JavaScript
 
 你可以使用 [`js()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/js.html) 函数将一些 JavaScript 代码嵌入到 Kotlin 代码中。
