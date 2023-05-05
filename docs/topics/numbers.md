@@ -289,10 +289,29 @@ val x = (1 shl 2) and 0x000FF000
 -->该类型，或者推断为该类型，或者[智能类型转换](typecasts.html#智能转换)的结果是该类型），两数字所形成的操作<!--
 -->或者区间遵循 [IEEE 754 浮点运算标准](https://zh.wikipedia.org/wiki/IEEE_754)。
 
-然而，为了支持泛型场景并提供全序支持，当这些操作数**并非**静态类型为<!--
--->浮点数（例如是 `Any`、 `Comparable<……>`、 类型参数）时，这些操作使用<!--
--->为 `Float` 与 `Double` 实现的不符合标准的 `equals` 与 `compareTo`，这会出现：
+然而，为了支持泛型场景并提供全序支持，对于**并非**<!--
+-->静态类型就是浮点数的情况，行为是不同的。例如是 `Any`、 `Comparable<...>` 或者 `Collection<T>` 类型。 这种情况下，这些<!-- 
+-->操作使用为 `Float` 与 `Double` 实现的 `equals` 与 `compareTo`。 因此：
 
 * 认为 `NaN` 与其自身相等
 * 认为 `NaN` 比包括正无穷大（`POSITIVE_INFINITY`）在内的任何其他元素都大
 * 认为 `-0.0` 小于 `0.0`
+
+Here is an example that shows the difference in behavior between operands statically typed as floating-point numbers 
+(`Double.NaN`) and operands **not** statically typed as floating-point numbers (`listOf(T)`).
+
+```kotlin
+fun main() {
+    //sampleStart
+    println(Double.NaN == Double.NaN)                 // false
+    println(listOf(Double.NaN) == listOf(Double.NaN)) // true
+    
+    println(0.0 == -0.0)                              // true
+    println(listOf(0.0) == listOf(-0.0))              // false
+
+    println(listOf(Double.NaN, Double.POSITIVE_INFINITY, 0.0, -0.0).sorted())
+    // [-0.0, 0.0, Infinity, NaN]
+    //sampleEnd
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-numbers-floating-comp"}

@@ -58,7 +58,7 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 多平台库为公共 Kotlin 代码提供了所需的 API，并且有助于在一处用 Kotlin 开发项目的共享部分，
 并将其与一些或所有目标平台共享。
 
-可以使用 [Kotlin 移动端多平台](https://kotlinlang.org/lp/mobile/)通过 Android 与 iOS 之间共享代码创建多平台移动应用程序。
+可以使用 [Kotlin 移动端多平台](https://kotlinlang.org/lp/multiplatform/)通过 Android 与 iOS 之间共享代码创建多平台移动应用程序。
 
 ## 如何入门
 

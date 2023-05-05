@@ -77,7 +77,7 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 
 <tab id="cross-platform-mobile" title="跨平台移动端应用">
 
-在此可以了解到如何使用 [Kotlin 多平台](https://kotlinlang.org/lp/mobile/)开发及改进跨平台移动端应用程序。
+在此可以了解到如何使用 [Kotlin 多平台](https://kotlinlang.org/lp/multiplatform/)开发及改进跨平台移动端应用程序。
 
 1. **[搭建用于跨平台移动端开发的环境](multiplatform-mobile-setup.md).**
 
@@ -105,7 +105,7 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
    * 了解关于 [Kotlin 多平台](multiplatform-get-started.md)的更多信息。
    * 浏览 [GitHub 上的样例](multiplatform-mobile-samples.md)。
    * [创建并发布多平台库](multiplatform-library.md)。
-   * 了解 [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)、 [VMWare](https://kotlinlang.org/lp/mobile/case-studies/vmware/)、 [Yandex](https://kotlinlang.org/lp/mobile/case-studies/yandex/) 以及[许多其他公司](https://kotlinlang.org/lp/mobile/case-studies/)如何使用 Kotlin 多平台。
+   * 了解 [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)、 [VMWare](https://kotlinlang.org/lp/multiplatform/case-studies/vmware/)、 [Yandex](https://kotlinlang.org/lp/multiplatform/case-studies/yandex/) 以及[许多其他公司](https://kotlinlang.org/lp/multiplatform/case-studies/)如何使用 Kotlin 多平台。
 
 5. **加入 Kotlin 多平台社区：**
 
