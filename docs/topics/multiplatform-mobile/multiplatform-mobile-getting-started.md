@@ -21,7 +21,7 @@ You can share application logic between iOS and Android apps and write platform-
 Get to know Kotlin Multiplatform and create a mobile app that works on both Android and iOS by completing these steps:
 
 > This tutorial describes how to share application logic between iOS and Android using Kotlin Multiplatform.
-> To learn about the full capabilities of the technology, check out [other use cases](multiplatform.md#full-stack-web-applications),
+> To learn about the full capabilities of the technology, check out [other use cases](multiplatform.md#全栈-web-应用程序),
 > such as full-stack web applications or multiplatform libraries.
 >
 {type="tip"}

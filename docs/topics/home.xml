@@ -34,14 +34,14 @@
         <custom-groups>
             <group type="cards" display="wide">
                 <title>新特性</title>
-                <a href="whatsnew1820.md" description="Latest features: Kotlin K2 compiler updates, AutoCloseable interface and Base64 encoding in stdlib, new JVM incremental compilation enabled by default, new Kotlin/Wasm compiler backend">What's New in Kotlin 1.8.20</a>
+                <a href="whatsnew1820.md" description="最新特性： Kotlin K2 编译器更新、标准库中的 AutoCloseable 接口与 Base64 编码、 默认启用新版 JVM 增量编译、 新版 Kotlin/Wasm 编译器后端">Kotlin 1.8.20 的新特性</a>
                 <a href="roadmap.md" description="Kotlin 开发的未来计划">Kotlin 公开路线图</a>
             </group>
             <group type="cards">
                 <title>Kotlin 多平台移动端</title>
-                <a href="multiplatform-mobile-getting-started.md" description="Useful links to help you start using the SDK">Android Studio 中 KMM 入门</a>
-                <a href="multiplatform-mobile-plugin-releases.md" description="Features of the Kotlin Multiplatform Mobile plugin">用于 Android Studio 的插件版本发布</a>
-                <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C" description="Videos about Kotlin Multiplatform for mobile on our YouTube channel">Kotlin 多平台 Multiverse</a>
+                <a href="multiplatform-mobile-getting-started.md" description="帮助你开始使用 SDK 的有用链接">Android Studio 中 KMM 入门</a>
+                <a href="multiplatform-mobile-plugin-releases.md" description="Kotlin 多平台移动端插件的特性">用于 Android Studio 的插件版本发布</a>
+                <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C" description="我们（官方）YouTube 频道上关于 Kotlin 多平台移动端的视频">Kotlin 多平台 Multiverse</a>
             </group>
             <group type="links" display="normal">
                 <link-collection>

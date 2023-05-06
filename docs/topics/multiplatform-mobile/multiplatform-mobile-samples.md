@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin Multiplatform for mobile samples)
+[//]: # (title: Kotlin 多平台移动端范例)
 
 This is a curated list of cross-platform mobile projects created with Kotlin Multiplatform.
 

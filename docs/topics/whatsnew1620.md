@@ -480,7 +480,7 @@ By default, libraries published with the hierarchical project structure are comp
 
 #### 在项目中更好地共享代码
 
-Without hierarchical structure support, there is no straightforward way to share code across _some_ but not _all_ [Kotlin targets](multiplatform-dsl-reference.md#targets).
+Without hierarchical structure support, there is no straightforward way to share code across _some_ but not _all_ [Kotlin targets](multiplatform-dsl-reference.md#目标).
 One popular example is sharing code across all iOS targets and having access to iOS-specific [dependencies](multiplatform-share-on-platforms.md#connect-platform-specific-libraries), like Foundation.
 
 Thanks to the hierarchical project structure support, you can now achieve this out of the box.

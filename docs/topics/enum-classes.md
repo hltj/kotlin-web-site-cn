@@ -135,7 +135,7 @@ fun main() {
 ```
 
 > The `entries` property is Experimental. To use it, opt in with `@OptIn(ExperimentalStdlibApi)`, and
-> [set the language version to 1.9](gradle-compiler-options.md#attributes-common-to-jvm-and-js).
+> [set the language version to 1.9](gradle-compiler-options.md#jvm-与-js-的公共属性).
 >
 {type="warning"}
 

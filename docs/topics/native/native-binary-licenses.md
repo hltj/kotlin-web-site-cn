@@ -1,4 +1,4 @@
-[//]: # (title: License files for the Kotlin/Native binaries)
+[//]: # (title: Kotlin/Native 二进制文件的许可证文件)
 
 Like many other open-source projects, Kotlin relies on third-party code, meaning that the Kotlin project includes some code
 not developed by JetBrains or the Kotlin programming language contributors.

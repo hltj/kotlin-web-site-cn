@@ -140,11 +140,11 @@ JavaScript 工具与 IDE 可以使用这些定义来提供自动补全功能、�
 并使在 JavaScript 与 TypeScript 项目中更容易包含 Kotlin 代码。
 
 If your project produces executable files (`binaries.executable()`), the Kotlin/JS IR compiler collects 
-any top-level declarations marked with [`@JsExport`](js-to-kotlin-interop.md#jsexport-annotation) and automatically 
+any top-level declarations marked with [`@JsExport`](js-to-kotlin-interop.md#jsexport-注解) and automatically 
 generates TypeScript definitions in a `.d.ts` file.
 
 If you want to generate TypeScript definitions, you have to explicitly configure this in your Gradle build file. 
-Add `generateTypeScriptDefinitions()` to your `build.gradle.kts` file in the [`js` section](js-project-setup.md#execution-environments). 
+Add `generateTypeScriptDefinitions()` to your `build.gradle.kts` file in the [`js` section](js-project-setup.md#执行环境). 
 For example:
 
 ```kotlin

@@ -1,6 +1,6 @@
-[//]: # (title: What's new in Kotlin 1.8.20)
+[//]: # (title: Kotlin 1.8.20 的新特性)
 
-_[Release date: %kotlinReleaseDate%](releases.md#release-details)_
+_[Release date: %kotlinReleaseDate%](releases.md#版本发布详情)_
 
 The Kotlin 1.8.20 release is out and here are some of its biggest highlights:
 
@@ -34,7 +34,7 @@ The Kotlin plugins that support 1.8.20 are available for:
 ## New Kotlin K2 compiler updates
 
 The Kotlin team continues to stabilize the K2 compiler. As mentioned in
-the [Kotlin 1.7.0 announcement](whatsnew17.md#new-kotlin-k2-compiler-for-the-jvm-in-alpha), it's still in **Alpha**.
+the [Kotlin 1.7.0 announcement](whatsnew17.md#用于-jvm-的新版-kotlin-k2-编译器进入-alpha-阶段), it's still in **Alpha**.
 This release introduces further improvements on the road to [K2 Beta](https://youtrack.jetbrains.com/issue/KT-52604).
 
 Starting with this 1.8.20 release, the Kotlin K2 compiler:
@@ -206,7 +206,7 @@ fun main() {
 
 #### Semantics of data objects
 
-Since their first preview version in [Kotlin 1.7.20](whatsnew1720.md#improved-string-representations-for-singletons-and-sealed-class-hierarchies-with-data-objects),
+Since their first preview version in [Kotlin 1.7.20](whatsnew1720.md#通过数据对象改进了单例与密封类层次结构的字符串表示),
 the semantics of data objects have been refined. The compiler now automatically generates a number of convenience
 functions for them:
 
@@ -492,7 +492,7 @@ We would appreciate any feedback you may have!
 ## Kotlin/JVM
 
 Kotlin 1.8.20 introduces a [preview of Java synthetic property references](#preview-of-java-synthetic-property-references)
-and [support for the JVM IR backend in the kapt stub generating task by default](#support-for-the-jvm-ir-backend-in-kapt-stub-generating-task-by-default).
+and [support for the JVM IR backend in the kapt stub generating task by default](#在-kapt-存根生成任务中支持-jvm-ir-后端).
 
 ### Preview of Java synthetic property references
 
@@ -573,9 +573,9 @@ tasks
 </tab>
 </tabs>
 
-### Support for the JVM IR backend in kapt stub generating task by default
+### 在 kapt 存根生成任务中支持 JVM IR 后端
 
-In Kotlin 1.7.20, we introduced [support for the JVM IR backend in the kapt stub generating task](whatsnew1720.md#support-for-the-jvm-ir-backend-in-kapt-stub-generating-task). Starting with this release, this support works by default. You no longer need to specify `kapt.use.jvm.ir=true` in your `gradle.properties` to enable it.
+In Kotlin 1.7.20, we introduced [support for the JVM IR backend in the kapt stub generating task](whatsnew1720.md#在-kapt-存根生成任务中支持-jvm-ir-后端). Starting with this release, this support works by default. You no longer need to specify `kapt.use.jvm.ir=true` in your `gradle.properties` to enable it.
 We would appreciate your feedback on this feature in [YouTrack](https://youtrack.jetbrains.com/issue/KT-49682).
 
 ## Kotlin/Native
@@ -946,7 +946,7 @@ a `.d.ts` file.
 
 As this isn't useful for every project, we've changed the behavior in Kotlin 1.8.20. If you want to generate TypeScript
 definitions, you have to explicitly configure this in your Gradle build file. Add `generateTypeScriptDefinitions()` to
-your `build.gradle.kts.file` in the [`js` section](js-project-setup.md#execution-environments). For example:
+your `build.gradle.kts.file` in the [`js` section](js-project-setup.md#执行环境). For example:
 
 ```kotlin
 kotlin {
@@ -984,13 +984,13 @@ This version brings the following changes:
 
 Gradle provides a way to ensure dependencies that must work together are always [aligned in their versions](https://docs.gradle.org/current/userguide/dependency_version_alignment.html#aligning_versions_natively_with_gradle).
 Kotlin 1.8.20 adopted this approach, too. It works by default so that you don't need to change or update your
-configuration to enable it. In addition, you no longer need to resort to [this workaround for resolving Kotlin Gradle plugins' transitive dependencies](whatsnew18.md#resolution-of-kotlin-gradle-plugins-transitive-dependencies).
+configuration to enable it. In addition, you no longer need to resort to [this workaround for resolving Kotlin Gradle plugins' transitive dependencies](whatsnew18.md#解决-kotlin-gradle-插件的传递依赖项).
 
 We would appreciate your feedback on this feature in [YouTrack](https://youtrack.jetbrains.com/issue/KT-54691).
 
 ### New JVM incremental compilation by default in Gradle
 
-The new approach to incremental compilation, which [has been available since Kotlin 1.7.0](whatsnew17.md#a-new-approach-to-incremental-compilation),
+The new approach to incremental compilation, which [has been available since Kotlin 1.7.0](whatsnew17.md#增量编译的新方式),
 now works by default. You no longer need to specify `kotlin.incremental.useClasspathSnapshot=true` in your `gradle.properties` to
 enable it.
 
@@ -1005,7 +1005,7 @@ We would appreciate your feedback on this. You can [file an issue](https://kotl.
 {type="warning"}
 
 Starting with Kotlin 1.8.20, you can enable precise backup, whereby only those classes that Kotlin recompiles in
-the [incremental compilation](gradle-compilation-and-caches.md#incremental-compilation) will be backed up.
+the [incremental compilation](gradle-compilation-and-caches.md#增量编译) will be backed up.
 Both full and precise backups help to run builds incrementally again after compilation errors. Precise backup also saves
 build time compared to full backup. Full backup may take **noticeable** build time in large projects or if many tasks are
 making backups, especially if a project is located on a slow HDD.

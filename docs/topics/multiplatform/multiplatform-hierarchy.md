@@ -2,7 +2,7 @@
 
 Multiplatform projects support hierarchical structures.
 This means you can arrange a hierarchy of intermediate source sets for sharing the common code among some, but not all,
-[supported targets](multiplatform-dsl-reference.md#targets). Using intermediate source sets has some important advantages:
+[supported targets](multiplatform-dsl-reference.md#目标). Using intermediate source sets has some important advantages:
 
 * If you're a library author and you want to provide a specialized API, you can use an intermediate source set for some,
   but not all, targets – for example, an intermediate source set for Kotlin/Native targets but not for Kotlin/JVM ones.

@@ -54,7 +54,7 @@ Released: 12 April, 2023
 </td>
 <td>
 
-* [Any of Kotlin plugin versions](releases.md#release-details)
+* [Any of Kotlin plugin versions](releases.md#版本发布详情)
 
 </td>
 </tr>

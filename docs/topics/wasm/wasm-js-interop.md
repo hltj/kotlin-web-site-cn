@@ -1,4 +1,4 @@
-[//]: # (title: Interoperability with JavaScript)
+[//]: # (title: 与 JavaScript 的互操作)
 
 Kotlin/Wasm allows you to both use JavaScript code from Kotlin and Kotlin code from JavaScript.
 
@@ -114,7 +114,7 @@ reported when running your JavaScript.
 ### @JsModule
 
 To indicate that an `external` class, package, function, or property is a JavaScript module, use
-the [`@JsModule` annotation](js-modules.md#jsmodule-annotation). Consider this JavaScript code sample:
+the [`@JsModule` annotation](js-modules.md#jsmodule-注解). Consider this JavaScript code sample:
 
 ```javascript
 // jsModule.mjs
@@ -258,7 +258,7 @@ updateUserAge(user, age);
 
 ### Inline JavaScript
 
-The [`js()` function](js-interop.md#inline-javascript) used to inline JavaScript code to Kotlin code is not supported
+The [`js()` function](js-interop.md#内联-javascript) used to inline JavaScript code to Kotlin code is not supported
 yet. Use the [`@JsFun`](#jsfun-annotation) annotation instead:
 
 ```kotlin
@@ -275,8 +275,8 @@ external fun jsTypeOf(obj: SomeExternalInterfaceType): String
 
 ### Extending external interfaces and classes with non-external classes
 
-[Extending JavaScript classes](js-interop.md#extend-javascript-classes)
-and [using external interfaces](js-interop.md#external-interfaces) is not supported yet. Use
+[Extending JavaScript classes](js-interop.md#扩展-javascript-类)
+and [using external interfaces](js-interop.md#external-接口) is not supported yet. Use
 the [`@JsFun`](#jsfun-annotation) annotation instead:
 
 ```kotlin

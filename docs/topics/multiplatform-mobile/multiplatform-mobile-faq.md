@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin Multiplatform for mobile FAQ)
+[//]: # (title: Kotlin 多平台移动端 FAQ)
 
 ### What is Kotlin Multiplatform for mobile?
 

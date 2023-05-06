@@ -43,7 +43,7 @@ using one of the following ways:
 * [Using target shortcuts](multiplatform-hierarchy.md#target-shortcuts)
 * [Configuring the hierarchical structure manually](multiplatform-hierarchy.md#manual-configuration)
 
-Learn more about [sharing code in libraries](#share-code-in-libraries) and [connecting platform-specific libraries](#connect-platform-specific-libraries).
+Learn more about [sharing code in libraries](#在库中共享代码) and [connecting platform-specific libraries](#connect-platform-specific-libraries).
 
 ## 在库中共享代码
 
