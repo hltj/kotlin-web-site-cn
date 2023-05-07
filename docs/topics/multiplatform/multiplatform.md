@@ -89,11 +89,11 @@ project — a cross-platform application for iOS and Android with desktop and we
 >
 {type="tip"}
 
-### 样例项目
+### 范例项目
 
-浏览跨平台应用程序样例以了解 Kotlin 多平台的工作原理：
+浏览跨平台应用程序范例以了解 Kotlin 多平台的工作原理：
 
-* [Kotlin 多平台移动端样例](multiplatform-mobile-samples.md)
+* [Kotlin 多平台移动端范例](multiplatform-mobile-samples.md)
 * [KotlinConf 应用](https://github.com/JetBrains/kotlinconf-app)
 * [KotlinConf Spinner 应用](https://github.com/jetbrains/kotlinconf-spinner)
 * [使用 Kotlin 多平台构建全栈 web 应用](multiplatform-full-stack-app.md)

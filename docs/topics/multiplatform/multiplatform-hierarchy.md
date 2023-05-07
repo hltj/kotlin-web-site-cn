@@ -33,7 +33,7 @@ There are 3 ways to create a target hierarchy:
 Starting with Kotlin 1.8.20, you can set up a source set hierarchy in your multiplatform projects with the default target hierarchy.
 It's a [template](#see-the-full-hierarchy-template) for all possible targets and their shared source sets hardcoded in the Kotlin Gradle plugin.
 
-### Set up your project
+### 搭建项目
 
 To set up a hierarchy, call `targetHierarchy.default()` in the `kotlin` block of your `build.gradle(.kts)` file and list
 all of the targets you need. For example:

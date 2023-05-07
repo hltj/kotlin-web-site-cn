@@ -1,23 +1,23 @@
 [//]: # (title: Kotlin 1.8.20 的新特性)
 
-_[Release date: %kotlinReleaseDate%](releases.md#版本发布详情)_
+_[发布日期：%kotlinReleaseDate%](releases.md#版本发布详情)_
 
 The Kotlin 1.8.20 release is out and here are some of its biggest highlights:
 
-* [New Kotlin K2 compiler updates](#new-kotlin-k2-compiler-updates)
-* [New experimental Kotlin/Wasm target](#new-kotlin-wasm-target)
-* [New JVM incremental compilation by default in Gradle](#new-jvm-incremental-compilation-by-default-in-gradle)
-* [Update for Kotlin/Native targets](#update-for-kotlin-native-targets)
-* [Preview of Gradle composite builds in Kotlin Multiplatform](#preview-of-gradle-composite-builds-support-in-kotlin-multiplatform)
-* [Improved output for Gradle errors in Xcode](#improved-output-for-gradle-errors-in-xcode)
-* [Experimental support for the AutoCloseable interface in the standard library](#support-for-the-autocloseable-interface)
-* [Experimental support for Base64 encoding in the standard library](#support-for-base64-encoding)
+* [新版 Kotlin K2 编译器更新](#新版-kotlin-k2-编译器更新)
+* [新增实验性 Kotlin/Wasm 目标平台](#新增-kotlin-wasm-目标平台)
+* [Gradle 中默认新版 JVM 增量编译](#gradle-中默认新版-jvm-增量编译)
+* [Kotlin/Native 目标更新](#kotlin-native-目标更新)
+* [Kotlin 多平台 Gradle 复合构建预览版](#kotlin-多平台支持-gradle-复合构建预览版)
+* [改进了 Xcode 中 Gradle 错误的输出](#改进了-xcode-中-gradle-错误的输出)
+* [标准库中对 AutoCloseable 接口的实验性支持](#支持-autocloseable-接口)
+* [标准库中对 Base64 编码的实验性支持](#支持-base64-编码)
 
 You can also find a short overview of the changes in this video:
 
 <video href="R1JpkpPzyBU" title="What's new in Kotlin 1.8.20"/>
 
-## IDE support
+## IDE 支持
 
 The Kotlin plugins that support 1.8.20 are available for:
 
@@ -26,12 +26,12 @@ The Kotlin plugins that support 1.8.20 are available for:
 | IntelliJ IDEA  | 2022.2.x, 2022.3.x,  2023.1.x |
 | Android Studio | Flamingo (222)                |
 
-> To download Kotlin artifacts and dependencies properly, [configure Gradle settings](#configure-gradle-settings)
+> To download Kotlin artifacts and dependencies properly, [configure Gradle settings](#配置-gradle-设置)
 > to use the Maven Central repository.
 >
 {type="warning"}
 
-## New Kotlin K2 compiler updates
+## 新版 Kotlin K2 编译器更新
 
 The Kotlin team continues to stabilize the K2 compiler. As mentioned in
 the [Kotlin 1.7.0 announcement](whatsnew17.md#用于-jvm-的新版-kotlin-k2-编译器进入-alpha-阶段), it's still in **Alpha**.
@@ -49,7 +49,7 @@ Learn more about the new compiler and its benefits in the following videos:
 * [What Everyone Must Know About The NEW Kotlin K2 Compiler](https://www.youtube.com/watch?v=iTdJJq_LyoY)
 * [The New Kotlin K2 Compiler: Expert Review](https://www.youtube.com/watch?v=db19VFLZqJM)
 
-### How to enable the Kotlin K2 compiler
+### 如何启用 Kotlin K2 编译器
 
 To enable and test the Kotlin K2 compiler, use the new language version with the following compiler option:
 
@@ -76,7 +76,7 @@ The previous `-Xuse-k2` compiler option has been deprecated.
 >
 {type="warning"}
 
-### Leave your feedback on the new K2 compiler
+### 反馈你对新版 K2 编译器的意见
 
 We would appreciate any feedback you may have!
 
@@ -88,15 +88,15 @@ We would appreciate any feedback you may have!
 * [Enable the **Send usage statistics** option](https://www.jetbrains.com/help/idea/settings-usage-statistics.html) to
   allow JetBrains to collect anonymous data about K2 usage.
 
-## Language
+## 语言
 
 As Kotlin continues to evolve, we're introducing preview versions for new language features in 1.8.20:
 
-* [A modern and performant replacement of the Enum class values function](#a-modern-and-performant-replacement-of-the-enum-class-values-function)
-* [Data objects for symmetry with data classes](#preview-of-data-objects-for-symmetry-with-data-classes)
-* [Lifting restrictions on secondary constructors with bodies in inline classes](#preview-of-lifting-restriction-on-secondary-constructors-with-bodies-in-inline-classes)
+* [枚举类类 values 函数的现代且高性能替代](#枚举类类-values-函数的现代且高性能替代)
+* [与数据类相称的数据对象](#与数据类相称的数据对象预览版)
+* [取消对内联类体中有次构造函数限制](#取消对内联类中有函数体的次构造函数限制的预览版)
 
-### A modern and performant replacement of the Enum class values function
+### 枚举类类 values 函数的现代且高性能替代
 
 > This feature is [Experimental](components-stability.md#stability-levels-explained).
 > It may be dropped or changed at any time. Opt-in is required (see details below). Use it only for evaluation purposes.
@@ -128,7 +128,7 @@ fun findByRgb(rgb: String): Color? = Color.entries.find { it.rgb == rgb }
 ```
 {validate="false"}
 
-#### How to enable the entries property
+#### 如何启用 entries 属性
 
 To try this feature out, opt in with `@OptIn(ExperimentalStdlibApi)` and enable the `-language-version 1.9` compiler
 option. In a Gradle project, you can do so by adding the following to your build.gradle(.kts):
@@ -170,7 +170,7 @@ tasks
 
 For more information on the proposal, see the [KEEP note](https://github.com/Kotlin/KEEP/blob/master/proposals/enum-entries.md).
 
-### Preview of data objects for symmetry with data classes
+### 与数据类相称的数据对象预览版
 
 Data objects allow you to declare objects with singleton semantics and a clean `toString()` representation. In this
 snippet, you can see how adding the `data` keyword to an object declaration improves the readability of its `toString()`
@@ -204,7 +204,7 @@ fun main() {
 }
 ``` 
 
-#### Semantics of data objects
+#### 数据对象的语义
 
 Since their first preview version in [Kotlin 1.7.20](whatsnew1720.md#通过数据对象改进了单例与密封类层次结构的字符串表示),
 the semantics of data objects have been refined. The compiler now automatically generates a number of convenience
@@ -224,7 +224,7 @@ fun main() {
 }
 ```
 
-##### equals and hashCode
+##### equals 与 hashCode
 
 The `equals()` function for a `data object` ensures that all objects that have the type of your `data object` are
 considered equal. In most cases, you will only have a single instance of your data object at runtime (after all,
@@ -265,7 +265,7 @@ fun createInstanceViaReflection(): MySingleton {
 The behavior of the generated `hashCode()` function is consistent with that of the `equals()` function, so that all
 runtime instances of a `data object` have the same hash code.
 
-##### No copy and componentN functions for data objects
+##### 数据对象没有 copy 与 componentN 函数
 
 While `data object` and `data class` declarations are often used together and have some similarities, there are some
 functions that are not generated for a `data object`:
@@ -279,7 +279,7 @@ object would not make sense, no `componentN()` functions are generated.
 
 We would appreciate your feedback on this feature in [YouTrack](https://youtrack.jetbrains.com/issue/KT-4107).
 
-#### How to enable the data objects preview
+#### 如何启用数据对象预览版
 
 To try this feature out, enable the `-language-version 1.9` compiler option. In a Gradle project, you can do so by
 adding the following to your build.gradle(.kts):
@@ -314,7 +314,7 @@ tasks
 </tab>
 </tabs>
 
-### Preview of lifting restriction on secondary constructors with bodies in inline classes
+### 取消对内联类中有函数体的次构造函数限制的预览版
 
 > This feature is [Experimental](components-stability.md#stability-levels-explained). It may be dropped or changed at any time.
 > Opt-in is required (see details below). Use it only for evaluation purposes. We would appreciate your feedback on it in [YouTrack](https://kotl.in/issue).
@@ -349,7 +349,7 @@ value class Person(private val fullName: String) {
 }
 ```
 
-#### How to enable secondary constructors with bodies
+#### 如何启用带函数体的次构造函数
 
 To try this feature out, enable the `-language-version 1.9` compiler option. In a Gradle project, you can do so by
 adding the following to your `build.gradle(.kts)`:
@@ -390,7 +390,7 @@ the default in Kotlin 1.9.0.
 
 Learn more about the development of Kotlin inline classes in [this KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-classes.md).
 
-## New Kotlin/Wasm target
+## 新增 Kotlin/Wasm 目标平台
 
 Kotlin/Wasm (Kotlin WebAssembly) goes [Experimental](components-stability.md#stability-levels-explained) in this preview
 release. The Kotlin team finds [WebAssembly](https://webassembly.org/) to be a promising technology and wants to find
@@ -399,7 +399,7 @@ better ways for you to use it and get all of the benefits of Kotlin.
 WebAssembly binary format is independent of the platform because it runs using its own virtual machine. Almost all modern
 browsers already support WebAssembly 1.0. To set up the environment to run WebAssembly, you only need to enable an
 experimental garbage collection mode that Kotlin/Wasm targets. You can find detailed instructions
-here: [How to enable Kotlin/Wasm](#how-to-enable-kotlin-wasm).
+here: [How to enable Kotlin/Wasm](#如何启用-kotlin-wasm).
 
 We want to highlight the following advantages of the new Kotlin/Wasm target:
 
@@ -415,7 +415,7 @@ IDE support will be added in future releases.
 
 [Learn more about Kotlin/Wasm in this YouTube video](https://www.youtube.com/watch?v=-pqz9sKXatw).
 
-### How to enable Kotlin/Wasm
+### 如何启用 Kotlin/Wasm
 
 To enable and test Kotlin/Wasm, update your `build.gradle.kts` file:
 
@@ -481,7 +481,7 @@ Run the application with the `--js-flags=--experimental-wasm-gc` command line ar
 </tab>
 </tabs>
 
-### Leave your feedback on Kotlin/Wasm
+### 反馈你对 Kotlin/Wasm 的意见
 
 We would appreciate any feedback you may have!
 
@@ -491,10 +491,10 @@ We would appreciate any feedback you may have!
 
 ## Kotlin/JVM
 
-Kotlin 1.8.20 introduces a [preview of Java synthetic property references](#preview-of-java-synthetic-property-references)
+Kotlin 1.8.20 introduces a [preview of Java synthetic property references](#java-合成属性引用预览版)
 and [support for the JVM IR backend in the kapt stub generating task by default](#在-kapt-存根生成任务中支持-jvm-ir-后端).
 
-### Preview of Java synthetic property references
+### Java 合成属性引用预览版
 
 > This feature is [Experimental](components-stability.md#stability-levels-explained).
 > It may be dropped or changed at any time. Use it only for evaluation purposes.
@@ -538,7 +538,7 @@ val persons = listOf(Person("Jack", 11), Person("Sofie", 12), Person("Peter", 11
 ```
 {validate="false"}
 
-#### How to enable Java synthetic property references
+#### 如何启用 Java 合成属性引用
 
 To try this feature out, enable the `-language-version 1.9` compiler option.
 In a Gradle project, you can do so by adding the following to your `build.gradle(.kts)`:
@@ -582,15 +582,15 @@ We would appreciate your feedback on this feature in [YouTrack](https://youtrack
 
 Kotlin 1.8.20 includes changes to supported Kotlin/Native targets, interoperability with Objective-C, and improvements to the CocoaPods Gradle plugin, among other updates:
 
-* [Update for Kotlin/Native targets](#update-for-kotlin-native-targets)
-* [Deprecation of the legacy memory manager](#deprecation-of-the-legacy-memory-manager)
-* [Support for Objective-C headers with @import directives](#support-for-objective-c-headers-with-import-directives)
-* [Support for link-only mode in the Cocoapods Gradle plugin](#support-for-the-link-only-mode-in-cocoapods-gradle-plugin)
-* [Import Objective-C extensions as class members in UIKit](#import-objective-c-extensions-as-class-members-in-uikit)
-* [Reimplementation of compiler cache management in the compiler](#reimplementation-of-compiler-cache-management-in-the-compiler)
-* [Deprecation of `useLibraries()` in Cocoapods Gradle plugin](#deprecation-of-uselibraries-in-cocoapods-gradle-plugin)
+* [Kotlin/Native 目标更新](#kotlin-native-目标更新)
+* [弃用旧版内存管理器](#弃用旧版内存管理器)
+* [使用 @import 指令支持 Objective-C 头文件](#使用-import-指令支持-objective-c-头文件)
+* [Cocoapods Gradle 插件支持仅链接模式](#cocoapods-gradle-插件支持仅链接模式)
+* [将 Objective-C 扩展作为 UIKit 的类成员导入](#将-objective-c-扩展作为-uikit-的类成员导入)
+* [重新实现编译器中的编译器缓存管理](#重新实现编译器中的编译器缓存管理)
+* [Cocoapods Gradle 插件弃用 `useLibraries()`](#cocoapods-gradle-插件弃用-uselibraries)
   
-### Update for Kotlin/Native targets
+### Kotlin/Native 目标更新
   
 The Kotlin team decided to revisit the list of targets supported by Kotlin/Native, split them into tiers,
 and deprecate some of them starting with Kotlin 1.8.20. See the [Kotlin/Native target support](native-target-support.md)
@@ -618,7 +618,7 @@ like [kotlinx.coroutines](coroutines-guide.md).
 Check out our [blog post](https://blog.jetbrains.com/kotlin/2023/02/update-regarding-kotlin-native-targets/) to learn
 more about the reasons for these changes.
 
-### Deprecation of the legacy memory manager
+### 弃用旧版内存管理器
 
 Starting with 1.8.20, the legacy memory manager is deprecated and will be removed in 1.9.20.
 The [new memory manager](native-memory-manager.md) was enabled by default in 1.7.20 and has been receiving further
@@ -628,9 +628,9 @@ If you're still using the legacy memory manager, remove the `kotlin.native.binar
 your `gradle.properties` and follow our [Migration guide](native-migration-guide.md) to make the necessary changes.
 
 The new memory manager doesn't support the `wasm32` target. This target is also
-deprecated [starting with this release](#update-for-kotlin-native-targets) and will be removed in 1.9.20.
+deprecated [starting with this release](#kotlin-native-目标更新) and will be removed in 1.9.20.
 
-### Support for Objective-C headers with @import directives
+### 使用 @import 指令支持 Objective-C 头文件
 
 > This feature is [Experimental](components-stability.md#stability-levels-explained).
 > It may be dropped or changed at any time. Opt-in is required (see details below). Use it only for evaluation purposes.
@@ -667,7 +667,7 @@ kotlin {
 
 This was a [highly awaited feature](https://youtrack.jetbrains.com/issue/KT-39120), and we welcome your feedback about it in [YouTrack](https://kotl.in/issue) to help us make it the default in future releases.
 
-### Support for the link-only mode in Cocoapods Gradle plugin
+### Cocoapods Gradle 插件支持仅链接模式
 
 With Kotlin 1.8.20, you can use Pod dependencies with dynamic frameworks only for linking,
 without generating C-interop bindings. This may come in handy when C-interop bindings are already generated.
@@ -695,7 +695,7 @@ cocoapods {
 >
 {type="note"}
 
-### Import Objective-C extensions as class members in UIKit
+### 将 Objective-C 扩展作为 UIKit 的类成员导入
 
 Since Xcode 14.1, some methods from Objective-C classes have been moved to category members. That led to the generation
 of a different Kotlin API, and these methods were imported as Kotlin extensions instead of methods.
@@ -709,7 +709,7 @@ any other method.
 
 If everything goes well, we're planning to enable this behavior by default for all of the Objective-C classes.
 
-### Reimplementation of compiler cache management in the compiler
+### 重新实现编译器中的编译器缓存管理
 
 To speed up the evolution of compiler caches, we've moved compiler cache management from the Kotlin Gradle plugin to the
 Kotlin/Native compiler. This unblocks work on several important improvements, including those to do with compilation
@@ -720,7 +720,7 @@ Gradle property.
 
 We would appreciate your feedback on this [in YouTrack](https://kotl.in/issue).
 
-### Deprecation of useLibraries() in Cocoapods Gradle plugin
+### Cocoapods Gradle 插件弃用 useLibraries()
 
 Kotlin 1.8.20 starts the deprecation cycle of the `useLibraries()` function used in
 the [CocoaPods integration](native-cocoapods.md) for static libraries.
@@ -734,15 +734,15 @@ plugin, we've decided to deprecate it.
 
 For more information on frameworks and XCFrameworks, see [Build final native binaries](multiplatform-build-native-binaries.md).
 
-## Kotlin Multiplatform
+## Kotlin 多平台
 
 Kotlin 1.8.20 strives to improve the developer experience with the following updates to Kotlin Multiplatform:
 
-* [New approach for setting up source set hierarchy](#new-approach-to-source-set-hierarchy)
-* [Preview of Gradle composite builds support in Kotlin Multiplatform](#preview-of-gradle-composite-builds-support-in-kotlin-multiplatform)
-* [Improved output for Gradle errors in Xcode](#improved-output-for-gradle-errors-in-xcode)
+* [设置源代码集分层结构的新方式](#源代码集分层结构的新方式)
+* [Kotlin 多平台支持 Gradle 复合构建预览版](#kotlin-多平台支持-gradle-复合构建预览版)
+* [改进了 Xcode 中 Gradle 错误的输出](#改进了-xcode-中-gradle-错误的输出)
 
-### New approach to source set hierarchy
+### 源代码集分层结构的新方式
 
 > The new approach to source set hierarchy is [Experimental](components-stability.md#stability-levels-explained).
 > It may be changed in future Kotlin releases without prior notice. Opt-in is required (see the details below).
@@ -751,12 +751,12 @@ Kotlin 1.8.20 strives to improve the developer experience with the following upd
 {type="warning"}
 
 Kotlin 1.8.20 offers a new way of setting up source set hierarchy in your multiplatform projects − the default target
-hierarchy. The new approach is intended to replace target shortcuts like `ios`, which have their [design flaws](#why-replace-shortcuts).
+hierarchy. The new approach is intended to replace target shortcuts like `ios`, which have their [design flaws](#为什么要更换快捷方式).
 
 The idea behind the default target hierarchy is simple: You explicitly declare all the targets to which your project
 compiles, and the Kotlin Gradle plugin automatically creates shared source sets based on the specified targets.
 
-#### Set up your project
+#### 搭建项目
 
 Consider this example of a simple multiplatform mobile app:
 
@@ -794,7 +794,7 @@ You can find the complete scheme for the default target hierarchy in the [docume
 >
 {type="note"}
 
-#### Why replace shortcuts {initial-collapse-state="collapsed"}
+#### 为什么要更换快捷方式 {initial-collapse-state="collapsed"}
 
 Creating source sets hierarchies can be verbose, error-prone, and unfriendly for beginners. Our previous solution was to
 introduce shortcuts like `ios` that create a part of the hierarchy for you. However, working with shortcuts proved they
@@ -820,19 +820,19 @@ participates in dependency resolution. Since this set is fixed, changes to the d
 Gradle plugin should cause significantly less distress in the ecosystem, and it will be much easier to provide
 tooling-assisted migration.
 
-#### How to enable the default hierarchy
+#### 如何启用默认分层结构
 
 This new feature is [Experimental](components-stability.md#stability-levels-explained). For Kotlin Gradle build scripts,
 you need to opt in with `@OptIn(ExperimentalKotlinGradlePluginApi::class)`.
 
 For more information, see [Hierarchical project structure](multiplatform-hierarchy.md#default-hierarchy).
 
-#### Leave feedback
+#### 反馈意见
 
 This is a significant change to multiplatform projects. We would appreciate your [feedback](https://kotl.in/issue) to
 help make it even better.
 
-### Preview of Gradle composite builds support in Kotlin Multiplatform
+### Kotlin 多平台支持 Gradle 复合构建预览版
 
 > This feature has been supported in Gradle builds since Kotlin Gradle Plugin 1.8.20. For IDE support, use IntelliJ IDEA
 > 2023.1 Beta 2 (231.8109.2) or later and the Kotlin Gradle plugin 1.8.20 with any Kotlin IDE plugin.
@@ -854,7 +854,7 @@ This option enables a preview of the new import mode. Besides the support for co
 import experience in multiplatform projects, as we've included major bug fixes and improvements to make the import more
 stable.
 
-#### Known issues
+#### 已知问题
 
 It's still a preview version that needs further stabilization, and you might encounter some issues with import along the
 way. Here are some known issues we're planning to fix before the final release of Kotlin 1.8.20:
@@ -867,7 +867,7 @@ way. Here are some known issues we're planning to fix before the final release o
 We encourage you to try it out and submit all reports on [YouTrack](https://kotl.in/issue) to help us make it the
 default in Kotlin 1.9.0.
 
-### Improved output for Gradle errors in Xcode
+### 改进了 Xcode 中 Gradle 错误的输出
 
 If you had issues building your multiplatform projects in Xcode, you might have encountered a "Command
 PhaseScriptExecution failed with a nonzero exit code" error.
@@ -877,7 +877,7 @@ Starting with Kotlin 1.8.20-RC2, Xcode can parse the output from the Kotlin/Nati
 Gradle build fails, you'll see an additional error message from the root cause exception in Xcode. In most cases,
 it'll help to identify the root problem.
 
-![Improved output for Gradle errors in Xcode](xcode-gradle-output.png){width=700}
+![改进了 Xcode 中 Gradle 错误的输出](xcode-gradle-output.png){width=700}
 
 The new behavior is enabled by default for the standard Gradle tasks for Xcode integration,
 like `embedAndSignAppleFrameworkForXcode` that can connect the iOS framework from your multiplatform project to the iOS
@@ -888,11 +888,11 @@ application in Xcode. It can also be enabled (or disabled) with the `kotlin.nati
 Kotlin 1.8.20 changes the ways TypeScript definitions can be generated. It also includes a change designed to improve
 your debugging experience:
 
-* [Removal of Dukat integration from the Gradle plugin](#removal-of-dukat-integration-from-gradle-plugin)
-* [Kotlin variable and function names in source maps](#kotlin-variable-and-function-names-in-source-maps)
-* [Opt in for generation of TypeScript definition files](#opt-in-for-generation-of-typescript-definition-files)
+* [删除了 Gradle plugin 中的 Dukat 集成](#删除了-gradle-plugin-中的-dukat-集成)
+* [源代码映射中的 Kotlin 变量与函数名称](#源代码映射中的-kotlin-变量与函数名称)
+* [选择加入 TypeScript 定义文件的生成](#选择加入-typescript-定义文件的生成)
 
-### Removal of Dukat integration from Gradle plugin
+### 删除了 Gradle plugin 中的 Dukat 集成
 
 In Kotlin 1.8.20, we've removed our [Experimental](components-stability.md#stability-levels-explained) Dukat
 integration from the Kotlin/JavaScript Gradle plugin. The Dukat integration supported the automatic conversion of
@@ -906,7 +906,7 @@ our [Dukat tool](https://github.com/Kotlin/dukat) instead.
 >
 {type="warning"}
 
-### Kotlin variable and function names in source maps
+### 源代码映射中的 Kotlin 变量与函数名称
 
 To help with debugging, we've introduced the ability to add the names that you declared in Kotlin code for variables and
 functions into your source maps. Prior to 1.8.20, these weren't available in source maps, so in the debugger, you always
@@ -938,7 +938,7 @@ map to improve the readability of your stack trace. Happy debugging!
 >
 {type="warning"}
 
-### Opt in for generation of TypeScript definition files
+### 选择加入 TypeScript 定义文件的生成
 
 Previously, if you had a project that produced executable files (`binaries.executable()`), the Kotlin/JS IR compiler
 collected any top-level declarations marked with `@JsExport` and automatically generated TypeScript definitions in
@@ -973,14 +973,14 @@ keep in mind that you might encounter deprecation warnings or some new Gradle fe
 
 This version brings the following changes:
 
-* [New alignment of Gradle plugins' versions](#new-gradle-plugins-versions-alignment)
-* [New JVM incremental compilation by default in Gradle](#new-jvm-incremental-compilation-by-default-in-gradle)
-* [Precise backup of compilation tasks' outputs](#precise-backup-of-compilation-tasks-outputs)
-* [Lazy Kotlin/JVM task creation for all Gradle versions](#lazy-kotlin-jvm-tasks-creation-for-all-gradle-versions)
-* [Non-default location of compile tasks' destinationDirectory](#non-default-location-of-compile-tasks-destinationdirectory)
-* [Ability to opt-out from reporting compiler arguments to an HTTP statistics service](#ability-to-opt-out-from-reporting-compiler-arguments-to-an-http-statistics-service)
+* [新的 Gradle 插件版本对齐](#新的-gradle-插件版本对齐)
+* [Gradle 中默认新版 JVM 增量编译](#gradle-中默认新版-jvm-增量编译)
+* [精确备份编译任务的输出](#精确备份编译任务的输出)
+* [为所有 Gradle 版本惰性创建 Kotlin/JVM 任务](#为所有-gradle-版本惰性创建-kotlin-jvm-任务)
+* [编译任务的 destinationDirectory 支持非默认位置](#编译任务的-destinationdirectory-支持非默认位置)
+* [能够选择退出向 HTTP 统计服务报告编译器参数](#能够选择退出向-http-统计服务报告编译器参数)
 
-### New Gradle plugins versions alignment
+### 新的 Gradle 插件版本对齐
 
 Gradle provides a way to ensure dependencies that must work together are always [aligned in their versions](https://docs.gradle.org/current/userguide/dependency_version_alignment.html#aligning_versions_natively_with_gradle).
 Kotlin 1.8.20 adopted this approach, too. It works by default so that you don't need to change or update your
@@ -988,7 +988,7 @@ configuration to enable it. In addition, you no longer need to resort to [this w
 
 We would appreciate your feedback on this feature in [YouTrack](https://youtrack.jetbrains.com/issue/KT-54691).
 
-### New JVM incremental compilation by default in Gradle
+### Gradle 中默认新版 JVM 增量编译
 
 The new approach to incremental compilation, which [has been available since Kotlin 1.7.0](whatsnew17.md#增量编译的新方式),
 now works by default. You no longer need to specify `kotlin.incremental.useClasspathSnapshot=true` in your `gradle.properties` to
@@ -996,7 +996,7 @@ enable it.
 
 We would appreciate your feedback on this. You can [file an issue](https://kotl.in/issue) in YouTrack.
 
-### Precise backup of compilation tasks' outputs
+### 精确备份编译任务的输出
 
 > Precise backup of compilation tasks' outputs is [Experimental](components-stability.md#stability-levels-explained).
 > To use it, add `kotlin.compiler.preciseCompilationResultsBackup=true` to `gradle.properties`.
@@ -1017,7 +1017,7 @@ Gradle property to the `gradle.properties` file:
 kotlin.compiler.preciseCompilationResultsBackup=true
 ```
 
-#### Example of precise backup usage in JetBrains {initial-collapse-state="collapsed"}
+#### JetBrains 精确备份使用示例 {initial-collapse-state="collapsed"}
 
 In the following charts, you can see examples of using precise backup compared to full backup:
 
@@ -1043,7 +1043,7 @@ different results. The factors affecting performance include but are not limited
 * Which modules are affected by the changes and how big these modules are.
 * Whether the changes are ABI or non-ABI.
 
-#### Evaluating optimizations with build reports {initial-collapse-state="collapsed"}
+#### 使用构建报告评估优化 {initial-collapse-state="collapsed"}
 
 To estimate the impact of the optimization on your computer for your project and your scenarios,
 you can use [Kotlin build reports](gradle-compilation-and-caches.md#build-reports).
@@ -1081,13 +1081,13 @@ Time metrics:
 <...>
 ```
 
-### Lazy Kotlin/JVM tasks creation for all Gradle versions
+### 为所有 Gradle 版本惰性创建 Kotlin/JVM 任务
 
 For projects with the "org.jetbrains.kotlin.gradle.jvm" plugin on Gradle 7.3+, the Kotlin Gradle plugin no longer
 creates and configures the task "compileKotlin" eagerly. On lower Gradle versions, it simply registers all the tasks and
 doesn't configure them on a dry run. The same behavior is now in place when using Gradle 7.3+.
 
-### Non-default location of compile tasks' destinationDirectory
+### 编译任务的 destinationDirectory 支持非默认位置
 
 Update your build script with some additional code if you do one of the following:
 
@@ -1104,7 +1104,7 @@ tasks.jar(type: Jar) {
 }
 ```
 
-### Ability to opt-out from reporting compiler arguments to an HTTP statistics service
+### 能够选择退出向 HTTP 统计服务报告编译器参数
 
 You can now control whether the Kotlin Gradle plugin should include compiler arguments in HTTP [build reports](gradle-compilation-and-caches.md#build-reports).
 Sometimes, you might not need the plugin to report these arguments.  If a project contains many modules,
@@ -1113,16 +1113,16 @@ In your `gradle.properties` or `local.properties`, use the `kotlin.build.report.
 
 We would appreciate your feedback on this feature on [YouTrack](https://youtrack.jetbrains.com/issue/KT-55323/).
 
-## Standard library
+## 标准库
 
 Kotlin 1.8.20 adds a variety of new features, including some that are particularly useful for Kotlin/Native development:
 
-* [Support for the AutoCloseable interface](#support-for-the-autocloseable-interface)
-* [Support for Base64 encoding and decoding](#support-for-base64-encoding)
-* [Support for @Volatile in Kotlin/Native](#support-for-volatile-in-kotlin-native)
-* [Bug fix for stack overflow when using regex in Kotlin/Native](#bug-fix-for-stack-overflow-when-using-regex-in-kotlin-native)
+* [支持 AutoCloseable 接口](#支持-autocloseable-接口)
+* [支持 Base64 编解码](#支持-base64-编码)
+* [在 Kotlin/Native 平台支持 @Volatile](#在-kotlin-native-平台支持-volatile)
+* [修复在 Kotlin/Native 中使用正则表达式时的栈溢出错误](#修复在-kotlin-native-中使用正则表达式时的栈溢出错误)
 
-### Support for the AutoCloseable interface
+### 支持 AutoCloseable 接口
 
 > The new `AutoCloseable` interface is [Experimental](components-stability.md#stability-levels-explained), and to use it
 > you need to opt in with `@OptIn(ExperimentalStdlibApi::class)` or the compiler argument `-opt-in=kotlin.ExperimentalStdlibApi`.
@@ -1175,7 +1175,7 @@ fun writeBooksTo(writer: XMLWriter) {
 ```
 {validate="false"}
 
-### Support for Base64 encoding
+### 支持 Base64 编码
 
 > The new encoding and decoding functionality is [Experimental](components-stability.md#stability-levels-explained),
 > and to use it, you need to opt in with `@OptIn(ExperimentalEncodingApi::class)` or the
@@ -1221,7 +1221,7 @@ result to a provided `Appendable` type object.
 In Kotlin/JVM, we've also added the extension functions `encodingWith()` and `decodingWith()` to enable you to perform
 Base64 encoding and decoding with input and output streams.
 
-### Support for @Volatile in Kotlin/Native
+### 在 Kotlin/Native 平台支持 @Volatile
 
 > `@Volatile` in Kotlin/Native is [Experimental](components-stability.md#stability-levels-explained).
 > It may be dropped or changed at any time. Opt-in is required (see details below).
@@ -1239,7 +1239,7 @@ If you use it in Kotlin/Native, it is ignored, which can lead to errors.
 In 1.8.20, we've introduced a common annotation, `kotlin.concurrent.Volatile`, that you can use in both the JVM and
 Kotlin/Native.
 
-#### How to enable
+#### 如何启用
 
 To try this feature out, opt in with `@OptIn(ExperimentalStdlibApi)` and enable the `-language-version 1.9` compiler
 option. In a Gradle project, you can do so by adding the following to your build.gradle(.kts):
@@ -1274,29 +1274,29 @@ tasks
 </tab>
 </tabs>
 
-### Bug fix for stack overflow when using regex in Kotlin/Native
+### 修复在 Kotlin/Native 中使用正则表达式时的栈溢出错误
 
 In previous versions of Kotlin, a crash could occur if your regex input contained a large number of characters,
 even when the regex pattern was very simple. In 1.8.20, this issue has been resolved.
 For more information, see [KT-46211](https://youtrack.jetbrains.com/issue/KT-46211).
 
-## Serialization updates
+## 序列化更新
 
-Kotlin 1.8.20 comes with [Alpha support for the Kotlin K2 compiler](#prototype-serialization-compiler-plugin-for-kotlin-k2-compiler)
-and [prohibits serializer customization via companion object](#prohibit-implicit-serializer-customization-via-companion-object).
+Kotlin 1.8.20 comes with [Alpha support for the Kotlin K2 compiler](#kotlin-k2-编译器的原型序列化编译器插件)
+and [prohibits serializer customization via companion object](#禁止通过伴生对象进行隐式序列化器定制).
 
-### Prototype serialization compiler plugin for Kotlin K2 compiler
+### Kotlin K2 编译器的原型序列化编译器插件
 
 > Support for the serialization compiler plugin for K2 is in
 > [Alpha](components-stability.md#stability-levels-explained). To use it,
-> [enable the Kotlin K2 compiler](#how-to-enable-the-kotlin-k2-compiler).
+> [enable the Kotlin K2 compiler](#如何启用-kotlin-k2-编译器).
 >
 {type="warning"}
 
 Starting with 1.8.20, the serialization compiler plugin works with the Kotlin K2 compiler.
-Give it a try and [share your feedback with us](#leave-your-feedback-on-the-new-k2-compiler)!
+Give it a try and [share your feedback with us](#反馈你对新版-k2-编译器的意见)!
 
-### Prohibit implicit serializer customization via companion object
+### 禁止通过伴生对象进行隐式序列化器定制
 
 Currently, it is possible to declare a class as serializable with the `@Serializable` annotation and, at the same time,
 declare a custom serializer with the `@Serializer` annotation on its companion object.
@@ -1345,7 +1345,7 @@ more information, see our [YouTrack ticket](https://youtrack.jetbrains.com/issue
 >
 {type="tip"}
 
-## Documentation updates
+## 文档更新
 
 The Kotlin documentation has received some notable changes:
 
@@ -1355,9 +1355,9 @@ The Kotlin documentation has received some notable changes:
   library.
 * [CocoaPods integration](native-cocoapods.md) – set up an environment to work with CocoaPods.
 
-## Install Kotlin 1.8.20
+## 安装 Kotlin 1.8.20
 
-### Check the IDE version
+### 核对 IDE 版本
 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 2022.2 and 2022.3 automatically suggest updating the Kotlin
 plugin to version 1.8.20. IntelliJ IDEA 2023.1 has the built-in Kotlin plugin 1.8.20.
@@ -1367,7 +1367,7 @@ Android Studio Flamingo (222) and Giraffe (223) will support Kotlin 1.8.20 in th
 The new command-line compiler is available for download on
 the [GitHub release page](https://github.com/JetBrains/kotlin/releases/tag/v1.8.20).
 
-### Configure Gradle settings
+### 配置 Gradle 设置
 
 To download Kotlin artifacts and dependencies properly, update your `settings.gradle(.kts)` file
 to use the Maven Central repository:

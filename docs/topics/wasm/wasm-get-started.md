@@ -132,6 +132,6 @@ You'll see the text "Hello, you're using Kotlin/Wasm!":
 
 ![Kotlin/Wasm application in browser](wasm-browser-updated-app.png){width=500}
 
-## What's next?
+## 下一步做什么？
 
 [Explore the Kotlin/Wasm interoperability with JavaScript](wasm-js-interop.md)

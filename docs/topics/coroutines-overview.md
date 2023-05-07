@@ -31,7 +31,7 @@ Kotlin 以一种灵活的方式解决了这个问题，在语言层面提供了[
 - [使用 IntelliJ IDEA 调试 Kotlin Flow——教程](debug-flow-with-idea.md)
 - [在 Android 上测试 Kotlin 协程](https://developer.android.com/kotlin/coroutines/test)
 
-## 样例项目
+## 范例项目
 
 - [kotlinx.coroutines 示例与源代码](https://github.com/Kotlin/kotlin-coroutines/tree/master/examples)
 - [KotlinConf 应用](https://github.com/JetBrains/kotlinconf-app)

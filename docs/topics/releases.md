@@ -26,7 +26,7 @@ libraries if necessary.
 
 If you are migrating to the new feature release, Kotlin plugin's migration tools will help you with the migration.
 
-## IDE support
+## IDE 支持
 
 The IDE support for the latest version of the language is available for the following versions of IntelliJ IDEA and Android Studio:
 * IntelliJ IDEA:

@@ -392,7 +392,7 @@ objects from functional tests.
 
 Starting from Kotlin 1.8.20, the Kotlin Gradle plugin registers all tasks and doesn't configure them on a dry run.
 
-#### Non-default location of compile tasks' destinationDirectory
+#### 编译任务的 destinationDirectory 支持非默认位置
 
 If you override the Kotlin/JVM `KotlinJvmCompile`/`KotlinCompile` task's `destinationDirectory` location, 
 update your build script. You need to explicitly add `sourceSets.main.kotlin.classesDirectories` to `sourceSets.main.outputs` 

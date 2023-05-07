@@ -4,7 +4,7 @@
 可以在 Kotlin 中创建类型安全、静态类型的构建器。
 
 类型安全的构建器可以创建基于 Kotlin 的适用于<!--
--->采用半声明方式构建复杂层次数据结构领域专用语言（DSL）。以下是构建器的样例应用场景：
+-->采用半声明方式构建复杂层次数据结构领域专用语言（DSL）。以下是构建器的范例应用场景：
 
 * 使用 Kotlin 代码生成标记语言，例如 [HTML](https://github.com/Kotlin/kotlinx.html) 或 XML
 * 为 Web 服务器配置路由：[Ktor](https://ktor.kotlincn.net/servers/features/routing.html#routing-tree)

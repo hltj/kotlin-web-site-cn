@@ -52,7 +52,7 @@ We would appreciate your feedback on this feature in [YouTrack](https://youtrack
 Learn how the new approach to incremental compilation is implemented under the hood in
 [this blog post](https://blog.jetbrains.com/kotlin/2022/07/a-new-approach-to-incremental-compilation-in-kotlin/).
 
-### Precise backup of compilation tasks' outputs
+### 精确备份编译任务的输出
 
 > Precise backup of compilation tasks' outputs is [Experimental](components-stability.md#stability-levels-explained).
 > We would appreciate your feedback on it in [YouTrack](https://kotl.in/issue/experimental-ic-optimizations).
@@ -96,7 +96,7 @@ different results. The factors affecting performance include but are not limited
 * Which modules are affected by the changes and how big these modules are.
 * Whether the changes are ABI or non-ABI.
 
-#### Evaluating optimizations with build reports {initial-collapse-state="collapsed"}
+#### 使用构建报告评估优化 {initial-collapse-state="collapsed"}
 
 To estimate the impact of the optimization on your computer for your project and your scenarios, you can use 
 [Kotlin build reports](#build-reports). Enable reports in text file format by adding the following property 

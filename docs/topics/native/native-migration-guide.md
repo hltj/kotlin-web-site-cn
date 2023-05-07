@@ -87,7 +87,7 @@ To ignore deprecation warnings, do one of the following:
 
 See [Opt-in requirements](opt-in-requirements.md) for more details.
 
-## What's next
+## 下一步做什么
 
 * [Learn about the new memory manager](native-memory-manager.md)
 * [Configure integration with iOS](native-ios-integration.md)

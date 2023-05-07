@@ -150,7 +150,7 @@ To get started, first download and install the latest version of [IntelliJ IDEA]
 
    The test execution failed.
 
-## What's next
+## 下一步做什么
 
 Once you've finished your first test, you can:
 

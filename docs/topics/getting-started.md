@@ -85,15 +85,15 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 
    * 从头开始，[使用项目向导创建一个基本的跨平台移动端应用程序](multiplatform-mobile-create-first-app.md)。
    * 如果有既有的 Android 应用程序并想让它跨平台，那么请完成[让 Android 应用程序也能用于 iOS](multiplatform-mobile-integrate-in-existing-app.md) 教程。
-   * 如果更倾向于现实生活的示例，那么请克隆并使用既有项目，例如[使用 Ktor 和 SQLDelight 创建多平台应用](multiplatform-mobile-ktor-sqldelight.md)教程中的网络与数据存储项目或者任意[样例项目](multiplatform-mobile-samples.md)。
+   * 如果更倾向于现实生活的示例，那么请克隆并使用既有项目，例如[使用 Ktor 和 SQLDelight 创建多平台应用](multiplatform-mobile-ktor-sqldelight.md)教程中的网络与数据存储项目或者任意[范例项目](multiplatform-mobile-samples.md)。
 
 3. **使用一整套多平台库** 在共享模块中只实现一次所需的业务逻辑。 了解关于[添加依赖项](multiplatform-add-dependencies.md)的更多信息。
 
    |库|详情|
    |--|----| 
    | Ktor | [文档](https://ktor.io/docs/client.html)| 
-   | Serialization | [文档](serialization.md)及[样例](multiplatform-mobile-ktor-sqldelight.md#create-an-application-data-model)|
-   | Coroutines | [文档](coroutines-guide.md)及[样例](coroutines-and-channels.md)|
+   | Serialization | [文档](serialization.md)及[范例](multiplatform-mobile-ktor-sqldelight.md#create-an-application-data-model)|
+   | Coroutines | [文档](coroutines-guide.md)及[范例](coroutines-and-channels.md)|
    | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)|
    | SQLDelight | 第三方库。 [文档](https://cashapp.github.io/sqldelight/)|
    
@@ -103,7 +103,7 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 
 4. **了解关于 Kotlin 多平台移动端的更多信息：**
    * 了解关于 [Kotlin 多平台](multiplatform-get-started.md)的更多信息。
-   * 浏览 [GitHub 上的样例](multiplatform-mobile-samples.md)。
+   * 浏览 [GitHub 上的范例](multiplatform-mobile-samples.md)。
    * [创建并发布多平台库](multiplatform-library.md)。
    * 了解 [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)、 [VMWare](https://kotlinlang.org/lp/multiplatform/case-studies/vmware/)、 [Yandex](https://kotlinlang.org/lp/multiplatform/case-studies/yandex/) 以及[许多其他公司](https://kotlinlang.org/lp/multiplatform/case-studies/)如何使用 Kotlin 多平台。
 
@@ -127,8 +127,8 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
 1. **创建第一个前端 web 应用程序：**
 
    * 从头开始，[使用 IntelliJ IDEA 项目向导创建一个基本的浏览器应用程序](js-project-setup.md)。
-   * 如果倾向于更健壮的示例，那么请完成[使用 React 与 Kotlin/JS 构建 web 应用程序](js-react.md)教程。 它有一个可以作为你自己项目良好起点的样例项目，其中包含有用的片段和模板。
-   * 查看 [Kotlin/JS 样例](js-samples.md)列表，了解关于如何使用 Kotlin/JS 的更多看法。
+   * 如果倾向于更健壮的示例，那么请完成[使用 React 与 Kotlin/JS 构建 web 应用程序](js-react.md)教程。 它有一个可以作为你自己项目良好起点的范例项目，其中包含有用的片段和模板。
+   * 查看 [Kotlin/JS 范例](js-samples.md)列表，了解关于如何使用 Kotlin/JS 的更多看法。
 
 2. **在应用程序中使用库。** 了解[添加依赖项](js-project-setup.md#依赖项)的更多信息。  
     
@@ -186,8 +186,8 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
 
    |库|详情                                                                                                 |
    |---------------------------------------------------------------------------------------------------------|-------|
-   | Ktor | [文档](https://ktor.io/docs/)与[样例](multiplatform-full-stack-app.md#build-the-backend)。 | 
-   | Serialization | [文档](serialization.md)与[样例](multiplatform-full-stack-app.md)。                                 |
+   | Ktor | [文档](https://ktor.io/docs/)与[范例](multiplatform-full-stack-app.md#build-the-backend)。 | 
+   | Serialization | [文档](serialization.md)与[范例](multiplatform-full-stack-app.md)。                                 |
    | Coroutines | [文档](coroutines-overview.md)。                                                                         |
    | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)。                                              |
 

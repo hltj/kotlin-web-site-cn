@@ -333,7 +333,7 @@ dependencies {
 }
 ```
 
-## 源代码集层次结构的编译项 
+## 源代码集分层结构的编译项 
 
 Kotlin can build a [source set hierarchy](multiplatform-share-on-platforms.md#对相似平台共享代码) with the `dependsOn` relation.
 

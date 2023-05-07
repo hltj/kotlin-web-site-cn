@@ -257,7 +257,7 @@ import YandexMK.YMKPoint
 import YandexMK.YMKDistance
 ```
 
-### Support for Objective-C headers with @import directives
+### 使用 @import 指令支持 Objective-C 头文件
 
 > This feature is [Experimental](components-stability.md#stability-levels-explained).
 > It may be dropped or changed at any time. Use it only for evaluation purposes.

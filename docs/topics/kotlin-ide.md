@@ -35,13 +35,13 @@ You can install the [Kotlin plugin manually from the Eclipse Marketplace](https:
 The Kotlin team manages the development and contribution process to the Kotlin plugin for Eclipse.
 If you want to contribute to the plugin, send a pull request to the [Kotlin for Eclipse repository on GitHub](https://github.com/Kotlin/kotlin-eclipse).
 
-## Compatibility with the Kotlin language versions
+## 与 Kotlin 语言版本的兼容性
 
 For IntelliJ IDEA and Android Studio the Kotlin plugin is bundled with each IDE release.
 When the new Kotlin version is released, these IDEs will suggest updating Kotlin to the latest version automatically.
-See the latest supported language version for each IDE in [Kotlin releases](releases.md#ide-support).
+See the latest supported language version for each IDE in [Kotlin releases](releases.md#ide-支持).
 
-## Other IDEs support
+## 其他 IDE 支持
 
 JetBrains doesn't provide the Kotlin plugin for other IDEs.
 However, some of the other IDEs and source editors, such as Eclipse, Visual Studio Code, and Atom, have their own Kotlin plugins supported by the Kotlin community.

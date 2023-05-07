@@ -166,7 +166,7 @@ kotlin.native.binary.memoryModel=strict
 If you encounter issues with migrating from the legacy memory manager, or you want to temporarily support both the current
 and legacy memory managers, see our recommendations in the [migration guide](native-migration-guide.md).
 
-## What's next
+## 下一步做什么
 
 * [Migrate from the legacy memory manager](native-migration-guide.md)
 * [Configure integration with iOS](native-ios-integration.md)
