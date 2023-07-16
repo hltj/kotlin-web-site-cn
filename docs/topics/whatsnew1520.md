@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.5.20 的新特性)
 
-_[发布日期：2021-06-24](releases.md#版本发布详情)_
+_[发布于：2021-06-24](releases.md#版本发布详情)_
 
 Kotlin 1.5.20 has fixes for issues discovered in the new features of 1.5.0, and it also includes various tooling improvements.
 

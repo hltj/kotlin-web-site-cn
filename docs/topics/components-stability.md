@@ -71,7 +71,7 @@ We make sure to document precisely which subcomponents are not stable. We also d
 | Kotlin/JS（基于 IR）                                  | 已稳定       | 1.8                      |                                                                                   |
 | Kotlin/Native 运行时                                  | Beta         | 1.3                      |                                                                                   |
 | Kotlin/Native 新版内存管理器                          | Beta         | 1.7.20                   |                                                                                   |
-| klib 二进制                                           | Alpha        | 1.4                      |                                                                                   |
+| klib 二进制                                           | Beta         | 1.9.0                     |                                                                                   |
 | Kotlin 多平台                                         | Beta         | 1.7.20                   |                                                                                   |
 | Kotlin/Native 与 C 语言及 Objective C 互操作          | Beta         | 1.3                      |                                                                                   |
 | CocoaPods 集成                                        | Beta         | 1.3                      |                                                                                   |

@@ -15,23 +15,11 @@ We provide *all-open* plugin support both for Gradle and Maven with the complete
 
 ## Gradle
 
-Add the plugin artifact to the build script dependencies and apply the plugin:
-
-```groovy
-buildscript {
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
-    }
-}
-
-apply plugin: "kotlin-allopen"
-```
-
-As an alternative, you can enable it using the `plugins` block:
+Add the plugin using Gradle's plugins DSL:
 
 ```groovy
 plugins {
-  id "org.jetbrains.kotlin.plugin.allopen" version "%kotlinVersion%"
+    id "org.jetbrains.kotlin.plugin.allopen" version "%kotlinVersion%"
 }
 ```
 
@@ -100,23 +88,11 @@ Please refer to the [Gradle](#gradle) section for the detailed information about
 If you use Spring, you can enable the *kotlin-spring* compiler plugin instead of specifying Spring annotations manually.
 The kotlin-spring is a wrapper on top of all-open, and it behaves exactly the same way.
 
-As with all-open, add the plugin to the build script dependencies:
-
-```groovy
-buildscript {
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
-    }
-}
-
-apply plugin: "kotlin-spring" // instead of "kotlin-allopen"
-```
-
-Or using the Gradle plugins DSL:
+Add the plugin using Gradle's plugins DSL:
 
 ```groovy
 plugins {
-  id "org.jetbrains.kotlin.plugin.spring" version "%kotlinVersion%"
+    id "org.jetbrains.kotlin.plugin.spring" version "%kotlinVersion%"
 }
 ```
 

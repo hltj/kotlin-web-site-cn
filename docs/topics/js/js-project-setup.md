@@ -1,26 +1,20 @@
 [//]: # (title: 搭建 Kotlin/JS 项目)
 
 Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理其 Kotlin/JS 项目，我们提供了
-`kotlin.js` Gradle 插件，该插件提供项目配置工具以及用以自动执行 JavaScript
+`kotlin.multiplatform` Gradle 插件，该插件提供项目配置工具以及用以自动执行 JavaScript
 开发中常用的例程的帮助程序。例如，该插件会在后台下载 [Yarn](https://yarnpkg.com/) 软件包管理器，
 用于管理 [npm](https://www.npmjs.com/) 依赖，并且可以<!--
 -->使用 [webpack](https://webpack.js.org/) 由 Kotlin 项目构建 JavaScript 包。
 可以直接从 Gradle 构建文件中对依赖项管理与配置进行很大程度的调整，并且可以选择覆盖自动生成的配置以实现完全控制。
 
-要在 IntelliJ IDEA 中创建 Kotlin/JS 项目，请转至 **文件(File) \| 新建(New) \| 项目(Project)**。
-然后选择 **Kotlin Multiplatform** 并选择最适合的 Kotlin/JS 目标。不要忘记选择构建脚本的语言：Groovy 或 Kotlin。
-
-![New project wizard](js-new-project-1.png){width=700}
-
-另外，还可以在 Gradle 构建文件
-（`build.gradle(.kts)`）中手动将 `org.jetbrains.kotlin.js` 插件应用于 Gradle 项目。
+You can apply the `org.jetbrains.kotlin.multiplatform` plugin to a Gradle project manually in the `build.gradle(.kts)` file:
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
 plugins {
-     kotlin("js") version "%kotlinVersion%"
+    kotlin("multiplatform") version "%kotlinVersion%"
 }
 ```
 
@@ -29,7 +23,7 @@ plugins {
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.js' version '%kotlinVersion%'
+    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
 }
 ```
 
@@ -112,7 +106,7 @@ dependencies {
 </tab>
 </tabs>
 
-Kotlin/JS Gradle 插件还支持构建脚本的 `kotlin` 部分中特定
+Kotlin Multiplatform Gradle 插件还支持构建脚本的 `kotlin` 部分中特定
 `sourceSets` 的依赖声明。
 
 <tabs group="build-script">
@@ -120,8 +114,12 @@ Kotlin/JS Gradle 插件还支持构建脚本的 `kotlin` 部分中特定
 
 ```kotlin
 kotlin {
-    sourceSets["main"].dependencies {
-        implementation("org.example.myproject", "1.1.0")
+    sourceSets {
+      val jsMain by getting {
+            dependencies {
+                implementation("org.example.myproject:1.1.0")
+            }
+        }
     }
 }
 ```
@@ -132,7 +130,7 @@ kotlin {
 ```groovy
 kotlin {
     sourceSets {
-        main {
+        jsMain {
             dependencies {
                 implementation 'org.example.myproject:1.1.0'
             }
@@ -152,18 +150,26 @@ kotlin {
 
 ### Kotlin 标准库
 
-所有 Kotlin/JS 项目都必须依赖 Kotlin/JS [标准库](https://kotlinlang.org/api/latest/jvm/stdlib/)，
-并且是隐含的——无需添加任何构件。
+The dependencies on the [standard library](https://kotlinlang.org/api/latest/jvm/stdlib/index.html)
+is added automatically. The version of the standard library is the same as the version of the `kotlin-multiplatform` plugin.
 
-如果你的项目包含用 Kotlin 编写的测试，那么还应该添加
-[kotlin.test](https://kotlinlang.org/api/latest/kotlin.test/) 依赖项：
+The [`kotlin.test`](https://kotlinlang.org/api/latest/kotlin.test/) API is available for multiplatform tests.
+When you create a multiplatform project, the Project Wizard automatically adds test dependencies to all the source sets.
+
+If you didn't use the Project Wizard to create your project, you can add the dependencies manually:
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
-dependencies {
-    testImplementation(kotlin("test-js"))
+kotlin {
+    sourceSets {
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test")) // This brings all the platform dependencies automatically
+            }
+        }
+    }
 }
 ```
 
@@ -171,8 +177,14 @@ dependencies {
 <tab title="Groovy" group-key="groovy">
 
 ```groovy
-dependencies {
-    testImplementation 'org.jetbrains.kotlin:kotlin-test-js'
+kotlin {
+    sourceSets {
+        commonTest {
+            dependencies {
+                implementation kotlin("test") // This brings all the platform dependencies automatically
+            }
+        }
+    }
 }
 ```
 
@@ -184,7 +196,7 @@ dependencies {
 在 JavaScript 中，管理依赖项最常用的方式是 [npm](https://www.npmjs.com/)。
 它提供了最大的 JavaScript 模块公开存储库。
 
-Kotlin/JS Gradle 插件使你可以在 Gradle 构建脚本中声明 npm 依赖项，类似于<!--
+Kotlin Multiplatform Gradle 插件使你可以在 Gradle 构建脚本中声明 npm 依赖项，类似于<!--
 -->声明其他依赖项的方式。
 
 要声明 npm 依赖项，将其名称与版本传给依赖项声明内的 `npm()` 函数。
@@ -213,7 +225,7 @@ dependencies {
 
 The plugin uses the [Yarn](https://classic.yarnpkg.com/zh-Hans/) package manager to download and install NPM dependencies.
 It works out of the box without additional configuration, but you can tune it to specific needs.
-Learn how to [configure Yarn in Kotlin/JS Gradle plugin](#yarn).
+Learn how to [configure Yarn in Kotlin Multiplatform Gradle plugin](#yarn).
 
 除了常规的依赖之外，还有三种依赖类型可以从 Gradle DSL 中使用。
 要了解更多关于哪种类型的依赖最适合使用的信息，请查看 npm 链接的官方文档：
@@ -226,7 +238,7 @@ Learn how to [configure Yarn in Kotlin/JS Gradle plugin](#yarn).
 
 ## run 任务
 
-Kotlin/JS 插件提供了一个 `run` 任务，使你无需额外配置即可运行纯 Kotlin/JS 项目。
+Kotlin/JS 插件提供了一个 `jsRun` 任务，使你无需额外配置即可运行纯 Kotlin/JS 项目。
 
 对于运行 Kotlin/JS 项目在浏览器中，此任务是 `browserDevelopmentRun` 任务的别名（在
 Kotlin 多平台项目中也可用）。它使用 [webpack-dev-server](https://webpack.js.org/configuration/dev-server/)
@@ -234,33 +246,32 @@ Kotlin 多平台项目中也可用）。它使用 [webpack-dev-server](https://w
 如果要自定义 `webpack-dev-server` 的配置，例如更改服务器端口，
 请使用 [webpack 配置文件](#webpack-绑定)。
 
-对于运行针对 Node.js 的 Kotlin/JS项目，`run` 任务是 `nodeRun` 任务的别名（在
-Kotlin 多平台项目中也可用）。 
+对于运行针对 Node.js 的 Kotlin/JS项目， use the `jsRun` task that is an alias for the `nodeRun` task.
 
-要运行项目，请执行标准生命周期的 `run` 任务，或对应的别名：
+要运行项目，请执行标准生命周期的 `jsRun` 任务，或对应的别名：
 
 ```bash
-./gradlew run
+./gradlew jsRun
 ```
 
 要在对源文件进行更改后自动触发应用程序的重新构建，请使用
 Gradle [持续构建（continuous build）](https://docs.gradle.org/current/userguide/command_line_interface.html#sec:continuous_build)特性：
 
 ```bash
-./gradlew run --continuous
+./gradlew jsRun --continuous
 ```
 
 或者 
 
 ```bash
-./gradlew run -t
+./gradlew jsRun -t
 ```
 
 一旦项目构建成功，`webpack-dev-server` 将自动刷新浏览器页面。
 
 ## test 任务
 
-Kotlin/JS Gradle 插件会自动为项目设置测试基础结构。对于浏览器项目，它将下载并安装具有其他必需依赖的
+Kotlin Multiplatform Gradle 插件会自动为项目设置测试基础结构。对于浏览器项目，它将下载并安装具有其他必需依赖的
 [Karma](https://karma-runner.github.io/)  测试运行程序；
 对于 Node.js 项目，使用 [Mocha](https://mochajs.org/) 测试框架。
 
@@ -305,7 +316,7 @@ kotlin.js.browser.karma.browsers=firefox,safari
 
 This approach allows you to define a list of browsers for all modules, and then add specific browsers in the build scripts of particular modules. 
 
-请注意，Kotlin/JS Gradle 插件不会自动安装这些浏览器，只会使用<!--
+请注意，Kotlin Multiplatform Gradle 插件不会自动安装这些浏览器，只会使用<!--
 -->其执行环境中可用的浏览器。例如，如果要在持续集成服务器上执行 Kotlin/JS 测试，
 请确保已安装要测试的浏览器。
 
@@ -347,7 +358,7 @@ kotlin {
 
 ### Karma 配置
 
-Kotlin/JS Gradle 插件会在构建时自动生成 Karma 配置文件，其中包括<!--
+Kotlin Multiplatform Gradle 插件会在构建时自动生成 Karma 配置文件，其中包括<!--
 -->来自 `build.gradle(.kts)` 中的 [`kotlin.js.browser.testTask.useKarma` 块](#test-任务)的设置。可以在
 `build/js/packages/projectName-test/karma.conf.js` 中找到该文件。
 要调整 Karma 使用的配置，请将其他配置文件放在项目根目录中下<!--
@@ -377,7 +388,7 @@ kotlin.js.webpack.major.version=4
 最常见的 webpack 调整可以直接通过 Gradle 构建文件中的
 `kotlin.js.browser.webpackTask` 配置块进行：
 - `outputFileName`——Webpacked 输出文件的名称。
-  在执行 webpack 任务后，它将在 `<projectDir>/build/distributions/` 中生成。默认值为项目名称。
+  在执行 webpack 任务后，它将在 `<projectDir>/build/dist/<targetName>` 中生成。默认值为项目名称。
 - `output.libraryTarget`——Webpacked 输出的模块系统。
   了解有关 [Kotlin/JS 项目可用的模块系统](js-modules.md)的更多信息。默认值为 `umd`。
   
@@ -393,7 +404,7 @@ webpackTask {
 
 ### webpack configuration file 
 
-Kotlin/JS Gradle 插件会在构建时自动生成一个标准的 webpack 配置文件。
+Kotlin Multiplatform Gradle 插件会在构建时自动生成一个标准的 webpack 配置文件。
 该文件在 `build/js/packages/projectName/webpack.config.js`。
 
 如果要进一步调整 webpack 配置，请将其他配置文件放在项目根目录中名为 `webpack.config.d` 的目录中。
@@ -429,7 +440,7 @@ config.module.rules.push({
 在准备生产用项目时，请使用 `browserProductionWebpack` 任务。
 
  执行任一任务分别获得用于开发或生产的构件。除非[另有规定](#分发目标目录)，
- 否则生成的文件将在 `build/distributions` 中可用。
+ 否则生成的文件将在 `build/dist` 中可用。
 
 ```bash
 ./gradlew browserProductionWebpack
@@ -439,7 +450,7 @@ config.module.rules.push({
 
 ## CSS
 
-Kotlin/JS Gradle 插件还支持 webpack 的 [CSS](https://webpack.js.org/loaders/css-loader/) 与
+Kotlin Multiplatform Gradle 插件还支持 webpack 的 [CSS](https://webpack.js.org/loaders/css-loader/) 与
 [style](https://webpack.js.org/loaders/style-loader/) 加载器。尽管可以通过直接修改用于构建项目的
 [Webpack 配置文件](#webpack-绑定)来更改所有选项，但是最常<!--
 -->用的设置可以直接从 `build.gradle(.kts)` 文件获得。
@@ -495,7 +506,7 @@ browser {
     }
     testTask {
         useKarma {
-            // . . .
+            // ...
             webpackConfig.cssSupport {
                 enabled.set(true)
             }
@@ -639,7 +650,7 @@ rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlu
 >
 {type="note"}
 
-The `kotlin-js-store` directory in the project root is automatically generated by the Kotlin/JS Gradle plugin to hold 
+The `kotlin-js-store` directory in the project root is automatically generated by the Kotlin Multiplatform Gradle plugin to hold 
 the `yarn.lock` file, which is necessary for version locking. The lockfile is entirely managed by the Yarn plugin 
 and gets updated during the execution of the `kotlinNpmInstall` Gradle task.
 
@@ -737,7 +748,7 @@ rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlu
 >
 {type="note"}
 
-To reduce the likelihood of executing malicious code from compromised npm packages, the Kotlin/JS Gradle plugin prevents 
+To reduce the likelihood of executing malicious code from compromised npm packages, the Kotlin Multiplatform Gradle plugin prevents 
 the execution of [lifecycle scripts](https://docs.npmjs.com/cli/v8/using-npm/scripts#life-cycle-scripts)
 during the installation of npm dependencies by default.
 
@@ -766,7 +777,11 @@ rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlu
 
 ## 分发目标目录
 
-默认情况下，Kotlin/JS 项目构建的结果位于项目根目录下的 `/build/distribution` 目录中。
+默认情况下，Kotlin/JS 项目构建的结果位于项目根目录下的 `/build/dist/<targetName>/<binaryName>` 目录中。
+
+> Prior to Kotlin 1.9.0, the default distribution target directory was `/build/distributions`.
+>
+{type="note" }
 
 要为项目分发文件设置另一个位置，请在构建脚本中的 `browser` 里添加 `distribution`，然后<!-- 
 -->为它的 `directory` 属性赋值。
@@ -820,14 +835,14 @@ js {
 }
 ```
 
-请注意，这不会影响 `build/distributions` 中的 Webpack 输出。
+请注意，这不会影响 `build/dist` 中的 Webpack 输出。
 
 ## package.json 定制
 
 `package.json` 文件保存 JavaScript 包的元数据。流行的软件仓库（例如 npm）要求所有已发布的软件包都具有此类文件。
 软件仓库使用该文件来跟踪与管理软件包发布。
 
-Kotlin/JS Gradle 插件会在构建期间自动为 Kotlin/JS 项目生成 `package.json`。
+Kotlin Multiplatform Gradle 插件会在构建期间自动为 Kotlin/JS 项目生成 `package.json`。
 默认情况下，该文件包含基本数据：名称、版本、许可证与依赖项，以及一些其他软件包属性。
 
 除了基本的软件包属性外，`package.json` 还可定义 JavaScript 项目的行为方式，

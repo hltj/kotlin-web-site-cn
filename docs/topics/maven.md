@@ -89,6 +89,8 @@ If you need to configure an execution, you need to specify its ID. You can find 
 > 
 {type="note"}
 
+<!-- The following header is used in the Mari link service. If you wish to change it here, change the link there too -->
+
 ## 同时编译 Kotlin 与 Java 源代码
 
 要编译混合代码应用程序，必须在 Java 编译器之前调用 Kotlin 编译器。
@@ -291,10 +293,10 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 | 名称 | 属性名 | 描述 | 可能的值                      | 默认值 |
 |------|---------------|-------------|---------------------------|--------------|
-| `jvmTarget` | `kotlin.compiler.jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.8"、 "9"、 "10"、……、 "18" | "%defaultJvmTargetVersion%" |
+| `jvmTarget` | `kotlin.compiler.jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.8"、 "9"、 "10"、……、 "20" | "%defaultJvmTargetVersion%" |
 | `jdkHome` | `kotlin.compiler.jdkHome` | Include a custom JDK from the specified location into the classpath instead of the default JAVA_HOME |                           | &nbsp; |
 
-### JS 特有的属性
+### Attributes specific to JS
 
 | 名称 | 属性名 | 描述 | 可能的值 | 默认值 |
 |------|---------------|-------------|-----------------|--------------|

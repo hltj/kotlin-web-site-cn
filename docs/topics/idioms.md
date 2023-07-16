@@ -95,7 +95,7 @@ for ((k, v) in map) {
 
 ```kotlin
 for (i in 1..100) { …… }  // 闭区间：包含 100
-for (i in 1 until 100) { …… } // 半开区间：不包含 100
+for (i in 1..< 100) { …… } // 左开右闭区间：不包含 100
 for (x in 2..10 step 2) { …… }
 for (x in 10 downTo 1) { …… }
 (1..10).forEach { …… }
@@ -159,11 +159,13 @@ println(files?.size) // 如果 files 不是 null，那么输出其大小（size�
 ```kotlin
 val files = File("Test").listFiles()
 
+// For simple fallback values:
 println(files?.size ?: "empty") // 如果 files 为 null，那么输出“empty”
 
-// To calculate the fallback value in a code block, use `run`
+// To calculate a more complicated fallback value in a code block, use `run`
 val filesSize = files?.size ?: run { 
-    return someSize 
+    val someSize = getSomeSize()
+    someSize * 2
 }
 println(filesSize)
 ```

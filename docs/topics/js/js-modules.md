@@ -77,7 +77,7 @@ compileKotlinJs.compilerOptions.moduleKind = org.jetbrains.kotlin.gradle.dsl.JsM
 kotlin {
     js {
          useCommonJs()
-         // . . .
+         // ...
     }
 }
 ```

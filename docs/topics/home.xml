@@ -34,7 +34,7 @@
         <custom-groups>
             <group type="cards" display="wide">
                 <title>新特性</title>
-                <a href="whatsnew1820.md" description="最新特性： Kotlin K2 编译器更新、标准库中的 AutoCloseable 接口与 Base64 编码、 默认启用新版 JVM 增量编译、 新版 Kotlin/Wasm 编译器后端">Kotlin 1.8.20 的新特性</a>
+                <a href="whatsnew19.md" description="Latest features: Kotlin K2 for JVM is in Beta, new language features, preview of Gradle configuration cache in Kotlin Multiplatform, changes to Android target support in Kotlin Multiplatform, preview of custom memory allocator in Kotlin/Native.">Kotlin 1.9.0 的新特性</a>
                 <a href="roadmap.md" description="Kotlin 开发的未来计划">Kotlin 公开路线图</a>
             </group>
             <group type="cards">
@@ -48,7 +48,7 @@
                     <title>学习 Kotlin</title>
                     <a href="https://play.kotlinlang.org/byExample/overview" description="Simple annotated examples for the Kotlin syntax">例学 Kotlin</a>
                     <a href="koans.md" description="Programming exercises to get you familiar with Kotlin">心印</a>
-                    <a href="https://hyperskill.org/join/fromdocstoJetSalesStat?redirect=true&amp;next=/tracks/18" description="Kotlin Basics track on JetBrains Academy">JetBrains 学院</a>
+                    <a href="https://hyperskill.org/tracks?category=4&amp;utm_source=jbkotlin_hs&amp;utm_medium=referral&amp;utm_campaign=kotlinlang-docs&amp;utm_content=button_1&amp;utm_term=22.03.23" description="Kotlin Core track by JetBrains Academy">JetBrains 学院</a>
                     <a href="advent-of-code.md" description="Code puzzles in idiomatic Kotlin">Advent of Code</a>
                     <a href="https://play.kotlinlang.org/hands-on/overview" description="Complete long-form tutorials to fully grasp a technology">动手实践教程</a>
                     <a href="edu-tools-learner.md"

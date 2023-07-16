@@ -1,4 +1,4 @@
-[//]: # (title: 内联类)
+[//]: # (title: Inline value classes)
 
 有时候，业务逻辑需要围绕某种类型创建包装器。然而，由于额外的堆内存分配问题，
 它会引入运行时的性能开销。此外，如果被包装的类型是原生类型，性能的损失是很糟糕的，
@@ -21,10 +21,6 @@ To declare an inline class for the JVM backend, use the `value` modifier along w
 value class Password(private val s: String)
 ```
 
-> The `inline` modifier for inline classes is deprecated.
-> 
-{type="warning"}
-
 内联类必须含有唯一的一个属性在主构造函数中初始化。在运行时，
 将使用这个唯一属性来表示内联类的实例（关于运行时的内部表达请参阅[下文](#表示方式)）：
 
@@ -40,29 +36,39 @@ val securePassword = Password("Don't try this in production")
 ## 成员
 
 内联类支持普通类中的一些功能。特别是，内联类可以声明属性与函数,
-and have the `init` block：
+have an `init` block and [secondary constructors](classes.md#secondary-constructors):
 
 ```kotlin
 @JvmInline
-value class Name(val s: String) {
+value class Person(private val fullName: String) {
     init {
-        require(s.length > 0) { }
+        require(fullName.isNotEmpty()) {
+            "Full name shouldn't be empty"
+        }
+    }
+
+    constructor(firstName: String, lastName: String) : this("$firstName $lastName") {
+        require(lastName.isNotBlank()) {
+            "Last name shouldn't be empty"
+        }
     }
 
     val length: Int
-        get() = s.length
+        get() = fullName.length
 
     fun greet() {
-        println("Hello, $s")
+        println("Hello, $fullName")
     }
 }
 
 fun main() {
-    val name = Name("Kotlin")
-    name.greet() // `greet` 方法会作为一个静态方法被调用
-    println(name.length) // 属性的 get 方法会作为一个静态方法被调用
+    val name1 = Person("Kotlin", "Mascot")
+    val name2 = Person("Kodee")
+    name1.greet() // greet` 函数会作为一个静态方法被调用
+    println(name2.length) // 属性的 getter 会作为一个静态方法被调用
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.9"}
 
 Inline class properties cannot have [backing fields](properties.md#幕后字段). They can only have simple computable 
 properties (no `lateinit`/delegated properties).
@@ -140,11 +146,6 @@ value class UserId<T>(val value: T)
 fun compute(s: UserId<String>) {} // compiler generates fun compute-<hashcode>(s: Any?)
 ```
 
-> Generic inline classes is an [Experimental](components-stability.md) feature.
-> It may be dropped or changed at any time. Opt-in is required with the `-language-version 1.8` compiler option.
->
-{type="warning"}
-
 ### 名字修饰
 
 由于内联类被编译为其基础类型，因此可能会导致各种模糊的错误，例如意想不到的平台签名冲突：
@@ -160,13 +161,8 @@ fun compute(x: Int) { }
 fun compute(x: UInt) { }
 ```
 
-为了缓解这种问题，一般会通过在函数名后面拼接一些稳定的哈希码来重命名函数。
+为了缓解这种问题，一般会通过在函数名后面拼接一些稳定的哈希码来*修饰*函数名。
 因此，`fun compute(x: UInt)` 将会被表示为 `public final void compute-<hashcode>(int x)`，以此来解决冲突的问题。
-
-> The mangling scheme has been changed in Kotlin 1.4.30. 
-> Use the `-Xuse-14-inline-classes-mangling-scheme` compiler flag to force the compiler to use the old 1.4.0 mangling scheme and preserve binary compatibility.
->
-{type="note"}
 
 ### Calling from Java code
 

@@ -115,9 +115,9 @@ fun main() {
 ## 可空接收者
 
 注意可以为可空的接收者类型定义扩展。这样的扩展可以在对象变量上调用，
-即使其值为 null，并且可以在函数体内检测 `this == null`。
+即使其值为 null。 If the receiver is `null`, then `this` is also `null`. So when defining an extension with a nullable receiver type, we recommend performing a `this == null` check inside the function body to avoid compiler errors.
 
-这样，就可以在没有检测 null 的时候调用 Kotlin 中的toString()：检测发生在扩展函数的内部：
+可以在没有检测 null 的时候调用 Kotlin 中的 `toString()`：检测已发生在扩展函数的内部：
 
 ```kotlin
 fun Any?.toString(): String {

@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.8.0 的新特性)
 
-_[发布日期：2022-12-28](releases.md#版本发布详情)_
+_[发布于：2022-12-28](releases.md#版本发布详情)_
 
 The Kotlin 1.8.0 release is out and here are some of its biggest highlights:
 
@@ -174,7 +174,7 @@ the other is for `AndroidSourceSets`:
 * They have different semantics: Kotlin's `androidTest` belongs to the `unitTest` type, whereas Android's belongs to
   the `integrationTest` type.
 * They create a confusing `SourceDirectories` layout, as
-  `src/androidTest/java` has a `UnitTest` and `src/androidTest/kotlin` has an `InstrumentedTest`.
+  `src/androidTest/kotlin` has a `UnitTest` and `src/androidTest/java` has an `InstrumentedTest`.
 * Both `KotlinSourceSets` and `AndroidSourceSets` use a similar naming schema for Gradle configurations, so the resulting
   configurations of `androidTest` for both Kotlin's and Android's source sets are the same: `androidTestImplementation`,
   `androidTestApi`, `androidTestRuntimeOnly`, and `androidTestCompileOnly`.

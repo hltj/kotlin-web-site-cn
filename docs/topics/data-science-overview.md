@@ -14,6 +14,15 @@ Kotlin 可能是处理数据的绝佳选择：
 Kotlin 与这些工具集成在一起，可以帮助探索数据、与同事<!--
 -->共享发现或建立数据科学和机器学习技能。
 
+### Kotlin Notebook
+
+The [Kotlin Notebook](https://plugins.jetbrains.com/plugin/16340-kotlin-notebook) is a plugin for IntelliJ IDEA that
+allows you to create notebooks in Kotlin. It leverages the [Kotlin kernel](#jupyter-kotlin-kernel) for executing the
+cells and harnesses the powerful Kotlin IDE support to offer real-time code insights. It is now the preferred method
+for working with Kotlin notebooks. Be sure to check out our [blog post](https://blog.jetbrains.com/kotlin/2023/07/introducing-kotlin-notebook/) about it.
+
+![Kotlin Notebook](kotlin-notebook.png){width=800}
+
 ### Jupyter Kotlin 内核
 
 Jupyter Notebook 是一个开源 Web 应用程序，

@@ -11,21 +11,33 @@
 
     <toc-element toc-title="Get started" id="getting-started.md"/>
 
+    <toc-element toc-title="Take Kotlin tour" id="kotlin-tour-welcome.md">
+        <toc-element id="kotlin-tour-hello-world.md" hidden="true"/>
+        <toc-element id="kotlin-tour-basic-types.md" hidden="true"/>
+        <toc-element id="kotlin-tour-collections.md" hidden="true"/>
+        <toc-element id="kotlin-tour-control-flow.md" hidden="true"/>
+        <toc-element id="kotlin-tour-functions.md" hidden="true"/>
+        <toc-element id="kotlin-tour-classes.md" hidden="true"/>
+        <toc-element id="kotlin-tour-null-safety.md" hidden="true"/>
+    </toc-element>
+
     <toc-element toc-title="Kotlin overview">
         <toc-element id="multiplatform.md"/>
         <toc-element id="server-overview.md" accepts-web-file-names="httpservlets.html"/>
         <toc-element id="android-overview.md"/>
-        <toc-element id="js-overview.md"/>
+        <toc-element id="wasm-overview.md"/>
         <toc-element id="native-overview.md"/>
+        <toc-element id="js-overview.md"/>
         <toc-element id="data-science-overview.md"/>
         <toc-element id="competitive-programming.md"/>
     </toc-element>
 
     <toc-element toc-title="What's new in Kotlin">
-        <toc-element id="whatsnew1820.md" toc-title="Kotlin 1.8.20" accepts-web-file-names="whatsnew.html"/>
-        <toc-element id="whatsnew18.md" toc-title="Kotlin 1.8.0"/>
-        <toc-element id="whatsnew-eap.md" toc-title="Kotlin 1.8.20-RC2"  hidden="true"/>
+        <toc-element id="whatsnew19.md" toc-title="Kotlin 1.9.0" accepts-web-file-names="whatsnew.html"/>
+        <toc-element id="whatsnew1820.md" toc-title="Kotlin 1.8.20"/>
+        <toc-element id="whatsnew-eap.md" toc-title="Kotlin 1.9.0-RC" hidden="true"/>
         <toc-element toc-title="Earlier versions">
+            <toc-element id="whatsnew18.md" toc-title="Kotlin 1.8.0"/>
             <toc-element id="whatsnew1720.md" toc-title="Kotlin 1.7.20"/>
             <toc-element id="whatsnew17.md" toc-title="Kotlin 1.7.0"/>
             <toc-element id="whatsnew1620.md" toc-title="Kotlin 1.6.20"/>
@@ -129,7 +141,7 @@
             <toc-element id="multiplatform-get-started.md" accepts-web-file-names="building-mpp-with-gradle.html,intro-to-kotlin-mpp.html,mpp-intro.html,mpp-get-started.html,multiplatform-tutorials.html"/>
             <toc-element id="multiplatform-discover-project.md" accepts-web-file-names="mpp-discover-project.html"/>
             <toc-element id="multiplatform-set-up-targets.md" toc-title="Set up targets manually" accepts-web-file-names="mpp-set-up-targets.html"/>
-            <toc-element id="multiplatform-full-stack-app.md"/>
+            <toc-element id="multiplatform-full-stack-app.md" hidden="true"/>
         </toc-element>
         <toc-element toc-title="Creating multiplatform libraries">
             <toc-element id="multiplatform-library.md" accepts-web-file-names="working-with-klib.html,multiplatform-create-lib.html,mpp-create-lib.html"/>
@@ -139,6 +151,7 @@
             <toc-element id="multiplatform-share-on-platforms.md" accepts-web-file-names="mpp-share-on-platforms.html"/>
             <toc-element id="multiplatform-connect-to-apis.md" accepts-web-file-names="platform-specific-declarations.html,mpp-connect-to-apis.html,kmm-connect-to-platform-specific-apis.html,multiplatform-mobile-connect-to-platform-specific-apis.html"/>
             <toc-element id="multiplatform-hierarchy.md" accepts-web-file-names="migrating-multiplatform-project-to-14.html"/>
+            <toc-element id="multiplatform-android-layout.md"/>
         </toc-element>
         <toc-element toc-title="Adding dependencies">
             <toc-element id="multiplatform-add-dependencies.md" toc-title="On multiplatform libraries" accepts-web-file-names="mpp-add-dependencies.html"/>
@@ -148,7 +161,7 @@
         <toc-element id="multiplatform-run-tests.md" toc-title="Running tests" accepts-web-file-names="mpp-run-tests.html"/>
         <toc-element toc-title="Artifact compilation">
             <toc-element id="multiplatform-configure-compilations.md" accepts-web-file-names="mpp-configure-compilations.html"/>
-            <toc-element toc-title="[Experimental DSL] Build final native binaries" id="multiplatform-native-artifacts.md"/>
+            <toc-element toc-title="[Experimental DSL] Build final native binaries" id="multiplatform-native-artifacts.md" hidden="true"/>
             <toc-element id="multiplatform-build-native-binaries.md" accepts-web-file-names="mpp-build-native-binaries.html"/>
         </toc-element>
         <toc-element id="multiplatform-dsl-reference.md" accepts-web-file-names="mpp-dsl-reference.html,mpp-supported-platforms.html,multiplatform-supported-platforms.html"/>
@@ -238,18 +251,19 @@
         </toc-element>
         <toc-element toc-title="WebAssembly (Wasm)">
             <toc-element id="wasm-get-started.md"/>
+            <toc-element id="wasm-libraries.md" toc-title="Add dependencies on Kotlin libraries"/>
             <toc-element id="wasm-js-interop.md"/>
         </toc-element>
 
         <toc-element toc-title="JavaScript">
 
-            <toc-element id="js-get-started.md" accepts-web-file-names="setting-up.html,kotlin-to-javascript.html,create-library-js.html,getting-started-with-intellij-idea.html,getting-started-with-maven.html"/>
-            <toc-element id="js-project-setup.md" accepts-web-file-names="command-line-library-js.html,working-with-javascript.html"/>
+            <toc-element id="js-project-setup.md" accepts-web-file-names="command-line-library-js.html,working-with-javascript.html,setting-up.html,kotlin-to-javascript.html,create-library-js.html,getting-started-with-intellij-idea.html,getting-started-with-maven.html"/>
             <toc-element id="running-kotlin-js.md"/>
             <toc-element id="dev-server-continuous-compilation.md"/>
             <toc-element id="js-debugging.md" accepts-web-file-names="debugging-kotlin-in-browser.html"/>
             <toc-element id="js-running-tests.md" accepts-web-file-names="running-tests.html"/>
             <toc-element id="javascript-dce.md"/>
+            <!-- The following page is used in the Mari link service. If you wish to change it here, change the link there too -->
             <toc-element toc-title="IR compiler" id="js-ir-compiler.md"/>
             <toc-element id="js-ir-migration.md"/>
 
@@ -263,8 +277,7 @@
                 <toc-element id="js-reflection.md"/>
                 <toc-element id="typesafe-html-dsl.md"/>
             </toc-element>
-            <toc-element id="js-samples.md" toc-title="Samples"/>
-            <toc-element id="js-react.md"/>
+            <toc-element id="js-react.md" hidden="true"/>
         </toc-element>
 
         <toc-element toc-title="Scripting">
@@ -378,7 +391,7 @@
         <toc-element id="learning-materials-overview.md" toc-title="Overview"/>
         <toc-element href="https://play.kotlinlang.org/byExample/overview" toc-title="Kotlin by example"/>
         <toc-element id="koans.md"/>
-        <toc-element href="https://hyperskill.org/join/fromdocstoJetSalesStat?redirect=true&amp;next=/tracks/18" toc-title="Kotlin Basics track"/>
+        <toc-element href="https://hyperskill.org/tracks?category=4&amp;utm_source=jbkotlin_hs&amp;utm_medium=referral&amp;utm_campaign=kotlinlang-docs&amp;utm_content=button_1&amp;utm_term=22.03.23" toc-title="Kotlin Core track"/>
         <toc-element id="kotlin-tips.md"/>
         <toc-element id="books.md"/>
         <toc-element id="advent-of-code.md" toc-title="Advent of Code puzzles"/>
@@ -401,6 +414,7 @@
             <toc-element id="components-stability.md"/>
             <toc-element id="components-stability-pre-1.4.md"/>
             <toc-element toc-title="Compatibility">
+                <toc-element id="compatibility-guide-19.md"/>
                 <toc-element id="compatibility-guide-18.md"/>
                 <toc-element id="compatibility-guide-1720.md"/>
                 <toc-element id="compatibility-guide-17.md"/>

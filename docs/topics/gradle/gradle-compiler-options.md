@@ -43,14 +43,53 @@ tasks.named('compileKotlin', org.jetbrains.kotlin.gradle.tasks.KotlinCompilation
 </tab>
 </tabs>
 
-当面向 JVM 时，对于生产代码这些任务称为 `compileKotlin` 而对于<!--
--->测试代码称为 `compileTestKotlin`。对于自定义源代码集（source set）这些任务命名遵循 `compile＜Name＞Kotlin` 模式。
+### 面向 JVM
 
-Android 项目中的任务名称包含[构建变体](https://developer.android.com/studio/build/build-variants.html) 名称，并遵循 `compile<BuildVariant>Kotlin` 的模式，例如 `compileDebugKotlin` 或 `compileReleaseUnitTestKotlin`。
+JVM 编译任我游任务名为 `compileKotlin` 而对于<!--
+-->测试代码名为 `compileTestKotlin`。对于自定义源代码集（source set）这些任务命名遵循 `compile＜Name＞Kotlin` 模式。
 
-当面向 JavaScript 时，任务 `compileKotlinJs` 用于生产代码，而 `compileTestKotlinJs` 用于测试代码，以及对于自定义源代码集称为 `compile＜Name＞KotlinJs`。
+Android 项目中的任务名称包含[构建变体](https://developer.android.com/studio/build/build-variants.html)<!--
+-->名称，并遵循 `compile<BuildVariant>Kotlin` 的模式，例如 `compileDebugKotlin` 或 `compileReleaseUnitTestKotlin`。
 
-要配置单个任务，请使用其名称。示例：
+For both the JVM and Android projects, it's possible to define options using the project Kotlin extension DSL:
+
+<tabs group="build-script">
+<tab title="Kotlin" group-key="kotlin">
+
+```kotlin
+kotlin {
+    compilerOptions {
+        apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9)
+    }
+}
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+```groovy
+kotlin {
+    compilerOptions {
+        apiVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9
+    }
+}
+```
+
+</tab>
+</tabs>
+
+Some important details to be aware of:
+
+* The `android.kotlinOptions` and `kotlin.compilerOptions` configuration blocks override each other. The last (lowest) block takes effect.
+* `kotlin.compilerOptions` configures every Kotlin compilation task in the project.
+* You can override the configuration applied by `kotlin.compilerOptions` DSL using the `tasks.named<KotlinJvmCompile>("compileKotlin") { }`
+  (or `tasks.withType<KotlinJvmCompile>().configureEach { }`) approach.
+
+### 面向 JavaScript
+
+JavaScript 编译任务名为 `compileKotlinJs` 用于生产代码，`compileTestKotlinJs` 用于测试代码，以及对于自定义源代码集称为 `compile＜Name＞KotlinJs`。
+
+要配置单个任务，请使用其名称：
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -85,6 +124,8 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 
 相应地，为 JS 与公共目标使用类型 `Kotlin2JsCompile` 与 `KotlinCompileCommon`。
 
+### For all Kotlin compilation tasks
+
 也可以在项目中配置所有 Kotlin 编译任务：
 
 <tabs group="build-script">
@@ -94,9 +135,9 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 // ...
 
-val compileKotlin = tasks.named<KotlinCompilationTask<*>>("compileKotlin")
-
-compileKotlin.compilerOptions { /*……*/ }
+tasks.named<KotlinCompilationTask<*>>("compileKotlin").configure {
+    compilerOptions { /*……*/ }
+}
 ```
 
 </tab>
@@ -114,15 +155,25 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 </tab>
 </tabs>
 
+## All compiler options
+
 Gradle 任务的完整选项列表如下：
+
+### Common attributes
+
+| Name              | Description                                                                              | Possible values           | Default value |
+|-------------------|------------------------------------------------------------------------------------------|---------------------------|---------------|
+| `optIn`           | A property for configuring a list of [opt-in compiler arguments](opt-in-requirements.md) | `listOf( /* opt-ins */ )` | `emptyList()` |
+| `progressiveMode` | Enables the [progressive compiler mode](whatsnew13.md#progressive-mode)                  | `true`, `false`           | `false`       |
 
 ### JVM 特有的属性
 
-| 名称 | 描述        | 可能的值                              |默认值        |
-|------|-------------|---------------------------------------|--------------|
-| `javaParameters` | 为方法参数生成 Java 1.8 反射的元数据 |   | false |
-| `jvmTarget` | 生成的 JVM 字节码的目标版本 | "1.6"（已弃用）、 "1.8"、 "9"、 "10"、……、 "18"、 "19"。 Also, see [Types for compiler options](#types-for-compiler-options) | "%defaultJvmTargetVersion%" |
-| `noJdk` | 不要自动在类路径中包含 Java 运行时 |   | false |
+| Name                      | Description                                                                                                                                                                                                                                   | Possible values                                                                                  | Default value               |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|-----------------------------|
+| `javaParameters`          | 为方法参数生成 Java 1.8 反射的元数据 |   | false |
+| `jvmTarget`               | 生成的 JVM 字节码的目标版本 | "1.6"（已弃用）、 "1.8"、 "9"、 "10"、……、 "18"、 "19"。 Also, see [Types for compiler options](#types-for-compiler-options) | "%defaultJvmTargetVersion%" |
+| `noJdk`                   | 不要自动在类路径中包含 Java 运行时 |   | false |
+| `jvmTargetValidationMode` | <list><li>Validation of the [JVM target compatibility](gradle-configure-project.md#check-for-jvm-target-compatibility-of-related-compile-tasks) between Kotlin and Java</li><li>A property for tasks of the `KotlinCompile` type.</li></list> | `WARNING`, `ERROR`, `INFO`                                                                       | `ERROR`                     |
 
 ### JVM、JS 与 JS DCE 的公共属性
 
@@ -155,9 +206,9 @@ val compileKotlin: KotlinCompilationTask<*> by tasks
 // Single experimental argument
 compileKotlin.compilerOptions.freeCompilerArgs.add("-Xexport-kdoc")
 // Single additional argument, can be a key-value pair
-compileKotlin.compilerOptions.freeCompilerArgs.add("-opt-in=org.mylibrary.OptInAnnotation")
+compileKotlin.compilerOptions.freeCompilerArgs.add("-Xno-param-assertions")
 // List of arguments
-compileKotlin.compilerOptions.freeCompilerArgs.addAll(listOf("-Xno-param-assertions", "-Xno-receiver-assertions", "-Xno-call-assertions"))
+compileKotlin.compilerOptions.freeCompilerArgs.addAll(listOf("-Xno-receiver-assertions", "-Xno-call-assertions"))
 ```
 
 </tab>
@@ -172,9 +223,9 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
         // Single experimental argument
         freeCompilerArgs.add("-Xexport-kdoc")
         // Single additional argument, can be a key-value pair
-        freeCompilerArgs.add("-opt-in=org.mylibrary.OptInAnnotation")
+        freeCompilerArgs.add("-Xno-param-assertions")
         // List of arguments
-        freeCompilerArgs.addAll(["-Xno-param-assertions", "-Xno-receiver-assertions", "-Xno-call-assertions"])
+        freeCompilerArgs.addAll(["-Xno-receiver-assertions", "-Xno-call-assertions"])
     }
 }
 ```
@@ -198,12 +249,12 @@ To set a language version, use the following syntax:
 
 ```kotlin
 tasks
-    .withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask<*>>()
+    .withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>()
     .configureEach {
         compilerOptions
             .languageVersion
             .set(
-                org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9
+              org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9
             )
     }
 ```

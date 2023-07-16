@@ -47,6 +47,52 @@
 文件的名称应该描述文件中代码的作用。因此，应避免在文件名中使用<!--
 -->诸如 `Util` 之类的无意义词语。
 
+#### Multiplatform projects
+
+In multiplatform projects, files with top-level declarations in platform-specific source sets should have a suffix
+associated with the name of the source set. For example:
+
+* **jvm**Main/kotlin/Platform.**jvm**.kt
+* **android**Main/kotlin/Platform.**android**.kt
+* **ios**Main/kotlin/Platform.**ios**.kt
+
+As for the common source set, files with top-level declarations should not have a suffix. For example, `commonMain/kotlin/Platform.kt`.
+
+##### Technical details {initial-collapse-state="collapsed"}
+
+We recommend following this file naming scheme in multiplatform projects due to JVM limitations: it doesn't allow
+top-level members (functions, properties).
+
+To work around this, the Kotlin JVM compiler creates wrapper classes (so-called "file facades") that contain top-level
+member declarations. File facades have an internal name derived from the file name.
+
+In turn, JVM doesn't allow several classes with the same fully qualified name (FQN). This might lead to situations when
+a Kotlin project cannot be compiled to JVM:
+
+```none
+root
+|- commonMain/kotlin/myPackage/Platform.kt // contains 'fun count() { }'
+|- jvmMain/kotlin/myPackage/Platform.kt // contains 'fun multiply() { }'
+```
+
+Here both `Platform.kt` files are in the same package, so the Kotlin JVM compiler produces two file facades, both of which
+have FQN `myPackage.PlatformKt`. This produces the "Duplicate JVM classes" error.
+
+The simplest way to avoid that is renaming one of the files according to the guideline above. This naming scheme helps
+avoid clashes while retaining code readability.
+
+> There are two cases when these recommendations may seem redundant, but we still advise to follow them:
+> 
+> * Non-JVM platforms don't have issues with duplicating file facades. However, this naming scheme can help you keep
+> file naming consistent.
+> * On JVM, if source files don't have top-level declarations, the file facades aren't generated, and you won't face
+> naming clashes.
+> 
+>   However, this naming scheme can help you avoid situations when a simple refactoring
+> or an addition could include a top-level function and result in the same "Duplicate JVM classes" error.
+> 
+{type="tip"}
+
 ### 源文件组织
 
 鼓励多个声明（类、顶级函数或者属性）放在同一个 Kotlin 源文件中，
@@ -575,7 +621,7 @@ foo {
 
 ### Trailing commas
 
-A trailing comma is a comma symbol after the last item of a series of elements:
+A trailing comma is a comma symbol after the last item in a series of elements:
 
 ```kotlin
 class Person(
@@ -967,11 +1013,11 @@ when (x) {
 
 ### 区间上循环
 
-使用 `until` 函数在一个开区间上循环：
+使用 `..<` 操作符在一个左闭右开区间上循环：
 
 ```kotlin
 for (i in 0..n - 1) { /*……*/ }  // 不良
-for (i in 0 until n) { /*……*/ }  // 良好
+for (i in 0..<n) { /*……*/ }  // 良好
 ```
 
 ### 字符串
@@ -1096,3 +1142,5 @@ Kotlin 提供了一系列用来在给定对象上下文中执行代码块的函�
    -->意外更改返回类型）
  * 为所有公有成员提供 [KDoc](kotlin-doc.md) 注释，不需要任何新文档的覆盖成员除外
    （以支持为该库生成文档）
+
+Learn more about best practices and ideas to consider when writing an API for your library in [library creators' guidelines](jvm-api-guidelines-introduction.md).
