@@ -31,7 +31,7 @@ fun main() {
     println("Hello world!")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-hello-world"}
 
 `main` 的另一种形式接受可变数量的 `String` 参数。 
 
@@ -54,7 +54,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-print"}
 
 `println` 输出其参数并添加换行符，以便接下来输出的内容出现在下一行。
 
@@ -66,7 +66,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-println"}
 
 ## 函数
 
@@ -84,7 +84,7 @@ fun main() {
     println(sum(3, 5))
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-return-int"}
 
 函数体可以是表达式。其返回类型可以推断出来。
 
@@ -97,7 +97,7 @@ fun main() {
     println("sum of 19 and 23 is ${sum(19, 23)}")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-function-expression"}
 
 返回无意义的值的函数。
 
@@ -112,7 +112,7 @@ fun main() {
     printSum(-1, 8)
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-return-unit"}
 
 `Unit` 返回类型可以省略。
 
@@ -127,7 +127,7 @@ fun main() {
     printSum(-1, 8)
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-function-omit-unit"}
 
 参见[函数](functions.md)。
 
@@ -146,7 +146,7 @@ fun main() {
     println("a = $a, b = $b, c = $c")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-val"}
 
 可重新赋值的变量使用 `var` 关键字。
 
@@ -159,7 +159,7 @@ fun main() {
     println("x = $x")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-var"}
 
 可以在顶层声明变量。
 
@@ -180,7 +180,7 @@ fun main() {
     println("x = $x; PI = $PI")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-variable-top-level"}
 
 参见[属性](properties.md)。
 
@@ -212,7 +212,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-class-constructor"}
 
 类之间继承由冒号（`:`）声明。默认情况下类都是 final 的；如需让一个类可继承， 
 请将其标记为 `open`。
@@ -264,7 +264,7 @@ fun main() {
     println(s2)
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-string-templates"}
 
 参见[字符串模板](strings.md#字符串模板)。
 
@@ -285,7 +285,7 @@ fun main() {
     println("max of 0 and 42 is ${maxOf(0, 42)}")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-conditional-expressions"}
 
 在 Kotlin 中，`if` 也可以用作表达式。
 
@@ -298,7 +298,7 @@ fun main() {
     println("max of 0 and 42 is ${maxOf(0, 42)}")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-if-expression"}
 
 参见[`if` 表达式](control-flow.md#if-表达式)。
 
@@ -314,7 +314,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-for-loop"}
 
 或者
 
@@ -328,7 +328,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-for-loop-indices"}
 
 参见 [for 循环](control-flow.md#for-循环)。
 
@@ -346,7 +346,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-while-loop"}
 
 参见 [while 循环](control-flow.md#while-循环)。
 
@@ -372,7 +372,7 @@ fun main() {
     println(describe("other"))
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-when-expression"}
 
 参见 [when 表达式](control-flow.md#when-表达式)。
 
@@ -391,7 +391,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-range-in"}
 
 检测某个数字是否在指定区间外。
 
@@ -409,7 +409,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-out-of-range"}
 
 区间迭代。
 
@@ -422,7 +422,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-iterate-range"}
 
 或数列迭代。
 
@@ -439,7 +439,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-iterate-progression"}
 
 参见[区间与数列](ranges.md)。
 
@@ -457,7 +457,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-iterate-collection"}
 
 使用 `in` 操作符来判断集合内是否包含某实例。
 
@@ -472,7 +472,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-collection-in"}
 
 使用 lambda 表达式来过滤（filter）与映射（map）集合：
 
@@ -488,7 +488,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-collection-filter-map"}
 
 参见[集合概述](collections-overview.md)。
 
@@ -533,7 +533,7 @@ fun main() {
     printProduct("a", "b")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-function-nullable-value"}
 
 或者
 
@@ -568,7 +568,7 @@ fun main() {
     printProduct("99", "b")
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-function-null-check"}
 
 参见[空安全](null-safety.md)。
 
@@ -599,7 +599,7 @@ fun main() {
     printLength(listOf(Any()))
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-is-operator"}
 
 或者
 
@@ -622,7 +622,7 @@ fun main() {
     printLength(listOf(Any()))
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-is-operator-expression"}
 
 甚至
 
@@ -647,7 +647,7 @@ fun main() {
     printLength(1000)
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-is-operator-logic"}
 
 参见[类](classes.md)以及[类型转换](typecasts.md)。
 

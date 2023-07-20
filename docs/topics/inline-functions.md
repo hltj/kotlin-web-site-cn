@@ -186,7 +186,7 @@ fun main(s: Array<String>) {
 
 ## 内联属性
 
-`inline` 修饰符可用于没有幕后字段的属性的访问器。
+`inline` 修饰符可用于没有[幕后字段](properties.md#幕后字段)的属性的访问器。
 你可以标注独立的属性访问器：
 
 ```kotlin

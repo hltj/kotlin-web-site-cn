@@ -175,7 +175,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-[映射](collection-transformations.md#映射)生成转换结果列表：
+[映射](collection-transformations.md#映射)由转换结果生成列表：
 
 ```kotlin
 fun main() {
