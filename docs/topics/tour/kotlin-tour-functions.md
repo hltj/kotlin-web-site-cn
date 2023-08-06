@@ -65,7 +65,7 @@ For concise code, when calling your function, you don't have to include paramete
 does make your code easier to read. This is called using **named arguments**. If you do include parameter names, then 
 you can write the parameters in any order.
 
-> In the following example, [string templates](strings.md#string-templates) (`$`) are used to access
+> In the following example, [string templates](strings.md#字符串模板) (`$`) are used to access
 > the parameter values, convert them to `String` type, and then concatenate them into a string for printing.
 > 
 {type="tip"}

@@ -48,13 +48,13 @@ Released: 24 May, 2023
 
 * Support of the new Canary Android Studio Hedgehog.
 * Updated versions of Kotlin, Gradle, and libraries in the Multiplatform project.
-* Applied new [`targetHierarchy.default()`](whatsnew1820.md#new-approach-to-source-set-hierarchy) in the Multiplatform project.
+* Applied new [`targetHierarchy.default()`](whatsnew1820.md#源代码集分层结构的新方式) in the Multiplatform project.
 * Applied source set name suffixes to platform-specific files in the Multiplatform project.
 
 </td>
 <td>
 
-* [Any of Kotlin plugin versions](releases.md#release-details)
+* [Any of Kotlin plugin versions](releases.md#版本发布详情)
 
 </td>
 </tr>

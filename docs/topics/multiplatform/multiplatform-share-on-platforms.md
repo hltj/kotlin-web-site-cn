@@ -78,4 +78,4 @@ kotlin.mpp.enableCInteropCommonization=true
 
 * Check out examples of code sharing using the Kotlin mechanism of [expect and actual declarations](multiplatform-connect-to-apis.md)
 * Learn more about [hierarchical project structure](multiplatform-hierarchy.md)
-* See our recommendations on [naming source files in multiplatform projects](coding-conventions.md#source-file-names)
+* See our recommendations on [naming source files in multiplatform projects](coding-conventions.md#源文件名称)

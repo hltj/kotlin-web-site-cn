@@ -36,7 +36,7 @@ val securePassword = Password("Don't try this in production")
 ## 成员
 
 内联类支持普通类中的一些功能。特别是，内联类可以声明属性与函数,
-have an `init` block and [secondary constructors](classes.md#secondary-constructors):
+have an `init` block and [secondary constructors](classes.md#次构造函数):
 
 ```kotlin
 @JvmInline

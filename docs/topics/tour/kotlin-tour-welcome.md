@@ -1,4 +1,4 @@
-[//]: # (title: Welcome to our tour of Kotlin!)
+[//]: # (title: 欢迎来到我们的 Kotlin 之旅！)
 
 > This tour covers the fundamentals of the Kotlin programming language and can be completed entirely within your 
 > browser. There is no installation required.

@@ -1,4 +1,4 @@
-[//]: # (title: Add dependencies on Kotlin libraries to Kotlin/Wasm project)
+[//]: # (title: 将 Kotlin 库的依赖项添加到 Kotlin/Wasm 项目)
 
 You can use the Kotlin standard library (`stdlib`) and test library ([`kotlin.test`](https://kotlinlang.org/api/latest/kotlin.test/))
 in Kotlin/Wasm out of the box. The version of these libraries is the same as the version of the `kotlin-multiplatform` plugin.

@@ -52,15 +52,15 @@ have already adopted this approach.
 Try this [Compose Multiplatform desktop application](https://github.com/JetBrains/compose-multiplatform-desktop-template#readme)
 template to create your own project with UIs shared among desktop platforms.
 
-## Code sharing between platforms
+## 不同平台间共享代码
 
-Kotlin Multiplatform allows you to maintain a single codebase of the application logic for [different platforms](multiplatform-dsl-reference.md#targets).
+Kotlin Multiplatform allows you to maintain a single codebase of the application logic for [different platforms](multiplatform-dsl-reference.md#目标).
 You also get advantages of native programming, including great performance and full access to platform SDKs.
 
 Kotlin provides the following code sharing mechanisms:
 
-* Share common code among [all platforms](multiplatform-share-on-platforms.md#share-code-on-all-platforms) used in your project.
-* Share code among [some platforms](multiplatform-share-on-platforms.md#share-code-on-similar-platforms) included in your project to reuse much of the code in similar platforms:
+* Share common code among [all platforms](multiplatform-share-on-platforms.md#对所有平台共享代码) used in your project.
+* Share code among [some platforms](multiplatform-share-on-platforms.md#对相似平台共享代码) included in your project to reuse much of the code in similar platforms:
 
   ![Code shared across different platforms](kotlin-multiplatform-hierarchical-structure.svg){width=700}
 

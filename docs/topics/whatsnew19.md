@@ -1,6 +1,6 @@
 [//]: # (title: What's new in Kotlin 1.9.0)
 
-_[Release date: %kotlinReleaseDate%](releases.md#release-details)_
+_[Release date: %kotlinReleaseDate%](releases.md#版本发布详情)_
 
 The Kotlin 1.9.0 release is out and the K2 compiler for the JVM is now in **Beta**. Additionally, here are some of the main highlights:
 
@@ -160,11 +160,11 @@ fun findByRgb(rgb: String): Color? = Color.entries.find { it.rgb == rgb }
 ```
 {validate="false"}
 
-For more information about the `entries` property for enum classes, see [What's new in Kotlin 1.8.20](whatsnew1820.md#a-modern-and-performant-replacement-of-the-enum-class-values-function).
+For more information about the `entries` property for enum classes, see [What's new in Kotlin 1.8.20](whatsnew1820.md#枚举类类-values-函数的现代且高性能替代).
 
 ### Stable data objects for symmetry with data classes
 
-Data object declarations, which were introduced in [Kotlin 1.8.20](whatsnew1820.md#preview-of-data-objects-for-symmetry-with-data-classes),
+Data object declarations, which were introduced in [Kotlin 1.8.20](whatsnew1820.md#与数据类相称的数据对象预览版),
 are now Stable. This includes the functions added for symmetry with data classes: `toString()`, `equals()`, and `hashCode()`.
 
 This feature is particularly useful with `sealed` hierarchies (like a `sealed class` or `sealed interface` hierarchy), 
@@ -185,7 +185,7 @@ fun main() {
 ```
 {validate="false"}
 
-For more information, see [What's new in Kotlin 1.8.20](whatsnew1820.md#preview-of-data-objects-for-symmetry-with-data-classes).
+For more information, see [What's new in Kotlin 1.8.20](whatsnew1820.md#与数据类相称的数据对象预览版).
 
 ### Support for secondary constructors with bodies in inline value classes
 
@@ -615,7 +615,7 @@ support for ES6:
 
 ### Removal of the old Kotlin/JS compiler
 
-In Kotlin 1.8.0, we [announced](whatsnew18.md#stable-js-ir-compiler-backend) that the IR-based backend became [Stable](components-stability.md).
+In Kotlin 1.8.0, we [announced](whatsnew18.md#稳定版-js-ir-编译器后端) that the IR-based backend became [Stable](components-stability.md).
 Since then, not specifying the compiler has become an error, and using the old compiler leads to warnings.
 
 In Kotlin 1.9.0, using the old backend results in an error. Please migrate to the IR compiler by following our [migration guide](js-ir-migration.md).
@@ -874,7 +874,7 @@ Kotlin 1.9.0 has some great improvements for the standard library:
 
 ### Stable ..< operator for open-ended ranges
 
-The new `..<` operator for open-ended ranges that was introduced in [Kotlin 1.7.20](whatsnew1720.md#preview-of-the-operator-for-creating-open-ended-ranges)
+The new `..<` operator for open-ended ranges that was introduced in [Kotlin 1.7.20](whatsnew1720.md#用于创建前闭后开区间的-操作符预览版)
 and became Stable in 1.8.0. In 1.9.0, the standard library API for working with open-ended ranges is also Stable.
 
 Our research shows that the new `..<` operator makes it easier to understand when an open-ended range is declared. If you
@@ -914,7 +914,7 @@ fun main() {
 >
 {type="note"}
 
-For more information about what you can do with this operator, see [What's new in Kotlin 1.7.20](whatsnew1720.md#preview-of-the-operator-for-creating-open-ended-ranges).
+For more information about what you can do with this operator, see [What's new in Kotlin 1.7.20](whatsnew1720.md#用于创建前闭后开区间的-操作符预览版).
 
 ### Stable time API
 
@@ -1233,6 +1233,6 @@ If the repository is not specified, Gradle uses the sunset JCenter repository, w
 
 ## Compatibility guide for Kotlin 1.9.0
 
-Kotlin 1.9.0 is a [feature release](kotlin-evolution.md#feature-releases-and-incremental-releases) and can, therefore, 
+Kotlin 1.9.0 is a [feature release](kotlin-evolution.md#特性发布与增量发布) and can, therefore, 
 bring changes that are incompatible with your code written for earlier versions of the language. Find the detailed list 
 of these changes in the [Compatibility guide for Kotlin 1.9.0](compatibility-guide-19.md).

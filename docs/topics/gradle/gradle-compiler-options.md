@@ -164,7 +164,7 @@ Gradle 任务的完整选项列表如下：
 | Name              | Description                                                                              | Possible values           | Default value |
 |-------------------|------------------------------------------------------------------------------------------|---------------------------|---------------|
 | `optIn`           | A property for configuring a list of [opt-in compiler arguments](opt-in-requirements.md) | `listOf( /* opt-ins */ )` | `emptyList()` |
-| `progressiveMode` | Enables the [progressive compiler mode](whatsnew13.md#progressive-mode)                  | `true`, `false`           | `false`       |
+| `progressiveMode` | Enables the [progressive compiler mode](whatsnew13.md#渐进模式)                          | `true`, `false`           | `false`       |
 
 ### JVM 特有的属性
 

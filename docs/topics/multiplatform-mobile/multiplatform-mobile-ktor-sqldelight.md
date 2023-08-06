@@ -982,7 +982,7 @@ library.
    }
    ```
 
-   * When you compile a Kotlin module into an Apple framework, [suspending functions](whatsnew14.md#support-for-kotlin-s-suspending-functions-in-swift-and-objective-c)
+   * When you compile a Kotlin module into an Apple framework, [suspending functions](whatsnew14.md#在-swift-与-objective-c-中支持-kotlin-的挂起函数)
      are available in it as functions with callbacks (`completionHandler`).
    * Since the `getLaunches` function is marked with the `@Throws(Exception::class)` annotation, any exceptions that are
      instances of the `Exception` class or its subclass will be propagated as `NSError`. Therefore, all such errors can
