@@ -1,6 +1,7 @@
 [//]: # (title: 字符串)
 
-Kotlin 中字符串用 `String` 类型表示。 通常，字符串值是双引号（`"`）中的字符序列：
+Kotlin 中字符串用 [`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/) 类型表示。
+通常，字符串值是双引号（`"`）中的字符序列：
 
 ```kotlin
 val str = "abcd 123"

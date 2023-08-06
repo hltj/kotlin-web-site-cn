@@ -5,7 +5,7 @@ Kotlin 是一门现代但已成熟的编程语言，旨在让开发人员更幸�
 
 To start, why not take our tour of Kotlin? This tour covers the fundamentals of the Kotlin programming language.
 
-<a href="kotlin-tour-hello-world.md"><img src="start-kotlin-tour.svg" width="700" alt="Start the Kotlin tour"/></a>
+<a href="kotlin-tour-welcome.md"><img src="start-kotlin-tour.svg" width="700" alt="Start the Kotlin tour"/></a>
 
 ## 安装 Kotlin
 

@@ -1,8 +1,8 @@
 [//]: # (title: 数据类)
 
-创建一些只保存数据的类是件寻常的事。
-在这些类中，一些标准功能以及一些工具函数往往是由<!--
--->数据机械推导而来的。在 Kotlin 中，这叫做 _数据类_ 并以 `data` 标记：
+Data classes in Kotlin are classes whose main purpose is to hold data. Data classes come automatically with additional
+member functions that allow you to print an instance to readable output, compare instances, copy instances, and more.
+Data classes are marked with `data`:
 
 ```kotlin
 data class User(val name: String, val age: Int)
@@ -10,10 +10,10 @@ data class User(val name: String, val age: Int)
 
 编译器自动从主构造函数中声明的所有属性导出以下成员：
 
-* `equals()`/`hashCode()` 对
-* `toString()` 格式是 `"User(name=John, age=42)"`
-* [`componentN()` 函数](destructuring-declarations.md) 按声明顺序对应于所有属性。
-* `copy()` 函数（见下文）
+* `.equals()`/`.hashCode()` 对
+* `.toString()` 格式是 `"User(name=John, age=42)"`
+* [`.componentN()` 函数](destructuring-declarations.md) 按声明顺序对应于所有属性。
+* `.copy()` 函数（见下文）
 
 为了确保生成的代码的一致性以及有意义的行为，数据类必须满足以下要求：
 
@@ -53,9 +53,11 @@ data class Person(val name: String) {
 }
 ```
 
-在 `toString()`、 `equals()`、 `hashCode()` 以及 `copy()` 的实现中只会用到 `name` 属性，
-并且只有一个 component 函数 `component1()`。虽然两个 `Person` 对象可以有不同的年龄，
-但它们会视为相等。
+In this example, only the `name` property can be used inside the `.toString()`, `.equals()`, `.hashCode()`, and `.copy()` implementations,
+and there is only one component function `.component1()`. The `age` property can't be used inside the `.toString()`, 
+`.equals()`, `.hashCode()`, and `.copy()` implementations because it's declared inside the class body. If two `Person` 
+objects have different ages but the same `name`, then they are treated as equal. This is because the `.equals()` function
+can only check for equality of the `name` property. For example:
 
 ```kotlin
 data class Person(val name: String) {
@@ -67,17 +69,23 @@ fun main() {
     val person2 = Person("John")
     person1.age = 10
     person2.age = 20
-//sampleEnd
+
     println("person1 == person2: ${person1 == person2}")
+    // person1 == person2: true
+  
     println("person1 with age ${person1.age}: ${person1}")
+    // person1 with age 10: Person(name=John)
+  
     println("person2 with age ${person2.age}: ${person2}")
+    // person2 with age 20: Person(name=John)
+//sampleEnd
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ## 复制
 
-Use the `copy()` function to copy an object, allowing you to alter _some_ of its properties while keeping the rest unchanged. The implementation of this function for the `User` class above would be as follows:
+Use the `.copy()` function to copy an object, allowing you to alter _some_ of its properties while keeping the rest unchanged. The implementation of this function for the `User` class above would be as follows:
 
 ```kotlin
 fun copy(name: String = this.name, age: Int = this.age) = User(name, age)
@@ -97,7 +105,8 @@ val olderJack = jack.copy(age = 2)
 ```kotlin
 val jane = User("Jane", 35)
 val (name, age) = jane
-println("$name, $age years of age") // 输出 "Jane, 35 years of age"
+println("$name, $age years of age") 
+// Jane, 35 years of age
 ```
 
 ## 标准数据类

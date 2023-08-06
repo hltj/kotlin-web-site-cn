@@ -99,6 +99,7 @@ fun main() {
 | `a / b` | `a.div(b)` |
 | `a % b` | `a.rem(b)` |
 | `a..b ` | `a.rangeTo(b)` |
+| `a..<b ` | `a.rangeUntil(b)` |
 
 对于此表中的操作，编译器只是解析成*翻译为*列中的表达式。
 

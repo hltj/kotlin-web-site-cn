@@ -23,8 +23,12 @@ kotlin {
 ```
 
 * `IR` 使用 Kotlin/JS 的新 IR 编译器后端。
-* `LEGACY` 使用默认编译器后端。
+* `LEGACY` 使用旧版编译器后端。
 * `BOTH` 使用新的 IR 编译器以及默认的编译器后端编译项目。这个模式用于[创作与两个后端兼容的库](#为-ir-编译器创作具有向后兼容性的库)。
+
+> The old compiler backend has been deprecated since Kotlin 1.8.0. Starting with Kotlin 1.9.0, using compiler types `LEGACY` of `BOTH` leads to an error.
+>
+{type="warning"}
 
 还可以使用键值 `kotlin.js.compiler=ir` 在 `gradle.properties` 文件中设置编译器类型。
 但是，`build.gradle(.kts)` 中的任何设置都会覆盖此行为。
