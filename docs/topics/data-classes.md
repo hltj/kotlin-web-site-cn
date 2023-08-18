@@ -23,13 +23,13 @@ data class User(val name: String, val age: Int)
 
 此外，数据类成员的生成遵循关于成员继承的这些规则：
 
-* 如果在数据类体中有显式实现 `equals()`、 `hashCode()` 或者 `toString()`，或者这些函数在父类中有
+* 如果在数据类体中有显式实现 `.equals()`、 `.hashCode()` 或者 `.toString()`，或者这些函数在父类中有
   `final` 实现，那么不会生成这些函数，而会使用现有<!--
   -->函数。
-* 如果超类型具有 `open` 的 `componentN()` 函数并且返回兼容的类型，
+* 如果超类型具有 `open` 的 `.componentN()` 函数并且返回兼容的类型，
   那么会为数据类生成相应的函数，并覆盖超类的实现。如果超类型的这些函数<!--
   -->由于签名不兼容或者是 final 而导致无法覆盖，那么会报错。
-* 不允许为 `componentN()` 以及 `copy()` 函数提供显式实现。
+* 不允许为 `.componentN()` 以及 `.copy()` 函数提供显式实现。
 
 数据类可以扩展其他类（示例请参见[密封类](sealed-classes.md)）。
 

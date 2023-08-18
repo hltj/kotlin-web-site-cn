@@ -16,8 +16,8 @@ class Empty
 
 ## 构造函数
 
-在 Kotlin 中的一个类可以有一个*主构造函数*以及一个或多个*次构造函数*。主构造函数是类头的<!--
--->一部分：它跟在类名与可选的类型参数后。
+在 Kotlin 中的一个类有一个*主构造函数*并可能有一个或多个*次构造函数*。主构造函数在<!--
+-->类头中声明，它跟在类名与可选的类型参数后。
 
 ```kotlin
 class Person constructor(firstName: String) { /*……*/ }
@@ -29,8 +29,10 @@ class Person constructor(firstName: String) { /*……*/ }
 class Person(firstName: String) { /*……*/ }
 ```
 
-主构造函数不能包含任何的代码。初始化的代码可以放<!--
--->到以 `init` 关键字作为前缀的*初始化块（initializer blocks）*中。
+The primary constructor initializes a class instance and its properties in the class header. The class header can't contain
+any runnable code. If you want to run some code during object creation, use _initializer blocks_ inside the class body.
+Initializer blocks are declared with the `init` keyword followed by curly braces. Write any code that you want to run
+within the curly braces.
 
 在实例初始化期间，初始化块按照它们出现在<!--
 -->类体中的顺序执行，与属性初始化器交织在一起：

@@ -227,4 +227,5 @@ val intList: List<Int> = nullableList.filterNotNull()
 
 ## 下一步做什么？
 
-了解如何[在 Java 与 Kotlin 中处理可空性](java-to-kotlin-nullability-guide.md)。
+* 了解如何[在 Java 与 Kotlin 中处理可空性](java-to-kotlin-nullability-guide.md)。
+* Learn about generic types that are [definitely non-nullable](generics.md#definitely-non-nullable-types).
