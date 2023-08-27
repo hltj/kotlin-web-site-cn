@@ -1,5 +1,12 @@
 [//]: # (title: 类型检测与类型转换)
 
+In Kotlin, you can perform type checks to check the type of an object at runtime. Type casts convert objects to a 
+different type.
+
+> To learn specifically about **generics** type checks and casts, for example `List<T>`, `Map<K,V>`, see [Generics type checks and casts](generics.md#generics-type-checks-and-casts).
+>
+{type="tip"}
+
 ## is 与 !is 操作符
 
 使用 `is` 操作符或其否定形式 `!is` 在运行时检测对象是否符合给定类型：
@@ -60,13 +67,46 @@ when (x) {
 }
 ```
 
-请注意，当编译器能保证变量在检测和使用之间不可改变时，智能转换才有效。
-更具体地，智能转换适用于以下情形：
+> 请注意，当编译器能保证变量在检测及其使用之间不可改变时，智能转换才有效。
+>
+{type="warning"}
 
-* `val` 局部变量——总是可以，[局部委托属性除外](delegated-properties.md)。
-* `val` 属性——如果属性是 private 或 internal，或者该检测在声明属性的同一[模块](visibility-modifiers.md#模块)中执行。智能转换不能用于 open 的属性或者具有自定义 getter 的属性。
-* `var` 局部变量——如果变量在检测和使用之间没有修改、没有在会修改它的 lambda 中捕获、并且不是局部委托属性。
-* `var` 属性——决不可能（因为该变量可以随时被其他代码修改）。
+智能转换适用于以下情形：
+
+<table header-style="none">
+        <tr>
+        <td>
+            <code>val</code> 局部变量
+        </td>
+        <td>
+            总是可以，<a href="delegated-properties.md">局部委托属性</a>除外。
+        </td>
+    </tr>
+        <tr>
+        <td>
+            <code>val</code> 属性
+        </td>
+        <td>
+            如果属性是 <code>private</code>、 <code>internal</code>，或者该检测在声明属性的同一<a href="visibility-modifiers.md#模块">模块</a>中执行。 智能转换不能用于 <code>open</code> 的属性或者具有自定义 getter 的属性。
+        </td>
+    </tr>
+        <tr>
+        <td>
+            <code>var</code> 局部变量
+        </td>
+        <td>
+            如果变量在检测及其使用之间未修改、没有在会修改它的 lambda 中捕获、并且不是局部委托属性。
+        </td>
+    </tr>
+        <tr>
+        <td>
+            <code>var</code> 属性
+        </td>
+        <td>
+            决不可能，因为该变量可以随时被其他代码修改。
+        </td>
+    </tr>
+</table>
 
 ## “不安全的”转换操作符
 
@@ -94,8 +134,3 @@ val x: String? = y as? String
 ```
 
 请注意，尽管事实上 `as?` 的右边是一个非空类型的 `String`，但是其转换的结果是可空的。
-
-## 泛型类型检测与类型转换
-
-请参见[泛型文档页](generics.md#泛型类型检测与类型转换)中相应部分<!--
--->了解可以使用泛型进行类型检测与类型转换的信息。

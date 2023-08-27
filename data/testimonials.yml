@@ -5,7 +5,7 @@
   url: https://www.corda.net/2017/01/10/kotlin/
   text: Corda 是一个开源分布式分类账号平台，由各大银行提供支持，完全由 Kotlin 构建。
 - company: Evernote
-  url: https://blog.evernote.com/tech/2017/01/26/android-state-library/
+  url: https://evernote.com/blog/android-state-library/
   text: Evernote 最近将 Kotlin 集成到了他们的 Android 客户端
 - company: Coursera
   url: https://building.coursera.org/blog/2016/03/16/becoming-bilingual-coursera/

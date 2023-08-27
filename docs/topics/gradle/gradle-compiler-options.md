@@ -59,7 +59,7 @@ For both the JVM and Android projects, it's possible to define options using the
 ```kotlin
 kotlin {
     compilerOptions {
-        apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9)
+        apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.%gradleApiVersion%)
     }
 }
 ```
@@ -70,7 +70,7 @@ kotlin {
 ```groovy
 kotlin {
     compilerOptions {
-        apiVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9
+        apiVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.%gradleApiVersion%
     }
 }
 ```
@@ -235,10 +235,10 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 
 ### JVM 与 JS 的公共属性
 
-| 名称 | 描述        | 可能的值        |默认值        |
-|------|-------------|-----------------|--------------|
-| `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.3"（已弃用）、 "1.4"（已弃用）、  "1.5"、 "1.6"、 "1.7", "1.8", "1.9"（实验性的） |  |
-| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.3"（已弃用）、 "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7", "1.8", "1.9"（实验性的） |  |
+| 名称 | 描述        | 可能的值                                                                     |默认值        |
+|------|-------------|--------------------------------------------------------------------------|--------------|
+| `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.4"（已弃用）、  "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"、 "2.0"（实验性的）、 "2.1"（实验性的） |  |
+| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"、 "2.0"（实验性的）、 "2.1"（实验性的）  |  |
 
 #### Example of setting a languageVersion
 
@@ -254,7 +254,7 @@ tasks
         compilerOptions
             .languageVersion
             .set(
-              org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9
+              org.jetbrains.kotlin.gradle.dsl.KotlinVersion.%gradleLanguageVersion%
             )
     }
 ```
@@ -267,7 +267,7 @@ tasks
     .withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask.class)
     .configureEach {
         compilerOptions.languageVersion = 
-                org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9
+                org.jetbrains.kotlin.gradle.dsl.KotlinVersion.%gradleLanguageVersion%
 }
 ```
 
@@ -299,7 +299,7 @@ Some of the `compilerOptions` use the new types instead of the `String` type:
 | Option | Type | Example |
 |--------|------|---------|
 | `jvmTarget` | [`JvmTarget`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JvmTarget.kt) | `compilerOptions.jvmTarget.set(JvmTarget.JVM_11)` |
-| `apiVersion` and `languageVersion` | [`KotlinVersion`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/KotlinVersion.kt) | `compilerOptions.languageVersion.set(KotlinVersion.KOTLIN_1_9)` |
+| `apiVersion` and `languageVersion` | [`KotlinVersion`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/KotlinVersion.kt) | `compilerOptions.languageVersion.set(KotlinVersion.%gradleLanguageVersion%)` |
 | `main` | [`JsMainFunctionExecutionMode`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JsMainFunctionExecutionMode.kt) | `compilerOptions.main.set(JsMainFunctionExecutionMode.NO_CALL)` |
 | `moduleKind` | [`JsModuleKind`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JsModuleKind.kt) | `compilerOptions.moduleKind.set(JsModuleKind.MODULE_ES)` |
 | `sourceMapEmbedSources` | [`JsSourceMapEmbedMode`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JsSourceMapEmbedMode.kt) | `compilerOptions.sourceMapEmbedSources.set(JsSourceMapEmbedMode.SOURCE_MAP_SOURCE_CONTENT_INLINING)` |
