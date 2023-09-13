@@ -137,7 +137,8 @@ reformat("This is a long String!")
 reformat("This is a short String!", upperCaseFirstLetter = false, wordSeparator = '_')
 ```
 
-可以通过具名参数和 `展开运算符` 来传入[可变参数（`vararg`）](#可变数量的参数varargs)
+可以通过具名参数和*展开*操作符来传入[可变参数（`vararg`）](#可变数量的参数varargs)：
+
 ```kotlin
 fun foo(vararg strings: String) { /*……*/ }
 
