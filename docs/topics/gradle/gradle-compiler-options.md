@@ -1,7 +1,7 @@
 [//]: # (title: Kotlin Gradle 插件中的编译器选项)
 
 每个 Kotlin 的发行版本都包含对于以下目标代码的编译器：
-JVM, JavaScript, 以及[支持平台](native-overview.md#目标平台)的本地二进制文件。
+JVM、JavaScript，以及[支持平台](native-overview.md#目标平台)的本地二进制文件。
 
 这些编译器会在这些步骤中被调用：
 * IDE，当你在你的 Kotlin 项目上点击 __编译__ 或 __运行__ 按钮时。
