@@ -199,7 +199,7 @@ Kotlin 不推断具有块代码体的函数的返回类型，因为这样的函�
 ```kotlin
 fun <T> asList(vararg ts: T): List<T> {
     val result = ArrayList<T>()
-    for (t in ts) // ts is an Array
+    for (t in ts) // ts 是一个数组
         result.add(t)
     return result
 }
@@ -226,11 +226,10 @@ val a = arrayOf(1, 2, 3)
 val list = asList(-1, 0, *a, 4)
 ```
 
-If you want to pass a [primitive type array](arrays.md#原生类型数组)
-into `vararg`, you need to convert it to a regular (typed) array using the `toTypedArray()` function:
+如果你想在 `vararg` 中传入一个[原生类型数组](arrays.md#原生类型数组)，你需要先通过 `toTypedArray()` 函数将其转换为常规的类型化数组：
 
 ```kotlin
-val a = intArrayOf(1, 2, 3) // IntArray is a primitive type array
+val a = intArrayOf(1, 2, 3) // IntArray 是一种原生类型数组
 val list = asList(-1, 0, *a.toTypedArray(), 4)
 ```
 
@@ -383,7 +382,7 @@ private fun findFixPoint(): Double {
 不能使用尾递归，不能用在 `try`/`catch`/`finally` 块中，也不能用于 open 的函数。
 目前在 Kotlin for the JVM 与 Kotlin/Native 中支持尾递归。
 
-**See also**:
+**另见**：
 * [内联函数](inline-functions.md)
 * [扩展函数](extensions.md)
 * [高阶函数与 Lambda 表达式](lambdas.md)
