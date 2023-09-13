@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.4.0 的新特性)
 
-_[发布日期：2020-08-17](releases.md#版本发布详情)_
+_[发布于：2020-08-17](releases.md#版本发布详情)_
 
 在 Kotlin 1.4.0 中，我们对其所有组件进行了大量改进，其中[重点是质量与性能](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/)。
 以下是 Kotlin  1.4.0 中最重要的变更列表。
@@ -308,7 +308,7 @@ In the future, we are going to make the Kotlin Project Wizard even more flexible
 You can try out the new Kotlin Project Wizard by working through these tutorials:
 
 * [Create a console application based on Kotlin/JVM](jvm-get-started.md)
-* [Create a Kotlin/JS application for React](js-get-started.md)
+* [Create a Kotlin/JS application for React](js-react.md)
 * [Create a Kotlin/Native application](native-get-started.md)
 
 ### 协程调试器
@@ -652,7 +652,7 @@ To enable the Kotlin/JS IR backend, set the key `kotlin.js.compiler=ir` in your 
 ```groovy
 kotlin {
     js(IR) { // or: LEGACY, BOTH
-        // . . .
+        // ...
     }
     binaries.executable()
 }

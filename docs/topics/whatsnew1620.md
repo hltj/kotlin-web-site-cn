@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.6.20 的新特性)
 
-_[发布日期：2022-04-04](releases.md#版本发布详情)_
+_[发布于：2022-04-04](releases.md#版本发布详情)_
 
 Kotlin 1.6.20 reveals previews of the future language features, makes the hierarchical structure the default for multiplatform projects, and brings evolutionary improvements to other components.
 
@@ -516,7 +516,7 @@ Starting with Kotlin 1.6.20, all your new multiplatform projects will have a hie
 
 * For Kotlin 1.6.20, we recommend using [Android Studio 2021.1.1](https://developer.android.com/studio) (Bumblebee) or later to get the best experience.
 
-* You can also opt-out. To disable hierarchical structure support, set the following options in` gradle.properties`:
+* You can also opt out. To disable hierarchical structure support, set the following options in `gradle.properties`:
 
   ```none
   # gradle.properties

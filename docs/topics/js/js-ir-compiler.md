@@ -10,7 +10,7 @@ Kotlin/JS IR 编译器后端没有直接从 Kotlin 源代码生成 JavaScript �
 对于 Kotlin/JS，这可以进行积极的优化，并可以<!--
 -->改善以前的编译器中存在的痛点，例如生成的代码大小（通过消除无效代码）以及 JavaScript 与 TypeScript 生态系统的互操作性。
 
-从 Kotlin 1.4.0 开始，可以通过 Kotlin/JS Gradle 插件使用 IR 编译器后端。要在项目中启用它，
+从 Kotlin 1.4.0 开始，可以通过 Kotlin Multiplatform Gradle 插件使用 IR 编译器后端。要在项目中启用它，
 请将编译器类型传递给 Gradle 构建脚本中的 `js` 函数：
 
 ```groovy
@@ -23,8 +23,12 @@ kotlin {
 ```
 
 * `IR` 使用 Kotlin/JS 的新 IR 编译器后端。
-* `LEGACY` 使用默认编译器后端。
+* `LEGACY` 使用旧版编译器后端。
 * `BOTH` 使用新的 IR 编译器以及默认的编译器后端编译项目。这个模式用于[创作与两个后端兼容的库](#为-ir-编译器创作具有向后兼容性的库)。
+
+> The old compiler backend has been deprecated since Kotlin 1.8.0. Starting with Kotlin 1.9.0, using compiler types `LEGACY` of `BOTH` leads to an error.
+>
+{type="warning"}
 
 还可以使用键值 `kotlin.js.compiler=ir` 在 `gradle.properties` 文件中设置编译器类型。
 但是，`build.gradle(.kts)` 中的任何设置都会覆盖此行为。
@@ -100,13 +104,13 @@ Kotlin/JS IR 编译器提供了默认后端中不可用的新编译模式——_
 
 ```kotlin
 kotlin {
-   js(IR) {
-       compilations.all {
-           compileTaskProvider.configure {
-               compilerOptions.freeCompilerArgs.add("-Xerror-tolerance-policy=SYNTAX")
-           }
-       }
-   }
+    js(IR) {
+        compilations.all {
+            compileTaskProvider.configure {
+                compilerOptions.freeCompilerArgs.add("-Xerror-tolerance-policy=SYNTAX")
+            }
+        }
+    }
 }
 ```
 
@@ -118,13 +122,13 @@ This type of minification is automatically applied when you build your Kotlin/JS
 
 ```kotlin
 kotlin {
-   js(IR) {
-       compilations.all {
-           compileTaskProvider.configure {
-               compilerOptions.freeCompilerArgs.add("-Xir-minimized-member-names=false")
-           }
-       }
-   }
+    js(IR) {
+        compilations.all {
+            compileTaskProvider.configure {
+                compilerOptions.freeCompilerArgs.add("-Xir-minimized-member-names=false")
+            }
+        }
+    }
 }
 ```
 

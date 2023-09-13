@@ -1,6 +1,7 @@
 [//]: # (title: 字符串)
 
-Kotlin 中字符串用 `String` 类型表示。 通常，字符串值是双引号（`"`）中的字符序列：
+Kotlin 中字符串用 [`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/) 类型表示。
+通常，字符串值是双引号（`"`）中的字符序列：
 
 ```kotlin
 val str = "abcd 123"
@@ -48,7 +49,7 @@ println(s + "def")
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-> 在大多数情况下，优先使用[字符串模板](#字符串模板)或[原始字符串](#原始字符串)而不是字符串连接。
+> 在大多数情况下，优先使用[字符串模板](#字符串模板)或[多行字符串](#多行字符串)而不是字符串连接。
 > 
 {type="note"}
 
@@ -57,7 +58,7 @@ println(s + "def")
 Kotlin 有两种类型的字符串字面值:
 
 * [转义字符串](#转义字符串)
-* [原始字符串](#原始字符串)
+* [多行字符串](#多行字符串)
 
 ### 转义字符串
 
@@ -71,9 +72,9 @@ val s = "Hello, world!\n"
 转义采用传统的反斜杠（`\`）方式。  
 所支持的转义序列请参见 [字符](characters.md) 页。
 
-### 原始字符串
+### 多行字符串
 
-*原始字符串*可以包含换行以及任意文本。 它使用三个引号（`"""`）分界符括起来，内部没有转义并且可以包含换行以及任何其他字符：
+*多行字符串*可以包含换行以及任意文本。 它使用三个引号（`"""`）分界符括起来，内部没有转义并且可以包含换行以及任何其他字符：
 
 ```kotlin
 val text = """
@@ -82,7 +83,7 @@ val text = """
 """
 ```
 
-如需删掉原始字符串中的前导空格，请使用 [`trimMargin()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim-margin.html) 函数：
+如需删掉多行字符串中的前导空格，请使用 [`trimMargin()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim-margin.html) 函数：
 
 ```kotlin
 val text = """
@@ -122,8 +123,8 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-在原始字符串及转义字符串中都可以使用模板。
-如需在原始字符串（不支持反斜杠转义）中的<!--
+在多行字符串及转义字符串中都可以使用模板。
+如需在多行字符串（不支持反斜杠转义）中的<!--
 -->允许作为[标识符（identifier）](https://kotlinlang.org/docs/reference/grammar.html#identifiers)开头的任意符号之前插入美元符 `$`，
 请使用以下语法：s
 

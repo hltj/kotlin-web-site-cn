@@ -23,7 +23,7 @@ To use reflection in a Gradle or Maven project, add the dependency on `kotlin-re
 
     ```kotlin
     dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-reflect:%kotlinVersion%")
+        implementation(kotlin("reflect"))
     }
     ```
 
@@ -197,11 +197,11 @@ fun main() {
 }
 ```
 
-表达式 `::x` 求值为 `KProperty<Int>` 类型的属性对象，可以使用
+表达式 `::x` 求值为 `KProperty0<Int>` 类型的属性对象，可以使用
 `get()` 读取它的值，或者使用 `name` 属性来获取属性名。更多信息请参见<!--
 -->[关于 `KProperty` 类的文档](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-property/index.html)。
 
-对于可变属性，例如 `var y = 1`，`::y` 返回 [`KMutableProperty<Int>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-mutable-property/index.html) 类型的一个值，
+对于可变属性，例如 `var y = 1`，`::y` 返回 [`KMutableProperty0<Int>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-mutable-property/index.html) 类型的一个值，
 该类型有一个 `set()` 方法。
 
 ```kotlin

@@ -1,15 +1,11 @@
 [//]: # (title: Kotlin 入门)
 
-[Kotlin](https://kotlinlang.org) 是一门现代但已成熟的编程语言，旨在让开发人员更幸福快乐。
+Kotlin 是一门现代但已成熟的编程语言，旨在让开发人员更幸福快乐。
 它简洁、安全、可与 Java 及其他语言互操作，并提供了多种方式在多个平台间复用代码，以实现高效编程。
 
-选择它来构建强大的应用程序吧！
+To start, why not take our tour of Kotlin? This tour covers the fundamentals of the Kotlin programming language.
 
-## 学习 Kotlin 基础知识
-
-* 如果你已熟悉一门或多门编程语言并想学习 Kotlin，请从这些 [Kotlin 学习资料](learning-materials-overview.md)开始。
-* 如果 Kotlin 是你的第一门编程语言，我们建议从[《Atomic Kotlin》这本书](https://www.atomickotlin.com/atomickotlin/)开始，
-或者在 JetBrains 学院报名免费的[Kotlin 基础课程](https://hyperskill.org/join/fromdocstoJetSalesStat?redirect=true&next=/tracks/18)。
+<a href="kotlin-tour-welcome.md"><img src="start-kotlin-tour.svg" width="700" alt="Start the Kotlin tour"/></a>
 
 ## 安装 Kotlin
 
@@ -118,50 +114,7 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 
 </tab>
 
-<tab id="frontend" title="前端 web 应用">
-
-Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项转换为 JavaScript。
-
-在此可以了解到如何使用 [Kotlin/JS](js-overview.md) 开发及改进前端 web 应用程序。
-
-1. **创建第一个前端 web 应用程序：**
-
-   * 从头开始，[使用 IntelliJ IDEA 项目向导创建一个基本的浏览器应用程序](js-project-setup.md)。
-   * 如果倾向于更健壮的示例，那么请完成[使用 React 与 Kotlin/JS 构建 web 应用程序](js-react.md)教程。 它有一个可以作为你自己项目良好起点的范例项目，其中包含有用的片段和模板。
-   * 查看 [Kotlin/JS 范例](js-samples.md)列表，了解关于如何使用 Kotlin/JS 的更多看法。
-
-2. **在应用程序中使用库。** 了解[添加依赖项](js-project-setup.md#依赖项)的更多信息。  
-    
-   |库 | 详情 |
-   |--------|---------|
-   |[stdlib](https://kotlinlang.org/api/latest/jvm/stdlib/) | 默认所有项目都包含了的 Kotlin 标准库。 |
-   |[kotlinx.browser](browser-api-dom.md)| 用于访问浏览器相关功能的 Kotlin 库，包括典型的顶层对象，如 document 与 window。 |
-   |[kotlinx.html](typesafe-html-dsl.md) | 使用静态类型的 HTML 构建器生成 DOM 元素的 Kotlin 库。|
-   |[Ktor](https://ktor.io/) | 用于联网的 Kotlin 多平台库。 |
-   |[KVision](https://kvision.io/) | 用于 Kotlin/JS 的一个第三方面向对象 web 框架。|
-   |[fritz2](https://www.fritz2.dev/)| 一个轻量级、高性能、独立的第三方库，用于在 Kotlin 中构建高度依赖协程与流的反应式 web 应用。|
-   |[Doodle](https://nacular.github.io/doodle/) | 一个基于矢量的第三方 UI 框架，使用浏览器的功能来绘制用户界面。|
-   |Compose for Web，[Compose Multiplatform](https://www.jetbrains.com/lp/compose-mpp/) 的一部分 | 将 [谷歌的 Jetpack Compose UI 工具包](https://developer.android.com/jetpack/compose)带到浏览器的 JetBrains 框架。|
-   |[kotlin-wrappers](https://github.com/JetBrains/kotlin-wrappers) | 为最流行的 JavaScript 框架之一提供方便的抽象与深度集成。 Kotlin wrappers 还为许多类似技术提供支持，例如 `react-redux`、 `react-router` 或者 `styled-components`。 |
-
-3. **了解关于 Kotlin 用于前端 web 开发的更多信息：**
-
-   * [新版 Kotlin/JS IR 编译器](js-ir-compiler.md)。
-   * [使用来自 npm 的依赖项](using-packages-from-npm.md)。
-   * [在 JavaScript 中使用 Kotlin 代码](js-to-kotlin-interop.md)。
-
-4. **加入 Kotlin 前端 web 社区：**
-
-   * ![Slack](slack.svg){width=25}{type="joined"} Slack：[获取邀请](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)并加入 [#getting-started](https://kotlinlang.slack.com/archives/C0B8MA7FA) 与 [#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) 频道。
-   * ![StackOverflow](stackoverflow.svg){width=25}{type="joined"} StackOverflow：订阅[“kotlin-js” 标签](https://stackoverflow.com/questions/tagged/kotlin-js)。
-
-5. **关注 Kotlin**： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/)、 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
-
-如果遇到任何困难和问题，请在我们的[问题跟踪系统](https://youtrack.jetbrains.com/issues/KT)提报。
-
-</tab>
-
-<tab id="android" title="Android 应用">
+<tab id="android" title="Android app">
 
 * 如果希望开始使用 Kotlin 用于 Android 开发，请阅读 [谷歌对 Android 上 Kotlin 入门的建议](https://developer.android.com/kotlin/get-started)。
 
@@ -180,17 +133,15 @@ Kotlin 能够将 Kotlin 代码、Kotlin 标准库以及任何兼容的依赖项�
 1. **创建多平台库：**
 
    * 完成[创建并发布多平台库](multiplatform-library.md)教程。 它展示了如何为 JVM、 JS 与原生平台创建多平台库，对其进行测试并发布到本地 Maven 仓库。
-   * 使用[这个教程](multiplatform-full-stack-app.md)构建一个全栈 web 应用程序。
 
-2. **在应用程序中使用库。** 了解关于[添加对库的依赖](multiplatform-add-dependencies.md)的更多内容。
+2. **在应用程序中使用库：** 
 
-   |库|详情                                                                                                 |
-   |---------------------------------------------------------------------------------------------------------|-------|
-   | Ktor | [文档](https://ktor.io/docs/)与[范例](multiplatform-full-stack-app.md#build-the-backend)。 | 
-   | Serialization | [文档](serialization.md)与[范例](multiplatform-full-stack-app.md)。                                 |
-   | Coroutines | [文档](coroutines-overview.md)。                                                                         |
-   | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)。                                              |
+   * [Ktor](https://ktor.io/docs/) 
+   * [序列化](serialization.md)
+   * [协程](coroutines-overview.md)
+   * [日期时间](https://github.com/Kotlin/kotlinx-datetime#readme)
 
+   > Learn more about [adding dependencies on libraries](multiplatform-add-dependencies.md).
    > 还可以在[社区驱动列表](https://libs.kmp.icerock.dev/)中找到多平台库。
    >
    {type="tip"}

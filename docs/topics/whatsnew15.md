@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.5.0 的新特性)
 
-_[发布日期：2021-05-05](releases.md#版本发布详情)_
+_[发布于：2021-05-05](releases.md#版本发布详情)_
 
 Kotlin 1.5.0 introduces new language features, stable IR-based JVM compiler backend, performance improvements,
 and evolutionary changes such as stabilizing experimental features and deprecating outdated ones.

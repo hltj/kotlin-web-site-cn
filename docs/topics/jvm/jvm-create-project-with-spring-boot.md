@@ -12,6 +12,10 @@ The first part of the tutorial shows you how to create a Spring Boot project in 
 
 Download and install the latest version of [IntelliJ IDEA Ultimate Edition](https://www.jetbrains.com/idea/download/index.html).
 
+> If you use IntelliJ IDEA Community Edition or another IDE, you can generate a Spring Boot project using a [web-based project generator](https://start.spring.io).
+> 
+{type="note"}
+
 ## Create a Spring Boot project
 
 Create a new Spring Boot project with Kotlin by using the Project Wizard in IntelliJ IDEA Ultimate Edition:
@@ -49,7 +53,9 @@ Create a new Spring Boot project with Kotlin by using the Project Wizard in Inte
 
 6. Click **Create** to generate and set up the project.
 
-   The IDE will generate and open the new project. It may take some time to download and import the project dependencies.
+   > The IDE will generate and open a new project. It may take some time to download and import the project dependencies.
+   >
+   {type="tip"} 
 
 7. After this, you can observe the following structure in the **Project view**:
 
@@ -71,15 +77,18 @@ Here is the full script with the explanation of all parts and dependencies:
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile // For `KotlinCompile` task below
 
 plugins { 
-    id("org.springframework.boot") version "2.7.1"
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    id("org.springframework.boot") version "3.1.2"
+    id("io.spring.dependency-management") version "1.1.2"
     kotlin("jvm") version "%kotlinVersion%" // The version of Kotlin to use
     kotlin("plugin.spring") version "%kotlinVersion%" // The Kotlin Spring plugin
 }
 
 group = "com.example"
-version = "0.0.1-SNAPSHOT" 
-java.sourceCompatibility = JavaVersion.VERSION_17 
+version = "0.0.1-SNAPSHOT"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
 
 repositories {
     mavenCentral()
@@ -90,7 +99,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web") 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin") // Jackson extensions for Kotlin for working with JSON
     implementation("org.jetbrains.kotlin:kotlin-reflect") // Kotlin reflection library, required for working with Spring
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8") // Kotlin standard library
     runtimeOnly("com.h2database:h2") 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
@@ -118,9 +126,8 @@ As you can see, there are a few Kotlin-related artifacts added to the Gradle bui
 
    * `com.fasterxml.jackson.module:jackson-module-kotlin` – the module adds support for serialization and deserialization of Kotlin classes and data classes
    * `org.jetbrains.kotlin:kotlin-reflect` – Kotlin reflection library
-   * `org.jetbrains.kotlin:kotlin-stdlib-jdk8` – Kotlin standard library
 
-3. After the dependencies section, you can see the `KotlinComiple` task configuration block.
+3. After the dependencies section, you can see the `KotlinCompile` task configuration block.
    This is where you can add extra arguments to the compiler to enable or disable various language features.
 
 ## Explore the generated Spring Boot application
@@ -128,7 +135,7 @@ As you can see, there are a few Kotlin-related artifacts added to the Gradle bui
 Open the `DemoApplication.kt` file:
 
 ```kotlin
-package demo
+package com.example.demo
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -144,7 +151,7 @@ fun main(args: Array<String>) {
 <deflist collapsible="true">
    <def title="Declaring classes – class DemoApplication">
       <p>Right after package declaration and import statements you can see the first class declaration, <code>class DemoApplication</code>.</p>
-      <p>In Kotlin, if a class doesn't include any members (properties of functions), you can omit the class body (<code>{}</code>) for good.</p>
+      <p>In Kotlin, if a class doesn't include any members (properties or functions), you can omit the class body (<code>{}</code>) for good.</p>
    </def>
    <def title="@SpringBootApplication annotation">
       <p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.using-the-springbootapplication-annotation"><code>@SpringBootApplication annotation</code></a> is a convenience annotation in a Spring Boot application.
@@ -153,7 +160,7 @@ fun main(args: Array<String>) {
    </def>
    <def title="Program entry point – main()">
       <p>The <a href="basic-syntax.md#程序入口点"><code>main()</code></a> function is the entry point to the application.</p>
-      <p>It is declared as a <a href="functions.md#函数作用域">top-level function</a> outside the <code>DemoApplication</code> class. The main function invokes the Spring's <code>runApplication(&amp;args)</code> function to start the application with the Spring Framework.</p>
+      <p>It is declared as a <a href="functions.md#函数作用域">top-level function</a> outside the <code>DemoApplication</code> class. The <code>main()</code> function invokes the Spring's <code>runApplication(*args)</code> function to start the application with the Spring Framework.</p>
    </def>
    <def title="Variable arguments – args: Array&lt;String&gt;">
       <p>If you check the declaration of the <code>runApplication()</code> function, you will see that the parameter of the function is marked with <a href="functions.md#可变数量的参数varargs"><code>vararg</code> modifier</a>: <code>vararg args: String</code>.
@@ -161,7 +168,7 @@ fun main(args: Array<String>) {
       </p>
    </def>
    <def title="The spread operator – (*args)">
-      <p>The <code>args</code> is a parameter to the main function declared as an array of Strings.
+      <p>The <code>args</code> is a parameter to the <code>main()</code> function declared as an array of Strings.
         Since there is an array of strings, and you want to pass its content to the function, use the spread operator (prefix the array with a star sign <code>*</code>).
       </p>
    </def>
@@ -195,7 +202,7 @@ class MessageController {
       </code>
    </def>
    <def title="@RequestParam annotation">
-      <p>The function parameter <code>name</code> is marked with <code>@RequestParam</code> annotation.This annotation indicates that a method parameter should be bound to a web request parameter.</p>
+      <p>The function parameter <code>name</code> is marked with <code>@RequestParam</code> annotation. This annotation indicates that a method parameter should be bound to a web request parameter.</p>
       <p>Hence, if you access the application at the root and supply a request parameter called "name", like <code>/?name=&lt;your-value&gt;</code>, the parameter value will be used as an argument for invoking the <code>index()</code> function.</p>
    </def>
    <def title="Single-expression functions – index()">
@@ -226,7 +233,7 @@ class MessageController {
 Here is a complete code of the `DemoApplication.kt`:
 
 ```kotlin
-package demo
+package com.example.demo
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

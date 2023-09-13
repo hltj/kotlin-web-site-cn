@@ -65,7 +65,7 @@ Download and install the latest version of [IntelliJ IDEA](https://www.jetbrains
 
 4. From the **Language** list, select **Kotlin**.
 5. Select the **Gradle** build system.
-6. From the **JDK list**, select the [JDK](https://www.oracle.com/java/technologies/downloads/) that you want to use in
+6. From the **JDK** list, select the [JDK](https://www.oracle.com/java/technologies/downloads/) that you want to use in
    your project.
    * If the JDK is installed on your computer, but not defined in the IDE, select **Add JDK** and specify the path to the
      JDK home directory.
@@ -74,7 +74,7 @@ Download and install the latest version of [IntelliJ IDEA](https://www.jetbrains
 7. Select the Kotlin or Gradle language for the **Gradle DSL**.
 8. Click **Create**.
 
-![Create a root project for custom Kotlin scripting](script-deps-create-root-project.png){width=800}
+![Create a root project for custom Kotlin scripting](script-deps-create-root-project.png){width=700}
 
 ## Add scripting modules
 
@@ -88,7 +88,7 @@ Now you have an empty Kotlin/JVM Gradle project. Add the required modules, scrip
 6. As a module's parent, select the root module.
 7. Click **Create**.
 
-   ![Create script definition module](script-deps-module-definition.png){width=800}
+   ![Create script definition module](script-deps-module-definition.png){width=700}
 
 8. In the module's `build.gradle(.kts)` file, remove the `version` of the Kotlin Gradle plugin. It is already in the
    root project's build script.
@@ -152,7 +152,7 @@ In this tutorial, this includes support for the `@Repository` and `@DependsOn` a
 
    This class will also serve as a reference to the script definition later.
 
-5. To make the class a script definition, mark it with the `@KotlinScript` annotation. Pass two parameters to the annotation:
+4. To make the class a script definition, mark it with the `@KotlinScript` annotation. Pass two parameters to the annotation:
    * `fileExtension` – a string ending with `.kts` that defines a file extension for scripts of this type.
    * `compilationConfiguration` – a Kotlin class that extends `ScriptCompilationConfiguration` and defines the compilation
      specifics for this script definition. You'll create it in the next step.
@@ -175,7 +175,7 @@ In this tutorial, this includes support for the `@Repository` and `@DependsOn` a
    > 
    {type="note"}
 
-6. Define the script compilation configuration as shown below.
+5. Define the script compilation configuration as shown below.
 
    ```kotlin
     object ScriptWithMavenDepsConfiguration : ScriptCompilationConfiguration(

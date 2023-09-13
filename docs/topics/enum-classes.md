@@ -119,25 +119,19 @@ printAllValues<RGB>() // 输出 RED, GREEN, BLUE
 > 
 > {type="tip"}
 
-In Kotlin 1.8.20, the `entries` property is introduced as a future replacement for the `values()` function. The 
+In Kotlin 1.9.0, the `entries` property is introduced as a replacement for the `values()` function. The 
 `entries` property returns a pre-allocated immutable list of your enum constants. This is particularly useful when you 
-are working with [collections](collections-overview.md) and can you help you avoid [performance issues](https://github.com/Kotlin/KEEP/blob/master/proposals/enum-entries.md#examples-of-performance-issues).
+are working with [collections](collections-overview.md) and can help you avoid [performance issues](https://github.com/Kotlin/KEEP/blob/master/proposals/enum-entries.md#examples-of-performance-issues).
 
 For example:
 ```kotlin
 enum class RGB { RED, GREEN, BLUE }
 
-@OptIn(ExperimentalStdlibApi::class)
 fun main() {
     for (color in RGB.entries) println(color.toString())
     // prints RED, GREEN, BLUE
 }
 ```
-
-> The `entries` property is Experimental. To use it, opt in with `@OptIn(ExperimentalStdlibApi)`, and
-> [set the language version to 1.9](gradle-compiler-options.md#jvm-与-js-的公共属性).
->
-{type="warning"}
 
 每个枚举常量也都具有这两个属性：[`name`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/name.html)
 与 [`ordinal`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/ordinal.html)， 用于在枚举类声明中获取其名称<!--

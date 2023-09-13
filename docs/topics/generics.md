@@ -322,6 +322,41 @@ fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
 所传递的类型必须同时满足 `where` 子句的所有条件。在上述示例中，类型 `T` 必须
 *既*实现了 `CharSequence` *也*实现了 `Comparable`。
 
+## Definitely non-nullable types
+
+To make interoperability with generic Java classes and interfaces easier, Kotlin supports declaring a generic type parameter
+as **definitely non-nullable**. 
+
+To declare a generic type `T` as definitely non-nullable, declare the type with `& Any`. For example: `T & Any`.
+
+A definitely non-nullable type must have a nullable [upper bound](#upper-bounds).
+
+The most common use case for declaring definitely non-nullable types is when you want to override a Java method that 
+contains `@NotNull` as an argument. For example, consider the `load()` method:
+
+```java
+import org.jetbrains.annotations.*;
+
+public interface Game<T> {
+    public T save(T x) {}
+    @NotNull
+    public T load(@NotNull T x) {}
+}
+```
+
+To override the `load()` method in Kotlin successfully, you need `T1` to be declared as definitely non-nullable:
+
+```kotlin
+interface ArcadeGame<T1> : Game<T1> {
+    override fun save(x: T1): T1
+    // T1 is definitely non-nullable
+    override fun load(x: T1 & Any): T1 & Any
+}
+```
+
+When working only with Kotlin, it's unlikely that you will need to declare definitely non-nullable types explicitly because 
+Kotlin's type inference takes care of this for you.
+
 ## 类型擦除
 
 Kotlin 为泛型声明用法执行的类型安全检测在编译期进行。

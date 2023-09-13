@@ -57,7 +57,7 @@ tasks.test { // 见下方 5️⃣ 注释
 }
 
 kotlin { // 额外的扩展选项
-    jvmToolchain(8) // 生成 JVM 字节码的目标版本，见下方 7️⃣ 注释
+    jvmToolchain(%jvmLTSVersionSupportedByKotlin%) // 生成 JVM 字节码的目标版本，见下方 7️⃣ 注释
 }
 
 application {

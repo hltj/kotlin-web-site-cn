@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 1.4.20 的新特性)
 
-_[发布日期：2020-11-23](releases.md#版本发布详情)_
+_[发布于：2020-11-23](releases.md#版本发布详情)_
 
 Kotlin 1.4.20 offers a number of new experimental features and provides fixes and improvements for
 existing features, including those added in 1.4.0.
@@ -146,8 +146,6 @@ templates for Kotlin/JS applications:
     It provides options to enable integrations for style-sheets, navigational components, or state containers.
 - **Node.js Application** - a minimal project for running in a Node.js runtime. It comes with the option to directly
     include the experimental `kotlinx-nodejs` package.
-    
-Learn how to [create Kotlin/JS applications from templates](js-get-started.md).
 
 ### 使用 IR 编译器时忽略编译错误
 

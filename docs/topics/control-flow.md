@@ -7,30 +7,30 @@
 
 ```kotlin
 fun main() {
-  val a = 2
-  val b = 3
+    val a = 2
+    val b = 3
 
-  //sampleStart
-  var max = a
-  if (a < b) max = b
+    //sampleStart
+    var max = a
+    if (a < b) max = b
 
-  // With else
-  if (a > b) {
-    max = a
-  } else {
-    max = b
-  }
+    // With else
+    if (a > b) {
+      max = a
+    } else {
+      max = b
+    }
 
   // 作为表达式
  max = if (a > b) a else b
 
-  // You can also use `else if` in expressions:
-  val maxLimit = 1
-  val maxOrLimit = if (maxLimit > a) maxLimit else if (a > b) a else b
+    // You can also use `else if` in expressions:
+    val maxLimit = 1
+    val maxOrLimit = if (maxLimit > a) maxLimit else if (a > b) a else b
 
-  //sampleEnd
-  println("max is $max")
-  println("maxOrLimit is $maxOrLimit")
+    //sampleEnd
+    println("max is $max")
+    println("maxOrLimit is $maxOrLimit")
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="if-else-if-kotlin"}
@@ -79,7 +79,7 @@ when (x) {
 
 ```kotlin
 enum class Bit {
-  ZERO, ONE
+    ZERO, ONE
 }
 
 val numericValue = when (getRandomBit()) {
@@ -96,7 +96,7 @@ or [`sealed`](sealed-classes.md) type, or their nullable counterparts.
 
 ```kotlin
 enum class Color {
-  RED, GREEN, BLUE
+    RED, GREEN, BLUE
 }
 
 when (getColor()) {  
@@ -107,8 +107,8 @@ when (getColor()) {
 }
 
 when (getColor()) {
-  Color.RED -> println("red") // no branches for GREEN and BLUE
-  else -> println("not red") // 'else' is required
+    Color.RED -> println("red") // no branches for GREEN and BLUE
+    else -> println("not red") // 'else' is required
 }
 ```
 
@@ -268,4 +268,3 @@ do {
 ## 循环中的 break 与 continue
 
 在循环中 Kotlin 支持传统的 `break` 与 `continue` 操作符。参见[返回与跳转](returns.md)。
-

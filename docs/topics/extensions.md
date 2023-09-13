@@ -48,9 +48,8 @@ For more information about generics, 参见[泛型函数](generics.md)。
 扩展不能真正的修改他们所扩展的类。通过定义一个扩展，并没有在一个类中插入新成员，
 只不过是可以通过该类型的变量用点表达式去调用这个新函数。
 
-扩展函数是*静态*分发的，即他们不是根据接收者类型的虚方法。
-调用的扩展函数是由函数调用所在的表达式的类型来决定的，
-而不是由表达式运行时求值结果决定的。例如：
+Extension functions are dispatched _statically_. So which extension function is called is already known at compile time
+based on the receiver type. For example:
 
 ```kotlin
 fun main() {
@@ -75,8 +74,7 @@ fun main() {
 -->参数 `s` 的声明类型，该类型是 `Shape` 类。
 
 如果一个类定义有一个成员函数与一个扩展函数，而这两个函数又有相同的接收者类型、
-相同的名字，并且都适用给定的参数，这种情况*总是取成员函数*。
-例如：
+相同的名字，并且都适用给定的参数，这种情况*总是取成员函数*。 例如：
 
 ```kotlin
 fun main() {
@@ -115,9 +113,10 @@ fun main() {
 ## 可空接收者
 
 注意可以为可空的接收者类型定义扩展。这样的扩展可以在对象变量上调用，
-即使其值为 null，并且可以在函数体内检测 `this == null`。
+即使其值为 null。 If the receiver is `null`, then `this` is also `null`. So when defining an extension with a 
+nullable receiver type, we recommend performing a `this == null` check inside the function body to avoid compiler errors.
 
-这样，就可以在没有检测 null 的时候调用 Kotlin 中的toString()：检测发生在扩展函数的内部：
+可以在没有检测 null 的时候调用 Kotlin 中的 `toString()`：检测已发生在扩展函数的内部：
 
 ```kotlin
 fun Any?.toString(): String {

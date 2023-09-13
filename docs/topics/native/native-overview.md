@@ -54,28 +54,29 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 
 ## 在多个平台之间共享代码
 
-[多平台项目](multiplatform.md)允许在多个平台之间共享公共的 Kotlin 代码，包括：Android、iOS、JVM、JavaScript 与原生。
-多平台库为公共 Kotlin 代码提供了所需的 API，并且有助于在一处用 Kotlin 开发项目的共享部分，
-并将其与一些或所有目标平台共享。
+[Kotlin Multiplatform](multiplatform.md) helps share common code across multiple platforms, including Android, iOS, JVM,
+web, and native. Multiplatform libraries provide the necessary APIs for common Kotlin code and allow writing shared parts
+of projects in Kotlin all in one place.
 
-可以使用 [Kotlin 移动端多平台](https://kotlinlang.org/lp/multiplatform/)通过 Android 与 iOS 之间共享代码创建多平台移动应用程序。
+You can use the [Get started with Kotlin Multiplatform for mobile](multiplatform-mobile-getting-started.md) tutorial
+to create applications and share business logic between iOS and Android. To share UIs among iOS, Android, desktop, and web,
+try [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/),
+JetBrains' declarative UI framework based on Kotlin and [Jetpack Compose](https://developer.android.com/jetpack/compose).
 
 ## 如何入门
-
-### 教程与文档
 
 刚接触 Kotlin？可以看看 [Kotlin 入门](getting-started.md)页。
 
 推荐文档：
 
-- [Kotlin 多平台移动端](multiplatform-mobile-getting-started.md)
-- [多平台文档](multiplatform-get-started.md)
-- [C 语言互操作](native-c-interop.md)
-- [Swift/Objective-C 互操作](native-objc-interop.md)
+* [Get started with Kotlin Multiplatform](multiplatform-get-started.md)
+* [Interoperability with C](native-c-interop.md)
+* [Interoperability with Swift/Objective-C](native-objc-interop.md)
 
 推荐教程：
+
 * [Kotlin/Native 入门](native-get-started.md)
-* [创建第一个跨平台移动端应用程序](multiplatform-mobile-create-first-app.md)
-- [C 语言 Kotlin/Native 之间的类型映射](mapping-primitive-data-types-from-c.md)
-- [Kotlin/Native 开发动态库](native-dynamic-libraries.md)
-- [Kotlin/Native 开发 Apple 框架](apple-framework.md)
+* [Get started with Kotlin Multiplatform for mobile](multiplatform-mobile-getting-started.md)
+* [Mapping primitive data types from C](mapping-primitive-data-types-from-c.md)
+* [Kotlin/Native 开发动态库](native-dynamic-libraries.md)
+* [Kotlin/Native 开发 Apple 框架](apple-framework.md)

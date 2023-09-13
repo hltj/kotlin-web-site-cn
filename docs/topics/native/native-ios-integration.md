@@ -12,34 +12,34 @@ However, there are some specifics you should keep in mind:
 
 ## Threads
 
-### Deinitilizers
+### Deinitializers
 
-Deinit on the Swift/Objective-C objects and the objects they refer to is called on a different thread if
-these objects cross interop boundaries into Kotlin/Native, for example:
+Deinitialization on the Swift/Objective-C objects and the objects they refer to is called on the main thread if
+these objects are passed to Kotlin on the main thread, for example:
 
 ```kotlin
 // Kotlin
 class KotlinExample {
-   fun action(arg: Any) {
-      println(arg)
-   }
+    fun action(arg: Any) {
+        println(arg)
+    }
 }
 ```
 
 ```swift
 // Swift
 class SwiftExample {
-   init() {
-      print("init on \(Thread.current)")
-   }
+    init() {
+        print("init on \(Thread.current)")
+    }
 
-   deinit {
-      print("deinit on \(Thread.current)")
-   }
+    deinit {
+        print("deinit on \(Thread.current)")
+    }
 }
 
 func test() {
-   KotlinExample().action(arg: SwiftExample())
+    KotlinExample().action(arg: SwiftExample())
 }
 ```
 
@@ -48,8 +48,17 @@ The resulting output:
 ```text
 init on <_NSMainThread: 0x600003bc0000>{number = 1, name = main}
 shared.SwiftExample
-deinit on <NSThread: 0x600003b9b900>{number = 7, name = (null)}
+deinit on <_NSMainThread: 0x600003bc0000>{number = 1, name = main}
 ```
+
+Deinitialization on the Swift/Objective-C objects is called on a special GC thread if:
+
+* Swift/Objective-C objects are passed to Kotlin on a thread other than main.
+* The main dispatch queue isn't processed.
+
+If you want to call deinitialization on a special GC thread explicitly,
+set `kotlin.native.binary.objcDisposeOnMain=false` in your `gradle.properties`. This option
+enables deinitialization on a special GC thread, even if Swift/Objective-C objects were passed to Kotlin on the main thread.
 
 ### Completion handlers
 
@@ -167,7 +176,7 @@ In this case, try the `autoreleasepool` block around loop bodies that do interop
 // Kotlin
 fun growingMemoryUsage() {
     repeat(Int.MAX_VALUE) {
-            NSLog("$it\n")
+        NSLog("$it\n")
     }
 }
 
@@ -198,8 +207,8 @@ class KotlinStorage(var field: Any? = null) : Storage {
 
 class KotlinExample {
     fun action(firstSwiftStorage: Storage, secondSwiftStorage: Storage) {
-	// Here, we create the following chain:
-	// firstKotlinStorage -> firstSwiftStorage -> secondKotlinStorage -> secondSwiftStorage.
+        // Here, we create the following chain:
+        // firstKotlinStorage -> firstSwiftStorage -> secondKotlinStorage -> secondSwiftStorage.
         val firstKotlinStorage = KotlinStorage()
         firstKotlinStorage.store(firstSwiftStorage)
         val secondKotlinStorage = KotlinStorage()
