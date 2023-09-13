@@ -285,7 +285,7 @@ class MyStringCollection {
 ## 函数作用域
 
 Kotlin 函数可以在文件顶层声明，这意味着你不需要像一些语言如
-Java、C# 与 Scala ([top level definition is available since Scala 3](https://docs.scala-lang.org/scala3/book/taste-toplevel-definitions.html#inner-main)) 那样需要创建一个类来保存一个函数。此外<!--
+Java、C# 与 Scala ([在Scala 3之后新增了顶层作用域的支持](https://docs.scala-lang.org/scala3/book/taste-toplevel-definitions.html#inner-main)) 那样需要创建一个类来保存一个函数。此外<!--
 -->除了顶层函数，Kotlin 中函数也可以声明在局部作用域、作为成员函数以及扩展函数。
 
 ### 局部函数
