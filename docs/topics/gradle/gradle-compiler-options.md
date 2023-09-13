@@ -158,38 +158,37 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 
 ### 常规属性
 
-| 名称              | 描述                                                                                     |  预期值                   | 预设值        |
+| 名称              | 描述                                                                                     |  可能的值                  | 预设值        |
 |-------------------|------------------------------------------------------------------------------------------|---------------------------|---------------|
-| `optIn`           | A property for configuring a list of [opt-in compiler arguments](opt-in-requirements.md) | `listOf( /* opt-ins */ )` | `emptyList()` |
-| `progressiveMode` | Enables the [progressive compiler mode](whatsnew13.md#progressive-mode)                  | `true`, `false`           | `false`       |
+| `optIn`           | 用于配置[要求选择加入的编译器参数](opt-in-requirements.md)的列表                             | `listOf( /* opt-ins */ )` | `emptyList()` |
+| `progressiveMode` | 启用[渐进式编译器模式](whatsnew13.md#progressive-mode)                                     | `true`, `false`           | `false`       |
 
 ### JVM 特有的属性
 
-| 名称                      | 描述                                                                                                                                                                                                                                          | 预期值                                                                                           | 预设值                      |
+| 名称                      | 描述                                                                                                                                                                                                                                          | 可能的值                                                                                         | 预设值                      |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|-----------------------------|
-| `javaParameters`          | Generate metadata for Java 1.8 reflection on method parameters                                                                                                                                                                                |                                                                                                  | false                       |
-| `jvmTarget`               | Target version of the generated JVM bytecode                                                                                                                                                                                                  | "1.8", "9", "10", ..., "20". Also, see [Types for compiler options](#types-for-compiler-options) | "%defaultJvmTargetVersion%" |
-| `noJdk`                   | Don't automatically include the Java runtime into the classpath                                                                                                                                                                               |                                                                                                  | false                       |
-| `jvmTargetValidationMode` | <list><li>Validation of the [JVM target compatibility](gradle-configure-project.md#check-for-jvm-target-compatibility-of-related-compile-tasks) between Kotlin and Java</li><li>A property for tasks of the `KotlinCompile` type.</li></list> | `WARNING`, `ERROR`, `INFO`                                                                       | `ERROR`                     |
+| `javaParameters`          | 为方法参数生成 Java 1.8 反射的元数据                                                                                                                                                                                                            |                                                                                                  | false                       |
+| `jvmTarget`               | 生成的 JVM 字节码的目标版本                                                                                                                                                                                                                     | "1.8"、"9"、"10"、……、"20"。另见[编译器选项的类型](#编译器选项的类型)                                | "%defaultJvmTargetVersion%" |
+| `noJdk`                   |不要自动在类路径中包含 Java 运行时                                                                                                                                                                                                               |                                                                                                  | false                       |
+| `jvmTargetValidationMode` | <list><li>验证 Kotlin 和 Java 之间 [JVM 目标的兼容性](gradle-configure-project.md#check-for-jvm-target-compatibility-of-related-compile-tasks)</li><li>该编译器选项属于 `KotlinCompile` 任务</li></list>                                       | `WARNING`, `ERROR`, `INFO`                                                                        | `ERROR`                     |
 
 ### JVM、JS 与 JS DCE 的公共属性
 
-| Name | Description | Possible values |Default value |
+| 名称 | 描述         | 可能的值        | 预设值      |
 |------|-------------|-----------------|--------------|
-| `allWarningsAsErrors` | Report an error if there are any warnings |  | false |
-| `suppressWarnings` | Don't generate warnings |  | false |
-| `verbose` | Enable verbose logging output. Works only when the [Gradle debug log level enabled](https://docs.gradle.org/current/userguide/logging.html) |  | false |
-| `freeCompilerArgs` | A list of additional compiler arguments. You can use experimental `-X` arguments here too. See an [example](#example-of-additional-arguments-usage-via-freecompilerargs) |  | [] |
+| `allWarningsAsErrors` | 任何警告都报告为错误 |  | false |
+| `suppressWarnings` | 不生成警告 |  | false |
+| `verbose` | 启用详细日志输出。仅在[已启用 Gradle debug 日志](https://docs.gradle.org/current/userguide/logging.html)时才有效 |  | false |
+| `freeCompilerArgs` | 	附加编译器参数的列表。你也可以在这里使用实验性的`-X`参数。见[例](#example-of-additional-arguments-usage-via-freecompilerargs)。 |  | [] |
 
-> We are going to deprecate the attribute `freeCompilerArgs` in future releases. If you miss some option in the Kotlin Gradle DSL,
-> please, [file an issue](https://youtrack.jetbrains.com/newissue?project=kt).
+> 我们计划在今后的发行版本中将`freeCompilerArgs`选项弃用。如果你因此无法在 Kotlin Gradle DSL 中配置某些选项
+> 请[提出一个 Issue](https://youtrack.jetbrains.com/newissue?project=kt)。
 >
 {type="warning"}
 
-#### Example of additional arguments usage via freeCompilerArgs {initial-collapse-state="collapsed"}
+#### 通过 freeCompilerArgs 选项配置额外的参数{initial-collapse-state="collapsed"}
 
-Use the attribute `freeCompilerArgs` to supply additional (including experimental) compiler arguments. You can add a single
-argument to this attribute or a list of arguments:
+通过使用 `freeCompilerArgs` 来应用包括实验性参数在内的额外编译器参数。你可以在这个属性中加入一个单独的编译器参数或者一个编译器参数的列表。
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -200,11 +199,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 val compileKotlin: KotlinCompilationTask<*> by tasks
 
-// Single experimental argument
+// 单独的参数
 compileKotlin.compilerOptions.freeCompilerArgs.add("-Xexport-kdoc")
-// Single additional argument, can be a key-value pair
+// 单独的，键值对格式的参数
 compileKotlin.compilerOptions.freeCompilerArgs.add("-Xno-param-assertions")
-// List of arguments
+// 参数列表
 compileKotlin.compilerOptions.freeCompilerArgs.addAll(listOf("-Xno-receiver-assertions", "-Xno-call-assertions"))
 ```
 
@@ -217,11 +216,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 tasks.named('compileKotlin', KotlinCompilationTask) {
     compilerOptions {
-        // Single experimental argument
+        // 单独的实验性参数
         freeCompilerArgs.add("-Xexport-kdoc")
-        // Single additional argument, can be a key-value pair
+        //单独的，键值对格式的参数
         freeCompilerArgs.add("-Xno-param-assertions")
-        // List of arguments
+        // 参数列表
         freeCompilerArgs.addAll(["-Xno-receiver-assertions", "-Xno-call-assertions"])
     }
 }
@@ -232,14 +231,14 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 
 ### JVM 与 JS 的公共属性
 
-| Name | Description | Possible values |Default value |
+| 名称 | 描述 | 可能的值 | 预设值 |
 |------|-------------|-----------------|--------------|
-| `apiVersion` | Restrict the use of declarations to those from the specified version of bundled libraries | "1.4" (DEPRECATED), "1.5" (DEPRECATED), "1.6", "1.7", "1.8", "1.9", "2.0" (EXPERIMENTAL), "2.1" (EXPERIMENTAL) |  |
-| `languageVersion` | Provide source compatibility with the specified version of Kotlin | "1.4" (DEPRECATED), "1.5" (DEPRECATED), "1.6", "1.7", "1.8", "1.9", "2.0" (EXPERIMENTAL), "2.1" (EXPERIMENTAL) |  |
+| `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"、 "2.0"（实验性的）、 "2.1"（实验性的） |  |
+| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"、 "2.0"（实验性的）、 "2.1"（实验性的） |  |
 
-#### Example of setting a languageVersion
+#### 设置 languageVersion 的例子
 
-To set a language version, use the following syntax:
+要设置语言的版本，请使用如下格式的语法：
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -271,29 +270,29 @@ tasks
 </tab>
 </tabs>
 
-Also, see [Types for compiler options](#types-for-compiler-options).
+另见[编译器选项的类型](#types-for-compiler-options)。
 
 ### JS 特有的属性
 
 | Name | Description | Possible values |Default value |
 |---|---|---|---|
-| `friendModulesDisabled` | Disable internal declaration export| | false |
-| `main` | Define whether the `main` function should be called upon execution | "call", "noCall". Also, see [Types for compiler options](#types-for-compiler-options) | "call" |
-| `metaInfo` | Generate .meta.js and .kjsm files with metadata. Use to create a library | | true |
-| `moduleKind` | The kind of JS module generated by the compiler | "umd", "commonjs", "amd", "plain", "es". Also, see [Types for compiler options](#types-for-compiler-options) | "umd" |
-| `outputFile` | Destination *.js file for the compilation result | | "\<buildDir>/js/packages/\<project.name>/kotlin/\<project.name>.js" |
-| `sourceMap` | Generate source map | | true |
-| `sourceMapEmbedSources` | Embed source files into the source map | "never", "always", "inlining". Also, see [Types for compiler options](#types-for-compiler-options) |  |
-| `sourceMapNamesPolicy` | Add variable and function names that you declared in Kotlin code into the source map. For more information on the behavior, see our [compiler reference](compiler-reference.md#source-map-names-policy-simple-names-fully-qualified-names-no). | "simple-names", "fully-qualified-names", "no". Also, see [Types for compiler options](#types-for-compiler-options)                                                              | "simple-names" |
-| `sourceMapPrefix` | Add the specified prefix to paths in the source map |  |  |
-| `target` | Generate JS files for specific ECMA version  | "v5"  | "v5" |
-| `typedArrays` | Translate primitive arrays to JS typed arrays | | true |
+| `friendModulesDisabled` | 禁用内部声明导出	 | | false |
+| `main` | 定义是否在执行时调用 `main` 函数 | "call"、"noCall"。另见[编译器选项的类型](#编译器选项的类型) | "call" |
+| `metaInfo` | 使用元数据生成 .meta.js 与 .kjsm 文件。用于创建库 | | true |
+| `moduleKind` | 编译器生成的 JS 模块类型 | "umd"、"commonjs"、"amd"、"plain"、"es"。另见[编译器选项的类型](#编译器选项的类型) | "umd" |
+| `outputFile` | 编译结果的目标 *.js 文件 | | "\<buildDir>/js/packages/\<project.name>/kotlin/\<project.name>.js" |
+| `sourceMap` | 生成源代码映射（source map） | | true |
+| `sourceMapEmbedSources` | 将源代码嵌入到源代码映射中 | "never"、"always"、"inlining"。另见[编译器选项的类型](#编译器选项的类型) |  |
+| `sourceMapNamesPolicy` | 将 Kotlin 代码中声明的变量和函数添加到源代码映射中。详见[编译器引用](compiler-reference.md#source-map-names-policy-simple-names-fully-qualified-names-no)。 | "simple-names"、"fully-qualified-names"、"no"。另见[编译器选项的类型](#编译器选项的类型)                                                              | "simple-names" |
+| `sourceMapPrefix` | 将指定前缀添加到源代码映射中的路径 |  |  |
+| `target` | 	生成指定 ECMA 版本的 JS 文件  | "v5"  | "v5" |
+| `typedArrays` | 将原生数组转换为 JS 带类型数组 | | true |
 
-### Types for compiler options
+### 编译器选项的类型
 
-Some of the `compilerOptions` use the new types instead of the `String` type:
+一些 `compilerOptions` 使用独有的类型来替代字符串类型
 
-| Option | Type | Example |
+| 选项 | 类型 | 例子 |
 |--------|------|---------|
 | `jvmTarget` | [`JvmTarget`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/JvmTarget.kt) | `compilerOptions.jvmTarget.set(JvmTarget.JVM_11)` |
 | `apiVersion` and `languageVersion` | [`KotlinVersion`](https://github.com/JetBrains/kotlin/blob/1.8.0/libraries/tools/kotlin-gradle-compiler-types/src/generated/kotlin/org/jetbrains/kotlin/gradle/dsl/KotlinVersion.kt) | `compilerOptions.languageVersion.set(KotlinVersion.%gradleLanguageVersion%)` |
@@ -305,6 +304,6 @@ Some of the `compilerOptions` use the new types instead of the `String` type:
 ## 下一步做什么？
 
 了解更多关于：
-* [Incremental compilation, caches support, build reports, and the Kotlin daemon](gradle-compilation-and-caches.md).
-* [Gradle basics and specifics](https://docs.gradle.org/current/userguide/userguide.html).
-* [Support for Gradle plugin variants](gradle-plugin-variants.md).
+* [增量编译、缓存支持、构建日志以及 Kotlin 守护进程](gradle-compilation-and-caches.md)。
+* [Gradle 的基础知识和特性](https://docs.gradle.org/current/userguide/userguide.html)。
+* [对 Gradle 插件变体的支持](gradle-plugin-variants.md)。
