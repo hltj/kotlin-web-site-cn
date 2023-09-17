@@ -99,7 +99,8 @@ foo { println("hello") }        // 使用两个默认值 bar = 0 与 baz = 1
 
 在调用函数的时候可以指明一个或多个参数，这对于包含多个参数的函数是十分有帮助的，尤其是在传入 `null` 或者布尔值的情况下很难联想到参数的含义。 
 
-在调用函数的过程中使用具名参数时，你可以随意修改参数的顺序。如果想要使用某些参数的默认值，只需要在传参的时候省略掉这些参数即可。
+在调用函数的过程中使用具名参数时，你可以随意修改参数的顺序。如果想要<!--
+-->使用某些参数的默认值，只需要在传参的时候省略掉这些参数即可。
 
  以 `reformat()` 函数为例，该函数包含 4 个有默认值的参数。
 
@@ -113,8 +114,8 @@ fun reformat(
 ) { /*……*/ }
 ```
 
-当调用这个函数时，你也可以不指明所有参数的名称：
-
+当调用这个函数时，不需要让其所有参数都具名：
+ 
 ```kotlin
 reformat(
     "String!",
@@ -131,13 +132,15 @@ reformat(
 reformat("This is a long String!")
 ```
 
-除了省略掉所有有默认值的参数，你也可以选择只省略某些特定的有默认值的参数。但是你需要在跳过第一个参数后，对后续的所有参数都使用具名参数：
+除了省略掉所有有默认值的参数，你也可以选择只省略某些特定的有默认值的参数。<!--
+-->但是你需要在跳过第一个参数后，对后续的所有参数都使用具名参数：
 
 ```kotlin
 reformat("This is a short String!", upperCaseFirstLetter = false, wordSeparator = '_')
 ```
 
-可以通过具名参数和*展开*操作符来传入[可变参数（`vararg`）](#可变数量的参数varargs)：
+可以通过具名参数和<!--
+-->*展开*操作符来传入[可变参数（`vararg`）](#可变数量的参数varargs)：
 
 ```kotlin
 fun foo(vararg strings: String) { /*……*/ }
@@ -286,7 +289,7 @@ class MyStringCollection {
 ## 函数作用域
 
 Kotlin 函数可以在文件顶层声明，这意味着你不需要像一些语言如
-Java、C# 与 Scala ([在Scala 3之后新增了顶层作用域的支持](https://docs.scala-lang.org/scala3/book/taste-toplevel-definitions.html#inner-main)) 那样需要创建一个类来保存一个函数。此外<!--
+Java、C# 与 Scala ([在 Scala 3 之后新增了顶层作用域的支持](https://docs.scala-lang.org/scala3/book/taste-toplevel-definitions.html#inner-main)) 那样需要创建一个类来保存一个函数。此外<!--
 -->除了顶层函数，Kotlin 中函数也可以声明在局部作用域、作为成员函数以及扩展函数。
 
 ### 局部函数
