@@ -10,15 +10,19 @@
 2. 在面板的左侧，选择**新建项目**。
 3. 根据需要修改项目的名称和位置。
 
-> 勾选**创建 Git 仓库**来让你的项目弃启用版本控制。你也可以在项目创建之后再来创建。
-
+   > 勾选**创建 Git 仓库**来让你的项目弃启用版本控制。
+   > 你也可以在项目创建之后再来创建。
+   > 
+   {type="tip"}
+   
 4. 在**语言**这一行选择 **Kotlin**。
 
    ![Create a console application](jvm-new-gradle-project.png){width=700}
 
 5. 在**构建系统**这一行选择 **Gradle**。
 6. 在 **JDK** 这一行选择你想要应用在项目中的 [JDK](https://www.oracle.com/java/technologies/downloads/) 版本。
-    * 如果你的计算机中已经安装了 JDK，但是 IDE 并没有识别。选择**添加 JDK** 并选择 JDK 的 Home 路径。
+    * 如果你的计算机中已经安装了 JDK，但是 IDE 并没有识别。选择**添加 JDK** 并选择<!--
+      -->JDK 的 Home 路径。
     * 如果你的计算机中尚未安装 JDK，选择 **下载 JDK**。
 
 7. 在 **Gradle DSL** 这一行选择 **Kotlin**。
@@ -37,10 +41,10 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "%kotlinVersion%" // 使用的 Kotlin 版本
-    application // 应用插件，见下方 1️⃣ 注释
+    application // application 插件，见下方 1️⃣ 注释
 }
 
-group = "org.example" // 公司域名，例如：org.jetbrains
+group = "org.example" // 公司域名，例如：`org.jetbrains`
 version = "1.0-SNAPSHOT" // 构建工件的版本号
 
 repositories { // 依赖的源，见下方 2️⃣ 注释
@@ -65,9 +69,9 @@ application {
 }
 ```
 
-* 1️⃣ [应用插件](https://docs.gradle.org/current/userguide/application_plugin.html)用于构建基于 Java 语言的 CLI 应用。
+* 1️⃣ [application 插件](https://docs.gradle.org/current/userguide/application_plugin.html)用于构建基于 Java 语言的 CLI 应用。
 * 2️⃣ 了解更多关于[依赖源](https://docs.gradle.org/current/userguide/declaring_repositories.html)的信息。
-* 3️⃣ [Maven 中心仓库](https://search.maven.org/)也可以使用 [Google的 Maven 仓库](https://maven.google.com/web/index.html)或者公司的私有仓库替代。
+* 3️⃣ [Maven 中心仓库](https://search.maven.org/)也可以使用 [Google 的 Maven 仓库](https://maven.google.com/web/index.html)或者公司的私有仓库替代。
 * 4️⃣ 了解更多关于[依赖声明](https://docs.gradle.org/current/userguide/declaring_dependencies.html)的信息。
 * 5️⃣ 了解更多关于[任务](https://docs.gradle.org/current/dsl/org.gradle.api.Task.html)的信息。
 * 6️⃣ [用于测试的 JUnitPlatform](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/Test.html#useJUnitPlatform).
@@ -80,13 +84,15 @@ application {
 2. 在 `dependencies` 块中，有一行 `testImplementation(kotlin("test"))`。
    了解更多关于[配置用于测试的库](gradle-configure-project.md#set-dependencies-on-test-libraries)的信息。
 
-3. 在 `dependencies` 块下方，有关于 `KotlinCompile` 任务的配置代码块。你可以在这里给编译器添加额外的参数来启用或者关闭某些语言特性。
+3. 在 `dependencies` 块下方，有关于 `KotlinCompile` 任务的配置代码块。
+   你可以在这里给编译器添加额外的参数来启用或者关闭某些语言特性。
 
 ## 运行应用
 
 打开位于 `src/main/kotlin` 的 `Main.kt` 文件。
 
-`src` 目录包含了 Kotlin 的源代码和资源文件。`Main.kt` 文件包含了会打印出“Hello World!”的示例代码。
+`src` 目录包含了 Kotlin 的源代码和资源文件。`Main.kt` 文件包含了会打印出<!--
+-->“Hello World!”的示例代码。
 
 ![带有main函数的Main.kt](jvm-main-kt-initial-gradle.png){width=700}
 
