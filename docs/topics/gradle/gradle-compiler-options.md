@@ -4,7 +4,7 @@
 JVM、JavaScript，以及[支持平台](native-overview.md#目标平台)的本地二进制文件。
 
 这些编译器会在这些步骤中被调用：
-* IDE，当你在你的 Kotlin 项目上点击 __编译__ 或 __运行__ 按钮时。
+* IDE，当你在你的 Kotlin 项目上点击**编译**或**运行**按钮时。
 * Gradle，当你在控制台或者 IDE 上调用 `gradle build` 命令时。
 * Maven，当你在控制台或者 IDE 上调用 `mvn compile` 或者 `mvn test-compile`命令时。
 
@@ -44,11 +44,13 @@ tasks.named('compileKotlin', org.jetbrains.kotlin.gradle.tasks.KotlinCompilation
 
 ### 面向 JVM
 
-JVM 环境下的编译任务，对于生产代码叫做 `compileKotlin`，而对于测试代码则叫做 `compileTestKotlin`。对于自定义源代码集（source set），这些任务命名遵循 `compile＜Name＞Kotlin` 模式。
+JVM 环境下的编译任务，对于<!--
+-->生产代码叫做 `compileKotlin`，而对于测试代码则叫做 `compileTestKotlin`。对于自定义源代码集（source set），这些任务命名遵循 `compile＜Name＞Kotlin` 模式。
 
-Android 项目中的任务名称包含[构建变体](https://developer.android.com/studio/build/build-variants.html) 名称，并遵循 `compile<BuildVariant>Kotlin` 的模式，例如 `compileDebugKotlin` 或 `compileReleaseUnitTestKotlin`。
+Android 项目中的任务名称包含[构建变体](https://developer.android.com/studio/build/build-variants.html) <--!
+-->名称，并遵循 `compile<BuildVariant>Kotlin` 的模式，例如 `compileDebugKotlin` 或 `compileReleaseUnitTestKotlin`。
 
-对于 JVM 项目和 Android 项目，都可以通过 Kotlin 的领域特定语言去配置选项。
+对于 JVM 项目和 Android 项目，都可以通过项目的 Kotlin 扩展 DSL 去配置选项。
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -79,7 +81,8 @@ kotlin {
 
 * `android.kotlinOptions` 和 `kotlin.compilerOptions` 这两个配置会相互覆写。只有最新（即最下面）的一个会生效。
 * `kotlin.compilerOptions` 会影响项目中所有 Kotlin 编译任务的配置。
-* 对于那些应用到 `kotlin.compilerOptions` 的任务，你可以通过 `tasks.named<KotlinJvmCompile>("compileKotlin") { }`（或者 `tasks.withType<KotlinJvmCompile>().configureEach { }`）来覆写配置。
+* 对于那些应用到 `kotlin.compilerOptions` 的任务，你可以通过 `tasks.named<KotlinJvmCompile>("compileKotlin") { }`<!--
+  -->（或者 `tasks.withType<KotlinJvmCompile>().configureEach { }`）来覆写配置。
 
 ### 面向 JavaScript
 
@@ -92,7 +95,7 @@ JavaScript 的编译任务，对于生产代码叫做 `compileKotlinJs`，对于
 
 ```kotlin
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
-// ...
+// ……
 
 val compileKotlin: KotlinCompilationTask<*> by tasks
 
@@ -104,7 +107,7 @@ compileKotlin.compilerOptions.suppressWarnings.set(true)
 
 ```groovy
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
-// ...
+// ……
 
 tasks.named('compileKotlin', KotlinCompilationTask) {
     compilerOptions {
@@ -130,10 +133,10 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 
 ```kotlin
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
-// ...
+// ……
 
 tasks.named<KotlinCompilationTask<*>>("compileKotlin").configure {
-    compilerOptions { /*...*/ }
+    compilerOptions { /*……*/ }
 }
 ```
 
@@ -145,7 +148,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 // ...
 
 tasks.named('compileKotlin', KotlinCompilationTask) {
-    compilerOptions { /*...*/ }
+    compilerOptions { /*……*/ }
 }
 ```
 
@@ -158,14 +161,14 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 
 ### 常规属性
 
-| 名称              | 描述                                                                                     |  可能的值                  | 预设值        |
+| 名称              | 描述                                                                                     |  可能的值                  | 默认值        |
 |-------------------|------------------------------------------------------------------------------------------|---------------------------|---------------|
-| `optIn`           | 用于配置[要求选择加入的编译器参数](opt-in-requirements.md)的列表                             | `listOf( /* opt-ins */ )` | `emptyList()` |
+| `optIn`           | 用于配置[选择加入的编译器参数](opt-in-requirements.md)的列表                             | `listOf( /* opt-ins */ )` | `emptyList()` |
 | `progressiveMode` | 启用[渐进式编译器模式](whatsnew13.md#progressive-mode)                                     | `true`, `false`           | `false`       |
 
 ### JVM 特有的属性
 
-| 名称                      | 描述                                                                                                                                                                                                                                          | 可能的值                                                                                         | 预设值                      |
+| 名称                      | 描述                                                                                                                                                                                                                                          | 可能的值                                                                                         | 默认值                      |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|-----------------------------|
 | `javaParameters`          | 为方法参数生成 Java 1.8 反射的元数据                                                                                                                                                                                                            |                                                                                                  | false                       |
 | `jvmTarget`               | 生成的 JVM 字节码的目标版本                                                                                                                                                                                                                     | "1.8"、"9"、"10"、……、"20"。另见[编译器选项的类型](#编译器选项的类型)                                | "%defaultJvmTargetVersion%" |
@@ -174,7 +177,7 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 
 ### JVM、JS 与 JS DCE 的公共属性
 
-| 名称 | 描述         | 可能的值        | 预设值      |
+| 名称 | 描述         | 可能的值        | 默认值      |
 |------|-------------|-----------------|--------------|
 | `allWarningsAsErrors` | 任何警告都报告为错误 |  | false |
 | `suppressWarnings` | 不生成警告 |  | false |
@@ -199,9 +202,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 val compileKotlin: KotlinCompilationTask<*> by tasks
 
-// 单独的参数
+// 单个实验性参数
 compileKotlin.compilerOptions.freeCompilerArgs.add("-Xexport-kdoc")
-// 单独的，键值对格式的参数
+// 单个附加参数，可以是键值对
 compileKotlin.compilerOptions.freeCompilerArgs.add("-Xno-param-assertions")
 // 参数列表
 compileKotlin.compilerOptions.freeCompilerArgs.addAll(listOf("-Xno-receiver-assertions", "-Xno-call-assertions"))
@@ -216,9 +219,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 tasks.named('compileKotlin', KotlinCompilationTask) {
     compilerOptions {
-        // 单独的实验性参数
+        // 单个实验性参数
         freeCompilerArgs.add("-Xexport-kdoc")
-        //单独的，键值对格式的参数
+        // 单个附加参数，可以是键值对
         freeCompilerArgs.add("-Xno-param-assertions")
         // 参数列表
         freeCompilerArgs.addAll(["-Xno-receiver-assertions", "-Xno-call-assertions"])
@@ -231,7 +234,7 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 
 ### JVM 与 JS 的公共属性
 
-| 名称 | 描述 | 可能的值 | 预设值 |
+| 名称 | 描述 | 可能的值 | 默认值 |
 |------|-------------|-----------------|--------------|
 | `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"、 "2.0"（实验性的）、 "2.1"（实验性的） |  |
 | `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"、 "2.0"（实验性的）、 "2.1"（实验性的） |  |
@@ -274,7 +277,7 @@ tasks
 
 ### JS 特有的属性
 
-| Name | Description | Possible values |Default value |
+| 名称 | 描述 | 可能的值 |默认值 |
 |---|---|---|---|
 | `friendModulesDisabled` | 禁用内部声明导出	 | | false |
 | `main` | 定义是否在执行时调用 `main` 函数 | "call"、"noCall"。另见[编译器选项的类型](#编译器选项的类型) | "call" |
