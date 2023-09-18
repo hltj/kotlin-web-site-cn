@@ -20,14 +20,15 @@
    ![Create a console application](jvm-new-gradle-project.png){width=700}
 
 5. 在**构建系统**这一行选择 **Gradle**。
-6. 在 **JDK** 这一行选择你想要应用在项目中的 [JDK](https://www.oracle.com/java/technologies/downloads/) 版本。
+6. 在 **JDK** 这一行选择你想要应用在项目中的 [JDK](https://www.oracle.com/java/technologies/downloads/)
+   版本。
     * 如果你的计算机中已经安装了 JDK，但是 IDE 并没有识别。选择**添加 JDK** 并选择<!--
       -->JDK 的 Home 路径。
     * 如果你的计算机中尚未安装 JDK，选择 **下载 JDK**。
 
-7. 在 **Gradle DSL** 这一行选择 **Kotlin**。
-8. 勾选**添加示例代码**来创建一个初始的 `"Hello World!"`应用。
-9. 点击**创建**。
+8. 在 **Gradle DSL** 这一行选择 **Kotlin**。
+9. 勾选**添加示例代码**来创建一个初始的 `"Hello World!"`应用。
+10. 点击**创建**。
 
 你已经成功创建了一个 Gradle 项目。
 
