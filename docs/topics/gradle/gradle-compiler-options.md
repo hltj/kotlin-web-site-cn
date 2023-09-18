@@ -8,7 +8,8 @@ JVM、JavaScript，以及[支持平台](native-overview.md#目标平台)的本�
 * Gradle，当你在控制台或者 IDE 上调用 `gradle build` 命令时。
 * Maven，当你在控制台或者 IDE 上调用 `mvn compile` 或者 `mvn test-compile`命令时。
 
-你也可以用命令行手动调用 Kotlin 编译器，详见[使用命令行编译器](command-line.md)教程。
+你也可以用命令行手动调用 Kotlin 编译器，
+详见[使用命令行编译器](command-line.md)教程。
 
 ## 配置选项
 
