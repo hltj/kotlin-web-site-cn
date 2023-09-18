@@ -97,7 +97,8 @@ foo { println("hello") }        // 使用两个默认值 bar = 0 与 baz = 1
 
 ### 具名参数
 
-在调用函数的时候可以指明一个或多个参数，这对于包含多个参数的函数是十分有帮助的，尤其是在传入 `null` 或者布尔值的情况下很难联想到参数的含义。 
+在调用函数的时候可以指明一个或多个参数，这对于包含<!--
+-->多个参数的函数是十分有帮助的，尤其是在传入 `null` 或者布尔值的情况下很难联想到参数的含义。 
 
 在调用函数的过程中使用具名参数时，你可以随意修改参数的顺序。如果想要<!--
 -->使用某些参数的默认值，只需要在传参的时候省略掉这些参数即可。
@@ -132,8 +133,8 @@ reformat(
 reformat("This is a long String!")
 ```
 
-除了省略掉所有有默认值的参数，你也可以选择只省略某些特定的有默认值的参数。<!--
--->但是你需要在跳过第一个参数后，对后续的所有参数都使用具名参数：
+除了省略掉所有有默认值的参数，你也可以选择只省略某些特定的有默认值的参数。
+但是你需要在跳过第一个参数后，对后续的所有参数都使用具名参数：
 
 ```kotlin
 reformat("This is a short String!", upperCaseFirstLetter = false, wordSeparator = '_')
@@ -230,7 +231,8 @@ val a = arrayOf(1, 2, 3)
 val list = asList(-1, 0, *a, 4)
 ```
 
-如果你想在 `vararg` 中传入一个[原生类型数组](arrays.md#原生类型数组)，你需要先通过 `toTypedArray()` 函数将其转换为常规的类型化数组：
+如果你想传入一个[原生类型数组](arrays.md#原生类型数组)<!--
+-->到 `vararg` 中，你需要先通过 `toTypedArray()` 函数将其转换为常规的类型化数组：
 
 ```kotlin
 val a = intArrayOf(1, 2, 3) // IntArray 是一种原生类型数组
@@ -390,4 +392,3 @@ private fun findFixPoint(): Double {
 * [内联函数](inline-functions.md)
 * [扩展函数](extensions.md)
 * [高阶函数与 Lambda 表达式](lambdas.md)
-
