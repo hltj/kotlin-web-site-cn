@@ -10,7 +10,7 @@ fun double(x: Int): Int {
 
 ## 函数用法
 
-Functions are called using the standard approach:
+使用常规方式来调用函数：
 
 ```kotlin
 val result = double(2)
@@ -31,7 +31,7 @@ Stream().read() // 创建类 Stream 实例并调用 read()
 fun powerOf(number: Int, exponent: Int): Int { /*……*/ }
 ```
 
-You can use a [trailing comma](coding-conventions.md#trailing-commas) when you declare function parameters:
+在声明函数参数的时候，你也可以使用[尾随逗号](coding-conventions.md#trailing-commas)：
 
 ```kotlin
 fun powerOf(
@@ -53,9 +53,9 @@ fun read(
 ) { /*……*/ }
 ```
 
-A default value is set by appending `=` to the type.
+通过在类型的后面添加 `=` 符号来设置参数的默认值。
 
-覆盖方法总是使用与基类型方法的默认参数值。
+覆盖方法总是使用与基类型方法相同的默认参数值。
 当覆盖一个有默认参数值的方法时，必须从签名中省略默认参数值：
 
 ```kotlin
@@ -64,11 +64,11 @@ open class A {
 }
 
 class B : A() {
-    override fun foo(i: Int) { /*……*/ }  // 不能有默认值。
+    override fun foo(i: Int) { /*……*/ }  // 不能有默认值
 }
 ```
 
-如果一个默认参数在一个无默认值的参数之前，那么该默认值只能通过<!--
+如果一个有默认值参数在一个无默认值的参数之前，那么该默认值只能通过<!--
 -->使用[具名参数](#具名参数)调用该函数来使用：
 
 ```kotlin
@@ -97,13 +97,13 @@ foo { println("hello") }        // 使用两个默认值 bar = 0 与 baz = 1
 
 ### 具名参数
 
-You can name one or more of a function's arguments when calling it. This can be helpful when a function has many
-arguments and it's difficult to associate a value with an argument, especially if it's a boolean or `null` value.
+在调用函数的时候可以指明一个或多个参数，这对于包含<!--
+-->多个参数的函数是十分有帮助的，尤其是在传入 `null` 或者布尔值的情况下很难联想到参数的含义。 
 
-When you use named arguments in a function call, you can freely change the order that they are listed in. If you want to
-use their default values, you can just leave these arguments out altogether.
+在调用函数的过程中使用具名参数时，你可以随意修改参数的顺序。如果想要<!--
+-->使用某些参数的默认值，只需要在传参的时候省略掉这些参数即可。
 
-Consider the `reformat()` function, which has 4 arguments with default values.
+ 以 `reformat()` 函数为例，该函数包含 4 个有默认值的参数。
 
 ```kotlin
 fun reformat(
@@ -115,8 +115,8 @@ fun reformat(
 ) { /*……*/ }
 ```
 
-When calling this function, you don't have to name all its arguments:
-
+当调用这个函数时，不需要让其所有参数都具名：
+ 
 ```kotlin
 reformat(
     "String!",
@@ -127,21 +127,21 @@ reformat(
 )
 ```
 
-You can skip all the ones with default values:
+你也可以省略所有有默认值的参数：
 
 ```kotlin
 reformat("This is a long String!")
 ```
 
-You are also able to skip specific arguments with default values, rather than omitting them all. However, after the first
-skipped argument, you must name all subsequent arguments:
+除了省略掉所有有默认值的参数，你也可以选择只省略某些特定的有默认值的参数。
+但是你需要在跳过第一个参数后，对后续的所有参数都使用具名参数：
 
 ```kotlin
 reformat("This is a short String!", upperCaseFirstLetter = false, wordSeparator = '_')
 ```
 
-You can pass a [variable number of arguments (`vararg`)](#可变数量的参数varargs) with names using the
-`spread` operator:
+可以通过具名参数和<!--
+-->*展开*操作符来传入[可变参数（`vararg`）](#可变数量的参数varargs)：
 
 ```kotlin
 fun foo(vararg strings: String) { /*……*/ }
@@ -204,7 +204,7 @@ Kotlin 不推断具有块代码体的函数的返回类型，因为这样的函�
 ```kotlin
 fun <T> asList(vararg ts: T): List<T> {
     val result = ArrayList<T>()
-    for (t in ts) // ts is an Array
+    for (t in ts) // ts 是一个数组
         result.add(t)
     return result
 }
@@ -224,18 +224,18 @@ val list = asList(1, 2, 3)
 -->传一个 lambda。
 
 当调用 `vararg`-函数时，可以逐个传参，例如 `asList(1, 2, 3)`。如果已经有一个数组<!--
--->并希望将其内容传给该函数，那么使用*伸展（spread）*操作符（在数组前面加 `*`）：
+-->并希望将其内容传给该函数，那么使用*展开*操作符（在数组前面加 `*`）：
 
 ```kotlin
 val a = arrayOf(1, 2, 3)
 val list = asList(-1, 0, *a, 4)
 ```
 
-If you want to pass a [primitive type array](arrays.md#原生类型数组)
-into `vararg`, you need to convert it to a regular (typed) array using the `toTypedArray()` function:
+如果你想传入一个[原生类型数组](arrays.md#原生类型数组)<!--
+-->到 `vararg` 中，你需要先通过 `toTypedArray()` 函数将其转换为常规的类型化数组：
 
 ```kotlin
-val a = intArrayOf(1, 2, 3) // IntArray is a primitive type array
+val a = intArrayOf(1, 2, 3) // IntArray 是一种原生类型数组
 val list = asList(-1, 0, *a.toTypedArray(), 4)
 ```
 
@@ -291,7 +291,7 @@ class MyStringCollection {
 ## 函数作用域
 
 Kotlin 函数可以在文件顶层声明，这意味着你不需要像一些语言如
-Java、C# 与 Scala ([top level definition is available since Scala 3](https://docs.scala-lang.org/scala3/book/taste-toplevel-definitions.html#inner-main)) 那样需要创建一个类来保存一个函数。此外<!--
+Java、C# 与 Scala ([在 Scala 3 之后新增了顶层作用域的支持](https://docs.scala-lang.org/scala3/book/taste-toplevel-definitions.html#inner-main)) 那样需要创建一个类来保存一个函数。此外<!--
 -->除了顶层函数，Kotlin 中函数也可以声明在局部作用域、作为成员函数以及扩展函数。
 
 ### 局部函数
@@ -356,7 +356,7 @@ fun <T> singletonList(item: T): List<T> { /*……*/ }
 ## 尾递归函数
 
 Kotlin 支持一种称为[尾递归](https://zh.wikipedia.org/wiki/%E5%B0%BE%E8%B0%83%E7%94%A8)的函数式编程风格。
-For some algorithms that would normally use loops you can use a recursive function instead without a risk of stack overflow.
+对于某些使用循环的算法，可以使用尾递归替代而不会有堆栈溢出的风险。
 当一个函数用 `tailrec` 修饰符标记并满足所需的形式条件时，编译器会优化该递归，
 留下一个快速而高效的基于循环的版本：
 
@@ -388,8 +388,7 @@ private fun findFixPoint(): Double {
 不能使用尾递归，不能用在 `try`/`catch`/`finally` 块中，也不能用于 open 的函数。
 目前在 Kotlin for the JVM 与 Kotlin/Native 中支持尾递归。
 
-**See also**:
+**另见**：
 * [内联函数](inline-functions.md)
 * [扩展函数](extensions.md)
 * [高阶函数与 Lambda 表达式](lambdas.md)
-
