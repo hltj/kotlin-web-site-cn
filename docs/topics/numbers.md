@@ -12,9 +12,9 @@ Kotlin 提供了一组表示数字的内置类型。
 | `Int`	 | 32            |-2,147,483,648 (-2<sup>31</sup>)| 2,147,483,647 (2<sup>31</sup> - 1)|
 | `Long`	 | 64            |-9,223,372,036,854,775,808 (-2<sup>63</sup>)|9,223,372,036,854,775,807 (2<sup>63</sup> - 1)|
 
-当初始化一个没有显式指定类型的变量时，编译器会自动推断为足以<!--
--->表示该值的最小类型。 如果不超过 `Int` 的表示范围，那么类型是 `Int`。 如果超过了，
-那么类型是 `Long`。 如需显式指定 `Long` 值，请给该值追加后缀 `L`。
+当初始化一个没有显式指定类型的变量时，编译器会自动推断为自 `Int` 起足以<!--
+-->表示该值的最小类型。 如果不超过 `Int` 的表示范围，那么类型是 `Int`。 
+如果超过了，那么类型是 `Long`。 如需显式指定 `Long` 值，请给该值追加后缀 `L`。
 显式指定类型会触发编译器检测该值是否超出指定类型的表示范围。
 
 ```kotlin
@@ -303,10 +303,16 @@ Here is an example that shows the difference in behavior between operands static
 ```kotlin
 fun main() {
     //sampleStart
+    // Operand statically typed as floating-point number
     println(Double.NaN == Double.NaN)                 // false
+    // Operand NOT statically typed as floating-point number
+    // So NaN is equal to itself
     println(listOf(Double.NaN) == listOf(Double.NaN)) // true
-    
+
+    // Operand statically typed as floating-point number
     println(0.0 == -0.0)                              // true
+    // Operand NOT statically typed as floating-point number
+    // So -0.0 is less than 0.0
     println(listOf(0.0) == listOf(-0.0))              // false
 
     println(listOf(Double.NaN, Double.POSITIVE_INFINITY, 0.0, -0.0).sorted())

@@ -6,7 +6,7 @@ Kotlin 标准库提供了一整套用于管理*集合*的工具，集合是可�
 集合是大多数编程语言的常见概念，因此如果熟悉像 Java 或者 Python 
 语言的集合，那么可以跳过这一介绍转到详细部分。 
 
-集合通常包含相同类型的一些（数目也可以为零）对象。集合中的对象<!--
+集合通常包含相同类型（及其子类型）的一些对象。集合中的对象<!--
 -->称为*元素*或*条目*。例如，一个系的所有学生组成一个集合，可以用于<!--
 -->计算他们的平均年龄。 
 
@@ -30,6 +30,10 @@ Kotlin 让你可以独立于所存储对象的确切类型来操作集合。换�
 这些集合接口与相关函数位于 `kotlin.collections` 包中。我们来大致了解下<!--
 -->其内容。
 
+> Arrays are not a type of collection. For more information, see [Arrays](arrays.md).
+>
+{type="note"}
+
 ## 集合类型
 
 Kotlin 标准库提供了基本集合类型的实现： set、list 以及 map。
@@ -39,9 +43,11 @@ Kotlin 标准库提供了基本集合类型的实现： set、list 以及 map。
 * 一个 _可变_ 接口，通过写操作扩展相应的只读接口：添加、删除及<!--
 -->更新其元素。
 
-请注意，更改可变集合不需要它是以 [`var`](basic-syntax.md#变量) 定义的变量：写操作<!--
--->修改同一个可变集合对象，因此引用不会改变。
-但是，如果尝试对 `val` 集合重新赋值，你将收到编译错误。
+Note that a mutable collection doesn't have to be assigned to a [`var`](basic-syntax.md#variables). Write operations with
+a mutable collection are still possible even if it is assigned to a `val`. The benefit of assigning mutable collections to
+`val` is that you protect the reference to the mutable collection from modification. Over time, as your code grows and becomes
+more complex, it becomes even more important to prevent unintentional modification to references. Use `val` as much as possible
+for safer and more robust code. If you try to reassign a `val` collection, you get a compilation error:
 
 ```kotlin
 fun main() {
@@ -287,3 +293,26 @@ fun main() {
 迭代 Map 时保留元素插入的顺序。
 反之，另一种实现 – [`HashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html)——
 不声明元素的顺序。
+
+### ArrayDeque
+
+[`ArrayDeque<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-deque/) is an implementation of a double-ended queue, which allows you to add or remove elements both at the beginning or end of the queue.
+As such, `ArrayDeque` also fills the role of both a Stack and Queue data structure in Kotlin. Behind the scenes, `ArrayDeque` is realized using a resizable array that automatically adjusts in size when required:
+
+```kotlin
+fun main() {
+    val deque = ArrayDeque(listOf(1, 2, 3))
+
+    deque.addFirst(0)
+    deque.addLast(4)
+    println(deque) // [0, 1, 2, 3, 4]
+
+    println(deque.first()) // 0
+    println(deque.last()) // 4
+
+    deque.removeFirst()
+    deque.removeLast()
+    println(deque) // [1, 2, 3]
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.4"}

@@ -26,7 +26,7 @@ kotlin {
 * `LEGACY` 使用旧版编译器后端。
 * `BOTH` 使用新的 IR 编译器以及默认的编译器后端编译项目。这个模式用于[创作与两个后端兼容的库](#为-ir-编译器创作具有向后兼容性的库)。
 
-> The old compiler backend has been deprecated since Kotlin 1.8.0. Starting with Kotlin 1.9.0, using compiler types `LEGACY` of `BOTH` leads to an error.
+> The old compiler backend has been deprecated since Kotlin 1.8.0. Starting with Kotlin 1.9.0, using compiler types `LEGACY` or `BOTH` leads to an error.
 >
 {type="warning"}
 

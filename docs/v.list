@@ -6,13 +6,13 @@
 
     <var name="kotlinVersion" value="1.9.10" type="string"/>
 
-    <var name="kotlinEapVersion" value="1.9.0-RC" type="string"/>
+    <var name="kotlinEapVersion" value="1.9.20-Beta2" type="string"/>
 
     <var name="kotlinLatestUrl" value="https://github.com/JetBrains/kotlin/releases/tag/v1.9.10" type="string"/>
 
     <var name="kotlinReleaseDate" value="2023-08-23" type="string"/>
 
-    <var name="kotlinEapReleaseDate" value="2023-06-20" type="string"/>
+    <var name="kotlinEapReleaseDate" value="2023-09-21" type="string"/>
 
     <var name="coroutinesVersion" value="1.7.1" type="string"/>
 
@@ -44,9 +44,9 @@
 
     <var name="sqlDelightVersion" value="1.5.5" type="string"/>
 
-    <var name="kspSupportedKotlinVersion" value="1.9.0" type="string"/>
+    <var name="kspSupportedKotlinVersion" value="1.9.10" type="string"/>
 
-    <var name="kspVersion" value="1.0.11" type="string"/>
+    <var name="kspVersion" value="1.0.13" type="string"/>
 
     <var name="ktorVersion" value="2.3.2" type="string"/>
 

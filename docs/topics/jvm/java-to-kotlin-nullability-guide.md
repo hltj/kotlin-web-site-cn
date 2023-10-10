@@ -85,7 +85,7 @@ After the check is passed successfully, the compiler treats the variable as if i
 in the scope where the compiler performs the check.
 
 If you don't perform this check, the code will fail to compile with the following message:
-"Only [safe (?.)](null-safety.md#安全的调用) or [non-null asserted (!!.) calls](null-safety.md#操作符) are allowed
+"Only [safe (?.)](null-safety.md#安全的调用) or [non-nullable asserted (!!.) calls](null-safety.md#操作符) are allowed
 on a [nullable receiver](extensions.md#可空接收者) of type String?".
 
 You can write the same shorter – use the [safe-call operator ?. (If-not-null shorthand)](idioms.md#if-not-null-缩写), 

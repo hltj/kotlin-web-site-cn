@@ -55,8 +55,8 @@ plugins {
 
 ```kotlin
 kotlin {
-    jvm()    
-    js {
+    jvm()
+    js(IR) {
         browser {}
     }
  }

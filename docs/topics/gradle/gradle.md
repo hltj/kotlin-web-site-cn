@@ -2,7 +2,7 @@
 
 Gradle 是一个用于管理并自动化构建流程的构建工具。它会帮你下载项目所需的依赖、
 将你的项目代码打包并准备编译。你可以在
-[ Gradle 官网](https://docs.gradle.org/current/userguide/getting_started.html)学习 Gradle 相关的基础知识和特性。
+[ Gradle 官网](https://docs.gradle.org/current/userguide/userguide.html)学习 Gradle 相关的基础知识和特性。
 
 你可以参照这些针对不同平台的[ Gradle 配置说明](gradle-configure-project.md) 来为你的项目进行配置，
 或者参考这个简易的[逐步教程](get-started-with-jvm-gradle-project.md)来搭建起一个简单的，在后台显示出<!--

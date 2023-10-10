@@ -41,4 +41,10 @@ a?.equals(b) ?: (b === null)
 
 否则会使用不符合该标准的结构相等性检测，这会导致 `NaN` 等于其自身，`NaN` is considered greater than any other element, including `POSITIVE_INFINITY`, 而 `-0.0` 不等于 `0.0`。
 
-参见：[浮点数比较](numbers.md#浮点数比较)。
+更多信息请参见[浮点数比较](numbers.md#浮点数比较)。
+
+## Array equality
+
+To compare whether two arrays have the same elements in the same order, use [`contentEquals()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/content-equals.html).
+
+For more information, see [Compare arrays](arrays.md#compare-arrays).

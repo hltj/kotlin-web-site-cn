@@ -542,5 +542,5 @@ your `gradle.properties`.
 ## 下一步做什么？
 
 Learn more about:
-* [Gradle basics and specifics](https://docs.gradle.org/current/userguide/getting_started.html).
+* [Gradle basics and specifics](https://docs.gradle.org/current/userguide/userguide.html).
 * [Support for Gradle plugin variants](gradle-plugin-variants.md).

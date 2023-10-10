@@ -84,8 +84,8 @@ interface Collection<E> …… {
 
 理解为什么这能够工作的关键相当简单：如果只能从集合中获取元素，
 那么使用 `String` 的集合， 并且从其中读取 `Object` 也没问题 。反过来，如果只能向集合中
-_放入_ 元素 ， 就可以用 `Object` 集合并向其中放入 `String`：在 Java 中有
-`List<? super String>` 是 `List<Object>` 的一个*超类*。
+_放入_ 元素 ， 就可以用 `Object` 集合并向其中放入 `String`：in Java there is
+`List<? super String>`, which accepts `String`s or any of its supertypes.
 
 后者称为*逆变性（contravariance）*，并且对于 `List <? super String>` 你只能调用接受 `String` 作为参数的方法
 （例如，你可以调用 `add(String)` 或者 `set(int, String)`），如果调用函数返回 `List<T>` 中的 `T`，

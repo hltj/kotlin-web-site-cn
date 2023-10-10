@@ -330,17 +330,6 @@ stream.buffered().reader().use { reader ->
 inline fun <reified T: Any> Gson.fromJson(json: JsonElement): T = this.fromJson(json, T::class.java)
 ```
 
-## 可空布尔
-
-```kotlin
-val b: Boolean? = ……
-if (b == true) {
-    ……
-} else {
-    // `b` 是 false 或者 null
-}
-```
-
 ## 交换两个变量
 
 ```kotlin
