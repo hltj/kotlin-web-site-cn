@@ -1,4 +1,4 @@
-[//]: # (title: What's new in Kotlin 1.9.0)
+[//]: # (title: Kotlin 1.9.0 的新特性)
 
 _[Release date: %kotlinReleaseDate%](releases.md#版本发布详情)_
 

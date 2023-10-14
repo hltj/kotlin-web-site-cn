@@ -1,4 +1,4 @@
-[//]: # (title: Update the user interface)
+[//]: # (title: 更新用户界面)
 
 <microformat>
     <p>This is the third part of the <strong>Getting started with Kotlin Multiplatform for mobile</strong> tutorial. Before proceeding, make sure you've completed previous steps.</p>

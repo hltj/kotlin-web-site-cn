@@ -1,4 +1,4 @@
-[//]: # (title: Test your multiplatform app − tutorial)
+[//]: # (title: 测试多平台应用——教程)
 
 In this tutorial, you'll learn how to create, configure, and run tests in Kotlin Multiplatform applications.
 

@@ -1,4 +1,4 @@
-[//]: # (title: Share more logic between iOS and Android)
+[//]: # (title: 在 iOS 与 Android 间共享更多逻辑)
 
 <microformat>
     <p>This is the fifth part of the <strong>Getting started with Kotlin Multiplatform for mobile</strong> tutorial. Before proceeding, make sure you've completed previous steps.</p>
