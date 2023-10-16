@@ -3,7 +3,7 @@
 Kotlin 是一门现代但已成熟的编程语言，旨在让开发人员更幸福快乐。
 它简洁、安全、可与 Java 及其他语言互操作，并提供了多种方式在多个平台间复用代码，以实现高效编程。
 
-To start, why not take our tour of Kotlin? This tour covers the fundamentals of the Kotlin programming language.
+首先，何不参加 Kotlin 之旅[^1]呢？ 该教程涵盖了 Kotlin 编程语言的基础知识。
 
 <a href="kotlin-tour-welcome.md"><img src="start-kotlin-tour.svg" width="700" alt="Start the Kotlin tour"/></a>
 
@@ -168,3 +168,7 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 ## 还缺少什么？
 
 如果本页有任何遗漏或令人困惑之处，请[提交反馈](https://surveys.hotjar.com/d82e82b0-00d9-44a7-b793-0611bf6189df)。
+
+---
+
+[^1]: 译注：此处双关，“tour of Kotlin”字面意为“科特林岛之旅”，此处意为“Kotlin（入门）教程”。
