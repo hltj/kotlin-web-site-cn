@@ -329,7 +329,7 @@ as **definitely non-nullable**.
 
 To declare a generic type `T` as definitely non-nullable, declare the type with `& Any`. For example: `T & Any`.
 
-A definitely non-nullable type must have a nullable [upper bound](#upper-bounds).
+A definitely non-nullable type must have a nullable [upper bound](#上界).
 
 The most common use case for declaring definitely non-nullable types is when you want to override a Java method that 
 contains `@NotNull` as an argument. For example, consider the `load()` method:

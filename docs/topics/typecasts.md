@@ -3,7 +3,7 @@
 In Kotlin, you can perform type checks to check the type of an object at runtime. Type casts convert objects to a 
 different type.
 
-> To learn specifically about **generics** type checks and casts, for example `List<T>`, `Map<K,V>`, see [Generics type checks and casts](generics.md#generics-type-checks-and-casts).
+> To learn specifically about **generics** type checks and casts, for example `List<T>`, `Map<K,V>`, see [Generics type checks and casts](generics.md#泛型类型检测与类型转换).
 >
 {type="tip"}
 

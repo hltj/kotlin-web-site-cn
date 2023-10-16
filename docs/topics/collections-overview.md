@@ -43,7 +43,7 @@ Kotlin 标准库提供了基本集合类型的实现： set、list 以及 map。
 * 一个 _可变_ 接口，通过写操作扩展相应的只读接口：添加、删除及<!--
 -->更新其元素。
 
-Note that a mutable collection doesn't have to be assigned to a [`var`](basic-syntax.md#variables). Write operations with
+Note that a mutable collection doesn't have to be assigned to a [`var`](basic-syntax.md#变量). Write operations with
 a mutable collection are still possible even if it is assigned to a `val`. The benefit of assigning mutable collections to
 `val` is that you protect the reference to the mutable collection from modification. Over time, as your code grows and becomes
 more complex, it becomes even more important to prevent unintentional modification to references. Use `val` as much as possible

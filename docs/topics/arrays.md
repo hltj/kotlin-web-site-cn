@@ -4,7 +4,7 @@ An array is a data structure that holds a fixed number of values of the same typ
 The most common type of array in Kotlin is the object-type array, represented by the [`Array`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/) class.
 
 > If you use primitives in an object-type array, this has a performance impact because your primitives are [boxed](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html)
-> into objects. To avoid boxing overhead, use [primitive-type arrays](#primitive-type-arrays) instead.
+> into objects. To avoid boxing overhead, use [primitive-type arrays](#原生类型数组) instead.
 >
 {type="note"}
 
@@ -145,7 +145,7 @@ fun main() {
 
 ## Access and modify elements
 
-Arrays are always mutable. To access and modify elements in an array, use the [indexed access operator](operator-overloading.md#indexed-access-operator)`[]`:
+Arrays are always mutable. To access and modify elements in an array, use the [indexed access operator](operator-overloading.md#索引访问操作符)`[]`:
 
 ```kotlin
 fun main() {
@@ -167,7 +167,7 @@ fun main() {
 
 Arrays in Kotlin are _invariant_. This means that Kotlin doesn't allow you to assign an `Array<String>`
 to an `Array<Any>` to prevent a possible runtime failure. Instead, you can use `Array<out Any>`. For more information,
-see [Type Projections](generics.md#type-projections).
+see [Type Projections](generics.md#类型投影).
 
 ## Work with arrays
 
@@ -176,7 +176,7 @@ on the arrays themselves. For example, comparing arrays, transforming their cont
 
 ### Pass variable number of arguments to a function
 
-In Kotlin, you can pass a variable number of arguments to a function via the [`vararg`](functions.md#variable-number-of-arguments-varargs)
+In Kotlin, you can pass a variable number of arguments to a function via the [`vararg`](functions.md#可变数量的参数varargs)
 parameter. This is useful when you don't know the number of arguments in advance, like when formatting a message or
 creating an SQL query.
 
@@ -198,7 +198,7 @@ fun printAllStrings(vararg strings: String) {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="arrays-vararg-array-kotlin"}
 
-For more information, see [Variable number of arguments (varargs)](functions.md#variable-number-of-arguments-varargs).
+For more information, see [Variable number of arguments (varargs)](functions.md#可变数量的参数varargs).
 
 ### Compare arrays
 
@@ -226,7 +226,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="arrays-compare-array-kotlin"}
 
-> Don't use equality (`==`) and inequality (`!=`) [operators](equality.md#structural-equality) to compare the contents 
+> Don't use equality (`==`) and inequality (`!=`) [operators](equality.md#结构相等) to compare the contents 
 > of arrays. These operators check whether the assigned variables point to the same object.
 > 
 > To learn more about why arrays in Kotlin behave this way, see our [blog post](https://blog.jetbrains.com/kotlin/2015/09/feedback-request-limitations-on-data-classes/#Appendix.Comparingarrays).
@@ -315,7 +315,7 @@ To convert an array to a `map`, use the [`.toMap()`](https://kotlinlang.org/api/
 function. 
 
 Only an array of [`Pair<K,V>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/) can be converted to a `map`.
-The first value of a `Pair` instance becomes a key, and the second becomes a value. This example uses the [infix notation](functions.md#infix-notation)
+The first value of a `Pair` instance becomes a key, and the second becomes a value. This example uses the [infix notation](functions.md#中缀表示法)
 to call the [`to`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/to.html) function to create tuples of `Pair`:
 
 ```kotlin
@@ -335,7 +335,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="arrays-convert-map-kotlin"}
 
-## Primitive-type arrays
+## 原生类型数组
 
 If you use the `Array` class with primitive values, these values are boxed into objects. 
 As an alternative, you can use primitive-type arrays, which allow you to store primitives in an array without the
@@ -377,7 +377,7 @@ fun main() {
 > 
 {type="note"}
 
-## What's next?
+## 下一步做什么？
 
 * To learn more about why we recommend using collections for most use cases, read our [Collections overview](collections-overview.md).
 * Learn about other [basic types](basic-types.md).

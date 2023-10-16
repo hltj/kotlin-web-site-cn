@@ -162,10 +162,10 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 
 ### 常规属性
 
-| 名称              | 描述                                                                                     |  可能的值                  | 默认值        |
-|-------------------|------------------------------------------------------------------------------------------|---------------------------|---------------|
-| `optIn`           | 用于配置[选择加入的编译器参数](opt-in-requirements.md)的列表                             | `listOf( /* opt-ins */ )` | `emptyList()` |
-| `progressiveMode` | 启用[渐进式编译器模式](whatsnew13.md#progressive-mode)                                     | `true`, `false`           | `false`       |
+| 名称              | 描述                                         |  可能的值                  | 默认值        |
+|-------------------|--------------------------------------------|---------------------------|---------------|
+| `optIn`           | 用于配置[选择加入的编译器参数](opt-in-requirements.md)的列表 | `listOf( /* opt-ins */ )` | `emptyList()` |
+| `progressiveMode` | 启用[渐进式编译器模式](whatsnew13.md#渐进模式)               | `true`, `false`           | `false`       |
 
 ### JVM 特有的属性
 
@@ -178,19 +178,19 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 
 ### JVM、JS 与 JS DCE 的公共属性
 
-| 名称 | 描述         | 可能的值        | 默认值      |
-|------|-------------|-----------------|--------------|
-| `allWarningsAsErrors` | 任何警告都报告为错误 |  | false |
-| `suppressWarnings` | 不生成警告 |  | false |
+| 名称 | 描述                                                                                           | 可能的值        | 默认值      |
+|------|----------------------------------------------------------------------------------------------|-----------------|--------------|
+| `allWarningsAsErrors` | 任何警告都报告为错误                                                                                   |  | false |
+| `suppressWarnings` | 不生成警告                                                                                        |  | false |
 | `verbose` | 启用详细日志输出。仅在[已启用 Gradle debug 日志](https://docs.gradle.org/current/userguide/logging.html)时才有效 |  | false |
-| `freeCompilerArgs` | 	附加编译器参数的列表。你也可以在这里使用实验性的`-X`参数。见[例](#example-of-additional-arguments-usage-via-freecompilerargs)。 |  | [] |
+| `freeCompilerArgs` | 	附加编译器参数的列表。你也可以在这里使用实验性的`-X`参数。见[例](#通过-freecompilerargs-选项配置额外的参数的示例)。                     |  | [] |
 
 > 我们计划在今后的发行版本中将`freeCompilerArgs`选项弃用。如果你因此无法在 Kotlin Gradle DSL 中配置某些选项
 > 请[提出一个 Issue](https://youtrack.jetbrains.com/newissue?project=kt)。
 >
 {type="warning"}
 
-#### 通过 freeCompilerArgs 选项配置额外的参数{initial-collapse-state="collapsed"}
+#### 通过 freeCompilerArgs 选项配置额外的参数的示例{initial-collapse-state="collapsed"}
 
 通过使用 `freeCompilerArgs` 来应用包括实验性参数在内的额外编译器参数。你可以在这个属性中加入一个单独的编译器参数或者一个编译器参数的列表。
 
@@ -240,7 +240,7 @@ tasks.named('compileKotlin', KotlinCompilationTask) {
 | `apiVersion` | 限制只使用来自内置库的指定版本中的声明 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"、 "2.0"（实验性的）、 "2.1"（实验性的） |  |
 | `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"、 "2.0"（实验性的）、 "2.1"（实验性的） |  |
 
-#### 设置 languageVersion 的例子
+#### 设置 languageVersion 的示例
 
 要设置语言的版本，请使用如下格式的语法：
 
@@ -274,7 +274,7 @@ tasks
 </tab>
 </tabs>
 
-另见[编译器选项的类型](#types-for-compiler-options)。
+另见[编译器选项的类型](#编译器选项的类型)。
 
 ### JS 特有的属性
 

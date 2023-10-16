@@ -62,7 +62,7 @@ fun main() {
 > 
 {type="tip"}
 
-Lists are ordered so to access an item in a list, use the [indexed access operator](operator-overloading.md#indexed-access-operator) `[]`:
+Lists are ordered so to access an item in a list, use the [indexed access operator](operator-overloading.md#索引访问操作符) `[]`:
 
 ```kotlin
 fun main() { 
@@ -281,7 +281,7 @@ fun main() {
 >
 {type="tip"}
 
-To access a value in a map, use the [indexed access operator](operator-overloading.md#indexed-access-operator) `[]` with
+To access a value in a map, use the [indexed access operator](operator-overloading.md#索引访问操作符) `[]` with
 its key:
 
 ```kotlin
