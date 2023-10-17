@@ -141,7 +141,7 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
    * [协程](coroutines-overview.md)
    * [日期时间](https://github.com/Kotlin/kotlinx-datetime#readme)
 
-   > Learn more about [adding dependencies on libraries](multiplatform-add-dependencies.md).
+   > 了解关于[添加库依赖项](multiplatform-add-dependencies.md)的更多信息。
    > 还可以在[社区驱动列表](https://libs.kmp.icerock.dev/)中找到多平台库。
    >
    {type="tip"}

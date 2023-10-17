@@ -18,32 +18,32 @@ Kotlin 多平台技术旨在简化跨平台项目的开发。 它减少了为<!-
 ### Android 与 iOS 应用程序
 
 在移动平台间共享代码是 Kotlin 多平台的主要使用场景之一。 借助 Kotlin 多平台移动端，
-可以构建跨平台移动端应用程序并在 Android 与 iOS 之间共享代码， to implement networking,
-data storage and data validation, analytics, computations, and other application logic.
+可以构建跨平台移动端应用程序并在 Android 与 iOS 之间共享代码， 实现网络、
+数据存储与数据的验证、分析、计算以及其他应用程序逻辑。
 
 查看 [Kotlin 多平台移动端入门](multiplatform-mobile-getting-started.md)与<!--
 -->[使用 Ktor 与 SQLDelight 创建多平台应用](multiplatform-mobile-ktor-sqldelight.md)教程，
 其中会创建包含两个平台共享代码的模块的 Android 与 iOS 应用程序。
 
-Thanks to [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/),
-a Kotlin-based declarative UI framework developed by JetBrains,
-you can also share UIs across Android and iOS to create fully cross-platform apps:
+借助 [Compose 多平台](https://www.jetbrains.com/lp/compose-multiplatform/)
+（JetBrains 开发的基于 Kotlin 的声明式 UI 框架），
+还可以跨 Android 与 iOS 共享 UI 来创建完全跨平台的应用：
 
-![Sharing different levels and UI](multiplatform-compose.svg){width=600}
+![共享不同级别与 UI](multiplatform-compose.svg){width=600}
 
-Try this [Compose Multiplatform mobile application](https://github.com/JetBrains/compose-multiplatform-ios-android-template/#readme)
-template to create your own mobile application with UIs shared between both platforms.
+尝试使用这个 [Compose 多平台移动端应用程序](https://github.com/JetBrains/compose-multiplatform-ios-android-template/#readme)<!--
+-->模板来创建自己的移动应用程序，并在两个平台间共享 UI。
 
 ### 多平台库
 
-Kotlin Multiplatform is also helpful for library authors. You can create a multiplatform library with common code and its
-platform-specific implementations for JVM, web, and native platforms. Once published, a multiplatform library can be used
-as a dependency in other cross-platform projects.
+Kotlin 多平台对库作者也很有帮助。 可以使用公共代码及其面向
+JVM、web 与原生平台的特定于平台的实现来创建多平台库。 发布后，多平台库可以用<!--
+-->作其他跨平台项目的依赖项。
 
-See the [Create and publish a multiplatform library](multiplatform-library.md) tutorial, where you will create
-a multiplatform library, test it, and publish it to Maven.
+参见[创建并发布多平台库](multiplatform-library.md)教程，在该教程中会创建<!--
+-->一个多平台库、对其进行测试并将其发布到 Maven。
 
-### Desktop applications
+### 桌面应用程序
 
 Compose Multiplatform helps share UIs across desktop platforms like Windows, macOS, and Linux. Many applications,
 including the [JetBrains Toolbox app](https://blog.jetbrains.com/kotlin/2021/12/compose-multiplatform-toolbox-case-study/),
@@ -81,5 +81,5 @@ Kotlin provides the following code sharing mechanisms:
 浏览跨平台应用程序范例以了解 Kotlin 多平台的工作原理：
 
 * [Kotlin 多平台移动端范例](multiplatform-mobile-samples.md)
-* [Compose Multiplatform samples](https://github.com/JetBrains/compose-multiplatform/blob/master/examples/README.md)
+* [Compose 多平台范例](https://github.com/JetBrains/compose-multiplatform/blob/master/examples/README.md)
 
