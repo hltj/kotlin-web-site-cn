@@ -65,7 +65,7 @@ JetBrains' declarative UI framework based on Kotlin and [Jetpack Compose](https:
 
 ## 如何入门
 
-刚接触 Kotlin？可以看看 [Kotlin 入门](getting-started.md)页。
+刚接触 Kotlin？可以看看 [Kotlin 入门](getting-started.md)。
 
 推荐文档：
 

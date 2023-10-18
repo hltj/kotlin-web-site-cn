@@ -45,34 +45,34 @@ JVM、web 与原生平台的特定于平台的实现来创建多平台库。 发
 
 ### 桌面应用程序
 
-Compose Multiplatform helps share UIs across desktop platforms like Windows, macOS, and Linux. Many applications,
-including the [JetBrains Toolbox app](https://blog.jetbrains.com/kotlin/2021/12/compose-multiplatform-toolbox-case-study/),
-have already adopted this approach.
+Compose 多平台有助于跨桌面平台（如 Windows、macOS 与 Linux）共享 UI。 包括
+[JetBrains Toolbox 应用](https://blog.jetbrains.com/kotlin/2021/12/compose-multiplatform-toolbox-case-study/)在内的许多应用程序<!--
+-->都已经采用了这种方式。
 
-Try this [Compose Multiplatform desktop application](https://github.com/JetBrains/compose-multiplatform-desktop-template#readme)
-template to create your own project with UIs shared among desktop platforms.
+尝试使用这个 [Compose 多平台桌面应用程序](https://github.com/JetBrains/compose-multiplatform-desktop-template#readme)<!--
+-->模板来创建自己的项目，并在桌面平台间共享 UI。
 
 ## 不同平台间共享代码
 
-Kotlin Multiplatform allows you to maintain a single codebase of the application logic for [different platforms](multiplatform-dsl-reference.md#目标).
-You also get advantages of native programming, including great performance and full access to platform SDKs.
+Kotlin 多平台让你能为[不同平台](multiplatform-dsl-reference.md#目标)的应用程序逻辑维护一份代码。
+还可以获得原生程序设计的优势，包括出色的性能以及对平台 SDK 的完全访问能力。
 
-Kotlin provides the following code sharing mechanisms:
+Kotlin 提供了以下代码共享机制：
 
-* Share common code among [all platforms](multiplatform-share-on-platforms.md#对所有平台共享代码) used in your project.
-* Share code among [some platforms](multiplatform-share-on-platforms.md#对相似平台共享代码) included in your project to reuse much of the code in similar platforms:
+* 在项目中使用的[所有平台](multiplatform-share-on-platforms.md#对所有平台共享代码)之间共享公共代码。
+* 在项目中包含的[一些平台](multiplatform-share-on-platforms.md#对相似平台共享代码)之间共享代码，以便在类似平台中复用大量代码：
 
-  ![Code shared across different platforms](kotlin-multiplatform-hierarchical-structure.svg){width=700}
+  ![在不同平台间共享代码](kotlin-multiplatform-hierarchical-structure.svg){width=700}
 
 * 如果需要从共享代码中访问平台相关的 API，请使用 Kotlin 的<!--
 -->[预期声明与实际声明](multiplatform-connect-to-apis.md)机制。
 
 ## 入门
 
-* Begin with the [Get started with Kotlin Multiplatform for mobile](multiplatform-mobile-getting-started.md) if you want to create iOS and Android applications with shared code
-* Explore [sharing code principles and examples](multiplatform-share-on-platforms.md) if you want to create applications or libraries targeting other platforms
+* 如果想使用共享代码创建 iOS 与 Android 应用程序，请从[用于移动端的 Kotlin 多平台入门](multiplatform-mobile-getting-started.md)开始
+* 如果想创建面向其他平台的应用程序或库，请研读[共享代码原则与示例](multiplatform-share-on-platforms.md)
 
-> New to Kotlin? Take a look at [Getting started with Kotlin](getting-started.md).
+> 刚接触 Kotlin？可以看看 [Kotlin 入门](getting-started.md)。
 >
 {type="tip"}
 
