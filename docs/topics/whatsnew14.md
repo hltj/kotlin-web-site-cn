@@ -147,7 +147,7 @@ then easily swap lines with parameters or values.
 fun reformat(
     str: String,
     uppercaseFirstLetter: Boolean = true,
-    wordSeparator: Character = ' ', //trailing comma
+    wordSeparator: Character = ' ', //尾部逗号
 ) {
     // ...
 }
@@ -157,7 +157,7 @@ fun reformat(
 val colors = listOf(
     "red",
     "green",
-    "blue", //trailing comma
+    "blue", //尾部逗号
 )
 ```
 

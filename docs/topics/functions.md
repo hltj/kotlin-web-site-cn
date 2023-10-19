@@ -31,13 +31,13 @@ Stream().read() // 创建类 Stream 实例并调用 read()
 fun powerOf(number: Int, exponent: Int): Int { /*……*/ }
 ```
 
-在声明函数参数的时候，你也可以使用[尾随逗号](coding-conventions.md#trailing-commas)：
+在声明函数参数的时候，你也可以使用[尾部逗号](coding-conventions.md#尾部逗号)：
 
 ```kotlin
 fun powerOf(
     number: Int,
-    exponent: Int, // trailing comma
-) { /*...*/ }
+    exponent: Int, // 尾部逗号
+) { /*……*/ }
 ```
 
 ### 默认参数

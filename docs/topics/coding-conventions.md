@@ -47,49 +47,49 @@
 文件的名称应该描述文件中代码的作用。因此，应避免在文件名中使用<!--
 -->诸如 `Util` 之类的无意义词语。
 
-#### Multiplatform projects
+#### 多平台项目
 
-In multiplatform projects, files with top-level declarations in platform-specific source sets should have a suffix
-associated with the name of the source set. For example:
+在多平台项目中，平台特有的源代码集中包含顶层声明的文件应具有与<!--
+-->该源代码集名称相关联的后缀。 例如：
 
 * **jvm**Main/kotlin/Platform.**jvm**.kt
 * **android**Main/kotlin/Platform.**android**.kt
 * **ios**Main/kotlin/Platform.**ios**.kt
 
-As for the common source set, files with top-level declarations should not have a suffix. For example, `commonMain/kotlin/Platform.kt`.
+对于公共源代码集，包含顶层声明的文件不应该有后缀。 例如，`commonMain/kotlin/Platform.kt`.
 
-##### Technical details {initial-collapse-state="collapsed"}
+##### 技术细节 {initial-collapse-state="collapsed"}
 
-We recommend following this file naming scheme in multiplatform projects due to JVM limitations: it doesn't allow
-top-level members (functions, properties).
+由于 JVM 的限制［不允许顶层成员（函数、属性）］，我们建议在多平台项目中<!--
+-->遵循这种文件命名方案。
 
-To work around this, the Kotlin JVM compiler creates wrapper classes (so-called "file facades") that contain top-level
-member declarations. File facades have an internal name derived from the file name.
+为了解决 JVM 的这个问题，Kotlin JVM 编译器会创建包含顶层成员声明的包装类（所谓的
+“文件门面”）。 文件门面（file facades）有一个源自文件名的内部名称。
 
-In turn, JVM doesn't allow several classes with the same fully qualified name (FQN). This might lead to situations when
-a Kotlin project cannot be compiled to JVM:
+另外，JVM 不允许多个类具有相同的完整限定名称 (FQN，fully qualified name)。 这可能会导致
+Kotlin 项目无法编译到 JVM 的情况：
 
 ```none
 root
-|- commonMain/kotlin/myPackage/Platform.kt // contains 'fun count() { }'
-|- jvmMain/kotlin/myPackage/Platform.kt // contains 'fun multiply() { }'
+|- commonMain/kotlin/myPackage/Platform.kt // 包含 'fun count() { }'
+|- jvmMain/kotlin/myPackage/Platform.kt // 包含 'fun multiply() { }'
 ```
 
-Here both `Platform.kt` files are in the same package, so the Kotlin JVM compiler produces two file facades, both of which
-have FQN `myPackage.PlatformKt`. This produces the "Duplicate JVM classes" error.
+这里两个 `Platform.kt` 文件都在同一个包中，因此 Kotlin JVM 编译器生成两个文件门面，它们都有
+FQN `myPackage.PlatformKt`。 这就会产生 "Duplicate JVM classes"（“重复的 JVM 类”）错误。
 
-The simplest way to avoid that is renaming one of the files according to the guideline above. This naming scheme helps
-avoid clashes while retaining code readability.
+避免这种情况的最简单的方式就是按照上述指南重命名其中一个文件。 这种命名方案<!--
+-->有助于避免冲突，同时保持代码的可读性。
 
-> There are two cases when these recommendations may seem redundant, but we still advise to follow them:
+> 对于以下两种情，上述建议可能看起来多余，但我们仍然建议遵循之：
+>
+> * 非 JVM 平台不存在重复文件门面的问题。 但是，这种命名方案有助于保持<!--
+> -->文件命名的一致性。
+> * 在 JVM 中，如果源文件没有顶层声明就不会生成文件门面，也就不会遇到<!--
+> -->命名冲突。
 > 
-> * Non-JVM platforms don't have issues with duplicating file facades. However, this naming scheme can help you keep
-> file naming consistent.
-> * On JVM, if source files don't have top-level declarations, the file facades aren't generated, and you won't face
-> naming clashes.
-> 
->   However, this naming scheme can help you avoid situations when a simple refactoring
-> or an addition could include a top-level function and result in the same "Duplicate JVM classes" error.
+>   但是，这种命名方案有助于避免简单的重构或<!--
+> -->添加可能包含顶层函数并同样导致 "Duplicate JVM classes"（“重复 JVM 类”错误）的情况。
 > 
 {type="tip"}
 
@@ -619,99 +619,99 @@ foo {
 }
 ```
 
-### Trailing commas
+### 尾部逗号
 
-A trailing comma is a comma symbol after the last item in a series of elements:
+尾部逗号是一系列元素中最后一项之后的逗号符号：
 
 ```kotlin
 class Person(
     val firstName: String,
     val lastName: String,
-    val age: Int, // trailing comma
+    val age: Int, // 尾部逗号
 )
 ```
 
-Using trailing commas has several benefits:
+使用尾部逗号有以下几点收益：
 
-* It makes version-control diffs cleaner – as all the focus is on the changed value.
-* It makes it easy to add and reorder elements – there is no need to add or delete the comma if you manipulate elements.
-* It simplifies code generation, for example, for object initializers. The last element can also have a comma.
+* 使版本控制差异更清晰——因为所有焦点都集中在变更的值上。
+* 使添加及重新排序元素更容易——操作元素时无需再添加或删除逗号。
+* 简化了代码生成逻辑（例如对象初始化器）。 最后一个元素也可以有逗号。
 
-Trailing commas are entirely optional – your code will still work without them. The Kotlin style guide encourages the use of trailing commas at the declaration site and leaves it at your discretion for the call site.
+尾部逗号完全是可选的——没有它们代码仍可以照常工作。 Kotlin 风格指南鼓励在声明处使用尾部逗号，而自行决定在调用处是否使用。
 
-To enable trailing commas in the IntelliJ IDEA formatter, go to **Settings/Preferences | Editor | Code Style | Kotlin**, 
-open the **Other** tab and select the **Use trailing comma** option.
+如需在 IntelliJ IDEA 格式化程序中启用尾部逗号，请转到 **Settings/Preferences | Editor | Code Style | Kotlin**，
+打开 **Other** 选项卡并选择 **Use trailing comma** 选项。
 
-#### Enumerations {initial-collapse-state="collapsed"}
+#### 枚举 {initial-collapse-state="collapsed"}
 
 ```kotlin
 enum class Direction {
     NORTH,
     SOUTH,
     WEST,
-    EAST, // trailing comma
+    EAST, // 尾部逗号
 }
 ```
 
-#### Value arguments {initial-collapse-state="collapsed"}
+#### 值实参 {initial-collapse-state="collapsed"}
 
 ```kotlin
 fun shift(x: Int, y: Int) { /*……*/ }
 shift(
     25,
-    20, // trailing comma
+    20, // 尾部逗号
 )
 val colors = listOf(
     "red",
     "green",
-    "blue", // trailing comma
+    "blue", // 尾部逗号
 )
 ```
 
-#### Class properties and parameters {initial-collapse-state="collapsed"}
+#### 类属性与形参 {initial-collapse-state="collapsed"}
 
 ```kotlin
 class Customer(
     val name: String,
-    val lastName: String, // trailing comma
+    val lastName: String, // 尾部逗号
 )
 class Customer(
     val name: String,
-    lastName: String, // trailing comma
+    lastName: String, // 尾部逗号
 )
 ```
 
-#### Function value parameters {initial-collapse-state="collapsed"}
+#### 函数值形参 {initial-collapse-state="collapsed"}
 
 ```kotlin
 fun powerOf(
     number: Int, 
-    exponent: Int, // trailing comma
+    exponent: Int, // 尾部逗号
 ) { /*……*/ }
 constructor(
     x: Comparable<Number>,
-    y: Iterable<Number>, // trailing comma
+    y: Iterable<Number>, // 尾部逗号
 ) {}
 fun print(
     vararg quantity: Int,
-    description: String, // trailing comma
+    description: String, // 尾部逗号
 ) {}
 ```
 
-#### Parameters with optional type (including setters) {initial-collapse-state="collapsed"}
+#### 类型可选的形参（包括 setter） {initial-collapse-state="collapsed"}
 
 ```kotlin
 val sum: (Int, Int, Int) -> Int = fun(
     x,
     y,
-    z, // trailing comma
+    z, // 尾部逗号
 ): Int {
     return x + y + x
 }
 println(sum(8, 8, 8))
 ```
 
-#### Indexing suffix {initial-collapse-state="collapsed"}
+#### 索引后缀 {initial-collapse-state="collapsed"}
 
 ```kotlin
 class Surface {
@@ -720,17 +720,17 @@ class Surface {
 fun getZValue(mySurface: Surface, xValue: Int, yValue: Int) =
     mySurface[
         xValue,
-        yValue, // trailing comma
+        yValue, // 尾部逗号
     ]
 ```
 
-#### Parameters in lambdas {initial-collapse-state="collapsed"}
+#### lambda 表达式形参 {initial-collapse-state="collapsed"}
 
 ```kotlin
 fun main() {
     val x = {
             x: Comparable<Number>,
-            y: Iterable<Number>, // trailing comma
+            y: Iterable<Number>, // 尾部逗号
         ->
         println("1")
     }
@@ -738,19 +738,19 @@ fun main() {
 }
 ```
 
-#### `when` entry {initial-collapse-state="collapsed"}
+#### `when` 条目 {initial-collapse-state="collapsed"}
 
 ```kotlin
 fun isReferenceApplicable(myReference: KClass<*>) = when (myReference) {
     Comparable::class,
     Iterable::class,
-    String::class, // trailing comma
+    String::class, // 尾部逗号
         -> true
     else -> false
 }
 ```
 
-#### Collection literals (in annotations) {initial-collapse-state="collapsed"}
+#### （注解中的）集合字面值 {initial-collapse-state="collapsed"}
 
 ```kotlin
 annotation class ApplicableFor(val services: Array<String>)
@@ -758,33 +758,33 @@ annotation class ApplicableFor(val services: Array<String>)
     "serializer",
     "balancer",
     "database",
-    "inMemoryCache", // trailing comma
+    "inMemoryCache", // 尾部逗号
 ])
 fun run() {}
 ```
 
-#### Type arguments {initial-collapse-state="collapsed"}
+#### 类型实参 {initial-collapse-state="collapsed"}
 
 ```kotlin
 fun <T1, T2> foo() {}
 fun main() {
     foo<
             Comparable<Number>,
-            Iterable<Number>, // trailing comma
+            Iterable<Number>, // 尾部逗号
             >()
 }
 ```
 
-#### Type parameters {initial-collapse-state="collapsed"}
+#### 类型形参 {initial-collapse-state="collapsed"}
 
 ```kotlin
 class MyMap<
         MyKey,
-        MyValue, // trailing comma
+        MyValue, // 尾部逗号
         > {}
 ```
 
-#### Destructuring declarations {initial-collapse-state="collapsed"}
+#### 解构声明 {initial-collapse-state="collapsed"}
 
 ```kotlin
 data class Car(val manufacturer: String, val model: String, val year: Int)
@@ -792,7 +792,7 @@ val myCar = Car("Tesla", "Y", 2019)
 val (
     manufacturer,
     model,
-    year, // trailing comma
+    year, // 尾部逗号
 ) = myCar
 val cars = listOf<Car>()
 fun printMeanValue() {
@@ -800,7 +800,7 @@ fun printMeanValue() {
     for ((
         _,
         _,
-        year, // trailing comma
+        year, // 尾部逗号
     ) in cars) {
         meanValue += year
     }
@@ -1143,4 +1143,4 @@ Kotlin 提供了一系列用来在给定对象上下文中执行代码块的函�
  * 为所有公有成员提供 [KDoc](kotlin-doc.md) 注释，不需要任何新文档的覆盖成员除外
    （以支持为该库生成文档）
 
-Learn more about best practices and ideas to consider when writing an API for your library in [library creators' guidelines](jvm-api-guidelines-introduction.md).
+在[库创建者指南](jvm-api-guidelines-introduction.md)中详细了解为库编写 API 时需要考虑的最佳实践与意见。

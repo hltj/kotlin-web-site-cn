@@ -81,14 +81,14 @@ Such declarations can also include default values of the class properties:
 class Person(val firstName: String, val lastName: String, var isEmployed: Boolean = true)
 ```
 
-声明类属性时，可以使用[尾部逗号](coding-conventions.md#trailing-commas)：
+声明类属性时，可以使用[尾部逗号](coding-conventions.md#尾部逗号)：
 
 ```kotlin
 class Person(
     val firstName: String,
     val lastName: String,
     var age: Int, // 尾部逗号
-) { /*...*/ }
+) { /*……*/ }
 ```
 
 与普通属性一样，主构造函数中声明的属性可以是可变的（`var`）或只读的（`val`）。

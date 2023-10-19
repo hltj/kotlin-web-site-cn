@@ -198,7 +198,7 @@ compiler migration guide](js-ir-migration.md).
 编译器后端的兼容性，那么可以使用编译器选择的设置，该设置可为两个后端创建构件，
 从而保持与以下版本的兼容性。为现有的用户以及下一代 Kotlin 编译器提供支持。
 可以使用 `gradle.properties` 文件中的 `kotlin.js.compiler=both` 设置打开这种所谓的 `both` 模式，
-也可以将其设置为 `build.gradle(.kts)` 文件内 `js` 块内特定于项目的选项之一：
+也可以将其设置为 `build.gradle(.kts)` 文件内 `js` 块内项目特有的选项之一：
 
 ```groovy
 kotlin {

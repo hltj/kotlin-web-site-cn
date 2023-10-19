@@ -41,7 +41,7 @@ You can declare properties without `val` or `var` within parentheses but these p
 instance has been created.
 
 > * The content contained within parentheses `()` is called the **class header**.
-> * You can use a [trailing comma](coding-conventions.md#trailing-commas) when declaring class properties.
+> * You can use a [trailing comma](coding-conventions.md#尾部逗号) when declaring class properties.
 >
 {type="note"}
 
