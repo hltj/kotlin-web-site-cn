@@ -54,14 +54,14 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 
 ## 在多个平台之间共享代码
 
-[Kotlin Multiplatform](multiplatform.md) helps share common code across multiple platforms, including Android, iOS, JVM,
-web, and native. Multiplatform libraries provide the necessary APIs for common Kotlin code and allow writing shared parts
-of projects in Kotlin all in one place.
+[Kotlin 多平台](multiplatform.md)有助于跨多个平台共享公共代码，包括 Android、 iOS、 JVM、
+web 与原生平台。多平台库为公共 Kotlin 代码提供必要的 API，并支持在一处用
+Kotlin 编写项目的共享部分。
 
-You can use the [Get started with Kotlin Multiplatform for mobile](multiplatform-mobile-getting-started.md) tutorial
-to create applications and share business logic between iOS and Android. To share UIs among iOS, Android, desktop, and web,
-try [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/),
-JetBrains' declarative UI framework based on Kotlin and [Jetpack Compose](https://developer.android.com/jetpack/compose).
+可以使用 [Kotlin 多平台移动端入门](multiplatform-mobile-getting-started.md)教程<!--
+-->来创建应用程序并在 iOS 与 Android 间共享业务逻辑。 如需在 iOS、 Android、 桌面与 web
+之间共享 UI，请尝试 [Compose 多平台](https://www.jetbrains.com/lp/compose-multiplatform/)，
+这是 JetBrains 基于 Kotlin 与 [Jetpack Compose](https://developer.android.com/jetpack/compose) 的声明式 UI 框架。
 
 ## 如何入门
 
@@ -69,14 +69,14 @@ JetBrains' declarative UI framework based on Kotlin and [Jetpack Compose](https:
 
 推荐文档：
 
-* [Get started with Kotlin Multiplatform](multiplatform-get-started.md)
-* [Interoperability with C](native-c-interop.md)
-* [Interoperability with Swift/Objective-C](native-objc-interop.md)
+* [Kotlin 多平台入门](multiplatform-get-started.md)
+* [与 C 语言的互操作性](native-c-interop.md)
+* [与 Swift/Objective-C 的互操作性](native-objc-interop.md)
 
 推荐教程：
 
 * [Kotlin/Native 入门](native-get-started.md)
-* [Get started with Kotlin Multiplatform for mobile](multiplatform-mobile-getting-started.md)
-* [Mapping primitive data types from C](mapping-primitive-data-types-from-c.md)
+* [用于移动端的 Kotlin 多平台入门](multiplatform-mobile-getting-started.md)
+* [映射来自 C 语言的原生数据类型](mapping-primitive-data-types-from-c.md)
 * [Kotlin/Native 开发动态库](native-dynamic-libraries.md)
 * [Kotlin/Native 开发 Apple 框架](apple-framework.md)

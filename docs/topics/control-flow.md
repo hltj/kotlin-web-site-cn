@@ -75,7 +75,7 @@ when (x) {
 如果其他分支都不满足条件将会求值 `else` 分支。
 如果 `when` 作为一个*表达式*使用，那么必须有 `else` 分支，
 除非编译器能够检测出所有的可能情况都已经覆盖了，
-例如，对于 [枚举（`enum`）类](enum-classes.md)条目与[密封（`sealed`）类](sealed-classes.md)子类型］。
+例如，对于 [枚举（`enum`）类](enum-classes.md)条目与[密封（`sealed`）类](sealed-classes.md)子类型〕。
 
 ```kotlin
 enum class Bit {

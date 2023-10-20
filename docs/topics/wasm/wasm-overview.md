@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin Wasm)
 
-> Kotlin Wasm is [Experimental](components-stability.md).
+> Kotlin Wasm 是[实验性的](components-stability.md)。
 > It may be changed at any time. Use it only for evaluation purposes.
 >
 > We would appreciate your feedback on it in [YouTrack](https://kotl.in/issue).
@@ -18,20 +18,20 @@ With Kotlin/Wasm, you can create applications that run on different environments
 >
 {type="note"}
 
-## Browser support
+## 浏览器支持
 
 Almost all major browsers already support WebAssembly 1.0.
 To run applications built with Kotlin/Wasm in a browser, you need to enable an experimental [garbage collection feature](https://github.com/WebAssembly/gc).
 
 [Learn more in Get started with Kotlin/Wasm](wasm-get-started.md#troubleshooting).
 
-## Interoperability
+## 互操作性
 
 Kotlin/Wasm allows you to both use JavaScript code and Browser API from Kotlin, and Kotlin code from JavaScript.
 
 [Learn more about Kotlin Wasm interoperability with JavaScript](wasm-js-interop.md).
 
-## Compose Multiplatform for Web
+## 用于 Web 的 Compose 多平台
 
 > Web support is [Experimental](components-stability.md) and may be changed at any time. Use it only for evaluation purposes.
 > We would appreciate your feedback on it in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
@@ -43,19 +43,19 @@ Compose Multiplatform for Web is based on new Kotlin/Wasm target.
 You can create a Kotlin Multiplatform project and experiment with sharing your mobile or desktop UIs with the web.
 With Compose Multiplatform for Web, you can run your code in the browser with all the benefits of WebAssembly.
 
-## How to get started
+## 如何入门
 
 * [Get started with Kotlin/Wasm in IntelliJ IDEA](wasm-get-started.md)
 * Check out the [GitHub repository with Kotlin/Wasm examples](https://github.com/Kotlin/kotlin-wasm-examples)
 
-## Libraries support
+## 库支持
 
 You can use the Kotlin standard library (`stdlib`) and test library ([`kotlin.test`](https://kotlinlang.org/api/latest/kotlin.test/))
 in Kotlin/Wasm out of the box. The version of these libraries is the same as the version of the `kotlin-multiplatform` plugin.
 
 Kotlin/Wasm has an experimental support for other Kotlin libraries. [Read more how to enable them in your project](wasm-libraries.md).
 
-## Feedback
+## 反馈
 
 * Provide your feedback directly to developers in Kotlin Slack – [get an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)
   and join the [#webassembly](https://kotlinlang.slack.com/archives/CDFP59223) channel.

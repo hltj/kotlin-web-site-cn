@@ -20,8 +20,8 @@ fun foo() = "Hello"
 alert(myModule.foo());
 ```
 
-将 Kotlin 模块编译为 JavaScript 模块 ［例如 UMD，（这是
-`browser` 与 `nodejs` 目标的默认设置）、CommonJS 或 AMD］时，此方法不适用。在这种情况下，声明将以选择的
+将 Kotlin 模块编译为 JavaScript 模块 〔例如 UMD，（这是
+`browser` 与 `nodejs` 目标的默认设置）、CommonJS 或 AMD〕时，此方法不适用。在这种情况下，声明将以选择的
 JavaScript 模块系统指定的格式暴露。例如，当使用 UMD 或 CommonJS 时，调用处可能<!--
 -->如下所示：
 
