@@ -23,11 +23,11 @@
 
 ## Kotlin 吉祥物
 
-Kodee 是 Kotlin 重新设计的吉祥物。Kodee不仅仅是一个象征，更是一个可以激励并启发您创造力的友善伙伴。在使用它时，我们要求您遵循这些[简单准则](https://resources.jetbrains.com/storage/products/kotlin/docs/kotlin_mascot.zip)。
+Kodee 是 Kotlin 重新设计的吉祥物。Kodee不仅仅是一个象征，更是一个可以激励并启发你创造力的友善伙伴。在使用它时，我们要求遵循这些[简单准则](https://resources.jetbrains.com/storage/products/kotlin/docs/kotlin_mascot.zip)。
 
 ![Kotlin 吉祥物 Kodee 比例](mascot-body-proportions.png){width=700}
 
-您可以在数字和印刷材料中使用 Kodee。为此，我们为您准备了多个 Kotlin 吉祥物的素材供您下载和探索。
+可以在数字和印刷材料中使用 Kodee。为此，我们为你准备了多个 Kotlin 吉祥物的素材供下载与探索。
 
 [下载全部素材](https://resources.jetbrains.com/storage/products/kotlin/docs/kotlin_mascot_2.zip){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
 
@@ -39,13 +39,13 @@ Kodee 是 Kotlin 重新设计的吉祥物。Kodee不仅仅是一个象征，更�
 
 * 官方的 Kotlin Logo仅仅和其语言本身相关联，它不应该在其他场景下使用，否则会带来混淆。这对于它的衍生品是同样适用的。
 * 用户组 Logo 同样意味着用户社区的意见与行动是独立于 Kotlin 团队的。
-* 您不必遵循我们的意见，我们认为这才是对一个强大且富有创造性的社区最有利的态度。
+* 不必遵循我们的意见，我们认为这才是对一个强大且富有创造性的社区最有利的态度。
 
 [下载全部素材](https://drive.google.com/drive/folders/0B3Zi34svOj1RZ2sxZExhblRJc1k){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
 
 ### 用户组样式
 
-自从 2017 年初推出 Kotlin 社区支持计划以来，我们的用户组数量成倍地增长。每个月都有 2-4 个用户组加入我们。请查看 **Kotlin 用户组**部分中的完整列表，来找到您所在地区的用户组。
+自从 2017 年初推出 Kotlin 社区支持计划以来，我们的用户组数量成倍地增长。每个月都有 2-4 个用户组加入我们。请查看 **Kotlin 用户组**部分中的完整列表，来找到你所在地区的用户组。
 
 我们为新的 Kotlin 用户组提供了一个用户组 Logo 和头像。
 
@@ -56,38 +56,38 @@ Kodee 是 Kotlin 重新设计的吉祥物。Kodee不仅仅是一个象征，更�
 * 首先，我们收到了来自社区的大量请求，要求提供特殊的 Kotlin 样式品牌素材，帮助社区被识别为官方的用户组。
 * 其次，我们希望给用户组和社区提供一个独特的样式风格，以辨别哪些 Kotlin 相关的素材是来自官方团队，哪些是由社区自行设计的。
 
-### 创建您的用户组 Logo
+### 创建你的用户组 Logo
 
-要创建您的用户组的 Logo，你需要：
-1. 拷贝 Kotlin 用户组的 [Logo 文件](https://docs.google.com/drawings/d/1IcJp8Z2jAwEliXrHB-l9RNK_2LrqGTkNuPPtjrW1iIU/edit)到您的 Google 云端硬盘上（您需要拥有一个 Google 账号）。
-2. 将文本 **Your City** 替换为您的用户组名称。
-3. 下载这份图片并将其用在您的用户组上。
+要创建你的用户组的 Logo，你需要：
+1. 拷贝 Kotlin 用户组的 [Logo 文件](https://docs.google.com/drawings/d/1IcJp8Z2jAwEliXrHB-l9RNK_2LrqGTkNuPPtjrW1iIU/edit)到你的 Google 云端硬盘上（你需要拥有一个 Google 账号）。
+2. 将文本 **Your City** 替换为你的用户组名称。
+3. 下载这份图片并将其用在你的用户组上。
 
 ![白俄罗斯的 Kotlin 用户组头像样例](kotlin-user-group-avatar.png){width=300}
 
 *白俄罗斯的 Kotlin 用户组头像样例*
 
-您可以下载[一组图像素材](https://drive.google.com/drive/folders/0B3Zi34svOj1RZ2sxZExhblRJc1k)，其包含了用于社交网络的矢量图和封面图片。
+可以下载[一组图像素材](https://drive.google.com/drive/folders/0B3Zi34svOj1RZ2sxZExhblRJc1k)，其包含了用于社交网络的矢量图和封面图片。
 
-### 创建您的用户组头像
+### 创建你的用户组头像
 
-要创建您的用户组的头像，你需要：
-1. 拷贝 Kotlin 用户组的[头像文件](https://docs.google.com/drawings/d/1buhwccmllb7wFS0OIAub0WC4DIuSHRiDpjEQhB4tkPs/edit)到您的 Google 云端硬盘上（您需要拥有一个 Google 账号）。
-2. 将下方的文本替换为您用户组的缩写名称（基于我们的样例，最多 4 个大写字母）。
+如需创建用户组的头像，需要：
+1. 拷贝 Kotlin 用户组的[头像文件](https://docs.google.com/drawings/d/1buhwccmllb7wFS0OIAub0WC4DIuSHRiDpjEQhB4tkPs/edit)到你的 Google 云端硬盘上（你需要拥有一个 Google 账号）。
+2. 将下方的文本替换为用户组的缩写名称（基于我们的样例，最多 4 个大写字母）。
 3. 下载这份图片并将其用在 Facebook、Twitter 等其他平台上。
 
-### 创建您的 meetup.com 封面
+### 创建你的 meetup.com 封面
 
 要创建一个带有用户组 Logo 的 meetup.com 封面，你需要：
-1. 拷贝[图像文件](https://drive.google.com/file/d/1g_0Plf_do6vrXvy1R-Hx430vfV2CPVKN/view)到您的 Google 云端硬盘上（您需要拥有一个 Google 账号）。
-2. 在图片右上角的 Logo 中添加用户组的缩写名称。如果您想用自定义图片替换，请单击背景图案图片，选择“替换图像”，然后选择“从计算机上传”或任何其他来源。
-3. 下载这份图片并将其用在您的 [meetup.com](https://meetup.com) 个人简介上。
+1. 拷贝[图像文件](https://drive.google.com/file/d/1g_0Plf_do6vrXvy1R-Hx430vfV2CPVKN/view)到你的 Google 云端硬盘上（你需要拥有一个 Google 账号）。
+2. 在图片右上角的 Logo 中添加用户组的缩写名称。如果想用自定义图片替换，请单击背景图案图片，选择“替换图像”，然后选择“从计算机上传”或任何其他来源。
+3. 下载这份图片并将其用在你的 [meetup.com](https://meetup.com) 个人简介上。
 
 ![用户组样例](kotlin-user-group.png){width=700}
 
 ## Kotlin 之夜品牌素材
 
-JetBrains 为 Kotlin 之夜活动提供了一系列品牌和素材。我们的团队将为活动促销准备数字素材、包含有贴纸和T恤的商品包。看看我们都有什么可以让您的 Kotlin 之夜变得有趣！
+JetBrains 为 Kotlin 之夜活动提供了一系列品牌和素材。我们的团队将为活动促销准备数字素材、包含有贴纸和T恤的商品包。看看我们都有什么可以让你的 Kotlin 之夜变得有趣！
 
 [下载全部素材](https://drive.google.com/drive/folders/1wTJ-PiO6VvbY6XdACGLsWZ_N8KHI0Nvr){:.typo-float-right.kto-button.kto-button_size_m.kto-button_mode_outline}
 
@@ -109,7 +109,7 @@ JetBrains 为 Kotlin 之夜活动提供了一系列品牌和素材。我们的�
 
 ### 品牌文化墙
 
-您可以用贴纸来装饰一面文化墙，并拍摄令人难忘的活动照片。
+可以用贴纸来装饰一面文化墙，并拍摄令人难忘的活动照片。
 
 ![文化墙](kotlin-night-press-wall.svg){width=700}
 
@@ -119,7 +119,7 @@ JetBrains 为 Kotlin 之夜活动提供了一系列品牌和素材。我们的�
 
 ### 贴纸板
 
-您也可以提供一个告示板，让客人在上面粘贴带有他们印象、反馈和期许的贴纸。
+也可以提供一个告示板，让客人在上面粘贴带有他们印象、反馈和期许的贴纸。
 
 ![贴纸包](kotlin-night-board.svg){width=700}
 

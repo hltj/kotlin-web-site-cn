@@ -507,7 +507,7 @@ kotlin.native.binary.objcExportSuspendFunctionLaunchThreadRestriction=none
 
 The Kotlin team is very grateful to [Ahmed El-Helw](https://github.com/ahmedre) for implementing this option.
 
-#### 请反馈
+#### 敬请反馈
 
 This is a significant change to our ecosystem. We would appreciate your feedback to help make it even better.
 

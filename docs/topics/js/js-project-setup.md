@@ -553,7 +553,7 @@ browser {
 在项目中激活 CSS 支持有助于防止在尝试使用<!--
 -->未配置项目中的样式表时发生的常见错误，例如 `Module parse failed: Unexpected character '@' (14:0)`。
 
-您可以使用 `cssSupport.mode` 指定应如何处理遇到的 CSS。可以使用以下值：
+可以使用 `cssSupport.mode` 指定应如何处理遇到的 CSS。可以使用以下值：
 
 * `"inline"`（默认）：将样式添加到全局 `<style>` 标签中。
 * `"extract"`：样式被提取到单独的文件中。然后可以将它们包含在 HTML 页面中。
@@ -855,7 +855,7 @@ Kotlin Multiplatform Gradle 插件会在构建期间自动为 Kotlin/JS 项目�
 例如，识别可运行的脚本。
 
 可以通过 Gradle DSL 将自定义条目添加到项目的 `package.json` 中。
-要将自定义字段添加到您的 `package.json` 中，请使用编译 `package.json` 块中的 `customField()` 函数：
+如需将自定义字段添加到 `package.json` 中，请使用编译 `package.json` 块中的 `customField()` 函数：
 
 ```kotlin
 kotlin {

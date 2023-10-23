@@ -81,7 +81,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-为了方便起见，这些函数将目标集合返回了，因此您可以在函数调用的相应<!--
+为了方便起见，这些函数将目标集合返回了，因此可以在函数调用的相应<!--
 -->参数中直接创建它：
 
 ```kotlin

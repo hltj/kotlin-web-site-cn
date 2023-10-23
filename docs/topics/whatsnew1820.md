@@ -827,7 +827,7 @@ you need to opt in with `@OptIn(ExperimentalKotlinGradlePluginApi::class)`.
 
 For more information, see [Hierarchical project structure](multiplatform-hierarchy.md#default-hierarchy).
 
-#### 反馈意见
+#### 敬请反馈
 
 This is a significant change to multiplatform projects. We would appreciate your [feedback](https://kotl.in/issue) to
 help make it even better.

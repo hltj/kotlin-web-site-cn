@@ -270,7 +270,7 @@ the plugin picks the shared source sets from the template accordingly and create
 
 ### Full support for the Gradle configuration cache in Kotlin Multiplatform
 
-Previously, we introduced a [preview](whatsnew19.md#preview-of-the-gradle-configuration-cache) of the Gradle configuration
+Previously, we introduced a [preview](whatsnew19.md#gradle-配置缓存预览版) of the Gradle configuration
 cache, which was available for Kotlin multiplatform libraries. With %kotlinEapVersion%, the Kotlin Multiplatform plugin takes a step further.
 
 It now supports the Gradle configuration cache in the [Kotlin CocoaPods Gradle plugin](native-cocoapods-dsl-reference.md),
