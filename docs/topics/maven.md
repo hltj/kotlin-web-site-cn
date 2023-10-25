@@ -133,8 +133,10 @@ If you need to configure an execution, you need to specify its ID. You can find 
                 </execution>
                 <execution>
                     <id>test-compile</id>
-                    <goals> <goal>test-compile</goal> </goals> <!-- You can skip the <goals> element 
+                    <goals> 
+                        <goal>test-compile</goal> <!-- You can skip the <goals> element 
                     if you enable extensions for the plugin -->
+                    </goals>
                     <configuration>
                         <sourceDirs>
                             <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>

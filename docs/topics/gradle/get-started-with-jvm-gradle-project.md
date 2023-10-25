@@ -72,7 +72,7 @@ application {
 
 * 1️⃣ [application 插件](https://docs.gradle.org/current/userguide/application_plugin.html)用于构建基于 Java 语言的 CLI 应用。
 * 2️⃣ 了解更多关于[依赖源](https://docs.gradle.org/current/userguide/declaring_repositories.html)的信息。
-* 3️⃣ [Maven 中心仓库](https://search.maven.org/)也可以使用 [Google 的 Maven 仓库](https://maven.google.com/web/index.html)或者公司的私有仓库替代。
+* 3️⃣ [Maven 中心仓库](https://central.sonatype.com/)也可以使用 [Google 的 Maven 仓库](https://maven.google.com/)或者公司的私有仓库替代。
 * 4️⃣ 了解更多关于[依赖声明](https://docs.gradle.org/current/userguide/declaring_dependencies.html)的信息。
 * 5️⃣ 了解更多关于[任务](https://docs.gradle.org/current/dsl/org.gradle.api.Task.html)的信息。
 * 6️⃣ [用于测试的 JUnitPlatform](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/Test.html#useJUnitPlatform).

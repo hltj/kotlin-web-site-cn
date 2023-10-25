@@ -464,7 +464,7 @@ fun main() {
 
 You can also invoke `run` as a non-extension function. The non-extension variant of `run` has no context object, but it
 still returns the lambda result. 非扩展 `run` 可以在需要表达式的地方执行一个由多个语句组成的<!--
--->块。
+-->块。 In code, non-extension `run` can be read as "_run the code block and compute the result._"
 
 ```kotlin
 fun main() {
