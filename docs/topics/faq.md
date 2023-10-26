@@ -9,7 +9,7 @@ Kotlin 是一门面向 JVM、Android、JavaScript、Wasm 以及原生平台的�
 ### Kotlin 的当前版本是多少？
 
 目前发布的版本是 %kotlinVersion%，发布于 %kotlinReleaseDate%。  
-You can find more information [on GitHub](https://github.com/jetbrains/kotlin).
+可以[在 GitHub 上](https://github.com/jetbrains/kotlin)找到更多信息。
 
 ### Kotlin 是免费的吗？
 
@@ -70,16 +70,16 @@ vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](ht
 
 ### 哪些 IDE 支持 Kotlin？
 
-Kotlin has full out-of-the-box support in [IntelliJ IDEA](https://www.jetbrains.com/idea/download/),
-[Android Studio](https://developer.android.com/kotlin/get-started), and [JetBrains Fleet](https://www.jetbrains.com/help/fleet/getting-started-with-kotlin-in-fleet.html)
-with an official Kotlin plugin developed by JetBrains.
+Kotlin 在 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/)、
+[Android Studio](https://developer.android.com/kotlin/get-started) 与 [JetBrains Fleet](https://www.jetbrains.com/help/fleet/getting-started-with-kotlin-in-fleet.html)
+中都有完整的开箱即用支持（内置 JetBrains 开发的官方 Kotlin 插件）。
 
-Other IDEs and source editors, such as Eclipse, Visual Studio Code, and Atom, have Kotlin community-supported plugins.
+其他 IDE 与源代码编辑器（例如 Eclipse、Visual Studio Code 与 Atom）有 Kotlin 社区支持的插件。
 
-You can also try [Kotlin Playground](https://play.kotlinlang.org) for writing, running, and sharing 
-Kotlin code in your browser.
+还可以尝试使用 [Kotlin Playground](https://play.kotlinlang.org) 在浏览器中编写、运行及共享
+Kotlin 代码。
 
-In addition, a [command line compiler](command-line.md) is available, which provides straightforward support for compiling and running applications.
+此外，还提供了[命令行编译器](command-line.md)，为编译与运行应用程序提供了直接的支持。
   
 ### 哪些构建工具支持 Kotlin？
 
@@ -100,8 +100,8 @@ JavaScript 的构建工具。
 
 Kotlin 会让你选择用于执行的 JVM 版本。默认情况下，Kotlin/JVM 编译器会生成兼容 Java 8 的字节码。
 如果要利用 Java 新版本中提供的优化功能，可以将目标 Java
-版本显式指定为 9 到 20。 请注意，这种情况下生成的字节码可能无法在较低版本中运行。 
-Starting with [Kotlin 1.5](whatsnew15.md#新的默认-jvm-目标-1-8), the compiler does not support producing bytecode compatible with Java versions below 8.
+版本显式指定为 9 到 20。 请注意，这种情况下生成的字节码可能无法在较低版本中运行。
+自 [Kotlin 1.5](whatsnew15.md#新的默认-jvm-目标-1-8)起，编译器不支持生成兼容低于 Java 8 版本的字节码。
 
 ### Kotlin 难吗？
 
@@ -109,7 +109,7 @@ Kotlin 是受 Java、C#、JavaScript、Scala 以及 Groovy 等现有语言的启
 Kotlin 易于学习，
 所以人们可以在几天之内轻松转向、阅读和编写 Kotlin。 
 学习惯用的 Kotlin 和使用更多它的高级功能可能需要一点时间，但总体来说这不是一个复杂的语言。 
-For more information, check out [our learning materials](learning-materials-overview.md).
+如需了解更多信息，请查阅[我们的学习资料](learning-materials-overview.md)。
  
 ### 哪些公司使用 Kotlin？
  
@@ -128,21 +128,21 @@ Kotlin 主要由 [JetBrains 的一个工程师团队开发（目前团队规模�
 最好的起始地方好是[本网站](https://www.kotlincn.net)（原文是[英文官网](https://kotlinlang.org)）。从那里你可以[下载编译器](command-line.md)、
 [在线尝试](https://play.kotlinlang.org)以及访问相关资源。
 
-### 有没有关于 Kotlin 的书？
+### 有没有关于 Kotlin 的图书？
 
-There are a number of books available for Kotlin. Some of them we have reviewed and can recommend to start with. They are listed
-on the [Books](books.md) page. For more books, see the community-maintained list at [kotlin.link](https://kotlin.link/). 
+有许多关于 Kotlin 的图书。其中一些我们已经审阅过并且可以推荐作为入门图书。 这些都列在了<!--
+-->[图书](books.md)页。 如需了解更多图书，请参见 [kotlin.link](https://kotlin.link/) 上社区维护的列表。 
 
 ### Kotlin 有没有在线课程？
 
-You can learn all the Kotlin essentials while creating working applications with the [Kotlin Core track](https://hyperskill.org/tracks?category=4&utm_source=jbkotlin_hs&utm_medium=referral&utm_campaign=kotlinlang-docs&utm_content=button_1&utm_term=22.03.23) by JetBrains Academy.
+可以在学习 JetBrains Academy 的 [Kotlin 核心课程](https://hyperskill.org/tracks?category=4&utm_source=jbkotlin_hs&utm_medium=referral&utm_campaign=kotlinlang-docs&utm_content=button_1&utm_term=22.03.23)创建可工作应用程序的同时学习所有 Kotlin 基础知识。
 
-A few other courses you can take:
-* [Pluralsight Course: Getting Started with Kotlin](https://www.pluralsight.com/courses/kotlin-getting-started) by Kevin Jones
-* [O'Reilly Course: Introduction to Kotlin Programming](https://www.oreilly.com/library/view/introduction-to-kotlin/9781491964125/) by Hadi Hariri
-* [Udemy Course: 10 Kotlin Tutorials for Beginneres](https://petersommerhoff.com/dev/kotlin/kotlin-beginner-tutorial/) by Peter Sommerhoff
+可以选择的一些其他课程：
+* [Pluralsight Course: Getting Started with Kotlin](https://www.pluralsight.com/courses/kotlin-getting-started)，作者：Kevin Jones
+* [O'Reilly Course: Introduction to Kotlin Programming](https://www.oreilly.com/library/view/introduction-to-kotlin/9781491964125/)，作者：Hadi Hariri
+* [Udemy Course: 10 Kotlin Tutorials for Beginneres](https://petersommerhoff.com/dev/kotlin/kotlin-beginner-tutorial/)，作者：Peter Sommerhoff
 
-You can also check out the other tutorials and content on our [YouTube channel](https://www.youtube.com/c/Kotlin).
+还可以在我们（官方）的 [YouTube 频道](https://www.youtube.com/c/Kotlin)上查看其他教程与内容。
 
 ### 有没有 Kotlin 社区？
 
@@ -157,12 +157,12 @@ You can also check out the other tutorials and content on our [YouTube channel](
 
 ### 有没有 Kotlin 大会？
 
-有！ [KotlinConf](https://kotlinconf.com/) is an annual conference hosted by JetBrains, which brings together developers, enthusiasts, 
-and experts from around the world to share their knowledge and experience with Kotlin.
+有！ [KotlinConf](https://kotlinconf.com/) 是由 JetBrains 主办的年度大会，汇集了来自世界各地的开发者、爱好者<!-- 
+-->与专家，分享他们的 Kotlin 知识与经验。
 
-In addition to technical talks and workshops, KotlinConf also offers networking opportunities, community interactions, 
-and social events where attendees can connect with fellow Kotliners and exchange ideas.
-It serves as a platform for fostering collaboration and community building within the Kotlin ecosystem.
+除了技术讲座与研讨会之外，KotlinConf 还提供联络机会、社区互动<!-- 
+-->与社交活动，与会者可以与其他 Kotliner 联系并交流想法。
+它是在 Kotlin 生态系统内促进协作与社区建设的一个平台。
 
 Kotlin 也会在全球不同地方举行大会。你可以在
 [官网上找到即将到来的会谈](https://kotlinlang.org/community/talks.html?time=upcoming)列表。
@@ -170,7 +170,7 @@ Kotlin 也会在全球不同地方举行大会。你可以在
 ### Kotlin 上社交媒体吗？
 
 上。
-Subscribe to the [Kotlin YouTube channel](https://www.youtube.com/c/Kotlin) and follow Kotlin [on Twitter](https://twitter.com/kotlin).
+可以订阅 [Kotlin YouTube 频道](https://www.youtube.com/c/Kotlin)以及在 [Twitter 上](https://twitter.com/kotlin)关注 Kotlin。
 
 ### 其他在线 Kotlin 资源呢？
 
@@ -182,4 +182,4 @@ Subscribe to the [Kotlin YouTube channel](https://www.youtube.com/c/Kotlin) and 
 徽标可以在[这里](https://resources.jetbrains.com/storage/products/kotlin/docs/kotlin_logos.zip)下载。
 使用该徽标时，请遵循压缩包中的 `guidelines.pdf` 以及 [Kotlin 品牌使用指南](https://kotlinfoundation.org/guidelines/) 中的简单规则。
 
-For more information, check out the page about [Kotlin brand assets](kotlin-brand-assets.md).
+如需了解更多信息，请查阅 [Kotlin 品牌素材](kotlin-brand-assets.md)页。

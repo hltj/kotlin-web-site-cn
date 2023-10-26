@@ -162,7 +162,7 @@ val files = File("Test").listFiles()
 // For simple fallback values:
 println(files?.size ?: "empty") // 如果 files 为 null，那么输出“empty”
 
-// To calculate a more complicated fallback value in a code block, use `run`
+// 如需在代码块中计算更复杂的备用值，请使用 `run`
 val filesSize = files?.size ?: run { 
     val someSize = getSomeSize()
     someSize * 2
