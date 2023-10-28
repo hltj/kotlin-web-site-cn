@@ -39,12 +39,12 @@ a?.equals(b) ?: (b === null)
 当相等性检测的两个操作数都是静态已知的（可空或非空的）`Float` 或 `Double` 类型时，该检测遵循
 [IEEE 754 浮点数运算标准](https://en.wikipedia.org/wiki/IEEE_754)。
 
-否则会使用不符合该标准的结构相等性检测，这会导致 `NaN` 等于其自身，`NaN` is considered greater than any other element, including `POSITIVE_INFINITY`, 而 `-0.0` 不等于 `0.0`。
+否则会使用不符合该标准的结构相等性检测，这会导致 `NaN` 等于其自身，认为 `NaN` 比包括 `POSITIVE_INFINITY` 在内的任何其他元素都大, 而 `-0.0` 不等于 `0.0`。
 
 更多信息请参见[浮点数比较](numbers.md#浮点数比较)。
 
-## Array equality
+## 数组相等性
 
-To compare whether two arrays have the same elements in the same order, use [`contentEquals()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/content-equals.html).
+如需比较两个数组是否具有相同顺序的相同元素，请使用 [`contentEquals()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/content-equals.html)。
 
-For more information, see [Compare arrays](arrays.md#compare-arrays).
+更多信息请参见[比较数组](arrays.md#比较数组)。
