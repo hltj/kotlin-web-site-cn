@@ -1,31 +1,31 @@
 [//]: # (title: 数组)
 
-An array is a data structure that holds a fixed number of values of the same type or its subtypes. 
-The most common type of array in Kotlin is the object-type array, represented by the [`Array`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/) class.
+数组是一种保存固定数量相同类型或其子类型的值的数据结构。
+Kotlin 中最常见的数组类型是对象类型数组，由 [`Array`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/) 类表示。
 
-> If you use primitives in an object-type array, this has a performance impact because your primitives are [boxed](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html)
-> into objects. To avoid boxing overhead, use [primitive-type arrays](#原生类型数组) instead.
+> 如果在对象类型数组中使用原生类型，那么会对性能产生影响，因为原生值都[装箱](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html)<!--
+> -->成了对象。 为了避免装箱开销，请改用[原生类型数组](#原生类型数组)。
 >
 {type="note"}
 
-## When to use arrays
+## 何时使用数组
 
-Use arrays in Kotlin when you have specialized low-level requirements that you need to meet. For example, if you have 
-performance requirements beyond what is needed for regular applications, or you need to build custom data structures. If
-you don't have these sorts of restrictions, use [collections](collections-overview.md) instead.
+当需要满足特殊的底层需求时，可以在 Kotlin 中使用数组。 例如，如果<!--
+-->性能要求超出了常规应用程序的需要，或者需要构建自定义的数据结构。 如果<!--
+-->没有这些限制，那么请改用[集合](collections-overview.md)。
 
-Collections have the following benefits compared to arrays:
-* Collections can be read-only, which gives you more control and allows you to write robust code that has a clear intent.
-* It is easy to add or remove elements from collections. In comparison, arrays are fixed in size. The only way to 
-add or remove elements from an array is to create a new array each time, which is very inefficient:
+与数组相比，集合具有以下优点：
+* 集合可以是只读的，这提供了更多的控制权而支持编写具有明确意图的健壮代码。
+* 易于对集合增删元素。相比之下，数组大小是固定的。 对数组<!-- 
+-->增删元素的唯一方式是每次创建一个新数组，效率很低：
 
   ```kotlin
   fun main() {
   //sampleStart
       var riversArray = arrayOf("Nile", "Amazon", "Yangtze")
 
-      // Using the += assignment operation creates a new riversArray,
-      // copies over the original elements and adds "Mississippi"
+      // 使用 += 赋值操作创建了一个新的 riversArray，
+      // 复制了原始元素并添加了“Mississippi”
       riversArray += "Mississippi"
       println(riversArray.joinToString())
       // Nile, Amazon, Yangtze, Mississippi
@@ -34,12 +34,12 @@ add or remove elements from an array is to create a new array each time, which i
   ```
   {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="arrays-rivers-array-kotlin"}
 
-* You can use the equality operator (`==`) to check if collections are structurally equal. You can't use this operator
-for arrays. Instead, you have to use a special function, which you can read more about in [Compare arrays](#compare-arrays).
+* 可以使用相等操作符（`==`）来检验两个集合是否在结构上相等。但不能对数组使用这个<!--
+-->操作符。 相反，必须使用一个特殊函数，关于这点可以参阅[比较数组](#比较数组)了解更多信息。
 
-For more information about collections, see [Collections overview](collections-overview.md).
+关于集合的更多信息请参见[集合概述](collections-overview.md)。
 
-## Create arrays
+## 创建数组
 
 To create arrays in Kotlin, you can use:
 * functions, such as [`arrayOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/array-of.html), [`arrayOfNulls()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/array-of-nulls.html#kotlin$arrayOfNulls(kotlin.Int)) 
@@ -118,7 +118,7 @@ fun main() {
 >
 {type="note"}
 
-### Nested arrays
+### 嵌套数组
 
 Arrays can be nested within each other to create multidimensional arrays:
 
@@ -143,7 +143,7 @@ fun main() {
 >
 {type="note"}
 
-## Access and modify elements
+## 访问与修改元素
 
 Arrays are always mutable. To access and modify elements in an array, use the [indexed access operator](operator-overloading.md#索引访问操作符)`[]`:
 
@@ -169,12 +169,12 @@ Arrays in Kotlin are _invariant_. This means that Kotlin doesn't allow you to as
 to an `Array<Any>` to prevent a possible runtime failure. Instead, you can use `Array<out Any>`. For more information,
 see [Type Projections](generics.md#类型投影).
 
-## Work with arrays
+## 使用数组
 
 In Kotlin, you can work with arrays by using them to pass a variable number of arguments to a function or perform operations
 on the arrays themselves. For example, comparing arrays, transforming their contents or converting them to collections.
 
-### Pass variable number of arguments to a function
+### 向函数传入可变数量的实参
 
 In Kotlin, you can pass a variable number of arguments to a function via the [`vararg`](functions.md#可变数量的参数varargs)
 parameter. This is useful when you don't know the number of arguments in advance, like when formatting a message or
@@ -200,7 +200,7 @@ fun printAllStrings(vararg strings: String) {
 
 For more information, see [Variable number of arguments (varargs)](functions.md#可变数量的参数varargs).
 
-### Compare arrays
+### 比较数组
 
 To compare whether two arrays have the same elements in the same order, use the [`.contentEquals()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/content-equals.html)
 and [`.contentDeepEquals()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/content-deep-equals.html) 
@@ -233,7 +233,7 @@ fun main() {
 > 
 {type="warning"}
 
-### Transform arrays
+### 转换数组
 
 Kotlin has many useful functions to transform arrays. This document highlights a few but this isn't an 
 exhaustive list. For the full list of functions, see our [API reference](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/).
@@ -282,12 +282,12 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="arrays-shuffle-array-kotlin"}
 
-### Convert arrays to collections
+### 将数组转换为集合
 
 If you work with different APIs where some use arrays and some use collections, then you can convert your arrays to [collections](collections-overview.md)
 and vice versa.
 
-#### Convert to List or Set
+#### 转换为 List 或 Set
 
 To convert an array to a `List` or `Set`, use the [`.toList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html)
 and [`.toSet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-set.html) functions.
@@ -309,7 +309,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="arrays-convert-list-set-kotlin"}
 
-#### Convert to Map
+#### 转换为 Map
 
 To convert an array to a `map`, use the [`.toMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-map.html)
 function. 

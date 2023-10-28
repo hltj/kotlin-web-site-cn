@@ -24,7 +24,7 @@ val oneLong = 1L // Long
 val oneByte: Byte = 1
 ```
 
-> In addition to integer types, Kotlin also provides unsigned integer types. For more information, see [Unsigned integer types](unsigned-integer-types.md).
+> 除了整数类型之外，Kotlin 还提供无符号整数类型。 更多信息请参见[无符号整数类型](unsigned-integer-types.md)。
 >
 {type="tip"}
 
@@ -297,22 +297,22 @@ val x = (1 shl 2) and 0x000FF000
 * 认为 `NaN` 比包括正无穷大（`POSITIVE_INFINITY`）在内的任何其他元素都大
 * 认为 `-0.0` 小于 `0.0`
 
-Here is an example that shows the difference in behavior between operands statically typed as floating-point numbers 
-(`Double.NaN`) and operands **not** statically typed as floating-point numbers (`listOf(T)`).
+以下示例显示了静态类型作为浮点数 
+（`Double.NaN`）的操作数与静态类型**并非**作为浮点数的操作数（`listOf(T)`）之间的行为差异。
 
 ```kotlin
 fun main() {
     //sampleStart
-    // Operand statically typed as floating-point number
+    // 静态类型作为浮点数的操作数
     println(Double.NaN == Double.NaN)                 // false
-    // Operand NOT statically typed as floating-point number
-    // So NaN is equal to itself
+    // 静态类型并非作为浮点数的操作数
+    // 所以 NaN 等于它本身
     println(listOf(Double.NaN) == listOf(Double.NaN)) // true
 
-    // Operand statically typed as floating-point number
+    // 静态类型作为浮点数的操作数
     println(0.0 == -0.0)                              // true
-    // Operand NOT statically typed as floating-point number
-    // So -0.0 is less than 0.0
+    // 静态类型并非作为浮点数的操作数
+    // 所以 -0.0 小于 0.0
     println(listOf(0.0) == listOf(-0.0))              // false
 
     println(listOf(Double.NaN, Double.POSITIVE_INFINITY, 0.0, -0.0).sorted())
