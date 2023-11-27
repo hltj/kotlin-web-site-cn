@@ -71,6 +71,8 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 
 </tab>
 
+---
+
 <tab id="cross-platform-mobile" title="跨平台移动端应用">
 
 在此可以了解到如何使用 [Kotlin 多平台](https://kotlinlang.org/lp/multiplatform/)开发及改进跨平台移动端应用程序。
@@ -114,15 +116,19 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 
 </tab>
 
+---
+
 <tab id="android" title="Android app">
 
-* 如果希望开始使用 Kotlin 用于 Android 开发，请阅读 [谷歌对 Android 上 Kotlin 入门的建议](https://developer.android.com/kotlin/get-started)。
+如果希望开始使用 Kotlin 用于 Android 开发，请阅读 [谷歌对 Android 上 Kotlin 入门的建议](https://developer.android.com/kotlin/get-started)。
 
-* 如果是 Android 新手并且想学习使用 Kotlin 创建应用程序，请查看[这门 Udacity 课程](https://www.udacity.com/course/developing-android-apps-with-kotlin--ud9012)。
+如果是 Android 新手并且想学习使用 Kotlin 创建应用程序，请查看[这门 Udacity 课程](https://www.udacity.com/course/developing-android-apps-with-kotlin--ud9012)。
 
 关注 Kotlin： ![Twitter](twitter.svg){width=25}{type="joined"} [Twitter](https://twitter.com/kotlin)、 ![Reddit](reddit.svg){width=25}{type="joined"} [Reddit](https://www.reddit.com/r/Kotlin/) 与 ![YouTube](youtube.svg){width=25}{type="joined"} [Youtube](https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw)， 不要错过任何重要的生态系统更新。
 
 </tab>
+
+---
 
 <tab id="multiplatform-library" title="多平台库">
 
