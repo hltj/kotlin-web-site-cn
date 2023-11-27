@@ -34,20 +34,20 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
    <td width="50%">
      一套成熟的框架族，拥有全球数百万开发人员都在用的成熟生态系统。
    <br/>
-   <list>
+   <ul>
       <li><a href="jvm-get-started-spring-boot.md">使用 Spring Boot 创建 RESTful web 服务</a>。</li>
       <li><a href="https://spring.io/guides/tutorials/spring-boot-kotlin/">使用 Spring Boot 与 Kotlin 构建 web 应用程序</a>。</li>
       <li><a href="https://spring.io/guides/tutorials/spring-webflux-kotlin-rsocket/">Spring Boot 与 Kotlin 及 RSocket 合用</a>。</li>
-   </list>
+   </ul>
    </td>
    <td width="50%">
       适用于架构决策时看重自由度的开发者的轻量级框架。
-   <list>
+   <ul>
       <li><a href="https://ktor.io/docs/creating-http-apis.html">使用 Ktor 创建 HTTP API</a>。</li>
       <li><a href="https://ktor.io/docs/creating-web-socket-chat.html">使用 Ktor 创建 WebSocket 聊天</a>。</li>
       <li><a href="https://ktor.io/docs/creating-interactive-website.html">使用 Ktor 创建交互式网站</a>。</li>
       <li><a href="https://ktor.io/docs/heroku.html">发布服务器端 Kotlin 应用程序：Ktor on Heroku</a>。</li>
-   </list>
+   </ul>
    
    </td>
    </tr>
