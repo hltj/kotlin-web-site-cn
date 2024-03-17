@@ -249,11 +249,11 @@ fun main() {
 
 ## while 循环
 
-`while` and `do-while` loops execute their body continuously while their condition is satisfied.
-The difference between them is the condition checking time:
-* `while` checks the condition and, if it's satisfied, executes the body and then returns to the condition check.
-* `do-while` executes the body and then checks the condition. If it's satisfied, the loop repeats. So, the body of `do-while`
-executes at least once regardless of the condition. 
+`while` 和 `do-while` 当循环条件满足时会持续执行它们的主体。
+它们之间的区别在于条件检查的时间：
+* `while` 先检查条件，如果满足，则执行主体，然后再返回到条件检查。
+* `do-while` 先执行主体，然后检查条件。如果满足，则循环重复。
+所以 `do-while` 的主体至少执行一次，不管条件如何。
 
 ```kotlin
 while (x > 0) {
