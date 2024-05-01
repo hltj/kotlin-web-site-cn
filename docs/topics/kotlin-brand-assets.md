@@ -23,7 +23,8 @@
 
 ## Kotlin 吉祥物
 
-Kodee 是 Kotlin 重新设计的吉祥物。Kodee不仅仅是一个象征，更是一个可以激励并启发你创造力的友善伙伴。在使用它时，我们要求遵循这些[简单准则](https://resources.jetbrains.com/storage/products/kotlin/docs/kotlin_mascot.zip)。
+Kodee 是 Kotlin 重新设计的吉祥物。Kodee不仅仅是一个象征，更是一个可以激励并启发你创造力的友善伙伴。
+在使用它时，我们要求遵循这些[简单准则](https://resources.jetbrains.com/storage/products/kotlin/docs/Kotlin_Mascot_Guidelines.pdf)。
 
 ![Kotlin 吉祥物 Kodee 比例](mascot-body-proportions.png){width=700}
 
@@ -79,8 +80,10 @@ Kodee 是 Kotlin 重新设计的吉祥物。Kodee不仅仅是一个象征，更�
 ### 创建你的 meetup.com 封面
 
 要创建一个带有用户组 Logo 的 meetup.com 封面，你需要：
-1. 拷贝[图像文件](https://drive.google.com/file/d/1g_0Plf_do6vrXvy1R-Hx430vfV2CPVKN/view)到你的 Google 云端硬盘上（你需要拥有一个 Google 账号）。
-2. 在图片右上角的 Logo 中添加用户组的缩写名称。如果想用自定义图片替换，请单击背景图案图片，选择“替换图像”，然后选择“从计算机上传”或任何其他来源。
+1. 拷贝[图像文件](https://drive.google.com/file/d/1g_0Plf_do6vrXvy1R-Hx430vfV2CPVKN/view)到你的 Google
+   云盘上（你需要拥有一个 Google 账号）。
+2. 在图片右上角的 Logo 中添加用户组的缩写名称。如果想用自定义图片替换，请单击<!--
+   -->背景图案图片，选择“替换图像”，然后选择“从计算机上传”或任何其他来源。
 3. 下载这份图片并将其用在你的 [meetup.com](https://meetup.com) 个人简介上。
 
 ![用户组样例](kotlin-user-group.png){width=700}

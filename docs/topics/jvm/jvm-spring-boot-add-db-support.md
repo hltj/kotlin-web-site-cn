@@ -27,9 +27,11 @@ class MessageService(val db: JdbcTemplate) {
         Message(response.getString("id"), response.getString("text"))
     }
 
-    fun save(message: Message){
-        db.update("insert into messages values ( ?, ? )",
-           message.id, message.text)
+    fun save(message: Message) {
+        db.update(
+            "insert into messages values ( ?, ? )",
+            message.id, message.text
+        )
     }
 }
 ```
@@ -117,10 +119,12 @@ class MessageService(val db: JdbcTemplate) {
         Message(response.getString("id"), response.getString("text"))
     }
 
-    fun save(message: Message){
+    fun save(message: Message) {
         val id = message.id ?: UUID.randomUUID().toString()
-        db.update("insert into messages values ( ?, ? )",
-                  id, message.text)
+        db.update(
+            "insert into messages values ( ?, ? )",
+            id, message.text
+        )
     } 
 }
 ```
@@ -250,8 +254,10 @@ Extend the functionality of the application to retrieve the individual messages 
     
         fun save(message: Message) {
             val id = message.id ?: UUID.randomUUID().toString()
-            db.update("insert into messages values ( ?, ? )", 
-                      id, message.text)
+            db.update(
+                "insert into messages values ( ?, ? )", 
+                id, message.text
+            )
         }
     }
     ```
@@ -347,8 +353,10 @@ class MessageService(val db: JdbcTemplate) {
 
     fun save(message: Message) {
         val id = message.id ?: UUID.randomUUID().toString()
-        db.update("insert into messages values ( ?, ? )",
-            id, message.text)
+        db.update(
+            "insert into messages values ( ?, ? )",
+            id, message.text
+        )
     }
 }
 ```
@@ -389,16 +397,3 @@ The Spring application is ready to run:
 The final step shows you how to use more popular connection to database using Spring Data. 
 
 **[Proceed to the next chapter](jvm-spring-boot-using-crudrepository.md)**
-
-### Get the Kotlin language map 
-
-Get your personal language map to help you navigate Kotlin features and track your progress in studying the language.
-We will also send you language tips and useful materials on using Kotlin with Spring.
-
-<a href="https://info.jetbrains.com/kotlin-tips.html">
-   <img src="get-kotlin-language-map.png" width="700" alt="Get the Kotlin language map"/>
-</a>
-
-> You will need to share your email address on the next page to receive the materials.
->
-{type="note"}

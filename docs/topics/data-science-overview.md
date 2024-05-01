@@ -60,6 +60,12 @@ Kotlin 社区创建的用于数据相关任务的类库生态系统正在迅速�
 以下是一些可能会有用的库：
 
 ### Kotlin 库
+
+* [Kandy](https://kotlin.github.io/kandy/welcome.html) is an open-source plotting library for the JVM written in Kotlin.
+  It provides a powerful and flexible DSL for chart creation,
+  along with seamless integration with [Kotlin Notebook](https://plugins.jetbrains.com/plugin/16340-kotlin-notebook)
+  and [Kotlin DataFrame](https://kotlin.github.io/dataframe/gettingstarted.html).
+
 * [Multik](https://github.com/Kotlin/multik): multidimensional arrays in Kotlin. The library provides Kotlin-idiomatic, 
   type- and dimension-safe API for mathematical operations over multidimensional arrays. Multik offers swappable 
   JVM and native computational engines, and a combination of the two for optimal performance.
@@ -75,11 +81,6 @@ Kotlin 社区创建的用于数据相关任务的类库生态系统正在迅速�
 * [Kotlin for Apache Spark](https://github.com/JetBrains/kotlin-spark-api) adds a missing layer of compatibility between
   Kotlin and Apache Spark. It allows Kotlin developers to use familiar language features such as data classes, and
   lambda expressions as simple expressions in curly braces or method references.
-
-* [kotlin-statistics](https://github.com/thomasnield/kotlin-statistics) 是一个为<!--
--->探索性统计与生产统计中提供扩展函数的库。它支持基本的数字列表/序列/数组函数（从 `sum` 到 `skewness`）、
-切片操作符（诸如 `countBy`、 `simpleRegressionBy`）、分箱（binning）操作符、离散 PDF 采样、
-朴素贝叶斯分类器、聚类、线性回归等等。
 
 * [kmath](https://github.com/mipt-npm/kmath) is an experimental library that was intially inspired by
 [NumPy](https://numpy.org/) but evolved to more flexible abstractions. It implements mathematical operations combined in

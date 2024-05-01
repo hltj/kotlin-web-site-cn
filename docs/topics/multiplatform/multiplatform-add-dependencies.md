@@ -58,10 +58,10 @@ Learn how to [change the default behavior](gradle-configure-project.md#对标准
 ### Test libraries
 
 The [`kotlin.test` API](https://kotlinlang.org/api/latest/kotlin.test/) is available for multiplatform tests. When
-you [create a multiplatform project](multiplatform-library.md), the Project Wizard automatically adds test
+you create a multiplatform project, the [project wizard](https://kmp.jetbrains.com/) automatically adds test
 dependencies to common and platform-specific source sets.
 
-If you didn't use the Project Wizard to create your project, you
+If you didn't use the project wizard to create your project, you
 can [add the dependencies manually](gradle-configure-project.md#set-dependencies-on-test-libraries).
 
 ### kotlinx libraries
@@ -205,7 +205,7 @@ kotlin {
 If you want to use a multiplatform library just for specific source sets, you can add it exclusively to them. The
 specified library declarations will then be available only in those source sets.
 
-> Don't use a platform-specific name in such cases, like SQLDelight `native-driver` in the example below. Find the exact name in the library's documentation.
+> Use a common library name in such cases, not a platform-specific one. Like with SQLDelight in the example below, use `native-driver`, not `native-driver-iosx64`. Find the exact name in the library's documentation.
 >
 {type="note"}
 
@@ -315,5 +315,5 @@ kotlin {
 
 Check out other resources on adding dependencies in multiplatform projects and learn more about:
 
-* [Adding Android dependencies](multiplatform-mobile-android-dependencies.md)
-* [Adding iOS dependencies](multiplatform-mobile-ios-dependencies.md)
+* [Adding Android dependencies](multiplatform-android-dependencies.md)
+* [Adding iOS dependencies](multiplatform-ios-dependencies.md)

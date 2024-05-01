@@ -1,15 +1,6 @@
 - company: Gradle
   url: https://hltj.me/kotlin/2017/06/13/kotlin-meet-gradle.html
   text: Gradle 正引入 Kotlin 作为编写脚本的语言
-- company: Corda
-  url: https://www.corda.net/2017/01/10/kotlin/
-  text: Corda 是一个开源分布式分类账号平台，由各大银行提供支持，完全由 Kotlin 构建。
-- company: Evernote
-  url: https://evernote.com/blog/android-state-library/
-  text: Evernote 最近将 Kotlin 集成到了他们的 Android 客户端
-- company: Coursera
-  url: https://building.coursera.org/blog/2016/03/16/becoming-bilingual-coursera/
-  text: Coursera Android 应用部分用 Kotlin 编写
 - company: Spring
   url: https://hltj.me/kotlin/2017/05/23/kotlin-support-in-spring5.html
   text: Spring 采用 Kotlin 的语言特性来提供更简洁的 API

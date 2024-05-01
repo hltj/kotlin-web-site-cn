@@ -425,6 +425,18 @@
     position:
       lat: 26.8243622
       lng: 104.7609243
+  - name: Hangzhou KUG
+    country: China Mainland
+    url: https://hangzhou-kug.github.io/
+    position:
+      lat: 30.2605053
+      lng: 119.5479628
+  - name: Hefei KUG
+    country: China Mainland
+    url: https://hefei-kug.github.io/
+    position:
+      lat: 31.85571
+      lng: 117.1214513
   - name: Tbilisi KUG
     country: Georgia
     url: https://discord.gg/6EcJH9vED6
@@ -485,6 +497,12 @@
     position:
       lat: 36.204824
       lng: 138.252924
+  - name: Kotlin User Group Tokyo
+    country: Japan
+    url: https://kotlin-tokyo.connpass.com/
+    position:
+      lat: 35.666463
+      lng: 139.745147
   - name: JiangXi KUG
     country: China Mainland
     url: https://weibo.com/u/6689084931
@@ -527,6 +545,12 @@
     position:
       lat: 35.907757
       lng: 127.766922
+  - name: Seoul KUG
+    country: South Korea
+    url: https://haeyum.dev/kug-seoul/
+    position:
+      lat: 37.532600
+      lng: 127.024612
   - name: Kozhikode KUG
     country: India
     url: https://www.facebook.com/kotlinusergroup/

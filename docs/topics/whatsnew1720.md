@@ -745,8 +745,7 @@ Since the previous release, the Kotlin documentation has received some notable c
 
 ### 新增与更新的教程
 
-* [多平台移动端入门](multiplatform-mobile-getting-started.md) – learn about cross-platform mobile development with Kotlin and create an app that works on both Android and iOS.
-* [使用 Kotlin 多平台构建全栈 web 应用](multiplatform-full-stack-app.md) – create an app using Kotlin throughout the whole stack, with a Kotlin/JVM server part and a Kotlin/JS web client.
+* [多平台入门](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-getting-started.html) – learn about cross-platform mobile development with Kotlin and create an app that works on both Android and iOS.
 * [使用 React 与 Kotlin/JS 构建 web 应用程序](js-react.md) – create a browser app exploring Kotlin's DSLs and features of a typical React program.
 
 ### 版本发布文档中的变更

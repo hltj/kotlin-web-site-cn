@@ -120,9 +120,34 @@ JavaScript 目标进行编译时才有效，并且还允许导出非平台特有
 
 ## 在 JavaScript 中的 Kotlin 类型
 
-* 除了 `kotlin.Long` 的 Kotlin 数字类型映射到 JavaScript `Number`。
-* `kotlin.Char` 映射到 JavaScript `Number` 来表示字符代码。
-* Kotlin 在运行时无法区分数字类型（`kotlin.Long` 除外），因此以下代码能够工作：
+See how Kotlin types are mapped to JavaScript ones:
+
+| Kotlin                                                                      | JavaScript                  | Comments                                                                                   |
+|-----------------------------------------------------------------------------|-----------------------------|--------------------------------------------------------------------------------------------|
+| `Byte`, `Short`, `Int`, `Float`, `Double`                                   | `Number`                    |                                                                                            |
+| `Char`                                                                      | `Number`                    | The number represents the character's code.                                                |
+| `Long`                                                                      | Not supported               | There is no 64-bit integer number type in JavaScript, so it is emulated by a Kotlin class. |
+| `Boolean`                                                                   | `Boolean`                   |                                                                                            |
+| `String`                                                                    | `String`                    |                                                                                            |
+| `Array`                                                                     | `Array`                     |                                                                                            |
+| `ByteArray`                                                                 | `Int8Array`                 |                                                                                            |
+| `ShortArray`                                                                | `Int16Array`                |                                                                                            |
+| `IntArray`                                                                  | `Int32Array`                |                                                                                            |
+| `CharArray`                                                                 | `UInt16Array`               | Carries the property `$type$ == "CharArray"`.                                               |
+| `FloatArray`                                                                | `Float32Array`              |                                                                                            |
+| `DoubleArray`                                                               | `Float64Array`              |                                                                                            |
+| `LongArray`                                                                 | `Array<kotlin.Long>`        | Carries the property `$type$ == "LongArray"`. Also see Kotlin's Long type comment.         |
+| `BooleanArray`                                                              | `Int8Array`                 | Carries the property `$type$ == "BooleanArray"`.                                            |
+| `Unit`                                                                      | Undefined                   |                                                                                            |
+| `Any`                                                                       | `Object`                    |                                                                                            |
+| `Throwable`                                                                 | `Error`                     |                                                                                            |
+| Nullable `Type?`                                                            | `Type \| null \| undefined` |                                                                                            |
+| All other Kotlin types (except for those marked with `JsExport` annotation) | Not supported               | Includes Kotlin's collections (`List`, `Set`, `Map`, etc.), and unsigned variants.         |
+
+Additionaly, it is important to know that:
+
+* Kotlin preserves overflow semantics for `kotlin.Int`, `kotlin.Byte`, `kotlin.Short`, `kotlin.Char` and `kotlin.Long`.
+* Kotlin cannot distinguish between numeric types at runtime (except for `kotlin.Long`), so the following code works:
   
   ```kotlin
   fun f() {
@@ -132,22 +157,5 @@ JavaScript 目标进行编译时才有效，并且还允许导出非平台特有
   }
   ```
 
-* Kotlin 保留了 `kotlin.Int`、 `kotlin.Byte`、 `kotlin.Short`、 `kotlin.Char` 和 `kotlin.Long` 的溢出语义。
-* `kotlin.Long` 没有映射到任何 JavaScript 对象，因为 JavaScript 中没有 64 位整数，它是由一个 Kotlin 类模拟的。
-* `kotlin.String` 映射到 JavaScript `String`。
-* `kotlin.Any` 映射到 JavaScript `Object`（`new Object()`、 `{}` 等）。
-* `kotlin.Array` 映射到 JavaScript `Array`。
-* Kotlin 集合（`List`、 `Set`、 `Map` 等）没有映射到任何特定的 JavaScript 类型。
-* `kotlin.Throwable` 映射到 JavaScript Error。
 * Kotlin 在 JavaScript 中保留了惰性对象初始化。
 * Kotlin 不会在 JavaScript 中实现顶层属性的惰性初始化。
-
-### 原生数组
-
-原生数组转换到 JavaScript 时采用 `TypedArray`：
-
-* `kotlin.ByteArray`、 `-.ShortArray`、 `-.IntArray`、 `-.FloatArray` 以及 `-.DoubleArray` 会相应地映射为
-  JavaScript 中的 `Int8Array`、 `Int16Array`、 `Int32Array`、 `Float32Array` 以及 `Float64Array`。
-* `kotlin.BooleanArray` 会映射为 JavaScript 中具有 `$type$ == "BooleanArray"` 属性的 `Int8Array`。
-* `kotlin.CharArray` 会映射为 JavaScript 中具有 `$type$ == "CharArray"` 属性的 `UInt16Array`。
-* `kotlin.LongArray` 会映射为 JavaScript 中具有 `$type$ == "LongArray"` 属性的 `kotlin.Long` 的数组。

@@ -62,21 +62,22 @@ We make sure to document precisely which subcomponents are not stable. We also d
 | **组件**                                              | **状态**     | **状态起始版本**         | **备注**                                                                          |
 |-------------------------------------------------------|--------------|--------------------------|-----------------------------------------------------------------------------------|
 | Kotlin/JVM                                            | 已稳定       | 1.0                      |                                                                                   |
-| Kotlin K2 (JVM)                                       | Alpha        | 1.7                      |                                                                                   |
+| Kotlin K2 (JVM、 Native、 Wasm、 JS)                  | Beta         | 1.9.20                   |                                                                                   |
 | kotlin-stdlib (JVM)                                   | 已稳定       | 1.0                      |                                                                                   |
 | 协程                                                  | 已稳定       | 1.3                      |                                                                                   |
 | kotlin-reflect (JVM)                                  | Beta         | 1.0                      |                                                                                   |
 | Kotlin/JS（旧版后端）                                 | 已稳定       | 1.3                      | 1.8.0 起已弃用，请参阅 [IR 迁移指南](js-ir-migration.md)                          |
 | Kotlin/JVM（基于 IR）                                 | 已稳定       | 1.5                      |                                                                                   |
 | Kotlin/JS（基于 IR）                                  | 已稳定       | 1.8                      |                                                                                   |
-| Kotlin/Native 运行时                                  | Beta         | 1.3                      |                                                                                   |
-| Kotlin/Native 新版内存管理器                          | Beta         | 1.7.20                   |                                                                                   |
-| klib 二进制                                           | Beta         | 1.9.0                     |                                                                                   |
-| Kotlin 多平台                                         | Beta         | 1.7.20                   |                                                                                   |
+| Kotlin/Native 运行时                                  | 已稳定       | 1.9.20                   |                                                                                   |
+| Kotlin/Native 新版内存管理器                          | 已稳定       | 1.9.20                   |                                                                                   |
+| klib 二进制                                           | 已稳定       | 1.9.20                   |                                                                                   |
+| Kotlin 多平台                                         | 已稳定       | 1.9.20                   |                                                                                   |
 | Kotlin/Native 与 C 语言及 Objective C 互操作          | Beta         | 1.3                      |                                                                                   |
-| CocoaPods 集成                                        | Beta         | 1.3                      |                                                                                   |
+| CocoaPods 集成                                        | 已稳定       | 1.9.20                   |                                                                                   |
 | 用于 Android Studio 的 Kotlin 多平台移动端插件        | Beta         | 0.5.2                    | [与语言版本独立](multiplatform-mobile-plugin-releases.md)                         |
-| expect/actual 语言特性                                | Beta         | 1.2                      |                                                                                   |
+| expected and actual functions and properties          | 已稳定       | 1.9.20                   |                                                                            |
+| expected and actual classes                           | Beta         | 1.7.20                   |                                                                            |
 | KDoc 语法                                             | 已稳定       | 1.0                      |                                                                                   |
 | Dokka                                                 | Beta         | 1.6                      |                                                                                   |
 | 脚本语法与语义                                        | Alpha        | 1.2                      |                                                                                   |

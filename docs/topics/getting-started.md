@@ -75,32 +75,32 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 
 在此可以了解到如何使用 [Kotlin 多平台](https://kotlinlang.org/lp/multiplatform/)开发及改进跨平台移动端应用程序。
 
-1. **[搭建用于跨平台移动端开发的环境](multiplatform-mobile-setup.md).**
+1. **[搭建用于跨平台开发的环境](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-setup.html).**
 
 2. **创建第一个用于 iOS 与 Android 应用程序：**
 
-   * 从头开始，[使用项目向导创建一个基本的跨平台移动端应用程序](multiplatform-mobile-create-first-app.md)。
-   * 如果有既有的 Android 应用程序并想让它跨平台，那么请完成[让 Android 应用程序也能用于 iOS](multiplatform-mobile-integrate-in-existing-app.md) 教程。
-   * 如果更倾向于现实生活的示例，那么请克隆并使用既有项目，例如[使用 Ktor 和 SQLDelight 创建多平台应用](multiplatform-mobile-ktor-sqldelight.md)教程中的网络与数据存储项目或者任意[范例项目](multiplatform-mobile-samples.md)。
+   * 从头开始，[使用项目向导创建一个基本的跨平台移动端应用程序](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-create-first-app.html)。
+   * 如果有既有的 Android 应用程序并想让它跨平台，那么请完成[让 Android 应用程序也能用于 iOS](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-integrate-in-existing-app.html) 教程。
+   * 如果更倾向于现实生活的示例，那么请克隆并使用既有项目，例如[使用 Ktor 和 SQLDelight 创建多平台应用](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-ktor-sqldelight.html)教程中的网络与数据存储项目或者任意[范例项目](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html)。
 
 3. **使用一整套多平台库** 在共享模块中只实现一次所需的业务逻辑。 了解关于[添加依赖项](multiplatform-add-dependencies.md)的更多信息。
 
-   |库|详情|
-   |--|----| 
-   | Ktor | [文档](https://ktor.io/docs/client.html)| 
-   | Serialization | [文档](serialization.md)及[范例](multiplatform-mobile-ktor-sqldelight.md#create-an-application-data-model)|
-   | Coroutines | [文档](coroutines-guide.md)及[范例](coroutines-and-channels.md)|
-   | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)|
-   | SQLDelight | 第三方库。 [文档](https://cashapp.github.io/sqldelight/)|
+   |库|详情                                                                                                                                                            |
+   |--|-----------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+   | Ktor | [文档](https://ktor.io/docs/client.html)                                                                                                                           | 
+   | Serialization | [文档](serialization.md)及[范例](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-ktor-sqldelight.html#create-an-application-data-model) |
+   | Coroutines | [文档](coroutines-guide.md)及[范例](coroutines-and-channels.md)                                                                                               |
+   | DateTime | [文档](https://github.com/Kotlin/kotlinx-datetime#readme)                                                                                                          |
+   | SQLDelight | 第三方库。 [文档](https://cashapp.github.io/sqldelight/)                                                                                                 |
    
    > 还可以在[社区驱动列表](https://libs.kmp.icerock.dev/)中找到多平台库。
    > 
    {type="tip"}
 
-4. **了解关于 Kotlin 多平台移动端的更多信息：**
+4. **了解关于 Kotlin 多平台的更多信息：**
    * 了解关于 [Kotlin 多平台](multiplatform-get-started.md)的更多信息。
-   * 浏览 [GitHub 上的范例](multiplatform-mobile-samples.md)。
-   * [创建并发布多平台库](multiplatform-library.md)。
+   * 浏览[范例项目](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html)。
+   * [发布多平台库](multiplatform-publish-lib.md)。
    * 了解 [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)、 [VMWare](https://kotlinlang.org/lp/multiplatform/case-studies/vmware/)、 [Yandex](https://kotlinlang.org/lp/multiplatform/case-studies/yandex/) 以及[许多其他公司](https://kotlinlang.org/lp/multiplatform/case-studies/)如何使用 Kotlin 多平台。
 
 5. **加入 Kotlin 多平台社区：**
@@ -130,9 +130,9 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 
 在此可以了解到如何开发并发布多平台库：
 
-1. **创建多平台库：**
+1. **发布多平台库：**
 
-   * 完成[创建并发布多平台库](multiplatform-library.md)教程。 它展示了如何为 JVM、 JS 与原生平台创建多平台库，对其进行测试并发布到本地 Maven 仓库。
+   * See [Publish a multiplatform library](multiplatform-publish-lib.md) to learn more.
 
 2. **在应用程序中使用库：** 
 

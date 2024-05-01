@@ -35,4 +35,4 @@
 开始将 Kotlin 用于：
 
 * Android 开发，请阅读 [Google 关于用 Kotlin 开发 Android 应用的文档](https://developer.android.com/kotlin/get-started)。
-* 开发跨平台移动应用程序，请参见[用于 Android 与 iOS 的 Kotlin 多平台入门](multiplatform-mobile-getting-started.md)。
+* 开发跨平台移动应用程序，请参见[用于 Android 与 iOS 的 Kotlin 多平台入门](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-getting-started.html)。

@@ -14,7 +14,7 @@
    > 你也可以在项目创建之后再来创建。
    > 
    {type="tip"}
-   
+
 4. 在**语言**这一行选择 **Kotlin**。
 
    ![Create a console application](jvm-new-gradle-project.png){width=700}
@@ -26,11 +26,25 @@
       -->JDK 的 Home 路径。
     * 如果你的计算机中尚未安装 JDK，选择 **下载 JDK**。
 
-8. 在 **Gradle DSL** 这一行选择 **Kotlin**。
-9. 勾选**添加示例代码**来创建一个初始的 `"Hello World!"`应用。
+7. 在 **Gradle DSL** 这一行选择 **Kotlin**。
+8. 勾选**添加示例代码**来创建一个初始的 `"Hello World!"`应用。
+
+   > You can also enable the **Generate code with onboarding tips** option to add some additional useful comments to your
+   > sample code.
+   >
+   {type="tip"}
+
 10. 点击**创建**。
 
 你已经成功创建了一个 Gradle 项目。
+
+#### Specify a Gradle version for your project {initial-collapse-state="collapsed"}
+
+You can explicitly specify a Gradle version for your project under the **Advanced Settings** section, either by using the Gradle Wrapper or a local installation of Gradle:
+* **Gradle Wrapper:** From the **Gradle distribution** list,  select **Wrapper**. Deselect the **Auto-select** checkbox, and from the **Gradle version** list, select your Gradle version.
+* **Local installation:** From the **Gradle distribution** list, select **Local installation**.  For **Gradle location**, specify the path of your local Gradle version.
+
+   ![Advanced settings](jvm-new-gradle-project-advanced.png){width=700}
 
 ## 探索构建脚本
 
@@ -80,7 +94,7 @@ application {
 
 如你所见，在 Gradle 的构建文件中也有一些关于 Kotlin 的配置项：
 
-1. 在 `plugins` 块中，有一行 `kotlin("jvm")` – 该插件定义了项目中所用的 Kotlin 版本。
+1. 在 `plugins{}` 块中，有一行 `kotlin("jvm")` – 该插件定义了项目中所用的 Kotlin 版本。
 
 2. 在 `dependencies` 块中，有一行 `testImplementation(kotlin("test"))`。
    了解更多关于[配置用于测试的库](gradle-configure-project.md#set-dependencies-on-test-libraries)的信息。
@@ -91,7 +105,6 @@ application {
 ## 运行应用
 
 打开位于 `src/main/kotlin` 的 `Main.kt` 文件。
-
 `src` 目录包含了 Kotlin 的源代码和资源文件。`Main.kt` 文件包含了会打印出<!--
 -->“Hello World!”的示例代码。
 

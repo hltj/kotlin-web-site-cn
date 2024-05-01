@@ -8,14 +8,14 @@
 - [异步模块定义（AMD，Asynchronous Module Definition）](https://github.com/amdjs/amdjs-api/wiki/AMD)，它尤其为
   [RequireJS](https://requirejs.org/) 库所使用。
 - [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1)，广泛用于 Node.js/npm
-  （`require` 函数和 `module.exports` 对象）
+  （`require` 函数和 `module.exports` 对象）。
 - 无模块（Plain）。不为任何模块系统编译。可以在全局作用域中以其名称访问模块。
 
 ## 浏览器目标
 
-如果以浏览器为目标并且要使用与 UMD 不同的模块系统，则可以在
+如果打算在 web 浏览器环境中运行代码并希望使用 UMD 之外的模块系统，那么可以在
 `webpackTask` 配置块中指定所需的模块类型。例如，要切换到 CommonJS，请使用：
- 
+
 ```groovy
 kotlin {
     js {
@@ -31,24 +31,24 @@ kotlin {
 ```
 
 Webpack 提供了 `commonjs` 与 `commonjs2` 这两种不同的 CommonJS“风味”，它们影响声明的<!--
--->可用方式。虽然在大多数情况下，可能希望使用 `commonjs2`，该模块将 `module.exports` 语法添加到<!--
--->所生成的库中，但也可以选择“纯”`commonjs` 选项，该选项完全实现 CommonJS 规范。
-如需了解有关 `commonjs` 与 `commonjs2` 之间的区别的更多信息，请在[此处](https://github.com/webpack/webpack/issues/1114)查看。
+-->可用方式。在大多数情况下，可能希望使用 `commonjs2`，该模块将 `module.exports` 语法添加到<!--
+-->所生成的库中。或者，也可以选择 `commonjs` 选项，严格遵守 CommonJS 规范。
+如需了解有关 `commonjs` 与 `commonjs2` 之间的区别的更多信息，请参见 [Webpack 版本库](https://github.com/webpack/webpack/issues/1114)查看。
 
 ## JavaScript 库与 Node.js 文件
 
-如果正在创建一个将从 JavaScript 或 Node.js 文件中使用的库，并且希望使用不同的模块<!--
--->系统，那么说明会略有不同。
+如果要创建一个用于 JavaScript 或 Node.js 环境的库，并且希望使用不同的模块<!--
+-->系统，那么其说明会略有不同。
 
 ### 选择目标模块系统
 
-要选择模块种类，请在 Gradle 构建脚本中设置 `moduleKind` 编译器选项。
+如需选择目标模块系统，请在 Gradle 构建脚本中设置 `moduleKind` 编译器选项。
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
-tasks.named<KotlinJsCompile>("compileKotlinJs").configure {
+tasks.withType<org.jetbrains.kotlin.gradle.targets.js.ir.KotlinJsIrLink> {
     compilerOptions.moduleKind.set(org.jetbrains.kotlin.gradle.dsl.JsModuleKind.MODULE_COMMONJS)
 }
 ```
@@ -76,8 +76,8 @@ compileKotlinJs.compilerOptions.moduleKind = org.jetbrains.kotlin.gradle.dsl.JsM
 ```kotlin
 kotlin {
     js {
-         useCommonJs()
-         // ...
+        useCommonJs()
+        // ...
     }
 }
 ```
@@ -88,7 +88,7 @@ kotlin {
 注解。考虑你有以下 CommonJS 模块叫“hello”：
 
 ```javascript
-module.exports.sayHello = function(name) { alert("Hello, " + name); }
+module.exports.sayHello = function (name) { alert("Hello, " + name); }
 ```
 
 你应该在 Kotlin 中这样声明：
@@ -107,6 +107,7 @@ external fun sayHello(name: String)
 
 ```kotlin
 @file:JsModule("extModule")
+
 package ext.jspackage.name
 
 external fun foo()
@@ -118,8 +119,8 @@ external class C
 
 ```javascript
 module.exports = {
-    foo:  { /* 此处一些代码 */ },
-    C:  { /* 此处一些代码 */ }
+  foo: { /* 此处一些代码 */ },
+  C: { /* 此处一些代码 */ }
 }
 ```
 
@@ -128,6 +129,7 @@ module.exports = {
 
 ```kotlin
 @file:JsModule("extModule")
+
 package ext.jspackage.name
 
 external fun foo()
@@ -145,15 +147,15 @@ Kotlin 也支持这种场景，尽管你必须为每个导入的包声明一个�
 
 ```javascript
 module.exports = {
-    mylib: {
-        pkg1: {
-            foo: function() { /* 此处一些代码 */ },
-            bar: function() { /* 此处一些代码 */ }
-        },
-        pkg2: {
-            baz: function() { /* 此处一些代码 */ }
-        }
+  mylib: {
+    pkg1: {
+      foo: function () { /* 此处一些代码 */ },
+      bar: function () { /* 此处一些代码 */ }
+    },
+    pkg2: {
+      baz: function () { /* 此处一些代码 */ }
     }
+  }
 }
 ```
 
@@ -162,6 +164,7 @@ module.exports = {
 ```kotlin
 @file:JsModule("extModule")
 @file:JsQualifier("mylib.pkg1")
+
 package extlib.pkg1
 
 external fun foo()
@@ -174,6 +177,7 @@ external fun bar()
 ```kotlin
 @file:JsModule("extModule")
 @file:JsQualifier("mylib.pkg2")
+
 package extlib.pkg2
 
 external fun baz()
@@ -188,9 +192,10 @@ external fun baz()
 -->以下 JavaScript 代码：
 
 ```javascript
-function topLevelSayHello(name) { alert("Hello, " + name); }
+function topLevelSayHello (name) { alert("Hello, " + name); }
+
 if (module && module.exports) {
-    module.exports = topLevelSayHello;
+  module.exports = topLevelSayHello;
 }
 ```
 
@@ -206,6 +211,6 @@ external fun sayHello(name: String)
 ### Kotlin 标准库使用的模块系统
 
 Kotlin 以 Kotlin/JS 标准库作为单个文件分发，该文件本身被编译为 UMD 模块，
-因此可以使用上述任何模块系统。虽然在大多数 Kotlin/JS 用例中，建议对
-`kotlin-stdlib-js` 使用 Gradle 依赖项, 也在 NPM 上作为 [`kotlin` ](https://www.npmjs.com/package/kotlin)
+因此可以使用上述任何模块系统。在大多数 Kotlin/JS 使用场景中，建议对
+`kotlin-stdlib-js` 使用 Gradle 依赖项, 它也在 NPM 上作为 [`kotlin` ](https://www.npmjs.com/package/kotlin)
 包提供。

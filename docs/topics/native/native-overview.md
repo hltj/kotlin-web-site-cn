@@ -58,7 +58,7 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 web 与原生平台。多平台库为公共 Kotlin 代码提供必要的 API，并支持在一处用
 Kotlin 编写项目的共享部分。
 
-可以使用 [Kotlin 多平台移动端入门](multiplatform-mobile-getting-started.md)教程<!--
+可以使用 [Kotlin 多平台入门](multiplatform-get-started.md)教程<!--
 -->来创建应用程序并在 iOS 与 Android 间共享业务逻辑。 如需在 iOS、 Android、 桌面与 web
 之间共享 UI，请尝试 [Compose 多平台](https://www.jetbrains.com/lp/compose-multiplatform/)，
 这是 JetBrains 基于 Kotlin 与 [Jetpack Compose](https://developer.android.com/jetpack/compose) 的声明式 UI 框架。
@@ -76,7 +76,7 @@ Kotlin 编写项目的共享部分。
 推荐教程：
 
 * [Kotlin/Native 入门](native-get-started.md)
-* [用于移动端的 Kotlin 多平台入门](multiplatform-mobile-getting-started.md)
+* [Kotlin 多平台入门](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-getting-started.html)
 * [映射来自 C 语言的原生数据类型](mapping-primitive-data-types-from-c.md)
 * [Kotlin/Native 开发动态库](native-dynamic-libraries.md)
 * [Kotlin/Native 开发 Apple 框架](apple-framework.md)
