@@ -26,19 +26,27 @@ val box = Box(1) // 1 具有类型 Int，所以编译器推算出它是 Box<Int>
 Java 类型系统中最棘手的部分之一是通配符类型（参见 [Java Generics FAQ](http://www.angelikalanger.com/GenericsFAQ/JavaGenericsFAQ.html)）。
 而 Kotlin 中没有。 相反，Kotlin 有声明处型变（declaration-site variance）与类型投影（type projections）。
 
-我们来思考下为什么 Java 需要这些神秘的通配符。在
-[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 很好地解释了该问题——
-第 31 条：*利用有限制通配符来提升 API 的灵活性*。
-首先，Java 中的泛型是*不型变的*，这意味着 `List<String>` 并*不是* `List<Object>` 的子类型。
-如果 `List` 不是*不型变的*，它就没比 Java 的数组好到哪去，因为如下代码会<!--
--->通过编译但是导致运行时异常：
+
+### Variance and wildcards in Java
+
+我们来思考下为什么 Java 需要这些神秘的通配符。 首先，Java 中的泛型是*不型变的*，
+这意味着 `List<String>` 并*不是* `List<Object>` 的子类型。 如果 `List` 不是*不型变的*，它就<!--
+-->没比 Java 的数组好到哪去，因为如下代码会通过编译但是导致运行时异常：
 
 ```java
 // Java
 List<String> strs = new ArrayList<String>();
-List<Object> objs = strs; // ！！！此处的编译器错误让我们避免了之后的运行时异常。
-objs.add(1); // 将一个整数放入一个字符串列表
-String s = strs.get(0); // ！！！ ClassCastException：无法将整数转换为字符串
+
+// Java reports a type mismatch here at compile-time.
+List<Object> objs = strs;
+
+// What if it didn't?
+// We would be able to put an Integer into a list of Strings.
+objs.add(1);
+
+// And then at runtime, Java would throw
+// a ClassCastException: Integer cannot be cast to String
+String s = strs.get(0); 
 ```
 
 Java 禁止这样的事情以保证运行时的安全。但这样会有一些影响。例如，
@@ -56,15 +64,13 @@ interface Collection<E> …… {
 
 ```java
 // Java
+
+// The following would not compile with the naive declaration of addAll:
+// Collection<String> is not a subtype of Collection<Object>
 void copyAll(Collection<Object> to, Collection<String> from) {
     to.addAll(from);
-  // ！！！对于这种简单声明的 addAll 将不能编译：
-  // Collection<String> 不是 Collection<Object> 的子类型
 }
 ```
-
-（在 Java 中，你很可能艰难地学到了这个教训，参见[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html)，
-第 28 条：*列表优先于数组*）
 
 这就是为什么 `addAll()` 的实际签名是以下这样：
 
@@ -91,14 +97,13 @@ _放入_ 元素 ， 就可以用 `Object` 集合并向其中放入 `String`：in
 （例如，你可以调用 `add(String)` 或者 `set(int, String)`），如果调用函数返回 `List<T>` 中的 `T`，
 你得到的并非一个 `String` 而是一个 `Object`。
 
-Joshua Bloch 称那些你只能*从中读取*的对象为*生产者*，并称那些只能*向其写入*的对象为*消费者*。他建议：
+Joshua Bloch 在其著作[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 中很好地解释了该问题
+（第 31 条：“利用有限制通配符来提升 API 的灵活性”）。 他称那些你只能*从中读取*的对象为*生产者*，
+并称那些只能*向其写入*的对象为*消费者*。他建议：
 
-> “为了灵活性最大化，在表示生产者或消费者的输入参数上使用通配符类型”，
-> 并提出了以下助记符：
->
-> _PECS 代表生产者-Extends、消费者-Super（Producer-Extends, Consumer-Super）。_
->
-{type="tip"}
+> “为了灵活性最大化，在表示生产者或消费者的输入参数上使用通配符类型。”
+
+他还提出了以下助记符：_PECS_ 代表*生产者-Extends、消费者-Super（Producer-Extends, Consumer-Super）。*
 
 > 如果你使用一个生产者对象，如 `List<? extends Foo>`，在该对象上不允许调用 `add()` 或 `set()`，
 > 但这并不意味着它是*不可变的*：例如，没有什么阻止你调用 `clear()`

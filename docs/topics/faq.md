@@ -1,4 +1,5 @@
 [//]: # (title: FAQ)
+[//]: # (description: Kotlin is a concise multiplatform programming language developed by JetBrains.)
 
 ### Kotlin 是什么？
 
@@ -25,7 +26,7 @@ Kotlin 既具有面向对象又具有函数式结构。你既可以按 OO 风格
 ### Kotlin 能给我超出 Java 语言的哪些优点？
 
 Kotlin 更简洁。粗略估计显示，代码行数减少约 40％。
-它也更安全，例如对不可空类型的支持使应用程序不易发生 NPE。
+它也更安全——例如对不可空类型的支持使应用程序不易发生 NPE。
 其他功能包括智能类型转换、高阶函数、扩展函数和带接收者的 lambda 表达式，提供了<!--
 -->编写富于表现力的代码的能力以及易于创建 DSL 的能力。
  
@@ -38,9 +39,10 @@ IDE 的自动化 [Java 到 Kotlin 转换器](mixing-java-kotlin-intellij.md#使�
 
 ### 我可以用 Kotlin 做什么？
 
-Kotlin 可用于任何类型的开发，无论是服务器端、客户端 Web 还是 Android。随着原生 Kotlin（Kotlin/Native）目前<!--
--->的进展，对其他平台（如嵌入式系统、macOS 和 iOS）的支持即将就绪。人们将 Kotlin 用于移动端<!--
--->和服务器端应用程序、使用 JavaScript 或 JavaFX的客户端、以及数据科学，仅举这几例。
+Kotlin 可用于任何类型的开发，无论是服务器端、客户端 Web、 Android 还是多平台库。
+随着原生 Kotlin（Kotlin/Native）平台目前的进展，还支持其他平台，如嵌入式系统、macOS 与 iOS。
+人们将 Kotlin 用于移动端与服务器端应用程序、使用 JavaScript 或 JavaFX的客户端、以及数据科学，
+仅举这几例。
 
 ### 我可以用 Kotlin 进行 Android 开发吗？
 
@@ -116,17 +118,17 @@ Kotlin 易于学习，
 有太多使用 Kotlin 的公司可列，而有些更明显的公司已经公开宣布使用
 Kotlin，分别通过博文、Github 版本库或者演讲宣布，包括
 [Square](https://medium.com/square-corner-blog/square-open-source-loves-kotlin-c57c21710a17)、 [Pinterest](https://www.youtube.com/watch?v=mDpnc45WwlI)、
-[Basecamp](https://m.signalvnoise.com/how-we-made-basecamp-3s-android-app-100-kotlin-35e4e1c0ef12) 以及 [Corda](https://docs.corda.net/releases/release-M9.2/further-notes-on-kotlin.html)。
+[Basecamp](https://signalvnoise.com/svn3/using-kotlin-to-make-android-apis-fun-again/) 以及 [Corda](https://corda.net/blog/kotlin/)。
  
 ### 谁开发 Kotlin？
 
-Kotlin 主要由 [JetBrains 的一个工程师团队开发（目前团队规模为 100+）](https://www.jetbrains.com/)。
+Kotlin 由 [JetBrains 的一个工程师团队开发（目前团队规模为 100+）](https://www.jetbrains.com/)。
 其首席语言设计师是 Michail Zarečenskij。除了核心团队，GitHub 上还有 250 多个外部贡献者。
 
 ### 在哪里可以了解关于 Kotlin 更多？
 
 最好的起始地方好是[本网站](https://www.kotlincn.net)（原文是[英文官网](https://kotlinlang.org)）。从那里你可以[下载编译器](command-line.md)、
-[在线尝试](https://play.kotlinlang.org)以及访问相关资源。
+To start with Kotlin, you can install one of the [official IDEs](kotlin-ide.md) or [try it online](https://play.kotlinlang.org).
 
 ### 有没有关于 Kotlin 的图书？
 

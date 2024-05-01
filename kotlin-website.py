@@ -69,6 +69,19 @@ def get_asset_version(filename):
             return digest
     return None
 
+
+def redirect_to_map(redirects_list):
+    result = {}
+
+    for item in redirects_list:
+        key = item["from"]
+        result.update({
+            f"{key}": item["to"]
+        })
+
+    return result
+
+
 def get_site_data():
     data = {}
     for data_file in os.listdir(data_folder):
@@ -89,6 +102,7 @@ def get_site_data():
                 sys.stderr.write('Cant read data file ' + data_file + ': ')
                 sys.stderr.write(str(exc))
                 sys.exit(-1)
+    data["core"] = redirect_to_map(yaml.load(open("redirects/stdlib-redirects.yml", encoding="UTF-8"), Loader=FullLoader))
     return data
 
 
@@ -222,11 +236,6 @@ def grammar():
     return render_template('pages/grammar.html', kotlinGrammar=grammar)
 
 
-@app.route('/docs/videos.html')
-def videos_page():
-    return render_template('pages/videos.html', videos=process_video_nav(site_data['videos']))
-
-
 @app.route('/docs/kotlin-reference.pdf')
 def kotlin_reference_pdf():
     return send_file(path.join(root_folder, "assets", "kotlin-reference.pdf"))
@@ -235,6 +244,11 @@ def kotlin_reference_pdf():
 @app.route('/docs/kotlin-docs.pdf')
 def kotlin_docs_pdf():
     return send_file(path.join(root_folder, "assets", "kotlin-reference.pdf"))
+
+
+@app.route('/docs/<path:path>')
+def docs(path):
+    return send_from_directory('dist/docs/', path)
 
 
 @app.route('/_next/<path:path>')
@@ -388,7 +402,7 @@ def page(page_path):
 
 @app.route('/404.html')
 def page_404():
-    return render_template('pages/404.html')
+    return send_file(path.join(root_folder, 'out', '404.html'))
 
 
 @freezer.register_generator
@@ -412,6 +426,9 @@ def generate_redirect_pages():
     for root, dirs, files in os.walk(redirects_folder):
         for file in files:
             if not file.endswith(".yml"):
+                continue
+            # @ToDo: drop after core support
+            if file == "stdlib-redirects.yml":
                 continue
 
             redirects_file_path = path.join(redirects_folder, file)
@@ -443,7 +460,7 @@ def generate_redirect_pages():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('pages/404.html'), 404
+    return send_file(path.join(root_folder, 'out', '404.html')), 404
 
 
 app.register_error_handler(404, page_not_found)

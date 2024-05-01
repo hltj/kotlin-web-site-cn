@@ -1,7 +1,7 @@
 [//]: # (title: 数据类)
 
-Data classes in Kotlin are classes whose main purpose is to hold data. Data classes come automatically with additional
-member functions that allow you to print an instance to readable output, compare instances, copy instances, and more.
+Data classes in Kotlin are primarily used to hold data. For each data class, the compiler automatically generates 
+additional member functions that allow you to print an instance to readable output, compare instances, copy instances, and more.
 Data classes are marked with `data`:
 
 ```kotlin
@@ -10,8 +10,8 @@ data class User(val name: String, val age: Int)
 
 编译器自动从主构造函数中声明的所有属性导出以下成员：
 
-* `.equals()`/`.hashCode()` 对
-* `.toString()` 格式是 `"User(name=John, age=42)"`
+* `.equals()`/`.hashCode()` 对。
+* `.toString()` 格式是 `"User(name=John, age=42)"`。
 * [`.componentN()` 函数](destructuring-declarations.md) 按声明顺序对应于所有属性。
 * `.copy()` 函数（见下文）
 
@@ -34,13 +34,13 @@ data class User(val name: String, val age: Int)
 数据类可以扩展其他类（示例请参见[密封类](sealed-classes.md)）。
 
 > 在 JVM 中，如果生成的类需要含有一个无参的构造函数，那么属性<!--
-> -->必须指定默认值。（参见[构造函数](classes.md#构造函数)）。
+> -->必须指定默认值。（参见[构造函数](classes.md#构造函数)）：
+> 
+> ```kotlin
+> data class User(val name: String = "", val age: Int = 0)
+> ```
 >
 {type="note"}
-
-```kotlin
-data class User(val name: String = "", val age: Int = 0)
-```
 
 ## 在类体中声明的属性
 
@@ -53,11 +53,11 @@ data class Person(val name: String) {
 }
 ```
 
-In this example, only the `name` property can be used inside the `.toString()`, `.equals()`, `.hashCode()`, and `.copy()` implementations,
-and there is only one component function `.component1()`. The `age` property can't be used inside the `.toString()`, 
-`.equals()`, `.hashCode()`, and `.copy()` implementations because it's declared inside the class body. If two `Person` 
-objects have different ages but the same `name`, then they are treated as equal. This is because the `.equals()` function
-can only check for equality of the `name` property. For example:
+In the example below, only the `name` property is used by default inside the `.toString()`, `.equals()`, `.hashCode()`, 
+and `.copy()` implementations, and there is only one component function, `.component1()`. 
+The `age` property is declared inside the class body and is excluded.
+Therefore, two `Person` objects with the same `name` but different `age` values are considered equal since `.equals()` 
+only evaluates properties from the primary constructor:
 
 ```kotlin
 data class Person(val name: String) {
@@ -85,7 +85,8 @@ fun main() {
 
 ## 复制
 
-Use the `.copy()` function to copy an object, allowing you to alter _some_ of its properties while keeping the rest unchanged. The implementation of this function for the `User` class above would be as follows:
+Use the `.copy()` function to copy an object, allowing you to alter _some_ of its properties while keeping the rest unchanged.
+The implementation of this function for the `User` class above would be as follows:
 
 ```kotlin
 fun copy(name: String = this.name, age: Int = this.age) = User(name, age)
@@ -113,4 +114,3 @@ println("$name, $age years of age")
 
 标准库提供了 `Pair` 与 `Triple` 类。尽管在很多情况下具名数据类是更好的设计选择，
 因为它们通过为属性提供有意义的名称使代码更具可读性。
-

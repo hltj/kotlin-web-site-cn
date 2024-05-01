@@ -391,7 +391,8 @@ with `@JvmDefaultWithoutCompatibility` (see [this YouTrack issue](https://youtra
 Kotlin 的可见性以下列方式映射到 Java：
 
 * `private` 成员编译成 `private` 成员
-* `private` 的顶层声明编译成包级局部声明
+* `private` 的顶层声明编译成 `private` 顶层声明。 Package-private accessors are also included,
+  if accessed from within a class.
 * `protected` 保持 `protected`（注意 Java 允许访问同一个包中其他类的受保护成员，
 而 Kotlin 不能，所以 Java 类会访问更广泛的代码）
 * `internal` 声明会成为 Java 中的 `public`。`internal` 类的成员会通过名字修饰，使其<!--

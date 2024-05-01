@@ -2,9 +2,9 @@
 
 Maven is a build system that you can use to build and manage any Java-based project.
 
-## Configure plugin and versions
+## Configure and enable the plugin
 
-*kotlin-maven-plugin* 用于编译 Kotlin 源代码与模块，目前只支持 Maven V3。
+`kotlin-maven-plugin` 用于编译 Kotlin 源代码与模块，目前只支持 Maven V3。
 
 In your `pom.xml` file, define the version of Kotlin you want to use in the `kotlin.version` property:
 
@@ -12,6 +12,18 @@ In your `pom.xml` file, define the version of Kotlin you want to use in the `kot
 <properties>
     <kotlin.version>{{ site.data.releases.latest.version }}</kotlin.version>
 </properties>
+```
+
+To enable `kotlin-maven-plugin`, update your `pom.xml` file:
+
+```xml
+<plugins>
+    <plugin>
+        <artifactId>kotlin-maven-plugin</artifactId>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <version>%kotlinVersion%</version>
+    </plugin>
+</plugins>
 ```
 
 ### Use JDK 17
@@ -237,7 +249,7 @@ See [`kapt` – Using in Maven](kapt.md#use-in-maven).
 </plugin>
 ```
 
-## Create self-contained JAR file
+## Create a self-contained JAR file
 
 要创建一个独立的（self-contained）JAR 文件，包含模块中的代码及其依赖项，请在 Maven `pom.xml` 文件中的
 `build->plugins` 下面包含以下内容其中 `main.class` 定义为一个属性，并指向<!--
@@ -313,8 +325,8 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 | 名称 | 属性名 | 描述 | 可能的值                                                     | 默认值 |
 |------|---------------|-------------|----------------------------------------------------------|--------------|
 | `nowarn` | | 不生成警告 | true、 false                                              | false |
-| `languageVersion` | `kotlin.compiler.languageVersion` | 提供与指定语言版本源代码兼容性 | "1.3"（已弃用）、 "1.4"（已弃用）、"1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"（实验性的） |
-| `apiVersion` | `kotlin.compiler.apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.3"（已弃用）、"1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"（实验性的） |
+| `languageVersion` | `kotlin.compiler.languageVersion` | 提供与指定语言版本源代码兼容性 | "1.3"（已弃用）、 "1.4"（已弃用）、"1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"、 2.0（实验性的）、 2.1（实验性的） |
+| `apiVersion` | `kotlin.compiler.apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.3"（已弃用）、"1.4"（已弃用）、 "1.5"、 "1.6"、 "1.7"、 "1.8"、 "1.9"、 2.0（实验性的）、 2.1（实验性的） |
 | `sourceDirs` | | 包含要编译源文件的目录 |                                                          | 该项目源代码根目录
 | `compilerPlugins` | | 启用[编译器插件](compiler-plugins.md)  |                                                          | []
 | `pluginOptions` | | 编译器插件的选项  |                                                          | []
@@ -329,15 +341,15 @@ write a dependency on [`kotlin-bom`](https://mvnrepository.com/artifact/org.jetb
 
 ```xml
 <dependencyManagement>
-  <dependencies>  
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-bom</artifactId>
-      <version>%kotlinVersion%</version>
-      <type>pom</type>
-      <scope>import</scope>
-    </dependency>
-  </dependencies>
+    <dependencies>  
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-bom</artifactId>
+            <version>%kotlinVersion%</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
 </dependencyManagement>
 ```
 

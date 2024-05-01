@@ -1,6 +1,11 @@
 [//]: # (title: 字符串)
 
 Kotlin 中字符串用 [`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/) 类型表示。
+
+> On the JVM, an object of `String` type in UTF-16 encoding uses approximately 2 bytes per character.
+> 
+{type="note"}
+
 通常，字符串值是双引号（`"`）中的字符序列：
 
 ```kotlin
@@ -106,7 +111,8 @@ val text = """
 ## 字符串模板
 
 字符串字面值可以包含*模板表达式*——一些小段代码，会求值并把结果合并到字符串中。
-模板表达式以美元符（`$`）开头，要么由一个的名称构成:
+When a template expression is processed, Kotlin automatically calls the `.toString()` function on the expression's result
+to convert it into a string. 模板表达式以美元符（`$`）开头，要么由一个变量名构成:
 
 ```kotlin
 fun main() {
@@ -114,6 +120,11 @@ fun main() {
     val i = 10
     println("i = $i") 
     // i = 10
+    
+    val letters = listOf("a","b","c","d","e")
+    println("Letters: $letters") 
+    // Letters: [a, b, c, d, e]
+
 //sampleEnd
 }
 ```
@@ -153,27 +164,40 @@ To format a string to your specific requirements, use the [`String.format()`](ht
 function. 
 
 The `String.format()` function accepts a format string and one or more arguments. The format string contains one placeholder 
-(`%`) for each remaining argument, followed by [format specifiers](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#summary). 
-Format specifiers are formatting instructions for the respective argument. In the output, each argument fills its 
-corresponding placeholder in the defined format:
+(indicated by `%`) for a given argument, followed by format specifiers.
+Format specifiers are formatting instructions for the respective argument, consisting of flags, width, precision, and 
+conversion type. Collectively, format specifiers shape the output's formatting. Common format specifiers include 
+`%d` for integers, `%f` for floating-point numbers, and `%s` for strings. You can also use the `argument_index$` syntax 
+to reference the same argument multiple times within the format string in different formats.
+
+> For a detailed understanding and an extensive list of format specifiers, see [Java's Class Formatter documentation](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#summary).
+>
+{type="note"}
+
+Let's look at an example:
 
 ```kotlin
 fun main() { 
 //sampleStart
-    // Formats to add zeroes and make a length of seven
+    // Formats an integer, adding leading zeroes to reach a length of seven characters
     val integerNumber = String.format("%07d", 31416)
     println(integerNumber)
     // 0031416
 
-    // Formats with four decimals and sign
+    // Formats a floating-point number to display with a + sign and four decimal places
     val floatNumber = String.format("%+.4f", 3.141592)
     println(floatNumber)
     // +3.1416
 
-    // Formats with uppercase for two placeholders
+    // Formats two strings to uppercase, each taking one placeholder
     val helloString = String.format("%S %S", "hello", "world")
     println(helloString)
     // HELLO WORLD
+    
+    // Formats a negative number to be enclosed in parentheses, then repeats the same number in a different format (without parentheses) using `argument_index$`.
+    val negativeNumberInParentheses = String.format("%(d means %1\$d", -31416)
+    println(negativeNumberInParentheses)
+    //(31416) means -31416
 //sampleEnd    
 }
 ```

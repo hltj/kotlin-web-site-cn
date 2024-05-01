@@ -173,15 +173,10 @@ print(b == a) // 惊！这将输出“false”鉴于 Long 的 equals() 会检测
 这意味着把 `Byte` 型值赋给一个 `Int` 变量必须显式转换：
 
 ```kotlin
-fun main() {
-//sampleStart
-    val b: Byte = 1 // OK, 字面值会静态检测
-    // val i: Int = b // 错误
-    val i1: Int = b.toInt()
-//sampleEnd
-}
+val b: Byte = 1 // OK, 字面值会静态检测
+// val i: Int = b // 错误
+val i1: Int = b.toInt()
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 所有数字类型都支持转换为其他类型：
 

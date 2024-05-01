@@ -102,9 +102,11 @@ class Unrelated(o: Outer) {
 class C private constructor(a: Int) { …… }
 ```
 
-这里的构造函数是私有的。默认情况下，所有构造函数都是 `public`，这实际上<!--
+这里的构造函数是私有（`private`）的。默认情况下，所有构造函数都是公开（`public`）的，这实际上<!--
 -->等于类可见的地方它就可见（即 一个 `internal` 类的构造函数只能<!--
 -->在相同模块内可见).
+
+For sealed classes, constructors are `protected` by default. For more information, see [Sealed classes](sealed-classes.md#constructors).
 
 ### 局部声明
 
@@ -119,4 +121,3 @@ class C private constructor(a: Int) { …… }
 * 一个 Maven 项目
 * 一个 Gradle 源代码集（例外是 `test` 源代码集可以访问 `main` 的 internal 声明）
 * 一次 `<kotlinc>` Ant 任务执行所编译的一套文件
-

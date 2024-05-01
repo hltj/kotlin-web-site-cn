@@ -214,8 +214,9 @@ abstract class Tag(val name: String) { …… }
 
 不必用 `@HtmlTagMarker` 标注 `HTML` 或 `Head` 类，因为它们的超类已标注过：
 
-```
+```kotlin
 class HTML() : Tag("html") { …… }
+
 class Head() : Tag("head") { …… }
 ```
 

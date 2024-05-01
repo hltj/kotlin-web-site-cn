@@ -8,7 +8,7 @@ Kotlin 要领。
 
 ## 包的定义与导入
 
-包的声明应处于源文件顶部。
+包的声明应处于源文件顶部：
 
 ```kotlin
 package my.demo
@@ -24,7 +24,7 @@ import kotlin.text.*
 
 ## 程序入口点
 
-Kotlin 应用程序的入口点是 `main` 函数。
+Kotlin 应用程序的入口点是 `main` 函数：
 
 ```kotlin
 fun main() {
@@ -33,7 +33,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-hello-world"}
 
-`main` 的另一种形式接受可变数量的 `String` 参数。 
+`main` 的另一种形式接受可变数量的 `String` 参数： 
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -44,7 +44,7 @@ fun main(args: Array<String>) {
 
 ## 输出打到标准输出
 
-`print` 将其参数打到标准输出。
+`print` 将其参数打到标准输出：
 
 ```kotlin
 fun main() {
@@ -56,7 +56,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-print"}
 
-`println` 输出其参数并添加换行符，以便接下来输出的内容出现在下一行。
+`println` 输出其参数并添加换行符，以便接下来输出的内容出现在下一行：
 
 ```kotlin
 fun main() {
@@ -70,7 +70,7 @@ fun main() {
 
 ## 函数
 
-带有两个 `Int` 参数、返回 `Int` 的函数。
+带有两个 `Int` 参数、返回 `Int` 的函数：
 
 ```kotlin
 //sampleStart
@@ -86,7 +86,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-return-int"}
 
-函数体可以是表达式。其返回类型可以推断出来。
+函数体可以是表达式。其返回类型可以推断出来：
 
 ```kotlin
 //sampleStart
@@ -99,7 +99,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-function-expression"}
 
-返回无意义的值的函数。
+返回无意义的值的函数：
 
 ```kotlin
 //sampleStart
@@ -114,7 +114,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-return-unit"}
 
-`Unit` 返回类型可以省略。
+`Unit` 返回类型可以省略：
 
 ```kotlin
 //sampleStart
@@ -133,44 +133,87 @@ fun main() {
 
 ## 变量
 
-定义只读局部变量使用关键字 `val` 定义。只能为其赋值一次。
+In Kotlin, you declare a variable starting with a keyword, `val` or `var`, followed by the name of the variable.
+
+Use the `val` keyword to declare variables that are assigned a value only once. These are immutable, read-only local variables that can’t be reassigned a different value
+after initialization: 
 
 ```kotlin
 fun main() {
 //sampleStart
-    val a: Int = 1  // 立即赋值
-    val b = 2   // 自动推断出 `Int` 类型
-    val c: Int  // 如果没有初始值类型不能省略
-    c = 3       // 明确赋值
+    // Declares the variable x and initializes it with the value of 5
+    val x: Int = 5
+    // 5
 //sampleEnd
-    println("a = $a, b = $b, c = $c")
+    println(x)
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-val"}
 
-可重新赋值的变量使用 `var` 关键字。
+Use the `var` keyword to declare variables that can be reassigned. These are mutable variables, and you can change their values after initialization:
 
 ```kotlin
 fun main() {
 //sampleStart
-    var x = 5 // 自动推断出 `Int` 类型
+    // Declares the variable x and initializes it with the value of 5
+    var x: Int = 5
+    // Reassigns a new value of 6 to the variable x
     x += 1
+    // 6
 //sampleEnd
-    println("x = $x")
+    println(x)
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-var"}
 
-可以在顶层声明变量。
+Kotlin supports type inference and automatically identifies the data type of a declared variable. When declaring a variable, you can omit the type after the variable name:
+
+```kotlin
+fun main() {
+//sampleStart
+    // Declares the variable x with the value of 5;`Int` type is inferred
+    val x = 5
+    // 5
+//sampleEnd
+    println(x)
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-inference"}
+
+You can use variables only after initializing them. You can either initialize a variable at the moment of declaration or declare a variable first and initialize it later. 
+In the second case, you must specify the data type:
+
+```kotlin
+fun main() {
+//sampleStart
+    // Initializes the variable x at the moment of declaration; type is not required
+    val x = 5
+    // Declares the variable c without initialization; type is required
+    val c: Int
+    // Initializes the variable c after declaration 
+    c = 3
+    // 5 
+    // 3
+//sampleEnd
+    println(x)
+    println(c)
+}
+```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-initialize"}
+
+可以在顶层声明变量：
 
 ```kotlin
 //sampleStart
 val PI = 3.14
 var x = 0
 
-fun incrementX() { 
-    x += 1 
+fun incrementX() {
+    x += 1
 }
+// x = 0; PI = 3.14
+// incrementX()
+// x = 1; PI = 3.14
 //sampleEnd
 
 fun main() {
@@ -182,16 +225,16 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-variable-top-level"}
 
-参见[属性](properties.md)。
+For information about declaring properties, see [Properties](properties.md).
 
 ## 创建类与实例
 
-使用 `class` 关键字定义类。
+使用 `class` 关键字定义类：
 ```kotlin
 class Shape
 ```
 
-类的属性可以在其声明或主体中列出。 
+类的属性可以在其声明或主体中列出： 
 
 ```kotlin
 class Rectangle(val height: Double, val length: Double) {
@@ -199,23 +242,21 @@ class Rectangle(val height: Double, val length: Double) {
 }
 ```
 
-具有类声明中所列参数的默认构造函数会自动可用。 
+具有类声明中所列参数的默认构造函数会自动可用： 
 
 ```kotlin
 class Rectangle(val height: Double, val length: Double) {
     val perimeter = (height + length) * 2 
 }
 fun main() {
-//sampleStart
     val rectangle = Rectangle(5.0, 2.0)
     println("The perimeter is ${rectangle.perimeter}")
-//sampleEnd
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-class-constructor"}
 
-类之间继承由冒号（`:`）声明。默认情况下类都是 final 的；如需让一个类可继承， 
-请将其标记为 `open`。
+类之间继承由冒号（`:`）声明。默认情况下类都是 `final` 的；如需让一个类可继承， 
+请将其标记为 `open`：
 
 ```kotlin
 open class Shape
@@ -225,11 +266,11 @@ class Rectangle(val height: Double, val length: Double): Shape() {
 }
 ```
 
-参见[类](classes.md)以及[对象与实例](object-declarations.md)。
+For more information about constructors and inheritance, see [Classes](classes.md) and [Objects and instances](object-declarations.md).
 
 ## 注释
 
-与大多数现代语言一样，Kotlin 支持单行（或*行末*）与多行（*块*）注释。
+与大多数现代语言一样，Kotlin 支持单行（或*行末*）与多行（*块*）注释：
 
 ```kotlin
 // 这是一个行注释
@@ -238,7 +279,7 @@ class Rectangle(val height: Double, val length: Double): Shape() {
    块注释。 */
 ```
 
-Kotlin 中的块注释可以嵌套。
+Kotlin 中的块注释可以嵌套：
 
 ```kotlin
 /* 注释从这里开始
@@ -287,7 +328,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-conditional-expressions"}
 
-在 Kotlin 中，`if` 也可以用作表达式。
+在 Kotlin 中，`if` 也可以用作表达式：
 
 ```kotlin
 //sampleStart
@@ -316,7 +357,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-for-loop"}
 
-或者
+或者：
 
 ```kotlin
 fun main() {
@@ -378,7 +419,7 @@ fun main() {
 
 ## 使用区间（range）
 
-使用 `in` 操作符来检测某个数字是否在指定区间内。
+使用 `in` 操作符来检测某个数字是否在指定区间内：
 
 ```kotlin
 fun main() {
@@ -393,7 +434,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-range-in"}
 
-检测某个数字是否在指定区间外。
+检测某个数字是否在指定区间外：
 
 ```kotlin
 fun main() {
@@ -411,7 +452,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-out-of-range"}
 
-区间迭代。
+区间迭代：
 
 ```kotlin
 fun main() {
@@ -424,7 +465,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-iterate-range"}
 
-或数列迭代。
+或数列迭代：
 
 ```kotlin
 fun main() {
@@ -445,7 +486,7 @@ fun main() {
 
 ## 集合
 
-对集合进行迭代。
+对集合进行迭代：
 
 ```kotlin
 fun main() {
@@ -459,7 +500,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-iterate-collection"}
 
-使用 `in` 操作符来判断集合内是否包含某实例。
+使用 `in` 操作符来判断集合内是否包含某实例：
 
 ```kotlin
 fun main() {
@@ -474,7 +515,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-collection-in"}
 
-使用 lambda 表达式来过滤（filter）与映射（map）集合：
+使用 [lambda 表达式](lambdas.md)来过滤（filter）与映射（map）集合：
 
 ```kotlin
 fun main() {
@@ -535,7 +576,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-function-nullable-value"}
 
-或者
+或者：
 
 ```kotlin
 fun parseInt(str: String): Int? {
@@ -601,7 +642,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-is-operator"}
 
-或者
+或者：
 
 ```kotlin
 //sampleStart
@@ -624,7 +665,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-basic-syntax-is-operator-expression"}
 
-甚至
+甚至：
 
 ```kotlin
 //sampleStart

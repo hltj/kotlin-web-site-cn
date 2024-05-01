@@ -195,7 +195,7 @@ for (item: Int in ints) {
 
 如上所述，`for` 可以循环遍历任何提供了迭代器的对象。这意味着：
 
-* 有一个成员函数或者扩展函数 `iterator()` 返回 `Iterator<>`：
+* 有一个成员函数或者扩展函数 `iterator()` 返回 `Iterator<>`，其中：
   * 有一个成员函数或者扩展函数 `next()`
   * 有一个成员函数或者扩展函数 `hasNext()` 返回 `Boolean`。
 

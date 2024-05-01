@@ -34,7 +34,7 @@ The Kotlin Multiplatform Gradle plugin lets you manage aspects of your project i
 
 ```groovy
 kotlin {
-    //...
+    // ...
 }
 ```
 
@@ -119,7 +119,7 @@ Kotlin Multiplatform Gradle 插件还支持构建脚本的 `kotlin {}` 块中特
 ```kotlin
 kotlin {
     sourceSets {
-      val jsMain by getting {
+        val jsMain by getting {
             dependencies {
                 implementation("org.example.myproject:1.1.0")
             }
@@ -159,10 +159,8 @@ kotlin {
 The dependencies on the [standard library](https://kotlinlang.org/api/latest/jvm/stdlib/index.html)
 are added automatically. The version of the standard library is the same as the version of the Kotlin Multiplatform plugin.
 
-The [`kotlin.test`](https://kotlinlang.org/api/latest/kotlin.test/) API is available for multiplatform tests.
-When you create a multiplatform project, the Project Wizard automatically adds test dependencies to all the source sets.
-
-If you don't use the Project Wizard to create your project, you can add the dependencies manually:
+For multiplatform tests, the [`kotlin.test`](https://kotlinlang.org/api/latest/kotlin.test/) API is available. When you
+create a multiplatform project, you can add test dependencies to all the source sets by using a single dependency in `commonTest`:
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -170,10 +168,8 @@ If you don't use the Project Wizard to create your project, you can add the depe
 ```kotlin
 kotlin {
     sourceSets {
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test")) // Brings all the platform dependencies automatically
-            }
+        commonTest.dependencies {
+            implementation(kotlin("test")) // Brings all the platform dependencies automatically
         }
     }
 }
@@ -206,7 +202,7 @@ Kotlin Multiplatform Gradle 插件使你可以在 Gradle 构建脚本中声明 n
 -->声明其他依赖项的方式。
 
 要声明 npm 依赖项，将其名称与版本传给依赖项声明内的 `npm()` 函数。
-还可以根据 [npm 的 semver 语法](https://docs.npmjs.com/misc/semver#versions)指定一个或多个版本范围。
+还可以根据 [npm 的 semver 语法](https://docs.npmjs.com/about-semantic-versioning)指定一个或多个版本范围。
 
 <tabs group="build-script">
 <tab title="Kotlin" group-key="kotlin">
@@ -244,7 +240,7 @@ Learn how to [configure Yarn in Kotlin Multiplatform Gradle plugin](#yarn).
 
 ## run 任务
 
-Kotlin/JS 插件提供了一个 `jsRun` 任务，使你无需额外配置即可运行纯 Kotlin/JS 项目。
+Kotlin 多平台 Gradle 插件提供了一个 `jsRun` 任务，使你无需额外配置即可运行纯 Kotlin/JS 项目。
 
 对于运行 Kotlin/JS 项目在浏览器中，此任务是 `browserDevelopmentRun` 任务的别名（在
 Kotlin 多平台项目中也可用）。它使用 [webpack-dev-server](https://webpack.js.org/configuration/dev-server/)
@@ -347,9 +343,9 @@ kotlin {
 ```bash
 ./gradlew check
 ```
-         
+
 To specify environment variables used by your Node.js test runners (for example, to pass external information to your tests, or to fine-tune package resolution), use the `environment()` function with a key-value pair inside the `testTask {}` block in your build script:
-         
+
 ```groovy
 kotlin {
     js {
@@ -359,7 +355,7 @@ kotlin {
             }
         }
     }
-}        
+}
 ```
 
 ### Karma 配置
@@ -375,7 +371,7 @@ Kotlin Multiplatform Gradle 插件会在构建时自动生成 Karma 配置文件
 
 ## Webpack 绑定
 
-对于浏览器目标，Kotlin/JS 插件使用众所周知的 [Webpack](https://webpack.js.org/) 模块捆绑器。
+对于浏览器目标，Kotlin 多平台 Gradle 插件使用众所周知的 [Webpack](https://webpack.js.org/) 模块捆绑器。
 
 ### webpack version 
 
@@ -429,7 +425,7 @@ config.module.rules.push({
     loader: 'loader-name'
 });
 ```
-     
+
 所有 webpack 配置功能在其
 [文档](https://webpack.js.org/concepts/configuration/) 中都有详细说明。
 
@@ -686,7 +682,7 @@ rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlu
         file("my-kotlin-js-store")
     rootProject.extensions.getByType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension).lockFileName = 'my-yarn.lock'
 }
-``` 
+```
 
 </tab>
 </tabs>
@@ -776,7 +772,7 @@ rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlu
 rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin) {
     rootProject.extensions.getByType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension).ignoreScripts = false
 }
-``` 
+```
 
 </tab>
 </tabs>
@@ -789,8 +785,7 @@ rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlu
 >
 {type="note" }
 
-要为项目分发文件设置另一个位置，请在构建脚本中的 `browser {}` 块内添加 `distribution {}` 块，然后<!-- 
--->为它的 `directory` 属性赋值。
+要为项目分发文件设置另一个位置，in your build script inside the `browser {}` block, add a `distribution {}` block and assign a value to the `outputDirectory` property by using the `set()` method.
 运行项目构建任务后，Gradle 会将输出的内容同项目资源一起保存在此位置。
 
 <tabs group="build-script">
@@ -801,7 +796,7 @@ kotlin {
     js {
         browser {
             distribution {
-                directory = File("$projectDir/output/")
+                outputDirectory.set(projectDir.resolve("output"))
             }
         }
         binaries.executable()
@@ -818,7 +813,7 @@ kotlin {
     js {
         browser {
             distribution {
-                directory = file("$projectDir/output/")
+                outputDirectory.set(file("$projectDir/output"))
             }
         }
         binaries.executable()

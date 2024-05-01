@@ -1,6 +1,11 @@
 [//]: # (title: 字符)
 
-字符用 `Char` 类型表示。 字符字面值用单引号括起来: `'1'`。
+字符用 `Char` 类型表示。
+字符字面值用单引号括起来: `'1'`。
+
+> On the JVM, a character stored as primitive type: `char`, represents a 16-bit Unicode character.
+>
+{type="note"}
 
 特殊字符可以以转义反斜杠 `\` 开始。
 支持这几个转义序列： 
@@ -31,7 +36,7 @@ fun main() {
 
 如果字符变量的值是数字，那么可以使用 [`digitToInt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/digit-to-int.html) 函数将其显式转换为 `Int` 数字。
 
-> **JVM 平台**： 与[数字](numbers.md#jvm-平台的数字表示)一样，当需要可空引用时会将字符装箱。
+> 在JVM 平台，当需要可空引用时字符会是装箱的 Java 类，类似于[数字](numbers.md#jvm-平台的数字表示)。
 > 装箱操作不保留同一性。
 >
 {type="note"}

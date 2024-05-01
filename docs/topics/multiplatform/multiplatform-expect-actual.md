@@ -508,8 +508,8 @@ The function that implements the `when` construction on `Department` requires an
 fun matchOnDepartment(dept: Department) {
     when (dept) {
         Department.IT -> println("The IT Department")
-        Department.HR -> println("The IT Department")
-        Department.Sales -> println("The IT Department")
+        Department.HR -> println("The HR Department")
+        Department.Sales -> println("The Sales Department")
         else -> println("Some other department")
     }
 }
@@ -524,7 +524,7 @@ annotation, which must have a corresponding actual declaration in each platform 
 
 ```kotlin
 @Target(AnnotationTarget.CLASS)
-@Retention(AnnotationRetention.SOURCE)
+@Retention(AnnotationRetention.RUNTIME)
 expect annotation class XmlSerializable()
 
 @XmlSerializable
@@ -552,7 +552,7 @@ Take the `@XmlSerializable` annotation declared above and add `OptionalExpectati
 ```kotlin
 @OptIn(ExperimentalMultiplatform::class)
 @Target(AnnotationTarget.CLASS)
-@Retention(AnnotationRetention.SOURCE)
+@Retention(AnnotationRetention.RUNTIME)
 @OptionalExpectation
 expect annotation class XmlSerializable()
 ```

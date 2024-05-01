@@ -10,6 +10,7 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 * 相对于 Java 的 SAM-转换，Kotlin 有更合适的[函数类型](lambdas.md#函数类型)
 * 没有通配符的[使用处型变](generics.md#使用处型变类型投影)
 * Kotlin 没有受检[异常](exceptions.md)
+* [Separate interfaces for read-only and mutable collections](collections-overview.md)
 
 ## Java 有而 Kotlin 没有的东西
 
@@ -21,27 +22,34 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 * [通配符类型](generics.md)以[声明处型变](generics.md#声明处型变)与<!--
   -->[类型投影](generics.md#类型投影)取代。
 * [三目操作符 `a ? b : c`](control-flow.md#if-表达式) —— 以 [if 表达式](control-flow.md#if-表达式)取代。
-
+* [Records](https://openjdk.org/jeps/395)
+* [Pattern Matching](https://openjdk.org/projects/amber/design-notes/patterns/pattern-matching-for-java)
+* package-private [visibility modifier](visibility-modifiers.md)
 
 ## Kotlin 有而 Java 没有的东西
 
 * [Lambda 表达式](lambdas.md) + [内联函数](inline-functions.md) = 高性能自定义控制结构
 * [扩展函数](extensions.md)
 * [空安全](null-safety.md)
-* [智能类型转换](typecasts.md)
-* [字符串模板](strings.md)
+* [智能类型转换](typecasts.md) (**Java 16**: [Pattern Matching for instanceof](https://openjdk.org/jeps/394))
+* [字符串模板](strings.md) (**Java 21**: [String Templates (Preview)](https://openjdk.org/jeps/430))
 * [属性](properties.md)
 * [主构造函数](classes.md)
 * [一等公民的委托](delegation.md)
-* [变量与属性类型的类型推断](basic-types.md)
+* [变量与属性类型的类型推断](basic-types.md) (**Java 10**: [Local-Variable Type Inference](https://openjdk.org/jeps/286))
 * [单例](object-declarations.md)
 * [声明处型变 & 类型投影](generics.md)
 * [区间表达式](ranges.md)
 * [操作符重载](operator-overloading.md)
 * [伴生对象](classes.md#伴生对象)
 * [数据类](data-classes.md)
-* [分离用于只读与可变集合的接口](collections-overview.md)
 * [协程](coroutines-overview.md)
+* [Top-level functions](functions.md)
+* [Default arguments](functions.md#default-arguments)
+* [Named parameters](functions.md#named-arguments)
+* [Infix functions](functions.md#infix-notation)
+* [Expect and actual declarations](multiplatform-expect-actual.md)
+* [Explicit API mode](whatsnew14.md#explicit-api-mode-for-library-authors) and [better control of API surface](opt-in-requirements.md)
 
 ## 下一步做什么？
 

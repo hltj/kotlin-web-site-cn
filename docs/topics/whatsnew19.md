@@ -598,19 +598,18 @@ fun computeAck(m: Int, n: Int) {
 ## Kotlin/JS
 
 This release introduces updates for Kotlin/JS, including the removal of the old Kotlin/JS compiler, Kotlin/JS Gradle plugin deprecation and Experimental
-support for ES6:
+support for ES2015:
 
 * [删除旧版 Kotlin/JS 编译器](#删除旧版-kotlin-js-编译器)
 * [弃用 Kotlin/JS Gradle 插件](#弃用-kotlin-js-gradle-插件)
 * [弃用外部枚举](#弃用外部枚举)
-* [对 ES6 类与模块的实验性支持](#对-es6-类与模块的实验性支持)
+* [对 ES2015 类与模块的实验性支持](#对-es2015-类与模块的实验性支持)
 * [变更了 JS 生产分发的默认位置](#变更了-js-生产分发的默认位置)
 * [从 stdlib-js 中提出 org.w3c 声明](#从-stdlib-js-中提出-org-w3c-声明)
 
 > Starting from version 1.9.0, [partial library linkage](#kotlin-native-的库链接) is also enabled for Kotlin/JS.
 >
 {type="note"}
-
 
 ### 删除旧版 Kotlin/JS 编译器
 
@@ -653,9 +652,9 @@ while avoiding the problems associated with default methods.
 Starting from Kotlin 1.9.0, the use of external enums will be marked as deprecated. We encourage you to update your code
 to utilize the suggested external sealed class implementation for compatibility and future maintenance.
 
-### 对 ES6 类与模块的实验性支持
+### 对 ES2015 类与模块的实验性支持
 
-This release introduces [Experimental](components-stability.md#stability-levels-explained) support for ES6 modules and generation of ES6 classes:
+This release introduces [Experimental](components-stability.md#stability-levels-explained) support for ES2015 modules and generation of ES2015 classes:
 * Modules offer a way to simplify your codebase and improve maintainability.
 * Classes allow you to incorporate object-oriented programming (OOP) principles, resulting in cleaner and more intuitive code.
 
@@ -665,12 +664,12 @@ To enable these features, update your `build.gradle.kts` file accordingly:
 // build.gradle.kts
 kotlin { 
     js(IR) { 
-        useEsModules() // Enables ES6 modules
+        useEsModules() // Enables ES2015 modules
         browser()
         }
     }
 
-// Enables ES6 classes generation
+// Enables ES2015 classes generation
 tasks.withType<KotlinJsCompile>().configureEach {
     kotlinOptions {
         useEsClasses = true
@@ -679,7 +678,7 @@ tasks.withType<KotlinJsCompile>().configureEach {
 ```
 {validate="false"}
 
-[Learn more about ECMAScript 2015 (ES6) in the official documentation](https://262.ecma-international.org/6.0/).
+[Learn more about ES2015 (ECMAScript 2015, ES6) in the official documentation](https://262.ecma-international.org/6.0/).
 
 ### 变更了 JS 生产分发的默认位置
 
@@ -1133,7 +1132,7 @@ sourcePath.copyToRecursively(
 >
 {type="warning"}
 
-In 1.9.0, the [`HexFormat`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-hexformat/) class and its related 
+In 1.9.0, the [`HexFormat`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-hex-format/) class and its related 
 extension functions are provided as an Experimental feature that allows you to convert between numerical values and 
 hexadecimal strings. Specifically, you can use the extension functions to convert between hexadecimal strings and 
 `ByteArrays` or other numeric types (`Int`, `Short`, `Long`).
@@ -1201,7 +1200,6 @@ The Kotlin documentation has received some notable changes:
 * [Android source set layout](multiplatform-android-layout.md) – Learn about the new Android source set layout.
 * [Compatibility guide for Kotlin Multiplatform](multiplatform-compatibility-guide.md) – Learn about the incompatible changes you might encounter while developing projects with Kotlin Multiplatform.
 * [Kotlin Wasm](wasm-overview.md) – Learn about Kotlin/Wasm and how you can use it in your Kotlin Multiplatform projects.
-* [Add dependencies on Kotlin libraries to Kotlin/Wasm project](wasm-libraries.md) – Learn about the supported Kotlin libraries for Kotlin/Wasm.
 
 ## 安装 Kotlin 1.9.0
 

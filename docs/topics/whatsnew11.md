@@ -688,7 +688,7 @@ engine.eval("val x = 3")
 println(engine.eval("x + 2"))  // 输出 5
 ```
 
-关于使用 API 的示例项目参见[这里](https://github.com/JetBrains/kotlin/tree/master/libraries/examples/kotlin-jsr223-local-example)
+关于使用 API 的示例项目参见[这里](https://github.com/JetBrains/kotlin/tree/1.1.0/libraries/examples/kotlin-jsr223-local-example)
 。
 
 ### kotlin.reflect.full

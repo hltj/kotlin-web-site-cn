@@ -2,16 +2,19 @@
 
 除了[整数类型](numbers.md#整数类型)，对于无符号整数，Kotlin 还提供了以下类型：
 
-* `UByte`: 无符号 8 比特整数，范围是 0 到 255
-* `UShort`: 无符号 16 比特整数，范围是 0 到 65535
-* `UInt`: 无符号 32 比特整数，范围是 0 到 2^32 - 1
-* `ULong`: 无符号 64 比特整数，范围是 0 到 2^64 - 1
+| Type     | Size (bits) | Min value | Max value                                       |
+|----------|-------------|-----------|-------------------------------------------------|
+| `UByte`  | 8           | 0         | 255                                             |
+| `UShort` | 16          | 0         | 65,535                                          |
+| `UInt`   | 32          | 0         | 4,294,967,295 (2<sup>32</sup> - 1)              |
+| `ULong`  | 64          | 0         | 18,446,744,073,709,551,615 (2<sup>64</sup> - 1) |
+
 
 无符号类型支持其对应有符号类型的大多数操作。
 
 > 无符号数实现为具有单个存储属性的[内联类](inline-classes.md)， 
-> 该属性类型为与其宽度相同的对应有符号类型。 尽管如此，将类型从无符号类型更改为对应的有符号类型（反之亦然）
-> 是*二进制不兼容*变更。
+> 该属性类型为与其宽度相同的对应有符号类型。 If you want to convert between unsigned and signed integer types,
+> make sure you update your code so that any function calls and operations support the new type.
 >
 {type="note"}
 
@@ -24,17 +27,17 @@
 
 与原生类型相同，每个无符号类型都有表示相应类型数组的类型：
 
-* `UByteArray`: 无符号字节数组
-* `UShortArray`: 无符号短整型数组
-* `UIntArray`: 无符号整型数组
-* `ULongArray`: 无符号长整型数组
+* `UByteArray`: 无符号字节数组。
+* `UShortArray`: 无符号短整型数组。
+* `UIntArray`: 无符号整型数组。
+* `ULongArray`: 无符号长整型数组。
 
 与有符号整型数组一样，它们提供了类似于 `Array` 类的 API 而没有装箱开销。
 
-When you use unsigned arrays, you'll get a warning that indicates that this feature is not stable yet.
-To remove the warning, opt-in the `@ExperimentalUnsignedTypes` annotation.
+When you use unsigned arrays, you receive a warning that indicates that this feature is not stable yet.
+To remove the warning, opt-in with the `@ExperimentalUnsignedTypes` annotation.
 It's up to you to decide if your clients have to explicitly opt-in into usage of your API, but keep in mind that unsigned
-arrays are not a stable feature, so API which uses them can be broken by changes in the language.
+arrays are not a stable feature, so an API that uses them can be broken by changes in the language.
 [Learn more about opt-in requirements](opt-in-requirements.md).
 
 [区间与数列](ranges.md)也支持 `UInt` 与 `ULong`（通过这些类 `UIntRange`、 `UIntProgression`、

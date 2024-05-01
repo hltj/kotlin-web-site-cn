@@ -59,6 +59,16 @@ You can also use [preview versions of Kotlin](eap.md#build-details).
         <th>版本重点</th>
     </tr>
     <tr>
+        <td><strong>1.9.23</strong>
+            <p>Released: <strong>March 7, 2024</strong></p>
+            <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.9.23" target="_blank">Release on GitHub</a></p>
+        </td>
+        <td>
+            <p>A bug fix release for Kotlin 1.9.20, 1.9.21, and 1.9.22.</p>
+            <p>Learn more about Kotlin 1.9.20 in <a href="whatsnew1920.md" target="_blank">What's new in Kotlin 1.9.20</a>.</p>
+        </td>
+    </tr>
+    <tr>
         <td><strong>1.9.22</strong>
             <p>Released: <strong>December 21, 2023</strong></p>
             <p><a href="https://github.com/JetBrains/kotlin/releases/tag/v1.9.22" target="_blank">Release on GitHub</a></p>
@@ -87,7 +97,7 @@ You can also use [preview versions of Kotlin](eap.md#build-details).
             <p>A feature release with Kotlin K2 compiler in Beta and Stable Kotlin Multiplatform.</p>
             <p>Learn more in:</p>
             <list>
-                <li><a href="whatsnew1920.md" target="_blank">What's new in Kotlin 1.9.20</a>,</li>
+                <li><a href="whatsnew1920.md" target="_blank">What's new in Kotlin 1.9.20</a></li>
             </list>
         </td>
     </tr>

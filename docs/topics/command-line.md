@@ -13,9 +13,15 @@
 
 ### 手动安装
 
+To install the Kotlin compiler manually:
+
 1. 在 [GitHub Releases](%kotlinLatestUrl%) 页下载最新版本（`kotlin-compiler-%kotlinVersion%.zip`）。
 2. 将独立编译器解压缩到一个目录中，并可选择将其 `bin` 目录添加到系统路径。
 `bin` 目录包含了在 Windows、macOS 与 Linux 上编译及运行 Kotlin 所需的脚本。
+
+> For Windows users who want to use the command-line compiler, we recommend using the manual installation method.
+> 
+{type="note"}
 
 ### SDKMAN!
 

@@ -139,8 +139,16 @@ Hello, Kotlin world!
 当给出  `-library foo` 标志时，编译器按照以下顺序搜索 `foo` 库：
 
 * 当前编译目录或者一个绝对路径。
-* 以 `-repo` 标志指定的所有存储裤。
-* 安装在默认存储库（目前默认为 `~/.konan`，不过可以通过设置 **KONAN_DATA_DIR** 来更改）中的库。
+* 以 `-repo` 标志指定的所有存储库。
+* 安装在默认存储库。
+
+   > The default repository is `~/.konan`. You can change it by setting the `kotlin.data.dir` Gradle property.
+   > 
+   > Alternatively, you can use the `-Xkonan-data-dir` compiler option to configure your custom path to the directory 
+   > via the `cinterop` and `konanc` tools.
+   > 
+   {type="note"}
+
 * 安装在 `$installation/klib` 目录中的库。
 
 ### 库格式

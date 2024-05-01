@@ -740,8 +740,8 @@ Since the previous release, the Kotlin documentation has received some notable c
 
 ### Kotlin Multiplatform 期刊中的新增文章
 
-* [原生与跨平台应用开发：如何选择？](native-and-cross-platform.md) – check out our overview and advantages of cross-platform app development and the native approach.
-* [六大最佳跨平台应用开发框架](cross-platform-frameworks.md) – read about the key aspects to help you choose the right framework for your cross-platform project.
+* [原生与跨平台应用开发：如何选择？](https://www.jetbrains.com/help/kotlin-multiplatform-dev/native-and-cross-platform.html) – check out our overview and advantages of cross-platform app development and the native approach.
+* [六大最佳跨平台应用开发框架](https://www.jetbrains.com/help/kotlin-multiplatform-dev/cross-platform-frameworks.html) – read about the key aspects to help you choose the right framework for your cross-platform project.
 
 ### 新增与更新的教程
 

@@ -94,7 +94,7 @@ dependencies {
 ### 为什么不只是添加必需的清单选项到所有 Kotlin 库
 
 尽管它是提供 OSGi 支持的最好的方式，遗憾的是现在做不到，是因为不能轻易消除的所谓的
-[“包拆分”问题](http://wiki.osgi.org/wiki/Split_Packages)并且这么大的变化<!--
+[“包拆分”问题](https://docs.osgi.org/specification/osgi.core/7.0.0/framework.module.html#d0e5999)并且这么大的变化<!--
 -->不可能现在规划。有 `Require-Bundle` 功能，但它也不是最好的选择，不推荐使用。
 所以决定为 OSGi 做一个单独的构件。
 

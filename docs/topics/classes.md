@@ -173,7 +173,7 @@ class DontCreateMe private constructor() { /*……*/ }
 
 ## 创建类的实例
 
-创建一个类的实例，只需像普通函数一样调用构造函数：
+创建一个类的实例，只需像普通函数一样调用构造函数。You can assign the created instance to a [variable](basic-syntax.md#variables):
 
 ```kotlin
 val invoice = Invoice()
