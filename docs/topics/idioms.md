@@ -95,7 +95,7 @@ for ((k, v) in map) {
 
 ```kotlin
 for (i in 1..100) { …… }  // 闭区间：包含 100
-for (i in 1..< 100) { …… } // 左开右闭区间：不包含 100
+for (i in 1..< 100) { …… } // 左闭右开区间：不包含 100
 for (x in 2..10 step 2) { …… }
 for (x in 10 downTo 1) { …… }
 (1..10).forEach { …… }
