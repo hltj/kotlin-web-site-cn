@@ -1,4 +1,4 @@
-[//]: # (title: Advanced concepts of the multiplatform project structure)
+[//]: # (title: 多平台项目结构的高级概念)
 
 This article explains advanced concepts of the Kotlin Multiplatform project structure and how they map to the Gradle
 implementation.

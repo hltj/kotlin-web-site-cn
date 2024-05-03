@@ -118,7 +118,7 @@ from Kotlin in the first place.
 对于多平台项目，`@JsExport` 也可以在公共代码中使用。它仅在针对
 JavaScript 目标进行编译时才有效，并且还允许导出非平台特有的 Kotlin 声明。
 
-## 在 JavaScript 中的 Kotlin 类型
+## JavaScript 中的 Kotlin 类型
 
 See how Kotlin types are mapped to JavaScript ones:
 

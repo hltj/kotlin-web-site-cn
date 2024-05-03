@@ -1,4 +1,4 @@
-[//]: # (title: Debug Kotlin/Wasm code)
+[//]: # (title: 调试 Kotlin/Wasm 代码)
 
 > Kotlin/Wasm is [Alpha](components-stability.md). It may be changed at any time.
 >

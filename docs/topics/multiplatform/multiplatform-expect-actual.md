@@ -1,4 +1,4 @@
-[//]: # (title: Expected and actual declarations)
+[//]: # (title: 预期声明与实际声明)
 
 Expected and actual declarations allow you to access platform-specific APIs from Kotlin Multiplatform modules.
 You can provide platform-agnostic APIs in the common code.

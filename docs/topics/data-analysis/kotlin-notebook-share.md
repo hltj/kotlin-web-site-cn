@@ -1,4 +1,4 @@
-[//]: # (title: Share your Kotlin Notebook)
+[//]: # (title: 分享 Kotlin Notebook)
 
 <microformat>
    <p>This is the fourth part of the <strong>Getting started with Kotlin Notebook</strong> tutorial. Before proceeding, make sure you've completed the previous steps.</p>

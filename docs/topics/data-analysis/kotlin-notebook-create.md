@@ -1,4 +1,4 @@
-[//]: # (title: Create your first Kotlin Notebook)
+[//]: # (title: 创建第一个 Kotlin Notebook)
 
 <microformat>
    <p>This is the second part of the <strong>Getting started with Kotlin Notebook</strong> tutorial. Before proceeding, make sure you've completed the previous step.</p>

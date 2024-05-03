@@ -40,7 +40,7 @@ fun main() {
 `a == null` 会被自动转换为 `a === null`。
 
 In Kotlin, the `equals()` function is inherited by all classes from the `Any` class. By default, the `equals()` function 
-implements [referential equality](#referential-equality). However, classes in Kotlin can override the `equals()` 
+implements [referential equality](#引用相等). However, classes in Kotlin can override the `equals()` 
 function to provide a custom equality logic and, in this way, implement structural equality.
 
 Value classes and data classes are two specific Kotlin types that automatically override the `equals()` function. 

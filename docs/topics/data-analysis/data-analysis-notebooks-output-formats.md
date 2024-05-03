@@ -1,4 +1,4 @@
-[//]: # (title: Output formats supported by Kotlin Notebook)
+[//]: # (title: Kotlin Notebook 支持的输出格式)
 
 Kotlin Notebook supports a variety of output types, including text, HTML, and images. With the help of external libraries,
 you can expand your output options and visualize your data with charts, spreadsheets, and more.

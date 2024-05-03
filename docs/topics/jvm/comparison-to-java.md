@@ -45,11 +45,11 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 * [数据类](data-classes.md)
 * [协程](coroutines-overview.md)
 * [Top-level functions](functions.md)
-* [Default arguments](functions.md#default-arguments)
-* [Named parameters](functions.md#named-arguments)
-* [Infix functions](functions.md#infix-notation)
+* [Default arguments](functions.md#默认实参)
+* [Named parameters](functions.md#具名实参)
+* [Infix functions](functions.md#中缀表示法)
 * [Expect and actual declarations](multiplatform-expect-actual.md)
-* [Explicit API mode](whatsnew14.md#explicit-api-mode-for-library-authors) and [better control of API surface](opt-in-requirements.md)
+* [Explicit API mode](whatsnew14.md#面向库作者的显式-api-模式) and [better control of API surface](opt-in-requirements.md)
 
 ## 下一步做什么？
 

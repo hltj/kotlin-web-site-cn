@@ -17,7 +17,7 @@ data class Customer(val name: String, val email: String)
 * `copy()`
 * 所有属性的 `component1()`、 `component2()`……等等（参见[数据类](data-classes.md)）
 
-### 函数的默认参数
+### 函数的默认实参
 
 ```kotlin
 fun foo(a: Int = 0, b: String = "") { …… }

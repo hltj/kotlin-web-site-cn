@@ -746,7 +746,7 @@ removed from the public API of the Kotlin Gradle plugin in future releases. This
 
 **What's the best practice now?**
 
-Use respective [Kotlin targets](https://kotlinlang.org/docs/multiplatform-dsl-reference.html#targets) instead, for example:
+Use respective [Kotlin targets](multiplatform-dsl-reference.md#目标) instead, for example:
 
 <table header-style="top">
     <tr>

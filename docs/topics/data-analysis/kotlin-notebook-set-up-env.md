@@ -1,4 +1,4 @@
-[//]: # (title: Set up an environment)
+[//]: # (title: 环境搭建)
 
 <microformat>
    <p>This is the first part of the <strong>Getting started with Kotlin Notebook</strong> tutorial:</p>

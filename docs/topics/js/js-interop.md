@@ -128,7 +128,7 @@ class Bar : Foo() {
 有一些限制：
 
 - 当一个外部基类的函数被签名重载时，不能在派生类中覆盖它。
-- 不能覆盖一个使用默认参数的函数。
+- 不能覆盖一个使用默认实参的函数。
 - 不能用外部类扩展非外部类。
 
 ### external 接口
@@ -216,7 +216,7 @@ function usingAsOperator(s) {
 
 Kotlin/JS has particular semantics for equality checks compared to other platforms. 
 
-In Kotlin/JS, the Kotlin [referential equality](equality.md#referential-equality) operator (`===`) always translates to the JavaScript
+In Kotlin/JS, the Kotlin [referential equality](equality.md#引用相等) operator (`===`) always translates to the JavaScript
 [strict equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality) operator (`===`). 
 
 The JavaScript `===` operator checks not only that two values are equal but also that
@@ -234,7 +234,7 @@ fun main() {
 }
  ```
 
-Also, in Kotlin/JS, the [`Byte`, `Short`, `Int`, `Float`, and `Double`](js-to-kotlin-interop.md#kotlin-types-in-javascript) numeric types 
+Also, in Kotlin/JS, the [`Byte`, `Short`, `Int`, `Float`, and `Double`](js-to-kotlin-interop.md#javascript-中的-kotlin-类型) numeric types 
 are all represented with the `Number` JavaScript type in runtime. Therefore, the values of these five types are indistinguishable:
 
  ```kotlin

@@ -111,7 +111,7 @@ with the value `strict` or `warning`.
 
 ### 混用具名与位置参数
 
-In Kotlin 1.3, when you called a function with [named arguments](functions.md#具名参数), you had to place all the
+In Kotlin 1.3, when you called a function with [named arguments](functions.md#具名实参), you had to place all the
 arguments without names (positional arguments) before the first named argument. For example, you could call `f(1, y = 2)`, 
 but you couldn't call `f(x = 1, 2)`.
 
@@ -165,12 +165,12 @@ val colors = listOf(
 
 Kotlin 1.4 supports more cases for using callable references:
 
-* 对具有默认参数值的函数的引用
+* 对具有默认实参值的函数的引用
 * 可作为返回 `Unit`的函数的函数引用
 * 根据函数的参数数量进行调整的引用
 * 可调用引用的挂起转换
 
-#### 对具有默认参数值的函数的引用
+#### 对具有默认实参值的函数的引用
 
 Now you can use callable references to functions with default argument values. If the callable reference 
 to the function `foo` takes no arguments, the default value `0` is used.

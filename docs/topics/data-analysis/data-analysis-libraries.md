@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin and Java libraries for data analysis)
+[//]: # (title: 用于数据分析的 Kotlin 与 Java 库)
 
 From data collection to model building, Kotlin offers robust libraries facilitating 
 different tasks in the data pipeline.

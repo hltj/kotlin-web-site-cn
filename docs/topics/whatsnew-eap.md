@@ -62,7 +62,7 @@ If you encounter any of the problems mentioned above, you can take the following
 ### Smart cast improvements
 
 The Kotlin compiler can automatically cast an object to a type in specific cases,
-saving you the trouble of having to explicitly specify it yourself. This is called [smart casting](typecasts.md#smart-casts).
+saving you the trouble of having to explicitly specify it yourself. This is called [smart casting](typecasts.md#智能转换).
 The Kotlin K2 compiler now performs smart casts in even more scenarios than before.
 
 In Kotlin %kotlinEapVersion%, we've made improvements related to smart casts in the following areas:
@@ -601,7 +601,7 @@ This version brings the following changes:
 Kotlin %kotlinEapVersion% introduces a new default method for generating lambda functions using `invokedynamic`.
 This change reduces the binary sizes of applications compared to the traditional anonymous class generation.
 
-Since the first version, Kotlin has generated lambdas as anonymous classes. However, starting from [Kotlin 1.5](whatsnew15.md#lambdas-via-invokedynamic),
+Since the first version, Kotlin has generated lambdas as anonymous classes. However, starting from [Kotlin 1.5](whatsnew15.md#采用-invokedynamic-的-lambda-表达式),
 the option for `invokedynamic` generation was available by using the `-Xlambdas=indy` compiler flag. In Kotlin %kotlinEapVersion%,
 `invokedynamic` has become the default method for lambda generation. This method produces lighter binaries and aligns
 Kotlin with JVM optimizations, ensuring that applications benefit from ongoing and future improvements in JVM performance.
@@ -769,7 +769,7 @@ kotlin {
 }
 ```
 
-The new target automatically turns on [ES classes and modules](whatsnew19.md#experimental-support-for-es2015-classes-and-modules)
+The new target automatically turns on [ES classes and modules](whatsnew19.md#对-es2015-类与模块的实验性支持)
 and the newly supported [ES generators](#suspend-functions-as-es2015-generators).
 
 ### Suspend functions as ES2015 generators
@@ -1260,7 +1260,7 @@ Since Kotlin %kotlinEapVersion%, the following DSLs for specifying compiler opti
   and the `KotlinNativeLinkArtifactTask` class. Use the `toolOptions` DSL instead.
 * The `dceOptions` DSL from the `KotlinJsDce` interface. Use the `toolOptions` DSL instead.
 
-For more information on how to specify compiler options in the Kotlin Gradle plugin, see [How to define options](gradle-compiler-options.md#how-to-define-options).
+For more information on how to specify compiler options in the Kotlin Gradle plugin, see [How to define options](gradle-compiler-options.md#配置选项).
 
 ## Standard library
 

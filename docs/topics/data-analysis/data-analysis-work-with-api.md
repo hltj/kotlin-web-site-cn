@@ -1,4 +1,4 @@
-[//]: # (title: Retrieve data from web sources and APIs)
+[//]: # (title: 从 web 源与 API 取数据)
 
 Kotlin Notebook provides a powerful platform for accessing and manipulating data from various web sources and APIs.
 It simplifies data extraction and analysis tasks by offering an iterative environment where every step can be visualized 

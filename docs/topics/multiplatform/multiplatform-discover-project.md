@@ -57,7 +57,7 @@ A _Kotlin target_ is an identifier that describes a compilation target. It defin
 binaries, available language constructions, and allowed dependencies.
 
 > Targets can also be referred to as platforms. See the
-> full [list of supported targets](multiplatform-dsl-reference.md#targets).
+> full [list of supported targets](multiplatform-dsl-reference.md#目标).
 >
 > {type="note"}
 
@@ -90,7 +90,7 @@ produce `.js` files:
 ![Target labels](target-labels-diagram.svg){width=700}
 
 That's how the Kotlin compiler works with the common code compiled to all the declared targets.
-See [Source sets](#source-sets) to learn how to write platform-specific code.
+See [Source sets](#源代码集) to learn how to write platform-specific code.
 
 ## 源代码集
 

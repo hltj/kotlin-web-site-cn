@@ -1,4 +1,4 @@
-[//]: # (title: Connect and retrieve data from databases)
+[//]: # (title: 链接数据库并从中取数据)
 
 Kotlin Notebook offers capabilities for connecting to and retrieving data from various types of SQL databases, such as 
 MariaDB, PostgreSQL, MySQL, and SQLite. 

@@ -244,7 +244,7 @@ fun main() {
 `joinToString()` 根据提供的参数从集合元素构建单个 `String`。
 `joinTo()` 执行相同的操作，但将结果附加到给定的 [`Appendable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-appendable/index.html) 对象。
 
-当使用默认参数调用时，函数返回的结果类似于在集合上调用 `toString()`：
+当使用默认实参调用时，函数返回的结果类似于在集合上调用 `toString()`：
 各元素的字符串表示形式以空格分隔而成的 `String`。 
 
 ```kotlin

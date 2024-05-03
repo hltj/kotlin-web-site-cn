@@ -1,4 +1,4 @@
-[//]: # (title: Privacy manifest for iOS apps)
+[//]: # (title: iOS 应用的隐私清单)
 
 If your app is intended for the Apple App Store and uses [required reasons APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api),
 App Store Connect may issue a warning that the app doesn't have the correct privacy manifest:

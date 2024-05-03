@@ -1,4 +1,4 @@
-[//]: # (title: Add dependencies to your Kotlin Notebook)
+[//]: # (title: 将依赖添加到 Kotlin Notebook)
 
 <microformat>
    <p>This is the third part of the <strong>Getting started with Kotlin Notebook</strong> tutorial. Before proceeding, make sure you've completed the previous steps.</p>

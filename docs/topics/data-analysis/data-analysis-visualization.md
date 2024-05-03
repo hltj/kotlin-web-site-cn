@@ -1,4 +1,4 @@
-[//]: # (title: Data visualization in Kotlin Notebook with Kandy)
+[//]: # (title: 用 Kandy 实现 Kotlin Notebook 中数据可视化)
 
 Kotlin offers an all-in-one-place solution for powerful and flexible data visualization, providing an intuitive way to present and explore data 
 before diving into complex models.

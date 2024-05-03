@@ -58,7 +58,7 @@ The hierarchy of the example looks like this:
 
 ### Constructors
 
-A sealed class itself is always an [abstract class](classes.md#abstract-classes), and as a result, can't be instantiated directly. 
+A sealed class itself is always an [abstract class](classes.md#抽象类), and as a result, can't be instantiated directly. 
 However, it may contain or inherit constructors. These constructors aren't for creating instances of the sealed class itself 
 but for its subclasses. Consider the following example with a sealed class called `Error` and its several subclasses, 
 which we instantiate:
@@ -153,7 +153,7 @@ open class CustomError(): Error
 ### Inheritance in multiplatform projects
 
 There is one more inheritance restriction in [multiplatform projects](multiplatform-get-started.md): direct subclasses of sealed classes must
-reside in the same [source set](multiplatform-discover-project.md#source-sets). It applies to sealed classes without the [expected and actual modifiers](multiplatform-expect-actual.md).
+reside in the same [source set](multiplatform-discover-project.md#源代码集). It applies to sealed classes without the [expected and actual modifiers](multiplatform-expect-actual.md).
 
 If a sealed class is declared as `expect` in a common source set and have `actual` implementations in platform source sets,
 both `expect` and `actual` versions can have subclasses in their source sets. Moreover, if you use a hierarchical structure,

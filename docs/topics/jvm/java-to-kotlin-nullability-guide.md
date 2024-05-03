@@ -216,7 +216,7 @@ findOrder()?.customer?.let(::processCustomer)
 
 ## Default values instead of null
 
-Checking for `null` is often used in combination with [setting the default value](functions.md#默认参数)
+Checking for `null` is often used in combination with [setting the default value](functions.md#默认实参)
 in case the null check is successful.
 
 The Java code with a null check:

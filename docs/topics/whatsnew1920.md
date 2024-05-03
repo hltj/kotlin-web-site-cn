@@ -1,6 +1,6 @@
 [//]: # (title: What's new in Kotlin 1.9.20)
 
-_[Released: November 1, 2023](releases.md#release-details)_
+_[Released: November 1, 2023](releases.md#版本发布详情)_
 
 The Kotlin 1.9.20 release is out, the [K2 compiler for all the targets is now in Beta](#new-kotlin-k2-compiler-updates),
 and [Kotlin Multiplatform is now Stable](#kotlin-multiplatform-is-stable). Additionally, here are some of the main highlights:
@@ -59,7 +59,7 @@ kapt.use.k2=true
 ```
 
 Alternatively, you can enable K2 for kapt by completing the following steps:
-1. In your `build.gradle.kts` file, [set the language version](gradle-compiler-options.md#example-of-setting-a-languageversion) to `2.0`.
+1. In your `build.gradle.kts` file, [set the language version](gradle-compiler-options.md#设置-languageversion-的示例) to `2.0`.
 2. In your `gradle.properties` file, add `kapt.use.k2=true`.
 
 If you encounter any issues when using kapt with the K2 compiler, please report them to our
@@ -583,7 +583,7 @@ with the wizard.
 
 ### Full support for the Gradle configuration cache in Kotlin Multiplatform
 
-Previously, we introduced a [preview](whatsnew19.md#preview-of-the-gradle-configuration-cache) of the Gradle configuration
+Previously, we introduced a [preview](whatsnew19.md#gradle-配置缓存预览版) of the Gradle configuration
 cache, which was available for Kotlin multiplatform libraries. With 1.9.20, the Kotlin Multiplatform plugin takes a step further.
 
 It now supports the Gradle configuration cache in the [Kotlin CocoaPods Gradle plugin](native-cocoapods-dsl-reference.md),
@@ -933,7 +933,7 @@ the latest version of the Kotlin Gradle plugin, you don't need to specify the la
 
 ### The Kotlin/Native standard library becomes Stable
 
-In Kotlin 1.9.0, we [explained](whatsnew19.md#the-kotlin-native-standard-library-s-journey-towards-stabilization) the 
+In Kotlin 1.9.0, we [explained](whatsnew19.md#kotlin-native-标准库的稳定之旅) the 
 actions we've taken to bring the Kotlin/Native standard library closer to our goal of stabilization. In Kotlin 1.9.20, 
 we finally conclude this work and make the Kotlin/Native standard library Stable. Here are some highlights from this release:
 

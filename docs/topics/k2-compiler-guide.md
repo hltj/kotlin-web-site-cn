@@ -1,4 +1,4 @@
-[//]: # (title: K2 compiler migration guide)
+[//]: # (title: K2 编译器迁移指南)
 
 As the Kotlin language and ecosystem have continued to evolve, so has the Kotlin compiler. The first step was the
 introduction of the new JVM and JS IR (Intermediate Representation) backends that share logic, simplifying code generation
@@ -46,7 +46,7 @@ The Kotlin K2 compiler improves language features related to [smart-casting](#sm
 ### Smart casts
 
 The Kotlin compiler can automatically cast an object to a type in specific cases,
-saving you the trouble of having to explicitly specify it yourself. This is called [smart-casting](typecasts.md#smart-casts).
+saving you the trouble of having to explicitly specify it yourself. This is called [smart-casting](typecasts.md#智能转换).
 The Kotlin K2 compiler now performs smart casts in even more scenarios than before.
 
 In Kotlin 2.0.0, we've made improvements related to smart casts in the following areas:
@@ -549,7 +549,7 @@ IntelliJ IDEA can use the new K2 compiler to analyze your code with its K2 Kotli
 
 To use the previous compiler in Kotlin 2.0.0, either:
 
-* In your `build.gradle.kts` file, [set your language version](gradle-compiler-options.md#example-of-setting-a-languageversion) to `1.9`.
+* In your `build.gradle.kts` file, [set your language version](gradle-compiler-options.md#设置-languageversion-的示例) to `1.9`.
 
   OR
 * Use the following compiler option: `-language-version 1.9`.

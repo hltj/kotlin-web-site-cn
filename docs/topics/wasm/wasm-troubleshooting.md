@@ -1,4 +1,4 @@
-[//]: # (title: Troubleshooting)
+[//]: # (title: 故障排查)
 
 > Kotlin/Wasm is [Alpha](components-stability.md). It may be changed at any time. Use it in scenarios before production.
 > We would appreciate your feedback in [YouTrack](https://youtrack.jetbrains.com/issue/KT-56492).

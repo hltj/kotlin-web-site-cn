@@ -455,7 +455,7 @@ var x: Int = 23
 
 ## 生成重载
 
-通常，如果你写一个有默认参数值的 Kotlin 函数，在 Java 中只会有一个所有参数都存在的完整参数<!--
+通常，如果你写一个有默认实参值的 Kotlin 函数，在 Java 中只会有一个所有参数都存在的完整参数<!--
 -->签名的方法可见，如果希望向 Java 调用者暴露多个重载，可以使用
 [`@JvmOverloads`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html) 注解。
 

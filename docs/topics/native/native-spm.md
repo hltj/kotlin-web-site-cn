@@ -1,4 +1,4 @@
-[//]: # (title: Swift package export setup)
+[//]: # (title: Swift 包导出设置)
 
 You can set up the Kotlin/Native output for an Apple target to be consumed as a Swift package manager (SPM) dependency.
 
