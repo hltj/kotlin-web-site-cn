@@ -12,11 +12,11 @@ Kotlin 是一门现代但已成熟的编程语言，旨在让开发人员更幸�
 Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 与 [Android Studio](https://developer.android.com/studio) 版本中了。  
 可下载并安装这两个 IDE 之一来开始使用 Kotlin。
 
-## 使用 Kotlin 创建强大的应用程序
+## Choose your Kotlin use case
  
 <tabs>
 
-<tab id="backend" title="后端应用">
+<tab id="backend" title="后端">
 
 以下是开发 Kotlin 服务器端应用程序的第一步。
 
@@ -71,7 +71,7 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 
 </tab>
 
-<tab id="cross-platform-mobile" title="跨平台应用">
+<tab id="cross-platform-mobile" title="跨平台">
 
 在此可以了解到如何使用 [Kotlin 多平台](https://kotlinlang.org/lp/multiplatform/)开发及改进跨平台应用程序。
 
@@ -114,7 +114,7 @@ Kotlin 已包含在每个 [IntelliJ IDEA](https://www.jetbrains.com/idea/downloa
 
 </tab>
 
-<tab id="android" title="Android app">
+<tab id="android" title="Android">
 
 * 如果希望开始使用 Kotlin 用于 Android 开发，请阅读 [谷歌对 Android 上 Kotlin 入门的建议](https://developer.android.com/kotlin/get-started)。
 
