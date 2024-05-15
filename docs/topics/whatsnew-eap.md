@@ -865,7 +865,7 @@ whole project. However, this file might be too large and inconvenient to use. Wh
 Since module files could also be too large, with Kotlin 2.0.0, we add a more granular output that generates one (or two,
 if the file contains exported declarations) JavaScript file per each Kotlin file. To enable the per-file compilation mode:
 
-1. Add the [`useEsModules()`](whatsnew19.md#experimental-support-for-es2015-classes-and-modules) function to your build
+1. Add the [`useEsModules()`](whatsnew19.md#对-es2015-类与模块的实验性支持) function to your build
    file to support ECMAScript modules:
 
    ```kotlin
@@ -1488,7 +1488,7 @@ In Kotlin %kotlinEapVersion%, the `enumEntries<T>()` function becomes [Stable](c
 The `enumEntries<T>()` function is a replacement for the generic `enumValues<T>()` function. The new function returns a
 list of all enum entries for the given enum type `T`. The `entries` property for enum classes was previously introduced
 and also stabilized to replace the synthetic `values()` function. For more information about the entries property,
-see [What's new in Kotlin 1.8.20](whatsnew1820.md#a-modern-and-performant-replacement-of-the-enum-class-values-function).
+see [What's new in Kotlin 1.8.20](whatsnew1820.md#枚举类类-values-函数的现代且高性能替代).
 
 > The `enumValues<T>()` function is still supported, but we recommend that you use the `enumEntries<T>()` function instead
 > because it has less performance impact. Every time you call `enumValues<T>()`, a new array is created, whereas whenever you call `enumEntries<T>()`,
