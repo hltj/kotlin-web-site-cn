@@ -15,9 +15,9 @@ Kotlin/Native 的主要设计目标是让 Kotlin 可以为不希望或者不可�
 
 Kotlin/Native 支持以下平台：
 * macOS
-   * iOS、 tvOS、 watchOS
+* iOS、 tvOS、 watchOS
 * Linux
-   * Windows（MinGW）
+* Windows（MinGW）
 * Android NDK
 
 > 如需编译苹果目标平台 macOS、 iOS、 tvOS 以及 watchOS，需要安装 [Xcode](https://apps.apple.com/us/app/xcode/id497799835)
