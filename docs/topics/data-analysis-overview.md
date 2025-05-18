@@ -5,7 +5,7 @@ Exploring and analyzing data is something you may not do every day, but it's a c
 Let's think about software development duties where data analysis is key: analyzing what's actually inside collections when debugging, 
 digging into memory dumps or databases, or receiving JSON files with large amounts of data when working with REST APIs, to mention some.
 
-With Kotlin's Exploratory Data Analysis (EDA) tools, such as [Kotlin notebooks](#notebooks), [Kotlin DataFrame](#kotlin-dataframe), and [Kandy](#kandy), you
+With Kotlin's Exploratory Data Analysis (EDA) tools, such as [Kotlin notebooks](#notebook), [Kotlin DataFrame](#kotlin-dataframe), and [Kandy](#kandy), you
 have at your disposal a rich set of capabilities to enhance your analytics skills and support you across different scenarios:
 
 * **Load, transform, and visualize data in various formats:** with our Kotlin EDA tools, you can perform tasks like filtering, sorting, and aggregating data. Our tools can seamlessly
@@ -29,13 +29,13 @@ Additionally, export your output charts in a matter of clicks.
 
 ![Kotlin Notebook](data-analysis-notebook.gif){width=700}
 
-## Notebooks
+## Notebook
 
 _Notebooks_ are interactive editors that integrate code, graphics, and text in a single environment. When using a notebook, 
 you can run code cells and immediately see the output. 
 
-Kotlin offers different notebook solutions, such as [Kotlin Notebook](#kotlin-notebook), [Datalore](#kotlin-notebooks-in-datalore), 
-and [Kotlin-Jupyter Notebook](#jupyter-notebook-with-kotlin-kernel), providing convenient features for data retrieving, transformation, exploration, modeling, and more.
+Kotlin offers different notebook solutions, such as [Kotlin Notebook](#kotlin-notebook), [Datalore](#datalore-中的-kotlin-notebook), 
+and [Kotlin-Jupyter Notebook](#带-kotlin-内核的-jupyter-notebook), providing convenient features for data retrieving, transformation, exploration, modeling, and more.
 These Kotlin notebook solutions are based on our [Kotlin Kernel](https://github.com/Kotlin/kotlin-jupyter).
 
 You can seamlessly share your code among Kotlin Notebook, Datalore, and Kotlin-Jupyter Notebook. Create a project in one of our Kotlin notebooks
@@ -53,13 +53,13 @@ Discover the features of our different Kotlin notebook solutions and choose the 
 The [Kotlin Notebook](kotlin-notebook-overview.md) is a plugin for IntelliJ IDEA that allows you to create notebooks in Kotlin. It provides our IDE experience with all common IDE features,
 offering real-time code insights and project integration.
 
-### Kotlin notebooks in Datalore
+### Datalore 中的 Kotlin notebook
 
 With [Datalore](https://datalore.jetbrains.com/), you can use Kotlin in the browser straight out of the box without additional installation.
 You can also share your notebooks and run them remotely, collaborate with other Kotlin notebooks in real-time,
 receive smart coding assistance as you write code, and export results through interactive or static reports.
 
-### Jupyter Notebook with Kotlin Kernel
+### 带 Kotlin 内核的 Jupyter Notebook
 
 [Jupyter Notebook](https://jupyter.org/) is an open-source web application
 that allows you to create and share documents containing code,

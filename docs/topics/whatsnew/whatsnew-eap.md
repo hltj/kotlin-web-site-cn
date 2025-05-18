@@ -483,7 +483,7 @@ In Kotlin %kotlinEapVersion%, the [`Base64` API](https://kotlinlang.org/api/core
 
 ### Base64 encoding and decoding
 
-Kotlin 1.8.20 introduced [Experimental support for Base64 encoding and decoding](whatsnew1820.md#support-for-base64-encoding).
+Kotlin 1.8.20 introduced [Experimental support for Base64 encoding and decoding](whatsnew1820.md#支持-base64-编码).
 In Kotlin %kotlinEapVersion%, the [Base64 API](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.io.encoding/-base64/) is now Stable and
 includes four encoding schemes, with the new `Base64.Pem` added in this release:
 
@@ -539,7 +539,7 @@ fun main() {
 
 ### Hexadecimal parsing and formatting with the HexFormat API
 
-The [`HexFormat` API](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-hex-format/) introduced in [Kotlin 1.9.0](whatsnew19.md#new-hexformat-class-to-format-and-parse-hexadecimals) is now [Stable](components-stability.md#stability-levels-explained).
+The [`HexFormat` API](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-hex-format/) introduced in [Kotlin 1.9.0](whatsnew19.md#新增-hexformat-类用于格式化与解析十六进制) is now [Stable](components-stability.md#stability-levels-explained).
 You can use it to convert between numerical values and hexadecimal strings.
 
 For example:
@@ -553,4 +553,4 @@ fun main() {
 ```
 {kotlin-runnable="true"}
 
-For more information, see [New HexFormat class to format and parse hexadecimals](whatsnew19.md#new-hexformat-class-to-format-and-parse-hexadecimals).
+For more information, see [New HexFormat class to format and parse hexadecimals](whatsnew19.md#新增-hexformat-类用于格式化与解析十六进制).

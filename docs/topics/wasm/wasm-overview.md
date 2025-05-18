@@ -1,9 +1,9 @@
 [//]: # (title: Kotlin/Wasm)
 
-> Kotlin/Wasm is in [Alpha](components-stability.md).
-> It may be changed at any time. You can use it in scenarios before production. We would appreciate your feedback in [YouTrack](https://youtrack.jetbrains.com/issue/KT-56492).
+> Kotlin/Wasm 处于 [Alpha](components-stability.md) 阶段。
+> 可能会随时更改。可以在生产环境之前使用。欢迎在 [YouTrack](https://youtrack.jetbrains.com/issue/KT-56492) 上提供反馈。
 >
-> [Join the Kotlin/Wasm community](https://slack-chats.kotlinlang.org/c/webassembly).
+> [加入 Kotlin/Wasm 社区](https://slack-chats.kotlinlang.org/c/webassembly)。
 >
 {style="note"}
 
@@ -21,7 +21,7 @@ browser in standalone Wasm virtual machines. In the outside-of-browser case,
 [WebAssembly System Interface (WASI)](https://wasi.dev/) provides access to platform APIs, which you can also utilize.
 
 
-## Kotlin/Wasm and Compose Multiplatform
+## Kotlin/Wasm 与 Compose 多平台
 
 With Kotlin, you have the power to build applications and reuse mobile and desktop user interfaces (UIs) in your web projects through
 Compose Multiplatform and Kotlin/Wasm.
@@ -52,7 +52,7 @@ Would you like to try it yourself?
 
 <a href="wasm-get-started.md"><img src="wasm-get-started-button.svg" width="600" alt="Get started with Kotlin/Wasm" style="block"/></a>
 
-## Kotlin/Wasm and WASI
+## Kotlin/Wasm 与 WASI
 
 Kotlin/Wasm uses the [WebAssembly System Interface (WASI)](https://wasi.dev/) for server-side applications.
 Applications built with Kotlin/Wasm and WASI use a Wasm-WASI target, allowing you to call the WASI API and run applications 
@@ -67,7 +67,7 @@ WASI provides a secure standard interface for running Kotlin applications compil
 >
 {style="tip"}
 
-## Kotlin/Wasm performance
+## Kotlin/Wasm 性能
 
 Although Kotlin/Wasm is still in Alpha, Compose Multiplatform running on Kotlin/Wasm already shows encouraging performance 
 traits. You can see that its execution speed outperforms JavaScript and is approaching that of the JVM:
@@ -76,7 +76,7 @@ traits. You can see that its execution speed outperforms JavaScript and is appro
 
 We regularly run benchmarks on Kotlin/Wasm, and these results come from our testing in a recent version of Google Chrome.
 
-## Browser API support
+## 浏览器 API 支持
 
 The Kotlin/Wasm standard library provides declarations for browser APIs, including the DOM API.
 With these declarations, you can directly use the Kotlin API to access and utilize various browser functionalities. 
@@ -87,19 +87,19 @@ The declarations for browser API support are defined using JavaScript [interoper
 You can use the same capabilities to define your own declarations. In addition, Kotlin/Wasm–JavaScript interoperability 
 allows you to use Kotlin code from JavaScript. For more information, see [Use Kotlin code in JavaScript](wasm-js-interop.md#use-kotlin-code-in-javascript).
 
-## Leave feedback
+## 敬请反馈
 
-### Kotlin/Wasm feedback
+### Kotlin/Wasm 反馈
 
 * ![Slack](slack.svg){width=25}{type="joined"} Slack: [Get a Slack invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) and provide your feedback directly to developers in our [#webassembly](https://kotlinlang.slack.com/archives/CDFP59223) channel.
 * Report any issues in [YouTrack](https://youtrack.jetbrains.com/issue/KT-56492).
 
-### Compose Multiplatform feedback
+### Compose 多平台反馈
 
 * ![Slack](slack.svg){width=25}{type="joined"} Slack: provide your feedback in the [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web) public channel.
 * [Report any issues in GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
 
-## Learn more
+## 了解更多
 
 * Learn more about Kotlin/Wasm in this [YouTube playlist](https://kotl.in/wasm-pl).
 * Explore the [Kotlin/Wasm examples](https://github.com/Kotlin/kotlin-wasm-examples) in our GitHub repository.

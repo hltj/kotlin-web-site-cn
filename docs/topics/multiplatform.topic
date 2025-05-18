@@ -11,8 +11,8 @@
             简化跨平台项目的开发，并减少为不同平台编写和维护相同代码所花费的时间。
         </description>
         <spotlight>
-            <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev" summary="Get hands-on experience of Kotlin Multiplatform with real-life projects" type="cross-platform">Kotlin Multiplatform in action</a>
-            <a href="https://www.jetbrains.com/lp/compose-multiplatform/" summary="Discover Kotlin-based declarative UI framework developed by JetBrains" type="creative">Compose Multiplatform UI framework</a>
+            <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev" summary="通过实际项目获得 Kotlin 多平台的实践经验" type="cross-platform">Kotlin 多平台实战</a>
+            <a href="https://www.jetbrains.com/lp/compose-multiplatform/" summary="探索 JetBrains 开发的基于 Kotlin 的声明式 UI 框架" type="creative">Compose 多平台 UI 框架</a>
         </spotlight>
         <primary>
             <title>热门使用场景</title>

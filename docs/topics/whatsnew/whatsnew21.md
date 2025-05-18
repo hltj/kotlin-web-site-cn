@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 2.1.0 的新特性)
 
-_[Released: November 27, 2024](releases.md#版本发布详情)_
+_[发布于：2024-11-27](releases.md#版本发布详情)_
 
 The Kotlin 2.1.0 release is here! Here are the main highlights:
 

@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 2.1.20 的新特性)
 
-_[Released: March 20, 2025](releases.md#版本发布详情)_
+_[发布于：2025-03-20](releases.md#版本发布详情)_
 
 The Kotlin 2.1.20 release is here! Here are the main highlights:
 

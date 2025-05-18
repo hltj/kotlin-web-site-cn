@@ -1,6 +1,6 @@
 [//]: # (title: Kotlin 2.0.0 的新特性)
 
-_[Released: May 21, 2024](releases.md#版本发布详情)_
+_[发布于：2024-05-21](releases.md#版本发布详情)_
 
 The Kotlin 2.0.0 release is out and the [new Kotlin K2 compiler](#kotlin-k2-compiler) is Stable! Additionally, here are
 some other highlights:
