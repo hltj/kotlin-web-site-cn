@@ -21,7 +21,7 @@
         </primary>
         <secondary>
             <title>Kotlin 多平台</title>
-            <a href="multiplatform.topic" summary="探索 Kotlin 多平台技术来在应用程序之间共享代码">Kotlin 多平台概述</a>
+            <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html" summary="探索 Kotlin 多平台技术来在应用程序之间共享代码">Kotlin 多平台概述</a>
             <a href="https://kmp.jetbrains.com/" summary="快速创建并下载多平台项目模板">Kotlin 多平台向导</a>
             <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-create-first-app.html" summary="创建一个在 Android 与 iOS 上都能运行的移动应用">Kotlin 多平台入门</a>
             <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-create-first-app.html" summary="使用 Compose 多平台来实现跨移动端、桌面端和 web 端的统一用户界面">Compose 多平台入门</a>

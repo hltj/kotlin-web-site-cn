@@ -11,8 +11,8 @@
             简化跨平台项目的开发，并减少为不同平台编写和维护相同代码所花费的时间。
         </description>
         <spotlight>
-            <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev" summary="通过实际项目获得 Kotlin 多平台的实践经验" type="cross-platform">Kotlin 多平台实战</a>
-            <a href="https://www.jetbrains.com/lp/compose-multiplatform/" summary="探索 JetBrains 开发的基于 Kotlin 的声明式 UI 框架" type="creative">Compose 多平台 UI 框架</a>
+            <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/quickstart.html" type="cross-platform" summary="Set up and run your first KMP project">Kotlin Multiplatform quickstart</a>
+            <a href="https://www.jetbrains.com/lp/compose-multiplatform/" summary="探索 JetBrains 开发的基于 Kotlin 的声明式多平台 UI 框架" type="creative">Compose 多平台</a>
         </spotlight>
         <primary>
             <title>热门使用场景</title>
@@ -32,7 +32,7 @@
             <links narrow="true">
                 <group>
                     <title>教程与样例</title>
-                    <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-setup.html" summary="搭建 KMP 开发环境">搭建环境</a>
+                    <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/quickstart.html" summary="Setup and run your first KMP project">Set up and run your first KMP project</a>
                     <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-integrate-in-existing-app.html" summary="让 Android 应用程序能在 iOS 上运行">让应用支持多平台</a>
                     <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-run-tests.html" summary="解如何创建并测试 Kotlin 多平台应用程序">测试多平台应用</a>
                     <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html" summary="Kotlin 多平台样例">参见精选项目列表</a>
@@ -40,10 +40,11 @@
                 </group>
                 <group>
                     <title>工具</title>
-                    <a href="https://kmp.jetbrains.com/" summary="快速创建并下载跨平台项目模板">新建项目向导</a>
-                    <a href="https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform" summary="用于开发 Android 与 iOS 双平台应用程序的 Android Studio 插件">Android Studio 插件</a>
+                    <a href="https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform" summary="Kotlin Multiplatform plugin for IntelliJ IDEA and Android Studio">Kotlin Multiplatform IDE plugin</a>
+                    <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-hot-reload.html" summary="Quickly iterate on your UI with Compose Hot Reload">Compose Hot Reload</a>
                     <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-dsl-reference.html" summary="为 Kotlin 多平台项目配置 Gradle 构建脚本">Gradle DSL 参考</a>
                     <a href="https://klibs.io/" summary="由 JetBrains 开发的 Kotlin 多平台库实验性搜索平台">库搜索平台</a>
+                    <a href="https://kmp.jetbrains.com/" summary="Quickly generate and download a multiplatform project template">New project wizard</a>
                     <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/amper.html" summary="使用 Amper 配置项目">Amper 配置工具</a>
                 </group>
                 <group>
