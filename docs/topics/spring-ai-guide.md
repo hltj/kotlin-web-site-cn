@@ -1,4 +1,4 @@
-[//]: # (title: Build a Kotlin app that uses Spring AI to answer questions based on documents stored in Qdrant — tutorial)
+[//]: # (title: 构建一个使用 Spring AI 基于 Qdrant 中存储的文档来回答问题的 Kotlin 应用——教程)
 
 In this tutorial, you'll learn how to build a Kotlin app that uses [Spring AI](https://spring.io/projects/spring-ai) to connect to an LLM,
 store documents in a vector database, and answer questions using context from those documents.
@@ -12,7 +12,7 @@ You will use the following tools during this tutorial:
 * [Docker](https://www.docker.com/) to run Qdrant locally.
 * [OpenAI](https://platform.openai.com) as the LLM provider.
 
-## Before you start
+## 开始之前
 
 1. Download and install the latest version of [IntelliJ IDEA Ultimate Edition](https://www.jetbrains.com/idea/download/index.html).
 
@@ -29,7 +29,7 @@ You will use the following tools during this tutorial:
     docker run -p 6333:6333 -p 6334:6334 qdrant/qdrant
     ```
 
-## Create the project
+## 创建项目
 
 > You can use [Spring Boot web-based project generator](https://start.spring.io/) as an alternative to generate your project.
 >
@@ -88,7 +88,7 @@ The generated Gradle project corresponds to the Maven's standard directory layou
 * The entry point to the application is the `main()` method of the `SpringAiDemoApplication.kt` file.
 
 
-## Update the project configuration
+## 更新项目配置
 
 1. Update your `build.gradle.kts` Gradle build file with the following:
 
@@ -130,7 +130,7 @@ The generated Gradle project corresponds to the Maven's standard directory layou
 
    ![Qdrant collections](qdrant-collections.png){width=700}
 
-## Create a controller to load and search documents
+## 创建一个 controller 来加载并搜索文档
 
 Create a Spring `@RestController` to search documents and store them in the Qdrant collection:
 
@@ -252,7 +252,7 @@ Create a Spring `@RestController` to search documents and store them in the Qdra
 > 
 {style="tip"}
 
-## Implement an AI chat endpoint
+## 实现 AI 聊天端点
 
 Once the documents are loaded, the final step is to add an endpoint that answers questions using the documents in Qdrant through Spring AI's Retrieval-Augmented Generation (RAG) support:
 
