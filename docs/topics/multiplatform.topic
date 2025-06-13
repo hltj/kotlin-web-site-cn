@@ -12,7 +12,7 @@
         </description>
         <spotlight>
             <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/quickstart.html" type="cross-platform" summary="搭建并运行第一个 KMP 项目">Kotlin 多平台快速入门</a>
-            <a href="https://www.jetbrains.com/lp/compose-multiplatform/" summary="探索 JetBrains 开发的基于 Kotlin 的声明式多平台 UI 框架" type="creative">Compose 多平台</a>
+            <a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform.html" summary="探索 JetBrains 开发的基于 Kotlin 的声明式多平台 UI 框架" type="creative">Compose 多平台</a>
         </spotlight>
         <primary>
             <title>热门使用场景</title>
